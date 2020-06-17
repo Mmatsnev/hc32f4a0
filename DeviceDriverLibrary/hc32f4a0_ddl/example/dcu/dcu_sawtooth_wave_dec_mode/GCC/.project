@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>dcu_sawtooth_wave_dec_mode</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>source</name>
+			<type>2</type>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/source</locationURI>
+		</link>
+	<link>
+<name>common</name>
+<type>2</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/mcu/common</locationURI>
+</link>
+<link>
+<name>driver</name>
+<type>2</type>
+<locationURI>virtual:/virtual</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_icg.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_icg.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_utility.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_utility.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_clk.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_clk.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_dac.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_dac.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_dcu.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_dcu.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_efm.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_efm.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_gpio.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_gpio.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_i2c.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_i2c.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_interrupts.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_interrupts.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_keyscan.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_keyscan.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_pwc.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_pwc.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_sram.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_sram.c</locationURI>
+</link>
+<link>
+<name>driver/hc32f4a0_tmr0.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/driver/src/hc32f4a0_tmr0.c</locationURI>
+</link>
+<link>
+<name>readme</name>
+<type>2</type>
+<locationURI>virtual:/virtual</locationURI>
+</link>
+<link>
+<name>readme/readme.txt/</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/example/dcu/dcu_sawtooth_wave_dec_mode/Readme.txt</locationURI>
+</link>
+<link>
+<name>ev_hc32f4a0_lqfp176</name>
+<type>2</type>
+<locationURI>virtual:/virtual</locationURI>
+</link>
+<link>
+<name>ev_hc32f4a0_lqfp176/ev_hc32f4a0_lqfp176.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/bsp/ev_hc32f4a0_lqfp176/ev_hc32f4a0_lqfp176.c</locationURI>
+</link>
+<link>
+<name>ev_hc32f4a0_lqfp176/ev_hc32f4a0_lqfp176_tca9539.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/bsp/ev_hc32f4a0_lqfp176/ev_hc32f4a0_lqfp176_tca9539.c</locationURI>
+</link>
+<link>
+<name>tca9539</name>
+<type>2</type>
+<locationURI>virtual:/virtual</locationURI>
+</link>
+<link>
+<name>tca9539/tca9539.c</name>
+<type>1</type>
+<locationURI>$%7BPARENT-4-PROJECT_LOC%7D/bsp/components/tca9539/tca9539.c</locationURI>
+</link>
+
+	</linkedResources>
+</projectDescription>
