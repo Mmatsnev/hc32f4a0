@@ -836,7 +836,7 @@ en_result_t EFM_SingleProgram(uint32_t u32Addr, uint32_t u32Data)
  */
 en_result_t EFM_ProgramReadBack(uint32_t u32Addr, uint32_t u32Data)
 {
-    en_result_t enRet = Ok;;
+    en_result_t enRet = Ok;
     uint32_t u32Timeout = 0UL;
     uint32_t u32tmp;
     uint32_t u32EfmFlag = EFM_FLAG_RDY1;

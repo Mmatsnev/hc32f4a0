@@ -2766,7 +2766,7 @@ en_result_t ETH_DMA_GetReceiveFrame_Interrupt(stc_eth_handle_t *pstcEthHandle)
             {
                 pstcEthHandle->stcRxFrame.u32SegCount++;
                 /* Last segment */
-                pstcEthHandle->stcRxFrame.pstcLSDesc = pstcEthHandle->stcRxDesc;;
+                pstcEthHandle->stcRxFrame.pstcLSDesc = pstcEthHandle->stcRxDesc;
                 /* Check if last segment is first segment */
                 if (1U == pstcEthHandle->stcRxFrame.u32SegCount)
                 {

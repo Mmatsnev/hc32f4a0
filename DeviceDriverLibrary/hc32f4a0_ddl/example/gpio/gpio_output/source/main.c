@@ -156,9 +156,7 @@ int32_t main(void)
     /* Register write enable for some required peripherals. */
     Peripheral_WE();
 
-    GPIO_StructInit(&stcGpioInit);
-
-    /* RGB LED initialize */
+    /* LED initialize */
     GPIO_StructInit(&stcGpioInit);
     GPIO_Init(LED_PORT, LED_PIN, &stcGpioInit);
 

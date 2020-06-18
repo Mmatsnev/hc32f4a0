@@ -981,7 +981,7 @@ en_result_t CLK_HrcCmd(en_functional_state_t enNewState)
         }
         else
         {
-            WRITE_REG32(bM4_CMU->HRCCR_b.HRCSTP, CLK_HRC_OFF);;
+            WRITE_REG32(bM4_CMU->HRCCR_b.HRCSTP, CLK_HRC_OFF);
         }
     }
     else

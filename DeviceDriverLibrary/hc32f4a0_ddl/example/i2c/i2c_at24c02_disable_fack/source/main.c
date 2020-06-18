@@ -104,6 +104,10 @@
  * specification is 5ms, but you may enlarg it according to compilation options
  */
 #define APP_WAIT_EEPROM                 (5UL)
+
+#define LED_PORT                        (GPIO_PORT_C)
+#define LED_PIN                         (GPIO_PIN_09)
+
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
  ******************************************************************************/
@@ -170,6 +174,26 @@ static __attribute__((unused)) void Peripheral_WP(void)
     //EFM_FWMC_Lock();
     /* Lock all EFM registers */
     EFM_Lock();
+}
+
+static void Led_Init(void)
+{
+    stc_gpio_init_t stcGpioInit;
+
+    /* RGB LED initialize */
+    GPIO_StructInit(&stcGpioInit);
+    GPIO_Init(LED_PORT, LED_PIN, &stcGpioInit);
+
+    /* "Turn off" LED before set to output */
+    GPIO_ResetPins(LED_PORT, LED_PIN);
+
+    /* Output enable */
+    GPIO_OE(LED_PORT, LED_PIN, Enable);
+}
+
+static void Led_On(void)
+{
+    GPIO_SetPins(LED_PORT, LED_PIN);
 }
 
 /**
@@ -320,6 +344,7 @@ int32_t main(void)
 
     /* Configure system clock. */
     BSP_CLK_Init();
+    Led_Init();
 
     for(i=0UL; i<PAGE_LEN; i++)
     {
@@ -429,6 +454,7 @@ int32_t main(void)
     }
 
     /* e2prom sample success*/
+    Led_On();
     while(1)
     {
         DDL_DelayMS(500UL);

@@ -845,7 +845,6 @@ void SPI_ReadBufCfg(M4_SPI_TypeDef *SPIx, uint32_t u32ReadBuf)
  *   @arg  Ok:                      No errors occurred
  *   @arg  ErrorTimeout:            SPI transmit timeout.
  *   @arg  ErrorInvalidParameter:   pvTxBuf == NULL or u32TxLength == 0U
- *   @arg  ErrorAddressAlignment:   pvTxBuf data address is not 4-byte aligned.
  * @note   -No SS pin active and inactive operation in 3-wire mode. Add operations of SS pin depending on your application.
  *         -This function supports full duplex mode and send only mode.
  */
@@ -854,11 +853,7 @@ en_result_t SPI_Transmit(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, uint32_t u32
     uint32_t u32Flags;
     en_result_t enRet = ErrorInvalidParameter;
 
-    if (((uint32_t)pvTxBuf & 0x03UL) != 0U)
-    {
-        enRet = ErrorAddressAlignment;
-    }
-    else if ((pvTxBuf != NULL) && (u32TxLength != 0U))
+    if ((pvTxBuf != NULL) && (u32TxLength != 0U))
     {
         u32Flags = READ_REG32_BIT(SPIx->CR1, SPI_CR1_TXMDS);
         if (u32Flags == SPI_SEND_ONLY)
@@ -924,18 +919,13 @@ en_result_t SPI_Receive(M4_SPI_TypeDef *SPIx, void *pvRxBuf, uint32_t u32RxLengt
  *   @arg  Ok:                      No errors occurred
  *   @arg  ErrorTimeout:            SPI transmit and receive timeout.
  *   @arg  ErrorInvalidParameter:   pvRxBuf == NULL or pvRxBuf == NULL or u32Length == 0U
- *   @arg  ErrorAddressAlignment:   pvTxBuf data address is not 4-byte aligned.
  * @note   SPI receives data while sending data. Only works in full duplex master mode.
  */
 en_result_t SPI_TransmitReceive(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, void *pvRxBuf, uint32_t u32Length)
 {
     en_result_t enRet = ErrorInvalidParameter;
 
-    if (((uint32_t)pvTxBuf & 0x03UL) != 0U)
-    {
-        enRet = ErrorAddressAlignment;
-    }
-    else if ((pvTxBuf != NULL) && (pvRxBuf != NULL) && (u32Length != 0U))
+    if ((pvTxBuf != NULL) && (pvRxBuf != NULL) && (u32Length != 0U))
     {
         /* Transmit and receive data in full duplex master mode. */
         enRet = SPI_TxRx(SPIx, pvTxBuf, pvRxBuf, u32Length);

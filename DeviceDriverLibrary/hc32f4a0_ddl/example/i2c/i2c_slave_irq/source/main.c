@@ -108,6 +108,8 @@
 #define I2C_TEI_IRQn                    (Int016_IRQn)
 #define I2C_TEI_SOURCE                  (INT_I2C1_TEI)
 
+#define LED_PORT                        (GPIO_PORT_C)
+#define LED_PIN                         (GPIO_PIN_09)
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
  ******************************************************************************/
@@ -127,7 +129,7 @@ static __IO uint8_t u8FinishFlag = 0U;
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
- 
+
 /**
  * @brief  MCU Peripheral registers write unprotected.
  * @param  None
@@ -179,7 +181,27 @@ static __attribute__((unused)) void Peripheral_WP(void)
     /* Lock all EFM registers */
     EFM_Lock();
 }
- 
+
+static void Slave_LedInit(void)
+{
+    stc_gpio_init_t stcGpioInit;
+
+    /* RGB LED initialize */
+    GPIO_StructInit(&stcGpioInit);
+    GPIO_Init(LED_PORT, LED_PIN, &stcGpioInit);
+
+    /* "Turn off" LED before set to output */
+    GPIO_ResetPins(LED_PORT, LED_PIN);
+
+    /* Output enable */
+    GPIO_OE(LED_PORT, LED_PIN, Enable);
+}
+
+static void Slave_LedOn(void)
+{
+    GPIO_SetPins(LED_PORT, LED_PIN);
+}
+
 /**
  * @brief   static function for buffer write.
  * @param   [in]   u8Data the data to be write.
@@ -415,6 +437,7 @@ int32_t main(void)
 
     /* Configure system clock. */
     BSP_CLK_Init();
+    Slave_LedInit();
 
     /* Initialize I2C port*/
     stc_gpio_init_t stcGpioInit;
@@ -437,6 +460,7 @@ int32_t main(void)
     }
 
     /* Communication finished */
+    Slave_LedOn();
     while(1)
     {
         DDL_DelayMS(500U);
