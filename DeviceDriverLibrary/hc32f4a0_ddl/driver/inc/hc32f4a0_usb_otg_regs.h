@@ -141,7 +141,9 @@ typedef struct//000h
     __IO uint32_t GPVNDCTL;     /*  reg 034h*/
     __IO uint32_t GGPIO;        /* General Purpose IO Register        038h*/
     __IO uint32_t GUID;         /* User ID Register                   03Ch*/
-    uint32_t  Reserved40[48];   /* Reserved                      040h-0FFh*/
+    uint32_t  Reserved05[5];    /* Reserved                      040h-053h*/
+    __IO uint32_t GLPMCFG;      /* Low Power Mode Config Register     054h*/
+    uint32_t  Reserved42[42];   /* Reserved                      058h-0FFh*/
     __IO uint32_t HPTXFSIZ;     /* Host Periodic Tx FIFO Size Reg     100h*/
     __IO uint32_t DPTXFSIZ[USB_OTG_MAX_TX_FIFOS];/* dev Periodic Transmit FIFO */
 }USB_OTG_GREGS;
@@ -685,6 +687,29 @@ typedef union _USB_OTG_GPVNDCTL_TypeDef
     } b;
 } USB_OTG_GPVNDCTL_TypeDef;
 
+typedef union _USB_OTG_GLPMCFG_Typedef
+{
+    /** raw register data */
+    uint32_t d32;
+    /** register bits */
+    struct {
+        unsigned lpmen:1;
+        unsigned lpmack:1;
+        unsigned bsel:4;
+        unsigned remwake:1;
+        unsigned l1ssen:1;
+        unsigned beslthrs:4;
+        unsigned l1dsen:1;
+        unsigned lpmrsp:2;
+        unsigned slpsts:1;
+        unsigned l1rsmok:1;
+        unsigned lpmchidx:4;
+        unsigned lpmrcnt:3;
+        unsigned sendlpm:1;
+        unsigned lpmrcntsts:3;
+        unsigned enbsel:1;
+    } b;
+} USB_OTG_GLPMCFG_Typedef;
 
 typedef union _USB_OTG_DCFG_TypeDef
 {

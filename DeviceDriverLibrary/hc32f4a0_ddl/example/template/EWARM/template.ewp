@@ -1950,10 +1950,10 @@
     </file>
     -->
     <file>
-      <name>$PROJ_DIR$\..\..\..\driver\src\hc32f4a0_utility.c</name>
+      <name>$PROJ_DIR$\..\..\..\driver\src\hc32f4a0_icg.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\..\driver\src\hc32f4a0_icg.c</name>
+      <name>$PROJ_DIR$\..\..\..\driver\src\hc32f4a0_utility.c</name>
     </file>
 
   </group>

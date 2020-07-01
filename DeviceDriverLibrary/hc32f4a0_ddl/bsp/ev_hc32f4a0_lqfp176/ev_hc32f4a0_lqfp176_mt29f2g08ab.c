@@ -252,23 +252,23 @@ uint32_t BSP_NFC_MT29F2G08AB_ReadStatus(void)
  * @brief  Read ID.
  * @param  [in] u32IdAddr               The address
  * @param  [in] au8DevId                The id buffer
- * @param  [in] u8NumBytes              The number of bytes to read
+ * @param  [in] u32NumBytes             The number of bytes to read
  * @retval An en_result_t enumeration value.
  *   @arg  Ok:                          No errors occurred.
  *   @arg  ErrorInvalidParameter:       au8DevId == NULL or u8NumWords == 0
  */
 en_result_t BSP_NFC_MT29F2G08AB_ReadId(uint32_t u32IdAddr,
                                         uint8_t au8DevId[],
-                                        uint8_t u8NumBytes)
+                                        uint32_t u32NumBytes)
 {
     en_result_t enRet = ErrorInvalidParameter;
 
-    if ((NULL != au8DevId) && u8NumBytes)
+    if ((NULL != au8DevId) && (u32NumBytes > 0UL))
     {
         enRet = EXMC_NFC_ReadId(BSP_EV_HC32F4A0_MT29F2G08AB_BANK, \
                                 u32IdAddr, \
                                 au8DevId, \
-                                u8NumBytes);
+                                u32NumBytes);
     }
 
     return enRet;

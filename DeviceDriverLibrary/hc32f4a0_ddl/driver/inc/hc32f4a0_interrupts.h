@@ -370,7 +370,7 @@ __STATIC_INLINE void AOS_SW_Trigger(void)
  * @param  [in] enTrig can be any value @ref en_event_src_t
  * @retval None
  */
-__STATIC_INLINE void AOS_Com1_Trigger(en_event_src_t enTrig)
+__STATIC_INLINE void AOS_COM_Trigger1(en_event_src_t enTrig)
 {
     WRITE_REG32(M4_AOS->COMTRG1, enTrig);
 }
@@ -380,14 +380,13 @@ __STATIC_INLINE void AOS_Com1_Trigger(en_event_src_t enTrig)
  * @param  [in] enTrig can be any value @ref en_event_src_t
  * @retval None
  */
-__STATIC_INLINE void AOS_Com2_Trigger(en_event_src_t enTrig)
+__STATIC_INLINE void AOS_COM_Trigger2(en_event_src_t enTrig)
 {
     WRITE_REG32(M4_AOS->COMTRG2, enTrig);
 }
 
 en_result_t INTC_IrqSignIn(const stc_irq_signin_config_t *pstcIrqSignConfig);
 en_result_t INTC_IrqSignOut(IRQn_Type enIRQn);
-void INTC_IrqResign(IRQn_Type enIRQn);
 en_result_t INTC_ShareIrqCmd(en_int_src_t enIntSrc, en_functional_state_t enNewState);
 void INTC_WakeupSrcCmd(uint32_t u32WakeupSrc, en_functional_state_t enNewState);
 void INTC_EventCmd(uint32_t u32Event, en_functional_state_t enNewState);
@@ -400,8 +399,8 @@ en_flag_status_t NMI_GetNmiSrc(uint32_t u32NmiSrc);
 void NMI_SetNmiSrc(uint32_t u32NmiSrc);
 void NMI_ClrNmiSrc(uint32_t u32NmiSrc);
 
-en_result_t EXINT_Init(const stc_exint_init_t *pstcExintInit);
-en_result_t EXINT_StructInit(stc_exint_init_t *pstcExintInit);
+en_result_t EXINT_Init(const stc_exint_init_t *pstcExIntInit);
+en_result_t EXINT_StructInit(stc_exint_init_t *pstcExIntInit);
 en_flag_status_t EXINT_GetExIntSrc(uint32_t u32ExIntCh);
 void EXINT_ClrExIntSrc(uint32_t u32ExIntCh);
 

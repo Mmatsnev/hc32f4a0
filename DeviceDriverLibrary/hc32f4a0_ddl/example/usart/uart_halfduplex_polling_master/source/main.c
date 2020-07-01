@@ -114,7 +114,7 @@ static void UartRxErrProcess(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -140,7 +140,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -192,9 +192,9 @@ static en_flag_status_t KeyState(void)
  */
 static void UartRxErrProcess(void)
 {
-    if (Set == USART_GetFlag(USART_MASTER_UNIT, (USART_FLAG_PE | USART_FLAG_FE | USART_FLAG_ORE)))
+    if (Set == USART_GetStatus(USART_MASTER_UNIT, (USART_FLAG_PE | USART_FLAG_FE | USART_FLAG_ORE)))
     {
-        USART_ClearFlag(USART_MASTER_UNIT, (USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_ORE));
+        USART_ClearStatus(USART_MASTER_UNIT, (USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_ORE));
     }
 }
 
@@ -212,8 +212,8 @@ int32_t main(void)
         .u32BitDirection = USART_LSB,
         .u32StopBit = USART_STOPBIT_1BIT,
         .u32Parity = USART_PARITY_NONE,
-        .u32DataWidth = USART_DATA_WIDTH_8BIT,
-        .u32ClkMode = USART_INTCLK_NONE_OUTPUT,
+        .u32DataWidth = USART_DATA_LENGTH_8BIT,
+        .u32ClkMode = USART_INTERNCLK_NONE_OUTPUT,
         .u32PclkDiv = USART_PCLK_DIV64,
         .u32OversamplingBits = USART_OVERSAMPLING_8BIT,
         .u32NoiseFilterState = USART_NOISE_FILTER_DISABLE,
@@ -262,7 +262,7 @@ int32_t main(void)
         USART_SendData(USART_MASTER_UNIT, (uint16_t)u8MasterTxData);
 
         /* Wait Tx complete */
-        while (Reset == USART_GetFlag(USART_MASTER_UNIT, USART_FLAG_TC))
+        while (Reset == USART_GetStatus(USART_MASTER_UNIT, USART_FLAG_TC))
         {
         }
 
@@ -271,7 +271,7 @@ int32_t main(void)
         USART_FuncCmd(USART_MASTER_UNIT, USART_TX, Disable);
 
         /* Wait Rx data register no empty */
-        while (Reset == USART_GetFlag(USART_MASTER_UNIT, USART_FLAG_RXNE))
+        while (Reset == USART_GetStatus(USART_MASTER_UNIT, USART_FLAG_RXNE))
         {
         }
 

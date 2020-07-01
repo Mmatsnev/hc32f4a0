@@ -117,7 +117,7 @@ static void TMR4_OcoMatch_IrqCallback(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -143,7 +143,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -199,7 +199,7 @@ static uint32_t Tmr4PclkFreq(void)
 static void TMR4_OcoMatch_IrqCallback(void)
 {
     GPIO_TogglePins(WAVE_IO_PORT, WAVE_IO_PIN);
-    TMR4_OCO_ClearFlag(TMR4_UNIT, TMR4_OCO_CH);
+    TMR4_OCO_ClearStatus(TMR4_UNIT, TMR4_OCO_CH);
 }
 
 /**

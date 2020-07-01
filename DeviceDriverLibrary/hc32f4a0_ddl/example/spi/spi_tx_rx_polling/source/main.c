@@ -142,7 +142,7 @@ static char u8SlaveRxBuf[BUF_LENGTH];
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -168,7 +168,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();

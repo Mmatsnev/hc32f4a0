@@ -505,7 +505,7 @@ void CMP_VCOUTCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewStatus)
  */
 en_flag_status_t CMP_GetResult(const M4_CMP_TypeDef *CMPx)
 {
-    en_flag_status_t enRet = Reset;
+    en_flag_status_t enRet;
     /* Check CMPx instance */
     DDL_ASSERT(IS_CMP_INSTANCE(CMPx));
     enRet = READ_REG8_BIT(CMPx->MDR, CMP_MDR_CMON) ? Set : Reset;
@@ -543,7 +543,7 @@ en_result_t CMP_TimerWindowConfig(M4_CMP_TypeDef *CMPx,
         /* Select Timer window source  */
         WRITE_REG16(CMPx->TWSR, pstcCMP_TimerWinStruct->u16TWSelect);
         /* Select timer window mode output level */
-        if(pstcCMP_TimerWinStruct->u8TWOutLevel)
+        if(CMP_TIMERWIN_OUT_LEVEL_HIGH == pstcCMP_TimerWinStruct->u8TWOutLevel)
         {
             SET_REG16_BIT(CMPx->TWPR, pstcCMP_TimerWinStruct->u16TWSelect);
         }
@@ -573,7 +573,7 @@ en_result_t CMP_TimerWindowConfig(M4_CMP_TypeDef *CMPx,
  */
 void CMP_SetOutDetectEdges(M4_CMP_TypeDef *CMPx, uint8_t u8CmpEdges)
 {
-    uint8_t u8temp = 0U;
+    uint8_t u8temp;
     /* Check parameters */
     DDL_ASSERT(IS_CMP_INSTANCE(CMPx));
     DDL_ASSERT(IS_CMP_OUT_DETECT_EDGE(u8CmpEdges));
@@ -583,7 +583,7 @@ void CMP_SetOutDetectEdges(M4_CMP_TypeDef *CMPx, uint8_t u8CmpEdges)
     CLEAR_REG8_BIT(CMPx->MDR, CMP_MDR_CENB);
     /* CMP output detect edge selection */
     MODIFY_REG8(CMPx->FIR, CMP_FIR_EDGS, u8CmpEdges);
-    if(u8temp)
+    if(u8temp != 0U)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
@@ -610,7 +610,7 @@ void CMP_SetOutDetectEdges(M4_CMP_TypeDef *CMPx, uint8_t u8CmpEdges)
  */
 void CMP_SetOutputFilter(M4_CMP_TypeDef *CMPx, uint8_t u8CmpFilter)
 {
-    uint8_t u8temp = 0U;
+    uint8_t u8temp;
     /* Check parameters */
     DDL_ASSERT(IS_CMP_INSTANCE(CMPx));
     DDL_ASSERT(IS_CMP_OUT_FILTER(u8CmpFilter));
@@ -620,7 +620,7 @@ void CMP_SetOutputFilter(M4_CMP_TypeDef *CMPx, uint8_t u8CmpFilter)
     CLEAR_REG8_BIT(CMPx->MDR, CMP_MDR_CENB);
     /* CMP output filter selection */
     MODIFY_REG8(CMPx->FIR, CMP_FIR_FCKS, u8CmpFilter);
-    if(u8temp)
+    if(u8temp != 0U)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
@@ -645,7 +645,7 @@ void CMP_SetOutputFilter(M4_CMP_TypeDef *CMPx, uint8_t u8CmpFilter)
  */
 void CMP_SetOutputPolarity(M4_CMP_TypeDef *CMPx, uint8_t u8CmpPolarity)
 {
-    uint8_t u8temp = 0U;
+    uint8_t u8temp;
     /* Check parameters */
     DDL_ASSERT(IS_CMP_INSTANCE(CMPx));
     DDL_ASSERT(IS_CMP_OUT_POLARITY(u8CmpPolarity));
@@ -655,7 +655,7 @@ void CMP_SetOutputPolarity(M4_CMP_TypeDef *CMPx, uint8_t u8CmpPolarity)
     CLEAR_REG8_BIT(CMPx->MDR, CMP_MDR_CENB);
     /* CMP output polarity selection */
     MODIFY_REG8(CMPx->OCR, CMP_OCR_COPS, u8CmpPolarity);
-    if(u8temp)
+    if(u8temp != 0U)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
@@ -702,7 +702,7 @@ void CMP_SetOutputPolarity(M4_CMP_TypeDef *CMPx, uint8_t u8CmpPolarity)
  */
 void CMP_SetCompareVol(M4_CMP_TypeDef *CMPx, uint8_t u8CmpCh, uint8_t u8CmpVol)
 {
-    uint8_t u8temp = 0U;
+    uint8_t u8temp;
     /* Check parameters */
     DDL_ASSERT(IS_CMP_INSTANCE(CMPx));
     DDL_ASSERT(IS_CMP_CVSL_CH(u8CmpCh));
@@ -722,7 +722,7 @@ void CMP_SetCompareVol(M4_CMP_TypeDef *CMPx, uint8_t u8CmpCh, uint8_t u8CmpVol)
         DDL_ASSERT(IS_CMP3_CVSL_SOURCE(u8CmpVol));
         WRITE_REG8(CMPx->VISR, u8CmpVol);
     }
-    if(u8temp)
+    if(u8temp != 0U)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
@@ -750,7 +750,7 @@ void CMP_SetCompareVol(M4_CMP_TypeDef *CMPx, uint8_t u8CmpCh, uint8_t u8CmpVol)
  */
 void CMP_SetRefVol(M4_CMP_TypeDef *CMPx, uint8_t u8RefVol)
 {
-    uint8_t u8temp = 0U;
+    uint8_t u8temp;
     /* Check parameters */
     DDL_ASSERT(IS_CMP_INSTANCE(CMPx));
     DDL_ASSERT(IS_CMP_RVSL(u8RefVol));
@@ -760,7 +760,7 @@ void CMP_SetRefVol(M4_CMP_TypeDef *CMPx, uint8_t u8RefVol)
     CLEAR_REG8_BIT(CMPx->MDR, CMP_MDR_CENB);
     /* Set reference voltage */
     MODIFY_REG8(CMPx->PMSR, CMP_PMSR_RVSL, u8RefVol);
-    if(u8temp)
+    if(u8temp != 0U)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);

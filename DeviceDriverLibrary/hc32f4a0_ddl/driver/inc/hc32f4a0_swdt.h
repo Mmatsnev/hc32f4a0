@@ -226,13 +226,13 @@ __STATIC_INLINE uint16_t SWDT_GetCountValue(void)
 }
 
 /* Initialization and configuration functions */
-en_result_t      SWDT_Init(const stc_swdt_init_t *pstcSwdtInit);
-void             SWDT_Feed(void);
-uint16_t         SWDT_GetCountValue(void);
+en_result_t SWDT_Init(const stc_swdt_init_t *pstcSwdtInit);
+void SWDT_Feed(void);
+uint16_t SWDT_GetCountValue(void);
 
 /* Flags management functions */
 en_flag_status_t SWDT_GetStatus(uint32_t u32Flag);
-en_result_t      SWDT_ClearStatus(uint32_t u32Flag);
+en_result_t SWDT_ClearStatus(uint32_t u32Flag);
 
 /**
  * @}

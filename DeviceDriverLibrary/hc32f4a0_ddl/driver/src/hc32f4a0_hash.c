@@ -88,12 +88,6 @@
                                        HASH_FLAG_CYC_END | HASH_FLAG_HMAC_END)
 
 #define HASH_CLR_FLAG_MASK            (HASH_FLAG_CYC_END | HASH_FLAG_HMAC_END)
-
-#define HASH_COM_TRIG_EN_MSK            (HASH_TRIG_COM1_COM2_OFF | \
-                                        HASH_TRIG_COM1_ON_COM2_OFF | \
-                                        HASH_TRIG_COM1_OFF_COM2_ON | \
-                                        HASH_TRIG_COM1_COM2_ON)
-
 /**
  * @defgroup HASH_Check_Parameters_Validity HASH Check Parameters Validity
  * @{
@@ -115,9 +109,13 @@
     ((x) == HASH_MSG_GRP_END)                               ||                 \
     ((x) == HASH_MSG_GRP_ONLY_ONE))
 
-#define IS_VALID_FLAG_CLR(x)      (((x) | HASH_CLR_FLAG_MASK) == HASH_CLR_FLAG_MASK)
+#define IS_VALID_FLAG_CLR(x)                                                   \
+(   ((x) != 0x0UL)                                          &&                 \
+    (((x) | HASH_CLR_FLAG_MASK) == HASH_CLR_FLAG_MASK))
 
-#define IS_VALID_COM_TRIG(x)      (((x) | HASH_COM_TRIG_EN_MSK) == HASH_COM_TRIG_EN_MSK)
+#define IS_VALID_COM_TRIG(x)                                                   \
+(   ((x) != 0x0UL)                                          &&                 \
+    (((x) | HASH_COM_TRIG_MASk) == HASH_COM_TRIG_MASk))
 
 #define IS_VALID_TRG_REG_SEL(x)                                                \
 (   ((x) == HASH_TRIG_REG_BLKCOM)                           ||                 \
@@ -190,7 +188,7 @@ static en_result_t HASH_Fill_Calc_Data(const uint8_t au8Data[], uint32_t u32Data
  * @brief  HASH calculate.
  * @param  [in] pvSrcData           Pointer to the source data buffer
  * @param  [in] u32SrcDataSize      Length of the input buffer in bytes
- * @param  [out] au8MsgDigest       Buffer of the digest. The size must be 32 bytes 
+ * @param  [out] au8MsgDigest       Buffer of the digest. The size must be 32 bytes
  * @retval Ok: Success
  *         ErrorBufferFull: Filling Error
  *         ErrorInvalidParameter: Parameter error
@@ -211,9 +209,12 @@ en_result_t HASH_Calculate(const void *pvSrcData,
         {
             /* Get the message digest result */
             HASH_GetResult(au8MsgDigest);
+            enRet = Ok;
+        }
+        else
+        {
             enRet = ErrorBufferFull;
         }
-        enRet = Ok;
     }
     return enRet;
 }
@@ -224,7 +225,7 @@ en_result_t HASH_Calculate(const void *pvSrcData,
  * @param  [in] u32SrcDataSize      Length of the input buffer in bytes
  * @param  [in] au8Key              Buffer of the secret key
  * @param  [in] u32KeyLength        Length of the input secret key in bytes
- * @param  [out] au8MsgDigest       Buffer of the digest data buffer. The size must be 32 bytes 
+ * @param  [out] au8MsgDigest       Buffer of the digest data buffer. The size must be 32 bytes
  * @retval Ok: Success
  *         Error: Filling Error
  *         ErrorInvalidParameter: Parameter error
@@ -309,7 +310,7 @@ en_result_t HMAC_Calculate(const void *pvSrcData,
  * @brief  Start HASH.
  * @param  None
  * @retval Ok: Success
- *         ErrorTimeout: Process timeout 
+ *         ErrorTimeout: Process timeout
  */
 en_result_t HASH_Start(void)
 {
@@ -341,7 +342,7 @@ en_result_t HASH_Start(void)
  * @param  [in] enNewState              The new state of specified interrupt.
  *  This parameter can be: Enable or Disable.
  * @retval Ok: Success
- *         ErrorTimeout: Process timeout 
+ *         ErrorTimeout: Process timeout
  */
 en_result_t HASH_IntCmd(uint32_t u32HashInt, en_functional_state_t enNewState)
 {
@@ -379,7 +380,7 @@ en_result_t HASH_IntCmd(uint32_t u32HashInt, en_functional_state_t enNewState)
  *   @arg  HASH_MODE_SHA_256:     SHA_256 Operating mode
  *   @arg  HASH_MODE_HMAC:        HMAC Operating mode
  * @retval Ok: Success
- *         ErrorTimeout: Process timeout 
+ *         ErrorTimeout: Process timeout
  */
 en_result_t HASH_SetMode(uint32_t u32HashMode)
 {
@@ -414,7 +415,7 @@ en_result_t HASH_SetMode(uint32_t u32HashMode)
  */
 en_flag_status_t HASH_GetStatus(uint32_t u32HashFlag)
 {
-    en_flag_status_t enRet = Reset;
+    en_flag_status_t enRet;
     DDL_ASSERT(IS_VALID_FLAG(u32HashFlag));
 
     enRet = (READ_REG32_BIT(M4_HASH->CR, u32HashFlag) ? Set :Reset);
@@ -428,7 +429,7 @@ en_flag_status_t HASH_GetStatus(uint32_t u32HashFlag)
  *   @arg  HASH_KEY_LEN_LONG:         Key length > 64 Bytes
  *   @arg  HASH_KEY_LEN_SHORT:        Key length <= 64 Bytes
  * @retval Ok: Success
- *         ErrorTimeout: Process timeout 
+ *         ErrorTimeout: Process timeout
  */
 en_result_t HASH_SetKeyLength(uint32_t u32KeyLen)
 {
@@ -458,7 +459,7 @@ en_result_t HASH_SetKeyLength(uint32_t u32KeyLen)
  *   @arg  HASH_FLAG_CYC_END:         Clear the key or message operation completed flag
  *   @arg  HASH_FLAG_HMAC_END:        Clear the HMAC operation completed flag
  * @retval Ok: Success
- *         ErrorTimeout: Process timeout 
+ *         ErrorTimeout: Process timeout
  */
 en_result_t HASH_ClearStatus(uint32_t u32ClearFlag)
 {
@@ -483,7 +484,7 @@ en_result_t HASH_ClearStatus(uint32_t u32ClearFlag)
 }
 
 /**
- * @brief  Set external trigger source for HASH
+ * @brief  Set trigger source for HASH
  * @param  [in] enSrc                   Specifies the Event as trigger source.
  *  This parameter can be a value of the following:
  *   @arg  HASH_TRG_SRC_DMA1_BTC0:      Select the DMA1 channel_0 block transfer complete as trigger source
@@ -536,30 +537,33 @@ void HASH_SetTriggerSrc(en_event_src_t enSrc)
 }
 
 /**
- * @brief  Set common trigger source for HASH
+ * @brief  Enable or Disable common trigger source for HASH
  * @param  [in] u8TrigReg           HASH common trigger source select.
- *                                  This parameter can be a value of @ref HASH_Common_Trigger_Reg_Sel
+ *         This parameter can be a value of @ref HASH_Common_Trigger_Reg_Sel
  *   @arg  HASH_TRIG_REG_BLKCOM:    DMA block transfer complete register.
  *   @arg  HASH_TRID_REG_TRNCOM:    DMA transfer complete register
- * @param  [in] u32ComTrigEn        Common trigger event enable bit mask.
- *                                  This parameter can be a value of @ref HASH_Common_Trigger_Sel
- *   @arg  HASH_TRIG_COM1_COM2_OFF:     Disable common trigger source 1 and 2.
- *   @arg  HASH_TRIG_COM1_ON_COM2_OFF:  Enable common trigger source 1,Disable common trigger source 2.
- *   @arg  HASH_TRIG_COM1_OFF_COM2_ON:  Enable common trigger source 2,Disable common trigger source 1.
- *   @arg  HASH_TRIG_COM1_COM2_ON:      Disable common trigger source 1 and 2.
+ * @param  [in] u32ComTrig          Common trigger event enable bit mask.
+ *         This parameter can be value of @ref HASH_Common_Trigger_Sel
+ *   @arg  HASH_COM_TRIG1:          Common trigger source 1.
+ *   @arg  HASH_COM_TRIG2:          Common trigger source 2.
+ * @param  [in] enNewState          Disable or Enable the function
  * @retval None
  */
-void HASH_ComTrigCmd(uint8_t u8TrigReg, uint32_t u32ComTrigEn)
+void HASH_ComTriggerCmd(uint8_t u8TrigReg, uint32_t u32ComTrig,
+                        en_functional_state_t enNewState)
 {
     DDL_ASSERT(IS_VALID_TRG_REG_SEL(u8TrigReg));
-    DDL_ASSERT(IS_VALID_COM_TRIG(u32ComTrigEn));
-    if(u8TrigReg == HASH_TRIG_REG_BLKCOM)
+    DDL_ASSERT(IS_VALID_COM_TRIG(u32ComTrig));
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+    __IO uint32_t *HASH_ITRGSELx = (__IO uint32_t *)((uint32_t)&M4_AOS->HASH_ITRGSELA +  4UL * u8TrigReg);
+
+    if (enNewState == Enable)
     {
-        MODIFY_REG32(M4_AOS->HASH_ITRGSELB, HASH_COM_TRIG_EN_MSK, u32ComTrigEn);
+        SET_REG32_BIT(*HASH_ITRGSELx, u32ComTrig);
     }
     else
     {
-        MODIFY_REG32(M4_AOS->HASH_ITRGSELA, HASH_COM_TRIG_EN_MSK, u32ComTrigEn);
+        CLEAR_REG32_BIT(*HASH_ITRGSELx, u32ComTrig);
     }
 }
 
@@ -596,15 +600,15 @@ en_result_t HASH_MsgGrpConfig(uint32_t u32MsgGroup)
 
 /**
  * @brief  Provides the message digest result.
- * @param  [out] u8MsgDigest       Buffer for message digest.
+ * @param  [out] au8MsgDigest       Buffer for message digest.
  * @retval None
  */
-void HASH_GetResult(uint8_t u8MsgDigest[])
+void HASH_GetResult(uint8_t au8MsgDigest[])
 {
     uint8_t  i;
     uint32_t u32Temp1;
     uint32_t u32HashHr = (uint32_t)(&M4_HASH->HR7);
-    uint32_t u32DigestHr = (uint32_t)(&u8MsgDigest[0U]);
+    uint32_t u32DigestHr = (uint32_t)(&au8MsgDigest[0U]);
     for (i = 0U; i < 8U; i++)
     {
         u32Temp1 = __REV(RW_MEM32(u32HashHr));
@@ -635,7 +639,7 @@ static en_result_t HASH_Fill_Calc_Data(const uint8_t au8Data[], uint32_t u32Data
     uint32_t u32Index;
     u32BitLenHi    = (u32DataSize >> 29UL) & 0x7UL;
     u32BitLenLo    = (u32DataSize << 3UL);
-    while(u32DataSize)
+    while(u32DataSize > 0UL)
     {
         /* Wait for the HASH to stop */
         while(READ_REG32_BIT(M4_HASH->CR, HASH_CR_START))
@@ -758,4 +762,3 @@ static void HASH_WriteData(uint8_t au8Data[])
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
-

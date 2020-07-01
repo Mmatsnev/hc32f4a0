@@ -949,10 +949,10 @@ typedef struct
  * @addtogroup CLK_Global_Functions
  * @{
  */
-en_result_t CLK_XtalStdStrucInit(stc_clk_xtalstd_init_t* pstcXtalStdConfig);
-en_result_t CLK_XtalStdInit(const stc_clk_xtalstd_init_t* pstcXtalStdConfig);
-void CLK_ClearXtalStdFlag(void);
-en_flag_status_t CLK_GetXtalStdFlag(void);
+en_result_t CLK_XtalStdStrucInit(stc_clk_xtalstd_init_t* pstcXtalStdInit);
+en_result_t CLK_XtalStdInit(const stc_clk_xtalstd_init_t* pstcXtalStdInit);
+void CLK_ClearXtalStdStatus(void);
+en_flag_status_t CLK_GetXtalStdStatus(void);
 
 void CLK_HrcTrim(int8_t i8TrimVal);
 void CLK_MrcTrim(int8_t i8TrimVal);
@@ -979,7 +979,7 @@ en_result_t CLK_XtalInit(const stc_clk_xtal_init_t *pstcXtalInit);
 en_result_t CLK_Xtal32StrucInit(stc_clk_xtal32_init_t* pstcXtal32Init);
 en_result_t CLK_Xtal32Init(const stc_clk_xtal32_init_t *pstcXtal32Init);
 
-en_flag_status_t CLK_GetStableFlag(uint8_t u8StableFlag);
+en_flag_status_t CLK_GetStableStatus(uint8_t u8StableFlag);
 
 void CLK_SetSysClkSrc(uint8_t u8Src);
 void CLK_ClkDiv(uint8_t u8ClkCate, uint32_t u32Div);

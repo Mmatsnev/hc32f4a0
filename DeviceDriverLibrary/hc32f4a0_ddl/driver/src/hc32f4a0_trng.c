@@ -1,7 +1,7 @@
 /**
  *******************************************************************************
  * @file  hc32f4a0_trng.c
- * @brief This file provides firmware functions to manage the True Random 
+ * @brief This file provides firmware functions to manage the True Random
  *        Number Generator(TRNG).
  @verbatim
    Change Logs:
@@ -158,16 +158,17 @@ void TRNG_ReloadCmd(uint32_t u32ReloadCmd)
 
 /**
  * @brief  Start TRNG and get random number
- * @param  [in] u32Random       The destination address where the random number will be stored.
+ * @param  [in] au32Random       The destination address where the random number will be stored.
  * @retval Ok: Success
  *         ErrorTimeout: Process timeout
  *         ErrorInvalidParameter: Parameter error
+ * @note   Please pass in an array of 64 bits or more
  */
-en_result_t TRNG_Generate(uint32_t u32Random[])
+en_result_t TRNG_Generate(uint32_t au32Random[])
 {
     en_result_t enRet = ErrorInvalidParameter;
     uint32_t u32TimeCount = 0U;
-    if(u32Random != NULL)
+    if(au32Random != NULL)
     {
         enRet = Ok;
         /* Enable TRNG circuit. */
@@ -186,8 +187,8 @@ en_result_t TRNG_Generate(uint32_t u32Random[])
         if(enRet == Ok)
         {
             /* Get the random number. */
-            u32Random[0U] = READ_REG32(M4_TRNG->DR0);
-            u32Random[1U] = READ_REG32(M4_TRNG->DR1);
+            au32Random[0U] = READ_REG32(M4_TRNG->DR0);
+            au32Random[1U] = READ_REG32(M4_TRNG->DR1);
             /* Disable TRNG circuit. */
             CLEAR_REG32_BIT(M4_TRNG->CR, TRNG_CR_EN);
         }
@@ -211,4 +212,3 @@ en_result_t TRNG_Generate(uint32_t u32Random[])
 /*******************************************************************************
  * EOF (not truncated)
  ******************************************************************************/
-

@@ -135,7 +135,7 @@
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -161,7 +161,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -208,14 +208,14 @@ static void Spi_Config(void)
     stcSpiInit.u32SuspMode          = SPI_COM_SUSP_FUNC_OFF;
     stcSpiInit.u32Modfe             = SPI_MODFE_DISABLE;
     stcSpiInit.u32Parity            = SPI_PARITY_INVALID;
-    stcSpiInit.u32SpiMode           = SPI_MODE_3;
+    stcSpiInit.u32SpiMode           = SPI_MODE_0;
     stcSpiInit.u32BaudRatePrescaler = SPI_BR_PCLK1_DIV256;
     stcSpiInit.u32DataBits          = SPI_DATA_SIZE_8BIT;
     stcSpiInit.u32FirstBit          = SPI_FIRST_MSB;
     SPI_Init(SPI_UNIT, &stcSpiInit);
 
-    stcSpiDelayCfg.u32IntervalDelay = SPI_INTERVAL_TIME_1SCK_2PCLK1;
-    stcSpiDelayCfg.u32ReleaseDelay = SPI_RELEASE_TIME_1SCK;
+    stcSpiDelayCfg.u32IntervalDelay = SPI_INTERVAL_TIME_8SCK_2PCLK1;
+    stcSpiDelayCfg.u32ReleaseDelay = SPI_RELEASE_TIME_8SCK;
     stcSpiDelayCfg.u32SetupDelay = SPI_SETUP_TIME_1SCK;
     SPI_DelayTimeCfg(SPI_UNIT, &stcSpiDelayCfg);
 
@@ -425,6 +425,7 @@ en_result_t SpiFlash_Erase4KbSector(uint32_t u32Addr)
         SpiFlash_WriteReadByte((uint8_t)((u32Addr & 0xFF0000UL) >> 16U));
         SpiFlash_WriteReadByte((uint8_t)((u32Addr & 0xFF00U) >> 8U));
         SpiFlash_WriteReadByte((uint8_t)(u32Addr & 0xFFU));
+        //SPI_GetStatus(const M4_SPI_TypeDef *SPIx, uint32_t u32Flag) //todo
         SPI_NSS_HIGH();
         /* Wait for flash idle */
         enRet = SpiFlash_WaitForWriteEnd();

@@ -176,7 +176,7 @@ static stc_buffer_handle_t m_stcBufHandle;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -202,7 +202,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -254,7 +254,7 @@ static en_flag_status_t KeyState(void)
  */
 static void USART_TxEmpty_IrqCallback(void)
 {
-    en_flag_status_t enFlag = USART_GetFlag(CLKSYNC_UNIT, USART_FLAG_TXE);
+    en_flag_status_t enFlag = USART_GetStatus(CLKSYNC_UNIT, USART_FLAG_TXE);
     en_functional_state_t enState = USART_GetFuncState(CLKSYNC_UNIT, USART_INT_TXE);
 
     if ((Set == enFlag) && (Enable == enState))
@@ -270,7 +270,7 @@ static void USART_TxEmpty_IrqCallback(void)
  */
 static void USART_TxComplete_IrqCallback(void)
 {
-    en_flag_status_t enFlag = USART_GetFlag(CLKSYNC_UNIT, USART_FLAG_TC);
+    en_flag_status_t enFlag = USART_GetStatus(CLKSYNC_UNIT, USART_FLAG_TC);
     en_functional_state_t enState = USART_GetFuncState(CLKSYNC_UNIT, USART_INT_TC);
 
     if ((Set == enFlag) && (Enable == enState))
@@ -286,7 +286,7 @@ static void USART_TxComplete_IrqCallback(void)
  */
 static void USART_Rx_IrqCallback(void)
 {
-    en_flag_status_t enFlag = USART_GetFlag(CLKSYNC_UNIT, USART_FLAG_RXNE);
+    en_flag_status_t enFlag = USART_GetStatus(CLKSYNC_UNIT, USART_FLAG_RXNE);
     en_functional_state_t enState = USART_GetFuncState(CLKSYNC_UNIT, USART_INT_RX);
 
     if ((Set == enFlag) && (Enable == enState))
@@ -302,7 +302,7 @@ static void USART_Rx_IrqCallback(void)
  */
 static void USART_RxErr_IrqCallback(void)
 {
-    USART_ClearFlag(CLKSYNC_UNIT, (USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_ORE));
+    USART_ClearStatus(CLKSYNC_UNIT, (USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_ORE));
 }
 
 /**
@@ -316,7 +316,7 @@ static void TransmitReceive_IT(M4_USART_TypeDef *USARTx,
 {
     if (pstcBufHandle->u16RxXferCount != 0U)
     {
-        if (USART_GetFlag(USARTx, USART_FLAG_RXNE) != Reset)
+        if (USART_GetStatus(USARTx, USART_FLAG_RXNE) != Reset)
         {
             *pstcBufHandle->pu8RxBuffPtr++ = (uint8_t)USART_RecData(USARTx);
             pstcBufHandle->u16RxXferCount--;
@@ -333,7 +333,7 @@ static void TransmitReceive_IT(M4_USART_TypeDef *USARTx,
     {
         if (pstcBufHandle->u16TxXferCount != 0U)
         {
-            if (USART_GetFlag(USARTx, USART_FLAG_TXE) != Reset)
+            if (USART_GetStatus(USARTx, USART_FLAG_TXE) != Reset)
             {
                 USART_SendData(USARTx, (uint16_t)(*pstcBufHandle->pu8TxBuffPtr++));
                 pstcBufHandle->u16TxXferCount--;
@@ -456,7 +456,7 @@ int32_t main(void)
 #if (CLKSYNC_DEVICE_MODE == CLKSYNC_MASTER_MODE)
     stcClksyncInit.u32Baudrate = 38400UL;
     stcClksyncInit.u32PclkDiv = USART_PCLK_DIV4,
-    stcClksyncInit.u32ClkMode = USART_INTCLK_OUTPUT;
+    stcClksyncInit.u32ClkMode = USART_INTERNCLK_OUTPUT;
 #else
     stcClksyncInit.u32ClkMode = USART_EXTCLK;
 #endif

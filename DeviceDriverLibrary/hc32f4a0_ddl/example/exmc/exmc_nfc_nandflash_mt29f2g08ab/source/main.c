@@ -107,7 +107,7 @@ static en_result_t MT29F2G08AB_HwEcc4BitsTest(uint32_t u32Page);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -133,7 +133,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -235,8 +235,8 @@ static en_result_t MT29F2G08AB_MetaWithSpareTest(uint32_t u32Page)
 static en_result_t MT29F2G08AB_HwEcc1BitTest(uint32_t u32Page)
 {
     en_result_t enRet = Error;
-    uint32_t u32EccTestResult = 0UL;
-    uint32_t u32EccExpectedResult = 0UL;
+    uint32_t u32EccTestResult;
+    uint32_t u32EccExpectedResult;
 
     __ALIGN_BEGIN static uint8_t m_au8ReadDataHwEcc[MT29F2G08AB_PAGE_SIZE_WITH_SPARE];
     __ALIGN_BEGIN static uint8_t m_au8WriteDataHwEcc[MT29F2G08AB_PAGE_SIZE_WITH_SPARE];
@@ -333,7 +333,7 @@ static en_result_t MT29F2G08AB_HwEcc4BitsTest(uint32_t u32Page)
                                         MT29F2G08AB_PAGE_SIZE_WITHOUT_SPARE);
 
         /* Check whether ECC errors occur */
-        if (EXMC_NFC_GetFlag(EXMC_NFC_FLAG_ECC_ERROR) == Reset)
+        if (EXMC_NFC_GetStatus(EXMC_NFC_FLAG_ECC_ERROR) == Reset)
         {
             /* Disable ECC 4bit: read 2048 + 64Bytes */
             MT29F2G08AB_ReadPageMeta(u32Page, m_au8ReadDataHwEcc, MT29F2G08AB_PAGE_SIZE_WITH_SPARE);
@@ -425,7 +425,7 @@ int32_t main(void)
     Peripheral_WP();
 
     /* Read ID */
-    MT29F2G08AB_ReadId(0UL, au8DevId, (uint8_t)sizeof(au8DevId));
+    MT29F2G08AB_ReadId(0UL, au8DevId, sizeof(au8DevId));
     if ((au8DevId[0] == MT29F2G08ABAEA_MANUFACTURER_ID) || \
         (au8DevId[1] == MT29F2G08ABAEA_DEVICE_ID1) || \
         (au8DevId[2] == MT29F2G08ABAEA_DEVICE_ID2) || \
@@ -464,7 +464,7 @@ int32_t main(void)
         u8TestErrCnt++;
     }
 
-    if (u8TestErrCnt)
+    if (u8TestErrCnt > 0U)
     {
         BSP_LED_On(LED_RED);
     }

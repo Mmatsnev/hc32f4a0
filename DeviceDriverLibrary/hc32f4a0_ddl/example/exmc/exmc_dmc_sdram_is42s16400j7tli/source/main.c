@@ -128,7 +128,7 @@ static uint32_t m_u32WordTestErrorCnt = 0UL;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -154,7 +154,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -206,7 +206,7 @@ int32_t main(void)
     BSP_LED_Init();
 
     /* Initialize test data. */
-    for (i = 0U; i < DATA_BUFFER_LEN; i++)
+    for (i = 0UL; i < DATA_BUFFER_LEN; i++)
     {
         m_au8ReadData[i] = 0U;
         m_au8WriteData[i] = 0x12U;

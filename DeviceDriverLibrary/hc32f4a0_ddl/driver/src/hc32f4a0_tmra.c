@@ -93,8 +93,8 @@
 #define TMRA_PWM_POLARITY_MSK                   (0x03FFUL)
 #define TMRA_TRIG_COND_MSK                      (TMRA_START_COND_ALL | TMRA_STOP_COND_ALL | TMRA_CLR_COND_ALL)
 #define TMRA_CACHE_COND_MSK                     (TMRA_BCONR_BSE0 | TMRA_BCONR_BSE1)
-#define TMRA_COM_EVENT_EN_MSK                   (TMRA_TRIG_COM1_COM2_ON)
-#define TMRA_TRIG_EVENT_MSK                     (AOS_TMRA_HTSSR0_TRGSEL)
+#define TMRA_COM_TRIG_MSK                       (TMRA_COM_TRIG1 | TMRA_COM_TRIG2)
+#define TMRA_TRIG_EVENT_MSK                     (AOS_TMRA_HTSSR_TRGSEL)
 /**
  * @}
  */
@@ -182,8 +182,8 @@
     ((x) == TMRA_MODE_TRIANGLE))
 
 #define IS_TMRA_OVF_OPERATION(x)                                               \
-(   ((x) == TMRA_OVF_KEEP_CNT)              ||                                 \
-    ((x) == TMRA_OVF_STOP))
+(   ((x) == TMRA_OVF_CNT_CONTINUE)          ||                                 \
+    ((x) == TMRA_OVF_CNT_STOP))
 
 #define IS_TMRA_FILTER_CLK_DIV(x)                                              \
 (   ((x) <= TMRA_FILTER_CLK_DIV64))
@@ -219,6 +219,14 @@
 (   ((x) == TMRA_PWM_FORCE_INVALID)         ||                                 \
     ((x) == TMRA_PWM_FORCE_LOW)             ||                                 \
     ((x) == TMRA_PWM_FORCE_HIGH))
+
+#define IS_TMRA_EVT_USAGE(x)                                                   \
+(   ((x) == TMRA_EVENT_USAGE_CNT)           ||                                 \
+    ((x) == TMRA_EVENT_USAGE_CAPT))
+
+#define IS_TMRA_COM_TRIGGER(x)                                                 \
+(   ((x) != 0U)                             &&                                 \
+    (((x) | TMRA_COM_TRIG_MSK) == TMRA_COM_TRIG_MSK))
 
 #define IS_TMRA_VALID_VAL(x)                                                   \
 (   (x) <= 0xFFFFUL)
@@ -328,7 +336,7 @@ en_result_t TMRA_StructInit(stc_tmra_init_t *pstcInit)
         pstcInit->u32PCLKDiv   = TMRA_PCLK_DIV1;
         pstcInit->u32CntDir    = TMRA_DIR_UP;
         pstcInit->u32CntMode   = TMRA_MODE_SAWTOOTH;
-        pstcInit->u32CntOvfOp  = TMRA_OVF_KEEP_CNT;
+        pstcInit->u32CntOvfOp  = TMRA_OVF_CNT_CONTINUE;
         pstcInit->u32PeriodVal = 0xFFFFUL;
         pstcInit->u32CntVal    = 0UL;
         enRet = Ok;
@@ -625,8 +633,8 @@ void TMRA_PWM_Cmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, en_functional_state_t
  * @param  [in]  u8InputPin             The input pin of TMRA.
  *                                      This parameter can be values of @ref TMRA_Input_Pin
  *   @arg  TMRA_PIN_TRIG:               Pin TIMA_<t>_TRIG.
- *   @arg  TMRA_PIN_CLKA:               Pin TIMA_<t>_PWM1/TIMA_<t>_CLKA.
- *   @arg  TMRA_PIN_CLKB:               Pin TIMA_<t>_PWM2/TIMA_<t>_CLKB.
+ *   @arg  TMRA_PIN_CLKA:               Pin TIMA_<t>_CLKA.
+ *   @arg  TMRA_PIN_CLKB:               Pin TIMA_<t>_CLKB.
  *   @arg  TMRA_PIN_PWM1:               Pin TIMA_<t>_PWM1.
  *   @arg  TMRA_PIN_PWM2:               Pin TIMA_<t>_PWM2.
  *   @arg  TMRA_PIN_PWM3:               Pin TIMA_<t>_PWM3.
@@ -684,8 +692,8 @@ void TMRA_FilterConfig(M4_TMRA_TypeDef *TMRAx, uint8_t u8InputPin, uint32_t u32C
  * @param  [in]  u8InputPin             The input pin of TMRA.
  *                                      This parameter can be values of @ref TMRA_Input_Pin
  *   @arg  TMRA_PIN_TRIG:               Pin TIMA_<t>_TRIG.
- *   @arg  TMRA_PIN_CLKA:               Pin TIMA_<t>_PWM1/TIMA_<t>_CLKA.
- *   @arg  TMRA_PIN_CLKB:               Pin TIMA_<t>_PWM2/TIMA_<t>_CLKB.
+ *   @arg  TMRA_PIN_CLKA:               Pin TIMA_<t>_CLKA.
+ *   @arg  TMRA_PIN_CLKB:               Pin TIMA_<t>_CLKB.
  *   @arg  TMRA_PIN_PWM1:               Pin TIMA_<t>_PWM1.
  *   @arg  TMRA_PIN_PWM2:               Pin TIMA_<t>_PWM2.
  *   @arg  TMRA_PIN_PWM3:               Pin TIMA_<t>_PWM3.
@@ -847,7 +855,7 @@ void TMRA_SetTriggerSrc(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, en_event_src
                                     TMRA_HTSSR3_ADDR, TMRA_HTSSR2_ADDR};
 
     DDL_ASSERT(IS_TMRA_UNIT(TMRAx));
-    DDL_ASSERT((u8EvtUsage == TMRA_EVENT_USAGE_CNT) || (u8EvtUsage == TMRA_EVENT_USAGE_CAPT));
+    DDL_ASSERT(IS_TMRA_EVT_USAGE(u8EvtUsage));
 
     u32Idx = TMRA_IDX(TMRAx) % TMRA_CH_COUNT;
     if (u8EvtUsage == TMRA_EVENT_USAGE_CNT)
@@ -871,15 +879,17 @@ void TMRA_SetTriggerSrc(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, en_event_src
  *                                      This parameter can be a value of @ref TMRA_Event_Usage
  *   @arg  TMRA_EVENT_USAGE_CNT:        The specified event is used for counting.
  *   @arg  TMRA_EVENT_USAGE_CAPT:       The specified event is used for capturing.
- * @param  [in]  u32ComTrigEn           Common trigger event enable bit mask.
- *                                      This parameter can be values of @ref TMRA_Common_Trigger_Event_Command
- *   @arg  TMRA_TRIG_COM1_COM2_OFF:     Disable common trigger event 1 and event 2 for the specified usage.
- *   @arg  TMRA_TRIG_COM1_ON_COM2_OFF:  Enable common trigger event 1 and disable event 2 for the specified usage.
- *   @arg  TMRA_TRIG_COM1_OFF_COM2_ON:  Disable common trigger event 1 and enable event 2 for the specified usage.
- *   @arg  TMRA_TRIG_COM1_COM2_ON:      Enable common trigger event 1 and event 2 for the specified usage.
+ * @param  [in]  u32ComTrig             Common trigger event enable bit mask.
+ *                                      This parameter can be values of @ref TMRA_Common_Trigger_Sel
+ *   @arg  TMRA_COM_TRIG1:              Common trigger 1.
+ *   @arg  TMRA_COM_TRIG2:              Common trigger 2.
+ * @param  [in]  enNewState             An en_functional_state_t enumeration type value.
+ *   @arg Enable:                       Enable the specified common trigger.
+ *   @arg Disable:                      Disable the specified common trigger.
  * @retval None
  */
-void TMRA_ComTrigCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, uint32_t u32ComTrigEn)
+void TMRA_ComTriggerCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, \
+                        uint32_t u32ComTrig, en_functional_state_t enNewState)
 {
     uint32_t u32Idx;
     uint32_t u32HTSSRAddr;
@@ -887,7 +897,9 @@ void TMRA_ComTrigCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, uint32_t u32Com
                                     TMRA_HTSSR3_ADDR, TMRA_HTSSR2_ADDR};
 
     DDL_ASSERT(IS_TMRA_UNIT(TMRAx));
-    DDL_ASSERT((u8EvtUsage == TMRA_EVENT_USAGE_CNT) || (u8EvtUsage == TMRA_EVENT_USAGE_CAPT));
+    DDL_ASSERT(IS_TMRA_EVT_USAGE(u8EvtUsage));
+    DDL_ASSERT(IS_TMRA_COM_TRIGGER(u32ComTrig));
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     u32Idx = TMRA_IDX(TMRAx) % TMRA_CH_COUNT;
     if (u8EvtUsage == TMRA_EVENT_USAGE_CNT)
@@ -899,7 +911,14 @@ void TMRA_ComTrigCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, uint32_t u32Com
         u32HTSSRAddr = au32CaptEventAddr[u32Idx];
     }
 
-    MODIFY_REG32(RW_MEM32(u32HTSSRAddr), TMRA_COM_EVENT_EN_MSK, u32ComTrigEn);
+    if (enNewState == Enable)
+    {
+        SET_REG32_BIT(RW_MEM32(u32HTSSRAddr), u32ComTrig);
+    }
+    else
+    {
+        CLEAR_REG32_BIT(RW_MEM32(u32HTSSRAddr), u32ComTrig);
+    }
 }
 
 /**
@@ -966,8 +985,8 @@ void TMRA_CmpValCacheCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, en_functional_
  *                                      This parameter can be a value of the following:
  *   @arg  M4_TMRA_1 ~ M4_TMRA_12:      TMRA unit 1 ~ 12 instance register base.
  * @param  [in]  u32OvfOp               The operation when count overflow/underflow.
- *   @arg  TMRA_OVF_KEEP_CNT:           When count overflow(or underflow), counting keep going.
- *   @arg  TMRA_OVF_STOP:               When count overflow(or underflow), counting stop.
+ *   @arg  TMRA_OVF_CNT_CONTINUE:       When counting overflow(or underflow), counting continue.
+ *   @arg  TMRA_OVF_CNT_STOP:           When count overflow(or underflow), counting stop.
  * @retval None
  */
 void TMRA_SetOvfOperation(M4_TMRA_TypeDef *TMRAx, uint32_t u32OvfOp)
@@ -1165,8 +1184,8 @@ void TMRA_Stop(M4_TMRA_TypeDef *TMRAx)
  *   @arg  M4_TMRA_1 ~ M4_TMRA_12:      TMRA unit 1 ~ 12 instance register base.
  * @param  [in]  u32CntDir              Count direction.
  *                                      This parameter can be a value of @ref TMRA_Count_Direction
- *   @arg  TMRA_DIR_DOWN:               TMRA count goes down.
- *   @arg  TMRA_DIR_UP:                 TMRA count goes up.
+ *   @arg  TMRA_DIR_DOWN:               TMRA count down.
+ *   @arg  TMRA_DIR_UP:                 TMRA count up.
  * @retval None
  */
 void TMRA_SetCntDir(M4_TMRA_TypeDef *TMRAx, uint32_t u32CntDir)
@@ -1270,8 +1289,8 @@ void TMRA_SetClkSrc(M4_TMRA_TypeDef *TMRAx, uint32_t u32ClkSrc)
  */
 void TMRA_HwClkSrcCmd(M4_TMRA_TypeDef *TMRAx, uint32_t u32HwClkSrc, en_functional_state_t enNewState)
 {
-    uint32_t u32HwCntUpClk   = u32HwClkSrc & TMRA_CLK_HW_UP_ALL;
-    uint32_t u32HwCntDownClk = (u32HwClkSrc & TMRA_CLK_HW_DOWN_ALL) >> 16U;
+    const uint32_t u32HwCntUpClk   = u32HwClkSrc & TMRA_CLK_HW_UP_ALL;
+    const uint32_t u32HwCntDownClk = (u32HwClkSrc & TMRA_CLK_HW_DOWN_ALL) >> 16U;
 
     DDL_ASSERT(IS_TMRA_UNIT(TMRAx));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
@@ -1282,8 +1301,8 @@ void TMRA_HwClkSrcCmd(M4_TMRA_TypeDef *TMRAx, uint32_t u32HwClkSrc, en_functiona
     }
     else
     {
-        SET_REG32_BIT(TMRAx->HCUPR, u32HwCntUpClk);
-        SET_REG32_BIT(TMRAx->HCDOR, u32HwCntDownClk);
+        CLEAR_REG32_BIT(TMRAx->HCUPR, u32HwCntUpClk);
+        CLEAR_REG32_BIT(TMRAx->HCDOR, u32HwCntDownClk);
     }
 }
 
@@ -1348,7 +1367,7 @@ void TMRA_PWM_SetStopPolarity(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, uint32_t 
 }
 
 /**
- * @brief  Specifies the PWM polarity when counting matchs the compare reference value.
+ * @brief  Specifies the PWM polarity when counting matches the compare reference value.
  * @param  [in]  TMRAx                  Pointer to TMRA instance register base.
  *                                      This parameter can be a value of the following:
  *   @arg  M4_TMRA_1 ~ M4_TMRA_12:      TMRA unit 1 ~ 12 instance register base.
@@ -1379,7 +1398,7 @@ void TMRA_PWM_SetMatchCmpPolarity(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, uint3
 }
 
 /**
- * @brief  Specifies the PWM polarity when counting matchs the period reference value.
+ * @brief  Specifies the PWM polarity when counting matches the period reference value.
  * @param  [in]  TMRAx                  Pointer to TMRA instance register base.
  *                                      This parameter can be a value of the following:
  *   @arg  M4_TMRA_1 ~ M4_TMRA_12:      TMRA unit 1 ~ 12 instance register base.
@@ -1500,8 +1519,8 @@ void TMRA_CaptCondCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, uint32_t u32CaptC
  * @param  [in]  u32TrigCond            The trigger condition.
  *                                      This parameter can be a value of:
  *                                      @ref TMRA_Hardware_Start_Condition
- *                                      @ref TMRA_Hardware_Start_Condition
- *                                      @ref TMRA_Hardware_Start_Condition
+ *                                      @ref TMRA_Hardware_Stop_Condition
+ *                                      @ref TMRA_Hardware_Clear_Condition
  *   @arg  TMRA_START_COND_TRIGR:       1. Sync start is invalid: The condition is that a rising edge is sampled on TRIG of the current TMRA unit. \
  *                                      2. Sync start is valid: The condition is that a rising edge is sampled on TRIG of the symmetric TMRA unit.
  *   @arg  TMRA_START_COND_TRIGF:       1. Sync start is invalid: The condition is that a falling edge is sampled on TRIG of the current TMRA unit. \

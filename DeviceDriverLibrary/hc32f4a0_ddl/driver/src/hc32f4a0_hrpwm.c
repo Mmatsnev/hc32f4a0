@@ -199,7 +199,7 @@ void HRPWM_CalibrateCmd(uint32_t u32Unit, en_functional_state_t enNewState)
 
     CALCRx = (__IO uint32_t*)(((uint32_t)&M4_HRPWM->CALCR0) + 4UL*u32Unit);
 
-    if(enNewState)
+    if(Enable == enNewState)
     {
         SET_REG32_BIT(*CALCRx, HRPWM_CALCR_CALEN);
 
@@ -367,8 +367,11 @@ void HRPWM_CHNegatCfg(uint32_t u32Ch, uint32_t u32DelayNum)
 en_functional_state_t HRPWM_ConditionConfirm(void)
 {
     en_functional_state_t enRet = Enable;
-    uint32_t plln, pllp, pllm;
-    uint32_t sysclkFreq, pclk0Freq;
+    uint32_t plln;
+    uint32_t pllp;
+    uint32_t pllm;
+    uint32_t sysclkFreq;
+    uint32_t pclk0Freq;
 
     switch (READ_REG8_BIT(M4_CMU->CKSWR, CMU_CKSWR_CKSW))
     {

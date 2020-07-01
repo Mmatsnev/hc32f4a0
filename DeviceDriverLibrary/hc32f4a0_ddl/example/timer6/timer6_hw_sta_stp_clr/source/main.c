@@ -105,7 +105,7 @@
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -131,7 +131,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -211,15 +211,15 @@ int32_t main(void)
 
     /* Capture input port configuration */
     stcTIM6PortInCfg.u32PortMode = TMR6_PORT_CAPTURE_INPUT;
-    stcTIM6PortInCfg.u32FilterStd = TMR6_PORT_INPUT_FITLER_ON;
-    stcTIM6PortInCfg.u32FltClk = TMR6_INPUT_FILTER_DIV16;
+    stcTIM6PortInCfg.u32FilterSta = TMR6_PORT_INPUT_FILTER_ON;
+    stcTIM6PortInCfg.u32FltClk = TMR6_INPUT_FILTER_PCLK0_DIV16;
     TMR6_PortInputConfig(M4_TMR6_1,TMR6_IO_PWMA, &stcTIM6PortInCfg);
     TMR6_PortInputConfig(M4_TMR6_1,TMR6_IO_PWMB, &stcTIM6PortInCfg);
 
     /* Configurate hardware start,stop and clear function */
-    TMR6_HwStartFuncCfg(M4_TMR6_1, TMR6_HW_CTL_PWMA_RISING);
-    TMR6_HwStopFuncCfg(M4_TMR6_1, TMR6_HW_CTL_PWMA_FAILLING);
-    TMR6_HwClrFuncCfg(M4_TMR6_1, TMR6_HW_CTL_PWMB_RISING);
+    TMR6_HwStartCondCmd(M4_TMR6_1, TMR6_HW_CTRL_PWMA_RISING, Enable);
+    TMR6_HwStopCondCmd(M4_TMR6_1, TMR6_HW_CTRL_PWMA_FAILLING, Enable);
+    TMR6_HwClrCondCmd(M4_TMR6_1, TMR6_HW_CTRL_PWMB_RISING, Enable);
 
     /* Command hardware start,stop and clear function  */
     TMR6_HwStartFuncCmd(M4_TMR6_1, Enable);

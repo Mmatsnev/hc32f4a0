@@ -354,6 +354,7 @@ en_result_t SPI_Init(M4_SPI_TypeDef *SPIx, const stc_spi_init_t *pstcInit)
             /* pstcInit->u32Modfe can not be SPI_MODFE_ENABLE in master mode */
         }
         else if((SPI_WIRE_3 == pstcInit->u32WireMode)
+                && (SPI_SLAVE == pstcInit->u32MasterSlave)
                  &&((SPI_MODE_0 == pstcInit->u32SpiMode)||(SPI_MODE_2 == pstcInit->u32SpiMode)))
         {
             /* SPI_WIRE_3 can not support SPI_MODE_0 and SPI_MODE_2 */
@@ -489,7 +490,7 @@ void SPI_FunctionCmd(M4_SPI_TypeDef *SPIx, en_functional_state_t enNewState)
     DDL_ASSERT(IS_VALID_SPI_UNIT(SPIx));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
-    if(enNewState)
+    if(Enable == enNewState)
     {
         SET_REG32_BIT(SPIx->CR1, SPI_CR1_SPE);
     }
@@ -805,6 +806,7 @@ void SPI_SSPinSel(M4_SPI_TypeDef *SPIx, uint32_t u32SSPin)
             break;
 
         default:
+            u32RegCfg = SPI_SS0_VALID_CFG;
             break;
     }
     MODIFY_REG32(SPIx->CFG2, SPI_CFG2_SSA, u32RegCfg);
@@ -996,7 +998,7 @@ static en_result_t SPI_TxRx(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, void *pvR
         u32Timecount = HCLK_VALUE/100UL;
         do
         {
-            if(READ_REG32_BIT(SPIx->SR, SPI_FLAG_RX_BUFFER_FULL))
+            if(0UL != READ_REG32_BIT(SPIx->SR, SPI_FLAG_RX_BUFFER_FULL))
             {
                 break;
             }
@@ -1086,7 +1088,7 @@ static en_result_t SPI_Tx(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, uint32_t u3
         u32Timecount = HCLK_VALUE/100UL;
         do
         {
-            if(READ_REG32_BIT(SPIx->SR, SPI_FLAG_TX_BUFFER_EMPTY))
+            if(0UL != READ_REG32_BIT(SPIx->SR, SPI_FLAG_TX_BUFFER_EMPTY))
             {
                 break;
             }

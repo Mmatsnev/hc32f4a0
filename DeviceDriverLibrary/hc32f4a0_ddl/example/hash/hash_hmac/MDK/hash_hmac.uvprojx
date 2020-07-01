@@ -20,7 +20,7 @@
           <Cpu>IROM(0x00000000,0x200000) IRAM(0x1FFE0000,0x80000)  IRAM2(0X200F0000,0x1000) CPUTYPE("Cortex-M4") FPU2 CLOCK(240000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFE0000 -FC1000 -FN1 -FF0HC32F4A0 -FS00 -FL0200000 -FP0($$Device:HC32F4A0SITB$FlashARM\HC32F4A0.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFE0000 -FC1000 -FN1 -FF0HC32F4A0 -FS00 -FL0200000 -FP0($$Device:HC32F4A0SITB$FlashARM\HC32F4A0_2M.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
           <RegisterFile>$$Device:HC32F4A0SITB$Device\Include\HC32F4A0SITB.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
@@ -450,8 +450,8 @@
             </File>
             -->
             <File>
-<FileName>hc32f4a0_gpio.c</FileName>
-<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_gpio.c</FilePath></File>
+<FileName>hc32f4a0_interrupts.c</FileName>
+<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_interrupts.c</FilePath></File>
 <File>
 <FileName>hc32f4a0_pwc.c</FileName>
 <FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_pwc.c</FilePath></File>
@@ -459,14 +459,14 @@
 <FileName>hc32f4a0_utility.c</FileName>
 <FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_utility.c</FilePath></File>
 <File>
-<FileName>hc32f4a0_interrupts.c</FileName>
-<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_interrupts.c</FilePath></File>
-<File>
-<FileName>hc32f4a0_hash.c</FileName>
-<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_hash.c</FilePath></File>
+<FileName>hc32f4a0_gpio.c</FileName>
+<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_gpio.c</FilePath></File>
 <File>
 <FileName>hc32f4a0_icg.c</FileName>
 <FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_icg.c</FilePath></File>
+<File>
+<FileName>hc32f4a0_hash.c</FileName>
+<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_hash.c</FilePath></File>
 
     </Files>
   </Group>
@@ -501,7 +501,7 @@
           <Cpu>IROM(0x00000000,0x200000) IRAM(0x1FFE0000,0x80000) IRAM2(0X200F0000,0x1000) CPUTYPE("Cortex-M4") FPU2 CLOCK(240000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFE0000 -FC1000 -FN1 -FF0HC32F4A0 -FS00 -FL0200000 -FP0($$Device:HC32F4A0SITB$FlashARM\HC32F4A0.FLM))</FlashDriverDll>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD1FFE0000 -FC1000 -FN1 -FF0HC32F4A0 -FS00 -FL0200000 -FP0($$Device:HC32F4A0SITB$FlashARM\HC32F4A0_2M.FLM))</FlashDriverDll>
           <DeviceId>0</DeviceId>
           <RegisterFile>$$Device:HC32F4A0SITB$Device\Include\HC32F4A0SITB.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
@@ -932,8 +932,8 @@
             </File>
             -->
             <File>
-<FileName>hc32f4a0_gpio.c</FileName>
-<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_gpio.c</FilePath></File>
+<FileName>hc32f4a0_interrupts.c</FileName>
+<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_interrupts.c</FilePath></File>
 <File>
 <FileName>hc32f4a0_pwc.c</FileName>
 <FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_pwc.c</FilePath></File>
@@ -941,14 +941,14 @@
 <FileName>hc32f4a0_utility.c</FileName>
 <FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_utility.c</FilePath></File>
 <File>
-<FileName>hc32f4a0_interrupts.c</FileName>
-<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_interrupts.c</FilePath></File>
-<File>
-<FileName>hc32f4a0_hash.c</FileName>
-<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_hash.c</FilePath></File>
+<FileName>hc32f4a0_gpio.c</FileName>
+<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_gpio.c</FilePath></File>
 <File>
 <FileName>hc32f4a0_icg.c</FileName>
 <FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_icg.c</FilePath></File>
+<File>
+<FileName>hc32f4a0_hash.c</FileName>
+<FileType>1</FileType><FilePath>..\..\..\..\driver\src\hc32f4a0_hash.c</FilePath></File>
 
     </Files>
   </Group>

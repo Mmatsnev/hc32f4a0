@@ -114,6 +114,7 @@ typedef struct
 #define DAC_DATA_ALIGN_12b_R                         (0U)
 #define DAC_DATA_ALIGN_12b_L                         (1U)
 
+/* Open AMP function on  BSP_EV_HC32F4A0_LQFP176 board */
 #define SUPPORT_AMP
 //#define SUPPORT_ADP
 #define SINGLE_WAVE_DAC_CHN                          (DAC_CHN1)
@@ -153,7 +154,7 @@ static st_dac_handle_t gstDACHandle[DAC_Unit_Max] = {0};
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -179,7 +180,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -221,6 +222,10 @@ static en_key_event Key_Event(void)
     else if(Set == BSP_KEY_GetStatus(BSP_KEY_4))
     {
         enEvent = E_KEY4_PRESSED;
+    }
+    else if(Set == BSP_KEY_GetStatus(BSP_KEY_5))
+    {
+        enEvent = E_KEY5_PRESSED;
     }
     else
     {
@@ -585,6 +590,13 @@ int32_t main(void)
     BSP_LED_Init();
     BSP_KEY_Init();
 
+    /*DAC_UNIT2_CHN1_PIN(PC04) and DAC_UNIT2_CHN2_PIN(PC05) are also used by
+    * Ethernet PHY module on BSP_EV_HC32F4A0_LQFP176 board. Pull down reset pin
+    * of Ethernet to eliminate the influence from Ethernet
+    */
+    BSP_IO_ConfigPortPin(EIO_PORT1, EIO_ETH_RST, EIO_DIR_OUT);
+    BSP_IO_WritePortPin(EIO_PORT1, EIO_ETH_RST, (uint8_t)Disable);
+
     /* Init MAU for generating sine data*/
     MAU_Init();
     /* Init sine data table */
@@ -596,9 +608,9 @@ int32_t main(void)
     st_dac_handle_t* pDualDac = DAC_DualChnInit(DAC_Unit2);
     /**
     * Output sine waves after system restart,
-    * Press Key2 to stop the single sine wave ,and Press Key1 to restart
-    * Press Key4 to stop the dual sine waves ,and Press Key3 to restart
-    * Press Key5 to stop all sine waves and end this sample
+    * Press KEY2(SW2) to stop the single sine wave ,and Press KEY1(SW1) to restart
+    * Press KEY4(SW4) to stop the dual sine waves ,and Press KEY3(SW3) to restart
+    * Press KEY5(SW5) to stop all sine waves and end this sample
     */
     en_key_event enEvent = E_KEY_NOT_PRESSED;
     uint8_t u8EnableSingle = 1U,u8EnableDual = 1U;

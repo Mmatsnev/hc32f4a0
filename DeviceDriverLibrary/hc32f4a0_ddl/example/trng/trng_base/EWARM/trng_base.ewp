@@ -1950,22 +1950,22 @@
     </file>
     -->
     <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_gpio.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_pwc.c</name>
-    </file>
-    <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_clk.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_utility.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_interrupts.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_pwc.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_trng.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_utility.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_gpio.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_icg.c</name>

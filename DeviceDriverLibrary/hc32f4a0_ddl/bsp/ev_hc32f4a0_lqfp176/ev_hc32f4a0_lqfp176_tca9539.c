@@ -143,8 +143,8 @@ void BSP_IO_IntInit(void)
   */
 void BSP_IO_WritePortPin(uint8_t u8Port, uint8_t u8Pin, uint8_t u8PinState)
 {
-    uint8_t u8PortVal = 0U;
-    uint8_t u8POReg = u8Port + TCA9539_REG_OUTPUT_0;
+    uint8_t u8PortVal;
+    const uint8_t u8POReg = u8Port + TCA9539_REG_OUTPUT_0;
 
     TCA9539_ReadReg(u8POReg, &u8PortVal);
 
@@ -178,13 +178,13 @@ void BSP_IO_WritePortPin(uint8_t u8Port, uint8_t u8Pin, uint8_t u8PinState)
   */
 uint8_t BSP_IO_ReadPortPin(uint8_t u8Port, uint8_t u8Pin)
 {
-    uint8_t u8PortVal = 0U;
-    uint8_t u8PinVal = 0U;
-    uint8_t u8PIReg = u8Port + TCA9539_REG_INPUT_0;
+    uint8_t u8PortVal;
+    uint8_t u8PinVal;
+    const uint8_t u8PIReg = u8Port + TCA9539_REG_INPUT_0;
 
     TCA9539_ReadReg(u8PIReg, &u8PortVal);
 
-    if (u8Pin & u8PortVal)
+    if (0U != (u8Pin & u8PortVal))
     {
         u8PinVal = 1U;
     }
@@ -214,8 +214,8 @@ uint8_t BSP_IO_ReadPortPin(uint8_t u8Port, uint8_t u8Pin)
   */
 void BSP_IO_TogglePortPin(uint8_t u8Port, uint8_t u8Pin)
 {
-    uint8_t u8PortVal = 0U;
-    uint8_t u8POReg = u8Port + TCA9539_REG_OUTPUT_0;
+    uint8_t u8PortVal;
+    const uint8_t u8POReg = u8Port + TCA9539_REG_OUTPUT_0;
 
     TCA9539_ReadReg(u8POReg, &u8PortVal);
 
@@ -246,8 +246,8 @@ void BSP_IO_TogglePortPin(uint8_t u8Port, uint8_t u8Pin)
   */
 void BSP_IO_ConfigPortPin(uint8_t u8Port, uint8_t u8Pin, uint8_t u8Dir)
 {
-    uint8_t u8ConfigVal = 0U;
-    uint8_t u8ConfigReg = u8Port + TCA9539_REG_CONFIG_0;
+    uint8_t u8ConfigVal;
+    const uint8_t u8ConfigReg = u8Port + TCA9539_REG_CONFIG_0;
 
     TCA9539_ReadReg(u8ConfigReg, &u8ConfigVal);
 

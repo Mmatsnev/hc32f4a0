@@ -247,14 +247,17 @@
 (   ((x) == EMB_DETECT_TMR6_8_PWM_BOTH_LOW)     ||                             \
     ((x) == EMB_DETECT_TMR6_8_PWM_BOTH_HIGH))
 
-#define IS_VALID_EMB_INT(x)                     ((x) &&                        \
-                                                 (!((x) & (~IS_EMB_INT_MASK))))
+#define IS_VALID_EMB_INT(x)                                                    \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~IS_EMB_INT_MASK))))
 
-#define IS_VALID_EMB_FLAG(x)                    ((x) &&                        \
-                                                 (!((x) & (~IS_EMB_FLAG_MASK))))
+#define IS_VALID_EMB_FLAG(x)                                                   \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~IS_EMB_FLAG_MASK))))
 
-#define IS_VALID_EMB_STATUS(x)                  ((x) &&                        \
-                                                 (!((x) & (~IS_EMB_STATUS_MASK))))
+#define IS_VALID_EMB_STATUS(x)                                                 \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~IS_EMB_STATUS_MASK))))
 
 #define IS_VALID_EMB_PORT1_FILTER_DIV(x)                                       \
 (   ((x) == EMB_PORT1_FILTER_NONE)              ||                             \
@@ -532,7 +535,7 @@ en_result_t EMB_Tmr4StructInit(stc_emb_tmr4_init_t *pstcInit)
 en_result_t EMB_Tmr6Init(M4_EMB_TypeDef *EMBx,
                             const stc_emb_tmr6_init_t *pstcInit)
 {
-    uint32_t u32RegVal = 0UL;
+    uint32_t u32RegVal;
     en_result_t enRet = ErrorInvalidParameter;
 
     /* Check structure pointer */

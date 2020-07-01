@@ -2,7 +2,7 @@
  *******************************************************************************
  * @file  usbd_ioreq.c
  * @brief IO requests APIs for control endpoints.
- *       
+ *
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -123,9 +123,9 @@ USBD_Status  USBD_CtlSendData (USB_OTG_CORE_HANDLE  *pdev,
     pdev->dev.in_ep[0U].total_data_len = len;
     pdev->dev.in_ep[0U].rem_data_len   = len;
     pdev->dev.device_state = USB_OTG_EP0_DATA_IN;
-
+#if (DDL_PRINT_ENABLE == DDL_ON)
     //printf("ctrl in %d\n",len);
-
+#endif
     DCD_EP_Tx (pdev, 0U, pbuf, (uint32_t)len);
 
     return ret;
@@ -208,7 +208,9 @@ USBD_Status  USBD_CtlSendStatus (USB_OTG_CORE_HANDLE  *pdev)
                 0U,
                 pdev->dev.setup_packet,//NULL,
                 0U);
+#if (DDL_PRINT_ENABLE == DDL_ON)
     //printf("ctrl send status\n");
+#endif
     //  USB_OTG_EP0_OutStart(pdev);
 
     return ret;

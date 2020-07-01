@@ -165,8 +165,8 @@ typedef struct
  * @{
  */
 #define TMRA_PIN_TRIG                       (1UL << 0U)                 /*!< Pin TIMA_<t>_TRIG. */
-#define TMRA_PIN_CLKA                       (1UL << 1U)                 /*!< Pin TIMA_<t>_PWM1/TIMA_<t>_CLKA. */
-#define TMRA_PIN_CLKB                       (1UL << 2U)                 /*!< Pin TIMA_<t>_PWM2/TIMA_<t>_CLKB. */
+#define TMRA_PIN_CLKA                       (1UL << 1U)                 /*!< Pin TIMA_<t>_CLKA. */
+#define TMRA_PIN_CLKB                       (1UL << 2U)                 /*!< Pin TIMA_<t>_CLKB. */
 #define TMRA_PIN_PWM1                       (1UL << 3U)                 /*!< Pin TIMA_<t>_PWM1. */
 #define TMRA_PIN_PWM2                       (1UL << 4U)                 /*!< Pin TIMA_<t>_PWM2. */
 #define TMRA_PIN_PWM3                       (1UL << 5U)                 /*!< Pin TIMA_<t>_PWM3. */
@@ -186,8 +186,8 @@ typedef struct
  * @defgroup TMRA_Count_Direction TMRA Counting Direction
  * @{
  */
-#define TMRA_DIR_DOWN                       (0x0U)                      /*!< TMRA count goes down. */
-#define TMRA_DIR_UP                         (TMRA_BCSTR_DIR)            /*!< TMRA count goes up. */
+#define TMRA_DIR_DOWN                       (0x0U)                      /*!< TMRA count down. */
+#define TMRA_DIR_UP                         (TMRA_BCSTR_DIR)            /*!< TMRA count up. */
 /**
  * @}
  */
@@ -272,10 +272,12 @@ typedef struct
 
 /**
  * @defgroup TMRA_Count_Overflow_Operation TMRA Count Overflow Operation
+ * @note Count up corresponds to overflow, counter zeroing when counting value overflow period value.
+ * @note Count down corresponds to underflow, counter reload period value when counting value underflow 0.
  * @{
  */
-#define TMRA_OVF_KEEP_CNT                   (0x0U)                      /*!< When counting overflow(or underflow), counting keep going. */
-#define TMRA_OVF_STOP                       (TMRA_BCSTR_OVSTP)          /*!< When counting overflow(or underflow), counting stop. */
+#define TMRA_OVF_CNT_CONTINUE               (0x0U)                      /*!< When counting overflow(or underflow), counting continue. */
+#define TMRA_OVF_CNT_STOP                   (TMRA_BCSTR_OVSTP)          /*!< When counting overflow(or underflow), counting stop. */
 /**
  * @}
  */
@@ -541,10 +543,8 @@ typedef struct
  * @defgroup TMRA_Common_Trigger_Sel TMRA Common Trigger Source Select
  * @{
  */
-#define TMRA_TRIG_COM1_COM2_OFF             (0x00UL)
-#define TMRA_TRIG_COM1_ON_COM2_OFF          (0x01UL << 31U)
-#define TMRA_TRIG_COM1_OFF_COM2_ON          (0x01UL << 30U)
-#define TMRA_TRIG_COM1_COM2_ON              (0x03UL << 30U)
+#define TMRA_COM_TRIG1                      (AOS_TMRA_HTSSR_COMTRG_EN_0)
+#define TMRA_COM_TRIG2                      (AOS_TMRA_HTSSR_COMTRG_EN_1)
 /**
  * @}
  */
@@ -586,10 +586,11 @@ typedef struct
             void TMRA_FilterCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8InputPin, en_functional_state_t enNewState);
 
             void TMRA_SetCaptCond(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, uint32_t u32Cond);
-     en_result_t TMRA_SetTrigCond(M4_TMRA_TypeDef *TMRAx, const stc_tmra_trig_cond_t *pstcCfg);
-     en_result_t TMRA_TrigCondStructInit(stc_tmra_trig_cond_t *pstcCfg);
+     en_result_t TMRA_SetTrigCond(M4_TMRA_TypeDef *TMRAx, const stc_tmra_trig_cond_t *pstcCond);
+     en_result_t TMRA_TrigCondStructInit(stc_tmra_trig_cond_t *pstcCond);
             void TMRA_SetTriggerSrc(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, en_event_src_t enEvent);
-            void TMRA_ComTrigCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, uint32_t u32ComTrigEn);
+            void TMRA_ComTriggerCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8EvtUsage, \
+                                    uint32_t u32ComTrig, en_functional_state_t enNewState);
 
             void TMRA_CmpValCacheConfig(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, uint32_t u32CacheCond);
             void TMRA_CmpValCacheCmd(M4_TMRA_TypeDef *TMRAx, uint8_t u8TmrCh, en_functional_state_t enNewState);

@@ -138,14 +138,22 @@ typedef struct
  ******************************************************************************/
 extern USBD_DCD_INT_cb_TypeDef *USBD_DCD_INT_fops;
 
-
 /*******************************************************************************
   Global function prototypes (definition in C source)
  ******************************************************************************/
+/**
+ * @addtogroup USB_DCD_INT_Global_Functions
+ * @{
+ */
+
+uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev);
+
+/**
+ * @}
+ */
 
 
 #endif /* DDL_USBFS_ENABLE */
-
 
 /**
  * @}

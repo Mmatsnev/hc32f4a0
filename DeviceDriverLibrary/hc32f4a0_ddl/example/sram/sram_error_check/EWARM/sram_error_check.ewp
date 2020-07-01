@@ -1950,13 +1950,13 @@
     </file>
     -->
     <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_utility.c</name>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_interrupts.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_sram.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_interrupts.c</name>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_utility.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_icg.c</name>

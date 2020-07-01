@@ -2,7 +2,7 @@
  *******************************************************************************
  * @file  usbd_core.c
  * @brief USBD core functions.
- *       
+ *
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -195,7 +195,7 @@ void USBD_Init(USB_OTG_CORE_HANDLE *pdev,
     pdev->dev.usr_cb->Init();
     pdev->dev.device_state = USB_OTG_EP0_IDLE;
 
-    /* config NVIC for usb interruopt */
+    /* config NVIC for usb interrupt */
     USB_OTG_BSP_EnableInterrupt();
 }
 
@@ -307,17 +307,23 @@ static uint8_t USBD_DataOutStage(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
                     /* in slave mode this, is handled by the RxSTSQLvl ISR */
                     ep->xfer_buff += ep->maxpacket;
                 }
-                ///printf("ContinueRx\n");
+#if (DDL_PRINT_ENABLE == DDL_ON)
+                //printf("ContinueRx\n");
+#endif
                 USBD_CtlContinueRx (pdev,
                 ep->xfer_buff,
                 (uint16_t)__MIN(ep->rem_data_len ,ep->maxpacket));
             }
             else
             {
+#if (DDL_PRINT_ENABLE == DDL_ON)
                 //printf("out end\n");
+#endif
                 if (ep->xfer_count > ep->rem_data_len)
                 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
                     printf("%ld %ld\n",ep->xfer_count, ep->rem_data_len);
+#endif
                 }
                 ep->rem_data_len = 0U;
                 if((pdev->dev.class_cb->EP0_RxReady != NULL)&&

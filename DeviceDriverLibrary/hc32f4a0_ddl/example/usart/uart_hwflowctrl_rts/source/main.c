@@ -139,7 +139,7 @@ static en_result_t RingBufRead(stc_ring_buffer_t *pstcBuffer, uint8_t *pu8Data);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -165,7 +165,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -219,12 +219,12 @@ static void USART_RxErr_IrqCallback(void)
 {
     BSP_LED_On(LED_RED);
 
-    if (Set == USART_GetFlag(USART_UNIT, (USART_FLAG_PE | USART_FLAG_FE)))
+    if (Set == USART_GetStatus(USART_UNIT, (USART_FLAG_PE | USART_FLAG_FE)))
     {
         (void)USART_RecData(USART_UNIT);
     }
 
-    USART_ClearFlag(USART_UNIT, (USART_CLEAR_FLAG_PE | \
+    USART_ClearStatus(USART_UNIT, (USART_CLEAR_FLAG_PE | \
                                  USART_CLEAR_FLAG_FE | \
                                  USART_CLEAR_FLAG_ORE));
 }
@@ -296,8 +296,8 @@ int32_t main(void)
         .u32BitDirection = USART_LSB,
         .u32StopBit = USART_STOPBIT_1BIT,
         .u32Parity = USART_PARITY_NONE,
-        .u32DataWidth = USART_DATA_WIDTH_8BIT,
-        .u32ClkMode = USART_INTCLK_NONE_OUTPUT,
+        .u32DataWidth = USART_DATA_LENGTH_8BIT,
+        .u32ClkMode = USART_INTERNCLK_NONE_OUTPUT,
         .u32PclkDiv = USART_PCLK_DIV64,
         .u32OversamplingBits = USART_OVERSAMPLING_8BIT,
         .u32NoiseFilterState = USART_NOISE_FILTER_DISABLE,
@@ -363,7 +363,7 @@ int32_t main(void)
     /* Receive test data */
     do
     {
-        while (Reset == USART_GetFlag(USART_UNIT, USART_FLAG_RXNE)) /* Wait Rx data */
+        while (Reset == USART_GetStatus(USART_UNIT, USART_FLAG_RXNE)) /* Wait Rx data */
         {
         }
 
@@ -374,7 +374,7 @@ int32_t main(void)
     /* Send back test data */
     for (i = 0U; i < stcRingBuf.u16InIdx; i++)
     {
-        while (Reset == USART_GetFlag(USART_UNIT, USART_FLAG_TXE)) /* Wait Tx data register empty */
+        while (Reset == USART_GetStatus(USART_UNIT, USART_FLAG_TXE)) /* Wait Tx data register empty */
         {
         }
 

@@ -138,13 +138,13 @@
  *   @arg  RMU_RST_CLK_ERR:         Clk frequence error reset
  *   @arg  RMU_RST_XTAL_ERR:        Xtal error reset
  *   @arg  RMU_RST_LOCKUP:          M4 Lockup reset
- *   @arg  RMU_RST_MUULTI:          Multiply reset cause
+ *   @arg  RMU_RST_MULTI:           Multiply reset cause
  * @retval Set: Flag is Set.
  *         Reset: Flag is Reset
  */
 en_flag_status_t RMU_GetStatus(uint32_t u32RmuResetCause)
 {
-    en_flag_status_t enRet = Reset;
+    en_flag_status_t enRet;
     DDL_ASSERT(IS_VALID_RMU_RESET_STATUS(u32RmuResetCause));
 
     enRet = ((0UL == READ_REG32_BIT(M4_RMU->RSTF0, u32RmuResetCause)) ? Reset :Set);

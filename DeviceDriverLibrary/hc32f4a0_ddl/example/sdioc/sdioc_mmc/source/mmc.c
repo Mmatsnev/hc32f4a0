@@ -1588,7 +1588,7 @@ static en_result_t MMC_GetCurrCardStatus(stc_mmc_handle_t *handle, uint32_t *pu3
  */
 static en_result_t MMC_ReadWriteFifo(stc_mmc_handle_t *handle, const stc_sdioc_data_init_t *pstcDataCfg, uint8_t pu8Data[], uint32_t u32Timeout)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enCmdRet = Ok;
     uint32_t u32Index = 0UL;
 

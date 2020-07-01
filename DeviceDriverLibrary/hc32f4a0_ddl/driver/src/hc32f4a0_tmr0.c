@@ -91,10 +91,6 @@
 #define TMR0_CHB_CLKSRC_MSK             (TMR0_BCONR_SYNSB   |                  \
                                         TMR0_BCONR_SYNCLKB  |                  \
                                         TMR0_BCONR_ASYNCLKB)
-#define TMR0_COM_TRIG_EN_MSK            (TMR0_TRIG_COM1_COM2_OFF | \
-                                        TMR0_TRIG_COM1_ON_COM2_OFF | \
-                                        TMR0_TRIG_COM1_OFF_COM2_ON | \
-                                        TMR0_TRIG_COM1_COM2_ON)
 
 #define TMR0_CHB_POS                    (16U)
 #define TMR0_OFFEST(ch)                 ((ch) * TMR0_CHB_POS)
@@ -136,7 +132,9 @@
 (   ((x) == TMR0_FUNC_CMP)                         ||                          \
     ((x) == TMR0_FUNC_CAP))
 
-#define IS_VALID_TMR0_COM_TRIG(x)       (((x) | TMR0_COM_TRIG_EN_MSK) == TMR0_COM_TRIG_EN_MSK)
+#define IS_VALID_TMR0_COM_TRIG(x)                                              \
+(   ((x) != 0x0UL)                                 &&                          \
+    (((x) | TMR0_COM_TRIG_MASk) == TMR0_COM_TRIG_MASk))
 /**
  * @}
  */
@@ -207,11 +205,12 @@ en_result_t TMR0_StructInit(stc_tmr0_init_t* pstcInitStruct)
  * @note   In capture mode, don't need configure member u32HwTrigFunc and u16CmpValue.
  *         In asynchronous clock, continuous operation of the BCONR register requires waiting for 3 asynchronous clocks.
  */
-en_result_t TMR0_Init(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel,       \
+en_result_t TMR0_Init(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, \
                         const stc_tmr0_init_t* pstcTmr0Init)
 {
     uint32_t u32Temp;
-    uint32_t u32CMPRAddr, u32CNTRAddr;
+    uint32_t u32CMPRAddr;
+    uint32_t u32CNTRAddr;
     en_result_t enRet = ErrorInvalidParameter;
     if (pstcTmr0Init != NULL)
     {
@@ -433,7 +432,7 @@ void TMR0_Cmd(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel,
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     u8Channel = TMR0_OFFEST(u8Channel);
-    MODIFY_REG32(TMR0x->BCONR, (TMR0_BCONR_CSTA <<u8Channel), (enNewState << TMR0_BCONR_CSTA_POS) << u8Channel);
+    MODIFY_REG32(TMR0x->BCONR, (TMR0_BCONR_CSTA <<u8Channel), ((uint32_t)enNewState << TMR0_BCONR_CSTA_POS) << u8Channel);
 }
 
 /**
@@ -457,7 +456,7 @@ void TMR0_IntCmd(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel,
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     u8Channel = TMR0_OFFEST(u8Channel);
-    MODIFY_REG32(TMR0x->BCONR, (TMR0_BCONR_INTENA << u8Channel), (enNewState << TMR0_BCONR_INTENA_POS) << u8Channel);
+    MODIFY_REG32(TMR0x->BCONR, (TMR0_BCONR_INTENA << u8Channel), ((uint32_t)enNewState << TMR0_BCONR_INTENA_POS) << u8Channel);
 }
 
 /**
@@ -469,12 +468,12 @@ void TMR0_IntCmd(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel,
  * @param  [in] u8Channel        TMR0_ChannelA or TMR0_ChannelB
  *   @arg  TMR0_CH_A.
  *   @arg  TMR0_CH_B.
- * @retval In asynchronous clock, Get the value requires stop timer0 
- * 
+ * @retval In asynchronous clock, Get the value requires stop timer0
+ *
  */
 uint16_t TMR0_GetCntVal(const M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel)
 {
-    uint16_t u16CntVal = 0U;
+    uint16_t u16CntVal;
     uint32_t u32CNTRAddr;
     DDL_ASSERT(IS_VALID_UNIT(TMR0x));
     DDL_ASSERT(IS_VALID_CHANNEL(u8Channel));
@@ -495,7 +494,7 @@ uint16_t TMR0_GetCntVal(const M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel)
  *   @arg  TMR0_CH_B.
  * @param  [in] u16Value           The data to write to the counter register
  * @retval None
- * @note   Setting the count requires stop timer0 
+ * @note   Setting the count requires stop timer0
  */
 void TMR0_SetCntVal(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, uint16_t u16Value)
 {
@@ -516,11 +515,11 @@ void TMR0_SetCntVal(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, uint16_t u16Value
  * @param  [in] u8Channel          TMR0_ChannelA or TMR0_ChannelB
  *   @arg  TMR0_CH_A.
  *   @arg  TMR0_CH_B.
- * @retval In asynchronous clock, Get the value requires stop timer0 
+ * @retval In asynchronous clock, Get the value requires stop timer0
  */
 uint16_t TMR0_GetCmpVal(const M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel)
 {
-    uint16_t u16CmpVal = 0U;
+    uint16_t u16CmpVal;
     uint32_t u32CMPRAddr;
     DDL_ASSERT(IS_VALID_UNIT(TMR0x));
     DDL_ASSERT(IS_VALID_CHANNEL(u8Channel));
@@ -540,7 +539,7 @@ uint16_t TMR0_GetCmpVal(const M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel)
  *   @arg  TMR0_CH_A.
  *   @arg  TMR0_CH_B.
  * @param  [in] u16Value           The data to write to the compare register
- * @retval Setting the count requires stop timer0 
+ * @retval Setting the count requires stop timer0
  */
 void TMR0_SetCmpVal(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, uint16_t u16Value)
 {
@@ -555,7 +554,7 @@ void TMR0_SetCmpVal(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, uint16_t u16Value
 /**
  * @brief  De-Initialize TMR0 function
  * @param  [in] TMR0x              Pointer to TMR0 instance register base.
- * This parameter can be a value of the following:
+ * This parameter can be value of the following:
  *   @arg  M4_TMR0_1:              TMR0 unit 1 instance register base
  *   @arg  M4_TMR0_2:              TMR0 unit 2 instance register base
  * @retval None
@@ -573,23 +572,31 @@ void TMR0_DeInit(M4_TMR0_TypeDef* TMR0x)
 }
 
 /**
- * @brief  Set common trigger source for Tmr0
- * @param  [in] u32ComTrigEn        Common trigger event enable bit mask.
- *  This parameter can be a value of @ref TMR0_Common_Trigger_Sel
- *   @arg  TMR0_TRIG_COM1_COM2_OFF:     Disable common trigger source 1 and 2.
- *   @arg  TMR0_TRIG_COM1_ON_COM2_OFF:  Enable common trigger source 1,Disable common trigger source 2.
- *   @arg  TMR0_TRIG_COM1_OFF_COM2_ON:  Enable common trigger source 2,Disable common trigger source 1.
- *   @arg  TMR0_TRIG_COM1_COM2_ON:      Disable common trigger source 1 and 2.
+ * @brief  Enable or Disable common trigger source for Tmr0
+ * @param  [in] u32ComTrig              Common trigger event enable bit mask.
+ *  This parameter can be value of @ref TMR0_Common_Trigger_Sel
+ *   @arg  TMR0_COM_TRIG1:              Common trigger source 1.
+ *   @arg  TMR0_COM_TRIG2:              Common trigger source 2.
+ * @param  [in] enNewState              Disable or Enable the function
  * @retval None
  */
-void TMR0_ComTrigCmd(uint32_t u32ComTrigEn)
+void TMR0_ComTriggerCmd(uint32_t u32ComTrig, en_functional_state_t enNewState)
 {
-    DDL_ASSERT(IS_VALID_TMR0_COM_TRIG(u32ComTrigEn));
-    MODIFY_REG32(M4_AOS->TMR0_HTSSR, TMR0_COM_TRIG_EN_MSK, u32ComTrigEn);
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+    DDL_ASSERT(IS_VALID_TMR0_COM_TRIG(u32ComTrig));
+
+    if (enNewState == Enable)
+    {
+        SET_REG32_BIT(M4_AOS->TMR0_HTSSR, u32ComTrig);
+    }
+    else
+    {
+        CLEAR_REG32_BIT(M4_AOS->TMR0_HTSSR, u32ComTrig);
+    }
 }
 
 /**
- * @brief  Set external trigger source for Tmr0
+ * @brief  Set trigger source for Tmr0
  * @param  [in] enEvent        External event source, @ref en_event_src_t
  * @retval None
  */

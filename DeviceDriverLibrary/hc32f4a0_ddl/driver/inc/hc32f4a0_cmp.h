@@ -370,7 +370,7 @@ en_result_t CMP_WindowModeInit(const M4_CMP_TypeDef *CMPx,
 en_result_t CMP_TimerWindowConfig(M4_CMP_TypeDef *CMPx,
                                   const stc_cmp_timerwindow_t *pstcCMP_TimerWinStruct);
 
-void CMP_FuncCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewSttusa);
+void CMP_FuncCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewStatus);
 void CMP_IntCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewStatus);
 void CMP_OutputCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewStatus);
 void CMP_VCOUTCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewStatus);

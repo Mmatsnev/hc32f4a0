@@ -114,7 +114,7 @@ static __IO uint8_t m_u8EmbFlag = 0U;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -140,7 +140,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -235,21 +235,21 @@ static void Tmr6PwmConfig(void)
 
      /* Configurate PWM output */
     stcTmr6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-    stcTmr6PortOutCfg.u32NextPeriodForceStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTmr6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTmr6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTmr6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTmr6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTmr6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
+    stcTmr6PortOutCfg.u32NextPeriodForceSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTmr6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTmr6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTmr6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTmr6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTmr6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
 
-    stcTmr6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HIGH;
-    stcTmr6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTmr6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+    stcTmr6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HIGH;
+    stcTmr6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTmr6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTmr6PortOutCfg);
 
-    stcTmr6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTmr6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_HIGH;
-    stcTmr6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_HIGH;
+    stcTmr6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTmr6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_HIGH;
+    stcTmr6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_HIGH;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTmr6PortOutCfg);
 
     /* Start Timer6 */
@@ -278,21 +278,21 @@ static void EMB_IrqCallback(void)
 
         /* Configurate PWM output */
         stcTmr6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-        stcTmr6PortOutCfg.u32NextPeriodForceStd = TMR6_PORT_OUTPUT_STD_LOW;
-        stcTmr6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
+        stcTmr6PortOutCfg.u32NextPeriodForceSta = TMR6_PORT_OUTPUT_STA_LOW;
+        stcTmr6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
 
-        stcTmr6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HIGH;
-        stcTmr6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_LOW;
-        stcTmr6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+        stcTmr6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HIGH;
+        stcTmr6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_LOW;
+        stcTmr6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
         TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTmr6PortOutCfg);
         
-        stcTmr6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_LOW;
-        stcTmr6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_HIGH;
-        stcTmr6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_HIGH;
+        stcTmr6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_LOW;
+        stcTmr6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_HIGH;
+        stcTmr6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_HIGH;
         TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTmr6PortOutCfg);
 
                 /* Clear count value && start counter */
@@ -334,7 +334,7 @@ int32_t main(void)
     TMR6_EMBCfgStructInit(&stcTmr6EmbCfg);
     stcTmr6EmbCfg.u32ValidCh = TMR6_EMB_EVENT_VALID_CH0;
     stcTmr6EmbCfg.u32ReleaseMode = TMR6_EMB_RELEASE_IMMEDIATE;
-    stcTmr6EmbCfg.u32PortStd = TMR6_EMB_PORTSTD_LOW;
+    stcTmr6EmbCfg.u32PortSta = TMR6_EMB_PORTSTA_LOW;
     TMR6_EMBConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTmr6EmbCfg);
     TMR6_EMBConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTmr6EmbCfg);
 
@@ -369,15 +369,15 @@ int32_t main(void)
 
         /* Configurate TMR6 PWM output the same phase */
         stcTmr6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-        stcTmr6PortOutCfg.u32NextPeriodForceStd = TMR6_PORT_OUTPUT_STD_LOW;
-        stcTmr6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HIGH;
-        stcTmr6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-        stcTmr6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_LOW;
-        stcTmr6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
-        stcTmr6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+        stcTmr6PortOutCfg.u32NextPeriodForceSta = TMR6_PORT_OUTPUT_STA_LOW;
+        stcTmr6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HIGH;
+        stcTmr6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+        stcTmr6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_LOW;
+        stcTmr6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
+        stcTmr6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
         TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTmr6PortOutCfg);
         TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTmr6PortOutCfg);
 

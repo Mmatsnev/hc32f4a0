@@ -53,10 +53,10 @@ EV_F4A0_LQ176_V10
      停止位：1
 4）打开工程uart_halfduplex_polling_master，重新编译，下载代码至master板，并且全速运行
 5）打开工程uart_halfduplex_polling_slave，重新编译，下载代码至slave板，并且全速运行
-6）按master板SW10按键
+6）按master板按键SW10
 7）观察master板LED灯，蓝色LED灯点亮
 8）观察串口助手提示信息，接收和发送数据一致，且为偶数
-9）按master板SW10按键
+9）按master板按键SW10
 10）观察master板蓝色LED灯，蓝色LED灯熄灭
 11）观察串口助手提示信息，接收和发送数据一致，且为奇数
 12）重复步骤6）~11），观察LED灯状态

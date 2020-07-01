@@ -1,7 +1,7 @@
 /**
  *******************************************************************************
  * @file  timer6/timer6_hw_code_cnt/source/main.c
- * @brief This example demonstrates Timer6 count for AB phase position coding 
+ * @brief This example demonstrates Timer6 count for AB phase position coding
  *        function.
  @verbatim
    Change Logs:
@@ -97,6 +97,7 @@
  * Local variable definitions ('static')
  ******************************************************************************/
 uint32_t u32CaptureA;
+__UNUSED __IO uint32_t u32Timer6Cnt0 = 0U;
 
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
@@ -109,7 +110,7 @@ uint32_t u32CaptureA;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -135,7 +136,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -156,7 +157,6 @@ static __attribute__((unused)) void Peripheral_WP(void)
 static void GenClkIn(void)
 {
     uint32_t i;
-    __UNUSED __IO uint32_t u32Timer6Cnt0 = 0U;
 
     uint8_t bAin[17U] = {0U, 1U, 1U, 0U, 0U, 1U, 1U, 0U, 0U, 0U, 0U, 1U, 1U, 0U, 0U, 1U, 1U};
     uint8_t bBin[17U] = {1U, 1U, 0U, 0U, 1U, 1U, 0U, 0U, 1U, 1U, 0U, 0U, 1U, 1U, 0U, 0U, 1U};
@@ -235,8 +235,8 @@ int32_t main(void)
 
     /* Capture input port configuration */
     stcTIM6PortInCfg.u32PortMode = TMR6_PORT_CAPTURE_INPUT;
-    stcTIM6PortInCfg.u32FilterStd = TMR6_PORT_INPUT_FITLER_OFF;
-    stcTIM6PortInCfg.u32FltClk = TMR6_INPUT_FILTER_PCLK0;
+    stcTIM6PortInCfg.u32FilterSta = TMR6_PORT_INPUT_FILTER_OFF;
+    stcTIM6PortInCfg.u32FltClk = TMR6_INPUT_FILTER_PCLK0_DIV1;
     TMR6_PortInputConfig(M4_TMR6_1,TMR6_IO_PWMA, &stcTIM6PortInCfg);
 
     TMR6_PortInputConfig(M4_TMR6_1,TMR6_IO_PWMB, &stcTIM6PortInCfg);
@@ -248,11 +248,11 @@ int32_t main(void)
         GPIO_SetPins(TEST_IO_B_PORT, TEST_IO_B_PIN);
 
         DDL_DelayMS(1000UL);
-        TMR6_HwIncreaseFuncRegClr(M4_TMR6_1);
-        TMR6_HwDecreaseFuncRegClr(M4_TMR6_1);
+        TMR6_HwIncreaseCondClr(M4_TMR6_1);
+        TMR6_HwDecreaseCondClr(M4_TMR6_1);
 
-        TMR6_HwIncreaseFuncCfg(M4_TMR6_1, TMR6_HW_CNT_PWMBH_PWMARISING); /* PWMA Rising trigger when PWMB is high level */
-        TMR6_HwDecreaseFuncCfg(M4_TMR6_1, TMR6_HW_CNT_PWMBL_PWMARISING); /* PWMA Rising trigger when PWMB is low level */
+        TMR6_HwIncreaseCondCmd(M4_TMR6_1, TMR6_HW_CNT_PWMBH_PWMARISING, Enable); /* PWMA Rising trigger when PWMB is high level */
+        TMR6_HwDecreaseCondCmd(M4_TMR6_1, TMR6_HW_CNT_PWMBL_PWMARISING, Enable); /* PWMA Rising trigger when PWMB is low level */
 
         TMR6_CountCmd(M4_TMR6_1, Enable);
 
@@ -266,13 +266,13 @@ int32_t main(void)
 
         DDL_DelayMS(1000UL);
 
-        TMR6_HwIncreaseFuncRegClr(M4_TMR6_1);
-        TMR6_HwDecreaseFuncRegClr(M4_TMR6_1);
+        TMR6_HwIncreaseCondClr(M4_TMR6_1);
+        TMR6_HwDecreaseCondClr(M4_TMR6_1);
 
         /* PWMA Rising trigger when PWMB is high level, PWMA falling trigger when PWMB is low level */
-        TMR6_HwIncreaseFuncCfg(M4_TMR6_1, TMR6_HW_CNT_PWMBH_PWMARISING | TMR6_HW_CNT_PWMBL_PWMAFAILLING);
+        TMR6_HwIncreaseCondCmd(M4_TMR6_1, TMR6_HW_CNT_PWMBH_PWMARISING | TMR6_HW_CNT_PWMBL_PWMAFAILLING, Enable);
         /* PWMB Rising trigger when PWMA is high level, PWMB falling trigger when PWMA is low level */
-        TMR6_HwDecreaseFuncCfg(M4_TMR6_1, TMR6_HW_CNT_PWMAH_PWMBRISING | TMR6_HW_CNT_PWMAL_PWMBFAILLING);
+        TMR6_HwDecreaseCondCmd(M4_TMR6_1, TMR6_HW_CNT_PWMAH_PWMBRISING | TMR6_HW_CNT_PWMAL_PWMBFAILLING, Enable);
 
         TMR6_CountCmd(M4_TMR6_1, Enable);
 

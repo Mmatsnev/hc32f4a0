@@ -128,17 +128,17 @@ extern "C"
  * @addtogroup AES_Global_Functions
  * @{
  */
-en_result_t AES_Encrypt(uint8_t pu8Plaintext[],
+en_result_t AES_Encrypt(uint8_t au8Plaintext[],
                         uint32_t u32PlaintextSize,
                         const uint8_t *pu8Key,
-                        uint8_t  u8KeyLength,
-                        uint8_t pu8Ciphertext[]);
+                        uint8_t u8KeyLength,
+                        uint8_t au8Ciphertext[]);
 
-en_result_t AES_Decrypt(uint8_t pu8Ciphertext[],
+en_result_t AES_Decrypt(uint8_t au8Ciphertext[],
                         uint32_t u32CiphertextSize,
                         const uint8_t *pu8Key,
-                        uint8_t  u8KeyLength,
-                        uint8_t pu8Plaintext[]);
+                        uint8_t u8KeyLength,
+                        uint8_t au8Plaintext[]);
 /**
  * @}
  */

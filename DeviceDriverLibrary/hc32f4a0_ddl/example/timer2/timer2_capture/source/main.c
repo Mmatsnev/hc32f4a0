@@ -124,12 +124,12 @@
     #define APP_CAPT_COUNT                  (2U)
 
     /* Key definitions. SW10 on the board. */
-    #define SW10_PORT                           (GPIO_PORT_A)
-    #define SW10_PIN                            (GPIO_PIN_00)
-    #define SW10_EXINT_CH                       (EXINT_CH00)
-    #define SW10_INT_SRC                        (INT_PORT_EIRQ0)
-    #define SW10_IRQn                           (Int025_IRQn)
-    #define SW10_INT_PRIO                       (DDL_IRQ_PRIORITY_04)
+    #define KEY_PORT                        (GPIO_PORT_A)
+    #define KEY_PIN                         (GPIO_PIN_00)
+    #define KEY_EXINT_CH                    (EXINT_CH00)
+    #define KEY_INT_SRC                     (INT_PORT_EIRQ0)
+    #define KEY_IRQn                        (Int025_IRQn)
+    #define KEY_INT_PRIO                    (DDL_IRQ_PRIORITY_04)
 
 #elif (APP_FUNC == APP_FUNC_MEASURE_PULSE_WIDTH)
     #define APP_TMR2_START_COND             (TMR2_START_COND_TRIGR)
@@ -213,6 +213,7 @@ static uint32_t m_au32CaptTime[APP_CAPT_COUNT];
  */
 int32_t main(void)
 {
+    uint32_t i;
     uint32_t u32Temp;
     float32_t f32Temp;
 
@@ -239,6 +240,7 @@ int32_t main(void)
         if (m_u32CaptCnt >= APP_CAPT_COUNT)
         {
 #if (APP_FUNC == APP_FUNC_CAPTURE_EVENT)
+            (void)i;
             TMR2_Stop(APP_TMR2_UNIT, APP_TMR2_CH);
 
             if (m_u32OvfCnt > 0U)
@@ -273,7 +275,7 @@ int32_t main(void)
 #elif (APP_FUNC == APP_FUNC_MEASURE_PULSE_WIDTH)
             u32Temp = 0U;
             /* The first capturing value is invalid. */
-            for (uint32_t i=1UL; i<APP_CAPT_COUNT; i++)
+            for (i=1UL; i<APP_CAPT_COUNT; i++)
             {
                 u32Temp += (m_au32CaptTime[i] + 2U);
             }
@@ -286,7 +288,7 @@ int32_t main(void)
 #elif (APP_FUNC == APP_FUNC_MEASURE_PERIOD)
             u32Temp = 0U;
             /* The first capturing value is invalid. */
-            for (uint32_t i=1UL; i<APP_CAPT_COUNT; i++)
+            for (i=1UL; i<APP_CAPT_COUNT; i++)
             {
                 u32Temp += (m_au32CaptTime[i] + 2U);
             }
@@ -312,7 +314,7 @@ int32_t main(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -338,7 +340,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -488,9 +490,9 @@ static void Tmr2CaptCondConfig(void)
     GPIO_StructInit(&stcGpioInit);
     stcGpioInit.u16ExInt = PIN_EXINT_ON;
     stcGpioInit.u16PullUp = PIN_PU_ON;
-    GPIO_Init(SW10_PORT, SW10_PIN, &stcGpioInit);
+    GPIO_Init(KEY_PORT, KEY_PIN, &stcGpioInit);
     EXINT_StructInit(&stcExintInit);
-    stcExintInit.u32ExIntCh = SW10_EXINT_CH;
+    stcExintInit.u32ExIntCh = KEY_EXINT_CH;
     stcExintInit.u32ExIntLvl= EXINT_TRIGGER_FALLING;
     EXINT_Init(&stcExintInit);
 

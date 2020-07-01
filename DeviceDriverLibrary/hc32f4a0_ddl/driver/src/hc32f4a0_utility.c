@@ -75,6 +75,11 @@
 /*******************************************************************************
  * Local pre-processor symbols/macros ('#define')
  ******************************************************************************/
+/**
+ * @defgroup UTILITY_Local_Macros UTILITY Local Macros
+ * @{
+ */
+
 #if (DDL_PRINT_ENABLE == DDL_ON)
 /**
  * @defgroup DDL UART channel/fcg/pin/baudrate definition
@@ -90,6 +95,10 @@
  */
 #endif
 
+/**
+ * @}
+ */
+
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
  ******************************************************************************/
@@ -97,10 +106,22 @@
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
+
+/**
+ * @addtogroup UTILITY_Local_Functions UTILITY Local Functions
+ * @{
+ */
+
 #if (DDL_PRINT_ENABLE == DDL_ON)
-static en_result_t SetUartBaudrate(M4_USART_TypeDef *USARTx,
+
+static en_result_t UartPutChar(M4_USART_TypeDef *USARTx, char cData);
+static en_result_t UartSetBaudrate(M4_USART_TypeDef *USARTx,
                                     uint32_t u32Baudrate);
 #endif
+
+/**
+ * @}
+ */
 
 /*******************************************************************************
  * Local variable definitions ('static')
@@ -111,7 +132,7 @@ static en_result_t SetUartBaudrate(M4_USART_TypeDef *USARTx,
  */
 
 static uint32_t m_u32TickStep = 0UL;
-__IO static uint32_t m_u32TickCount = 0UL;
+static __IO uint32_t m_u32TickCount = 0UL;
 
 /**
  * @}
@@ -132,8 +153,8 @@ __IO static uint32_t m_u32TickCount = 0UL;
  */
 void DDL_DelayMS(uint32_t u32Cnt)
 {
-    __IO uint32_t i = 0UL;
-    uint32_t u32Cyc = HCLK_VALUE / 10000UL;
+    __IO uint32_t i;
+    const uint32_t u32Cyc = HCLK_VALUE / 10000UL;
 
     while (u32Cnt-- > 0UL)
     {
@@ -152,8 +173,8 @@ void DDL_DelayMS(uint32_t u32Cnt)
  */
 void DDL_DelayUS(uint32_t u32Cnt)
 {
-    __IO uint32_t i = 0UL;
-    uint32_t u32Cyc = HCLK_VALUE / 10000000UL;
+    __IO uint32_t i;
+    const uint32_t u32Cyc = HCLK_VALUE / 10000000UL;
 
     while (u32Cnt-- > 0UL)
     {
@@ -167,7 +188,7 @@ void DDL_DelayUS(uint32_t u32Cnt)
 
 /**
  * @brief This function Initializes the interrupt frequency of the SysTick.
- * @param [in] u32Freq                  SysTick interrupt frequency.Value range 1 to 1000.
+ * @param [in] u32Freq                  SysTick interrupt frequency.
  * @retval An en_result_t enumeration value:
  *           - Ok: SysTick Initializes succeed
  *           - Error: SysTick Initializes failed
@@ -176,7 +197,7 @@ __WEAKDEF en_result_t SysTick_Init(uint32_t u32Freq)
 {
     en_result_t enRet = Error;
 
-    if (u32Freq)
+    if (0UL != u32Freq)
     {
         m_u32TickStep = 1000UL / u32Freq;
         /* Configure the SysTick interrupt */
@@ -196,7 +217,7 @@ __WEAKDEF en_result_t SysTick_Init(uint32_t u32Freq)
  */
 __WEAKDEF void SysTick_Delay(uint32_t u32Delay)
 {
-    uint32_t tickStart = SysTick_GetTick();
+    const uint32_t tickStart = SysTick_GetTick();
     uint32_t tickEnd = u32Delay;
 
     /* Add a freq to guarantee minimum wait */
@@ -260,7 +281,7 @@ __WEAKDEF void SysTick_Resume(void)
  * @param [in] line                     Point line assert the wrong file in the current.
  * @retval None
  */
-__WEAKDEF void DDL_AssertHandler(const uint8_t *file, int16_t line)
+__WEAKDEF void DDL_AssertHandler(const char *file, int line)
 {
     /* Users can re-implement this function to print information */
 #if (DDL_PRINT_ENABLE == DDL_ON)
@@ -275,38 +296,47 @@ __WEAKDEF void DDL_AssertHandler(const uint8_t *file, int16_t line)
 #endif /* __DEBUG */
 
 #if (DDL_PRINT_ENABLE == DDL_ON)
+
+#if defined ( __GNUC__ ) && !defined (__CC_ARM)
+/**
+ * @brief  Re-target _write function.
+ * @param  [in] fd
+ * @param  [in] data
+ * @param  [in] size
+ * @retval int32_t
+ */
+int32_t _write(int fd, char data[], int32_t size)
+{
+    int32_t i = -1;
+
+    if (NULL != data)
+    {
+        (void)fd;  /* Prevent unused argument compilation warning */
+
+        for (i = 0; i < size; i++)
+        {
+            if (Ok != UartPutChar(DDL_UART_CH, data[i]))
+            {
+                break;
+            }
+        }
+    }
+
+    return i ? i : -1;
+}
+
+#else
 /**
  * @brief  Re-target fputc function.
  * @param  [in] ch
  * @param  [in] f
  * @retval int32_t
  */
-#if defined ( __GNUC__ ) && !defined (__CC_ARM)
-int _write(int fd, char *pBuffer, int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        while (!READ_REG32_BIT(DDL_UART_CH->SR, USART_SR_TXE))
-        {
-            ;
-        }
-
-        WRITE_REG32(DDL_UART_CH->DR,  ((uint32_t)pBuffer[i] & 0x01FFUL));
-    }
-    return size;
-}
-#else
 int32_t fputc(int32_t ch, FILE *f)
 {
-    /* Wait TX data register empty */
-    while (!READ_REG32_BIT(DDL_UART_CH->SR, USART_SR_TXE))
-    {
-        ;
-    }
+    (void)f;  /* Prevent unused argument compilation warning */
 
-    WRITE_REG32(DDL_UART_CH->DR,  ((uint32_t)ch & 0x01FFUL));
-
-    return (ch);
+    return (Ok == UartPutChar(DDL_UART_CH, (char)ch)) ? ch: -1;
 }
 #endif
 
@@ -359,12 +389,67 @@ en_result_t DDL_PrintfInit(void)
         WRITE_REG32(DDL_UART_CH->LBMC, 0x00UL);
 
         /* Set baudrate */
-        enRet = SetUartBaudrate(DDL_UART_CH, DDL_UART_BAUDRATE);
+        enRet = UartSetBaudrate(DDL_UART_CH, DDL_UART_BAUDRATE);
         if (Ok == enRet)
         {
             /* Enable TX function */
             SET_REG32_BIT(DDL_UART_CH->CR1, USART_CR1_TE);
         }
+    }
+
+    return enRet;
+}
+#endif /* DDL_PRINT_ENABLE */
+
+/**
+ * @}
+ */
+
+/**
+ * @defgroup UTILITY_Local_Functions UTILITY Local Functions
+ * @{
+ */
+#if (DDL_PRINT_ENABLE == DDL_ON)
+
+/**
+ * @brief  UART transmit.
+ * @param  [in] USARTx                  Pointer to USART instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_USART1:            USART unit 1 instance register base
+ *           @arg M4_USART2:            USART unit 2 instance register base
+ *           @arg M4_USART3:            USART unit 3 instance register base
+ *           @arg M4_USART4:            USART unit 4 instance register base
+ *           @arg M4_USART5:            USART unit 5 instance register base
+ *           @arg M4_USART6:            USART unit 6 instance register base
+ *           @arg M4_USART7:            USART unit 7 instance register base
+ *           @arg M4_USART8:            USART unit 8 instance register base
+ *           @arg M4_USART9:            USART unit 9 instance register base
+ *           @arg M4_USART10:           USART unit 10 instance register base
+ * @param  [in] cData                   The data for transmitting
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Send successfully
+ *           - ErrorTimeout: Send timeout
+ */
+static en_result_t UartPutChar(M4_USART_TypeDef *USARTx, char cData)
+{
+    uint32_t u32TxEmpty;
+    en_result_t enRet = Ok;
+    __IO uint32_t u32Timeout = (HCLK_VALUE / DDL_UART_BAUDRATE);
+
+    /* Wait TX data register empty */
+    do
+    {
+        u32Timeout--;
+        u32TxEmpty = READ_REG32_BIT(USARTx->SR, USART_SR_TXE);
+    } while ((u32Timeout > 0UL) && (0UL == u32TxEmpty));
+
+    if (0UL != u32TxEmpty)
+    {
+        WRITE_REG32(USARTx->DR, (uint32_t)cData);
+    }
+    else
+    {
+        enRet = ErrorTimeout;
     }
 
     return enRet;
@@ -389,7 +474,7 @@ en_result_t DDL_PrintfInit(void)
  *           - Ok: Set successfully
  *           - Error: Baudrate set unsuccessfully
  */
-static en_result_t SetUartBaudrate(M4_USART_TypeDef *USARTx,
+static en_result_t UartSetBaudrate(M4_USART_TypeDef *USARTx,
                                     uint32_t u32Baudrate)
 {
     uint32_t B;
@@ -403,28 +488,28 @@ static en_result_t SetUartBaudrate(M4_USART_TypeDef *USARTx,
     en_result_t enRet = Error;
     uint32_t DIV_Fraction = 0UL;
 
-    if (u32Baudrate)
+    if (u32Baudrate > 0UL)
     {
         B = u32Baudrate;
-        OVER8 = (READ_REG32(USARTx->CR1) & USART_CR1_OVER8) ? 1UL : 0UL;
+        OVER8 = (0UL != (READ_REG32(USARTx->CR1) & USART_CR1_OVER8)) ? 1UL : 0UL;
         u32Pclk = (SystemCoreClock >> ((uint32_t)(READ_REG32_BIT(M4_CMU->SCFGR, CMU_SCFGR_PCLK1S) >> CMU_SCFGR_PCLK1S_POS)));
 
         for (u32Prescaler = 0UL; u32Prescaler <= USART_PR_PSC; u32Prescaler++)
         {
             C = (u32Pclk / (1UL << (u32Prescaler * 2UL)));
 
-            if (C)
+            if (C > 0UL)
             {
                 /* UART mode baudrate integer calculation formula:      */
                 /*      B = C / (8 * (2 - OVER8) * (DIV_Integer + 1))   */
                 /*      DIV_Integer = (C / (B * 8 * (2 - OVER8))) - 1   */
-                DIV = ((float)C / ((float)B * 8.0f * (2.0f - (float)OVER8))) - 1.0f;
+                DIV = ((float)C / ((float)B * 8.0F * (2.0F - (float)OVER8))) - 1.0F;
                 DIV_Integer = (uint32_t)(DIV);
 
-                if ((DIV > 0.0f) && (DIV_Integer < 0xFFUL))
+                if ((DIV > 0.0F) && (DIV_Integer < 0xFFUL))
                 {
                     enRet = Ok;
-                    if ((DIV - (float32_t)DIV_Integer) > 0.00001f)
+                    if ((DIV - (float32_t)DIV_Integer) > 0.00001F)
                     {
                         /* UART mode baudrate fraction calculation formula:                                 */
                         /*      B = C * (128 + DIV_Fraction) / (8 * (2 - OVER8) * (DIV_Integer + 1) * 256)  */
@@ -443,7 +528,7 @@ static en_result_t SetUartBaudrate(M4_USART_TypeDef *USARTx,
                         WRITE_REG32(USARTx->PR, u32Prescaler);
 
                         /* Enable or disable baudrate fraction function */
-                        MODIFY_REG32(USARTx->CR1, USART_CR1_FBME, DIV_Fraction ? USART_CR1_FBME : 0UL);
+                        MODIFY_REG32(USARTx->CR1, USART_CR1_FBME, (0UL != DIV_Fraction) ? USART_CR1_FBME : 0UL);
 
                         /* Set USART_BRR register */
                         WRITE_REG32(USARTx->BRR, ((DIV_Integer << USART_BRR_DIV_INTEGER_POS) + DIV_Fraction));

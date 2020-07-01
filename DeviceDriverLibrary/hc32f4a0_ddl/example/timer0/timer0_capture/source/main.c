@@ -76,9 +76,9 @@
 #define TMR0_IRQn                      (Int014_IRQn)
 #define TMR0_SOURCE                    (INT_TMR0_2_CMPB)
 /* EIRQ0 Port and Pin define */
-#define KEY1_PORT                      (GPIO_PORT_A)
-#define KEY1_PIN                       (GPIO_PIN_00)
-#define KEY1_EXINT_CH                  (EXINT_CH00)
+#define KEY10_PORT                     (GPIO_PORT_A)
+#define KEY10_PIN                      (GPIO_PIN_00)
+#define KEY10_EXINT_CH                 (EXINT_CH00)
 
 #define TMR0x                          (M4_TMR0_2)
 #define TMR0_CH_x                      (TMR0_CH_B)
@@ -115,7 +115,6 @@
  ******************************************************************************/
 static void TMR0_Config(void);
 static void EXINT_IRQ_Config(void);
-static void LED_KEY_Config(void);
 static void Peripheral_WE(void);
 static void Peripheral_WP(void);
 /*******************************************************************************
@@ -134,7 +133,7 @@ __IO static uint8_t CaptureCnt = 0U;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -160,7 +159,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -208,10 +207,12 @@ int32_t main(void)
 {
     /* Unlock peripherals or registers */
     Peripheral_WE();
+    /* Expand IO init */
+    BSP_IO_Init();
+    /* LED init */
+    BSP_LED_Init();
     /* Enable AOS function */
     PWC_Fcg0PeriphClockCmd(PWC_FCG0_AOS, Enable);
-    /* Configure LED & Key */
-    LED_KEY_Config();
     /*Configure EXINT and IRQ handler && NVIC*/
     EXINT_IRQ_Config();
 
@@ -222,7 +223,7 @@ int32_t main(void)
 
     while(CAPTURE_CNT_MAX > CaptureCnt)
     {
-      ;
+        ;
     }
     /* Turn on LED_B */
     BSP_LED_On(LED_BLUE);
@@ -280,11 +281,11 @@ static void EXINT_IRQ_Config(void)
     GPIO_StructInit(&stcGpioInit);
     stcGpioInit.u16ExInt = PIN_EXINT_ON;
     stcGpioInit.u16PullUp = PIN_PU_ON;
-    GPIO_Init(KEY1_PORT, KEY1_PIN, &stcGpioInit);
+    GPIO_Init(KEY10_PORT, KEY10_PIN, &stcGpioInit);
 
     /* Exint config */
     EXINT_StructInit(&stcExintInit);
-    stcExintInit.u32ExIntCh = KEY1_EXINT_CH;
+    stcExintInit.u32ExIntCh = KEY10_EXINT_CH;
     stcExintInit.u32ExIntLvl= EXINT_TRIGGER_BOTH;
     EXINT_Init(&stcExintInit);
 
@@ -296,37 +297,6 @@ static void EXINT_IRQ_Config(void)
     NVIC_ClearPendingIRQ(stcIrqSignConfig.enIRQn);
     NVIC_SetPriority(stcIrqSignConfig.enIRQn, DDL_IRQ_PRIORITY_15);
     NVIC_EnableIRQ(stcIrqSignConfig.enIRQn);
-}
-
-/**
- * @brief  Configure LED and Key.
- * @param  None
- * @retval None
- */
-static void LED_KEY_Config(void)
-{
-    stc_gpio_init_t stcGpioInit;
-    stc_keyscan_init_t stcKeyscanInit;
-
-    BSP_IO_Init();
-    BSP_LED_Init();
-    GPIO_StructInit(&stcGpioInit);
-    KEYSCAN_StructInit(&stcKeyscanInit);
-
-    GPIO_Init(BSP_KEYOUT1_PORT, BSP_KEYOUT1_PIN, &stcGpioInit);
-    GPIO_SetFunc(BSP_KEYOUT0_PORT, BSP_KEYOUT0_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
-
-    PWC_Fcg0PeriphClockCmd(PWC_FCG0_KEY, Enable);
-
-    stcKeyscanInit.u32HizCycle = KEYSCAN_HIZ_CLC_4;
-    stcKeyscanInit.u32LowCycle = KEYSCAN_LOW_CLC_128K;
-    stcKeyscanInit.u32KeyClk   = KEYSCAN_CLK_HCLK;
-    stcKeyscanInit.u32KeyOut   = KEYSCAN_OUT_0T1;
-    stcKeyscanInit.u32KeyIn    = KEYSCAN_IN_0;
-
-    KEYSCAN_Init(&stcKeyscanInit);
-
-    KEYSCAN_Cmd(Enable);
 }
 /**
  * @}

@@ -202,10 +202,10 @@ typedef struct
  * @defgroup TMR0_Common_Trigger_Sel TMR0 common Trigger source select
  * @{
  */
-#define TMR0_TRIG_COM1_COM2_OFF         (0x00UL)
-#define TMR0_TRIG_COM1_ON_COM2_OFF      (0x01UL << 31U)
-#define TMR0_TRIG_COM1_OFF_COM2_ON      (0x01UL << 30U)
-#define TMR0_TRIG_COM1_COM2_ON          (0x03UL << 30U)
+#define TMR0_COM_TRIG1              (AOS_TMR0_HTSSR_COMTRG_EN_0)
+#define TMR0_COM_TRIG2              (AOS_TMR0_HTSSR_COMTRG_EN_1)
+#define TMR0_COM_TRIG_MASk          (AOS_TMR0_HTSSR_COMTRG_EN)
+
 /**
  * @}
  */
@@ -226,8 +226,8 @@ typedef struct
  * @{
  */
 en_result_t TMR0_StructInit(stc_tmr0_init_t* pstcInitStruct);
-en_result_t TMR0_Init(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel,
-                      const stc_tmr0_init_t* pstcBaseInit);
+en_result_t TMR0_Init(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, \
+                      const stc_tmr0_init_t* pstcTmr0Init);
 void TMR0_DeInit(M4_TMR0_TypeDef* TMR0x);
 void TMR0_Cmd(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, \
               en_functional_state_t enNewState);
@@ -242,7 +242,7 @@ void TMR0_SetCntVal(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, uint16_t u16Value
 void TMR0_SetCmpVal(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel, uint16_t u16Value);
 void TMR0_ClearStatus(M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel);
 void TMR0_SetTriggerSrc(en_event_src_t enEvent);
-void TMR0_ComTrigCmd(uint32_t u32ComTrigEn);
+void TMR0_ComTriggerCmd(uint32_t u32ComTrig, en_functional_state_t enNewState);
 
 en_flag_status_t TMR0_GetStatus(const M4_TMR0_TypeDef* TMR0x, uint8_t u8Channel);
 

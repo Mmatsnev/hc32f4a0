@@ -110,7 +110,7 @@
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
-/** 
+/**
  * @defgroup CRC_Local_Functions CRC Local Functions
  * @{
  */
@@ -128,7 +128,7 @@ static void CRC_32BitWrite(const uint32_t au32Data[], uint32_t u32Length);
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
-/** 
+/**
  * @defgroup CRC_Global_Functions CRC Global Functions
  * @{
  */
@@ -138,7 +138,7 @@ static void CRC_32BitWrite(const uint32_t au32Data[], uint32_t u32Length);
  * @param  [in] u32CrcProtocol        CRC protocol control bit.
  *                                    This parameter can be a value of @ref CRC_Protocol_Control_Bit
  * @param  [in] pvData                Pointer to the buffer containing the data to be computed.
- * @param  [in] u32InitVal            Initialize the CRC calculation. 
+ * @param  [in] u32InitVal            Initialize the CRC calculation.
  * @param  [in] u32Length             The length(countted in bytes or half word or word, depending on
  *                                    the bit width) of the data to be computed.
  * @param  [in] u8BitWidth            Bit width of the data.
@@ -202,7 +202,7 @@ uint32_t CRC_Calculate(uint32_t u32CrcProtocol,
  *                                    This parameter can be a value of @ref CRC_Protocol_Control_Bit
  * @param  [in] u32CheckSum           The checksum of the data pointed by pointer pvData.
  * @param  [in] pvData                Pointer to the buffer containing the data to be checked.
- * @param  [in] u32InitVal            Initialize the CRC calculation.    
+ * @param  [in] u32InitVal            Initialize the CRC calculation.
  * @param  [in] u32Length             The length(countted in bytes or half word or word, depending on
  *                                    the bit width) of the data to be computed.
  * @param  [in] u8BitWidth            Bit width of the data.
@@ -285,7 +285,7 @@ en_flag_status_t CRC_Check(uint32_t u32CrcProtocol,
 static void CRC_8BitWrite(const uint8_t au8Data[], uint32_t u32Length)
 {
     uint32_t i;
-    uint32_t u32DataAddr = (uint32_t)(&M4_CRC->DAT0);
+    const uint32_t u32DataAddr = (uint32_t)(&M4_CRC->DAT0);
     for (i = 0UL; i < u32Length; i++)
     {
         RW_MEM8(u32DataAddr) = au8Data[i];
@@ -302,7 +302,7 @@ static void CRC_8BitWrite(const uint8_t au8Data[], uint32_t u32Length)
 static void CRC_16BitWrite(const uint16_t au16Data[], uint32_t u32Length)
 {
     uint32_t i;
-    uint32_t u32DataAddr = (uint32_t)(&M4_CRC->DAT0);
+    const uint32_t u32DataAddr = (uint32_t)(&M4_CRC->DAT0);
     for (i = 0UL; i < u32Length; i++)
     {
         RW_MEM16(u32DataAddr) = au16Data[i];
@@ -318,7 +318,7 @@ static void CRC_16BitWrite(const uint16_t au16Data[], uint32_t u32Length)
 static void CRC_32BitWrite(const uint32_t au32Data[], uint32_t u32Length)
 {
     uint32_t i;
-    uint32_t u32DataAddr = (uint32_t)(&M4_CRC->DAT0);
+    const uint32_t u32DataAddr = (uint32_t)(&M4_CRC->DAT0);
     for (i = 0UL; i < u32Length; i++)
     {
         RW_MEM32(u32DataAddr) = au32Data[i];

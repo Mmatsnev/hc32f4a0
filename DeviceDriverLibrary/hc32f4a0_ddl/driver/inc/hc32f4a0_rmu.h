@@ -106,7 +106,7 @@ extern "C"
 #define RMU_RST_CLK_ERR               (RMU_RSTF0_CKFERF)      /*!< Clk frequence error reset */
 #define RMU_RST_XTAL_ERR              (RMU_RSTF0_XTALERF)     /*!< Xtal error reset */
 #define RMU_RST_LOCKUP                (RMU_RSTF0_LKUPRF)      /*!< M4 Lockup reset */
-#define RMU_RST_MUULTI                (RMU_RSTF0_MULTIRF)     /*!< Multiply reset cause */
+#define RMU_RST_MULTI                 (RMU_RSTF0_MULTIRF)     /*!< Multiply reset cause */
 /**
  * @}
  */

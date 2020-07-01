@@ -105,10 +105,10 @@ uint8_t u8Cnt = 10U;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
-//    PWC_FCG0_Unlock();
+    PWC_FCG0_Unlock();
     /* Unlock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Unlock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1);
     /* Unlock SRAM register: WTCR */
@@ -131,7 +131,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
 //    PWC_FCG0_Lock();
@@ -150,7 +150,7 @@ static void Peripheral_WP(void)
 }
 
 /**
- * @brief  KEY10 External interrupt Ch.0 callback function
+ * @brief  KEY10(SW10) External interrupt Ch.0 callback function
  *         IRQ No.0 in Global IRQ entry No.0~31 is used for EXINT0
  * @param  None
  * @retval None
@@ -169,11 +169,11 @@ void EXINT_KEY10_IrqCallback(void)
 }
 
 /**
- * @brief  KEY10 Init
+ * @brief  KEY10(SW10) Init
  * @param  None
  * @retval None
  */
-void Key10_Init(void)
+void KEY10_Init(void)
 {
     stc_exint_init_t stcExintInit;
     stc_irq_signin_config_t stcIrqSignConfig;
@@ -270,13 +270,13 @@ int32_t main(void)
 
     STOP_Config();
 
-    /* KEY10 */
+    /* KEY10(SW10) */
     while(Pin_Reset != GPIO_ReadInputPins(KEY10_PORT, KEY10_PIN))
     {
         ;
     }
     DDL_DelayMS(DLY_MS);
-    Key10_Init();
+    KEY10_Init();
 
     /* Register write protected for some required peripherals. */
     Peripheral_WP();

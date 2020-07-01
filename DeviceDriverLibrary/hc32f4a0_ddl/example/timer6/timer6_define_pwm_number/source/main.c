@@ -102,7 +102,7 @@ uint32_t u32CaptureA;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -128,7 +128,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -241,15 +241,15 @@ int32_t main(void)
 
     /* Configurate PWM output */
     stcTIM6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-    stcTIM6PortOutCfg.u32NextPeriodForceStd = TMR6_FORCE_PORT_OUTPUT_INVALID;
-    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HIGH;
-    stcTIM6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+    stcTIM6PortOutCfg.u32NextPeriodForceSta = TMR6_FORCE_PORT_OUTPUT_INVALID;
+    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HIGH;
+    stcTIM6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTIM6PortOutCfg);
 
@@ -267,15 +267,15 @@ int32_t main(void)
     NVIC_EnableIRQ(stcIrqRegiConf.enIRQn);                  /* Enable NVIC */
 #endif
     /* Timer6 hardware trigger source configuration */
-    TMR6_HwTrigEventCfg(TMR6_HW_TRIG_0, EVT_TMR6_2_GOVF);  /* Set EVT_TMR6_2_GOVF Event as Timer6 Trigger Source 0 */
-    TMR6_HwTrigEventCfg(TMR6_HW_TRIG_1, EVT_TMR6_1_GOVF);  /* Set EVT_TMR6_1_GOVF Event as Timer6 Trigger Source1 */
+    TMR6_SetTriggerSrc(TMR6_HW_TRIG_0, EVT_TMR6_2_GOVF);  /* Set EVT_TMR6_2_GOVF Event as Timer6 Trigger Source 0 */
+    TMR6_SetTriggerSrc(TMR6_HW_TRIG_1, EVT_TMR6_1_GOVF);  /* Set EVT_TMR6_1_GOVF Event as Timer6 Trigger Source1 */
 
-    TMR6_HwIncreaseFuncCfg(M4_TMR6_2, TMR6_HW_CTL_INTER_EVENT1); /* M4_TMR6_2 Hardware CountUp Event Condition: Timer6 Trigger Source 1(EVT_TMR6_1_GOVF) */
+    TMR6_HwIncreaseCondCmd(M4_TMR6_2, TMR6_HW_CTRL_INTER_EVENT1, Enable); /* M4_TMR6_2 Hardware CountUp Event Condition: Timer6 Trigger Source 1(EVT_TMR6_1_GOVF) */
 
-    TMR6_HwStopFuncCfg(M4_TMR6_1, TMR6_HW_CTL_INTER_EVENT0); /* M4_TMR6_1 Hardware Stop Event Condition: Timer6 Trigger Source 0(EVT_TMR6_2_GOVF) */
+    TMR6_HwStopCondCmd(M4_TMR6_1, TMR6_HW_CTRL_INTER_EVENT0, Enable); /* M4_TMR6_1 Hardware Stop Event Condition: Timer6 Trigger Source 0(EVT_TMR6_2_GOVF) */
     TMR6_HwStopFuncCmd(M4_TMR6_1, Enable);
 
-    TMR6_HwClrFuncCfg(M4_TMR6_1, TMR6_HW_CTL_INTER_EVENT0); /* M4_TMR6_1 Hardware Clear Event Condition: Timer6 Trigger Source0(EVT_TMR6_2_GOVF) */
+    TMR6_HwClrCondCmd(M4_TMR6_1, TMR6_HW_CTRL_INTER_EVENT0, Enable); /* M4_TMR6_1 Hardware Clear Event Condition: Timer6 Trigger Source0(EVT_TMR6_2_GOVF) */
     TMR6_HwClrFuncCmd(M4_TMR6_1, Enable);
 
     /* Start timer6 */

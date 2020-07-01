@@ -115,10 +115,10 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
-//    PWC_FCG0_Unlock();
+    PWC_FCG0_Unlock();
     /* Unlock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Unlock(PWC_UNLOCK_CODE_0);
     /* Unlock SRAM register: WTCR */
@@ -141,10 +141,10 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
-//    PWC_FCG0_Lock();
+    PWC_FCG0_Lock();
     /* Lock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Lock(PWC_UNLOCK_CODE_0);
     /* Lock SRAM register: WTCR */
@@ -161,7 +161,7 @@ static void Peripheral_WP(void)
 
 #if (GLOBAL_IRQ == 1U)
 /**
- * @brief  KEY10 External interrupt Ch.0 callback function
+ * @brief  KEY10(SW10) External interrupt Ch.0 callback function
  *         IRQ No.0 in Global IRQ entry No.0~31 is used for EXINT0
  * @param  None
  * @retval None
@@ -180,11 +180,11 @@ void EXINT_KEY10_IrqCallback(void)
 }
 
 /**
- * @brief  KEY10 initialize
+ * @brief  KEY10(SW10) initialize
  * @param  None
  * @retval None
  */
-void Key10_Init(void)
+void KEY10_Init(void)
 {
     stc_exint_init_t stcExintInit;
     stc_irq_signin_config_t stcIrqSignConfig;
@@ -216,7 +216,7 @@ void Key10_Init(void)
 
 #elif (GROUP_IRQ == 1U)
 /**
- * @brief  KEY10 External interrupt Ch.0 callback function
+ * @brief  KEY10(SW10) External interrupt Ch.0 callback function
  *         IRQ No.33 in Group IRQ entry No.32~37 is used for EXINT0
  * @param  None
  * @retval None
@@ -235,11 +235,11 @@ void EXINT_KEY10_IrqCallback(void)
 }
 
 /**
- * @brief  KEY10 initialize
+ * @brief  KEY10(SW10) initialize
  * @param  None
  * @retval None
  */
-void Key10_Init(void)
+void KEY10_Init(void)
 {
     stc_exint_init_t stcExintInit;
     stc_irq_signin_config_t stcIrqSignConfig;
@@ -271,7 +271,7 @@ void Key10_Init(void)
 
 #elif (SHARE_IRQ == 1U)
 /**
-  * @brief  KEY10 External interrupt Ch.0 ISR
+  * @brief  KEY10(SW10) External interrupt Ch.0 ISR
   *         Share IRQ entry No.128 is used for EXINT0
   * @param  None
   * @retval None
@@ -290,11 +290,11 @@ void Key10_Init(void)
  }
 
 /**
- * @brief  KEY10 initialize
+ * @brief  KEY10(SW10) initialize
  * @param  None
  * @retval None
  */
-void Key10_Init(void)
+void KEY10_Init(void)
 {
     stc_exint_init_t stcExintInit;
     stc_gpio_init_t stcGpioInit;
@@ -335,14 +335,14 @@ int32_t main(void)
     BSP_IO_Init();
     /* LED init */
     BSP_LED_Init();
-    /* KEY10 init */
-    Key10_Init();
+    /* KEY10(SW10) init */
+    KEY10_Init();
     /* Register write protected for some required peripherals. */
     Peripheral_WP();
 
     while (1)
     {
-        ;// wait KEY10 key pressed
+        ;// wait KEY10(SW10) key pressed
     }
 }
 

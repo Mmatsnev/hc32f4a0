@@ -96,7 +96,7 @@
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     // PWC_FCG0_Unlock();
@@ -122,7 +122,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     // GPIO_Lock();
     /* Lock PWC register: FCG0 */
     // PWC_FCG0_Lock();
@@ -156,8 +156,6 @@ int32_t main(void)
      @endverbatim
     ***************************************************************************
     */
-    uint32_t u32ResetSrc = 0UL;
-
     /* Peripheral registers write unprotected */
     Peripheral_WE();
     /* Configure BSP */
@@ -168,8 +166,9 @@ int32_t main(void)
     /* Get RMU information */
     if (Set == RMU_GetStatus(RMU_RST_BROWN_OUT))
     {
-        u32ResetSrc = RMU_RST_BROWN_OUT;
         BSP_LED_On(LED_RED);
+        DDL_DelayMS(500U);
+        BSP_LED_Off(LED_RED);
     }
     RMU_ClrStatus();
     /* Peripheral registers write protected */
@@ -177,11 +176,6 @@ int32_t main(void)
 
     while (1)
     {
-        if (0UL == u32ResetSrc)
-        {
-            BSP_LED_Toggle(LED_RED);
-            DDL_DelayMS(1000U);
-        }
     }
 }
 

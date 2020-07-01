@@ -141,13 +141,13 @@ extern "C"
   Global function prototypes (definition in C source)
  ******************************************************************************/
 /**
- * @addtogroup MT29F2G08AB_Global_Functions NAND Flash MT29F2G08AB Global Functions
+ * @addtogroup MT29F2G08AB_Global_Functions
  * @{
  */
 en_result_t MT29F2G08AB_Init(void);
 en_result_t MT29F2G08AB_ReadId(uint32_t u32IdAddr,
                                     uint8_t au8DevId[],
-                                    uint8_t u8NumBytes);
+                                    uint32_t u32NumBytes);
 en_result_t MT29F2G08AB_GetStatus(uint32_t u32Timeout);
 en_result_t MT29F2G08AB_EraseBlock(uint32_t u32BlockRowAddress);
 en_result_t MT29F2G08AB_ReadPageMeta(uint32_t u32Page,
@@ -173,11 +173,11 @@ en_result_t MT29F2G08AB_ReadPageHwEcc4Bits(uint32_t u32Page,
 en_result_t BSP_NFC_MT29F2G08AB_Init(void);
 en_result_t BSP_NFC_MT29F2G08AB_ReadId(uint32_t u32IdAddr,
                                         uint8_t au8DevId[],
-                                        uint8_t u8NumBytes);
+                                        uint32_t u32NumBytes);
 uint32_t BSP_NFC_MT29F2G08AB_ReadStatus(void);
 en_result_t BSP_NFC_MT29F2G08AB_EraseBlock(uint32_t u32BlockRowAddress);
 en_result_t BSP_NFC_MT29F2G08AB_ReadPageMeta(uint32_t u32Page,
-                                    uint8_t *pu8Datas,
+                                    uint8_t *pu8Data,
                                     uint32_t u32NumBytes);
 en_result_t BSP_NFC_MT29F2G08AB_WritePageMeta(uint32_t u32Page,
                                     const uint8_t *pu8Data,

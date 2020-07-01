@@ -605,15 +605,15 @@ void PWC_Fcg3PeriphClockCmd(uint32_t u32Fcg3Periph, en_functional_state_t enNewS
 en_result_t PWC_RamConfig(const stc_pwc_ram_config_t *pstcRamConfig);
 en_result_t PWC_PVD_Init(uint8_t u8Ch, const stc_pwc_pvd_config_t *pstcPvdConfig);
 en_result_t PWC_PVD_StructInit(stc_pwc_pvd_config_t *pstcPvdConfig);
-en_flag_status_t PWC_PVD_GetFlag(uint8_t u8Flag);
-void PWC_PVD_ClrFlag(void);
+en_flag_status_t PWC_PVD_GetStatus(uint8_t u8Flag);
+void PWC_PVD_ClearStatus(void);
 
 void PWC_PdWakeup0Cmd(uint8_t u8Wkup0Evt, en_functional_state_t enNewState);
 void PWC_PdWakeup1Cmd(uint8_t u8Wkup1Evt, en_functional_state_t enNewState);
 void PWC_PdWakeup2Cmd(uint8_t u8Wkup2Evt, en_functional_state_t enNewState);
 void PWC_PdWakeupTrigConfig(uint8_t u8WkupEvt, uint8_t u8TrigEdge);
-en_flag_status_t PWC_GetWakeup0Flag(uint8_t u8Flag);
-en_flag_status_t PWC_GetWakeup1Flag(uint8_t u8Flag);
+en_flag_status_t PWC_GetWakeup0Status(uint8_t u8Flag);
+en_flag_status_t PWC_GetWakeup1Status(uint8_t u8Flag);
 
 void PWC_AdcBufCmd(en_functional_state_t enNewState);
 void PWC_AdcInternVolSel(uint8_t u8AdcInternVol);
@@ -626,7 +626,7 @@ void PWC_VBAT_Reset(void);
 void PWC_VBAT_PwrCmd(en_functional_state_t enNewState);
 
 void PWC_BkRamPwrCmd(en_functional_state_t enNewState);
-en_flag_status_t PWC_GetBkRamFlag(uint8_t u8Flag);
+en_flag_status_t PWC_GetBkRamStatus(uint8_t u8Flag);
 void PWC_WriteBackupReg(uint8_t u8RegNum, uint8_t u8RegVal);
 uint8_t PWC_ReadBackupReg(uint8_t u8RegNum);
 
@@ -634,8 +634,8 @@ void PWC_WKT_Init(uint8_t u8ClkSrc, uint16_t u16CmpVal);
 void PWC_WKT_SetCompareValue(uint16_t u16CmpVal);
 uint16_t PWC_WKT_GetCompareValue(void);
 void PWC_WKT_Cmd(en_functional_state_t enNewState);
-en_flag_status_t PWC_WKT_GetFlag(void);
-void PWC_WKT_ClearFlag(void);
+en_flag_status_t PWC_WKT_GetStatus(void);
+void PWC_WKT_ClearStatus(void);
 
 /**
  * @}

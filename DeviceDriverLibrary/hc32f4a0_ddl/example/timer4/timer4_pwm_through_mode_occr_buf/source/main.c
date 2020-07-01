@@ -124,7 +124,7 @@ static uint16_t m_au16OcoCmpVal[TMR4_OCO_CMP_BUF_SIZE];
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -150,7 +150,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -188,7 +188,7 @@ static uint32_t Tmr4PclkFreq(void)
  */
 static void TMR4_ZeroMatch_IrqCallback(void)
 {
-    TMR4_CNT_ClearFlag(TMR4_UNIT, TMR4_CNT_FLAG_ZERO);
+    TMR4_CNT_ClearStatus(TMR4_UNIT, TMR4_CNT_FLAG_ZERO);
     TMR4_OCO_SetCompareVal(TMR4_UNIT, TMR4_OCO_HIGH_CH, m_au16OcoCmpVal[m_u16OcoCmpValIdx]);
 
     if (++m_u16OcoCmpValIdx >= TMR4_OCO_CMP_BUF_SIZE)

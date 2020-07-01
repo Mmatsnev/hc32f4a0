@@ -128,9 +128,9 @@ extern "C"
  * @{
  */
 void TRNG_SetShiftCnt(uint32_t u32ShiftCount);
-void TRNG_ReloadCmd(uint32_t u32LoadCmd);
+void TRNG_ReloadCmd(uint32_t u32ReloadCmd);
 
-en_result_t TRNG_Generate(uint32_t u32Random[]);
+en_result_t TRNG_Generate(uint32_t au32Random[]);
 /**
  * @}
  */

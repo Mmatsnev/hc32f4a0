@@ -100,7 +100,7 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -126,7 +126,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -214,7 +214,7 @@ int32_t main(void)
     /* Program within the allowed address. Program in sector 130*/
     EFM_SingleProgram(u32Addr, u32TestData);
 
-    /* Press SW1 */
+    /* Press KEY_1(SW1) */
     while(Reset == BSP_KEY_GetStatus(BSP_KEY_1))
     {
         ;

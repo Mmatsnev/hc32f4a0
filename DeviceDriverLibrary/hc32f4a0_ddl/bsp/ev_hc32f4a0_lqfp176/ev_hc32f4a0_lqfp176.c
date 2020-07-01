@@ -313,7 +313,7 @@ void BSP_LCD_RSTCmd(uint8_t Cmd)
  */
 void BSP_LCD_BKLCmd(uint8_t Cmd)
 {
-
+    // todo
 }
 
 /**
@@ -375,7 +375,7 @@ void BSP_LED_Toggle(uint8_t u8Led)
  */
 static void BSP_KEY_ROW0_IrqCallback(void)
 {
-    uint32_t u32Idx = KEYSCAN_GetKeyoutIdx();
+    const uint32_t u32Idx = KEYSCAN_GetKeyoutIdx();
     if (Set == EXINT_GetExIntSrc(BSP_KEY_ROW0_EXINT))
     {
         while (1)
@@ -401,7 +401,7 @@ static void BSP_KEY_ROW0_IrqCallback(void)
  */
 static void BSP_KEY_ROW1_IrqCallback(void)
 {
-    uint32_t u32Idx = KEYSCAN_GetKeyoutIdx();
+    const uint32_t u32Idx = KEYSCAN_GetKeyoutIdx();
     if (Set == EXINT_GetExIntSrc(BSP_KEY_ROW1_EXINT))
     {
         while (1)
@@ -427,7 +427,7 @@ static void BSP_KEY_ROW1_IrqCallback(void)
  */
 static void BSP_KEY_ROW2_IrqCallback(void)
 {
-    uint32_t u32Idx = KEYSCAN_GetKeyoutIdx();
+    const uint32_t u32Idx = KEYSCAN_GetKeyoutIdx();
     if (Set == EXINT_GetExIntSrc(BSP_KEY_ROW2_EXINT))
     {
         while (1)
@@ -566,13 +566,13 @@ static void BSP_KEY_COL_Init(void)
 
 //    stcGpioInit.u16PullUp = PIN_PU_ON;
     GPIO_Init(BSP_KEYOUT0_PORT, BSP_KEYOUT0_PIN, &stcGpioInit);
-    GPIO_SetFunc(BSP_KEYOUT0_PORT, BSP_KEYOUT0_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
+    GPIO_SetFunc(BSP_KEYOUT0_PORT, BSP_KEYOUT0_PIN, GPIO_FUNC_8_KEYSCAN, PIN_SUBFUNC_DISABLE);
 
     GPIO_Init(BSP_KEYOUT1_PORT, BSP_KEYOUT1_PIN, &stcGpioInit);
-    GPIO_SetFunc(BSP_KEYOUT1_PORT, BSP_KEYOUT1_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
+    GPIO_SetFunc(BSP_KEYOUT1_PORT, BSP_KEYOUT1_PIN, GPIO_FUNC_8_KEYSCAN, PIN_SUBFUNC_DISABLE);
 
     GPIO_Init(BSP_KEYOUT2_PORT, BSP_KEYOUT2_PIN, &stcGpioInit);
-    GPIO_SetFunc(BSP_KEYOUT2_PORT, BSP_KEYOUT2_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
+    GPIO_SetFunc(BSP_KEYOUT2_PORT, BSP_KEYOUT2_PIN, GPIO_FUNC_8_KEYSCAN, PIN_SUBFUNC_DISABLE);
 
     PWC_Fcg0PeriphClockCmd(PWC_FCG0_KEY, Enable);
 
@@ -687,7 +687,7 @@ void BSP_CLK_Init(void)
     SRAM_SetWaitCycle((SRAM_SRAM123 | SRAM_SRAM4 | SRAM_SRAMB), SRAM_WAIT_CYCLE_2, SRAM_WAIT_CYCLE_2);
 
     /* 0-wait @ 40MHz */
-    EFM_SetWaitCycle(EFM_WAIT_CYCLE_5);   
+    EFM_SetWaitCycle(EFM_WAIT_CYCLE_5);
 
     /* 4 cycles for 200 ~ 250MHz */
     GPIO_SetReadWaitCycle(GPIO_READ_WAIT_4);

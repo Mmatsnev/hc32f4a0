@@ -84,7 +84,7 @@ extern "C"
  */
 #define DDL_ICG_ENABLE                              (DDL_ON)
 #define DDL_UTILITY_ENABLE                          (DDL_ON)
-#define DDL_PRINT_ENABLE                            (DDL_OFF)
+#define DDL_PRINT_ENABLE                            (DDL_ON)
 
 #define DDL_ADC_ENABLE                              (DDL_ON)
 #define DDL_AES_ENABLE                              (DDL_OFF)
@@ -190,11 +190,11 @@ extern "C"
 #define PHY_ADDRESS                     (0x00U)               /* RTL8201F                             */
 
 /* PHY Configuration delay */
-#define PHY_HW_RESET_DELAY              (0x00000020UL)
-#define PHY_RESET_DELAY                 (0x00000040UL)
-#define PHY_CONFIG_DELAY                (0x0000007FUL)
-#define PHY_READ_TIMEOUT                (0x000000FFUL)
-#define PHY_WRITE_TIMEOUT               (0x000000FFUL)
+#define PHY_HW_RESET_DELAY              (0x0000003FUL)
+#define PHY_RESET_DELAY                 (0x0000007FUL)
+#define PHY_CONFIG_DELAY                (0x0000003FUL)
+#define PHY_READ_TIMEOUT                (0x00000005UL)
+#define PHY_WRITE_TIMEOUT               (0x00000005UL)
 
 /* Common PHY Registers */
 #define PHY_BCR                         (0x00U)     /*!< Basic Control Register               */

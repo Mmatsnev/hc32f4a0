@@ -128,7 +128,7 @@ static en_flag_status_t KeyState(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -154,7 +154,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -222,7 +222,7 @@ int32_t main(void)
         .u32LinMode = LIN_MASTER,
         .stcLinInit = {
             .u32Baudrate = 9600UL,
-            .u32ClkMode = USART_INTCLK_NONE_OUTPUT,
+            .u32ClkMode = USART_INTERNCLK_NONE_OUTPUT,
             .u32PclkDiv = USART_PCLK_DIV16,
             .u32BmcPclkDiv = USART_LIN_BMC_PCLK_DIV8,
             .u32OversamplingBits = USART_OVERSAMPLING_8BIT,

@@ -124,7 +124,7 @@ static __IO uint16_t m_u16Timer0IrqCnt = 0U;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -150,7 +150,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -273,7 +273,7 @@ static void DCU_IrqCallback(void)
     DCU_IntCmd(DCU_UNIT, DCU_INT_TRIANGLE_WAVE_BOTTOM, Disable);
 
     GPIO_TogglePins(GPIO_PORT_E, GPIO_PIN_04);
-    DCU_ClearFlag(DCU_UNIT, DCU_FLAG_TRIANGLE_WAVE_BOTTOM);
+    DCU_ClearStatus(DCU_UNIT, DCU_FLAG_TRIANGLE_WAVE_BOTTOM);
 }
 
 /**

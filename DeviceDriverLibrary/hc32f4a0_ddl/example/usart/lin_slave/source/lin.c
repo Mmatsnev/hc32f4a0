@@ -321,7 +321,7 @@ en_result_t LIN_MASTER_SendFrame(stc_lin_hanlde_t *pstcLinHandle,
             pstcFrame->u8Checksum = LIN_CalcChecksum(pstcFrame->u8PID, pstcFrame->au8Data, pstcFrame->u8Length);
 
             LIN_SendChar(pstcLinHandle, pstcFrame->u8Checksum);
-            while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TC))
+            while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TC))
             {
             }
 
@@ -547,7 +547,7 @@ en_result_t LIN_SLAVE_SendFrameResponse(stc_lin_hanlde_t *pstcLinHandle)
         u8Checksum = LIN_CalcChecksum(pstcFrame->u8ID, pstcFrame->au8Data, pstcFrame->u8Length);
 
         LIN_SendChar(pstcLinHandle, u8Checksum);
-        while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TC))
+        while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TC))
         {
         }
 
@@ -638,7 +638,7 @@ en_result_t LIN_SendWakeupSignal(const stc_lin_hanlde_t *pstcLinHandle)
         /* Check parameter */
         DDL_ASSERT(IS_VALID_USART_LIN(pstcLinHandle->USARTx));
 
-        while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TXE))
+        while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TXE))
         {
         }
 
@@ -677,7 +677,7 @@ static en_result_t LIN_MASTER_SendFrameHeader(stc_lin_hanlde_t *pstcLinHandle,
         pstcLinHandle->pstcFrame = pstcFrame;
 
         /* Idle state */
-        if (USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_PE | USART_FLAG_FE | USART_FLAG_ORE))
+        if (Set == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_PE | USART_FLAG_FE | USART_FLAG_ORE))
         {
             enRet = Error;
         }
@@ -692,7 +692,7 @@ static en_result_t LIN_MASTER_SendFrameHeader(stc_lin_hanlde_t *pstcLinHandle,
             /* Send sync field */
             LIN_SendChar(pstcLinHandle, LIN_SYNC_DATA);
             pstcFrame->enState = LinFrameStateSync;
-            while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TC))
+            while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TC))
             {
             }
             DDL_DelayMS(LIN_FRAME_INTER_BYTE_SPACE);
@@ -702,7 +702,7 @@ static en_result_t LIN_MASTER_SendFrameHeader(stc_lin_hanlde_t *pstcLinHandle,
 
             /* Send PID */
             LIN_SendChar(pstcLinHandle, pstcFrame->u8PID);
-            while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TC))
+            while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TC))
             {
             }
 
@@ -727,7 +727,7 @@ static void LIN_SendBreak(const stc_lin_hanlde_t *pstcLinHandle)
     /* Check parameter */
     DDL_ASSERT(IS_VALID_USART_LIN(pstcLinHandle->USARTx));
 
-    while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TXE))
+    while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TXE))
     {
     }
 
@@ -754,7 +754,7 @@ static void LIN_SendChar(const stc_lin_hanlde_t *pstcLinHandle, uint8_t u8Char)
     /* Check parameter */
     DDL_ASSERT(IS_VALID_USART_LIN(pstcLinHandle->USARTx));
 
-    while (!USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_TXE))
+    while (Reset == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_TXE))
     {
     }
 
@@ -925,12 +925,12 @@ static void USART_RxErr_IrqCallback(const stc_lin_hanlde_t *pstcLinHandle)
     DDL_ASSERT(NULL != pstcLinHandle->pstcFrame);
     DDL_ASSERT(IS_VALID_USART_LIN(pstcLinHandle->USARTx));
 
-    if (Set == USART_GetFlag(pstcLinHandle->USARTx, (USART_FLAG_PE | USART_FLAG_FE)))
+    if (Set == USART_GetStatus(pstcLinHandle->USARTx, (USART_FLAG_PE | USART_FLAG_FE)))
     {
         (void)USART_RecData(pstcLinHandle->USARTx);
     }
 
-    USART_ClearFlag(pstcLinHandle->USARTx, (USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_ORE));
+    USART_ClearStatus(pstcLinHandle->USARTx, (USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_ORE));
 }
 
 /**
@@ -948,7 +948,7 @@ static void USART_LinWakeupBreak_IrqCallback(stc_lin_hanlde_t *pstcLinHandle)
     {
         if (LinStateSleep == pstcLinHandle->enLinState)
         {
-            if (USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_WKUP))
+            if (Set == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_WKUP))
             {
                 USART_LinFuncCmd(pstcLinHandle->USARTx, USART_LIN_WKUP, Disable);
                 pstcLinHandle->enLinState = LinStateWakeup;
@@ -956,7 +956,7 @@ static void USART_LinWakeupBreak_IrqCallback(stc_lin_hanlde_t *pstcLinHandle)
         }
         else
         {
-            if (USART_GetFlag(pstcLinHandle->USARTx, USART_FLAG_LBD))
+            if (Set == USART_GetStatus(pstcLinHandle->USARTx, USART_FLAG_LBD))
             {
                 USART_FuncCmd(pstcLinHandle->USARTx, USART_INT_RX, Enable);
                 USART_LinFuncCmd(pstcLinHandle->USARTx, USART_LIN_INT_BREAK, Disable);
@@ -965,7 +965,7 @@ static void USART_LinWakeupBreak_IrqCallback(stc_lin_hanlde_t *pstcLinHandle)
         }
     }
 
-    USART_ClearFlag(pstcLinHandle->USARTx, (USART_CLEAR_FLAG_LBD | \
+    USART_ClearStatus(pstcLinHandle->USARTx, (USART_CLEAR_FLAG_LBD | \
                                             USART_CLEAR_FLAG_WKUP));
 }
 

@@ -150,15 +150,13 @@
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
 extern  USB_OTG_CORE_HANDLE      USB_OTG_dev;
-extern  uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev);
-
 
 /**
  * @brief  Usb interrupt handle
  * @param  None
  * @retval None
  */
-void USB_IRQ_Handler(void)
+static void USB_IRQ_Handler(void)
 {
     USBD_OTG_ISR_Handler(&USB_OTG_dev);
 }
@@ -172,7 +170,7 @@ void USB_IRQ_Handler(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -198,7 +196,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -237,9 +235,9 @@ void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
 #endif
     /* USB clock source configurate */
     CLK_USB_ClkConfig(CLK_USB_CLK_MCLK_DIV5);
-
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("USBFS start !!\n");
-
+#endif
     GPIO_StructInit(&stcGpioCfg);
 
 #ifdef USE_EMBEDDED_PHY
@@ -249,7 +247,7 @@ void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
     GPIO_Init(USB_DP_PORT, USB_DP_PIN, &stcGpioCfg);
 
     /* GPIO function configurate */
-    //GPIO_SetFunc(USB_SOF_PORT, USB_SOF_PIN, Func_UsbF, Disable); //SOF
+    //GPIO_SetFunc(USB_SOF_PORT, USB_SOF_PIN, Func_UsbF, PIN_SUBFUNC_DISABLE); //SOF
 
 #ifdef USB_OTG_FS_CORE
     GPIO_SetFunc(USB_VBUS_PORT, USB_VBUS_PIN, GPIO_FUNC_10_USBF_VBUS, PIN_SUBFUNC_DISABLE); //VBUS

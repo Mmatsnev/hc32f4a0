@@ -253,9 +253,9 @@ typedef enum
  * @defgroup Address_Align Address Align
  * @{
  */
-#define IS_ADDRESS_ALIGN(addr, align)   (!(((uint32_t)(addr)) & (((uint32_t)(align)) - 1UL)))
-#define IS_ADDRESS_ALIGN_HALFWORD(addr) (!(((uint32_t)(addr)) & 0x1UL))
-#define IS_ADDRESS_ALIGN_WORD(addr)     (!(((uint32_t)(addr)) & 0x3UL))
+#define IS_ADDRESS_ALIGN(addr, align)   (0UL == (((uint32_t)(addr)) & (((uint32_t)(align)) - 1UL)))
+#define IS_ADDRESS_ALIGN_HALFWORD(addr) (0UL == (((uint32_t)(addr)) & 0x1UL))
+#define IS_ADDRESS_ALIGN_WORD(addr)     (0UL == (((uint32_t)(addr)) & 0x3UL))
 /**
  * @}
  */

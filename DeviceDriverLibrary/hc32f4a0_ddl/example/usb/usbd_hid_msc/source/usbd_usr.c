@@ -127,14 +127,20 @@ void USBD_USR_DeviceReset(uint8_t speed)
     switch (speed)
     {
         case USB_OTG_SPEED_HIGH:
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("     USB Device Library V1.1.0 [HS]");
+#endif
             break;
 
         case USB_OTG_SPEED_FULL:
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("     USB Device Library V1.1.0 [FS]");
+ #endif
             break;
         default:
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("     USB Device Library V1.1.0 [??]");
+#endif
              break;
     }
 }
@@ -148,8 +154,10 @@ void USBD_USR_DeviceReset(uint8_t speed)
 */
 void USBD_USR_DeviceConfigured(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("> HID Interface started.\n");
     printf("> MSC Interface started.\n");
+#endif
 }
 
 
@@ -161,7 +169,9 @@ void USBD_USR_DeviceConfigured(void)
 */
 void USBD_USR_DeviceConnected(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("> USB Device Connected.\n");
+#endif
 }
 
 
@@ -173,7 +183,9 @@ void USBD_USR_DeviceConnected(void)
 */
 void USBD_USR_DeviceDisconnected(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("> USB Device Disconnected.\n");
+#endif
 }
 
 /**
@@ -184,7 +196,9 @@ void USBD_USR_DeviceDisconnected(void)
 */
 void USBD_USR_DeviceSuspended(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("> USB Device in Suspend Mode.\n");
+#endif
     /* Users can do their application actions here for the USB-Reset */
 }
 
@@ -197,7 +211,9 @@ void USBD_USR_DeviceSuspended(void)
 */
 void USBD_USR_DeviceResumed(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("> USB Device in Idle Mode.\n");
+#endif
     /* Users can do their application actions here for the USB-Reset */
 }
 

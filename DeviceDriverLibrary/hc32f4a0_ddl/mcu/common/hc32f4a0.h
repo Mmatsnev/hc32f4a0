@@ -5,7 +5,7 @@
  @verbatim
    Change Logs:
    Date             Author          Notes
-   2020-06-16      Heqb          First version
+   2020-06-30      Heqb          First version
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co.,Ltd All rights reserved.
@@ -1575,16 +1575,7 @@ typedef struct
     __IO uint16_t DADR2;
     __IO uint16_t DACR;
     __IO uint16_t DAADPCR;
-    uint8_t RESERVED0[2];
-    __IO uint16_t DADIVCR;
-    __IO uint16_t DIVPR11AB;
-    __IO uint16_t DIVPR11C;
-    __IO uint16_t DIVPR10AB;
-    __IO uint16_t DIVPR98;
-    __IO uint16_t DIVPR76;
-    __IO uint16_t DIVPR54;
-    __IO uint16_t DIVPR32;
-    __IO uint16_t DIVPR10;
+    uint8_t RESERVED0[20];
     __IO uint16_t DAOCR;
 } M4_DAC_TypeDef;
 
@@ -5205,133 +5196,21 @@ typedef struct
 #define AOS_DCU_4_TRGSEL_COMTRG_EN_0                   (0x40000000UL)
 #define AOS_DCU_4_TRGSEL_COMTRG_EN_1                   (0x80000000UL)
 
-/*  Bit definition for AOS_DMA_1_TRGSEL0 register  */
-#define AOS_DMA_1_TRGSEL0_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL0_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL0_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL0_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL0_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL0_COMTRG_EN_1                  (0x80000000UL)
+/*  Bit definition for AOS_DMA_1_TRGSEL register  */
+#define AOS_DMA_1_TRGSEL_TRGSEL_POS                    (0U)
+#define AOS_DMA_1_TRGSEL_TRGSEL                        (0x000001FFUL)
+#define AOS_DMA_1_TRGSEL_COMTRG_EN_POS                 (30U)
+#define AOS_DMA_1_TRGSEL_COMTRG_EN                     (0xC0000000UL)
+#define AOS_DMA_1_TRGSEL_COMTRG_EN_0                   (0x40000000UL)
+#define AOS_DMA_1_TRGSEL_COMTRG_EN_1                   (0x80000000UL)
 
-/*  Bit definition for AOS_DMA_1_TRGSEL1 register  */
-#define AOS_DMA_1_TRGSEL1_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL1_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL1_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL1_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL1_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL1_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_1_TRGSEL2 register  */
-#define AOS_DMA_1_TRGSEL2_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL2_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL2_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL2_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL2_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL2_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_1_TRGSEL3 register  */
-#define AOS_DMA_1_TRGSEL3_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL3_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL3_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL3_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL3_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL3_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_1_TRGSEL4 register  */
-#define AOS_DMA_1_TRGSEL4_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL4_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL4_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL4_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL4_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL4_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_1_TRGSEL5 register  */
-#define AOS_DMA_1_TRGSEL5_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL5_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL5_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL5_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL5_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL5_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_1_TRGSEL6 register  */
-#define AOS_DMA_1_TRGSEL6_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL6_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL6_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL6_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL6_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL6_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_1_TRGSEL7 register  */
-#define AOS_DMA_1_TRGSEL7_TRGSEL_POS                   (0U)
-#define AOS_DMA_1_TRGSEL7_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_1_TRGSEL7_COMTRG_EN_POS                (30U)
-#define AOS_DMA_1_TRGSEL7_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_1_TRGSEL7_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_1_TRGSEL7_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL0 register  */
-#define AOS_DMA_2_TRGSEL0_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL0_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL0_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL0_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL0_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL0_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL1 register  */
-#define AOS_DMA_2_TRGSEL1_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL1_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL1_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL1_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL1_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL1_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL2 register  */
-#define AOS_DMA_2_TRGSEL2_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL2_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL2_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL2_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL2_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL2_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL3 register  */
-#define AOS_DMA_2_TRGSEL3_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL3_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL3_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL3_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL3_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL3_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL4 register  */
-#define AOS_DMA_2_TRGSEL4_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL4_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL4_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL4_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL4_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL4_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL5 register  */
-#define AOS_DMA_2_TRGSEL5_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL5_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL5_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL5_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL5_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL5_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL6 register  */
-#define AOS_DMA_2_TRGSEL6_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL6_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL6_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL6_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL6_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL6_COMTRG_EN_1                  (0x80000000UL)
-
-/*  Bit definition for AOS_DMA_2_TRGSEL7 register  */
-#define AOS_DMA_2_TRGSEL7_TRGSEL_POS                   (0U)
-#define AOS_DMA_2_TRGSEL7_TRGSEL                       (0x000001FFUL)
-#define AOS_DMA_2_TRGSEL7_COMTRG_EN_POS                (30U)
-#define AOS_DMA_2_TRGSEL7_COMTRG_EN                    (0xC0000000UL)
-#define AOS_DMA_2_TRGSEL7_COMTRG_EN_0                  (0x40000000UL)
-#define AOS_DMA_2_TRGSEL7_COMTRG_EN_1                  (0x80000000UL)
+/*  Bit definition for AOS_DMA_2_TRGSEL register  */
+#define AOS_DMA_2_TRGSEL_TRGSEL_POS                    (0U)
+#define AOS_DMA_2_TRGSEL_TRGSEL                        (0x000001FFUL)
+#define AOS_DMA_2_TRGSEL_COMTRG_EN_POS                 (30U)
+#define AOS_DMA_2_TRGSEL_COMTRG_EN                     (0xC0000000UL)
+#define AOS_DMA_2_TRGSEL_COMTRG_EN_0                   (0x40000000UL)
+#define AOS_DMA_2_TRGSEL_COMTRG_EN_1                   (0x80000000UL)
 
 /*  Bit definition for AOS_DMA_TRGSELRC register  */
 #define AOS_DMA_TRGSELRC_TRGSEL_POS                    (0U)
@@ -5341,37 +5220,13 @@ typedef struct
 #define AOS_DMA_TRGSELRC_COMTRG_EN_0                   (0x40000000UL)
 #define AOS_DMA_TRGSELRC_COMTRG_EN_1                   (0x80000000UL)
 
-/*  Bit definition for AOS_TMR6_HTSSR1 register  */
-#define AOS_TMR6_HTSSR1_TRGSEL_POS                     (0U)
-#define AOS_TMR6_HTSSR1_TRGSEL                         (0x000001FFUL)
-#define AOS_TMR6_HTSSR1_COMTRG_EN_POS                  (30U)
-#define AOS_TMR6_HTSSR1_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMR6_HTSSR1_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMR6_HTSSR1_COMTRG_EN_1                    (0x80000000UL)
-
-/*  Bit definition for AOS_TMR6_HTSSR2 register  */
-#define AOS_TMR6_HTSSR2_TRGSEL_POS                     (0U)
-#define AOS_TMR6_HTSSR2_TRGSEL                         (0x000001FFUL)
-#define AOS_TMR6_HTSSR2_COMTRG_EN_POS                  (30U)
-#define AOS_TMR6_HTSSR2_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMR6_HTSSR2_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMR6_HTSSR2_COMTRG_EN_1                    (0x80000000UL)
-
-/*  Bit definition for AOS_TMR6_HTSSR3 register  */
-#define AOS_TMR6_HTSSR3_TRGSEL_POS                     (0U)
-#define AOS_TMR6_HTSSR3_TRGSEL                         (0x000001FFUL)
-#define AOS_TMR6_HTSSR3_COMTRG_EN_POS                  (30U)
-#define AOS_TMR6_HTSSR3_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMR6_HTSSR3_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMR6_HTSSR3_COMTRG_EN_1                    (0x80000000UL)
-
-/*  Bit definition for AOS_TMR6_HTSSR4 register  */
-#define AOS_TMR6_HTSSR4_TRGSEL_POS                     (0U)
-#define AOS_TMR6_HTSSR4_TRGSEL                         (0x000001FFUL)
-#define AOS_TMR6_HTSSR4_COMTRG_EN_POS                  (30U)
-#define AOS_TMR6_HTSSR4_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMR6_HTSSR4_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMR6_HTSSR4_COMTRG_EN_1                    (0x80000000UL)
+/*  Bit definition for AOS_TMR6_HTSSR register  */
+#define AOS_TMR6_HTSSR_TRGSEL_POS                      (0U)
+#define AOS_TMR6_HTSSR_TRGSEL                          (0x000001FFUL)
+#define AOS_TMR6_HTSSR_COMTRG_EN_POS                   (30U)
+#define AOS_TMR6_HTSSR_COMTRG_EN                       (0xC0000000UL)
+#define AOS_TMR6_HTSSR_COMTRG_EN_0                     (0x40000000UL)
+#define AOS_TMR6_HTSSR_COMTRG_EN_1                     (0x80000000UL)
 
 /*  Bit definition for AOS_PORT_PEVNTTRGSR12 register  */
 #define AOS_PORT_PEVNTTRGSR12_TRGSEL_POS               (0U)
@@ -5421,37 +5276,13 @@ typedef struct
 #define AOS_HASH_ITRGSELB_COMTRG_EN_0                  (0x40000000UL)
 #define AOS_HASH_ITRGSELB_COMTRG_EN_1                  (0x80000000UL)
 
-/*  Bit definition for AOS_TMRA_HTSSR0 register  */
-#define AOS_TMRA_HTSSR0_TRGSEL_POS                     (0U)
-#define AOS_TMRA_HTSSR0_TRGSEL                         (0x000001FFUL)
-#define AOS_TMRA_HTSSR0_COMTRG_EN_POS                  (30U)
-#define AOS_TMRA_HTSSR0_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMRA_HTSSR0_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMRA_HTSSR0_COMTRG_EN_1                    (0x80000000UL)
-
-/*  Bit definition for AOS_TMRA_HTSSR1 register  */
-#define AOS_TMRA_HTSSR1_TRGSEL_POS                     (0U)
-#define AOS_TMRA_HTSSR1_TRGSEL                         (0x000001FFUL)
-#define AOS_TMRA_HTSSR1_COMTRG_EN_POS                  (30U)
-#define AOS_TMRA_HTSSR1_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMRA_HTSSR1_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMRA_HTSSR1_COMTRG_EN_1                    (0x80000000UL)
-
-/*  Bit definition for AOS_TMRA_HTSSR2 register  */
-#define AOS_TMRA_HTSSR2_TRGSEL_POS                     (0U)
-#define AOS_TMRA_HTSSR2_TRGSEL                         (0x000001FFUL)
-#define AOS_TMRA_HTSSR2_COMTRG_EN_POS                  (30U)
-#define AOS_TMRA_HTSSR2_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMRA_HTSSR2_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMRA_HTSSR2_COMTRG_EN_1                    (0x80000000UL)
-
-/*  Bit definition for AOS_TMRA_HTSSR3 register  */
-#define AOS_TMRA_HTSSR3_TRGSEL_POS                     (0U)
-#define AOS_TMRA_HTSSR3_TRGSEL                         (0x000001FFUL)
-#define AOS_TMRA_HTSSR3_COMTRG_EN_POS                  (30U)
-#define AOS_TMRA_HTSSR3_COMTRG_EN                      (0xC0000000UL)
-#define AOS_TMRA_HTSSR3_COMTRG_EN_0                    (0x40000000UL)
-#define AOS_TMRA_HTSSR3_COMTRG_EN_1                    (0x80000000UL)
+/*  Bit definition for AOS_TMRA_HTSSR register  */
+#define AOS_TMRA_HTSSR_TRGSEL_POS                      (0U)
+#define AOS_TMRA_HTSSR_TRGSEL                          (0x000001FFUL)
+#define AOS_TMRA_HTSSR_COMTRG_EN_POS                   (30U)
+#define AOS_TMRA_HTSSR_COMTRG_EN                       (0xC0000000UL)
+#define AOS_TMRA_HTSSR_COMTRG_EN_0                     (0x40000000UL)
+#define AOS_TMRA_HTSSR_COMTRG_EN_1                     (0x80000000UL)
 
 /*  Bit definition for AOS_OTS_TRG register  */
 #define AOS_OTS_TRG_TRGSEL_POS                         (0U)
@@ -5461,53 +5292,29 @@ typedef struct
 #define AOS_OTS_TRG_COMTRG_EN_0                        (0x40000000UL)
 #define AOS_OTS_TRG_COMTRG_EN_1                        (0x80000000UL)
 
-/*  Bit definition for AOS_ADC_1_ITRGSELR0 register  */
-#define AOS_ADC_1_ITRGSELR0_TRGSEL_POS                 (0U)
-#define AOS_ADC_1_ITRGSELR0_TRGSEL                     (0x000001FFUL)
-#define AOS_ADC_1_ITRGSELR0_COMTRG_EN_POS              (30U)
-#define AOS_ADC_1_ITRGSELR0_COMTRG_EN                  (0xC0000000UL)
-#define AOS_ADC_1_ITRGSELR0_COMTRG_EN_0                (0x40000000UL)
-#define AOS_ADC_1_ITRGSELR0_COMTRG_EN_1                (0x80000000UL)
+/*  Bit definition for AOS_ADC_1_ITRGSELR register  */
+#define AOS_ADC_1_ITRGSELR_TRGSEL_POS                  (0U)
+#define AOS_ADC_1_ITRGSELR_TRGSEL                      (0x000001FFUL)
+#define AOS_ADC_1_ITRGSELR_COMTRG_EN_POS               (30U)
+#define AOS_ADC_1_ITRGSELR_COMTRG_EN                   (0xC0000000UL)
+#define AOS_ADC_1_ITRGSELR_COMTRG_EN_0                 (0x40000000UL)
+#define AOS_ADC_1_ITRGSELR_COMTRG_EN_1                 (0x80000000UL)
 
-/*  Bit definition for AOS_ADC_1_ITRGSELR1 register  */
-#define AOS_ADC_1_ITRGSELR1_TRGSEL_POS                 (0U)
-#define AOS_ADC_1_ITRGSELR1_TRGSEL                     (0x000001FFUL)
-#define AOS_ADC_1_ITRGSELR1_COMTRG_EN_POS              (30U)
-#define AOS_ADC_1_ITRGSELR1_COMTRG_EN                  (0xC0000000UL)
-#define AOS_ADC_1_ITRGSELR1_COMTRG_EN_0                (0x40000000UL)
-#define AOS_ADC_1_ITRGSELR1_COMTRG_EN_1                (0x80000000UL)
+/*  Bit definition for AOS_ADC_2_ITRGSELR register  */
+#define AOS_ADC_2_ITRGSELR_TRGSEL_POS                  (0U)
+#define AOS_ADC_2_ITRGSELR_TRGSEL                      (0x000001FFUL)
+#define AOS_ADC_2_ITRGSELR_COMTRG_EN_POS               (30U)
+#define AOS_ADC_2_ITRGSELR_COMTRG_EN                   (0xC0000000UL)
+#define AOS_ADC_2_ITRGSELR_COMTRG_EN_0                 (0x40000000UL)
+#define AOS_ADC_2_ITRGSELR_COMTRG_EN_1                 (0x80000000UL)
 
-/*  Bit definition for AOS_ADC_2_ITRGSELR0 register  */
-#define AOS_ADC_2_ITRGSELR0_TRGSEL_POS                 (0U)
-#define AOS_ADC_2_ITRGSELR0_TRGSEL                     (0x000001FFUL)
-#define AOS_ADC_2_ITRGSELR0_COMTRG_EN_POS              (30U)
-#define AOS_ADC_2_ITRGSELR0_COMTRG_EN                  (0xC0000000UL)
-#define AOS_ADC_2_ITRGSELR0_COMTRG_EN_0                (0x40000000UL)
-#define AOS_ADC_2_ITRGSELR0_COMTRG_EN_1                (0x80000000UL)
-
-/*  Bit definition for AOS_ADC_2_ITRGSELR1 register  */
-#define AOS_ADC_2_ITRGSELR1_TRGSEL_POS                 (0U)
-#define AOS_ADC_2_ITRGSELR1_TRGSEL                     (0x000001FFUL)
-#define AOS_ADC_2_ITRGSELR1_COMTRG_EN_POS              (30U)
-#define AOS_ADC_2_ITRGSELR1_COMTRG_EN                  (0xC0000000UL)
-#define AOS_ADC_2_ITRGSELR1_COMTRG_EN_0                (0x40000000UL)
-#define AOS_ADC_2_ITRGSELR1_COMTRG_EN_1                (0x80000000UL)
-
-/*  Bit definition for AOS_ADC_3_ITRGSELR0 register  */
-#define AOS_ADC_3_ITRGSELR0_TRGSEL_POS                 (0U)
-#define AOS_ADC_3_ITRGSELR0_TRGSEL                     (0x000001FFUL)
-#define AOS_ADC_3_ITRGSELR0_COMTRG_EN_POS              (30U)
-#define AOS_ADC_3_ITRGSELR0_COMTRG_EN                  (0xC0000000UL)
-#define AOS_ADC_3_ITRGSELR0_COMTRG_EN_0                (0x40000000UL)
-#define AOS_ADC_3_ITRGSELR0_COMTRG_EN_1                (0x80000000UL)
-
-/*  Bit definition for AOS_ADC_3_ITRGSELR1 register  */
-#define AOS_ADC_3_ITRGSELR1_TRGSEL_POS                 (0U)
-#define AOS_ADC_3_ITRGSELR1_TRGSEL                     (0x000001FFUL)
-#define AOS_ADC_3_ITRGSELR1_COMTRG_EN_POS              (30U)
-#define AOS_ADC_3_ITRGSELR1_COMTRG_EN                  (0xC0000000UL)
-#define AOS_ADC_3_ITRGSELR1_COMTRG_EN_0                (0x40000000UL)
-#define AOS_ADC_3_ITRGSELR1_COMTRG_EN_1                (0x80000000UL)
+/*  Bit definition for AOS_ADC_3_ITRGSELR register  */
+#define AOS_ADC_3_ITRGSELR_TRGSEL_POS                  (0U)
+#define AOS_ADC_3_ITRGSELR_TRGSEL                      (0x000001FFUL)
+#define AOS_ADC_3_ITRGSELR_COMTRG_EN_POS               (30U)
+#define AOS_ADC_3_ITRGSELR_COMTRG_EN                   (0xC0000000UL)
+#define AOS_ADC_3_ITRGSELR_COMTRG_EN_0                 (0x40000000UL)
+#define AOS_ADC_3_ITRGSELR_COMTRG_EN_1                 (0x80000000UL)
 
 /*  Bit definition for AOS_COMTRG1 register  */
 #define AOS_COMTRG1_TRGSEL                             (0x000001FFUL)
@@ -6596,128 +6403,6 @@ typedef struct
 #define DAC_DAADPCR_DA2SF                              (0x0200U)
 #define DAC_DAADPCR_ADPEN_POS                          (15U)
 #define DAC_DAADPCR_ADPEN                              (0x8000U)
-
-/*  Bit definition for DAC_DADIVCR register  */
-#define DAC_DADIVCR_DADIV1_POS                         (14U)
-#define DAC_DADIVCR_DADIV1                             (0x4000U)
-#define DAC_DADIVCR_DADIV2_POS                         (15U)
-#define DAC_DADIVCR_DADIV2                             (0x8000U)
-
-/*  Bit definition for DAC_DIVPR11AB register  */
-#define DAC_DIVPR11AB_DIVPR11B_POS                     (0U)
-#define DAC_DIVPR11AB_DIVPR11B                         (0x001FU)
-#define DAC_DIVPR11AB_DIVPR11B_0                       (0x0001U)
-#define DAC_DIVPR11AB_DIVPR11B_1                       (0x0002U)
-#define DAC_DIVPR11AB_DIVPR11B_2                       (0x0004U)
-#define DAC_DIVPR11AB_DIVPR11B_3                       (0x0008U)
-#define DAC_DIVPR11AB_DIVPR11B_4                       (0x0010U)
-#define DAC_DIVPR11AB_DIVPR11A_POS                     (8U)
-#define DAC_DIVPR11AB_DIVPR11A                         (0x1F00U)
-#define DAC_DIVPR11AB_DIVPR11A_0                       (0x0100U)
-#define DAC_DIVPR11AB_DIVPR11A_1                       (0x0200U)
-#define DAC_DIVPR11AB_DIVPR11A_2                       (0x0400U)
-#define DAC_DIVPR11AB_DIVPR11A_3                       (0x0800U)
-#define DAC_DIVPR11AB_DIVPR11A_4                       (0x1000U)
-
-/*  Bit definition for DAC_DIVPR11C register  */
-#define DAC_DIVPR11C_DIVPR11C_POS                      (8U)
-#define DAC_DIVPR11C_DIVPR11C                          (0x1F00U)
-
-/*  Bit definition for DAC_DIVPR10AB register  */
-#define DAC_DIVPR10AB_DIVPR10B_POS                     (0U)
-#define DAC_DIVPR10AB_DIVPR10B                         (0x001FU)
-#define DAC_DIVPR10AB_DIVPR10B_0                       (0x0001U)
-#define DAC_DIVPR10AB_DIVPR10B_1                       (0x0002U)
-#define DAC_DIVPR10AB_DIVPR10B_2                       (0x0004U)
-#define DAC_DIVPR10AB_DIVPR10B_3                       (0x0008U)
-#define DAC_DIVPR10AB_DIVPR10B_4                       (0x0010U)
-#define DAC_DIVPR10AB_DIVPR10A_POS                     (8U)
-#define DAC_DIVPR10AB_DIVPR10A                         (0x1F00U)
-#define DAC_DIVPR10AB_DIVPR10A_0                       (0x0100U)
-#define DAC_DIVPR10AB_DIVPR10A_1                       (0x0200U)
-#define DAC_DIVPR10AB_DIVPR10A_2                       (0x0400U)
-#define DAC_DIVPR10AB_DIVPR10A_3                       (0x0800U)
-#define DAC_DIVPR10AB_DIVPR10A_4                       (0x1000U)
-
-/*  Bit definition for DAC_DIVPR98 register  */
-#define DAC_DIVPR98_DIVPR8_POS                         (0U)
-#define DAC_DIVPR98_DIVPR8                             (0x001FU)
-#define DAC_DIVPR98_DIVPR8_0                           (0x0001U)
-#define DAC_DIVPR98_DIVPR8_1                           (0x0002U)
-#define DAC_DIVPR98_DIVPR8_2                           (0x0004U)
-#define DAC_DIVPR98_DIVPR8_3                           (0x0008U)
-#define DAC_DIVPR98_DIVPR8_4                           (0x0010U)
-#define DAC_DIVPR98_DIVPR9_POS                         (8U)
-#define DAC_DIVPR98_DIVPR9                             (0x1F00U)
-#define DAC_DIVPR98_DIVPR9_0                           (0x0100U)
-#define DAC_DIVPR98_DIVPR9_1                           (0x0200U)
-#define DAC_DIVPR98_DIVPR9_2                           (0x0400U)
-#define DAC_DIVPR98_DIVPR9_3                           (0x0800U)
-#define DAC_DIVPR98_DIVPR9_4                           (0x1000U)
-
-/*  Bit definition for DAC_DIVPR76 register  */
-#define DAC_DIVPR76_DIVPR6_POS                         (0U)
-#define DAC_DIVPR76_DIVPR6                             (0x001FU)
-#define DAC_DIVPR76_DIVPR6_0                           (0x0001U)
-#define DAC_DIVPR76_DIVPR6_1                           (0x0002U)
-#define DAC_DIVPR76_DIVPR6_2                           (0x0004U)
-#define DAC_DIVPR76_DIVPR6_3                           (0x0008U)
-#define DAC_DIVPR76_DIVPR6_4                           (0x0010U)
-#define DAC_DIVPR76_DIVPR7_POS                         (8U)
-#define DAC_DIVPR76_DIVPR7                             (0x1F00U)
-#define DAC_DIVPR76_DIVPR7_0                           (0x0100U)
-#define DAC_DIVPR76_DIVPR7_1                           (0x0200U)
-#define DAC_DIVPR76_DIVPR7_2                           (0x0400U)
-#define DAC_DIVPR76_DIVPR7_3                           (0x0800U)
-#define DAC_DIVPR76_DIVPR7_4                           (0x1000U)
-
-/*  Bit definition for DAC_DIVPR54 register  */
-#define DAC_DIVPR54_DIVPR4_POS                         (0U)
-#define DAC_DIVPR54_DIVPR4                             (0x001FU)
-#define DAC_DIVPR54_DIVPR4_0                           (0x0001U)
-#define DAC_DIVPR54_DIVPR4_1                           (0x0002U)
-#define DAC_DIVPR54_DIVPR4_2                           (0x0004U)
-#define DAC_DIVPR54_DIVPR4_3                           (0x0008U)
-#define DAC_DIVPR54_DIVPR4_4                           (0x0010U)
-#define DAC_DIVPR54_DIVPR5_POS                         (8U)
-#define DAC_DIVPR54_DIVPR5                             (0x1F00U)
-#define DAC_DIVPR54_DIVPR5_0                           (0x0100U)
-#define DAC_DIVPR54_DIVPR5_1                           (0x0200U)
-#define DAC_DIVPR54_DIVPR5_2                           (0x0400U)
-#define DAC_DIVPR54_DIVPR5_3                           (0x0800U)
-#define DAC_DIVPR54_DIVPR5_4                           (0x1000U)
-
-/*  Bit definition for DAC_DIVPR32 register  */
-#define DAC_DIVPR32_DIVPR2_POS                         (0U)
-#define DAC_DIVPR32_DIVPR2                             (0x001FU)
-#define DAC_DIVPR32_DIVPR2_0                           (0x0001U)
-#define DAC_DIVPR32_DIVPR2_1                           (0x0002U)
-#define DAC_DIVPR32_DIVPR2_2                           (0x0004U)
-#define DAC_DIVPR32_DIVPR2_3                           (0x0008U)
-#define DAC_DIVPR32_DIVPR2_4                           (0x0010U)
-#define DAC_DIVPR32_DIVPR3_POS                         (8U)
-#define DAC_DIVPR32_DIVPR3                             (0x1F00U)
-#define DAC_DIVPR32_DIVPR3_0                           (0x0100U)
-#define DAC_DIVPR32_DIVPR3_1                           (0x0200U)
-#define DAC_DIVPR32_DIVPR3_2                           (0x0400U)
-#define DAC_DIVPR32_DIVPR3_3                           (0x0800U)
-#define DAC_DIVPR32_DIVPR3_4                           (0x1000U)
-
-/*  Bit definition for DAC_DIVPR10 register  */
-#define DAC_DIVPR10_DIVPR0_POS                         (0U)
-#define DAC_DIVPR10_DIVPR0                             (0x001FU)
-#define DAC_DIVPR10_DIVPR0_0                           (0x0001U)
-#define DAC_DIVPR10_DIVPR0_1                           (0x0002U)
-#define DAC_DIVPR10_DIVPR0_2                           (0x0004U)
-#define DAC_DIVPR10_DIVPR0_3                           (0x0008U)
-#define DAC_DIVPR10_DIVPR0_4                           (0x0010U)
-#define DAC_DIVPR10_DIVPR1_POS                         (8U)
-#define DAC_DIVPR10_DIVPR1                             (0x1F00U)
-#define DAC_DIVPR10_DIVPR1_0                           (0x0100U)
-#define DAC_DIVPR10_DIVPR1_1                           (0x0200U)
-#define DAC_DIVPR10_DIVPR1_2                           (0x0400U)
-#define DAC_DIVPR10_DIVPR1_3                           (0x0800U)
-#define DAC_DIVPR10_DIVPR1_4                           (0x1000U)
 
 /*  Bit definition for DAC_DAOCR register  */
 #define DAC_DAOCR_DAODIS1_POS                          (14U)
@@ -12159,612 +11844,105 @@ typedef struct
                 Bit definition for Peripheral MPU
 *******************************************************************************/
 /*  Bit definition for MPU_RGD0 register  */
-#define MPU_RGD0_MPURG0SIZE_POS                        (0U)
-#define MPU_RGD0_MPURG0SIZE                            (0x0000001FUL)
-#define MPU_RGD0_MPURG0SIZE_0                          (0x00000001UL)
-#define MPU_RGD0_MPURG0SIZE_1                          (0x00000002UL)
-#define MPU_RGD0_MPURG0SIZE_2                          (0x00000004UL)
-#define MPU_RGD0_MPURG0SIZE_3                          (0x00000008UL)
-#define MPU_RGD0_MPURG0SIZE_4                          (0x00000010UL)
-#define MPU_RGD0_MPURG0ADDR_POS                        (5U)
-#define MPU_RGD0_MPURG0ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD0_MPURG0ADDR_0                          (0x00000020UL)
-#define MPU_RGD0_MPURG0ADDR_1                          (0x00000040UL)
-#define MPU_RGD0_MPURG0ADDR_2                          (0x00000080UL)
-#define MPU_RGD0_MPURG0ADDR_3                          (0x00000100UL)
-#define MPU_RGD0_MPURG0ADDR_4                          (0x00000200UL)
-#define MPU_RGD0_MPURG0ADDR_5                          (0x00000400UL)
-#define MPU_RGD0_MPURG0ADDR_6                          (0x00000800UL)
-#define MPU_RGD0_MPURG0ADDR_7                          (0x00001000UL)
-#define MPU_RGD0_MPURG0ADDR_8                          (0x00002000UL)
-#define MPU_RGD0_MPURG0ADDR_9                          (0x00004000UL)
-#define MPU_RGD0_MPURG0ADDR_10                         (0x00008000UL)
-#define MPU_RGD0_MPURG0ADDR_11                         (0x00010000UL)
-#define MPU_RGD0_MPURG0ADDR_12                         (0x00020000UL)
-#define MPU_RGD0_MPURG0ADDR_13                         (0x00040000UL)
-#define MPU_RGD0_MPURG0ADDR_14                         (0x00080000UL)
-#define MPU_RGD0_MPURG0ADDR_15                         (0x00100000UL)
-#define MPU_RGD0_MPURG0ADDR_16                         (0x00200000UL)
-#define MPU_RGD0_MPURG0ADDR_17                         (0x00400000UL)
-#define MPU_RGD0_MPURG0ADDR_18                         (0x00800000UL)
-#define MPU_RGD0_MPURG0ADDR_19                         (0x01000000UL)
-#define MPU_RGD0_MPURG0ADDR_20                         (0x02000000UL)
-#define MPU_RGD0_MPURG0ADDR_21                         (0x04000000UL)
-#define MPU_RGD0_MPURG0ADDR_22                         (0x08000000UL)
-#define MPU_RGD0_MPURG0ADDR_23                         (0x10000000UL)
-#define MPU_RGD0_MPURG0ADDR_24                         (0x20000000UL)
-#define MPU_RGD0_MPURG0ADDR_25                         (0x40000000UL)
-#define MPU_RGD0_MPURG0ADDR_26                         (0x80000000UL)
+#define MPU_RGD0_MPURGSIZE_POS                         (0U)
+#define MPU_RGD0_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD0_MPURGSIZE_0                           (0x00000001UL)
+#define MPU_RGD0_MPURGSIZE_1                           (0x00000002UL)
+#define MPU_RGD0_MPURGSIZE_2                           (0x00000004UL)
+#define MPU_RGD0_MPURGSIZE_3                           (0x00000008UL)
+#define MPU_RGD0_MPURGSIZE_4                           (0x00000010UL)
+#define MPU_RGD0_MPURGADDR_POS                         (5U)
+#define MPU_RGD0_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD1 register  */
-#define MPU_RGD1_MPURG1SIZE_POS                        (0U)
-#define MPU_RGD1_MPURG1SIZE                            (0x0000001FUL)
-#define MPU_RGD1_MPURG1SIZE_0                          (0x00000001UL)
-#define MPU_RGD1_MPURG1SIZE_1                          (0x00000002UL)
-#define MPU_RGD1_MPURG1SIZE_2                          (0x00000004UL)
-#define MPU_RGD1_MPURG1SIZE_3                          (0x00000008UL)
-#define MPU_RGD1_MPURG1SIZE_4                          (0x00000010UL)
-#define MPU_RGD1_MPURG1ADDR_POS                        (5U)
-#define MPU_RGD1_MPURG1ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD1_MPURG1ADDR_0                          (0x00000020UL)
-#define MPU_RGD1_MPURG1ADDR_1                          (0x00000040UL)
-#define MPU_RGD1_MPURG1ADDR_2                          (0x00000080UL)
-#define MPU_RGD1_MPURG1ADDR_3                          (0x00000100UL)
-#define MPU_RGD1_MPURG1ADDR_4                          (0x00000200UL)
-#define MPU_RGD1_MPURG1ADDR_5                          (0x00000400UL)
-#define MPU_RGD1_MPURG1ADDR_6                          (0x00000800UL)
-#define MPU_RGD1_MPURG1ADDR_7                          (0x00001000UL)
-#define MPU_RGD1_MPURG1ADDR_8                          (0x00002000UL)
-#define MPU_RGD1_MPURG1ADDR_9                          (0x00004000UL)
-#define MPU_RGD1_MPURG1ADDR_10                         (0x00008000UL)
-#define MPU_RGD1_MPURG1ADDR_11                         (0x00010000UL)
-#define MPU_RGD1_MPURG1ADDR_12                         (0x00020000UL)
-#define MPU_RGD1_MPURG1ADDR_13                         (0x00040000UL)
-#define MPU_RGD1_MPURG1ADDR_14                         (0x00080000UL)
-#define MPU_RGD1_MPURG1ADDR_15                         (0x00100000UL)
-#define MPU_RGD1_MPURG1ADDR_16                         (0x00200000UL)
-#define MPU_RGD1_MPURG1ADDR_17                         (0x00400000UL)
-#define MPU_RGD1_MPURG1ADDR_18                         (0x00800000UL)
-#define MPU_RGD1_MPURG1ADDR_19                         (0x01000000UL)
-#define MPU_RGD1_MPURG1ADDR_20                         (0x02000000UL)
-#define MPU_RGD1_MPURG1ADDR_21                         (0x04000000UL)
-#define MPU_RGD1_MPURG1ADDR_22                         (0x08000000UL)
-#define MPU_RGD1_MPURG1ADDR_23                         (0x10000000UL)
-#define MPU_RGD1_MPURG1ADDR_24                         (0x20000000UL)
-#define MPU_RGD1_MPURG1ADDR_25                         (0x40000000UL)
-#define MPU_RGD1_MPURG1ADDR_26                         (0x80000000UL)
+#define MPU_RGD1_MPURGSIZE_POS                         (0U)
+#define MPU_RGD1_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD1_MPURGADDR_POS                         (5U)
+#define MPU_RGD1_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD2 register  */
-#define MPU_RGD2_MPURG2SIZE_POS                        (0U)
-#define MPU_RGD2_MPURG2SIZE                            (0x0000001FUL)
-#define MPU_RGD2_MPURG2SIZE_0                          (0x00000001UL)
-#define MPU_RGD2_MPURG2SIZE_1                          (0x00000002UL)
-#define MPU_RGD2_MPURG2SIZE_2                          (0x00000004UL)
-#define MPU_RGD2_MPURG2SIZE_3                          (0x00000008UL)
-#define MPU_RGD2_MPURG2SIZE_4                          (0x00000010UL)
-#define MPU_RGD2_MPURG2ADDR_POS                        (5U)
-#define MPU_RGD2_MPURG2ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD2_MPURG2ADDR_0                          (0x00000020UL)
-#define MPU_RGD2_MPURG2ADDR_1                          (0x00000040UL)
-#define MPU_RGD2_MPURG2ADDR_2                          (0x00000080UL)
-#define MPU_RGD2_MPURG2ADDR_3                          (0x00000100UL)
-#define MPU_RGD2_MPURG2ADDR_4                          (0x00000200UL)
-#define MPU_RGD2_MPURG2ADDR_5                          (0x00000400UL)
-#define MPU_RGD2_MPURG2ADDR_6                          (0x00000800UL)
-#define MPU_RGD2_MPURG2ADDR_7                          (0x00001000UL)
-#define MPU_RGD2_MPURG2ADDR_8                          (0x00002000UL)
-#define MPU_RGD2_MPURG2ADDR_9                          (0x00004000UL)
-#define MPU_RGD2_MPURG2ADDR_10                         (0x00008000UL)
-#define MPU_RGD2_MPURG2ADDR_11                         (0x00010000UL)
-#define MPU_RGD2_MPURG2ADDR_12                         (0x00020000UL)
-#define MPU_RGD2_MPURG2ADDR_13                         (0x00040000UL)
-#define MPU_RGD2_MPURG2ADDR_14                         (0x00080000UL)
-#define MPU_RGD2_MPURG2ADDR_15                         (0x00100000UL)
-#define MPU_RGD2_MPURG2ADDR_16                         (0x00200000UL)
-#define MPU_RGD2_MPURG2ADDR_17                         (0x00400000UL)
-#define MPU_RGD2_MPURG2ADDR_18                         (0x00800000UL)
-#define MPU_RGD2_MPURG2ADDR_19                         (0x01000000UL)
-#define MPU_RGD2_MPURG2ADDR_20                         (0x02000000UL)
-#define MPU_RGD2_MPURG2ADDR_21                         (0x04000000UL)
-#define MPU_RGD2_MPURG2ADDR_22                         (0x08000000UL)
-#define MPU_RGD2_MPURG2ADDR_23                         (0x10000000UL)
-#define MPU_RGD2_MPURG2ADDR_24                         (0x20000000UL)
-#define MPU_RGD2_MPURG2ADDR_25                         (0x40000000UL)
-#define MPU_RGD2_MPURG2ADDR_26                         (0x80000000UL)
+#define MPU_RGD2_MPURGSIZE_POS                         (0U)
+#define MPU_RGD2_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD2_MPURGADDR_POS                         (5U)
+#define MPU_RGD2_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD3 register  */
-#define MPU_RGD3_MPURG3SIZE_POS                        (0U)
-#define MPU_RGD3_MPURG3SIZE                            (0x0000001FUL)
-#define MPU_RGD3_MPURG3SIZE_0                          (0x00000001UL)
-#define MPU_RGD3_MPURG3SIZE_1                          (0x00000002UL)
-#define MPU_RGD3_MPURG3SIZE_2                          (0x00000004UL)
-#define MPU_RGD3_MPURG3SIZE_3                          (0x00000008UL)
-#define MPU_RGD3_MPURG3SIZE_4                          (0x00000010UL)
-#define MPU_RGD3_MPURG3ADDR_POS                        (5U)
-#define MPU_RGD3_MPURG3ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD3_MPURG3ADDR_0                          (0x00000020UL)
-#define MPU_RGD3_MPURG3ADDR_1                          (0x00000040UL)
-#define MPU_RGD3_MPURG3ADDR_2                          (0x00000080UL)
-#define MPU_RGD3_MPURG3ADDR_3                          (0x00000100UL)
-#define MPU_RGD3_MPURG3ADDR_4                          (0x00000200UL)
-#define MPU_RGD3_MPURG3ADDR_5                          (0x00000400UL)
-#define MPU_RGD3_MPURG3ADDR_6                          (0x00000800UL)
-#define MPU_RGD3_MPURG3ADDR_7                          (0x00001000UL)
-#define MPU_RGD3_MPURG3ADDR_8                          (0x00002000UL)
-#define MPU_RGD3_MPURG3ADDR_9                          (0x00004000UL)
-#define MPU_RGD3_MPURG3ADDR_10                         (0x00008000UL)
-#define MPU_RGD3_MPURG3ADDR_11                         (0x00010000UL)
-#define MPU_RGD3_MPURG3ADDR_12                         (0x00020000UL)
-#define MPU_RGD3_MPURG3ADDR_13                         (0x00040000UL)
-#define MPU_RGD3_MPURG3ADDR_14                         (0x00080000UL)
-#define MPU_RGD3_MPURG3ADDR_15                         (0x00100000UL)
-#define MPU_RGD3_MPURG3ADDR_16                         (0x00200000UL)
-#define MPU_RGD3_MPURG3ADDR_17                         (0x00400000UL)
-#define MPU_RGD3_MPURG3ADDR_18                         (0x00800000UL)
-#define MPU_RGD3_MPURG3ADDR_19                         (0x01000000UL)
-#define MPU_RGD3_MPURG3ADDR_20                         (0x02000000UL)
-#define MPU_RGD3_MPURG3ADDR_21                         (0x04000000UL)
-#define MPU_RGD3_MPURG3ADDR_22                         (0x08000000UL)
-#define MPU_RGD3_MPURG3ADDR_23                         (0x10000000UL)
-#define MPU_RGD3_MPURG3ADDR_24                         (0x20000000UL)
-#define MPU_RGD3_MPURG3ADDR_25                         (0x40000000UL)
-#define MPU_RGD3_MPURG3ADDR_26                         (0x80000000UL)
+#define MPU_RGD3_MPURGSIZE_POS                         (0U)
+#define MPU_RGD3_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD3_MPURGADDR_POS                         (5U)
+#define MPU_RGD3_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD4 register  */
-#define MPU_RGD4_MPURG4SIZE_POS                        (0U)
-#define MPU_RGD4_MPURG4SIZE                            (0x0000001FUL)
-#define MPU_RGD4_MPURG4SIZE_0                          (0x00000001UL)
-#define MPU_RGD4_MPURG4SIZE_1                          (0x00000002UL)
-#define MPU_RGD4_MPURG4SIZE_2                          (0x00000004UL)
-#define MPU_RGD4_MPURG4SIZE_3                          (0x00000008UL)
-#define MPU_RGD4_MPURG4SIZE_4                          (0x00000010UL)
-#define MPU_RGD4_MPURG4ADDR_POS                        (5U)
-#define MPU_RGD4_MPURG4ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD4_MPURG4ADDR_0                          (0x00000020UL)
-#define MPU_RGD4_MPURG4ADDR_1                          (0x00000040UL)
-#define MPU_RGD4_MPURG4ADDR_2                          (0x00000080UL)
-#define MPU_RGD4_MPURG4ADDR_3                          (0x00000100UL)
-#define MPU_RGD4_MPURG4ADDR_4                          (0x00000200UL)
-#define MPU_RGD4_MPURG4ADDR_5                          (0x00000400UL)
-#define MPU_RGD4_MPURG4ADDR_6                          (0x00000800UL)
-#define MPU_RGD4_MPURG4ADDR_7                          (0x00001000UL)
-#define MPU_RGD4_MPURG4ADDR_8                          (0x00002000UL)
-#define MPU_RGD4_MPURG4ADDR_9                          (0x00004000UL)
-#define MPU_RGD4_MPURG4ADDR_10                         (0x00008000UL)
-#define MPU_RGD4_MPURG4ADDR_11                         (0x00010000UL)
-#define MPU_RGD4_MPURG4ADDR_12                         (0x00020000UL)
-#define MPU_RGD4_MPURG4ADDR_13                         (0x00040000UL)
-#define MPU_RGD4_MPURG4ADDR_14                         (0x00080000UL)
-#define MPU_RGD4_MPURG4ADDR_15                         (0x00100000UL)
-#define MPU_RGD4_MPURG4ADDR_16                         (0x00200000UL)
-#define MPU_RGD4_MPURG4ADDR_17                         (0x00400000UL)
-#define MPU_RGD4_MPURG4ADDR_18                         (0x00800000UL)
-#define MPU_RGD4_MPURG4ADDR_19                         (0x01000000UL)
-#define MPU_RGD4_MPURG4ADDR_20                         (0x02000000UL)
-#define MPU_RGD4_MPURG4ADDR_21                         (0x04000000UL)
-#define MPU_RGD4_MPURG4ADDR_22                         (0x08000000UL)
-#define MPU_RGD4_MPURG4ADDR_23                         (0x10000000UL)
-#define MPU_RGD4_MPURG4ADDR_24                         (0x20000000UL)
-#define MPU_RGD4_MPURG4ADDR_25                         (0x40000000UL)
-#define MPU_RGD4_MPURG4ADDR_26                         (0x80000000UL)
+#define MPU_RGD4_MPURGSIZE_POS                         (0U)
+#define MPU_RGD4_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD4_MPURGADDR_POS                         (5U)
+#define MPU_RGD4_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD5 register  */
-#define MPU_RGD5_MPURG5SIZE_POS                        (0U)
-#define MPU_RGD5_MPURG5SIZE                            (0x0000001FUL)
-#define MPU_RGD5_MPURG5SIZE_0                          (0x00000001UL)
-#define MPU_RGD5_MPURG5SIZE_1                          (0x00000002UL)
-#define MPU_RGD5_MPURG5SIZE_2                          (0x00000004UL)
-#define MPU_RGD5_MPURG5SIZE_3                          (0x00000008UL)
-#define MPU_RGD5_MPURG5SIZE_4                          (0x00000010UL)
-#define MPU_RGD5_MPURG5ADDR_POS                        (5U)
-#define MPU_RGD5_MPURG5ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD5_MPURG5ADDR_0                          (0x00000020UL)
-#define MPU_RGD5_MPURG5ADDR_1                          (0x00000040UL)
-#define MPU_RGD5_MPURG5ADDR_2                          (0x00000080UL)
-#define MPU_RGD5_MPURG5ADDR_3                          (0x00000100UL)
-#define MPU_RGD5_MPURG5ADDR_4                          (0x00000200UL)
-#define MPU_RGD5_MPURG5ADDR_5                          (0x00000400UL)
-#define MPU_RGD5_MPURG5ADDR_6                          (0x00000800UL)
-#define MPU_RGD5_MPURG5ADDR_7                          (0x00001000UL)
-#define MPU_RGD5_MPURG5ADDR_8                          (0x00002000UL)
-#define MPU_RGD5_MPURG5ADDR_9                          (0x00004000UL)
-#define MPU_RGD5_MPURG5ADDR_10                         (0x00008000UL)
-#define MPU_RGD5_MPURG5ADDR_11                         (0x00010000UL)
-#define MPU_RGD5_MPURG5ADDR_12                         (0x00020000UL)
-#define MPU_RGD5_MPURG5ADDR_13                         (0x00040000UL)
-#define MPU_RGD5_MPURG5ADDR_14                         (0x00080000UL)
-#define MPU_RGD5_MPURG5ADDR_15                         (0x00100000UL)
-#define MPU_RGD5_MPURG5ADDR_16                         (0x00200000UL)
-#define MPU_RGD5_MPURG5ADDR_17                         (0x00400000UL)
-#define MPU_RGD5_MPURG5ADDR_18                         (0x00800000UL)
-#define MPU_RGD5_MPURG5ADDR_19                         (0x01000000UL)
-#define MPU_RGD5_MPURG5ADDR_20                         (0x02000000UL)
-#define MPU_RGD5_MPURG5ADDR_21                         (0x04000000UL)
-#define MPU_RGD5_MPURG5ADDR_22                         (0x08000000UL)
-#define MPU_RGD5_MPURG5ADDR_23                         (0x10000000UL)
-#define MPU_RGD5_MPURG5ADDR_24                         (0x20000000UL)
-#define MPU_RGD5_MPURG5ADDR_25                         (0x40000000UL)
-#define MPU_RGD5_MPURG5ADDR_26                         (0x80000000UL)
+#define MPU_RGD5_MPURGSIZE_POS                         (0U)
+#define MPU_RGD5_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD5_MPURGADDR_POS                         (5U)
+#define MPU_RGD5_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD6 register  */
-#define MPU_RGD6_MPURG6SIZE_POS                        (0U)
-#define MPU_RGD6_MPURG6SIZE                            (0x0000001FUL)
-#define MPU_RGD6_MPURG6SIZE_0                          (0x00000001UL)
-#define MPU_RGD6_MPURG6SIZE_1                          (0x00000002UL)
-#define MPU_RGD6_MPURG6SIZE_2                          (0x00000004UL)
-#define MPU_RGD6_MPURG6SIZE_3                          (0x00000008UL)
-#define MPU_RGD6_MPURG6SIZE_4                          (0x00000010UL)
-#define MPU_RGD6_MPURG6ADDR_POS                        (5U)
-#define MPU_RGD6_MPURG6ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD6_MPURG6ADDR_0                          (0x00000020UL)
-#define MPU_RGD6_MPURG6ADDR_1                          (0x00000040UL)
-#define MPU_RGD6_MPURG6ADDR_2                          (0x00000080UL)
-#define MPU_RGD6_MPURG6ADDR_3                          (0x00000100UL)
-#define MPU_RGD6_MPURG6ADDR_4                          (0x00000200UL)
-#define MPU_RGD6_MPURG6ADDR_5                          (0x00000400UL)
-#define MPU_RGD6_MPURG6ADDR_6                          (0x00000800UL)
-#define MPU_RGD6_MPURG6ADDR_7                          (0x00001000UL)
-#define MPU_RGD6_MPURG6ADDR_8                          (0x00002000UL)
-#define MPU_RGD6_MPURG6ADDR_9                          (0x00004000UL)
-#define MPU_RGD6_MPURG6ADDR_10                         (0x00008000UL)
-#define MPU_RGD6_MPURG6ADDR_11                         (0x00010000UL)
-#define MPU_RGD6_MPURG6ADDR_12                         (0x00020000UL)
-#define MPU_RGD6_MPURG6ADDR_13                         (0x00040000UL)
-#define MPU_RGD6_MPURG6ADDR_14                         (0x00080000UL)
-#define MPU_RGD6_MPURG6ADDR_15                         (0x00100000UL)
-#define MPU_RGD6_MPURG6ADDR_16                         (0x00200000UL)
-#define MPU_RGD6_MPURG6ADDR_17                         (0x00400000UL)
-#define MPU_RGD6_MPURG6ADDR_18                         (0x00800000UL)
-#define MPU_RGD6_MPURG6ADDR_19                         (0x01000000UL)
-#define MPU_RGD6_MPURG6ADDR_20                         (0x02000000UL)
-#define MPU_RGD6_MPURG6ADDR_21                         (0x04000000UL)
-#define MPU_RGD6_MPURG6ADDR_22                         (0x08000000UL)
-#define MPU_RGD6_MPURG6ADDR_23                         (0x10000000UL)
-#define MPU_RGD6_MPURG6ADDR_24                         (0x20000000UL)
-#define MPU_RGD6_MPURG6ADDR_25                         (0x40000000UL)
-#define MPU_RGD6_MPURG6ADDR_26                         (0x80000000UL)
+#define MPU_RGD6_MPURGSIZE_POS                         (0U)
+#define MPU_RGD6_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD6_MPURGADDR_POS                         (5U)
+#define MPU_RGD6_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD7 register  */
-#define MPU_RGD7_MPURG7SIZE_POS                        (0U)
-#define MPU_RGD7_MPURG7SIZE                            (0x0000001FUL)
-#define MPU_RGD7_MPURG7SIZE_0                          (0x00000001UL)
-#define MPU_RGD7_MPURG7SIZE_1                          (0x00000002UL)
-#define MPU_RGD7_MPURG7SIZE_2                          (0x00000004UL)
-#define MPU_RGD7_MPURG7SIZE_3                          (0x00000008UL)
-#define MPU_RGD7_MPURG7SIZE_4                          (0x00000010UL)
-#define MPU_RGD7_MPURG7ADDR_POS                        (5U)
-#define MPU_RGD7_MPURG7ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD7_MPURG7ADDR_0                          (0x00000020UL)
-#define MPU_RGD7_MPURG7ADDR_1                          (0x00000040UL)
-#define MPU_RGD7_MPURG7ADDR_2                          (0x00000080UL)
-#define MPU_RGD7_MPURG7ADDR_3                          (0x00000100UL)
-#define MPU_RGD7_MPURG7ADDR_4                          (0x00000200UL)
-#define MPU_RGD7_MPURG7ADDR_5                          (0x00000400UL)
-#define MPU_RGD7_MPURG7ADDR_6                          (0x00000800UL)
-#define MPU_RGD7_MPURG7ADDR_7                          (0x00001000UL)
-#define MPU_RGD7_MPURG7ADDR_8                          (0x00002000UL)
-#define MPU_RGD7_MPURG7ADDR_9                          (0x00004000UL)
-#define MPU_RGD7_MPURG7ADDR_10                         (0x00008000UL)
-#define MPU_RGD7_MPURG7ADDR_11                         (0x00010000UL)
-#define MPU_RGD7_MPURG7ADDR_12                         (0x00020000UL)
-#define MPU_RGD7_MPURG7ADDR_13                         (0x00040000UL)
-#define MPU_RGD7_MPURG7ADDR_14                         (0x00080000UL)
-#define MPU_RGD7_MPURG7ADDR_15                         (0x00100000UL)
-#define MPU_RGD7_MPURG7ADDR_16                         (0x00200000UL)
-#define MPU_RGD7_MPURG7ADDR_17                         (0x00400000UL)
-#define MPU_RGD7_MPURG7ADDR_18                         (0x00800000UL)
-#define MPU_RGD7_MPURG7ADDR_19                         (0x01000000UL)
-#define MPU_RGD7_MPURG7ADDR_20                         (0x02000000UL)
-#define MPU_RGD7_MPURG7ADDR_21                         (0x04000000UL)
-#define MPU_RGD7_MPURG7ADDR_22                         (0x08000000UL)
-#define MPU_RGD7_MPURG7ADDR_23                         (0x10000000UL)
-#define MPU_RGD7_MPURG7ADDR_24                         (0x20000000UL)
-#define MPU_RGD7_MPURG7ADDR_25                         (0x40000000UL)
-#define MPU_RGD7_MPURG7ADDR_26                         (0x80000000UL)
+#define MPU_RGD7_MPURGSIZE_POS                         (0U)
+#define MPU_RGD7_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD7_MPURGADDR_POS                         (5U)
+#define MPU_RGD7_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD8 register  */
-#define MPU_RGD8_MPURG8SIZE_POS                        (0U)
-#define MPU_RGD8_MPURG8SIZE                            (0x0000001FUL)
-#define MPU_RGD8_MPURG8SIZE_0                          (0x00000001UL)
-#define MPU_RGD8_MPURG8SIZE_1                          (0x00000002UL)
-#define MPU_RGD8_MPURG8SIZE_2                          (0x00000004UL)
-#define MPU_RGD8_MPURG8SIZE_3                          (0x00000008UL)
-#define MPU_RGD8_MPURG8SIZE_4                          (0x00000010UL)
-#define MPU_RGD8_MPURG8ADDR_POS                        (5U)
-#define MPU_RGD8_MPURG8ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD8_MPURG8ADDR_0                          (0x00000020UL)
-#define MPU_RGD8_MPURG8ADDR_1                          (0x00000040UL)
-#define MPU_RGD8_MPURG8ADDR_2                          (0x00000080UL)
-#define MPU_RGD8_MPURG8ADDR_3                          (0x00000100UL)
-#define MPU_RGD8_MPURG8ADDR_4                          (0x00000200UL)
-#define MPU_RGD8_MPURG8ADDR_5                          (0x00000400UL)
-#define MPU_RGD8_MPURG8ADDR_6                          (0x00000800UL)
-#define MPU_RGD8_MPURG8ADDR_7                          (0x00001000UL)
-#define MPU_RGD8_MPURG8ADDR_8                          (0x00002000UL)
-#define MPU_RGD8_MPURG8ADDR_9                          (0x00004000UL)
-#define MPU_RGD8_MPURG8ADDR_10                         (0x00008000UL)
-#define MPU_RGD8_MPURG8ADDR_11                         (0x00010000UL)
-#define MPU_RGD8_MPURG8ADDR_12                         (0x00020000UL)
-#define MPU_RGD8_MPURG8ADDR_13                         (0x00040000UL)
-#define MPU_RGD8_MPURG8ADDR_14                         (0x00080000UL)
-#define MPU_RGD8_MPURG8ADDR_15                         (0x00100000UL)
-#define MPU_RGD8_MPURG8ADDR_16                         (0x00200000UL)
-#define MPU_RGD8_MPURG8ADDR_17                         (0x00400000UL)
-#define MPU_RGD8_MPURG8ADDR_18                         (0x00800000UL)
-#define MPU_RGD8_MPURG8ADDR_19                         (0x01000000UL)
-#define MPU_RGD8_MPURG8ADDR_20                         (0x02000000UL)
-#define MPU_RGD8_MPURG8ADDR_21                         (0x04000000UL)
-#define MPU_RGD8_MPURG8ADDR_22                         (0x08000000UL)
-#define MPU_RGD8_MPURG8ADDR_23                         (0x10000000UL)
-#define MPU_RGD8_MPURG8ADDR_24                         (0x20000000UL)
-#define MPU_RGD8_MPURG8ADDR_25                         (0x40000000UL)
-#define MPU_RGD8_MPURG8ADDR_26                         (0x80000000UL)
+#define MPU_RGD8_MPURGSIZE_POS                         (0U)
+#define MPU_RGD8_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD8_MPURGADDR_POS                         (5U)
+#define MPU_RGD8_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD9 register  */
-#define MPU_RGD9_MPURG9SIZE_POS                        (0U)
-#define MPU_RGD9_MPURG9SIZE                            (0x0000001FUL)
-#define MPU_RGD9_MPURG9SIZE_0                          (0x00000001UL)
-#define MPU_RGD9_MPURG9SIZE_1                          (0x00000002UL)
-#define MPU_RGD9_MPURG9SIZE_2                          (0x00000004UL)
-#define MPU_RGD9_MPURG9SIZE_3                          (0x00000008UL)
-#define MPU_RGD9_MPURG9SIZE_4                          (0x00000010UL)
-#define MPU_RGD9_MPURG9ADDR_POS                        (5U)
-#define MPU_RGD9_MPURG9ADDR                            (0xFFFFFFE0UL)
-#define MPU_RGD9_MPURG9ADDR_0                          (0x00000020UL)
-#define MPU_RGD9_MPURG9ADDR_1                          (0x00000040UL)
-#define MPU_RGD9_MPURG9ADDR_2                          (0x00000080UL)
-#define MPU_RGD9_MPURG9ADDR_3                          (0x00000100UL)
-#define MPU_RGD9_MPURG9ADDR_4                          (0x00000200UL)
-#define MPU_RGD9_MPURG9ADDR_5                          (0x00000400UL)
-#define MPU_RGD9_MPURG9ADDR_6                          (0x00000800UL)
-#define MPU_RGD9_MPURG9ADDR_7                          (0x00001000UL)
-#define MPU_RGD9_MPURG9ADDR_8                          (0x00002000UL)
-#define MPU_RGD9_MPURG9ADDR_9                          (0x00004000UL)
-#define MPU_RGD9_MPURG9ADDR_10                         (0x00008000UL)
-#define MPU_RGD9_MPURG9ADDR_11                         (0x00010000UL)
-#define MPU_RGD9_MPURG9ADDR_12                         (0x00020000UL)
-#define MPU_RGD9_MPURG9ADDR_13                         (0x00040000UL)
-#define MPU_RGD9_MPURG9ADDR_14                         (0x00080000UL)
-#define MPU_RGD9_MPURG9ADDR_15                         (0x00100000UL)
-#define MPU_RGD9_MPURG9ADDR_16                         (0x00200000UL)
-#define MPU_RGD9_MPURG9ADDR_17                         (0x00400000UL)
-#define MPU_RGD9_MPURG9ADDR_18                         (0x00800000UL)
-#define MPU_RGD9_MPURG9ADDR_19                         (0x01000000UL)
-#define MPU_RGD9_MPURG9ADDR_20                         (0x02000000UL)
-#define MPU_RGD9_MPURG9ADDR_21                         (0x04000000UL)
-#define MPU_RGD9_MPURG9ADDR_22                         (0x08000000UL)
-#define MPU_RGD9_MPURG9ADDR_23                         (0x10000000UL)
-#define MPU_RGD9_MPURG9ADDR_24                         (0x20000000UL)
-#define MPU_RGD9_MPURG9ADDR_25                         (0x40000000UL)
-#define MPU_RGD9_MPURG9ADDR_26                         (0x80000000UL)
+#define MPU_RGD9_MPURGSIZE_POS                         (0U)
+#define MPU_RGD9_MPURGSIZE                             (0x0000001FUL)
+#define MPU_RGD9_MPURGADDR_POS                         (5U)
+#define MPU_RGD9_MPURGADDR                             (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD10 register  */
-#define MPU_RGD10_MPURG10SIZE_POS                      (0U)
-#define MPU_RGD10_MPURG10SIZE                          (0x0000001FUL)
-#define MPU_RGD10_MPURG10SIZE_0                        (0x00000001UL)
-#define MPU_RGD10_MPURG10SIZE_1                        (0x00000002UL)
-#define MPU_RGD10_MPURG10SIZE_2                        (0x00000004UL)
-#define MPU_RGD10_MPURG10SIZE_3                        (0x00000008UL)
-#define MPU_RGD10_MPURG10SIZE_4                        (0x00000010UL)
-#define MPU_RGD10_MPURG10ADDR_POS                      (5U)
-#define MPU_RGD10_MPURG10ADDR                          (0xFFFFFFE0UL)
-#define MPU_RGD10_MPURG10ADDR_0                        (0x00000020UL)
-#define MPU_RGD10_MPURG10ADDR_1                        (0x00000040UL)
-#define MPU_RGD10_MPURG10ADDR_2                        (0x00000080UL)
-#define MPU_RGD10_MPURG10ADDR_3                        (0x00000100UL)
-#define MPU_RGD10_MPURG10ADDR_4                        (0x00000200UL)
-#define MPU_RGD10_MPURG10ADDR_5                        (0x00000400UL)
-#define MPU_RGD10_MPURG10ADDR_6                        (0x00000800UL)
-#define MPU_RGD10_MPURG10ADDR_7                        (0x00001000UL)
-#define MPU_RGD10_MPURG10ADDR_8                        (0x00002000UL)
-#define MPU_RGD10_MPURG10ADDR_9                        (0x00004000UL)
-#define MPU_RGD10_MPURG10ADDR_10                       (0x00008000UL)
-#define MPU_RGD10_MPURG10ADDR_11                       (0x00010000UL)
-#define MPU_RGD10_MPURG10ADDR_12                       (0x00020000UL)
-#define MPU_RGD10_MPURG10ADDR_13                       (0x00040000UL)
-#define MPU_RGD10_MPURG10ADDR_14                       (0x00080000UL)
-#define MPU_RGD10_MPURG10ADDR_15                       (0x00100000UL)
-#define MPU_RGD10_MPURG10ADDR_16                       (0x00200000UL)
-#define MPU_RGD10_MPURG10ADDR_17                       (0x00400000UL)
-#define MPU_RGD10_MPURG10ADDR_18                       (0x00800000UL)
-#define MPU_RGD10_MPURG10ADDR_19                       (0x01000000UL)
-#define MPU_RGD10_MPURG10ADDR_20                       (0x02000000UL)
-#define MPU_RGD10_MPURG10ADDR_21                       (0x04000000UL)
-#define MPU_RGD10_MPURG10ADDR_22                       (0x08000000UL)
-#define MPU_RGD10_MPURG10ADDR_23                       (0x10000000UL)
-#define MPU_RGD10_MPURG10ADDR_24                       (0x20000000UL)
-#define MPU_RGD10_MPURG10ADDR_25                       (0x40000000UL)
-#define MPU_RGD10_MPURG10ADDR_26                       (0x80000000UL)
+#define MPU_RGD10_MPURGSIZE_POS                        (0U)
+#define MPU_RGD10_MPURGSIZE                            (0x0000001FUL)
+#define MPU_RGD10_MPURGADDR_POS                        (5U)
+#define MPU_RGD10_MPURGADDR                            (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD11 register  */
-#define MPU_RGD11_MPURG11SIZE_POS                      (0U)
-#define MPU_RGD11_MPURG11SIZE                          (0x0000001FUL)
-#define MPU_RGD11_MPURG11SIZE_0                        (0x00000001UL)
-#define MPU_RGD11_MPURG11SIZE_1                        (0x00000002UL)
-#define MPU_RGD11_MPURG11SIZE_2                        (0x00000004UL)
-#define MPU_RGD11_MPURG11SIZE_3                        (0x00000008UL)
-#define MPU_RGD11_MPURG11SIZE_4                        (0x00000010UL)
-#define MPU_RGD11_MPURG11ADDR_POS                      (5U)
-#define MPU_RGD11_MPURG11ADDR                          (0xFFFFFFE0UL)
-#define MPU_RGD11_MPURG11ADDR_0                        (0x00000020UL)
-#define MPU_RGD11_MPURG11ADDR_1                        (0x00000040UL)
-#define MPU_RGD11_MPURG11ADDR_2                        (0x00000080UL)
-#define MPU_RGD11_MPURG11ADDR_3                        (0x00000100UL)
-#define MPU_RGD11_MPURG11ADDR_4                        (0x00000200UL)
-#define MPU_RGD11_MPURG11ADDR_5                        (0x00000400UL)
-#define MPU_RGD11_MPURG11ADDR_6                        (0x00000800UL)
-#define MPU_RGD11_MPURG11ADDR_7                        (0x00001000UL)
-#define MPU_RGD11_MPURG11ADDR_8                        (0x00002000UL)
-#define MPU_RGD11_MPURG11ADDR_9                        (0x00004000UL)
-#define MPU_RGD11_MPURG11ADDR_10                       (0x00008000UL)
-#define MPU_RGD11_MPURG11ADDR_11                       (0x00010000UL)
-#define MPU_RGD11_MPURG11ADDR_12                       (0x00020000UL)
-#define MPU_RGD11_MPURG11ADDR_13                       (0x00040000UL)
-#define MPU_RGD11_MPURG11ADDR_14                       (0x00080000UL)
-#define MPU_RGD11_MPURG11ADDR_15                       (0x00100000UL)
-#define MPU_RGD11_MPURG11ADDR_16                       (0x00200000UL)
-#define MPU_RGD11_MPURG11ADDR_17                       (0x00400000UL)
-#define MPU_RGD11_MPURG11ADDR_18                       (0x00800000UL)
-#define MPU_RGD11_MPURG11ADDR_19                       (0x01000000UL)
-#define MPU_RGD11_MPURG11ADDR_20                       (0x02000000UL)
-#define MPU_RGD11_MPURG11ADDR_21                       (0x04000000UL)
-#define MPU_RGD11_MPURG11ADDR_22                       (0x08000000UL)
-#define MPU_RGD11_MPURG11ADDR_23                       (0x10000000UL)
-#define MPU_RGD11_MPURG11ADDR_24                       (0x20000000UL)
-#define MPU_RGD11_MPURG11ADDR_25                       (0x40000000UL)
-#define MPU_RGD11_MPURG11ADDR_26                       (0x80000000UL)
+#define MPU_RGD11_MPURGSIZE_POS                        (0U)
+#define MPU_RGD11_MPURGSIZE                            (0x0000001FUL)
+#define MPU_RGD11_MPURGADDR_POS                        (5U)
+#define MPU_RGD11_MPURGADDR                            (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD12 register  */
-#define MPU_RGD12_MPURG12SIZE_POS                      (0U)
-#define MPU_RGD12_MPURG12SIZE                          (0x0000001FUL)
-#define MPU_RGD12_MPURG12SIZE_0                        (0x00000001UL)
-#define MPU_RGD12_MPURG12SIZE_1                        (0x00000002UL)
-#define MPU_RGD12_MPURG12SIZE_2                        (0x00000004UL)
-#define MPU_RGD12_MPURG12SIZE_3                        (0x00000008UL)
-#define MPU_RGD12_MPURG12SIZE_4                        (0x00000010UL)
-#define MPU_RGD12_MPURG12ADDR_POS                      (5U)
-#define MPU_RGD12_MPURG12ADDR                          (0xFFFFFFE0UL)
-#define MPU_RGD12_MPURG12ADDR_0                        (0x00000020UL)
-#define MPU_RGD12_MPURG12ADDR_1                        (0x00000040UL)
-#define MPU_RGD12_MPURG12ADDR_2                        (0x00000080UL)
-#define MPU_RGD12_MPURG12ADDR_3                        (0x00000100UL)
-#define MPU_RGD12_MPURG12ADDR_4                        (0x00000200UL)
-#define MPU_RGD12_MPURG12ADDR_5                        (0x00000400UL)
-#define MPU_RGD12_MPURG12ADDR_6                        (0x00000800UL)
-#define MPU_RGD12_MPURG12ADDR_7                        (0x00001000UL)
-#define MPU_RGD12_MPURG12ADDR_8                        (0x00002000UL)
-#define MPU_RGD12_MPURG12ADDR_9                        (0x00004000UL)
-#define MPU_RGD12_MPURG12ADDR_10                       (0x00008000UL)
-#define MPU_RGD12_MPURG12ADDR_11                       (0x00010000UL)
-#define MPU_RGD12_MPURG12ADDR_12                       (0x00020000UL)
-#define MPU_RGD12_MPURG12ADDR_13                       (0x00040000UL)
-#define MPU_RGD12_MPURG12ADDR_14                       (0x00080000UL)
-#define MPU_RGD12_MPURG12ADDR_15                       (0x00100000UL)
-#define MPU_RGD12_MPURG12ADDR_16                       (0x00200000UL)
-#define MPU_RGD12_MPURG12ADDR_17                       (0x00400000UL)
-#define MPU_RGD12_MPURG12ADDR_18                       (0x00800000UL)
-#define MPU_RGD12_MPURG12ADDR_19                       (0x01000000UL)
-#define MPU_RGD12_MPURG12ADDR_20                       (0x02000000UL)
-#define MPU_RGD12_MPURG12ADDR_21                       (0x04000000UL)
-#define MPU_RGD12_MPURG12ADDR_22                       (0x08000000UL)
-#define MPU_RGD12_MPURG12ADDR_23                       (0x10000000UL)
-#define MPU_RGD12_MPURG12ADDR_24                       (0x20000000UL)
-#define MPU_RGD12_MPURG12ADDR_25                       (0x40000000UL)
-#define MPU_RGD12_MPURG12ADDR_26                       (0x80000000UL)
+#define MPU_RGD12_MPURGSIZE_POS                        (0U)
+#define MPU_RGD12_MPURGSIZE                            (0x0000001FUL)
+#define MPU_RGD12_MPURGADDR_POS                        (5U)
+#define MPU_RGD12_MPURGADDR                            (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD13 register  */
-#define MPU_RGD13_MPURG13SIZE_POS                      (0U)
-#define MPU_RGD13_MPURG13SIZE                          (0x0000001FUL)
-#define MPU_RGD13_MPURG13SIZE_0                        (0x00000001UL)
-#define MPU_RGD13_MPURG13SIZE_1                        (0x00000002UL)
-#define MPU_RGD13_MPURG13SIZE_2                        (0x00000004UL)
-#define MPU_RGD13_MPURG13SIZE_3                        (0x00000008UL)
-#define MPU_RGD13_MPURG13SIZE_4                        (0x00000010UL)
-#define MPU_RGD13_MPURG13ADDR_POS                      (5U)
-#define MPU_RGD13_MPURG13ADDR                          (0xFFFFFFE0UL)
-#define MPU_RGD13_MPURG13ADDR_0                        (0x00000020UL)
-#define MPU_RGD13_MPURG13ADDR_1                        (0x00000040UL)
-#define MPU_RGD13_MPURG13ADDR_2                        (0x00000080UL)
-#define MPU_RGD13_MPURG13ADDR_3                        (0x00000100UL)
-#define MPU_RGD13_MPURG13ADDR_4                        (0x00000200UL)
-#define MPU_RGD13_MPURG13ADDR_5                        (0x00000400UL)
-#define MPU_RGD13_MPURG13ADDR_6                        (0x00000800UL)
-#define MPU_RGD13_MPURG13ADDR_7                        (0x00001000UL)
-#define MPU_RGD13_MPURG13ADDR_8                        (0x00002000UL)
-#define MPU_RGD13_MPURG13ADDR_9                        (0x00004000UL)
-#define MPU_RGD13_MPURG13ADDR_10                       (0x00008000UL)
-#define MPU_RGD13_MPURG13ADDR_11                       (0x00010000UL)
-#define MPU_RGD13_MPURG13ADDR_12                       (0x00020000UL)
-#define MPU_RGD13_MPURG13ADDR_13                       (0x00040000UL)
-#define MPU_RGD13_MPURG13ADDR_14                       (0x00080000UL)
-#define MPU_RGD13_MPURG13ADDR_15                       (0x00100000UL)
-#define MPU_RGD13_MPURG13ADDR_16                       (0x00200000UL)
-#define MPU_RGD13_MPURG13ADDR_17                       (0x00400000UL)
-#define MPU_RGD13_MPURG13ADDR_18                       (0x00800000UL)
-#define MPU_RGD13_MPURG13ADDR_19                       (0x01000000UL)
-#define MPU_RGD13_MPURG13ADDR_20                       (0x02000000UL)
-#define MPU_RGD13_MPURG13ADDR_21                       (0x04000000UL)
-#define MPU_RGD13_MPURG13ADDR_22                       (0x08000000UL)
-#define MPU_RGD13_MPURG13ADDR_23                       (0x10000000UL)
-#define MPU_RGD13_MPURG13ADDR_24                       (0x20000000UL)
-#define MPU_RGD13_MPURG13ADDR_25                       (0x40000000UL)
-#define MPU_RGD13_MPURG13ADDR_26                       (0x80000000UL)
+#define MPU_RGD13_MPURGSIZE_POS                        (0U)
+#define MPU_RGD13_MPURGSIZE                            (0x0000001FUL)
+#define MPU_RGD13_MPURGADDR_POS                        (5U)
+#define MPU_RGD13_MPURGADDR                            (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD14 register  */
-#define MPU_RGD14_MPURG14SIZE_POS                      (0U)
-#define MPU_RGD14_MPURG14SIZE                          (0x0000001FUL)
-#define MPU_RGD14_MPURG14SIZE_0                        (0x00000001UL)
-#define MPU_RGD14_MPURG14SIZE_1                        (0x00000002UL)
-#define MPU_RGD14_MPURG14SIZE_2                        (0x00000004UL)
-#define MPU_RGD14_MPURG14SIZE_3                        (0x00000008UL)
-#define MPU_RGD14_MPURG14SIZE_4                        (0x00000010UL)
-#define MPU_RGD14_MPURG14ADDR_POS                      (5U)
-#define MPU_RGD14_MPURG14ADDR                          (0xFFFFFFE0UL)
-#define MPU_RGD14_MPURG14ADDR_0                        (0x00000020UL)
-#define MPU_RGD14_MPURG14ADDR_1                        (0x00000040UL)
-#define MPU_RGD14_MPURG14ADDR_2                        (0x00000080UL)
-#define MPU_RGD14_MPURG14ADDR_3                        (0x00000100UL)
-#define MPU_RGD14_MPURG14ADDR_4                        (0x00000200UL)
-#define MPU_RGD14_MPURG14ADDR_5                        (0x00000400UL)
-#define MPU_RGD14_MPURG14ADDR_6                        (0x00000800UL)
-#define MPU_RGD14_MPURG14ADDR_7                        (0x00001000UL)
-#define MPU_RGD14_MPURG14ADDR_8                        (0x00002000UL)
-#define MPU_RGD14_MPURG14ADDR_9                        (0x00004000UL)
-#define MPU_RGD14_MPURG14ADDR_10                       (0x00008000UL)
-#define MPU_RGD14_MPURG14ADDR_11                       (0x00010000UL)
-#define MPU_RGD14_MPURG14ADDR_12                       (0x00020000UL)
-#define MPU_RGD14_MPURG14ADDR_13                       (0x00040000UL)
-#define MPU_RGD14_MPURG14ADDR_14                       (0x00080000UL)
-#define MPU_RGD14_MPURG14ADDR_15                       (0x00100000UL)
-#define MPU_RGD14_MPURG14ADDR_16                       (0x00200000UL)
-#define MPU_RGD14_MPURG14ADDR_17                       (0x00400000UL)
-#define MPU_RGD14_MPURG14ADDR_18                       (0x00800000UL)
-#define MPU_RGD14_MPURG14ADDR_19                       (0x01000000UL)
-#define MPU_RGD14_MPURG14ADDR_20                       (0x02000000UL)
-#define MPU_RGD14_MPURG14ADDR_21                       (0x04000000UL)
-#define MPU_RGD14_MPURG14ADDR_22                       (0x08000000UL)
-#define MPU_RGD14_MPURG14ADDR_23                       (0x10000000UL)
-#define MPU_RGD14_MPURG14ADDR_24                       (0x20000000UL)
-#define MPU_RGD14_MPURG14ADDR_25                       (0x40000000UL)
-#define MPU_RGD14_MPURG14ADDR_26                       (0x80000000UL)
+#define MPU_RGD14_MPURGSIZE_POS                        (0U)
+#define MPU_RGD14_MPURGSIZE                            (0x0000001FUL)
+#define MPU_RGD14_MPURGADDR_POS                        (5U)
+#define MPU_RGD14_MPURGADDR                            (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_RGD15 register  */
-#define MPU_RGD15_MPURG15SIZE_POS                      (0U)
-#define MPU_RGD15_MPURG15SIZE                          (0x0000001FUL)
-#define MPU_RGD15_MPURG15SIZE_0                        (0x00000001UL)
-#define MPU_RGD15_MPURG15SIZE_1                        (0x00000002UL)
-#define MPU_RGD15_MPURG15SIZE_2                        (0x00000004UL)
-#define MPU_RGD15_MPURG15SIZE_3                        (0x00000008UL)
-#define MPU_RGD15_MPURG15SIZE_4                        (0x00000010UL)
-#define MPU_RGD15_MPURG15ADDR_POS                      (5U)
-#define MPU_RGD15_MPURG15ADDR                          (0xFFFFFFE0UL)
-#define MPU_RGD15_MPURG15ADDR_0                        (0x00000020UL)
-#define MPU_RGD15_MPURG15ADDR_1                        (0x00000040UL)
-#define MPU_RGD15_MPURG15ADDR_2                        (0x00000080UL)
-#define MPU_RGD15_MPURG15ADDR_3                        (0x00000100UL)
-#define MPU_RGD15_MPURG15ADDR_4                        (0x00000200UL)
-#define MPU_RGD15_MPURG15ADDR_5                        (0x00000400UL)
-#define MPU_RGD15_MPURG15ADDR_6                        (0x00000800UL)
-#define MPU_RGD15_MPURG15ADDR_7                        (0x00001000UL)
-#define MPU_RGD15_MPURG15ADDR_8                        (0x00002000UL)
-#define MPU_RGD15_MPURG15ADDR_9                        (0x00004000UL)
-#define MPU_RGD15_MPURG15ADDR_10                       (0x00008000UL)
-#define MPU_RGD15_MPURG15ADDR_11                       (0x00010000UL)
-#define MPU_RGD15_MPURG15ADDR_12                       (0x00020000UL)
-#define MPU_RGD15_MPURG15ADDR_13                       (0x00040000UL)
-#define MPU_RGD15_MPURG15ADDR_14                       (0x00080000UL)
-#define MPU_RGD15_MPURG15ADDR_15                       (0x00100000UL)
-#define MPU_RGD15_MPURG15ADDR_16                       (0x00200000UL)
-#define MPU_RGD15_MPURG15ADDR_17                       (0x00400000UL)
-#define MPU_RGD15_MPURG15ADDR_18                       (0x00800000UL)
-#define MPU_RGD15_MPURG15ADDR_19                       (0x01000000UL)
-#define MPU_RGD15_MPURG15ADDR_20                       (0x02000000UL)
-#define MPU_RGD15_MPURG15ADDR_21                       (0x04000000UL)
-#define MPU_RGD15_MPURG15ADDR_22                       (0x08000000UL)
-#define MPU_RGD15_MPURG15ADDR_23                       (0x10000000UL)
-#define MPU_RGD15_MPURG15ADDR_24                       (0x20000000UL)
-#define MPU_RGD15_MPURG15ADDR_25                       (0x40000000UL)
-#define MPU_RGD15_MPURG15ADDR_26                       (0x80000000UL)
+#define MPU_RGD15_MPURGSIZE_POS                        (0U)
+#define MPU_RGD15_MPURGSIZE                            (0x0000001FUL)
+#define MPU_RGD15_MPURGADDR_POS                        (5U)
+#define MPU_RGD15_MPURGADDR                            (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_SR register  */
 #define MPU_SR_SMPU1EAF_POS                            (0U)
@@ -12795,21 +11973,6 @@ typedef struct
 #define MPU_WP_MPUWE                                   (0x00000001UL)
 #define MPU_WP_WKEY_POS                                (1U)
 #define MPU_WP_WKEY                                    (0x0000FFFEUL)
-#define MPU_WP_WKEY_0                                  (0x00000002UL)
-#define MPU_WP_WKEY_1                                  (0x00000004UL)
-#define MPU_WP_WKEY_2                                  (0x00000008UL)
-#define MPU_WP_WKEY_3                                  (0x00000010UL)
-#define MPU_WP_WKEY_4                                  (0x00000020UL)
-#define MPU_WP_WKEY_5                                  (0x00000040UL)
-#define MPU_WP_WKEY_6                                  (0x00000080UL)
-#define MPU_WP_WKEY_7                                  (0x00000100UL)
-#define MPU_WP_WKEY_8                                  (0x00000200UL)
-#define MPU_WP_WKEY_9                                  (0x00000400UL)
-#define MPU_WP_WKEY_10                                 (0x00000800UL)
-#define MPU_WP_WKEY_11                                 (0x00001000UL)
-#define MPU_WP_WKEY_12                                 (0x00002000UL)
-#define MPU_WP_WKEY_13                                 (0x00004000UL)
-#define MPU_WP_WKEY_14                                 (0x00008000UL)
 
 /*  Bit definition for MPU_IPPR register  */
 #define MPU_IPPR_AESRDP_POS                            (0U)
@@ -32279,7 +31442,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel0_bit_t;
+} stc_aos_dma_1_trgsel_bit_t;
 
 typedef struct
 {
@@ -32295,231 +31458,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_1_trgsel7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_dma_2_trgsel7_bit_t;
+} stc_aos_dma_2_trgsel_bit_t;
 
 typedef struct
 {
@@ -32551,55 +31490,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_tmr6_htssr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_tmr6_htssr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_tmr6_htssr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_tmr6_htssr4_bit_t;
+} stc_aos_tmr6_htssr_bit_t;
 
 typedef struct
 {
@@ -32711,55 +31602,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_tmra_htssr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_tmra_htssr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_tmra_htssr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_tmra_htssr3_bit_t;
+} stc_aos_tmra_htssr_bit_t;
 
 typedef struct
 {
@@ -32791,7 +31634,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_adc_1_itrgselr0_bit_t;
+} stc_aos_adc_1_itrgselr_bit_t;
 
 typedef struct
 {
@@ -32807,7 +31650,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_adc_1_itrgselr1_bit_t;
+} stc_aos_adc_2_itrgselr_bit_t;
 
 typedef struct
 {
@@ -32823,55 +31666,7 @@ typedef struct
     uint32_t RESERVED0[21];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
-} stc_aos_adc_2_itrgselr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_adc_2_itrgselr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_adc_3_itrgselr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
-    __IO uint32_t COMTRG_EN0;
-    __IO uint32_t COMTRG_EN1;
-} stc_aos_adc_3_itrgselr1_bit_t;
+} stc_aos_adc_3_itrgselr_bit_t;
 
 typedef struct
 {
@@ -35722,136 +34517,6 @@ typedef struct
     uint32_t RESERVED1[5];
     __IO uint32_t ADPEN;
 } stc_dac_daadpcr_bit_t;
-
-typedef struct
-{
-    uint32_t RESERVED0[14];
-    __IO uint32_t DADIV1;
-    __IO uint32_t DADIV2;
-} stc_dac_dadivcr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR11B0;
-    __IO uint32_t DIVPR11B1;
-    __IO uint32_t DIVPR11B2;
-    __IO uint32_t DIVPR11B3;
-    __IO uint32_t DIVPR11B4;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR11A0;
-    __IO uint32_t DIVPR11A1;
-    __IO uint32_t DIVPR11A2;
-    __IO uint32_t DIVPR11A3;
-    __IO uint32_t DIVPR11A4;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr11ab_bit_t;
-
-typedef struct
-{
-    uint32_t RESERVED0[8];
-    __IO uint32_t DIVPR11C0;
-    __IO uint32_t DIVPR11C1;
-    __IO uint32_t DIVPR11C2;
-    __IO uint32_t DIVPR11C3;
-    __IO uint32_t DIVPR11C4;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr11c_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR10B0;
-    __IO uint32_t DIVPR10B1;
-    __IO uint32_t DIVPR10B2;
-    __IO uint32_t DIVPR10B3;
-    __IO uint32_t DIVPR10B4;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR10A0;
-    __IO uint32_t DIVPR10A1;
-    __IO uint32_t DIVPR10A2;
-    __IO uint32_t DIVPR10A3;
-    __IO uint32_t DIVPR10A4;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr10ab_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR80;
-    __IO uint32_t DIVPR81;
-    __IO uint32_t DIVPR82;
-    __IO uint32_t DIVPR83;
-    __IO uint32_t DIVPR84;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR90;
-    __IO uint32_t DIVPR91;
-    __IO uint32_t DIVPR92;
-    __IO uint32_t DIVPR93;
-    __IO uint32_t DIVPR94;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr98_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR60;
-    __IO uint32_t DIVPR61;
-    __IO uint32_t DIVPR62;
-    __IO uint32_t DIVPR63;
-    __IO uint32_t DIVPR64;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR70;
-    __IO uint32_t DIVPR71;
-    __IO uint32_t DIVPR72;
-    __IO uint32_t DIVPR73;
-    __IO uint32_t DIVPR74;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr76_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR40;
-    __IO uint32_t DIVPR41;
-    __IO uint32_t DIVPR42;
-    __IO uint32_t DIVPR43;
-    __IO uint32_t DIVPR44;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR50;
-    __IO uint32_t DIVPR51;
-    __IO uint32_t DIVPR52;
-    __IO uint32_t DIVPR53;
-    __IO uint32_t DIVPR54;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr54_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR20;
-    __IO uint32_t DIVPR21;
-    __IO uint32_t DIVPR22;
-    __IO uint32_t DIVPR23;
-    __IO uint32_t DIVPR24;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR30;
-    __IO uint32_t DIVPR31;
-    __IO uint32_t DIVPR32;
-    __IO uint32_t DIVPR33;
-    __IO uint32_t DIVPR34;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr32_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIVPR00;
-    __IO uint32_t DIVPR01;
-    __IO uint32_t DIVPR02;
-    __IO uint32_t DIVPR03;
-    __IO uint32_t DIVPR04;
-    uint32_t RESERVED0[3];
-    __IO uint32_t DIVPR10;
-    __IO uint32_t DIVPR11;
-    __IO uint32_t DIVPR12;
-    __IO uint32_t DIVPR13;
-    __IO uint32_t DIVPR14;
-    uint32_t RESERVED1[3];
-} stc_dac_divpr10_bit_t;
 
 typedef struct
 {
@@ -45704,578 +44369,578 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MPURG0SIZE0;
-    __IO uint32_t MPURG0SIZE1;
-    __IO uint32_t MPURG0SIZE2;
-    __IO uint32_t MPURG0SIZE3;
-    __IO uint32_t MPURG0SIZE4;
-    __IO uint32_t MPURG0ADDR0;
-    __IO uint32_t MPURG0ADDR1;
-    __IO uint32_t MPURG0ADDR2;
-    __IO uint32_t MPURG0ADDR3;
-    __IO uint32_t MPURG0ADDR4;
-    __IO uint32_t MPURG0ADDR5;
-    __IO uint32_t MPURG0ADDR6;
-    __IO uint32_t MPURG0ADDR7;
-    __IO uint32_t MPURG0ADDR8;
-    __IO uint32_t MPURG0ADDR9;
-    __IO uint32_t MPURG0ADDR10;
-    __IO uint32_t MPURG0ADDR11;
-    __IO uint32_t MPURG0ADDR12;
-    __IO uint32_t MPURG0ADDR13;
-    __IO uint32_t MPURG0ADDR14;
-    __IO uint32_t MPURG0ADDR15;
-    __IO uint32_t MPURG0ADDR16;
-    __IO uint32_t MPURG0ADDR17;
-    __IO uint32_t MPURG0ADDR18;
-    __IO uint32_t MPURG0ADDR19;
-    __IO uint32_t MPURG0ADDR20;
-    __IO uint32_t MPURG0ADDR21;
-    __IO uint32_t MPURG0ADDR22;
-    __IO uint32_t MPURG0ADDR23;
-    __IO uint32_t MPURG0ADDR24;
-    __IO uint32_t MPURG0ADDR25;
-    __IO uint32_t MPURG0ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd0_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG1SIZE0;
-    __IO uint32_t MPURG1SIZE1;
-    __IO uint32_t MPURG1SIZE2;
-    __IO uint32_t MPURG1SIZE3;
-    __IO uint32_t MPURG1SIZE4;
-    __IO uint32_t MPURG1ADDR0;
-    __IO uint32_t MPURG1ADDR1;
-    __IO uint32_t MPURG1ADDR2;
-    __IO uint32_t MPURG1ADDR3;
-    __IO uint32_t MPURG1ADDR4;
-    __IO uint32_t MPURG1ADDR5;
-    __IO uint32_t MPURG1ADDR6;
-    __IO uint32_t MPURG1ADDR7;
-    __IO uint32_t MPURG1ADDR8;
-    __IO uint32_t MPURG1ADDR9;
-    __IO uint32_t MPURG1ADDR10;
-    __IO uint32_t MPURG1ADDR11;
-    __IO uint32_t MPURG1ADDR12;
-    __IO uint32_t MPURG1ADDR13;
-    __IO uint32_t MPURG1ADDR14;
-    __IO uint32_t MPURG1ADDR15;
-    __IO uint32_t MPURG1ADDR16;
-    __IO uint32_t MPURG1ADDR17;
-    __IO uint32_t MPURG1ADDR18;
-    __IO uint32_t MPURG1ADDR19;
-    __IO uint32_t MPURG1ADDR20;
-    __IO uint32_t MPURG1ADDR21;
-    __IO uint32_t MPURG1ADDR22;
-    __IO uint32_t MPURG1ADDR23;
-    __IO uint32_t MPURG1ADDR24;
-    __IO uint32_t MPURG1ADDR25;
-    __IO uint32_t MPURG1ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd1_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG2SIZE0;
-    __IO uint32_t MPURG2SIZE1;
-    __IO uint32_t MPURG2SIZE2;
-    __IO uint32_t MPURG2SIZE3;
-    __IO uint32_t MPURG2SIZE4;
-    __IO uint32_t MPURG2ADDR0;
-    __IO uint32_t MPURG2ADDR1;
-    __IO uint32_t MPURG2ADDR2;
-    __IO uint32_t MPURG2ADDR3;
-    __IO uint32_t MPURG2ADDR4;
-    __IO uint32_t MPURG2ADDR5;
-    __IO uint32_t MPURG2ADDR6;
-    __IO uint32_t MPURG2ADDR7;
-    __IO uint32_t MPURG2ADDR8;
-    __IO uint32_t MPURG2ADDR9;
-    __IO uint32_t MPURG2ADDR10;
-    __IO uint32_t MPURG2ADDR11;
-    __IO uint32_t MPURG2ADDR12;
-    __IO uint32_t MPURG2ADDR13;
-    __IO uint32_t MPURG2ADDR14;
-    __IO uint32_t MPURG2ADDR15;
-    __IO uint32_t MPURG2ADDR16;
-    __IO uint32_t MPURG2ADDR17;
-    __IO uint32_t MPURG2ADDR18;
-    __IO uint32_t MPURG2ADDR19;
-    __IO uint32_t MPURG2ADDR20;
-    __IO uint32_t MPURG2ADDR21;
-    __IO uint32_t MPURG2ADDR22;
-    __IO uint32_t MPURG2ADDR23;
-    __IO uint32_t MPURG2ADDR24;
-    __IO uint32_t MPURG2ADDR25;
-    __IO uint32_t MPURG2ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd2_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG3SIZE0;
-    __IO uint32_t MPURG3SIZE1;
-    __IO uint32_t MPURG3SIZE2;
-    __IO uint32_t MPURG3SIZE3;
-    __IO uint32_t MPURG3SIZE4;
-    __IO uint32_t MPURG3ADDR0;
-    __IO uint32_t MPURG3ADDR1;
-    __IO uint32_t MPURG3ADDR2;
-    __IO uint32_t MPURG3ADDR3;
-    __IO uint32_t MPURG3ADDR4;
-    __IO uint32_t MPURG3ADDR5;
-    __IO uint32_t MPURG3ADDR6;
-    __IO uint32_t MPURG3ADDR7;
-    __IO uint32_t MPURG3ADDR8;
-    __IO uint32_t MPURG3ADDR9;
-    __IO uint32_t MPURG3ADDR10;
-    __IO uint32_t MPURG3ADDR11;
-    __IO uint32_t MPURG3ADDR12;
-    __IO uint32_t MPURG3ADDR13;
-    __IO uint32_t MPURG3ADDR14;
-    __IO uint32_t MPURG3ADDR15;
-    __IO uint32_t MPURG3ADDR16;
-    __IO uint32_t MPURG3ADDR17;
-    __IO uint32_t MPURG3ADDR18;
-    __IO uint32_t MPURG3ADDR19;
-    __IO uint32_t MPURG3ADDR20;
-    __IO uint32_t MPURG3ADDR21;
-    __IO uint32_t MPURG3ADDR22;
-    __IO uint32_t MPURG3ADDR23;
-    __IO uint32_t MPURG3ADDR24;
-    __IO uint32_t MPURG3ADDR25;
-    __IO uint32_t MPURG3ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd3_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG4SIZE0;
-    __IO uint32_t MPURG4SIZE1;
-    __IO uint32_t MPURG4SIZE2;
-    __IO uint32_t MPURG4SIZE3;
-    __IO uint32_t MPURG4SIZE4;
-    __IO uint32_t MPURG4ADDR0;
-    __IO uint32_t MPURG4ADDR1;
-    __IO uint32_t MPURG4ADDR2;
-    __IO uint32_t MPURG4ADDR3;
-    __IO uint32_t MPURG4ADDR4;
-    __IO uint32_t MPURG4ADDR5;
-    __IO uint32_t MPURG4ADDR6;
-    __IO uint32_t MPURG4ADDR7;
-    __IO uint32_t MPURG4ADDR8;
-    __IO uint32_t MPURG4ADDR9;
-    __IO uint32_t MPURG4ADDR10;
-    __IO uint32_t MPURG4ADDR11;
-    __IO uint32_t MPURG4ADDR12;
-    __IO uint32_t MPURG4ADDR13;
-    __IO uint32_t MPURG4ADDR14;
-    __IO uint32_t MPURG4ADDR15;
-    __IO uint32_t MPURG4ADDR16;
-    __IO uint32_t MPURG4ADDR17;
-    __IO uint32_t MPURG4ADDR18;
-    __IO uint32_t MPURG4ADDR19;
-    __IO uint32_t MPURG4ADDR20;
-    __IO uint32_t MPURG4ADDR21;
-    __IO uint32_t MPURG4ADDR22;
-    __IO uint32_t MPURG4ADDR23;
-    __IO uint32_t MPURG4ADDR24;
-    __IO uint32_t MPURG4ADDR25;
-    __IO uint32_t MPURG4ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd4_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG5SIZE0;
-    __IO uint32_t MPURG5SIZE1;
-    __IO uint32_t MPURG5SIZE2;
-    __IO uint32_t MPURG5SIZE3;
-    __IO uint32_t MPURG5SIZE4;
-    __IO uint32_t MPURG5ADDR0;
-    __IO uint32_t MPURG5ADDR1;
-    __IO uint32_t MPURG5ADDR2;
-    __IO uint32_t MPURG5ADDR3;
-    __IO uint32_t MPURG5ADDR4;
-    __IO uint32_t MPURG5ADDR5;
-    __IO uint32_t MPURG5ADDR6;
-    __IO uint32_t MPURG5ADDR7;
-    __IO uint32_t MPURG5ADDR8;
-    __IO uint32_t MPURG5ADDR9;
-    __IO uint32_t MPURG5ADDR10;
-    __IO uint32_t MPURG5ADDR11;
-    __IO uint32_t MPURG5ADDR12;
-    __IO uint32_t MPURG5ADDR13;
-    __IO uint32_t MPURG5ADDR14;
-    __IO uint32_t MPURG5ADDR15;
-    __IO uint32_t MPURG5ADDR16;
-    __IO uint32_t MPURG5ADDR17;
-    __IO uint32_t MPURG5ADDR18;
-    __IO uint32_t MPURG5ADDR19;
-    __IO uint32_t MPURG5ADDR20;
-    __IO uint32_t MPURG5ADDR21;
-    __IO uint32_t MPURG5ADDR22;
-    __IO uint32_t MPURG5ADDR23;
-    __IO uint32_t MPURG5ADDR24;
-    __IO uint32_t MPURG5ADDR25;
-    __IO uint32_t MPURG5ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd5_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG6SIZE0;
-    __IO uint32_t MPURG6SIZE1;
-    __IO uint32_t MPURG6SIZE2;
-    __IO uint32_t MPURG6SIZE3;
-    __IO uint32_t MPURG6SIZE4;
-    __IO uint32_t MPURG6ADDR0;
-    __IO uint32_t MPURG6ADDR1;
-    __IO uint32_t MPURG6ADDR2;
-    __IO uint32_t MPURG6ADDR3;
-    __IO uint32_t MPURG6ADDR4;
-    __IO uint32_t MPURG6ADDR5;
-    __IO uint32_t MPURG6ADDR6;
-    __IO uint32_t MPURG6ADDR7;
-    __IO uint32_t MPURG6ADDR8;
-    __IO uint32_t MPURG6ADDR9;
-    __IO uint32_t MPURG6ADDR10;
-    __IO uint32_t MPURG6ADDR11;
-    __IO uint32_t MPURG6ADDR12;
-    __IO uint32_t MPURG6ADDR13;
-    __IO uint32_t MPURG6ADDR14;
-    __IO uint32_t MPURG6ADDR15;
-    __IO uint32_t MPURG6ADDR16;
-    __IO uint32_t MPURG6ADDR17;
-    __IO uint32_t MPURG6ADDR18;
-    __IO uint32_t MPURG6ADDR19;
-    __IO uint32_t MPURG6ADDR20;
-    __IO uint32_t MPURG6ADDR21;
-    __IO uint32_t MPURG6ADDR22;
-    __IO uint32_t MPURG6ADDR23;
-    __IO uint32_t MPURG6ADDR24;
-    __IO uint32_t MPURG6ADDR25;
-    __IO uint32_t MPURG6ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd6_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG7SIZE0;
-    __IO uint32_t MPURG7SIZE1;
-    __IO uint32_t MPURG7SIZE2;
-    __IO uint32_t MPURG7SIZE3;
-    __IO uint32_t MPURG7SIZE4;
-    __IO uint32_t MPURG7ADDR0;
-    __IO uint32_t MPURG7ADDR1;
-    __IO uint32_t MPURG7ADDR2;
-    __IO uint32_t MPURG7ADDR3;
-    __IO uint32_t MPURG7ADDR4;
-    __IO uint32_t MPURG7ADDR5;
-    __IO uint32_t MPURG7ADDR6;
-    __IO uint32_t MPURG7ADDR7;
-    __IO uint32_t MPURG7ADDR8;
-    __IO uint32_t MPURG7ADDR9;
-    __IO uint32_t MPURG7ADDR10;
-    __IO uint32_t MPURG7ADDR11;
-    __IO uint32_t MPURG7ADDR12;
-    __IO uint32_t MPURG7ADDR13;
-    __IO uint32_t MPURG7ADDR14;
-    __IO uint32_t MPURG7ADDR15;
-    __IO uint32_t MPURG7ADDR16;
-    __IO uint32_t MPURG7ADDR17;
-    __IO uint32_t MPURG7ADDR18;
-    __IO uint32_t MPURG7ADDR19;
-    __IO uint32_t MPURG7ADDR20;
-    __IO uint32_t MPURG7ADDR21;
-    __IO uint32_t MPURG7ADDR22;
-    __IO uint32_t MPURG7ADDR23;
-    __IO uint32_t MPURG7ADDR24;
-    __IO uint32_t MPURG7ADDR25;
-    __IO uint32_t MPURG7ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd7_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG8SIZE0;
-    __IO uint32_t MPURG8SIZE1;
-    __IO uint32_t MPURG8SIZE2;
-    __IO uint32_t MPURG8SIZE3;
-    __IO uint32_t MPURG8SIZE4;
-    __IO uint32_t MPURG8ADDR0;
-    __IO uint32_t MPURG8ADDR1;
-    __IO uint32_t MPURG8ADDR2;
-    __IO uint32_t MPURG8ADDR3;
-    __IO uint32_t MPURG8ADDR4;
-    __IO uint32_t MPURG8ADDR5;
-    __IO uint32_t MPURG8ADDR6;
-    __IO uint32_t MPURG8ADDR7;
-    __IO uint32_t MPURG8ADDR8;
-    __IO uint32_t MPURG8ADDR9;
-    __IO uint32_t MPURG8ADDR10;
-    __IO uint32_t MPURG8ADDR11;
-    __IO uint32_t MPURG8ADDR12;
-    __IO uint32_t MPURG8ADDR13;
-    __IO uint32_t MPURG8ADDR14;
-    __IO uint32_t MPURG8ADDR15;
-    __IO uint32_t MPURG8ADDR16;
-    __IO uint32_t MPURG8ADDR17;
-    __IO uint32_t MPURG8ADDR18;
-    __IO uint32_t MPURG8ADDR19;
-    __IO uint32_t MPURG8ADDR20;
-    __IO uint32_t MPURG8ADDR21;
-    __IO uint32_t MPURG8ADDR22;
-    __IO uint32_t MPURG8ADDR23;
-    __IO uint32_t MPURG8ADDR24;
-    __IO uint32_t MPURG8ADDR25;
-    __IO uint32_t MPURG8ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd8_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG9SIZE0;
-    __IO uint32_t MPURG9SIZE1;
-    __IO uint32_t MPURG9SIZE2;
-    __IO uint32_t MPURG9SIZE3;
-    __IO uint32_t MPURG9SIZE4;
-    __IO uint32_t MPURG9ADDR0;
-    __IO uint32_t MPURG9ADDR1;
-    __IO uint32_t MPURG9ADDR2;
-    __IO uint32_t MPURG9ADDR3;
-    __IO uint32_t MPURG9ADDR4;
-    __IO uint32_t MPURG9ADDR5;
-    __IO uint32_t MPURG9ADDR6;
-    __IO uint32_t MPURG9ADDR7;
-    __IO uint32_t MPURG9ADDR8;
-    __IO uint32_t MPURG9ADDR9;
-    __IO uint32_t MPURG9ADDR10;
-    __IO uint32_t MPURG9ADDR11;
-    __IO uint32_t MPURG9ADDR12;
-    __IO uint32_t MPURG9ADDR13;
-    __IO uint32_t MPURG9ADDR14;
-    __IO uint32_t MPURG9ADDR15;
-    __IO uint32_t MPURG9ADDR16;
-    __IO uint32_t MPURG9ADDR17;
-    __IO uint32_t MPURG9ADDR18;
-    __IO uint32_t MPURG9ADDR19;
-    __IO uint32_t MPURG9ADDR20;
-    __IO uint32_t MPURG9ADDR21;
-    __IO uint32_t MPURG9ADDR22;
-    __IO uint32_t MPURG9ADDR23;
-    __IO uint32_t MPURG9ADDR24;
-    __IO uint32_t MPURG9ADDR25;
-    __IO uint32_t MPURG9ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd9_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG10SIZE0;
-    __IO uint32_t MPURG10SIZE1;
-    __IO uint32_t MPURG10SIZE2;
-    __IO uint32_t MPURG10SIZE3;
-    __IO uint32_t MPURG10SIZE4;
-    __IO uint32_t MPURG10ADDR0;
-    __IO uint32_t MPURG10ADDR1;
-    __IO uint32_t MPURG10ADDR2;
-    __IO uint32_t MPURG10ADDR3;
-    __IO uint32_t MPURG10ADDR4;
-    __IO uint32_t MPURG10ADDR5;
-    __IO uint32_t MPURG10ADDR6;
-    __IO uint32_t MPURG10ADDR7;
-    __IO uint32_t MPURG10ADDR8;
-    __IO uint32_t MPURG10ADDR9;
-    __IO uint32_t MPURG10ADDR10;
-    __IO uint32_t MPURG10ADDR11;
-    __IO uint32_t MPURG10ADDR12;
-    __IO uint32_t MPURG10ADDR13;
-    __IO uint32_t MPURG10ADDR14;
-    __IO uint32_t MPURG10ADDR15;
-    __IO uint32_t MPURG10ADDR16;
-    __IO uint32_t MPURG10ADDR17;
-    __IO uint32_t MPURG10ADDR18;
-    __IO uint32_t MPURG10ADDR19;
-    __IO uint32_t MPURG10ADDR20;
-    __IO uint32_t MPURG10ADDR21;
-    __IO uint32_t MPURG10ADDR22;
-    __IO uint32_t MPURG10ADDR23;
-    __IO uint32_t MPURG10ADDR24;
-    __IO uint32_t MPURG10ADDR25;
-    __IO uint32_t MPURG10ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd10_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG11SIZE0;
-    __IO uint32_t MPURG11SIZE1;
-    __IO uint32_t MPURG11SIZE2;
-    __IO uint32_t MPURG11SIZE3;
-    __IO uint32_t MPURG11SIZE4;
-    __IO uint32_t MPURG11ADDR0;
-    __IO uint32_t MPURG11ADDR1;
-    __IO uint32_t MPURG11ADDR2;
-    __IO uint32_t MPURG11ADDR3;
-    __IO uint32_t MPURG11ADDR4;
-    __IO uint32_t MPURG11ADDR5;
-    __IO uint32_t MPURG11ADDR6;
-    __IO uint32_t MPURG11ADDR7;
-    __IO uint32_t MPURG11ADDR8;
-    __IO uint32_t MPURG11ADDR9;
-    __IO uint32_t MPURG11ADDR10;
-    __IO uint32_t MPURG11ADDR11;
-    __IO uint32_t MPURG11ADDR12;
-    __IO uint32_t MPURG11ADDR13;
-    __IO uint32_t MPURG11ADDR14;
-    __IO uint32_t MPURG11ADDR15;
-    __IO uint32_t MPURG11ADDR16;
-    __IO uint32_t MPURG11ADDR17;
-    __IO uint32_t MPURG11ADDR18;
-    __IO uint32_t MPURG11ADDR19;
-    __IO uint32_t MPURG11ADDR20;
-    __IO uint32_t MPURG11ADDR21;
-    __IO uint32_t MPURG11ADDR22;
-    __IO uint32_t MPURG11ADDR23;
-    __IO uint32_t MPURG11ADDR24;
-    __IO uint32_t MPURG11ADDR25;
-    __IO uint32_t MPURG11ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd11_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG12SIZE0;
-    __IO uint32_t MPURG12SIZE1;
-    __IO uint32_t MPURG12SIZE2;
-    __IO uint32_t MPURG12SIZE3;
-    __IO uint32_t MPURG12SIZE4;
-    __IO uint32_t MPURG12ADDR0;
-    __IO uint32_t MPURG12ADDR1;
-    __IO uint32_t MPURG12ADDR2;
-    __IO uint32_t MPURG12ADDR3;
-    __IO uint32_t MPURG12ADDR4;
-    __IO uint32_t MPURG12ADDR5;
-    __IO uint32_t MPURG12ADDR6;
-    __IO uint32_t MPURG12ADDR7;
-    __IO uint32_t MPURG12ADDR8;
-    __IO uint32_t MPURG12ADDR9;
-    __IO uint32_t MPURG12ADDR10;
-    __IO uint32_t MPURG12ADDR11;
-    __IO uint32_t MPURG12ADDR12;
-    __IO uint32_t MPURG12ADDR13;
-    __IO uint32_t MPURG12ADDR14;
-    __IO uint32_t MPURG12ADDR15;
-    __IO uint32_t MPURG12ADDR16;
-    __IO uint32_t MPURG12ADDR17;
-    __IO uint32_t MPURG12ADDR18;
-    __IO uint32_t MPURG12ADDR19;
-    __IO uint32_t MPURG12ADDR20;
-    __IO uint32_t MPURG12ADDR21;
-    __IO uint32_t MPURG12ADDR22;
-    __IO uint32_t MPURG12ADDR23;
-    __IO uint32_t MPURG12ADDR24;
-    __IO uint32_t MPURG12ADDR25;
-    __IO uint32_t MPURG12ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd12_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG13SIZE0;
-    __IO uint32_t MPURG13SIZE1;
-    __IO uint32_t MPURG13SIZE2;
-    __IO uint32_t MPURG13SIZE3;
-    __IO uint32_t MPURG13SIZE4;
-    __IO uint32_t MPURG13ADDR0;
-    __IO uint32_t MPURG13ADDR1;
-    __IO uint32_t MPURG13ADDR2;
-    __IO uint32_t MPURG13ADDR3;
-    __IO uint32_t MPURG13ADDR4;
-    __IO uint32_t MPURG13ADDR5;
-    __IO uint32_t MPURG13ADDR6;
-    __IO uint32_t MPURG13ADDR7;
-    __IO uint32_t MPURG13ADDR8;
-    __IO uint32_t MPURG13ADDR9;
-    __IO uint32_t MPURG13ADDR10;
-    __IO uint32_t MPURG13ADDR11;
-    __IO uint32_t MPURG13ADDR12;
-    __IO uint32_t MPURG13ADDR13;
-    __IO uint32_t MPURG13ADDR14;
-    __IO uint32_t MPURG13ADDR15;
-    __IO uint32_t MPURG13ADDR16;
-    __IO uint32_t MPURG13ADDR17;
-    __IO uint32_t MPURG13ADDR18;
-    __IO uint32_t MPURG13ADDR19;
-    __IO uint32_t MPURG13ADDR20;
-    __IO uint32_t MPURG13ADDR21;
-    __IO uint32_t MPURG13ADDR22;
-    __IO uint32_t MPURG13ADDR23;
-    __IO uint32_t MPURG13ADDR24;
-    __IO uint32_t MPURG13ADDR25;
-    __IO uint32_t MPURG13ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd13_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG14SIZE0;
-    __IO uint32_t MPURG14SIZE1;
-    __IO uint32_t MPURG14SIZE2;
-    __IO uint32_t MPURG14SIZE3;
-    __IO uint32_t MPURG14SIZE4;
-    __IO uint32_t MPURG14ADDR0;
-    __IO uint32_t MPURG14ADDR1;
-    __IO uint32_t MPURG14ADDR2;
-    __IO uint32_t MPURG14ADDR3;
-    __IO uint32_t MPURG14ADDR4;
-    __IO uint32_t MPURG14ADDR5;
-    __IO uint32_t MPURG14ADDR6;
-    __IO uint32_t MPURG14ADDR7;
-    __IO uint32_t MPURG14ADDR8;
-    __IO uint32_t MPURG14ADDR9;
-    __IO uint32_t MPURG14ADDR10;
-    __IO uint32_t MPURG14ADDR11;
-    __IO uint32_t MPURG14ADDR12;
-    __IO uint32_t MPURG14ADDR13;
-    __IO uint32_t MPURG14ADDR14;
-    __IO uint32_t MPURG14ADDR15;
-    __IO uint32_t MPURG14ADDR16;
-    __IO uint32_t MPURG14ADDR17;
-    __IO uint32_t MPURG14ADDR18;
-    __IO uint32_t MPURG14ADDR19;
-    __IO uint32_t MPURG14ADDR20;
-    __IO uint32_t MPURG14ADDR21;
-    __IO uint32_t MPURG14ADDR22;
-    __IO uint32_t MPURG14ADDR23;
-    __IO uint32_t MPURG14ADDR24;
-    __IO uint32_t MPURG14ADDR25;
-    __IO uint32_t MPURG14ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd14_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MPURG15SIZE0;
-    __IO uint32_t MPURG15SIZE1;
-    __IO uint32_t MPURG15SIZE2;
-    __IO uint32_t MPURG15SIZE3;
-    __IO uint32_t MPURG15SIZE4;
-    __IO uint32_t MPURG15ADDR0;
-    __IO uint32_t MPURG15ADDR1;
-    __IO uint32_t MPURG15ADDR2;
-    __IO uint32_t MPURG15ADDR3;
-    __IO uint32_t MPURG15ADDR4;
-    __IO uint32_t MPURG15ADDR5;
-    __IO uint32_t MPURG15ADDR6;
-    __IO uint32_t MPURG15ADDR7;
-    __IO uint32_t MPURG15ADDR8;
-    __IO uint32_t MPURG15ADDR9;
-    __IO uint32_t MPURG15ADDR10;
-    __IO uint32_t MPURG15ADDR11;
-    __IO uint32_t MPURG15ADDR12;
-    __IO uint32_t MPURG15ADDR13;
-    __IO uint32_t MPURG15ADDR14;
-    __IO uint32_t MPURG15ADDR15;
-    __IO uint32_t MPURG15ADDR16;
-    __IO uint32_t MPURG15ADDR17;
-    __IO uint32_t MPURG15ADDR18;
-    __IO uint32_t MPURG15ADDR19;
-    __IO uint32_t MPURG15ADDR20;
-    __IO uint32_t MPURG15ADDR21;
-    __IO uint32_t MPURG15ADDR22;
-    __IO uint32_t MPURG15ADDR23;
-    __IO uint32_t MPURG15ADDR24;
-    __IO uint32_t MPURG15ADDR25;
-    __IO uint32_t MPURG15ADDR26;
+    __IO uint32_t MPURGSIZE0;
+    __IO uint32_t MPURGSIZE1;
+    __IO uint32_t MPURGSIZE2;
+    __IO uint32_t MPURGSIZE3;
+    __IO uint32_t MPURGSIZE4;
+    __IO uint32_t MPURGADDR0;
+    __IO uint32_t MPURGADDR1;
+    __IO uint32_t MPURGADDR2;
+    __IO uint32_t MPURGADDR3;
+    __IO uint32_t MPURGADDR4;
+    __IO uint32_t MPURGADDR5;
+    __IO uint32_t MPURGADDR6;
+    __IO uint32_t MPURGADDR7;
+    __IO uint32_t MPURGADDR8;
+    __IO uint32_t MPURGADDR9;
+    __IO uint32_t MPURGADDR10;
+    __IO uint32_t MPURGADDR11;
+    __IO uint32_t MPURGADDR12;
+    __IO uint32_t MPURGADDR13;
+    __IO uint32_t MPURGADDR14;
+    __IO uint32_t MPURGADDR15;
+    __IO uint32_t MPURGADDR16;
+    __IO uint32_t MPURGADDR17;
+    __IO uint32_t MPURGADDR18;
+    __IO uint32_t MPURGADDR19;
+    __IO uint32_t MPURGADDR20;
+    __IO uint32_t MPURGADDR21;
+    __IO uint32_t MPURGADDR22;
+    __IO uint32_t MPURGADDR23;
+    __IO uint32_t MPURGADDR24;
+    __IO uint32_t MPURGADDR25;
+    __IO uint32_t MPURGADDR26;
 } stc_mpu_rgd15_bit_t;
 
 typedef struct
@@ -69350,44 +68015,44 @@ typedef struct
     stc_aos_dcu_2_trgsel_bit_t               DCU_2_TRGSEL_b;
     stc_aos_dcu_3_trgsel_bit_t               DCU_3_TRGSEL_b;
     stc_aos_dcu_4_trgsel_bit_t               DCU_4_TRGSEL_b;
-    stc_aos_dma_1_trgsel0_bit_t              DMA_1_TRGSEL0_b;
-    stc_aos_dma_1_trgsel1_bit_t              DMA_1_TRGSEL1_b;
-    stc_aos_dma_1_trgsel2_bit_t              DMA_1_TRGSEL2_b;
-    stc_aos_dma_1_trgsel3_bit_t              DMA_1_TRGSEL3_b;
-    stc_aos_dma_1_trgsel4_bit_t              DMA_1_TRGSEL4_b;
-    stc_aos_dma_1_trgsel5_bit_t              DMA_1_TRGSEL5_b;
-    stc_aos_dma_1_trgsel6_bit_t              DMA_1_TRGSEL6_b;
-    stc_aos_dma_1_trgsel7_bit_t              DMA_1_TRGSEL7_b;
-    stc_aos_dma_2_trgsel0_bit_t              DMA_2_TRGSEL0_b;
-    stc_aos_dma_2_trgsel1_bit_t              DMA_2_TRGSEL1_b;
-    stc_aos_dma_2_trgsel2_bit_t              DMA_2_TRGSEL2_b;
-    stc_aos_dma_2_trgsel3_bit_t              DMA_2_TRGSEL3_b;
-    stc_aos_dma_2_trgsel4_bit_t              DMA_2_TRGSEL4_b;
-    stc_aos_dma_2_trgsel5_bit_t              DMA_2_TRGSEL5_b;
-    stc_aos_dma_2_trgsel6_bit_t              DMA_2_TRGSEL6_b;
-    stc_aos_dma_2_trgsel7_bit_t              DMA_2_TRGSEL7_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL0_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL1_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL2_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL3_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL4_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL5_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL6_b;
+    stc_aos_dma_1_trgsel_bit_t               DMA_1_TRGSEL7_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL0_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL1_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL2_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL3_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL4_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL5_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL6_b;
+    stc_aos_dma_2_trgsel_bit_t               DMA_2_TRGSEL7_b;
     stc_aos_dma_trgselrc_bit_t               DMA_TRGSELRC_b;
-    stc_aos_tmr6_htssr1_bit_t                TMR6_HTSSR1_b;
-    stc_aos_tmr6_htssr2_bit_t                TMR6_HTSSR2_b;
-    stc_aos_tmr6_htssr3_bit_t                TMR6_HTSSR3_b;
-    stc_aos_tmr6_htssr4_bit_t                TMR6_HTSSR4_b;
+    stc_aos_tmr6_htssr_bit_t                 TMR6_HTSSR1_b;
+    stc_aos_tmr6_htssr_bit_t                 TMR6_HTSSR2_b;
+    stc_aos_tmr6_htssr_bit_t                 TMR6_HTSSR3_b;
+    stc_aos_tmr6_htssr_bit_t                 TMR6_HTSSR4_b;
     stc_aos_port_pevnttrgsr12_bit_t          PORT_PEVNTTRGSR12_b;
     stc_aos_port_pevnttrgsr34_bit_t          PORT_PEVNTTRGSR34_b;
     stc_aos_tmr0_htssr_bit_t                 TMR0_HTSSR_b;
     stc_aos_tmr2_htssr_bit_t                 TMR2_HTSSR_b;
     stc_aos_hash_itrgsela_bit_t              HASH_ITRGSELA_b;
     stc_aos_hash_itrgselb_bit_t              HASH_ITRGSELB_b;
-    stc_aos_tmra_htssr0_bit_t                TMRA_HTSSR0_b;
-    stc_aos_tmra_htssr1_bit_t                TMRA_HTSSR1_b;
-    stc_aos_tmra_htssr2_bit_t                TMRA_HTSSR2_b;
-    stc_aos_tmra_htssr3_bit_t                TMRA_HTSSR3_b;
+    stc_aos_tmra_htssr_bit_t                 TMRA_HTSSR0_b;
+    stc_aos_tmra_htssr_bit_t                 TMRA_HTSSR1_b;
+    stc_aos_tmra_htssr_bit_t                 TMRA_HTSSR2_b;
+    stc_aos_tmra_htssr_bit_t                 TMRA_HTSSR3_b;
     stc_aos_ots_trg_bit_t                    OTS_TRG_b;
-    stc_aos_adc_1_itrgselr0_bit_t            ADC_1_ITRGSELR0_b;
-    stc_aos_adc_1_itrgselr1_bit_t            ADC_1_ITRGSELR1_b;
-    stc_aos_adc_2_itrgselr0_bit_t            ADC_2_ITRGSELR0_b;
-    stc_aos_adc_2_itrgselr1_bit_t            ADC_2_ITRGSELR1_b;
-    stc_aos_adc_3_itrgselr0_bit_t            ADC_3_ITRGSELR0_b;
-    stc_aos_adc_3_itrgselr1_bit_t            ADC_3_ITRGSELR1_b;
+    stc_aos_adc_1_itrgselr_bit_t             ADC_1_ITRGSELR0_b;
+    stc_aos_adc_1_itrgselr_bit_t             ADC_1_ITRGSELR1_b;
+    stc_aos_adc_2_itrgselr_bit_t             ADC_2_ITRGSELR0_b;
+    stc_aos_adc_2_itrgselr_bit_t             ADC_2_ITRGSELR1_b;
+    stc_aos_adc_3_itrgselr_bit_t             ADC_3_ITRGSELR0_b;
+    stc_aos_adc_3_itrgselr_bit_t             ADC_3_ITRGSELR1_b;
     stc_aos_comtrg1_bit_t                    COMTRG1_b;
     stc_aos_comtrg2_bit_t                    COMTRG2_b;
     uint32_t                                 RESERVED0[608];
@@ -69572,16 +68237,7 @@ typedef struct
     stc_dac_dadr2_bit_t                      DADR2_b;
     stc_dac_dacr_bit_t                       DACR_b;
     stc_dac_daadpcr_bit_t                    DAADPCR_b;
-    uint32_t                                 RESERVED0[16];
-    stc_dac_dadivcr_bit_t                    DADIVCR_b;
-    stc_dac_divpr11ab_bit_t                  DIVPR11AB_b;
-    stc_dac_divpr11c_bit_t                   DIVPR11C_b;
-    stc_dac_divpr10ab_bit_t                  DIVPR10AB_b;
-    stc_dac_divpr98_bit_t                    DIVPR98_b;
-    stc_dac_divpr76_bit_t                    DIVPR76_b;
-    stc_dac_divpr54_bit_t                    DIVPR54_b;
-    stc_dac_divpr32_bit_t                    DIVPR32_b;
-    stc_dac_divpr10_bit_t                    DIVPR10_b;
+    uint32_t                                 RESERVED0[160];
     stc_dac_daocr_bit_t                      DAOCR_b;
 } bM4_DAC_TypeDef;
 

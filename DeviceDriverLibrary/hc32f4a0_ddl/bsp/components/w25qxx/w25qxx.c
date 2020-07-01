@@ -117,7 +117,7 @@
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
  ******************************************************************************/
-uint8_t W25QXX_BUFFER[4096U];
+
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
@@ -138,6 +138,11 @@ static void W25QXX_WriteEnable(void);
 static void W25QXX_WriteDisable(void);
 
 static void W25QXX_WritePage(uint32_t u32Address, const uint8_t *pu8Data, uint32_t u32DataLength);
+
+static void W25QXX_Write_NoCheck(const uint8_t *pBuffer, uint32_t WriteAddr, uint16_t NumByteToWrite);
+static void W25QXX_WriteCmd(uint8_t u8Cmd, const uint8_t *pu8CmdData, uint32_t u32CmdDataLength);
+static void W25QXX_ReadCmd(uint8_t u8Cmd, uint8_t *pu8CmdData, uint32_t u32CmdDataLength,
+                         uint8_t *pu8Info, uint8_t u8InfoLength);
 /**
  * @}
  */
@@ -145,6 +150,7 @@ static void W25QXX_WritePage(uint32_t u32Address, const uint8_t *pu8Data, uint32
 /*******************************************************************************
  * Local variable definitions ('static')
  ******************************************************************************/
+static uint8_t W25QXX_BUFFER[4096U];
 
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
@@ -326,35 +332,35 @@ void W25QXX_EraseBlock(uint32_t u32BlockAddress)
  * @param [in] NumByteToWrite   Number to be written, (MAX. 65535)
  * @retval None
  */
-void W25QXX_Write_NoCheck(const uint8_t *pBuffer, uint32_t WriteAddr, uint16_t NumByteToWrite)
+static void W25QXX_Write_NoCheck(const uint8_t *pBuffer, uint32_t WriteAddr, uint16_t NumByteToWrite)
 {
-    uint16_t pageremain;
+    uint32_t pageremain;
     uint32_t u32BufAdrTmp = (uint32_t)pBuffer;
-    pageremain = (uint16_t)(256U - WriteAddr % 256U);
+    pageremain = 256U - WriteAddr % 256U;
     if (NumByteToWrite <= pageremain)
     {
         pageremain = NumByteToWrite;
     }
     while (1)
     {
-        W25QXX_WritePage(WriteAddr, (uint8_t *)u32BufAdrTmp, (uint32_t)pageremain);
-        if (NumByteToWrite == pageremain)
+        W25QXX_WritePage(WriteAddr, (uint8_t *)u32BufAdrTmp, pageremain);
+        if (NumByteToWrite == (uint16_t)pageremain)
         {
             break;
         }
         else //NumByteToWrite>pageremain
         {
-            u32BufAdrTmp += (uint32_t)pageremain;
+            u32BufAdrTmp += pageremain;
             WriteAddr      += pageremain;
 
-            NumByteToWrite -= pageremain;
+            NumByteToWrite -= (uint16_t)pageremain;
             if (NumByteToWrite > 256U)
             {
                 pageremain = 256U;
             }
             else
             {
-                pageremain = NumByteToWrite;
+                pageremain = (uint32_t)NumByteToWrite;
             }
         }
     }

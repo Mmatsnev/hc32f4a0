@@ -138,8 +138,6 @@ enum USB_OTG_SPEED {
  * @defgroup __GLOBAL_DEFINES_ Defines for USB Global Register Function
  * @{
  */
-#define GAHBCFG_TXFEMPTYLVL_EMPTY              (1U)
-#define GAHBCFG_TXFEMPTYLVL_HALFEMPTY          (0U)
 #define GAHBCFG_GLBINT_ENABLE                  (1U)
 #define GAHBCFG_INT_DMA_BURST_SINGLE           (0U)
 #define GAHBCFG_INT_DMA_BURST_INCR             (1U)

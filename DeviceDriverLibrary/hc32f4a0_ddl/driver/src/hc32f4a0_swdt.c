@@ -232,7 +232,7 @@ en_flag_status_t SWDT_GetStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_SWDT_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_SWDT->SR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_SWDT->SR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -252,7 +252,7 @@ en_flag_status_t SWDT_GetStatus(uint32_t u32Flag)
  */
 en_result_t SWDT_ClearStatus(uint32_t u32Flag)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     /* Check parameters */

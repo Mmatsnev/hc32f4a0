@@ -179,6 +179,8 @@ uint8_t m_au8ReadData[APP_TEST_DATA_SIZE];
  */
 int32_t main(void)
 {
+    uint32_t i;
+
     /* MCU Peripheral registers write unprotected. */
     Peripheral_WE();
     /* Configures the PLLHP(240MHz) as the system clock. */
@@ -198,7 +200,7 @@ int32_t main(void)
         DBG("W25Q64 read unique ID......\n");
         W25Q64_GetUniqueID(m_au8ReadData, W25Q64_UNIQUE_ID_SIZE);
         DBG("W25Q64 unique ID:\n");
-        for (uint32_t i = 0UL; i < W25Q64_UNIQUE_ID_SIZE; i++)
+        for (i = 0UL; i < W25Q64_UNIQUE_ID_SIZE; i++)
         {
             DBG("0x%.2x ", m_au8ReadData[i]);
         }
@@ -279,7 +281,7 @@ int32_t main(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     // PWC_FCG0_Unlock();
@@ -305,7 +307,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     // PWC_FCG0_Lock();

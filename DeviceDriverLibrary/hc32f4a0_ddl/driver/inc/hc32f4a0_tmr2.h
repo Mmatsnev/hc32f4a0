@@ -110,7 +110,7 @@ typedef struct
                                                  This parameter can be a value of @ref TMR2_PWM_Start_Polarity */
     uint32_t u32StopPolarity;               /*!< Specify the polarity of PWM output when TMR2 counting stop.
                                                  This parameter can be a value of @ref TMR2_PWM_Stop_Polarity */
-    uint32_t u32CmpPolarity;                /*!< Specify the polarity of PWM output when TMR2 counting matchs the compare value.
+    uint32_t u32CmpPolarity;                /*!< Specify the polarity of PWM output when TMR2 counting matches the compare value.
                                                  This parameter can be a value of @ref TMR2_PWM_Cmp_Polarity */
 } stc_tmr2_pwm_cfg_t;
 
@@ -332,10 +332,8 @@ typedef struct
  * @defgroup TMR2_Common_Trigger_Sel TMR2 Common Trigger Source Select
  * @{
  */
-#define TMR2_TRIG_COM1_COM2_OFF         (0x00UL)
-#define TMR2_TRIG_COM1_ON_COM2_OFF      (0x01UL << 31U)
-#define TMR2_TRIG_COM1_OFF_COM2_ON      (0x01UL << 30U)
-#define TMR2_TRIG_COM1_COM2_ON          (0x03UL << 30U)
+#define TMR2_COM_TRIG1                  (AOS_TMR2_HTSSR_COMTRG_EN_0)
+#define TMR2_COM_TRIG2                  (AOS_TMR2_HTSSR_COMTRG_EN_1)
 /**
  * @}
  */
@@ -366,7 +364,7 @@ typedef struct
      en_result_t TMR2_SetTrigCond(M4_TMR2_TypeDef *TMR2x, uint8_t u8Tmr2Ch, const stc_tmr2_trig_cond_t *pstcCond);
      en_result_t TMR2_TrigCondStructInit(stc_tmr2_trig_cond_t *pstcCond);
             void TMR2_SetTriggerSrc(en_event_src_t enEvent);
-            void TMR2_ComTrigCmd(uint32_t u32ComTrigEn);
+            void TMR2_ComTriggerCmd(uint32_t u32ComTrig, en_functional_state_t enNewState);
 
             void TMR2_FilterConfig(M4_TMR2_TypeDef *TMR2x, uint8_t u8Tmr2Ch, uint32_t u32ClkDiv);
             void TMR2_FilterCmd(M4_TMR2_TypeDef *TMR2x, uint8_t u8Tmr2Ch, en_functional_state_t enNewState);

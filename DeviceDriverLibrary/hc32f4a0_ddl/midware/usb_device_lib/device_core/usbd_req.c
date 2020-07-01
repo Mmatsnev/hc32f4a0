@@ -2,7 +2,7 @@
  *******************************************************************************
  * @file  usbd_req.c
  * @brief Standard USB requests following chapter 9.
- *       
+ *
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -433,7 +433,9 @@ void USBD_CtlError( USB_OTG_CORE_HANDLE  *pdev)  /* MISRAC 2004*/
 {
     DCD_EP_Stall(pdev , 0x80U);
     DCD_EP_Stall(pdev , 0U);
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("ctl error\n");
+#endif
     USB_OTG_EP0_OutStart(pdev);
 }
 
@@ -701,7 +703,9 @@ static void USBD_SetConfig(USB_OTG_CORE_HANDLE  *pdev,
                 }
                 break;
             case USB_OTG_SUSPENDED:
+#if (DDL_PRINT_ENABLE == DDL_ON)
                 printf("set cfg fail,suspended\n");
+#endif
                 break;
             default:
                 USBD_CtlError(pdev);

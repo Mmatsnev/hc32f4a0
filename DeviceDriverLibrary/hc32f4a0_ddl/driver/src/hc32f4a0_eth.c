@@ -126,9 +126,9 @@
 
 /* Wait timeout(ms) */
 #define ETH_TIMEOUT_WRITE_REGISTER                          (50UL)
-#define ETH_TIMEOUT_SOFTWARE_RESET                          (500UL)
-#define ETH_TIMEOUT_LINK_STATUS                             (5000UL)
-#define ETH_TIMEOUT_AUTONEGO_COMPLETE                       (5000UL)
+#define ETH_TIMEOUT_SOFTWARE_RESET                          (200UL)
+#define ETH_TIMEOUT_LINK_STATUS                             (500UL)
+#define ETH_TIMEOUT_AUTONEGO_COMPLETE                       (1000UL)
 
 
 /**
@@ -856,7 +856,7 @@
  */
 en_result_t ETH_DeInit(void)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
 
     ETH_MAC_DeInit();
     ETH_DMA_DeInit();
@@ -889,11 +889,12 @@ en_result_t ETH_DeInit(void)
  */
 en_result_t ETH_Init(stc_eth_handle_t *pstcEthHandle, stc_eth_init_t *pstcEthInit)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
-    uint32_t u32TempReg = 0UL;
-    uint32_t u32BusClk = 0UL, u32PhyTimeout = 0UL;
-    uint16_t u16PhyReg = 0U;
+    uint32_t u32TempReg;
+    uint32_t u32BusClk;
+    uint32_t u32PhyTimeout;
+    uint16_t u16PhyReg;
 
     if ((NULL == pstcEthHandle) || (NULL == pstcEthInit))
     {
@@ -960,20 +961,17 @@ en_result_t ETH_Init(stc_eth_handle_t *pstcEthHandle, stc_eth_init_t *pstcEthIni
                     u32Count = ETH_TIMEOUT_LINK_STATUS * (HCLK_VALUE / 20000UL);
                     do
                     {
-                        if (u32Count-- == 0UL)
+                        if (0UL == u32Count)
                         {
                             break;
                         }
                         if (ErrorTimeout == ETH_PHY_ReadRegister(pstcEthHandle, PHY_BSR, &u16PhyReg))
                         {
-                            if (u32Count > u32PhyTimeout)
-                            {
-                                u32Count -= u32PhyTimeout;
-                            }
-                            else
-                            {
-                                u32Count = 0UL;
-                            }
+                            u32Count = (u32Count > u32PhyTimeout) ? (u32Count - u32PhyTimeout) : 0UL;
+                        }
+                        else
+                        {
+                            u32Count = (u32Count > u32PhyTimeout) ? (u32Count - (u32PhyTimeout / 150U)) : 0UL;
                         }
                     } while (PHY_LINK_STATUS != (u16PhyReg & PHY_LINK_STATUS));
 
@@ -998,20 +996,17 @@ en_result_t ETH_Init(stc_eth_handle_t *pstcEthHandle, stc_eth_init_t *pstcEthIni
                             u32Count = ETH_TIMEOUT_AUTONEGO_COMPLETE * (HCLK_VALUE / 20000UL);
                             do
                             {
-                                if (u32Count-- == 0UL)
+                                if (0UL == u32Count)
                                 {
                                     break;
                                 }
                                 if (ErrorTimeout == ETH_PHY_ReadRegister(pstcEthHandle, PHY_BSR, &u16PhyReg))
                                 {
-                                    if (u32Count > u32PhyTimeout)
-                                    {
-                                        u32Count -= u32PhyTimeout;
-                                    }
-                                    else
-                                    {
-                                        u32Count = 0UL;
-                                    }
+                                    u32Count = (u32Count > u32PhyTimeout) ? (u32Count - u32PhyTimeout) : 0UL;
+                                }
+                                else
+                                {
+                                    u32Count = (u32Count > u32PhyTimeout) ? (u32Count - (u32PhyTimeout / 150U)) : 0UL;
                                 }
                             } while (PHY_AUTONEGO_COMPLETE != (u16PhyReg & PHY_AUTONEGO_COMPLETE));
 
@@ -1192,7 +1187,7 @@ en_result_t ETH_Start(void)
  */
 en_result_t ETH_Stop(void)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
 
     /* Disable DMA Transmit */
     ETH_DMA_TransmitCmd(Disable);
@@ -1227,7 +1222,7 @@ en_result_t ETH_Stop(void)
  */
 en_result_t ETH_PHY_WriteRegister(stc_eth_handle_t *pstcEthHandle, uint16_t u16Reg, uint16_t u16RegVal)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     if (NULL == pstcEthHandle)
@@ -1279,7 +1274,7 @@ en_result_t ETH_PHY_WriteRegister(stc_eth_handle_t *pstcEthHandle, uint16_t u16R
  */
 en_result_t ETH_PHY_ReadRegister(stc_eth_handle_t *pstcEthHandle, uint16_t u16Reg, uint16_t *pu16RegVal)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     if ((NULL == pstcEthHandle) || (NULL == pu16RegVal))
@@ -1292,6 +1287,7 @@ en_result_t ETH_PHY_ReadRegister(stc_eth_handle_t *pstcEthHandle, uint16_t u16Re
         DDL_ASSERT(IS_ETH_PHY_ADDRESS(pstcEthHandle->stcCommInit.u16PHYAddress));
         DDL_ASSERT(IS_ETH_PHY_REGISTER(u16Reg));
 
+        *pu16RegVal = 0U;
         /* Set the MAC_SMIADDR register */
         /* Keep only the MDC Clock Range SMIC[3:0] bits value */
         MODIFY_REG32(M4_ETH->MAC_SMIADDR, ETH_MAC_SMIADDR_CLEAR_MASK,
@@ -1330,8 +1326,8 @@ en_result_t ETH_PHY_ReadRegister(stc_eth_handle_t *pstcEthHandle, uint16_t u16Re
  */
 en_result_t ETH_PHY_LoopBackCmd(stc_eth_handle_t *pstcEthHandle, en_functional_state_t enNewSta)
 {
-    en_result_t enRet = Error;
-    uint16_t u16RegVal = 0U;
+    en_result_t enRet;
+    uint16_t u16RegVal;
 
     if (NULL == pstcEthHandle)
     {
@@ -1842,7 +1838,7 @@ en_flag_status_t ETH_MAC_GetIntStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_MAC_INTERRUPT_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->MAC_INTSTSR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->MAC_INTSTSR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -1901,8 +1897,8 @@ en_result_t ETH_MACADDR_Init(uint32_t u32Index, const stc_eth_mac_addr_config_t 
     en_result_t enRet = Ok;
     __IO uint32_t *MACADHR;
     __IO uint32_t *MACADLR;
-    uint32_t u32TempReg = 0UL;
-    uint32_t *pu32AddrLow = NULL;
+    uint32_t u32TempReg;
+    uint32_t *pu32AddrLow;
 
     if (NULL == pstcMacAddrInit)
     {
@@ -1980,8 +1976,8 @@ en_result_t ETH_MACADDR_SetAddress(uint32_t u32Index, uint8_t au8Addr[])
     en_result_t enRet = Ok;
     __IO uint32_t *MACADHR;
     __IO uint32_t *MACADLR;
-    uint32_t u32TempReg = 0UL;
-    uint32_t *pu32AddrLow = NULL;
+    uint32_t u32TempReg;
+    uint32_t *pu32AddrLow;
 
     if (NULL == au8Addr)
     {
@@ -2024,8 +2020,8 @@ en_result_t ETH_MACADDR_GetAddress(uint32_t u32Index, uint8_t au8Addr[])
     en_result_t enRet = Ok;
     __IO uint32_t *MACADHR;
     __IO uint32_t *MACADLR;
-    uint32_t u32TempReg = 0UL;
-    uint32_t *pu32AddrLow = NULL;
+    uint32_t u32TempReg;
+    uint32_t *pu32AddrLow;
 
     if (NULL == au8Addr)
     {
@@ -2228,7 +2224,7 @@ en_result_t ETH_DMA_StructInit(stc_eth_dma_init_t *pstcDmaInit)
  */
 en_result_t ETH_DMA_SoftwareReset(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     WRITE_REG32(bM4_ETH->DMA_BUSMODR_b.SWR, 1U);
@@ -2290,7 +2286,7 @@ void ETH_DMA_SetRxWatchdogCounter(uint8_t u8Value)
  */
 en_result_t ETH_DMA_FlushTransmitFIFO(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     WRITE_REG32(bM4_ETH->DMA_OPRMODR_b.FTF, 1U);
@@ -2407,7 +2403,7 @@ en_flag_status_t ETH_DMA_GetStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_DMA_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->DMA_DMASTSR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->DMA_DMASTSR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -2432,7 +2428,7 @@ en_flag_status_t ETH_DMA_GetOvfStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_DMA_MISS_FRAME_TYPE(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->DMA_RFRCNTR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->DMA_RFRCNTR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -2456,7 +2452,7 @@ en_flag_status_t ETH_DMA_GetOvfStatus(uint32_t u32Flag)
  */
 en_result_t ETH_DMA_TxDescListInit(stc_eth_handle_t *pstcEthHandle, stc_eth_dma_desc_t astcTxDescTab[], const uint8_t au8TxBuffer[], uint32_t u32TxBufferCnt)
 {
-    uint32_t i = 0U;
+    uint32_t i;
     stc_eth_dma_desc_t *pstcTxDesc;
     en_result_t enRet = Ok;
 
@@ -2514,7 +2510,7 @@ en_result_t ETH_DMA_TxDescListInit(stc_eth_handle_t *pstcEthHandle, stc_eth_dma_
  */
 en_result_t ETH_DMA_RxDescListInit(stc_eth_handle_t *pstcEthHandle, stc_eth_dma_desc_t astcRxDescTab[], const uint8_t au8RxBuffer[], uint32_t u32RxBufferCnt)
 {
-    uint32_t i = 0UL;
+    uint32_t i;
     stc_eth_dma_desc_t *pstcRxDesc;
     en_result_t enRet = Ok;
 
@@ -2572,8 +2568,9 @@ en_result_t ETH_DMA_RxDescListInit(stc_eth_handle_t *pstcEthHandle, stc_eth_dma_
  */
 en_result_t ETH_DMA_SetTransmitFrame(stc_eth_handle_t *pstcEthHandle, uint32_t u32FrameLength)
 {
-    uint32_t i = 0U;
-    uint32_t u32BufCnt = 0U, u32Size = 0U;
+    uint32_t i;
+    uint32_t u32BufCnt;
+    uint32_t u32Size;
     en_result_t enRet = Ok;
 
     if ((NULL == pstcEthHandle) || (0U == u32FrameLength))
@@ -2647,7 +2644,7 @@ en_result_t ETH_DMA_SetTransmitFrame(stc_eth_handle_t *pstcEthHandle, uint32_t u
             }
 
             /* When Tx Buffer unavailable flag is set: clear it and resume transmission */
-            if (Reset != (READ_REG32_BIT(M4_ETH->DMA_DMASTSR, ETH_DMA_DMASTSR_TUS)))
+            if (0UL != (READ_REG32_BIT(M4_ETH->DMA_DMASTSR, ETH_DMA_DMASTSR_TUS)))
             {
                 /* Clear DMA TUS flag */
                 /* Resume DMA transmit */
@@ -3556,7 +3553,7 @@ en_result_t ETH_DMA_GetRxDescTimeStamp(const stc_eth_dma_desc_t *pstcRxDesc, uin
  */
 en_result_t ETH_PMT_ResetWakeupFramePointer(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     WRITE_REG32(bM4_ETH->MAC_PMTCTLR_b.RTWKFR, 1U);
@@ -3581,7 +3578,7 @@ en_result_t ETH_PMT_ResetWakeupFramePointer(void)
  */
 en_result_t ETH_PMT_WriteWakeupFrameRegister(const uint32_t au32RegBuffer[])
 {
-    uint32_t i = 0U;
+    uint32_t i;
     en_result_t enRet = Ok;
 
     if (NULL == au32RegBuffer)
@@ -3680,7 +3677,7 @@ en_flag_status_t ETH_PMT_GetStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_PMT_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->MAC_PMTCTLR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->MAC_PMTCTLR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -3773,7 +3770,7 @@ en_result_t ETH_MMC_StructInit(stc_eth_mmc_init_t *pstcMmcInit)
  */
 en_result_t ETH_MMC_CounterReset(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     WRITE_REG32(bM4_ETH->MMC_MMCCTLR_b.CRST, 1U);
@@ -3905,7 +3902,7 @@ en_flag_status_t ETH_MMC_GetTxStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_MMC_TX_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->MMC_TRSSTSR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->MMC_TRSSTSR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -3936,7 +3933,7 @@ en_flag_status_t ETH_MMC_GetRxStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_MMC_RX_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->MMC_REVSTSR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->MMC_REVSTSR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -4001,7 +3998,7 @@ void ETH_PTP_DeInit(void)
  */
 en_result_t ETH_PTP_Init(const stc_eth_ptp_init_t *pstcPtpInit)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
 
     if (NULL == pstcPtpInit)
     {
@@ -4148,7 +4145,7 @@ void ETH_PTP_SetCalibMode(uint32_t u32CalibMode)
  */
 en_result_t ETH_PTP_UpdateBasicIncValue(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Error;
 
     if (0UL == READ_REG32(bM4_ETH->PTP_TSPCTLR_b.TSPADUP))
@@ -4184,7 +4181,7 @@ en_result_t ETH_PTP_UpdateBasicIncValue(void)
  */
 en_result_t ETH_PTP_UpdateSystemTime(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Error;
 
     if (0UL == READ_REG32(bM4_ETH->PTP_TSPCTLR_b.TSPINI))
@@ -4223,7 +4220,7 @@ en_result_t ETH_PTP_UpdateSystemTime(void)
  */
 en_result_t ETH_PTP_SystemTimeInit(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Error;
 
     if (0UL == READ_REG32(bM4_ETH->PTP_TSPCTLR_b.TSPINI))
@@ -4377,7 +4374,7 @@ en_flag_status_t ETH_PTP_GetStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_ETH_PTP_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_ETH->PTP_TSPSTSR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_ETH->PTP_TSPSTSR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -4435,8 +4432,9 @@ void ETH_PPS_DeInit(uint8_t u8Ch)
 en_result_t ETH_PPS_Init(uint8_t u8Ch, const stc_eth_pps_config_t *pstcPpsInit)
 {
     en_result_t enRet = Ok;
-    uint32_t u32ShiftStep = 0UL, u32ShiftBit = 0UL;
-    uint32_t u32RegVal = 0UL;
+    uint32_t u32ShiftStep = 0UL;
+    uint32_t u32ShiftBit = 0UL;
+    uint32_t u32RegVal;
     __IO uint32_t *PTP_TMTSECR;
     __IO uint32_t *PTP_TMTNSER;
 

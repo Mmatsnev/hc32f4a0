@@ -141,7 +141,7 @@ static en_result_t CLKSYNC_TransmitReceive(M4_USART_TypeDef *USARTx,
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -167,7 +167,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -232,7 +232,7 @@ static en_result_t USART_WaitOnFlagUntilTimeout(M4_USART_TypeDef *USARTx,
     en_result_t enRet = Ok;
 
     /* Wait until flag is set */
-    while((USART_GetFlag(USARTx, u32Flag) ? Set : Reset) == enStatus)
+    while((USART_GetStatus(USARTx, u32Flag) ? Set : Reset) == enStatus)
     {
         /* Check for the Timeout */
         if (TIMEOUT_MAX - u32Timeout)
@@ -284,7 +284,7 @@ static en_result_t CLKSYNC_TransmitReceive(M4_USART_TypeDef *USARTx,
             u32XferCount--;
 
             /* Wait for TX empty or TX complete flag in order to write data in DR */
-            u32Flag = (USART_INTCLK_OUTPUT == USART_GetClockMode(USARTx)) ? USART_FLAG_TC : USART_FLAG_TXE;
+            u32Flag = (USART_INTERNCLK_OUTPUT == USART_GetClockMode(USARTx)) ? USART_FLAG_TC : USART_FLAG_TXE;
             if (USART_WaitOnFlagUntilTimeout(USARTx, u32Flag, Reset, u32TickStart, u32Timeout) != Ok)
             {
                 enRet = ErrorTimeout;
@@ -360,7 +360,7 @@ int32_t main(void)
 #if (CLKSYNC_DEVICE_MODE == CLKSYNC_MASTER_MODE)
     stcClksyncInit.u32Baudrate = 115200UL;
     stcClksyncInit.u32PclkDiv = USART_PCLK_DIV4,
-    stcClksyncInit.u32ClkMode = USART_INTCLK_OUTPUT;
+    stcClksyncInit.u32ClkMode = USART_INTERNCLK_OUTPUT;
 #else
     stcClksyncInit.u32ClkMode = USART_EXTCLK;
 #endif

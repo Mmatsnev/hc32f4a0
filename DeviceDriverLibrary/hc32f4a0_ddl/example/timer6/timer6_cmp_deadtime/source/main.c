@@ -102,7 +102,7 @@
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -128,7 +128,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -231,10 +231,10 @@ int32_t main(void)
     /* Set dead time value (up count) */
     TMR6_SetDeadTimeReg(M4_TMR6_1, TMR6_DEADTIME_REG_UP_A, 0x800UL);
     /* DeadTime function configurate */
-    stcDeadTimeCfg.u32DtEqualUpDwn = TMR6_DT_EQUAL_ON; /* Make the down count dead time value equal to the up count dead time setting */
-    stcDeadTimeCfg.u32DtUpdCond = TMR6_DT_TRANS_COND_NONE;   /* Disable buffer transfer */
-    stcDeadTimeCfg.u32EnDtBufDwn = TMR6_DT_CNT_DOWN_BUF_OFF; /* Disable buffer transfer */
-    stcDeadTimeCfg.u32EnDtBufUp = TMR6_DT_CNT_UP_BUF_OFF;    /* Disable buffer transfer */
+    stcDeadTimeCfg.u32DtEqualUpDwn = TMR6_DEADTIME_EQUAL_ON; /* Make the down count dead time value equal to the up count dead time setting */
+    stcDeadTimeCfg.u32DtUpdCond = TMR6_DEADTIME_TRANS_COND_NONE;   /* Disable buffer transfer */
+    stcDeadTimeCfg.u32EnDtBufDwn = TMR6_DEADTIME_CNT_DOWN_BUF_OFF; /* Disable buffer transfer */
+    stcDeadTimeCfg.u32EnDtBufUp = TMR6_DEADTIME_CNT_UP_BUF_OFF;    /* Disable buffer transfer */
     TMR6_DeadTimeCfg(M4_TMR6_1, &stcDeadTimeCfg);
     TMR6_DeadTimeFuncCmd(M4_TMR6_1, Enable);
 #endif
@@ -248,17 +248,17 @@ int32_t main(void)
 
      /* Configurate PWM output */
     stcTIM6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-    stcTIM6PortOutCfg.u32NextPeriodForceStd = TMR6_FORCE_PORT_OUTPUT_INVALID;
-    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_REVERSE;
-    stcTIM6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_REVERSE;
-    stcTIM6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+    stcTIM6PortOutCfg.u32NextPeriodForceSta = TMR6_FORCE_PORT_OUTPUT_INVALID;
+    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_REVERSE;
+    stcTIM6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_REVERSE;
+    stcTIM6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
-    stcTIM6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_HIGH;
+    stcTIM6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_HIGH;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTIM6PortOutCfg);
 
     /* Enable interrupt */

@@ -663,7 +663,9 @@ static USBH_Status USBH_HandleControl (USB_OTG_CORE_HANDLE *pdev, USBH_HOST *pho
             }
             else if ((HCD_GetCurrentFrame(pdev)- phost->Control.timer) > timeout)
             {
+#if (DDL_PRINT_ENABLE == DDL_ON)
                 printf("Device not responding\n");
+#endif
             }
             else
             {

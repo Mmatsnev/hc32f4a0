@@ -1,7 +1,7 @@
 /**
  *******************************************************************************
  * @file  hc32f4a0_fmac.c
- * @brief This file provides firmware functions to manage the Filter Math 
+ * @brief This file provides firmware functions to manage the Filter Math
  *        Accelerate (FMAC).
  @verbatim
    Change Logs:
@@ -190,7 +190,7 @@ en_result_t FMAC_Init(M4_FMAC_TypeDef* FMACx, const stc_fmac_init_t *pstcFmacIni
 {
     en_result_t enRet = ErrorInvalidParameter;
     __IO uint32_t *FMAC_CORx;
-    uint32_t u32temp; 
+    uint32_t u32temp;
     if(pstcFmacInit != NULL)
     {
         DDL_ASSERT(IS_VALID_UNIT(FMACx));
@@ -206,7 +206,7 @@ en_result_t FMAC_Init(M4_FMAC_TypeDef* FMACx, const stc_fmac_init_t *pstcFmacIni
         do{
             FMAC_CORx = (__IO uint32_t *)((uint32_t)(&FMACx->COR0) + (u32temp << 2UL));
             WRITE_REG32(*FMAC_CORx, pstcFmacInit->i16FiltFactor);
-        }while(u32temp--);
+        }while((u32temp--) > 0UL);
         enRet = Ok;
     }
     return enRet;
@@ -279,7 +279,7 @@ void FMAC_SetStageFactor(M4_FMAC_TypeDef* FMACx, uint32_t u32FilterStage, int16_
     {
         FMAC_CORx = (__IO uint32_t*)((uint32_t)(&FMACx->COR0) + (u32FilterStage << 2UL));
         WRITE_REG32(*FMAC_CORx, i16Factor);
-    }while(u32FilterStage--);
+    }while((u32FilterStage--) > 0UL);
 }
 
 /**

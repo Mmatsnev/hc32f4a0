@@ -119,17 +119,21 @@
     (DCU_SAWTOOTH_WAVE_INC == (x))              ||                             \
     (DCU_SAWTOOTH_WAVE_DEC == (x)))
 
-#define IS_DCU_BASE_FUNC_UNIT_INT(x)            ((x) &&                        \
-                                                 (!((x) & (~DCU_BASE_FUNC_UNIT_INT_MASK))))
+#define IS_DCU_BASE_FUNC_UNIT_INT(x)                                           \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~DCU_BASE_FUNC_UNIT_INT_MASK))))
 
-#define IS_DCU_WAVE_FUNC_UNIT_INT(x)            ((x) &&                        \
-                                                 (!((x) & (~DCU_WAVE_FUNC_UNIT_INT_MASK))))
+#define IS_DCU_WAVE_FUNC_UNIT_INT(x)                                           \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~DCU_WAVE_FUNC_UNIT_INT_MASK))))
 
-#define IS_DCU_BASE_FUNC_UNIT_FLAG(x)           ((x) &&                        \
-                                                 (!((x) & (~DCU_BASE_FUNC_UNIT_FLAG_MASK))))
+#define IS_DCU_BASE_FUNC_UNIT_FLAG(x)                                          \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~DCU_BASE_FUNC_UNIT_FLAG_MASK))))
 
-#define IS_DCU_WAVE_FUNC_UNIT_FLAG(x)           ((x) &&                        \
-                                                 (!((x) & (~DCU_WAVE_FUNC_UNIT_FLAG_MASK))))
+#define IS_DCU_WAVE_FUNC_UNIT_FLAG(x)                                          \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~DCU_WAVE_FUNC_UNIT_FLAG_MASK))))
 
 #define IS_DCU_INTERRUPT_STATE(x)                                              \
 (   DCU_INT_ENABLE == (x)                       ||                             \
@@ -149,6 +153,10 @@
     (DCU_CMP_WINDOW_INT_INSIDE == (x))          ||                             \
     (DCU_CMP_WINDOW_INT_OUTSIDE == (x))         ||                             \
     (DCU_CMP_INT_INVALID == (x)))
+
+#define IS_DCU_COM_TRIG(x)                                                     \
+(   (0UL != (x))                                &&                             \
+    (0UL == ((x) & (~DCU_COM_TRIG_MASK))))
 
 #define IS_DCU_WAVE_UPPER_LIMIT(x)              ((x) <= 0xFFFUL)
 
@@ -220,6 +228,16 @@
 
 #define DCU_DATA1_UPPER_LIMIT_POS               (16UL)
 #define DCU_DATA1_UPPER_LIMIT                   (0x0FFF0000UL)
+
+/**
+ * @defgroup DCU_Register_Address Get DCU register address
+ * @{
+ */
+#define REG_ADDR(__REG__)                   ((uint32_t)(&(__REG__)))
+/**
+ * @}
+ */
+
 /**
  * @}
  */
@@ -231,7 +249,17 @@
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
+
+/**
+ * @addtogroup DCU_Local_Functions
+ * @{
+ */
+
 static __IO uint32_t* DCU_TRGSELx(const M4_DCU_TypeDef *DCUx);
+
+/**
+ * @}
+ */
 
 /*******************************************************************************
  * Local variable definitions ('static')
@@ -240,7 +268,7 @@ static __IO uint32_t* DCU_TRGSELx(const M4_DCU_TypeDef *DCUx);
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
-/** 
+/**
  * @defgroup DCU_Global_Functions DCU Global Functions
  * @{
  */
@@ -355,7 +383,7 @@ void DCU_DeInit(M4_DCU_TypeDef *DCUx)
  *           - Ok: Initialize successfully
  *           - ErrorInvalidParameter: pstcCfg is NULL pointer
  */
-en_result_t DCU_WaveCfg(M4_DCU_TypeDef *DCUx, 
+en_result_t DCU_WaveCfg(M4_DCU_TypeDef *DCUx,
                            const stc_dcu_wave_cfg_t *pstcCfg)
 {
     en_result_t enRet = ErrorInvalidParameter;
@@ -523,7 +551,7 @@ uint32_t DCU_GetDataSize(const M4_DCU_TypeDef *DCUx)
  *           @arg Set                         Flag is set.
  *           @arg Reset                       Flag is reset or enStatus is invalid.
  */
-en_flag_status_t DCU_GetFlag(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
+en_flag_status_t DCU_GetStatus(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
 {
     /* Check parameters */
     DDL_ASSERT((IS_DCU_WAVE_FUNC_UNIT(DCUx) && IS_DCU_WAVE_FUNC_UNIT_FLAG(u32Flag)) || \
@@ -558,7 +586,7 @@ en_flag_status_t DCU_GetFlag(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
  *           @arg DCU_FLAG_TRIANGLE_WAVE_TOP: DCU triangle wave mode top flag
  * @retval None
  */
-void DCU_ClearFlag(M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
+void DCU_ClearStatus(M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
 {
     /* Check parameters */
     DDL_ASSERT((IS_DCU_WAVE_FUNC_UNIT(DCUx) && IS_DCU_WAVE_FUNC_UNIT_FLAG(u32Flag)) || \
@@ -678,7 +706,7 @@ void DCU_IntFuncCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState)
 }
 
 /**
- * @brief  Set common trigger source for DCU
+ * @brief  AOS common trigger function config for DCU
  * @param [in] DCUx                     Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
@@ -689,28 +717,34 @@ void DCU_IntFuncCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param  [in] u32ComTrigEn            Common trigger event enable.
+ * @param  [in] u32ComTrig              Common trigger event.
  *         This parameter can be one of the following values:
- *           @arg  DCU_TRIG_COM1_COM2_OFF: Disable common trigger event 1 and 2.
- *           @arg  DCU_TRIG_COM1_ON_COM2_OFF: Enable common trigger event 1 and disable common trigger event 2.
- *           @arg  DCU_TRIG_COM1_OFF_COM2_ON: Disable common trigger event 1 and enable common trigger event 2.
- *           @arg  DCU_TRIG_COM1_COM2_ON: Enable common trigger event 1 and 2.
+ *           @arg  DCU_COM_TRIG1:       Common trigger event 1.
+ *           @arg  DCU_COM_TRIG2:       Common trigger event 2.
+ * @param  [in] enNewState              New state of common trigger function.
  * @retval None
+ * @note This register belongs to AOS module, please ensure enable it in advance.
  */
-en_result_t DCU_ComTrigCmd(M4_DCU_TypeDef *DCUx, uint32_t u32ComTrigEn)
+void DCU_ComTriggerCmd(M4_DCU_TypeDef *DCUx,
+                            uint32_t u32ComTrig,
+                            en_functional_state_t enNewState)
 {
-    en_result_t enRet = ErrorInvalidParameter;
-    __IO uint32_t *TRGSELx = DCU_TRGSELx(DCUx);
+    __IO uint32_t *const TRGSELx = DCU_TRGSELx(DCUx);
 
     if (NULL != TRGSELx)
     {
-        MODIFY_REG32(*TRGSELx, \
-                     (AOS_DCU_1_TRGSEL_COMTRG_EN), \
-                     u32ComTrigEn);
-        enRet = Ok;
-    }
+        DDL_ASSERT(IS_DCU_COM_TRIG(u32ComTrig));
+        DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
-    return enRet;
+        if (Enable == enNewState)
+        {
+            SET_REG32_BIT(*TRGSELx, u32ComTrig);
+        }
+        else
+        {
+            CLEAR_REG32_BIT(*TRGSELx, u32ComTrig);
+        }
+    }
 }
 
 /**
@@ -730,12 +764,13 @@ en_result_t DCU_ComTrigCmd(M4_DCU_TypeDef *DCUx, uint32_t u32ComTrigEn)
  * @retval An en_result_t enumeration value:
  *           - Ok: Initialize successfully
  *           - ErrorInvalidParameter: DCUx is invalid
+ * @note This register belongs to AOS module, please ensure enable it in advance.
  */
 en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
                                 en_event_src_t enEventSrc)
 {
     en_result_t enRet = ErrorInvalidParameter;
-    __IO uint32_t *TRGSELx = DCU_TRGSELx(DCUx);
+    __IO uint32_t *const TRGSELx = DCU_TRGSELx(DCUx);
 
     if (NULL != TRGSELx)
     {
@@ -762,7 +797,7 @@ en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
  */
 uint8_t DCU_ReadReg8Data0(M4_DCU_TypeDef *DCUx)
 {
-    __IO uint8_t *DATA = (__IO uint8_t *)(&DCUx->DATA0);
+    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA0);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -787,7 +822,7 @@ uint8_t DCU_ReadReg8Data0(M4_DCU_TypeDef *DCUx)
  */
 void DCU_WriteReg8Data0(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
 {
-    __IO uint8_t *DATA = (__IO uint8_t *)(&DCUx->DATA0);
+    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA0);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -811,7 +846,7 @@ void DCU_WriteReg8Data0(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
  */
 uint8_t DCU_ReadReg8Data1(M4_DCU_TypeDef *DCUx)
 {
-    __IO uint8_t *DATA = (__IO uint8_t *)(&DCUx->DATA1);
+    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA1);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -836,7 +871,7 @@ uint8_t DCU_ReadReg8Data1(M4_DCU_TypeDef *DCUx)
  */
 void DCU_WriteReg8Data1(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
 {
-    __IO uint8_t *DATA = (__IO uint8_t *)(&DCUx->DATA1);
+    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA1);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -860,7 +895,7 @@ void DCU_WriteReg8Data1(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
  */
 uint8_t DCU_ReadReg8Data2(M4_DCU_TypeDef *DCUx)
 {
-    __IO uint8_t *DATA = (__IO uint8_t *)(&DCUx->DATA2);
+    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA2);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -885,7 +920,7 @@ uint8_t DCU_ReadReg8Data2(M4_DCU_TypeDef *DCUx)
  */
 void DCU_WriteReg8Data2(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
 {
-    __IO uint8_t *DATA = (__IO uint8_t *)(&DCUx->DATA2);
+    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA2);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -909,7 +944,7 @@ void DCU_WriteReg8Data2(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
  */
 uint16_t DCU_ReadReg16Data0(M4_DCU_TypeDef *DCUx)
 {
-    __IO uint16_t *DATA = (__IO uint16_t *)(&DCUx->DATA0);
+    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA0);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -934,7 +969,7 @@ uint16_t DCU_ReadReg16Data0(M4_DCU_TypeDef *DCUx)
  */
 void DCU_WriteReg16Data0(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
 {
-    __IO uint16_t *DATA = (__IO uint16_t *)(&DCUx->DATA0);
+    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA0);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -958,7 +993,7 @@ void DCU_WriteReg16Data0(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
  */
 uint16_t DCU_ReadReg16Data1(M4_DCU_TypeDef *DCUx)
 {
-    __IO uint16_t *DATA = (__IO uint16_t *)(&DCUx->DATA1);
+    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA1);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -983,7 +1018,7 @@ uint16_t DCU_ReadReg16Data1(M4_DCU_TypeDef *DCUx)
  */
 void DCU_WriteReg16Data1(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
 {
-    __IO uint16_t *DATA = (__IO uint16_t *)(&DCUx->DATA1);
+    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA1);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -1007,7 +1042,7 @@ void DCU_WriteReg16Data1(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
  */
 uint16_t DCU_ReadReg16Data2(M4_DCU_TypeDef *DCUx)
 {
-    __IO uint16_t *DATA = (__IO uint16_t *)(&DCUx->DATA2);
+    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA2);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -1032,7 +1067,7 @@ uint16_t DCU_ReadReg16Data2(M4_DCU_TypeDef *DCUx)
  */
 void DCU_WriteReg16Data2(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
 {
-    __IO uint16_t *DATA = (__IO uint16_t *)(&DCUx->DATA2);
+    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA2);
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -1176,6 +1211,15 @@ void DCU_WriteReg32Data2(M4_DCU_TypeDef *DCUx, uint32_t u32Data)
 }
 
 /**
+ * @}
+ */
+
+/**
+ * @defgroup DCU_Local_Functions DCU Local Functions
+ * @{
+ */
+
+/**
  * @brief Get DCU trigger selection register of the specified DCU unit.
  * @param [in] DCUx                     Pointer to DCU instance register base
  *         This parameter can be one of the following values:
@@ -1216,7 +1260,6 @@ static __IO uint32_t* DCU_TRGSELx(const M4_DCU_TypeDef *DCUx)
 
     return TRGSELx;
 }
-
 
 /**
  * @}

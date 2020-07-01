@@ -101,7 +101,9 @@
 */
 void HID_MOUSE_UpdatePosition (int8_t x, int8_t y)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("X: %d, Y: %d\r\n",x,y);
+#endif
 }
 
 /**
@@ -116,17 +118,23 @@ void HID_MOUSE_ButtonPressed(uint8_t button_idx)
     {
         /* Left Button Pressed */
         case 0 :
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("L Pressed!\r\n");
+#endif
             break;
 
         /* Right Button Pressed */
         case 1 :
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("R Pressed!\r\n");
+#endif
             break;
 
         /* Middle button Pressed */
         case 2 :
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("M Pressed!\r\n");
+#endif
             break;
     }
 }
@@ -143,17 +151,23 @@ void HID_MOUSE_ButtonReleased(uint8_t button_idx)
     {
         /* Left Button Released */
         case 0 :
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("L Released!\r\n");
+#endif
             break;
 
         /* Right Button Released */
         case 1 :
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("R Released!\r\n");
+#endif
             break;
 
         /* Middle Button Released */
         case 2 :
+#if (DDL_PRINT_ENABLE == DDL_ON)
             printf("M Released!\r\n");
+#endif
             break;
     }
 }

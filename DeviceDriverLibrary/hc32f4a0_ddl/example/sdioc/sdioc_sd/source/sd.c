@@ -1874,7 +1874,7 @@ static en_result_t SD_GetCurrSDStatus(stc_sd_handle_t *handle, uint32_t *pu32SDS
  */
 static en_result_t SD_ReadWriteFifo(stc_sd_handle_t *handle, const stc_sdioc_data_init_t *pstcDataCfg, uint8_t pu8Data[], uint32_t u32Timeout)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enCmdRet = Ok;
     uint32_t u32Index = 0UL;
 

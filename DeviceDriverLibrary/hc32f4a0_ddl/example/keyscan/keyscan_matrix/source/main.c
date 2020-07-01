@@ -123,7 +123,7 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -149,7 +149,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -332,13 +332,13 @@ void KEYSCAN_COL_Init(void)
 
     stcGpioInit.u16PullUp = PIN_PU_ON;
     GPIO_Init(KEYOUT0_PORT, KEYOUT0_PIN, &stcGpioInit);
-    GPIO_SetFunc(KEYOUT0_PORT, KEYOUT0_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
+    GPIO_SetFunc(KEYOUT0_PORT, KEYOUT0_PIN, GPIO_FUNC_8_KEYSCAN, PIN_SUBFUNC_DISABLE);
 
     GPIO_Init(KEYOUT1_PORT, KEYOUT1_PIN, &stcGpioInit);
-    GPIO_SetFunc(KEYOUT1_PORT, KEYOUT1_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
+    GPIO_SetFunc(KEYOUT1_PORT, KEYOUT1_PIN, GPIO_FUNC_8_KEYSCAN, PIN_SUBFUNC_DISABLE);
 
     GPIO_Init(KEYOUT2_PORT, KEYOUT2_PIN, &stcGpioInit);
-    GPIO_SetFunc(KEYOUT2_PORT, KEYOUT2_PIN, GPIO_FUNC_8_KEYSCAN, Disable);
+    GPIO_SetFunc(KEYOUT2_PORT, KEYOUT2_PIN, GPIO_FUNC_8_KEYSCAN, PIN_SUBFUNC_DISABLE);
 
     PWC_Fcg0PeriphClockCmd(PWC_FCG0_KEY, Enable);
 

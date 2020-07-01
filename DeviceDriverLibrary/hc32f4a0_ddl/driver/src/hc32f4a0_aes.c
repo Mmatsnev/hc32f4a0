@@ -161,7 +161,7 @@ en_result_t AES_Encrypt(uint8_t au8Plaintext[],
     {
         DDL_ASSERT(IS_AES_KEYLENGTH(u8KeyLength));
         enRet = Ok;
-        while(u32PlaintextSize)
+        while(u32PlaintextSize > 0UL)
         {
             /* Wait for AES to stop */
             while(READ_REG32_BIT(M4_AES->CR, AES_CR_START) == 1U)
@@ -206,7 +206,7 @@ en_result_t AES_Encrypt(uint8_t au8Plaintext[],
                 /* Start AES calculating. */
                 SET_REG32_BIT(M4_AES->CR, AES_CR_START);
                 /* Wait for AES to stop */
-                uint32_t u32TimeCount = 0UL;
+                u32TimeCount = 0UL;
                 while(READ_REG32_BIT(M4_AES->CR, AES_CR_START) == 1U)
                 {
                     if(u32TimeCount++ > AES_TIMEOUT)
@@ -261,7 +261,7 @@ en_result_t AES_Decrypt(uint8_t au8Ciphertext[],
     {
         DDL_ASSERT(IS_AES_KEYLENGTH(u8KeyLength));
         enRet = Ok;
-        while(u32CiphertextSize)
+        while(u32CiphertextSize > 0UL)
         {
             /* Wait for AES to stop */
             while(READ_REG32_BIT(M4_AES->CR, AES_CR_START) == 1U)
@@ -298,7 +298,7 @@ en_result_t AES_Decrypt(uint8_t au8Ciphertext[],
                 /* Start AES calculating. */
                 SET_REG32_BIT(M4_AES->CR, AES_CR_START);
                 /* Wait for AES to stop */
-                uint32_t u32TimeCount = 0UL;
+                u32TimeCount = 0UL;
                 while(READ_REG32_BIT(M4_AES->CR, AES_CR_START) == 1UL)
                 {
                     if(u32TimeCount++ >= AES_TIMEOUT)

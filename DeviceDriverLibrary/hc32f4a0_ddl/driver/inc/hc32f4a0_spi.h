@@ -442,7 +442,6 @@ uint32_t SPI_ReadDataReg(const M4_SPI_TypeDef *SPIx);
 en_flag_status_t SPI_GetStatus(const M4_SPI_TypeDef *SPIx, uint32_t u32Flag);
 void SPI_ClearFlag(M4_SPI_TypeDef *SPIx, uint32_t u32Flag);
 
-void SPI_ValidSSCfg(M4_SPI_TypeDef *SPIx, uint32_t u32ValidSS);
 void SPI_LoopbackModeCfg(M4_SPI_TypeDef *SPIx, uint32_t u32Mode);
 void SPI_PateCmd(M4_SPI_TypeDef *SPIx, en_functional_state_t enNewState);
 en_result_t SPI_DelayTimeCfg(M4_SPI_TypeDef *SPIx, const stc_spi_delay_t *pstcDelayCfg);

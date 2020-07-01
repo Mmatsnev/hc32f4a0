@@ -814,7 +814,7 @@ en_result_t PWC_PVD_Init(uint8_t u8Ch, const stc_pwc_pvd_config_t *pstcPvdConfig
  *   @arg    Reset
  * @note   PVDxDETFLG is avaliable when PVDCR0.PVDxEN and PVDCR1.PVDxCMPOE are set to '1'
  */
-en_flag_status_t PWC_PVD_GetFlag(uint8_t u8Flag)
+en_flag_status_t PWC_PVD_GetStatus(uint8_t u8Flag)
 {
     DDL_ASSERT(IS_PWC_PVD_GET_FLAG(u8Flag));
     return READ_REG8_BIT(M4_PWC->PVDDSR, u8Flag) ? Set:Reset;
@@ -825,7 +825,7 @@ en_flag_status_t PWC_PVD_GetFlag(uint8_t u8Flag)
  * @param  None
  * @retval None
  */
-void PWC_PVD_ClrFlag(void)
+void PWC_PVD_ClearStatus(void)
 {
     DDL_ASSERT(IS_PVD_UNLOCKED());
     WRITE_REG32(bM4_PWC->PVDDSR_b.PVD1DETFLG, 0UL);
@@ -966,7 +966,7 @@ void PWC_PdWakeupTrigConfig(uint8_t u8WkupEvt, uint8_t u8TrigEdge)
  *  @arg    PWC_PDWKF0_VD2WKF
  * @retval en_flag_status_t
  */
-en_flag_status_t PWC_GetWakeup0Flag(uint8_t u8Flag)
+en_flag_status_t PWC_GetWakeup0Status(uint8_t u8Flag)
 {
     DDL_ASSERT(IS_PWC_WKUP0_FLAG(u8Flag));
 
@@ -982,7 +982,7 @@ en_flag_status_t PWC_GetWakeup0Flag(uint8_t u8Flag)
  *  @arg    PWC_PDWKF1_WKTMWKF
  * @retval en_flag_status_t
  */
-en_flag_status_t PWC_GetWakeup1Flag(uint8_t u8Flag)
+en_flag_status_t PWC_GetWakeup1Status(uint8_t u8Flag)
 {
     DDL_ASSERT(IS_PWC_WKUP1_FLAG(u8Flag));
 
@@ -1337,7 +1337,7 @@ void PWC_VBAT_MonitorCmd(en_functional_state_t enNewState)
  */
 uint8_t PWC_VBAT_GetVolStatus(void)
 {
-    uint8_t u8VolSta = 0U;
+    uint8_t u8VolSta;
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
 
@@ -1412,7 +1412,7 @@ void PWC_BkRamPwrCmd(en_functional_state_t enNewState)
  *           - Set: Flag is set
  *           - Reset: Flag is reset
  */
-en_flag_status_t PWC_GetBkRamFlag(uint8_t u8Flag)
+en_flag_status_t PWC_GetBkRamStatus(uint8_t u8Flag)
 {
     en_flag_status_t enFlagSta = Reset;
 
@@ -1420,7 +1420,7 @@ en_flag_status_t PWC_GetBkRamFlag(uint8_t u8Flag)
     DDL_ASSERT(IS_PWC_BACKUP_RAM_FLAG(u8Flag));
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
-    if (Reset != (READ_REG8_BIT(M4_PWC->VBATCR, u8Flag)))
+    if (0U != (READ_REG8_BIT(M4_PWC->VBATCR, u8Flag)))
     {
         enFlagSta = Set;
     }
@@ -1455,7 +1455,7 @@ void PWC_WriteBackupReg(uint8_t u8RegNum, uint8_t u8RegVal)
  */
 uint8_t PWC_ReadBackupReg(uint8_t u8RegNum)
 {
-    uint8_t u8RegVal = 0U;
+    uint8_t u8RegVal;
 
     /* Check parameters */
     DDL_ASSERT(IS_PWC_BACKUP_REGISTER_NUMBER(u8RegNum));
@@ -1512,7 +1512,7 @@ void PWC_WKT_SetCompareValue(uint16_t u16CmpVal)
  */
 uint16_t PWC_WKT_GetCompareValue(void)
 {
-    uint16_t u16CmpVal = 0U;
+    uint16_t u16CmpVal;
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
 
@@ -1544,9 +1544,9 @@ void PWC_WKT_Cmd(en_functional_state_t enNewState)
  *           - Set: Flag is set
  *           - Reset: Flag is reset
  */
-en_flag_status_t PWC_WKT_GetFlag(void)
+en_flag_status_t PWC_WKT_GetStatus(void)
 {
-    en_flag_status_t enFlagSta = Reset;
+    en_flag_status_t enFlagSta;
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
 
@@ -1560,7 +1560,7 @@ en_flag_status_t PWC_WKT_GetFlag(void)
  * @param  None
  * @retval None
  */
-void PWC_WKT_ClearFlag(void)
+void PWC_WKT_ClearStatus(void)
 {
     DDL_ASSERT(IS_PWC_UNLOCKED());
     WRITE_REG32(bM4_PWC->WKTC2_b.WKOVF, 0UL);

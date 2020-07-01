@@ -395,6 +395,7 @@ typedef struct
  */
 #define TMR4_CNT_FLAG_PEAK                      (TMR4_CCSR_IRQPF)
 #define TMR4_CNT_FLAG_ZERO                      (TMR4_CCSR_IRQZF)
+#define TMR4_CNT_FLAG_MASK                      (TMR4_CCSR_IRQPF | TMR4_CCSR_IRQZF)
 /**
  * @}
  */
@@ -405,6 +406,7 @@ typedef struct
  */
 #define TMR4_CNT_INT_PEAK                       (TMR4_CCSR_IRQPEN)
 #define TMR4_CNT_INT_ZERO                       (TMR4_CCSR_IRQZEN)
+#define TMR4_CNT_INT_MASK                       (TMR4_CCSR_IRQPEN | TMR4_CCSR_IRQZEN)
 /**
  * @}
  */
@@ -876,8 +878,8 @@ void TMR4_CNT_SetPclkDiv(M4_TMR4_TypeDef *TMR4x, uint16_t u16Div);
 uint16_t TMR4_CNT_GetPclkDiv(const M4_TMR4_TypeDef *TMR4x);
 void TMR4_CNT_SetMode(M4_TMR4_TypeDef *TMR4x, uint16_t u16Mode);
 uint16_t TMR4_CNT_GetMode(const M4_TMR4_TypeDef *TMR4x);
-en_flag_status_t TMR4_CNT_GetFlag(const M4_TMR4_TypeDef *TMR4x, uint16_t u16Flag);
-void TMR4_CNT_ClearFlag(M4_TMR4_TypeDef *TMR4x, uint16_t u16Flag);
+en_flag_status_t TMR4_CNT_GetStatus(const M4_TMR4_TypeDef *TMR4x, uint16_t u16Flag);
+void TMR4_CNT_ClearStatus(M4_TMR4_TypeDef *TMR4x, uint16_t u16Flag);
 void TMR4_CNT_IntCmd(M4_TMR4_TypeDef *TMR4x,
                             uint16_t u16IntSource,
                             en_functional_state_t enNewState);
@@ -945,9 +947,9 @@ void TMR4_OCO_SetOutputCompare(M4_TMR4_TypeDef *TMR4x,
 void TMR4_OCO_IntCmd(M4_TMR4_TypeDef *TMR4x,
                             uint32_t u32Ch,
                             en_functional_state_t enNewState);
-en_flag_status_t TMR4_OCO_GetFlag(const M4_TMR4_TypeDef *TMR4x,
+en_flag_status_t TMR4_OCO_GetStatus(const M4_TMR4_TypeDef *TMR4x,
                                         uint32_t u32Ch);
-void TMR4_OCO_ClearFlag(M4_TMR4_TypeDef *TMR4x, uint32_t u32Ch);
+void TMR4_OCO_ClearStatus(M4_TMR4_TypeDef *TMR4x, uint32_t u32Ch);
 void TMR4_OCO_SetOcoInvalidOp(M4_TMR4_TypeDef *TMR4x,
                                         uint32_t u32Ch,
                                         uint16_t u16OutputPolarity);
@@ -987,9 +989,9 @@ void TMR4_PWM_StopReloadTimer(M4_TMR4_TypeDef *TMR4x, uint32_t u32Ch);
 void TMR4_PWM_IntCmd(M4_TMR4_TypeDef *TMR4x,
                             uint32_t u32Ch,
                             en_functional_state_t enNewState);
-en_flag_status_t TMR4_PWM_GetFlag(const M4_TMR4_TypeDef *TMR4x,
+en_flag_status_t TMR4_PWM_GetStatus(const M4_TMR4_TypeDef *TMR4x,
                                         uint32_t u32Ch);
-void TMR4_PWM_ClearFlag(M4_TMR4_TypeDef *TMR4x,
+void TMR4_PWM_ClearStatus(M4_TMR4_TypeDef *TMR4x,
                                 uint32_t u32Ch);
 void TMR4_PWM_SetDeadRegionValue(M4_TMR4_TypeDef *TMR4x,
                                             uint32_t u32Ch,
@@ -1020,7 +1022,7 @@ void TMR4_PWM_EmbPwmPortOutputState(M4_TMR4_TypeDef *TMR4x,
  */
 
 /**
- * @defgroup TMR4_SEVT_Global_Functions
+ * @addtogroup TMR4_SEVT_Global_Functions
  * @{
  */
 

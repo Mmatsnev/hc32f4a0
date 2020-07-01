@@ -105,10 +105,10 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
-//    PWC_FCG0_Unlock();
+    PWC_FCG0_Unlock();
     /* Unlock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Unlock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1);
     /* Unlock SRAM register: WTCR */
@@ -131,10 +131,10 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
-//    PWC_FCG0_Lock();
+    PWC_FCG0_Lock();
     /* Lock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Lock(PWC_UNLOCK_CODE_0);
     /* Lock SRAM register: WTCR */
@@ -156,10 +156,10 @@ static void Peripheral_WP(void)
  */
 void PWC_WakeupTimer_IrqHandler(void)
 {
-    if (Set == PWC_WKT_GetFlag())
+    if (Set == PWC_WKT_GetStatus())
     {
         printf("Wake-up timer ovweflow.\n");
-        PWC_WKT_ClearFlag();
+        PWC_WKT_ClearStatus();
     }
 }
 
@@ -241,7 +241,7 @@ int32_t main(void)
 
     ResetCausePrint();
 
-    /* KEY10 */
+    /* KEY10(SW10) */
     while(Pin_Reset != GPIO_ReadInputPins(KEY10_PORT, KEY10_PIN))
     {
         ;

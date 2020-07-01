@@ -220,7 +220,7 @@
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
-/** 
+/**
  * @defgroup EXMC_SMC_Global_Functions Static Memory Controller Global Functions
  * @{
  */
@@ -374,7 +374,7 @@ en_result_t EXMC_SMC_StructInit(stc_exmc_smc_init_t *pstcInit)
  *         This parameter can be one of the following values:
  *           @arg EXMC_SMC_CRE_POLARITY_LOW:  CRE is LOW
  *           @arg EXMC_SMC_CRE_POLARITY_HIGH: CRE is HIGH when ModeReg write occurs
- * @param  [in] u32Address                  The address parameter is valid when CMD type is 
+ * @param  [in] u32Address                  The address parameter is valid when CMD type is
  *                                          MdRegConfig or MdRegConfig and UpdateRegs only.
  * @retval None
  */

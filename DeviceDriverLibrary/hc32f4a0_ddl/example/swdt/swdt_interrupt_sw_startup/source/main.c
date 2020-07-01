@@ -72,7 +72,7 @@
 /*******************************************************************************
  * Local pre-processor symbols/macros ('#define')
  ******************************************************************************/
-/* Key10 Port/Pin definition */
+/* KEY10(SW10) Port/Pin definition */
 #define KEY10_PORT                              (GPIO_PORT_A)
 #define KEY10_PIN                               (GPIO_PIN_00)
 #define KEY10_EXINT_CH                          (EXINT_CH00)
@@ -131,7 +131,7 @@ static void SWDT_IrqCallback(void)
 }
 
 /**
- * @brief  KEY10 External interrupt Ch.0 callback function
+ * @brief  KEY10(SW10) External interrupt Ch.0 callback function
  *         IRQ No.33 in Group IRQ entry No.32~37 is used for EXINT0
  * @param  None
  * @retval None
@@ -159,7 +159,7 @@ void EXINT_KEY10_IrqCallback(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     // PWC_FCG0_Unlock();
@@ -185,7 +185,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     // GPIO_Lock();
     /* Lock PWC register: FCG0 */
     // PWC_FCG0_Lock();
@@ -204,11 +204,11 @@ static void Peripheral_WP(void)
 }
 
 /**
- * @brief  KEY10 initialize
+ * @brief  KEY10(SW10) initialize
  * @param  None
  * @retval None
  */
-static void Key10_Init(void)
+static void KEY10_Init(void)
 {
     stc_exint_init_t stcExintInit;
     stc_irq_signin_config_t stcIrqSignConfig;
@@ -302,8 +302,8 @@ int32_t main(void)
     DDL_PrintfInit();
     /* SWDT configuration */
     SWDT_Config();
-    /* Key10 configuration */
-    Key10_Init();
+    /* KEY10 configuration */
+    KEY10_Init();
     /* First reload counter to start SWDT */
     SWDT_Feed();
     /* Peripheral registers write protected */

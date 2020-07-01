@@ -98,7 +98,7 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -124,7 +124,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -189,7 +189,7 @@ int32_t main(void)
     }
     /*  Flash sector 15(OTP block 15) is latched 
         Please fill in the lock address correctly */
-    EFM_OTPLock(0x03001AD0UL);  /* 0x03001AD0 is the latch address of the OTP block 15 */
+    EFM_OTPLock(0x0300183CUL);  /* 0x0300183C is the latch address of the OTP block 15 */
     /* Single program */
     if(Ok != EFM_SingleProgram(EFM_OTP_BLOCK15, u32Data))
     {

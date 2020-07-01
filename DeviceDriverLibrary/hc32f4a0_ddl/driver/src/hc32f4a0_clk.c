@@ -105,16 +105,6 @@
 (   ((sta) == CLK_XTAL_OFF)                         ||                          \
     ((sta) == CLK_XTAL_ON))
 
-/* Parameter valid check for PLLA state */
-#define IS_CLK_PLLA_STATE(sta)                                                  \
-(   ((sta) == CLK_PLLA_OFF)                         ||                          \
-    ((sta) == CLK_PLLA_ON))
-
-/* Parameter valid check for PLLH state */
-#define IS_CLK_PLLH_STATE(sta)                                                  \
-(   ((sta) == CLK_PLLH_OFF)                         ||                          \
-    ((sta) == CLK_PLLH_ON))
-
 /* Parameter valid check for XTAL mode */
 #define IS_CLK_XTAL_MODE(MODE)                                                  \
 (   ((MODE) == CLK_XTALMODE_OSC)                    ||                          \
@@ -186,7 +176,7 @@
 
 /* Parameter valid check for XTAL32 state */
 #define IS_CLK_XTAL32_STATE(sta)                                                \
-(   ((STA) == CLK_XTAL32_OFF)                       ||                          \
+(   ((sta) == CLK_XTAL32_OFF)                       ||                          \
     ((sta) == CLK_XTAL32_ON))
 
 /* Parameter valid check for XTAL32 driver ability mode */
@@ -568,7 +558,7 @@ en_result_t CLK_PLLAStrucInit(stc_clk_plla_init_t* pstcPLLAInit)
  */
 en_result_t CLK_PLLAInit(const stc_clk_plla_init_t *pstcPLLAInit)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
     uint8_t NewState;
 
 #ifdef __DEBUG
@@ -656,7 +646,7 @@ en_result_t CLK_PLLHStrucInit(stc_clk_pllh_init_t* pstcPLLHInit)
  */
 en_result_t CLK_PLLHInit(const stc_clk_pllh_init_t *pstcPLLHInit)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
     uint8_t NewState;
 
 #ifdef __DEBUG
@@ -745,7 +735,7 @@ en_result_t CLK_XtalStrucInit(stc_clk_xtal_init_t* pstcXtalInit)
  */
 en_result_t CLK_XtalInit(const stc_clk_xtal_init_t *pstcXtalInit)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
     uint8_t NewState;
 
     if (NULL == pstcXtalInit)
@@ -765,7 +755,6 @@ en_result_t CLK_XtalInit(const stc_clk_xtal_init_t *pstcXtalInit)
 
         NewState = !(pstcXtalInit->u8XtalState);
         enRet = CLK_XtalCmd((en_functional_state_t)(NewState));
-
     }
 
     return enRet;
@@ -812,7 +801,7 @@ en_result_t CLK_Xtal32StrucInit(stc_clk_xtal32_init_t* pstcXtal32Init)
  */
 en_result_t CLK_Xtal32Init(const stc_clk_xtal32_init_t *pstcXtal32Init)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
     uint8_t NewState;
 
     if (NULL == pstcXtal32Init)
@@ -887,7 +876,7 @@ en_result_t CLK_XtalCmd(en_functional_state_t enNewState)
         enRet = ErrorTimeout;
         while (timeout <= CLK_XTAL_TIMEOUT)
         {
-            if (Set == CLK_GetStableFlag(CMU_OSCSTBSR_XTALSTBF))
+            if (Set == CLK_GetStableStatus(CMU_OSCSTBSR_XTALSTBF))
             {
                 enRet = Ok;
                 break;
@@ -991,7 +980,7 @@ en_result_t CLK_HrcCmd(en_functional_state_t enNewState)
         enRet = ErrorTimeout;
         while (timeout <= CLK_HRC_TIMEOUT)
         {
-            if (Set == CLK_GetStableFlag(CMU_OSCSTBSR_HRCSTBF))
+            if (Set == CLK_GetStableStatus(CMU_OSCSTBSR_HRCSTBF))
             {
                 enRet = Ok;
                 break;
@@ -1116,7 +1105,7 @@ en_result_t CLK_PLLACmd(en_functional_state_t enNewState)
         enRet = ErrorTimeout;
         while (timeout <= CLK_PLLA_TIMEOUT)
         {
-            if (Set == CLK_GetStableFlag(CMU_OSCSTBSR_PLLASTBF))
+            if (Set == CLK_GetStableStatus(CMU_OSCSTBSR_PLLASTBF))
             {
                 enRet = Ok;
                 break;
@@ -1165,7 +1154,7 @@ en_result_t CLK_PLLHCmd(en_functional_state_t enNewState)
         enRet = ErrorTimeout;
         while (timeout <= CLK_PLLH_TIMEOUT)
         {
-            if (Set == CLK_GetStableFlag(CMU_OSCSTBSR_PLLHSTBF))
+            if (Set == CLK_GetStableStatus(CMU_OSCSTBSR_PLLHSTBF))
             {
                 enRet = Ok;
                 break;
@@ -1260,7 +1249,7 @@ en_result_t CLK_XtalStdInit(const stc_clk_xtalstd_init_t* pstcXtalStdInit)
  * @retval None
  * @note   The system clock should not be XTAL before call this function.
  */
-void CLK_ClearXtalStdFlag(void)
+void CLK_ClearXtalStdStatus(void)
 {
     DDL_ASSERT(IS_CLK_UNLOCKED());
 
@@ -1276,9 +1265,9 @@ void CLK_ClearXtalStdFlag(void)
  * @param  None
  * @retval en_flag_status_t
  */
-en_flag_status_t CLK_GetXtalStdFlag(void)
+en_flag_status_t CLK_GetXtalStdStatus(void)
 {
-    return (READ_REG32(bM4_CMU->XTALSTDSR_b.XTALSTDF) ? Set : Reset);
+    return ((0UL != READ_REG32(bM4_CMU->XTALSTDSR_b.XTALSTDF)) ? Set : Reset);
 }
 
 /**
@@ -1338,7 +1327,7 @@ void CLK_RtcLrcTrim(int8_t i8TrimVal)
  *   @arg  CLK_STB_FLAG_PLLHSTB
  * @retval en_flag_status_t
  */
-en_flag_status_t CLK_GetStableFlag(uint8_t u8StableFlag)
+en_flag_status_t CLK_GetStableStatus(uint8_t u8StableFlag)
 {
     DDL_ASSERT(IS_CLK_STB_FLAG(u8StableFlag));
 
@@ -1422,7 +1411,9 @@ void CLK_SetSysClkSrc(uint8_t u8Src)
 en_result_t CLK_GetClockFreq(stc_clk_freq_t *pstcClkFreq)
 {
     en_result_t enRet = Ok;
-    uint32_t plln, pllp, pllm;
+    uint32_t plln;
+    uint32_t pllp;
+    uint32_t pllm;
 
     if (NULL == pstcClkFreq)
     {
@@ -1513,8 +1504,16 @@ en_result_t CLK_GetClockFreq(stc_clk_freq_t *pstcClkFreq)
 en_result_t CLK_GetPllClockFreq(stc_pll_clk_freq_t *pstcPllClkFreq)
 {
     en_result_t enRet = Ok;
-    uint32_t pllhn, pllhm, pllhp, pllhq, pllhr;
-    uint32_t pllan, pllam, pllap, pllaq, pllar;
+    uint32_t pllhn;
+    uint32_t pllhm;
+    uint32_t pllhp;
+    uint32_t pllhq;
+    uint32_t pllhr;
+    uint32_t pllan;
+    uint32_t pllam;
+    uint32_t pllap;
+    uint32_t pllaq;
+    uint32_t pllar;
     uint32_t pllin;
 
     if (NULL == pstcPllClkFreq)
@@ -1635,37 +1634,37 @@ void CLK_ClkDiv(uint8_t u8ClkCate, uint32_t u32Div)
     }
 
     /* PCLK0 div */
-    if(CLK_CATE_PCLK0 & u8ClkCate)
+    if (0U != (CLK_CATE_PCLK0 & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_PCLK0S, u32Div);
     }
     /* PCLK1 div */
-    if(CLK_CATE_PCLK1 & u8ClkCate)
+    if (0U != (CLK_CATE_PCLK1 & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_PCLK1S, u32Div);
     }
     /* PCLK2 div */
-    if(CLK_CATE_PCLK2 & u8ClkCate)
+    if (0U != (CLK_CATE_PCLK2 & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_PCLK2S, u32Div);
     }
     /* PCLK3 div */
-    if(CLK_CATE_PCLK3 & u8ClkCate)
+    if (0U != (CLK_CATE_PCLK3 & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_PCLK3S, u32Div);
     }
     /* PCLK4 div */
-    if(CLK_CATE_PCLK4 & u8ClkCate)
+    if (0U != (CLK_CATE_PCLK4 & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_PCLK4S, u32Div);
     }
     /* Ext. bus clock div */
-    if(CLK_CATE_EXCLK & u8ClkCate)
+    if (0U != (CLK_CATE_EXCLK & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_EXCKS, u32Div);
     }
     /* HCLK div */
-    if(CLK_CATE_HCLK & u8ClkCate)
+    if (0U != (CLK_CATE_HCLK & u8ClkCate))
     {
         MODIFY_REG32(M4_CMU->SCFGR, CMU_SCFGR_HCLKS, u32Div);
     }
@@ -1750,11 +1749,11 @@ void CLK_CAN_ClkConfig(uint8_t u8CanCh, uint8_t u8CanClk)
     DDL_ASSERT(IS_CLK_CAN_CLK(u8CanClk));
     DDL_ASSERT(IS_CLK_UNLOCKED());
 
-    if (CLK_CAN_CH1 & u8CanCh)
+    if (0U != (CLK_CAN_CH1 & u8CanCh))
     {
         MODIFY_REG8(M4_CMU->CANCKCFGR, CMU_CANCKCFGR_CAN1CKS, u8CanClk);
     }
-    if (CLK_CAN_CH2 & u8CanCh)
+    if (0U != (CLK_CAN_CH2 & u8CanCh))
     {
         MODIFY_REG8(M4_CMU->CANCKCFGR, CMU_CANCKCFGR_CAN2CKS, u8CanClk);
     }
@@ -1800,19 +1799,19 @@ void CLK_I2S_ClkConfig(uint8_t u8I2sCh, uint16_t u16I2sClk)
     DDL_ASSERT(IS_CLK_I2S_CLK(u16I2sClk));
     DDL_ASSERT(IS_CLK_SEL_UNLOCKED());
 
-    if (CLK_I2S_CH1 & u8I2sCh)
+    if (0U != (CLK_I2S_CH1 & u8I2sCh))
     {
         MODIFY_REG16(M4_CMU->I2SCKSEL, CMU_I2SCKSEL_I2S1CKSEL, u16I2sClk);
     }
-    if (CLK_I2S_CH2 & u8I2sCh)
+    if (0U != (CLK_I2S_CH2 & u8I2sCh))
     {
         MODIFY_REG16(M4_CMU->I2SCKSEL, CMU_I2SCKSEL_I2S2CKSEL, u16I2sClk);
     }
-    if (CLK_I2S_CH3 & u8I2sCh)
+    if (0U != (CLK_I2S_CH3 & u8I2sCh))
     {
         MODIFY_REG16(M4_CMU->I2SCKSEL, CMU_I2SCKSEL_I2S3CKSEL, u16I2sClk);
     }
-    if (CLK_I2S_CH4 & u8I2sCh)
+    if (0U != (CLK_I2S_CH4 & u8I2sCh))
     {
         MODIFY_REG16(M4_CMU->I2SCKSEL, CMU_I2SCKSEL_I2S4CKSEL, u16I2sClk);
     }

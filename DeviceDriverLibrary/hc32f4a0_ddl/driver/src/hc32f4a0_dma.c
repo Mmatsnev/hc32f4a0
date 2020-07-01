@@ -81,7 +81,7 @@
  * @defgroup DMA_Local_Macros DMA Local Macros
  * @{
  */
-#define DMA_CH_REG(reg_base, ch)    (*(uint32_t *)((uint32_t)(&reg_base) + ((ch) * 0x40UL)))
+#define DMA_CH_REG(reg_base, ch)    (*(uint32_t *)((uint32_t)(&(reg_base)) + ((ch) * 0x40UL)))
 
 /**
  * @defgroup DMA_Check_Parameters_Validity DMA Check Parameters Validity
@@ -101,13 +101,13 @@
     (((ch) | DMA_MX_CH_ALL) == DMA_MX_CH_ALL))
 
 /* Parameter valid check for DMA block size. */
-#define IS_DMA_BLKSZ(bc)        (bc <= 1024U)
+#define IS_DMA_BLKSZ(bc)        ((bc) <= 1024U)
 
 /* Parameter valid check for DMA non-sequence transfer count. */
-#define IS_DMA_NS_TRANSCNT(tc)  (tc <= 4096U)
+#define IS_DMA_NS_TRANSCNT(tc)  ((tc) <= 4096U)
 
 /* Parameter valid check for DMA non-sequence offset. */
-#define IS_DMA_NS_OFFSET(ofs)   (ofs <= ((1UL <<20U) - 1UL))
+#define IS_DMA_NS_OFFSET(ofs)   ((ofs) <= ((1UL <<20U) - 1UL))
 
 /* Parameter valid check for DMA LLP pointer address. */
 #define IS_DMA_LLP_ADDR(llp)         (((llp) & 0x03UL) == 0x00UL)
@@ -202,6 +202,11 @@
 (   ((mode) == DMA_RC_SA_FIX)               ||                                  \
     ((mode) == DMA_RC_SA_NS )               ||                                  \
     ((mode) == DMA_RC_SA_RPT))
+
+/* Parameter valid check for DMA common trigger config. */
+#define IS_DMA_COM_TRIG(trig)                                                   \
+(   ((trig) != 0x00UL)                      &&                                  \
+    (((trig) | DMA_COM_TRIG_MASK) == DMA_COM_TRIG_MASK))
 
 /**
  * @}
@@ -589,7 +594,32 @@ en_flag_status_t DMA_GetTransStatus(const M4_DMA_TypeDef *DMAx, uint32_t u32Stat
  */
 void DMA_SetReConfigTriggerSrc(en_event_src_t enSrc)
 {
-    WRITE_REG32(M4_AOS->DMA_TRGSELRC, enSrc);
+    MODIFY_REG32(M4_AOS->DMA_TRGSELRC, AOS_DMA_TRGSELRC_TRGSEL, enSrc);
+}
+
+/**
+ * @brief  AOS common trigger function config for DMA re-config mode.
+ * @param  [in] u32ComTrig Common trigger event enable.
+ *         This parameter can be one of the following values:
+ *           @arg  DMA_COM_TRIG1: Common trigger event 1 .
+ *           @arg  DMA_COM_TRIG2: Common trigger event 2.
+ * @param  [in] enNewState New state of common trigger function.
+ * @retval None
+ * @note This register belongs to AOS module, please ensure enable it in advance.
+ */
+void DMA_RCComTriggerCmd(uint32_t u32ComTrig, en_functional_state_t enNewState)
+{
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+    DDL_ASSERT(IS_DMA_COM_TRIG(u32ComTrig));
+
+    if (Enable == enNewState)
+    {
+        SET_REG32_BIT(M4_AOS->DMA_TRGSELRC, u32ComTrig);
+    }
+    else
+    {
+        CLEAR_REG32_BIT(M4_AOS->DMA_TRGSELRC, u32ComTrig);
+    }
 }
 
 /**
@@ -613,20 +643,73 @@ void DMA_SetReConfigTriggerSrc(en_event_src_t enSrc)
  */
 void DMA_SetTriggerSrc(const M4_DMA_TypeDef *DMAx, uint8_t u8Ch, en_event_src_t enSrc)
 {
+    __IO uint32_t *TRGSELx;
+
     DDL_ASSERT(IS_DMA_UNIT(DMAx));
     DDL_ASSERT(IS_DMA_CH(u8Ch));
 
     if (M4_DMA1 == DMAx)
     {
-        *(uint32_t*)((uint32_t)(&M4_AOS->DMA_1_TRGSEL0) + u8Ch*4UL) = enSrc;
-    }
-    else if (M4_DMA2 == DMAx)
-    {
-        *(uint32_t*)((uint32_t)(&M4_AOS->DMA_2_TRGSEL0) + u8Ch*4UL) = enSrc;
+//        *(uint32_t*)((uint32_t)(&M4_AOS->DMA_1_TRGSEL0) + u8Ch*4UL) = enSrc;
+        TRGSELx = (uint32_t *)((uint32_t)(&M4_AOS->DMA_1_TRGSEL0) + u8Ch*4UL);
     }
     else
     {
-        /* resvd */
+//        *(uint32_t*)((uint32_t)(&M4_AOS->DMA_2_TRGSEL0) + u8Ch*4UL) = enSrc;
+        TRGSELx = (uint32_t *)((uint32_t)(&M4_AOS->DMA_2_TRGSEL0) + u8Ch*4UL);
+    }
+    MODIFY_REG32(*TRGSELx, AOS_DMA_1_TRGSEL_TRGSEL, enSrc);
+}
+
+/**
+ * @brief  AOS common trigger function config for DMA
+ * @param  [in] DMAx DMA unit instance.
+ *   @arg  M4_DMA1 Unit1.
+ *   @arg  M4_DMA2 Unit2.
+ * @param  [in] u8Ch DMA channel.
+ *   @arg  DMA_CH0.
+ *   @arg  DMA_CH1.
+ *   @arg  DMA_CH2.
+ *   @arg  DMA_CH3.
+ *   @arg  DMA_CH4.
+ *   @arg  DMA_CH5.
+ *   @arg  DMA_CH6.
+ *   @arg  DMA_CH7.
+ * @param  [in] u32ComTrig Common trigger event enable.
+ *         This parameter can be one of the following values:
+ *           @arg  DMA_COM_TRIG1: Common trigger event 1 .
+ *           @arg  DMA_COM_TRIG2: Common trigger event 2.
+ * @param  [in] enNewState New state of common trigger function.
+ * @retval None
+ * @note This register belongs to AOS module, please ensure enable it in advance.
+ */
+void DMA_ComTriggerCmd(const M4_DMA_TypeDef *DMAx, uint8_t u8Ch, uint32_t u32ComTrig, en_functional_state_t enNewState)
+{
+    __IO uint32_t *TRGSELx;
+
+    DDL_ASSERT(IS_DMA_UNIT(DMAx));
+    DDL_ASSERT(IS_DMA_CH(u8Ch));
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+    DDL_ASSERT(IS_DMA_COM_TRIG(u32ComTrig));
+
+    if (M4_DMA1 == DMAx)
+    {
+//        *(uint32_t*)((uint32_t)(&M4_AOS->DMA_1_TRGSEL0) + u8Ch*4UL) = enSrc;
+        TRGSELx = (uint32_t *)((uint32_t)(&M4_AOS->DMA_1_TRGSEL0) + u8Ch*4UL);
+    }
+    else
+    {
+//        *(uint32_t*)((uint32_t)(&M4_AOS->DMA_2_TRGSEL0) + u8Ch*4UL) = enSrc;
+        TRGSELx = (uint32_t *)((uint32_t)(&M4_AOS->DMA_2_TRGSEL0) + u8Ch*4UL);
+    }
+
+    if (Enable == enNewState)
+    {
+        SET_REG32_BIT(*TRGSELx, u32ComTrig);
+    }
+    else
+    {
+        CLEAR_REG32_BIT(*TRGSELx, u32ComTrig);
     }
 }
 

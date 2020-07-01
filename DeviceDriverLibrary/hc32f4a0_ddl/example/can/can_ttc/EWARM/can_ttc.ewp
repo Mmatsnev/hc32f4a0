@@ -1954,19 +1954,22 @@
     </file>
     -->
     <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_gpio.c</name>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_can.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_clk.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_interrupts.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_tmr2.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_pwc.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_can.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_i2c.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_clk.c</name>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_sram.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_utility.c</name>
@@ -1975,16 +1978,13 @@
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_efm.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_sram.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_tmr2.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_interrupts.c</name>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_gpio.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_icg.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_i2c.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\driver\src\hc32f4a0_keyscan.c</name>

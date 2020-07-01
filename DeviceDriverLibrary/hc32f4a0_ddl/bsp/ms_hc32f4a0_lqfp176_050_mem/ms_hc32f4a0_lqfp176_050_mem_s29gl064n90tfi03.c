@@ -700,14 +700,15 @@ en_result_t BSP_SMC_S29GL064_ReadBuffer(uint32_t u32DevicBaseAddress,
                                             uint16_t au16Data[],
                                             uint32_t u32NumHalfWords)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if (au16Data != NULL)
     {
-        for (uint32_t i = 0UL; i < u32NumHalfWords; i++)
+        for (i = 0UL; i < u32NumHalfWords; i++)
         {
             au16Data[i] = RW_MEM16(u32ReadAddress);
-            u32ReadAddress += 2U;
+            u32ReadAddress += 2UL;
         }
         enRet = Ok;
     }

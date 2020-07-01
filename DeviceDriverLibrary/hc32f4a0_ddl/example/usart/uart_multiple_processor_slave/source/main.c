@@ -165,7 +165,7 @@ static stc_ring_buffer_t m_stcRingBuf = {
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -191,7 +191,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -217,14 +217,14 @@ static void Peripheral_WP(void)
 static void USART_TxEmpty_IrqCallback(void)
 {
     uint8_t u8Data = 0U;
-    en_flag_status_t enFlag = USART_GetFlag(USART_UNIT, USART_FLAG_TXE);
+    en_flag_status_t enFlag = USART_GetStatus(USART_UNIT, USART_FLAG_TXE);
     en_functional_state_t enState = USART_GetFuncState(USART_UNIT, USART_INT_TXE);
 
     if ((Set == enFlag) && (Enable == enState))
     {
         USART_SendId(USART_UNIT, UART_MASTER_STATION_ID);
 
-        while (Reset == USART_GetFlag(USART_UNIT, USART_FLAG_TXE))   /* Wait Tx data register empty */
+        while (Reset == USART_GetStatus(USART_UNIT, USART_FLAG_TXE))   /* Wait Tx data register empty */
         {
         }
 
@@ -248,7 +248,7 @@ static void USART_TxEmpty_IrqCallback(void)
  */
 static void USART_TxComplete_IrqCallback(void)
 {
-    en_flag_status_t enFlag = USART_GetFlag(USART_UNIT, USART_FLAG_TC);
+    en_flag_status_t enFlag = USART_GetStatus(USART_UNIT, USART_FLAG_TC);
     en_functional_state_t enState = USART_GetFuncState(USART_UNIT, USART_INT_TC);
 
     if ((Set == enFlag) && (Enable == enState))
@@ -269,14 +269,14 @@ static void USART_TxComplete_IrqCallback(void)
 static void USART_Rx_IrqCallback(void)
 {
     uint8_t u8RxData = 0U;
-    en_flag_status_t enFlag = USART_GetFlag(USART_UNIT, USART_FLAG_RXNE);
+    en_flag_status_t enFlag = USART_GetStatus(USART_UNIT, USART_FLAG_RXNE);
     en_functional_state_t enState = USART_GetFuncState(USART_UNIT, USART_INT_RX);
 
     if ((Set == enFlag) && (Enable == enState))
     {
         u8RxData = (uint8_t)USART_RecData(USART_UNIT);
 
-        if ((Reset == USART_GetFlag(USART_UNIT, USART_FLAG_MPB)) &&
+        if ((Reset == USART_GetStatus(USART_UNIT, USART_FLAG_MPB)) &&
             (USART_UART_NORMAL_MODE == UsartGetSilenceMode()))
         {
             RingBufWrite(&m_stcRingBuf, u8RxData);
@@ -303,7 +303,7 @@ static void USART_Rx_IrqCallback(void)
  */
 static void USART_RxErr_IrqCallback(void)
 {
-    USART_ClearFlag(USART_UNIT, (USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_ORE));
+    USART_ClearStatus(USART_UNIT, (USART_CLEAR_FLAG_FE | USART_CLEAR_FLAG_PE | USART_CLEAR_FLAG_ORE));
 }
 
 /**
@@ -407,8 +407,8 @@ int32_t main(void)
         .u32Baudrate = 115200UL,
         .u32BitDirection = USART_LSB,
         .u32StopBit = USART_STOPBIT_1BIT,
-        .u32DataWidth = USART_DATA_WIDTH_8BIT,
-        .u32ClkMode = USART_INTCLK_NONE_OUTPUT,
+        .u32DataWidth = USART_DATA_LENGTH_8BIT,
+        .u32ClkMode = USART_INTERNCLK_NONE_OUTPUT,
         .u32PclkDiv = USART_PCLK_DIV64,
         .u32OversamplingBits = USART_OVERSAMPLING_8BIT,
         .u32NoiseFilterState = USART_NOISE_FILTER_DISABLE,

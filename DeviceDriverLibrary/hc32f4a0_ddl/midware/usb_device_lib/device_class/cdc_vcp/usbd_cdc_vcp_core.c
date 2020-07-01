@@ -431,7 +431,7 @@ __USB_ALIGN_BEGIN uint8_t usbd_cdc_OtherCfgDesc[USB_CDC_CONFIG_DESC_SIZ]  __USB_
  * @param  cfgidx: Configuration index
  * @retval status
  */
-uint8_t  usbd_cdc_Init (void  *pdev, uint8_t cfgidx)
+uint8_t usbd_cdc_Init (void  *pdev, uint8_t cfgidx)
 {
     uint8_t *pbuf;
 
@@ -601,7 +601,7 @@ uint8_t  usbd_cdc_Setup (void  *pdev,
  * @param  pdev: device device instance
  * @retval status
  */
-uint8_t  usbd_cdc_EP0_RxReady (void  *pdev)
+uint8_t usbd_cdc_EP0_RxReady (void *pdev)
 {
     if (cdcCmd != NO_CMD)
     {
@@ -621,7 +621,7 @@ uint8_t  usbd_cdc_EP0_RxReady (void  *pdev)
  * @param  epnum: endpoint number
  * @retval status
  */
-uint8_t  usbd_cdc_DataIn (void *pdev, uint8_t epnum)
+uint8_t usbd_cdc_DataIn (void *pdev, uint8_t epnum)
 {
     uint16_t USB_Tx_ptr;
     uint16_t USB_Tx_length;

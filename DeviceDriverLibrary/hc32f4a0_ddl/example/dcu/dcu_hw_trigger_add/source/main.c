@@ -105,7 +105,7 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -131,7 +131,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -156,6 +156,7 @@ static void Peripheral_WP(void)
  */
 int32_t main(void)
 {
+    uint32_t i;
     stc_dcu_init_t stcDcuInit;
     en_result_t enTestResult = Ok;
     uint16_t au16Data0Val[4];
@@ -189,7 +190,7 @@ int32_t main(void)
     /* Set hardware trigger source */
     DCU_SetTriggerSrc(DCU_UNIT, EVT_SRC_TRIG_DCU);
 
-    for (uint32_t i = 0UL; i < ARRAY_SZ(au16Data1Val); i++)
+    for (i = 0UL; i < ARRAY_SZ(au16Data1Val); i++)
     {
         DCU_WriteReg16Data1(DCU_UNIT, au16Data1Val[i]);
 

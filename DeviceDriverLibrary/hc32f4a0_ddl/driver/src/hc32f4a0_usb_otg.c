@@ -2,7 +2,7 @@
  *******************************************************************************
  * @file  hc32f4a0_usb_otg.c
  * @brief USB Core Layer.
- *       
+ *
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -95,8 +95,8 @@
 #ifdef USE_OTG_MODE
 static uint32_t USB_OTG_HandleConnectorIDStatusChange_ISR(USB_OTG_CORE_HANDLE *pdev);
 static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev);
-#endif
 static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev);
+#endif
 /**
  * @}
  */
@@ -112,6 +112,8 @@ static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev);
  * @defgroup USB_OTG_Global_Functions USB OTG Global Functions
  * @{
  */
+
+#ifdef USE_OTG_MODE
 
 /**
  * @brief  USBO_OTG_ISR_Handler
@@ -144,10 +146,6 @@ uint32_t USBO_OTG_ISR_Handler(USB_OTG_CORE_HANDLE *pdev)
 #endif
     return retval;
 }
-
-
-
-#ifdef USE_OTG_MODE
 
 /**
  * @brief  USB_OTG_InitiateSRP
@@ -291,7 +289,9 @@ static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
     USB_OTG_GINTSTS_TypeDef  gintsts;
     USB_OTG_GOTGCTL_TypeDef   gotgctl;
 
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("SRP IRQ\n");
+#endif
     gotgctl.d32 = 0UL;
     gintsts.d32 = 0UL;
 
@@ -309,12 +309,11 @@ static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
     USB_OTG_WRITE_REG32 (&pdev->regs.GREGS->GINTSTS, gintsts.d32);
     return 1UL;
 }
-#endif
 
 /**
  * @brief  USB_OTG_Read_itr
  *         returns the Core Interrupt register
- * @param  pdev     Selected device 
+ * @param  pdev     Selected device
  * @retval Status
  */
 static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev)
@@ -336,6 +335,7 @@ static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev)
     return ((gintsts.d32 & gintmsk.d32 ) & gintmsk_common.d32);
 }
 
+#endif
 
 /**
  * @}

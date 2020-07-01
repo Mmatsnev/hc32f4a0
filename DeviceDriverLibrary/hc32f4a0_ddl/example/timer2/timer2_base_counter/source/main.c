@@ -107,7 +107,8 @@
  *
  * 'APP_TMR2_USE_INTERRUPT': Interrupt function control.
  * 'APP_TMR2_USE_HW_TRIG': Hardware trigger conditions control. The conditions that can start Timer2, \
- *                         stop Timer2 or clear counting register of Timer2
+ *                         stop Timer2 or clear counting register of Timer2.
+ *                         Define it as zero when APP_TMR2_FUNC == APP_FUNC_CNT_PERIP_EVENT in this example.
  */
 #define APP_TMR2_USE_INTERRUPT              (0U)
 #define APP_TMR2_USE_HW_TRIG                (0U)
@@ -221,12 +222,12 @@
 #endif
 
 /* Key definition. SW10 on the board. */
-#define SW10_PORT                           (GPIO_PORT_A)
-#define SW10_PIN                            (GPIO_PIN_00)
-#define SW10_EXINT_CH                       (EXINT_CH00)
-#define SW10_INT_SRC                        (INT_PORT_EIRQ0)
-#define SW10_IRQn                           (Int025_IRQn)
-#define SW10_INT_PRIO                       (DDL_IRQ_PRIORITY_04)
+#define KEY_PORT                            (GPIO_PORT_A)
+#define KEY_PIN                             (GPIO_PIN_00)
+#define KEY_EXINT_CH                        (EXINT_CH00)
+#define KEY_INT_SRC                         (INT_PORT_EIRQ0)
+#define KEY_IRQn                            (Int025_IRQn)
+#define KEY_INT_PRIO                        (DDL_IRQ_PRIORITY_04)
 
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
@@ -315,7 +316,7 @@ int32_t main(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -341,7 +342,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -376,11 +377,11 @@ void EventKeyConfig(void)
     GPIO_StructInit(&stcGpioInit);
     stcGpioInit.u16ExInt = PIN_EXINT_ON;
     stcGpioInit.u16PullUp = PIN_PU_ON;
-    GPIO_Init(SW10_PORT, SW10_PIN, &stcGpioInit);
+    GPIO_Init(KEY_PORT, KEY_PIN, &stcGpioInit);
 
     /* Exint config */
     EXINT_StructInit(&stcExintInit);
-    stcExintInit.u32ExIntCh = SW10_EXINT_CH;
+    stcExintInit.u32ExIntCh = KEY_EXINT_CH;
     stcExintInit.u32ExIntLvl= EXINT_TRIGGER_FALLING;
     EXINT_Init(&stcExintInit);
 }

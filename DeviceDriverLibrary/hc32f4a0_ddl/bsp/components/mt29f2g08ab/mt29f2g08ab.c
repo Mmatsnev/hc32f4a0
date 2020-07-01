@@ -167,16 +167,16 @@ en_result_t MT29F2G08AB_Init(void)
  * @brief  Read ID.
  * @param  [in] u32IdAddr               The address
  * @param  [in] au8DevId                The id buffer
- * @param  [in] u8NumBytes              The number of bytes to read
+ * @param  [in] u32NumBytes             The number of bytes to read
  * @retval An en_result_t enumeration value.
  *   @arg  Ok:                          No errors occurred.
  *   @arg  ErrorInvalidParameter:       au8DevId == NULL or u8NumBytes == 0
  */
 en_result_t MT29F2G08AB_ReadId(uint32_t u32IdAddr,
                                     uint8_t au8DevId[],
-                                    uint8_t u8NumBytes)
+                                    uint32_t u32NumBytes)
 {
-    return BSP_NFC_MT29F2G08AB_ReadId(u32IdAddr, au8DevId, u8NumBytes);
+    return BSP_NFC_MT29F2G08AB_ReadId(u32IdAddr, au8DevId, u32NumBytes);
 }
 
 /**
@@ -203,11 +203,11 @@ en_result_t MT29F2G08AB_GetStatus(uint32_t u32Timeout)
         }
 
         u32Status = BSP_NFC_MT29F2G08AB_ReadStatus();
-    } while (!(u32Status & MT29F2G08AB_SR_READY));
+    } while (0UL == (u32Status & MT29F2G08AB_SR_READY));
 
     if (ErrorTimeout != enRet)
     {
-        if (u32Status & MT29F2G08AB_SR_FAIL)
+        if (0UL != (u32Status & MT29F2G08AB_SR_FAIL))
         {
             enRet = Error;
         }
@@ -259,7 +259,7 @@ en_result_t MT29F2G08AB_ReadPageMeta(uint32_t u32Page,
     {
         /* Check parameters */
         DDL_ASSERT(u32Page < MT29F2G08AB_DEVICE_PAGES);
-        DDL_ASSERT(u32NumBytes && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
+        DDL_ASSERT((u32NumBytes > 0UL) && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
 
         enRet = BSP_NFC_MT29F2G08AB_ReadPageMeta(u32Page, pu8Buf, u32NumBytes);
         if (Ok == enRet)
@@ -292,7 +292,7 @@ en_result_t MT29F2G08AB_WritePageMeta(uint32_t u32Page,
     {
         /* Check parameters */
         DDL_ASSERT(u32Page < MT29F2G08AB_DEVICE_PAGES);
-        DDL_ASSERT(u32NumBytes && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
+        DDL_ASSERT((u32NumBytes > 0UL) && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
 
         enRet = BSP_NFC_MT29F2G08AB_WritePageMeta(u32Page, pu8Buf, u32NumBytes);
         if (Ok == enRet)
@@ -325,7 +325,7 @@ en_result_t MT29F2G08AB_ReadPageHwEcc1Bit(uint32_t u32Page,
     {
         /* Check parameters */
         DDL_ASSERT(u32Page < MT29F2G08AB_DEVICE_PAGES);
-        DDL_ASSERT(u32NumBytes && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
+        DDL_ASSERT((u32NumBytes > 0UL) && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
 
         enRet = BSP_NFC_MT29F2G08AB_ReadPageHwEcc(u32Page, pu8Buf, u32NumBytes);
         if (Ok == enRet)
@@ -358,7 +358,7 @@ en_result_t MT29F2G08AB_WritePageHwEcc1Bit(uint32_t u32Page,
     {
         /* Check parameters */
         DDL_ASSERT(u32Page < MT29F2G08AB_DEVICE_PAGES);
-        DDL_ASSERT(u32NumBytes && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
+        DDL_ASSERT((u32NumBytes > 0UL) && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
 
         enRet = BSP_NFC_MT29F2G08AB_WritePageHwEcc(u32Page, pu8Buf, u32NumBytes);
         if (Ok == enRet)
@@ -391,7 +391,7 @@ en_result_t MT29F2G08AB_WritePageHwEcc4Bits(uint32_t u32Page,
     {
         /* Check parameters */
         DDL_ASSERT(u32Page < MT29F2G08AB_DEVICE_PAGES);
-        DDL_ASSERT(u32NumBytes && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
+        DDL_ASSERT((u32NumBytes > 0UL) && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
 
         enRet = BSP_NFC_MT29F2G08AB_WritePageHwEcc(u32Page, pu8Buf, u32NumBytes);
         if (Ok == enRet)
@@ -424,7 +424,7 @@ en_result_t MT29F2G08AB_ReadPageHwEcc4Bits(uint32_t u32Page,
     {
         /* Check parameters */
         DDL_ASSERT(u32Page < MT29F2G08AB_DEVICE_PAGES);
-        DDL_ASSERT(u32NumBytes && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
+        DDL_ASSERT((u32NumBytes > 0UL) && (u32NumBytes <= MT29F2G08AB_PAGE_SIZE_WITH_SPARE));
 
         enRet = BSP_NFC_MT29F2G08AB_ReadPageHwEcc(u32Page, pu8Buf, u32NumBytes);
         if (Ok == enRet)

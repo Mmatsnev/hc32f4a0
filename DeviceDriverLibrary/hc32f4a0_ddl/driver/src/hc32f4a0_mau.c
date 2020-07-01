@@ -154,7 +154,7 @@ void MAU_SqrtIntCmd(M4_MAU_TypeDef *MAUx, en_functional_state_t enNewState)
  * @param  [in]  u32Radicand   data to be square rooted
  * @retval None
  */
-void MAU_SqrtWriteDataReg(M4_MAU_TypeDef *const MAUx, uint32_t u32Radicand)
+void MAU_SqrtWriteDataReg(M4_MAU_TypeDef* MAUx, uint32_t u32Radicand)
 {
     DDL_ASSERT(M4_MAU == MAUx);
 
@@ -167,7 +167,7 @@ void MAU_SqrtWriteDataReg(M4_MAU_TypeDef *const MAUx, uint32_t u32Radicand)
  *         This parameter can only be: @arg M4_MAU
  * @retval None
  */
-void MAU_SqrtStartCmd(M4_MAU_TypeDef *const MAUx)
+void MAU_SqrtStartCmd(M4_MAU_TypeDef *MAUx)
 {
     DDL_ASSERT(M4_MAU == MAUx);
 
@@ -182,11 +182,11 @@ void MAU_SqrtStartCmd(M4_MAU_TypeDef *const MAUx)
  *           - Set: calculation is ongoing
  *           - Reset: calculation is not ongoing
  */
-en_flag_status_t MAU_SqrtGetStatus(M4_MAU_TypeDef *const MAUx)
+en_flag_status_t MAU_SqrtGetStatus(const M4_MAU_TypeDef *MAUx)
 {
     DDL_ASSERT(M4_MAU == MAUx);
 
-    return READ_REG32_BIT(MAUx->CSR, MAU_CSR_BUSY) ? Set : Reset;
+    return (0UL != READ_REG32_BIT(MAUx->CSR, MAU_CSR_BUSY)) ? Set : Reset;
 }
 
 /**
@@ -195,7 +195,7 @@ en_flag_status_t MAU_SqrtGetStatus(M4_MAU_TypeDef *const MAUx)
  *         This parameter can only be: @arg M4_MAU
  * @retval Result of sqrt,range is [0,0x10000]
  */
-uint32_t MAU_SqrtReadDataReg(M4_MAU_TypeDef *const MAUx)
+uint32_t MAU_SqrtReadDataReg(const M4_MAU_TypeDef *MAUx)
 {
     DDL_ASSERT(M4_MAU == MAUx);
 
@@ -248,7 +248,7 @@ void MAU_SqrtDeInit(M4_MAU_TypeDef *MAUx)
 en_result_t MAU_Sqrt(M4_MAU_TypeDef *MAUx, uint32_t u32Radicand, uint32_t *pu32Result)
 {
     DDL_ASSERT(M4_MAU == MAUx);
-    DDL_ASSERT(NULL != pu32Result);
+    DDL_ASSERT(pu32Result != (void *)0UL);
 
     uint32_t u32TimeCount = 0UL;
     en_result_t enRet = Ok;

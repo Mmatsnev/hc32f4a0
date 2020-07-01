@@ -135,12 +135,12 @@
     (TMR4_CNT_INT_MASK_15 == (x)))
 
 #define IS_VALID_TMR4_CNT_INT(x)                                               \
-(   (x)                                         &&                             \
-    (!((x) & ((uint16_t)(~(TMR4_CNT_INT_PEAK | TMR4_CNT_INT_ZERO))))))
+(   (0UL != (x))                                 &&                            \
+    (TMR4_CNT_INT_MASK == ((x) | TMR4_CNT_INT_MASK)))
 
 #define IS_VALID_TMR4_CNT_FLAG(x)                                              \
-(   (x)                                         &&                             \
-    (!((x) & ((uint16_t)(~(TMR4_CNT_FLAG_PEAK | TMR4_CNT_FLAG_ZERO))))))
+(   (0UL != (x))                                 &&                            \
+    (TMR4_CNT_FLAG_MASK == ((x) | TMR4_CNT_FLAG_MASK)))
 
 #define IS_VALID_TMR4_OCO_CH(x)                                                \
 (   (TMR4_OCO_UH == (x))                        ||                             \
@@ -165,7 +165,7 @@
     (TMR4_OCO_ENABLE == (x)))
 
 #define IS_VALID_TMR4_OCO_EXTEND_MATCH(x)                                      \
-(   (TMR4_OCO_EXTEND_MATCH_DISABLE == (x))      ||                         \
+(   (TMR4_OCO_EXTEND_MATCH_DISABLE == (x))      ||                             \
     (TMR4_OCO_EXTEND_MATCH_ENABLE == (x)))
 
 #define IS_VALID_TMR4_OCO_OCCR_LINK_TRANSFER(x)                                \
@@ -191,10 +191,6 @@
 #define IS_VALID_TMR4_OCO_PORT_INVALID_OP(x)                                   \
 (   (TMR4_OCO_INVAILD_OP_LOW == (x))            ||                             \
     (TMR4_OCO_INVAILD_OP_HIGH == (x)))
-
-#define IS_VALID_TMR4_OCO_OCF_STATE(x)                                         \
-(   (TMR4_OCO_OCF_HOLD == (x))                  ||                             \
-    (TMR4_OCO_OCF_SET == (x)))
 
 #define IS_VALID_TMR4_OCO_OCF_STATE(x)                                         \
 (   (TMR4_OCO_OCF_HOLD == (x))                  ||                             \
@@ -430,11 +426,11 @@
  * @note __CH__ value is TMR4_OCO_xy (x=U/V/W, y=H/L)
  * @{
  */
-#define TMR4_OCER_CxBUFEN(__CH__,__CxBUFEN__)   ((uint16_t)(__CxBUFEN__ << SHIFT_2BIT(__CH__)))
-#define TMR4_OCER_MxBUFEN(__CH__,__MxBUFEN__)   ((uint16_t)(__MxBUFEN__ << SHIFT_2BIT(__CH__)))
-#define TMR4_OCER_LMCx(__CH__,__LMCx__)         ((uint16_t)(__LMCx__ << SHIFT_1BIT(__CH__)))
-#define TMR4_OCER_LMMx(__CH__,__LMMx__)         ((uint16_t)(__LMMx__ << SHIFT_1BIT(__CH__)))
-#define TMR4_OCER_MCECx(__CH__,__MCECx__)       ((uint16_t)(__MCECx__ << SHIFT_1BIT(__CH__)))
+#define TMR4_OCER_CxBUFEN(__CH__,__CxBUFEN__)   ((uint16_t)((__CxBUFEN__) << SHIFT_2BIT(__CH__)))
+#define TMR4_OCER_MxBUFEN(__CH__,__MxBUFEN__)   ((uint16_t)((__MxBUFEN__) << SHIFT_2BIT(__CH__)))
+#define TMR4_OCER_LMCx(__CH__,__LMCx__)         ((uint16_t)((__LMCx__) << SHIFT_1BIT(__CH__)))
+#define TMR4_OCER_LMMx(__CH__,__LMMx__)         ((uint16_t)((__LMMx__) << SHIFT_1BIT(__CH__)))
+#define TMR4_OCER_MCECx(__CH__,__MCECx__)       ((uint16_t)((__MCECx__) << SHIFT_1BIT(__CH__)))
 /**
  * @}
  */
@@ -461,10 +457,10 @@
  * @{
  */
 #define TMR4_RCSR_RTIDx_MASK(__CH__)        ((uint16_t)(((uint16_t)TMR4_RCSR_RTIDU) << (__CH__)))
-#define TMR4_RCSR_RTIFx_MASK(__CH__)        ((uint16_t)(((uint16_t)TMR4_RCSR_RTIFU) << (((__CH__) << 2UL))))
-#define TMR4_RCSR_RTICx_MASK(__CH__)        ((uint16_t)(((uint16_t)TMR4_RCSR_RTICU) << (((__CH__) << 2UL))))
-#define TMR4_RCSR_RTEx_MASK(__CH__)         ((uint16_t)(((uint16_t)TMR4_RCSR_RTEU) << (((__CH__) << 2UL))))
-#define TMR4_RCSR_RTSx_MASK(__CH__)         ((uint16_t)(((uint16_t)TMR4_RCSR_RTSU) << (((__CH__) << 2UL))))
+#define TMR4_RCSR_RTIFx_MASK(__CH__)        ((uint16_t)(((uint16_t)TMR4_RCSR_RTIFU) << ((__CH__) << 2UL)))
+#define TMR4_RCSR_RTICx_MASK(__CH__)        ((uint16_t)(((uint16_t)TMR4_RCSR_RTICU) << ((__CH__) << 2UL)))
+#define TMR4_RCSR_RTEx_MASK(__CH__)         ((uint16_t)(((uint16_t)TMR4_RCSR_RTEU) << ((__CH__) << 2UL)))
+#define TMR4_RCSR_RTSx_MASK(__CH__)         ((uint16_t)(((uint16_t)TMR4_RCSR_RTSU) << ((__CH__) << 2UL)))
 /**
  * @}
  */
@@ -487,8 +483,8 @@
  * @note __PORT__ value is TMR4_PWM_PORT_Oxy (x=U/V/W, y=H/L)
  * @{
  */
-#define TMR4_PSCR_OExy(__PORT__, __OExy__)  (__OExy__ << (__PORT__))
-#define TMR4_PSCR_OSxy(__PORT__, __OSxy__)  (__OSxy__ << ((__PORT__) * 2UL))
+#define TMR4_PSCR_OExy(__PORT__, __OExy__)  ((__OExy__) << (__PORT__))
+#define TMR4_PSCR_OSxy(__PORT__, __OSxy__)  ((__OSxy__) << ((__PORT__) * 2UL))
 /**
  * @}
  */
@@ -499,9 +495,9 @@
  * @note __CH__ value is TMR4_SEVT_xy (x=U/V/W, y=H/L)
  * @{
  */
-#define TMR4_SCCRx(__TMR4x__, __CH__)       ((__IO uint16_t *)(REG_ADDR((__TMR4x__)->SCCRUH) + (((__CH__)) << 2UL)))
-#define TMR4_SCSRx(__TMR4x__, __CH__)       ((__IO uint16_t *)(REG_ADDR((__TMR4x__)->SCSRUH) + (((__CH__)) << 2UL)))
-#define TMR4_SCMRx(__TMR4x__, __CH__)       ((__IO uint16_t *)(REG_ADDR((__TMR4x__)->SCMRUH) + (((__CH__)) << 2UL)))
+#define TMR4_SCCRx(__TMR4x__, __CH__)       ((__IO uint16_t *)(REG_ADDR((__TMR4x__)->SCCRUH) + ((__CH__) << 2UL)))
+#define TMR4_SCSRx(__TMR4x__, __CH__)       ((__IO uint16_t *)(REG_ADDR((__TMR4x__)->SCSRUH) + ((__CH__) << 2UL)))
+#define TMR4_SCMRx(__TMR4x__, __CH__)       ((__IO uint16_t *)(REG_ADDR((__TMR4x__)->SCMRUH) + ((__CH__) << 2UL)))
 /**
  * @}
  */
@@ -570,7 +566,7 @@ en_result_t TMR4_CNT_Init(M4_TMR4_TypeDef *TMR4x,
         WRITE_REG16(TMR4x->CCSR, 0x0050U);
         WRITE_REG16(TMR4x->CVPR, 0x0000U);
 
-        /* Set count clock div && cnt mode && buffer enable bit && 
+        /* Set count clock div && cnt mode && buffer enable bit &&
            external clock enable bit && interrupt enable bit */
         u16Val = (pstcInit->u16PclkDiv  | \
                   pstcInit->u16ClkSrc  | \
@@ -802,14 +798,14 @@ uint16_t TMR4_CNT_GetMode(const M4_TMR4_TypeDef *TMR4x)
  *           - Set: Flag is set
  *           - Reset: Flag is reset
  */
-en_flag_status_t TMR4_CNT_GetFlag(const M4_TMR4_TypeDef *TMR4x, 
+en_flag_status_t TMR4_CNT_GetStatus(const M4_TMR4_TypeDef *TMR4x,
                                         uint16_t u16Flag)
 {
     /* Check parameters */
     DDL_ASSERT(IS_VALID_TMR4_INSTANCE(TMR4x));
     DDL_ASSERT(IS_VALID_TMR4_CNT_FLAG(u16Flag));
 
-    return READ_REG16_BIT(TMR4x->CCSR, u16Flag) ? Set : Reset;
+    return (READ_REG16_BIT(TMR4x->CCSR, u16Flag) != 0U) ? Set : Reset;
 }
 
 /**
@@ -825,7 +821,7 @@ en_flag_status_t TMR4_CNT_GetFlag(const M4_TMR4_TypeDef *TMR4x,
  *           @arg TMR4_CNT_FLAG_ZERO:   Underflow interrupt
  * @retval None
  */
-void TMR4_CNT_ClearFlag(M4_TMR4_TypeDef *TMR4x, uint16_t u16Flag)
+void TMR4_CNT_ClearStatus(M4_TMR4_TypeDef *TMR4x, uint16_t u16Flag)
 {
     /* Check parameters */
     DDL_ASSERT(IS_VALID_TMR4_INSTANCE(TMR4x));
@@ -1665,7 +1661,7 @@ en_result_t TMR4_OCO_SetHighChCompareMode(M4_TMR4_TypeDef *TMR4x,
                                 const stc_oco_high_ch_compare_mode_t *pstcMode)
 {
     __IO uint16_t *TMR4_OCER;
-    __IO uint16_t *TMR4_OCMR;
+    __IO uint16_t *TMR4_OCMRxH;
     en_result_t enRet = ErrorInvalidParameter;
 
     /* Check pointer */
@@ -1678,9 +1674,9 @@ en_result_t TMR4_OCO_SetHighChCompareMode(M4_TMR4_TypeDef *TMR4x,
 
         /* Get pointer of current channel OCO register address */
         TMR4_OCER = TMR4_OCERx(TMR4x, u32Ch);
-        TMR4_OCMR = TMR4_OCMRx(TMR4x, u32Ch);
+        TMR4_OCMRxH = TMR4_OCMRx(TMR4x, u32Ch);
 
-        WRITE_REG16(*TMR4_OCMR, pstcMode->OCMRx);
+        WRITE_REG16(*TMR4_OCMRxH, pstcMode->OCMRx);
         MODIFY_REG16(*TMR4_OCER, \
                      TMR4_OCER_MCECx_MASK(u32Ch), \
                      TMR4_OCER_MCECx(u32Ch, pstcMode->u16ExtendMatch));
@@ -1712,7 +1708,7 @@ en_result_t TMR4_OCO_SetLowChCompareMode(M4_TMR4_TypeDef *TMR4x,
                                 const stc_oco_low_ch_compare_mode_t *pstcMode)
 {
     __IO uint16_t *TMR4_OCER;
-    __IO uint32_t *TMR4_OCMR;
+    __IO uint32_t *TMR4_OCMRxL;
     en_result_t enRet = ErrorInvalidParameter;
 
     /* Check pointer */
@@ -1725,9 +1721,9 @@ en_result_t TMR4_OCO_SetLowChCompareMode(M4_TMR4_TypeDef *TMR4x,
 
         /* Get pointer of current channel OCO register address */
         TMR4_OCER = TMR4_OCERx(TMR4x, u32Ch);
-        TMR4_OCMR = (__IO uint32_t*)TMR4_OCMRx(TMR4x, u32Ch);
+        TMR4_OCMRxL = (__IO uint32_t*)((uint32_t)TMR4_OCMRx(TMR4x, u32Ch));
 
-        WRITE_REG32(*TMR4_OCMR, pstcMode->OCMRx);
+        WRITE_REG32(*TMR4_OCMRxL, pstcMode->OCMRx);
         MODIFY_REG16(*TMR4_OCER, \
                      TMR4_OCER_MCECx_MASK(u32Ch), \
                      TMR4_OCER_MCECx(u32Ch, pstcMode->u16ExtendMatch));
@@ -1839,7 +1835,7 @@ void TMR4_OCO_IntCmd(M4_TMR4_TypeDef *TMR4x,
  *           - Reset:               None interrupt request flag is set on TMR4 OCO
  *           - Set:                 Detection interrupt request on TMR4 OCO
  */
-en_flag_status_t TMR4_OCO_GetFlag(const M4_TMR4_TypeDef *TMR4x,
+en_flag_status_t TMR4_OCO_GetStatus(const M4_TMR4_TypeDef *TMR4x,
                                         uint32_t u32Ch)
 {
     __IO uint16_t *TMR4_OCSR;
@@ -1871,7 +1867,7 @@ en_flag_status_t TMR4_OCO_GetFlag(const M4_TMR4_TypeDef *TMR4x,
  *           @arg TMR4_OCO_WL:      TMR4 OCO channel - WL
  * @retval None
  */
-void TMR4_OCO_ClearFlag(M4_TMR4_TypeDef *TMR4x, uint32_t u32Ch)
+void TMR4_OCO_ClearStatus(M4_TMR4_TypeDef *TMR4x, uint32_t u32Ch)
 {
     __IO uint16_t *TMR4_OCSR;
 
@@ -2415,7 +2411,7 @@ void TMR4_PWM_IntCmd(M4_TMR4_TypeDef *TMR4x,
  *           - Reset                None interrupt request on PWM reload-timer
  *           - Set                  Detection interrupt request on PWM reload-timer
  */
-en_flag_status_t TMR4_PWM_GetFlag(const M4_TMR4_TypeDef *TMR4x,
+en_flag_status_t TMR4_PWM_GetStatus(const M4_TMR4_TypeDef *TMR4x,
                                         uint32_t u32Ch)
 {
     __IO uint16_t *TMR4_RCSR;
@@ -2444,7 +2440,7 @@ en_flag_status_t TMR4_PWM_GetFlag(const M4_TMR4_TypeDef *TMR4x,
  *           @arg TMR4_PWM_W:       TMR4 PWM couple channel - W
  * @retval None
  */
-void TMR4_PWM_ClearFlag(M4_TMR4_TypeDef *TMR4x,
+void TMR4_PWM_ClearStatus(M4_TMR4_TypeDef *TMR4x,
                                 uint32_t u32Ch)
 {
     /* Check parameters */

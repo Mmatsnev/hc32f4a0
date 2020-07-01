@@ -111,7 +111,7 @@ uint32_t SystemCoreClock = HRC_VALUE;
  */
 void SystemInit(void)
 {
-    (*((volatile unsigned short*)(0x400543FEUL)))=0xA50FU;
+    (*((volatile unsigned short*)(0x400543FEUL)))=0xA50BU;
     (*((volatile unsigned int*)(0x4004CCE8UL)))=0x00040000UL;
     (*((volatile unsigned short*)(0x400543FEUL)))=0xA500U;
     /* FPU settings */
@@ -128,8 +128,10 @@ void SystemInit(void)
  */
 void SystemCoreClockUpdate(void)
 {
-    uint8_t tmp = 0U;
-    uint32_t plln = 19UL, pllp = 1UL, pllm = 0UL;
+    uint8_t tmp;
+    uint32_t plln;
+    uint32_t pllp;
+    uint32_t pllm;
 
     tmp = M4_CMU->CKSWR & CMU_CKSWR_CKSW;
     switch(tmp)
@@ -165,6 +167,8 @@ void SystemCoreClockUpdate(void)
             {
                 SystemCoreClock = (HRC_VALUE) / (pllm + 1UL) * (plln + 1UL) / (pllp + 1UL);
             }
+            break;
+        default:
             break;
     }
 }

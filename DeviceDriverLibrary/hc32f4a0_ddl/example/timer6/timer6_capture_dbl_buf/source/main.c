@@ -104,7 +104,7 @@ uint32_t u32CaptureE;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -130,7 +130,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -251,15 +251,15 @@ int32_t main(void)
 
      /* Configurate PWM output */
     stcTIM6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-    stcTIM6PortOutCfg.u32NextPeriodForceStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_HIGH;
-    stcTIM6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+    stcTIM6PortOutCfg.u32NextPeriodForceSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_HIGH;
+    stcTIM6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
 
     /* Enable interrupt */
@@ -295,14 +295,14 @@ int32_t main(void)
 
     /* Capture input port configuration */
     stcTIM6PortInCfg.u32PortMode = TMR6_PORT_CAPTURE_INPUT;
-    stcTIM6PortInCfg.u32FilterStd = TMR6_PORT_INPUT_FITLER_ON;
-    stcTIM6PortInCfg.u32FltClk = TMR6_INPUT_FILTER_DIV16;
+    stcTIM6PortInCfg.u32FilterSta = TMR6_PORT_INPUT_FILTER_ON;
+    stcTIM6PortInCfg.u32FltClk = TMR6_INPUT_FILTER_PCLK0_DIV16;
     TMR6_PortInputConfig(M4_TMR6_2,TMR6_IO_PWMA, &stcTIM6PortInCfg);
 
     /* Hardware capture: Timer6 PWMA port rise trig*/
-    TMR6_HwCaptureFuncChACfg(M4_TMR6_2, TMR6_HW_CTL_PWMA_RISING);
+    TMR6_HwCaptureChACondCmd(M4_TMR6_2, TMR6_HW_CTRL_PWMA_RISING, Enable);
     /* HW Clear: Timer6 PWMA port fall trig and function command */
-    TMR6_HwClrFuncCfg(M4_TMR6_2, TMR6_HW_CTL_PWMA_FAILLING);
+    TMR6_HwClrCondCmd(M4_TMR6_2, TMR6_HW_CTRL_PWMA_FAILLING, Enable);
     TMR6_HwClrFuncCmd(M4_TMR6_2, Enable);
 
     /* config interrupt */
@@ -319,7 +319,7 @@ int32_t main(void)
     NVIC_EnableIRQ(stcIrqRegiConf.enIRQn);                  /* Enable NVIC */
 
     /* Start timer6 */
-    TMR6_SwSyncStart(TMR6_SOFT_SYNC_CTL_U1 | TMR6_SOFT_SYNC_CTL_U2);
+    TMR6_SwSyncStart(TMR6_SOFT_SYNC_CTRL_U1 | TMR6_SOFT_SYNC_CTRL_U2);
 
     while(1)
     {

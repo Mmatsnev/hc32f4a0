@@ -234,10 +234,9 @@ typedef struct
  * @defgroup DCU_Common_Trigger_Source_Configure DCU common Trigger Source Configure
  * @{
  */
-#define DCU_TRIG_COM1_COM2_OFF                  (0x00UL)
-#define DCU_TRIG_COM1_ON_COM2_OFF               (AOS_DCU_1_TRGSEL_COMTRG_EN_0)
-#define DCU_TRIG_COM1_OFF_COM2_ON               (AOS_DCU_1_TRGSEL_COMTRG_EN_1)
-#define DCU_TRIG_COM1_COM2_ON                   (AOS_DCU_1_TRGSEL_COMTRG_EN)
+#define DCU_COM_TRIG1                           (AOS_DCU_1_TRGSEL_COMTRG_EN_0)
+#define DCU_COM_TRIG2                           (AOS_DCU_1_TRGSEL_COMTRG_EN_1)
+#define DCU_COM_TRIG_MASK                       (AOS_DCU_1_TRGSEL_COMTRG_EN)
 /**
  * @}
  */
@@ -268,16 +267,18 @@ void DCU_SetMode(M4_DCU_TypeDef *DCUx, uint32_t u32Mode);
 uint32_t DCU_GetMode(const M4_DCU_TypeDef *DCUx);
 void DCU_SetDataSize(M4_DCU_TypeDef *DCUx, uint32_t u32DataSize);
 uint32_t DCU_GetDataSize(const M4_DCU_TypeDef *DCUx);
-en_flag_status_t DCU_GetFlag(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag);
-void DCU_ClearFlag(M4_DCU_TypeDef *DCUx, uint32_t u32Flag);
+en_flag_status_t DCU_GetStatus(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag);
+void DCU_ClearStatus(M4_DCU_TypeDef *DCUx, uint32_t u32Flag);
 void DCU_SetCmpIntMode(M4_DCU_TypeDef *DCUx, uint32_t u32CmpIntMode);
 void DCU_IntCmd(M4_DCU_TypeDef *DCUx,
                     uint32_t u32IntSource,
                     en_functional_state_t enNewState);
 void DCU_IntFuncCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState);
-en_result_t DCU_ComTrigCmd(M4_DCU_TypeDef *DCUx, uint32_t u32ComTrigEn);
+void DCU_ComTriggerCmd(M4_DCU_TypeDef *DCUx,
+                            uint32_t u32ComTrig,
+                            en_functional_state_t enNewState);
 en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
-                                en_event_src_t enTriggerSrc);
+                                en_event_src_t enEventSrc);
 
 uint8_t DCU_ReadReg8Data0(M4_DCU_TypeDef *DCUx);
 void DCU_WriteReg8Data0(M4_DCU_TypeDef *DCUx, uint8_t u8Data);

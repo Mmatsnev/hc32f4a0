@@ -1,7 +1,7 @@
 /**
  *******************************************************************************
  * @file  timer6/timer6_sw_sync/source/main.c
- * @brief This example demonstrates Timer6 software synchronize trigger function. 
+ * @brief This example demonstrates Timer6 software synchronize trigger function.
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -136,7 +136,7 @@
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -162,7 +162,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -283,7 +283,7 @@ int32_t main(void)
     /* Timer6 general count function configuration */
     stcTIM6BaseCntCfg.u32CntMode = TMR6_MODE_TRIANGLE;
     stcTIM6BaseCntCfg.u32CntDir = TMR6_CNT_INCREASE;
-    stcTIM6BaseCntCfg.u32CntClkDiv = TMR6_CLK_PCLK0;
+    stcTIM6BaseCntCfg.u32CntClkDiv = TMR6_CLK_PCLK0_DIV1;
     stcTIM6BaseCntCfg.u32CntStpAftOvf = TMR6_CNT_CONTINUOUS;
     TMR6_Init(M4_TMR6_1, &stcTIM6BaseCntCfg);
     TMR6_Init(M4_TMR6_2, &stcTIM6BaseCntCfg);
@@ -295,7 +295,7 @@ int32_t main(void)
     TMR6_Init(M4_TMR6_8, &stcTIM6BaseCntCfg);
 
     /* Period register set */
-    u32Period = 0x834U;
+    u32Period = 0x8340U;
     TMR6_SetPeriodReg(M4_TMR6_1, TMR6_PERIOD_REG_A, u32Period);
     TMR6_SetPeriodReg(M4_TMR6_2, TMR6_PERIOD_REG_A, u32Period);
     TMR6_SetPeriodReg(M4_TMR6_3, TMR6_PERIOD_REG_A, u32Period);
@@ -356,15 +356,15 @@ int32_t main(void)
 
      /* Configurate PWM output */
     stcTIM6PortOutCfg.u32PortMode = TMR6_PORT_COMPARE_OUTPUT;
-    stcTIM6PortOutCfg.u32NextPeriodForceStd = TMR6_FORCE_PORT_OUTPUT_INVALID;
-    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32DownCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_REVERSE;
-    stcTIM6PortOutCfg.u32UpCntMatchCmpRegStd = TMR6_PORT_OUTPUT_STD_REVERSE;
-    stcTIM6PortOutCfg.u32UnderflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32OverflowStd = TMR6_PORT_OUTPUT_STD_HOLD;
-    stcTIM6PortOutCfg.u32StopStd = TMR6_PORT_OUTPUT_STD_LOW;
-    stcTIM6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_LOW;
+    stcTIM6PortOutCfg.u32NextPeriodForceSta = TMR6_FORCE_PORT_OUTPUT_INVALID;
+    stcTIM6PortOutCfg.u32DownCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32UpCntMatchAnotherCmpRegSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32DownCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_REVERSE;
+    stcTIM6PortOutCfg.u32UpCntMatchCmpRegSta = TMR6_PORT_OUTPUT_STA_REVERSE;
+    stcTIM6PortOutCfg.u32UnderflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32OverflowSta = TMR6_PORT_OUTPUT_STA_HOLD;
+    stcTIM6PortOutCfg.u32StopSta = TMR6_PORT_OUTPUT_STA_LOW;
+    stcTIM6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_LOW;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
     TMR6_PortOutputConfig(M4_TMR6_2, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
     TMR6_PortOutputConfig(M4_TMR6_3, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
@@ -374,7 +374,7 @@ int32_t main(void)
     TMR6_PortOutputConfig(M4_TMR6_7, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
     TMR6_PortOutputConfig(M4_TMR6_8, TMR6_IO_PWMA, &stcTIM6PortOutCfg);
 
-    stcTIM6PortOutCfg.u32StartStd = TMR6_PORT_OUTPUT_STD_HIGH;
+    stcTIM6PortOutCfg.u32StartSta = TMR6_PORT_OUTPUT_STA_HIGH;
     TMR6_PortOutputConfig(M4_TMR6_1, TMR6_IO_PWMB, &stcTIM6PortOutCfg);
     TMR6_PortOutputConfig(M4_TMR6_2, TMR6_IO_PWMB, &stcTIM6PortOutCfg);
     TMR6_PortOutputConfig(M4_TMR6_3, TMR6_IO_PWMB, &stcTIM6PortOutCfg);
@@ -399,21 +399,21 @@ int32_t main(void)
     while(1)
     {
         /* Start timer6 */
-        TMR6_SwSyncStart(TMR6_SOFT_SYNC_CTL_U1 | TMR6_SOFT_SYNC_CTL_U2 | TMR6_SOFT_SYNC_CTL_U3
-                         |TMR6_SOFT_SYNC_CTL_U4 | TMR6_SOFT_SYNC_CTL_U5 | TMR6_SOFT_SYNC_CTL_U6
-                         |TMR6_SOFT_SYNC_CTL_U7 | TMR6_SOFT_SYNC_CTL_U8);
+        TMR6_SwSyncStart(TMR6_SOFT_SYNC_CTRL_U1 | TMR6_SOFT_SYNC_CTRL_U2 | TMR6_SOFT_SYNC_CTRL_U3
+                         |TMR6_SOFT_SYNC_CTRL_U4 | TMR6_SOFT_SYNC_CTRL_U5 | TMR6_SOFT_SYNC_CTRL_U6
+                         |TMR6_SOFT_SYNC_CTRL_U7 | TMR6_SOFT_SYNC_CTRL_U8);
         DDL_DelayMS(500UL);
 
         /* Stop timer6 */
-        TMR6_SwSyncStop(TMR6_SOFT_SYNC_CTL_U1 | TMR6_SOFT_SYNC_CTL_U2 | TMR6_SOFT_SYNC_CTL_U3
-                         |TMR6_SOFT_SYNC_CTL_U4 | TMR6_SOFT_SYNC_CTL_U5 | TMR6_SOFT_SYNC_CTL_U6
-                         |TMR6_SOFT_SYNC_CTL_U7 | TMR6_SOFT_SYNC_CTL_U8);
+        TMR6_SwSyncStop(TMR6_SOFT_SYNC_CTRL_U1 | TMR6_SOFT_SYNC_CTRL_U2 | TMR6_SOFT_SYNC_CTRL_U3
+                         |TMR6_SOFT_SYNC_CTRL_U4 | TMR6_SOFT_SYNC_CTRL_U5 | TMR6_SOFT_SYNC_CTRL_U6
+                         |TMR6_SOFT_SYNC_CTRL_U7 | TMR6_SOFT_SYNC_CTRL_U8);
         DDL_DelayMS(500UL);
 
         /* Clear timer6 count register */
-        TMR6_SwSyncClr(TMR6_SOFT_SYNC_CTL_U1 | TMR6_SOFT_SYNC_CTL_U2 | TMR6_SOFT_SYNC_CTL_U3
-                         |TMR6_SOFT_SYNC_CTL_U4 | TMR6_SOFT_SYNC_CTL_U5 | TMR6_SOFT_SYNC_CTL_U6
-                         |TMR6_SOFT_SYNC_CTL_U7 | TMR6_SOFT_SYNC_CTL_U8);
+        TMR6_SwSyncClr(TMR6_SOFT_SYNC_CTRL_U1 | TMR6_SOFT_SYNC_CTRL_U2 | TMR6_SOFT_SYNC_CTRL_U3
+                         |TMR6_SOFT_SYNC_CTRL_U4 | TMR6_SOFT_SYNC_CTRL_U5 | TMR6_SOFT_SYNC_CTRL_U6
+                         |TMR6_SOFT_SYNC_CTRL_U7 | TMR6_SOFT_SYNC_CTRL_U8);
         DDL_DelayMS(500UL);
     }
 

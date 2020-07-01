@@ -150,10 +150,9 @@ extern "C"
  * @defgroup HASH_Common_Trigger_Sel HASH common trigger source select
  * @{
  */
-#define HASH_TRIG_COM1_COM2_OFF          (0x00UL)
-#define HASH_TRIG_COM1_ON_COM2_OFF       (0x01UL << 31UL)
-#define HASH_TRIG_COM1_OFF_COM2_ON       (0x01UL << 30UL)
-#define HASH_TRIG_COM1_COM2_ON           (0x03UL << 30UL)
+#define HASH_COM_TRIG1               (AOS_HASH_ITRGSELA_COMTRG_EN_0)
+#define HASH_COM_TRIG2               (AOS_HASH_ITRGSELA_COMTRG_EN_1)
+#define HASH_COM_TRIG_MASk           (AOS_HASH_ITRGSELA_COMTRG_EN)
 /**
  * @}
  */
@@ -237,9 +236,10 @@ en_result_t HASH_SetKeyLength(uint32_t u32KeyLen);
 en_result_t HASH_MsgGrpConfig(uint32_t u32MsgGroup);
 en_result_t HASH_ClearStatus(uint32_t u32ClearFlag);
 void HASH_SetTriggerSrc(en_event_src_t enSrc);
-void HASH_ComTrigCmd(uint8_t u8TrigReg, uint32_t u32ComTrigEn);
+void HASH_ComTriggerCmd(uint8_t u8TrigReg, uint32_t u32ComTrig, \
+                        en_functional_state_t enNewState);
 en_flag_status_t HASH_GetStatus(uint32_t u32HashFlag);
-void HASH_GetResult(uint8_t u8MsgDigest[]);
+void HASH_GetResult(uint8_t au8MsgDigest[]);
 /**
  * @}
  */

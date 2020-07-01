@@ -119,13 +119,14 @@ void MAU_SqrtDeInit(M4_MAU_TypeDef *MAUx);
 
 void MAU_SqrtResultLShiftCfg(M4_MAU_TypeDef *MAUx, uint8_t u8LShBitsNumber);
 void MAU_SqrtIntCmd(M4_MAU_TypeDef *MAUx, en_functional_state_t enNewState);
-void MAU_SqrtWriteDataReg(M4_MAU_TypeDef *const MAUx, uint32_t u32Radicand);
-en_flag_status_t MAU_SqrtGetStatus(M4_MAU_TypeDef *const MAUx);
-uint32_t MAU_SqrtReadDataReg(M4_MAU_TypeDef * MAUx);
+void MAU_SqrtWriteDataReg(M4_MAU_TypeDef *MAUx, uint32_t u32Radicand);
+en_flag_status_t MAU_SqrtGetStatus(const M4_MAU_TypeDef *MAUx);
+uint32_t MAU_SqrtReadDataReg(const M4_MAU_TypeDef *MAUx);
+void MAU_SqrtStartCmd(M4_MAU_TypeDef* MAUx);
 
-en_result_t MAU_Sqrt(M4_MAU_TypeDef * MAUx, uint32_t u32Radicand, uint32_t *pu32Result);
+en_result_t MAU_Sqrt(M4_MAU_TypeDef *MAUx, uint32_t u32Radicand, uint32_t *pu32Result);
 
-int16_t MAU_Sin(M4_MAU_TypeDef * MAUx, uint16_t u16AngleIdx);
+int16_t MAU_Sin(M4_MAU_TypeDef *MAUx, uint16_t u16AngleIdx);
 
 /**
  * @}

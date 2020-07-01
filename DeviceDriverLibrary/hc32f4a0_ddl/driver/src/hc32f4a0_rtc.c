@@ -235,7 +235,7 @@
  */
 en_result_t RTC_DeInit(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     WRITE_REG32(bM4_RTC->CR0_b.RESET, Reset);
@@ -345,7 +345,7 @@ en_result_t RTC_StructInit(stc_rtc_init_t *pstcRtcInit)
  */
 en_result_t RTC_EnterRwMode(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     /* Mode switch when RTC is running */
@@ -379,7 +379,7 @@ en_result_t RTC_EnterRwMode(void)
  */
 en_result_t RTC_ExitRwMode(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     /* Mode switch when RTC is running */
@@ -419,7 +419,8 @@ en_result_t RTC_ExitRwMode(void)
  */
 void RTC_PeriodIntConfig(uint8_t u8IntCond)
 {
-    uint32_t u32RtcSta, u32IntSta;
+    uint32_t u32RtcSta;
+    uint32_t u32IntSta;
 
     /* Check parameters */
     DDL_ASSERT(IS_RTC_PERIOD_INTERRUPT(u8IntCond));
@@ -451,7 +452,7 @@ void RTC_PeriodIntConfig(uint8_t u8IntCond)
  */
 en_result_t RTC_LowPowerCheck(void)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     /* Check RTC work status */
@@ -1177,7 +1178,8 @@ void RTC_IntCmd(uint32_t u32IntSrc, en_functional_state_t enNewSta)
 en_flag_status_t RTC_GetStatus(uint32_t u32Flag)
 {
     en_flag_status_t enFlagSta = Reset;
-    uint8_t u8NormalFlag = 0U, u8IntruFlag = 0U;
+    uint8_t u8NormalFlag;
+    uint8_t u8IntruFlag;
 
     /* Check parameters */
     DDL_ASSERT(IS_RTC_GET_FLAG(u32Flag));
@@ -1186,14 +1188,14 @@ en_flag_status_t RTC_GetStatus(uint32_t u32Flag)
     u8IntruFlag  = (uint8_t)((u32Flag >> 16U) & 0xFFU);
     if (0U != u8NormalFlag)
     {
-        if (Reset != (READ_REG8_BIT(M4_RTC->CR2, u8NormalFlag)))
+        if (0U != (READ_REG8_BIT(M4_RTC->CR2, u8NormalFlag)))
         {
             enFlagSta = Set;
         }
     }
-    if (0U != u8IntruFlag)  //to do judge  enFlagSta == Set
+    if ((0U != u8IntruFlag) && (Set != enFlagSta))
     {
-        if (Reset != (READ_REG8_BIT(M4_RTC->TPSR, u8IntruFlag)))
+        if (0U != (READ_REG8_BIT(M4_RTC->TPSR, u8IntruFlag)))
         {
             enFlagSta = Set;
         }
@@ -1215,7 +1217,8 @@ en_flag_status_t RTC_GetStatus(uint32_t u32Flag)
  */
 void RTC_ClearStatus(uint32_t u32Flag)
 {
-    uint8_t u8NormalFlag = 0U, u8IntruFlag = 0U;
+    uint8_t u8NormalFlag;
+    uint8_t u8IntruFlag;
 
     /* Check parameters */
     DDL_ASSERT(IS_RTC_CLEAR_FLAG(u32Flag));

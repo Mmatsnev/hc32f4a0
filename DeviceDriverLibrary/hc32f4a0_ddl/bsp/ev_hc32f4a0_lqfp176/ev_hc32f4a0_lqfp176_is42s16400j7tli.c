@@ -293,7 +293,7 @@ static void EV_EXMC_DMC_InitSequence(uint32_t u32Chip,
  */
 en_result_t BSP_DMC_IS42S16400J7TLI_Init(void)
 {
-    uint32_t u32MdRegVal = 0UL;
+    uint32_t u32MdRegVal;
     stc_exmc_dmc_init_t stcDmcInit;
     stc_exmc_dmc_cs_cfg_t stcCsCfg;
 

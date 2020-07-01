@@ -112,8 +112,6 @@ extern "C"
 #define USBD_CFG_MAX_NUM                (1U) /* configuration numbers */
 //#define USBD_ITF_MAX_NUM                1U /* interface numbers */
 
-#define USB_MAX_STR_DESC_SIZ            (64U)
-
 #define USBD_SELF_POWERED
 
 #define USBD_DYNAMIC_DESCRIPTOR_CHANGE_ENABLED

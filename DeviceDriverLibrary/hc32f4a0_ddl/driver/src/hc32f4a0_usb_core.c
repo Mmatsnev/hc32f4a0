@@ -207,13 +207,13 @@ USB_OTG_STS USB_OTG_WritePacket(USB_OTG_CORE_HANDLE *pdev,
                                 uint8_t             ch_ep_num,
                                 uint16_t            len)
 {
-    USB_OTG_STS status = USB_OTG_OK;
     uint32_t u32pAdr;
+    uint32_t count32b;
+    uint32_t i;
+    __IO uint32_t *fifo;
+
     if (pdev->cfg.dma_enable == 0U)
     {
-        uint32_t count32b= 0UL , i= 0UL;
-        __IO uint32_t *fifo;
-
         count32b =  (len + 3UL) / 4UL;
         fifo = pdev->regs.DFIFO[ch_ep_num];
         for (i = 0UL; i < count32b; i++)
@@ -225,7 +225,7 @@ USB_OTG_STS USB_OTG_WritePacket(USB_OTG_CORE_HANDLE *pdev,
             src = (uint8_t*)(u32pAdr+4UL);
         }
     }
-    return status;
+    return USB_OTG_OK;
 }
 
 
@@ -240,9 +240,9 @@ void *USB_OTG_ReadPacket(USB_OTG_CORE_HANDLE *pdev,
                          uint8_t *dest,
                          uint16_t len)
 {
-    uint32_t i=0UL;
-    uint32_t count32b = (len + 3UL) / 4UL;
-    uint32_t u32pAdr = 0U;
+    uint32_t i;
+    const uint32_t count32b = (len + 3UL) / 4UL;
+    uint32_t u32pAdr;
 
     __IO uint32_t *fifo = pdev->regs.DFIFO[0UL];
 
@@ -283,6 +283,8 @@ enum USB_OTG_SPEED USB_OTG_GetDeviceSpeed (USB_OTG_CORE_HANDLE *pdev)
         case DSTS_ENUMSPD_LS_PHY_6MHZ:
             speed = USB_SPEED_LOW;
             break;
+        default:
+            break;
     }
 
     return speed;
@@ -305,7 +307,7 @@ uint32_t USB_OTG_GetMode(USB_OTG_CORE_HANDLE *pdev)
  */
 uint8_t USB_OTG_IsDeviceMode(USB_OTG_CORE_HANDLE *pdev)
 {
-    return (USB_OTG_GetMode(pdev) != (uint32_t)HOST_MODE);
+    return (uint8_t)(USB_OTG_GetMode(pdev) != (uint32_t)HOST_MODE);
 }
 
 
@@ -316,7 +318,7 @@ uint8_t USB_OTG_IsDeviceMode(USB_OTG_CORE_HANDLE *pdev)
  */
 uint32_t USB_OTG_ReadCoreItr(USB_OTG_CORE_HANDLE *pdev)
 {
-    uint32_t v = 0UL;
+    uint32_t v;
     v = USB_OTG_READ_REG32(&pdev->regs.GREGS->GINTSTS);
     v &= USB_OTG_READ_REG32(&pdev->regs.GREGS->GINTMSK);
     return v;
@@ -332,7 +334,8 @@ uint32_t USB_OTG_ReadCoreItr(USB_OTG_CORE_HANDLE *pdev)
 USB_OTG_STS USB_OTG_SelectCore(USB_OTG_CORE_HANDLE *pdev,
                                USB_OTG_CORE_ID_TypeDef coreID)
 {
-    uint32_t i , baseAddress = 0UL;
+    uint32_t i;
+    uint32_t baseAddress;
     USB_OTG_STS status = USB_OTG_OK;
     pdev->cfg.dma_enable       = 0U;
 
@@ -344,7 +347,7 @@ USB_OTG_STS USB_OTG_SelectCore(USB_OTG_CORE_HANDLE *pdev,
     if (coreID == USB_OTG_FS_CORE_ID)
     {
         baseAddress                = USB_OTG_FS_BASE_ADDR;
-        pdev->cfg.coreID           = USB_OTG_FS_CORE_ID;
+        pdev->cfg.coreID           = (uint8_t)USB_OTG_FS_CORE_ID;
         pdev->cfg.host_channels    = 16U;
         pdev->cfg.dev_endpoints    = 16U;
         pdev->cfg.TotalFifoSize    = 640U; /* in 32-bits */
@@ -365,7 +368,7 @@ USB_OTG_STS USB_OTG_SelectCore(USB_OTG_CORE_HANDLE *pdev,
     else
     {
         baseAddress                = USB_OTG_HS_BASE_ADDR;
-        pdev->cfg.coreID           = USB_OTG_HS_CORE_ID;
+        pdev->cfg.coreID           = (uint8_t)USB_OTG_HS_CORE_ID;
         pdev->cfg.host_channels    = 16U;
         pdev->cfg.dev_endpoints    = 16U;
         pdev->cfg.TotalFifoSize    = 2048U;/* in 32-bits */
@@ -572,7 +575,7 @@ USB_OTG_STS USB_OTG_stop_xfer (USB_OTG_CORE_HANDLE *pdev , uint32_t num )
         do
         {
             diepint.b = *(__IO stc_bUSB_OTG_DIEPINTn_t*)&USB_OTG_READ_REG32(&pdev->regs.INEP_REGS[num]->DIEPINT); /* C-STAT */
-        } while (!diepint.b.epdisabled);
+        } while (0UL == diepint.b.epdisabled);
         *(uint32_t*)&diepint.b = 0UL;   /* C-STAT */
         diepint.b.epdisabled = 1U;
         USB_OTG_WRITE_REG32( &pdev->regs.INEP_REGS[num]->DIEPINT, *(uint32_t*)&diepint.b ); /* C-STAT */
@@ -683,7 +686,7 @@ USB_OTG_STS USB_OTG_SetCurrentMode(USB_OTG_CORE_HANDLE *pdev , uint8_t mode)
  */
 USB_OTG_STS USB_OTG_CoreInitDev (USB_OTG_CORE_HANDLE *pdev)
 {
-    USB_OTG_STS             status       = USB_OTG_OK;
+    USB_OTG_STS             status = USB_OTG_OK;
     USB_OTG_DEPCTL_TypeDef  depctl;
     uint32_t i;
     USB_OTG_DCFG_TypeDef    dcfg;
@@ -706,7 +709,7 @@ USB_OTG_STS USB_OTG_CoreInitDev (USB_OTG_CORE_HANDLE *pdev)
     USB_OTG_WRITE_REG32( &pdev->regs.DREGS->DCFG, dcfg.d32 );
 
 #ifdef USB_OTG_FS_CORE
-    if(pdev->cfg.coreID == USB_OTG_FS_CORE_ID  )
+    if(pdev->cfg.coreID == (uint8_t)USB_OTG_FS_CORE_ID)
     {
         /* Set Full speed phy */
         USB_OTG_InitDevSpeed (pdev , USB_OTG_SPEED_PARAM_FULL);
@@ -812,7 +815,7 @@ USB_OTG_STS USB_OTG_CoreInitDev (USB_OTG_CORE_HANDLE *pdev)
     for (i = 0UL; i < pdev->cfg.dev_endpoints; i++)
     {
         depctl.b = *(__IO stc_bUSB_OTG_DEPCTL_t*)&USB_OTG_READ_REG32(&pdev->regs.INEP_REGS[i]->DIEPCTL);  /* C-STAT */
-        if (depctl.b.epena)
+        if (depctl.b.epena != 0UL)
         {
             *(uint32_t*)&depctl.b = 0UL;  /* C-STAT */
             depctl.b.epdis = 1U;
@@ -828,9 +831,8 @@ USB_OTG_STS USB_OTG_CoreInitDev (USB_OTG_CORE_HANDLE *pdev)
     }
     for (i = 0UL; i <  pdev->cfg.dev_endpoints; i++)
     {
-        USB_OTG_DEPCTL_TypeDef  depctl;
         depctl.b = *(__IO stc_bUSB_OTG_DEPCTL_t*)&USB_OTG_READ_REG32(&pdev->regs.OUTEP_REGS[i]->DOEPCTL); /* C-STAT */
-        if (depctl.b.epena)
+        if (depctl.b.epena != 0UL)
         {
             *(uint32_t*)&depctl.b = 0UL;  /* C-STAT */
             depctl.b.epdis = 1U;
@@ -918,7 +920,7 @@ uint32_t USB_OTG_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,USB_OTG_EP *ep)
 {
     USB_OTG_DEPCTL_TypeDef  depctl;
     __IO uint32_t *depctl_addr;
-    uint32_t Status = 0UL;
+    uint32_t Status;
 
     *(uint32_t*)&depctl.b = 0UL;  /* C-STAT */
     if (ep->is_in == 1U)
@@ -983,11 +985,13 @@ USB_OTG_STS  USB_OTG_EP0Activate(USB_OTG_CORE_HANDLE *pdev)
         case DSTS_ENUMSPD_HS_PHY_30MHZ_OR_60MHZ:
         case DSTS_ENUMSPD_FS_PHY_30MHZ_OR_60MHZ:
         case DSTS_ENUMSPD_FS_PHY_48MHZ:
-        diepctl.b.mps = DEP0CTL_MPS_64;
-        break;
+            diepctl.b.mps = DEP0CTL_MPS_64;
+            break;
         case DSTS_ENUMSPD_LS_PHY_6MHZ:
-        diepctl.b.mps = DEP0CTL_MPS_8;
-        break;
+            diepctl.b.mps = DEP0CTL_MPS_8;
+            break;
+        default:
+            break;
     }
     USB_OTG_WRITE_REG32(&pdev->regs.INEP_REGS[0U]->DIEPCTL, diepctl.d32);
     dctl.b.cgnpinnak = 1U;
@@ -1025,7 +1029,7 @@ USB_OTG_STS USB_OTG_EPActivate(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
     /* If the EP is already active don't change the EP Control
     * register. */
     depctl.b = *(__IO stc_bUSB_OTG_DEPCTL_t*)&USB_OTG_READ_REG32(addr);   /* C-STAT */
-    if (!depctl.b.usbactep)
+    if (depctl.b.usbactep == 0UL)
     {
         depctl.b.mps    = ep->maxpacket;
         depctl.b.eptype = ep->type;
@@ -1103,7 +1107,7 @@ USB_OTG_STS USB_OTG_EPStartXfer(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
     USB_OTG_DEPCTL_TypeDef     depctl;
     USB_OTG_DEPXFRSIZ_TypeDef  deptsiz;
     USB_OTG_DSTS_TypeDef       dsts;
-    uint32_t fifoemptymsk = 0UL;
+    uint32_t fifoemptymsk;
 
     depctl.d32 = 0UL;
     *(uint32_t*)&deptsiz.b = 0UL;  /* C-STAT */
@@ -1205,7 +1209,7 @@ USB_OTG_STS USB_OTG_EPStartXfer(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 
         if (ep->type == EP_TYPE_ISOC)
         {
-            if (ep->even_odd_frame)
+            if (ep->even_odd_frame != 0U)
             {
                 depctl.b.setd1pid = 1U;
             }
@@ -1339,7 +1343,7 @@ USB_OTG_STS USB_OTG_EPSetStall(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
         depctl_addr = &(pdev->regs.INEP_REGS[ep->num]->DIEPCTL);
         depctl.b = *(__IO stc_bUSB_OTG_DEPCTL_t*)&USB_OTG_READ_REG32(depctl_addr);  /* C-STAT */
         /* set the disable and stall bits */
-        if (depctl.b.epena)
+        if (depctl.b.epena != 0U)
         {
             depctl.b.epdis = 1U;
         }
@@ -1444,7 +1448,7 @@ void USB_OTG_EP0_OutStart(USB_OTG_CORE_HANDLE *pdev)
     doeptsize0.d32 = 0UL;
     doeptsize0.b.supcnt = 3U;
     doeptsize0.b.pktcnt = 1U;
-    
+
     doeptsize0.b.xfersize = 64U;
     pdev->dev.out_ep[0].xfer_len = 64U;
     pdev->dev.out_ep[0].rem_data_len = 64U;
@@ -1476,12 +1480,12 @@ void USB_OTG_ActiveRemoteWakeup(USB_OTG_CORE_HANDLE *pdev)
     USB_OTG_DSTS_TypeDef     dsts;
     USB_OTG_PCGCCTL_TypeDef  power;
 
-    if (pdev->dev.DevRemoteWakeup)
+    if (pdev->dev.DevRemoteWakeup != 0UL)
     {
         dsts.b = *(__IO stc_bUSB_OTG_DSTS_t*)&USB_OTG_READ_REG32(&pdev->regs.DREGS->DSTS);  /* C-STAT */
         if(dsts.b.suspsts == 1U)
         {
-            if(pdev->cfg.low_power)
+            if(pdev->cfg.low_power != 0U)
             {
                 /* un-gate USB Core clock */
                 power.d32 = USB_OTG_READ_REG32(&pdev->regs.PCGCCTL);
@@ -1817,7 +1821,9 @@ uint32_t USB_OTG_testmode(USB_OTG_CORE_HANDLE *pdev,int mode)
     hprt0.d32 = USB_OTG_ReadHPRT0(pdev);
     hprt0.b.prttstctl = (uint32_t)mode;
     USB_OTG_WRITE_REG32(pdev->regs.HPRT0, hprt0.d32);
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("test mode stated\n");
+#endif
     return 1UL;
 }
 

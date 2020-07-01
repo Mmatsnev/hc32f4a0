@@ -245,7 +245,7 @@
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
-/** 
+/**
  * @defgroup EXMC_DMC_Global_Functions Dynamic Memory Controller Global Functions
  * @{
  */

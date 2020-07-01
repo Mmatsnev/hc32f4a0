@@ -312,16 +312,16 @@ en_result_t CAN_Init(M4_CAN_TypeDef *CANx, const stc_can_init_t *pstcInit)
         /* Software reset. */
         CAN_SWReset(CANx);
         /* Defines slow bit time. */
-        CAN_SBTConfig(CANx, &pstcInit->stcSBT);
+        (void)CAN_SBTConfig(CANx, &pstcInit->stcSBT);
         /* Specifies STB priority mode. */
         CAN_SetSTBPrioMode(CANx, pstcInit->u8STBPrioMode);
         /* Configures acceptance filters. */
-        CAN_AFConfig(CANx, pstcInit->u16AFSel, pstcInit->pstcAFCfg);
+        (void)CAN_AFConfig(CANx, pstcInit->u16AFSel, pstcInit->pstcAFCfg);
         /* Configures CAN-FD if enabled. */
         CAN_FD_Cmd(CANx, Disable);
         if (pstcInit->enCANFDCmd == Enable)
         {
-            CAN_FD_Config(CANx, &pstcInit->stcFDCfg);
+            (void)CAN_FD_Config(CANx, &pstcInit->stcFDCfg);
             CAN_FD_Cmd(CANx, Enable);
         }
 
@@ -410,7 +410,7 @@ en_result_t CAN_StructInit(stc_can_init_t *pstcInit)
          * Secondary sample point: u8TDCSSP / (u32SEG1 + u32SEG2) = 80%
          */
         pstcInit->enCANFDCmd = Disable;
-        CAN_FD_StructInit(&pstcInit->stcFDCfg);
+        (void)CAN_FD_StructInit(&pstcInit->stcFDCfg);
 
         enRet = Ok;
     }
@@ -1072,18 +1072,16 @@ en_flag_status_t CAN_GetStatus(const M4_CAN_TypeDef *CANx, uint32_t u32Flag)
  */
 void CAN_ClrStatus(M4_CAN_TypeDef *CANx, uint32_t u32Flag)
 {
-    uint8_t u8RCTRL;
     uint8_t u8RTIF;
     uint8_t u8ERRINT;
 
     DDL_ASSERT(IS_CAN_UNIT(CANx));
 
     u32Flag &= CAN_FLAG_CLR_MSK;
-    u8RCTRL  = (uint8_t)(u32Flag & CAN_FLAG_RB_OVF);
     u8RTIF   = (uint8_t)(u32Flag >> 16U);
     u8ERRINT = (uint8_t)(u32Flag >> 24U);
 
-    if (u8RCTRL != 0U)
+    if ((u32Flag & CAN_FLAG_RB_OVF) != 0U)
     {
         SET_REG8_BIT(CANx->RCTRL, CAN_RCTRL_RREL);
     }
@@ -1722,7 +1720,7 @@ void CAN_TTC_SetTxEnableWindow(M4_CAN_TypeDef *CANx, uint16_t u16TxEnableWindow)
     DDL_ASSERT(IS_CAN_UNIT(CANx));
     DDL_ASSERT(IS_CAN_TTC_TX_EN_WINDOW(u16TxEnableWindow));
     u16TxEnableWindow -= 1U;
-    u16TxEnableWindow <<= CAN_TRG_CFG_TEW_POS;
+    u16TxEnableWindow  = (uint16_t)((uint32_t)u16TxEnableWindow << CAN_TRG_CFG_TEW_POS);
     MODIFY_REG16(CANx->TRG_CFG, CAN_TRG_CFG_TEW, u16TxEnableWindow);
 }
 
@@ -2081,7 +2079,7 @@ en_result_t CAN_ReceiveData(M4_CAN_TypeDef *CANx, stc_can_rx_t pstcRx[], uint8_t
             }
 
             u32DestDataAddr = (uint32_t)pstcRx[u8RxFrameCnt].pu8Data;
-            if (IS_ADDRESS_ALIGN_WORD(u32DestDataAddr) == 0U)
+            if (!IS_ADDRESS_ALIGN_WORD(u32DestDataAddr))
             {
                 enRet = ErrorAddressAlignment;
                 break;

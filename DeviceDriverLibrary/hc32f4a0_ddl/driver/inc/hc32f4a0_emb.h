@@ -718,7 +718,7 @@ void EMB_IntCmd(M4_EMB_TypeDef *EMBx,
                     uint32_t u32IntSource,
                     en_functional_state_t enNewState);
 void EMB_SetReleasePwmMode(M4_EMB_TypeDef *EMBx,
-                                uint32_t u32MonitorEvent,
+                                uint32_t u32Event,
                                 uint32_t u32Mode);
 en_flag_status_t EMB_GetFlag(const M4_EMB_TypeDef *EMBx, uint32_t u32Flag);
 void EMB_ClearFlag(M4_EMB_TypeDef *EMBx, uint32_t u32Flag);

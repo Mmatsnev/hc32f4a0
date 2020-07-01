@@ -149,6 +149,7 @@ extern "C"
  * @{
  */
 void BSP_IO_Init(void);
+void BSP_IO_IntInit(void);
 void BSP_IO_WritePortPin(uint8_t u8Port, uint8_t u8Pin, uint8_t u8PinState);
 void BSP_IO_ConfigPortPin(uint8_t u8Port, uint8_t u8Pin, uint8_t u8Dir);
 uint8_t BSP_IO_ReadPortPin(uint8_t u8Port, uint8_t u8Pin);

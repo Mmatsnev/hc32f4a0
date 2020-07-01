@@ -628,7 +628,9 @@ en_result_t EXMC_NFC_Init(const stc_exmc_nfc_init_t *pstcInit);
 void EXMC_NFC_DeInit(void);
 en_result_t EXMC_NFC_StructInit(stc_exmc_nfc_init_t *pstcInit);
 void EXMC_NFC_IntCmd(uint16_t u16IntSource, en_functional_state_t enNewState);
-en_flag_status_t EXMC_NFC_GetFlag(uint32_t u32Flag);
+en_flag_status_t EXMC_NFC_GetStatus(uint32_t u32Flag);
+void EXMC_NFC_ClearStatus(uint32_t u32Flag);
+en_flag_status_t EXMC_NFC_GetIntResultStatus(uint32_t u32Flag);
 uint32_t EXMC_NFC_GetEcc1BitResult(uint32_t u32Section);
 en_result_t EXMC_NFC_GetSyndrome(uint32_t u32Section,
                                         uint16_t au16Synd[],
@@ -648,7 +650,7 @@ en_result_t EXMC_NFC_ResetLun(uint32_t u32Bank,
 en_result_t EXMC_NFC_ReadId(uint32_t u32Bank,
                                 uint32_t u32IdAddr,
                                 uint8_t au8DevId[],
-                                uint8_t u8NumBytes);
+                                uint32_t u32NumBytes);
 en_result_t EXMC_NFC_ReadUniqueId(uint32_t u32Bank,
                                         uint32_t u32IdAddr,
                                         uint32_t au32UniqueId[],

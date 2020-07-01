@@ -213,15 +213,20 @@
  * @param  [out] pf32Err               Baudrate error
  * @retval en_result_t
  */
-en_result_t I2C_BaudrateConfig(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t* pstcI2C_InitStruct, float32_t *pf32Err)
+en_result_t I2C_BaudrateConfig(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI2C_InitStruct, float32_t *pf32Err)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
     en_result_t enRet = Ok;
-    uint32_t u32Pclk3, I2cDivClk, SclCnt, Baudrate;
-    uint32_t dnfsum = 0UL, divsum = 2UL;
-    float32_t WidthTotal, SumTotal;
+    uint32_t u32Pclk3;
+    uint32_t I2cDivClk;
+    uint32_t SclCnt;
+    uint32_t Baudrate;
+    uint32_t dnfsum = 0UL;
+    uint32_t divsum = 2UL;
+    float32_t WidthTotal;
+    float32_t SumTotal;
     float32_t WidthHL;
-    float32_t fErr = 0.0f;
+    float32_t fErr = 0.0F;
 
     if ((NULL == pstcI2C_InitStruct) || (NULL == pf32Err))
     {
@@ -252,7 +257,7 @@ en_result_t I2C_BaudrateConfig(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t* pstcI
         }
 
         WidthTotal = (float32_t)u32Pclk3 / (float32_t)Baudrate / (float32_t)I2cDivClk;
-        SumTotal = 2.0f*(float32_t)divsum + 2.0f*(float32_t)dnfsum + (float32_t)SclCnt;
+        SumTotal = 2.0F*(float32_t)divsum + 2.0F*(float32_t)dnfsum + (float32_t)SclCnt;
         WidthHL = WidthTotal - SumTotal;
 
         if(WidthTotal <= SumTotal)
@@ -355,7 +360,7 @@ en_result_t I2C_StructInit(stc_i2c_init_t* pstcI2C_InitStruct)
  * @param  [out] pf32Err               Baudrate error
  * @retval en_result_t
  */
-en_result_t I2C_Init(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t* pstcI2C_InitStruct, float32_t *pf32Err)
+en_result_t I2C_Init(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI2C_InitStruct, float32_t *pf32Err)
 {
     en_result_t enRet = Ok;
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
@@ -556,15 +561,15 @@ void I2C_FastAckCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
  *         @arg M4_I2C4
  *         @arg M4_I2C5
  *         @arg M4_I2C6
- * @param [in] u16TimeOutH  clock timeout period for high level
+ * @param [in] u16TimeoutH  clock timeout period for high level
  * @retval None
  */
-void I2C_ClkHighTimeOutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeOutH)
+void I2C_ClkHighTimeoutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeoutH)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
     CLEAR_REG32_BIT(I2Cx->SLTR, I2C_SLTR_TOUTHIGH);
-    SET_REG32_BIT(I2Cx->SLTR, ((uint32_t)u16TimeOutH << 16U));
+    SET_REG32_BIT(I2Cx->SLTR, ((uint32_t)u16TimeoutH << 16U));
 }
 
 /**
@@ -577,15 +582,15 @@ void I2C_ClkHighTimeOutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeOutH)
  *         @arg M4_I2C4
  *         @arg M4_I2C5
  *         @arg M4_I2C6
- * @param [in] u16TimeOutL  clock timeout period for low level
+ * @param [in] u16TimeoutL  clock timeout period for low level
  * @retval None
  */
-void I2C_ClkLowTimeOutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeOutL)
+void I2C_ClkLowTimeoutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeoutL)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
     CLEAR_REG32_BIT(I2Cx->SLTR, I2C_SLTR_TOUTLOW);
-    SET_REG32_BIT(I2Cx->SLTR, u16TimeOutL);
+    SET_REG32_BIT(I2Cx->SLTR, u16TimeoutL);
 }
 
 /**
@@ -602,7 +607,7 @@ void I2C_ClkLowTimeOutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeOutL)
  *                         can be Disable or Enable the function
  * @retval None
  */
-void I2C_ClkHighTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
+void I2C_ClkHighTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
@@ -631,7 +636,7 @@ void I2C_ClkHighTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewStat
  *                         can be Disable or Enable the function
  * @retval None
  */
-void I2C_ClkLowTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
+void I2C_ClkLowTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
@@ -660,7 +665,7 @@ void I2C_ClkLowTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState
  *                        Disable or Enable the function
  * @retval None
  */
-void I2C_ClkTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
+void I2C_ClkTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
@@ -915,12 +920,12 @@ void I2C_GenerateStop(M4_I2C_TypeDef* I2Cx)
  *         @arg   I2C_SR_SMBALRTF   : Smbus alarm address detected flag
  * @retval The status of the I2C status flag, may be Set or Reset.
  */
-en_flag_status_t I2C_GetStatus(M4_I2C_TypeDef * const I2Cx, uint32_t u32StatusBit)
+en_flag_status_t I2C_GetStatus(const M4_I2C_TypeDef *I2Cx, uint32_t u32StatusBit)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
     DDL_ASSERT(IS_VALID_RD_STATUS_BIT(u32StatusBit));
 
-    return (READ_REG32_BIT(I2Cx->SR, u32StatusBit) ? Set : Reset);
+    return ((0UL != READ_REG32_BIT(I2Cx->SR, u32StatusBit)) ? Set : Reset);
 }
 
 /**
@@ -1059,7 +1064,7 @@ void I2C_WriteDataReg(M4_I2C_TypeDef* I2Cx, uint8_t u8Data)
  *         @arg M4_I2C6
  * @retval The value of the received data
  */
-uint8_t I2C_ReadDataReg(M4_I2C_TypeDef* const I2Cx)
+uint8_t I2C_ReadDataReg(const M4_I2C_TypeDef *I2Cx)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
@@ -1125,7 +1130,7 @@ void I2C_NackConfig(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
  *          - Error         Failed to get expected status of specified flags
  *          - Ok            successfully gotten the expected status of the specified flags
  */
-static en_result_t I2C_WaitStatus(M4_I2C_TypeDef* const I2Cx, uint32_t u32Flags, en_flag_status_t enStatus, uint32_t u32Timeout)
+static en_result_t I2C_WaitStatus(const M4_I2C_TypeDef *I2Cx, uint32_t u32Flags, en_flag_status_t enStatus, uint32_t u32Timeout)
 {
     en_result_t enRet = Error;
     uint32_t u32RegStatusBit;
@@ -1172,7 +1177,7 @@ en_result_t I2C_Start(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
-    en_result_t enRet = Error;
+    en_result_t enRet;
 
     enRet = I2C_WaitStatus(I2Cx, I2C_SR_BUSY, Reset, u32Timeout);
 
@@ -1207,7 +1212,7 @@ en_result_t I2C_Restart(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
-    en_result_t enRet = Error;
+    en_result_t enRet;
 
     /* Clear start status flag */
     I2C_ClearStatus(I2Cx, I2C_CLR_STARTFCLR);
@@ -1234,13 +1239,13 @@ en_result_t I2C_Restart(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout)
  *              flag in status register
  * @retval An en_result_t enumeration value:
  *            - Ok: Send successfully
- *            - ErrorTimeout: Send unsuccessfully, Time Out error occurred
+ *            - Error: Send unsuccessfully
  */
 en_result_t I2C_SendAddr(M4_I2C_TypeDef* I2Cx, uint8_t u8Addr, uint32_t u32Timeout)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
-    en_result_t enRet = ErrorTimeout;
+    en_result_t enRet;
 
     enRet = I2C_WaitStatus(I2Cx, I2C_SR_TEMPTYF, Set, u32Timeout);
 
@@ -1280,17 +1285,17 @@ en_result_t I2C_SendAddr(M4_I2C_TypeDef* I2Cx, uint8_t u8Addr, uint32_t u32Timeo
  *              flag in status register
  * @retval An en_result_t enumeration value:
  *            - Ok: Send successfully
- *            - ErrorTimeout: Send unsuccessfully, Time Out error occurred
+ *            - Error: Send unsuccessfully
+ *            - ErrorInvalidParameter: pau8TxData is NULL
  */
 en_result_t I2C_SendData(M4_I2C_TypeDef* I2Cx, uint8_t const pau8TxData[], uint32_t u32Size, uint32_t u32Timeout)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
-    DDL_ASSERT(NULL != pau8TxData);
 
     en_result_t enRet = Ok;
     uint32_t u32Cnt = 0UL;
 
-    if(pau8TxData)
+    if(pau8TxData != NULL)
     {
         while((u32Cnt != u32Size) && (enRet == Ok))
         {
@@ -1335,16 +1340,16 @@ en_result_t I2C_SendData(M4_I2C_TypeDef* I2Cx, uint8_t const pau8TxData[], uint3
  *              flag in status register
  * @retval An en_result_t enumeration value:
  *            - Ok: Receive successfully
- *            - ErrorTimeout: Receive unsuccessfully, Time Out error occurred
+ *            - Error: Send unsuccessfully
+ *            - ErrorInvalidParameter: pau8TxData is NULL
  */
 en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32Size, uint32_t u32Timeout)
 {
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
-    DDL_ASSERT(NULL != pau8RxData);
 
     en_result_t enRet = Ok;
 
-    if(pau8RxData)
+    if(pau8RxData != NULL)
     {
         for(uint32_t i=0UL; i<u32Size; i++)
         {
@@ -1360,7 +1365,7 @@ en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32
                  /* read data from register */
                 pau8RxData[i] = I2C_ReadDataReg(I2Cx);
                 /* manually send ack if FACKEN is set to 1(1:manually ack;0:fast ack) */
-                if(READ_REG32_BIT(I2Cx->CR3, I2C_CR3_FACKEN) && (i != (u32Size - 1UL)))
+                if((0UL != READ_REG32_BIT(I2Cx->CR3, I2C_CR3_FACKEN)) && (i != (u32Size - 1UL)))
                 {
                     I2C_NackConfig(I2Cx, Disable);
                 }
@@ -1393,16 +1398,16 @@ en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32
  *              flag in status register
  * @retval An en_result_t enumeration value:
  *            - Ok: Stop successfully
- *            - ErrorTimeout: Stop unsuccessfully, Time Out error occurred
+ *            - Error: Stop unsuccessfully
  */
 en_result_t I2C_Stop(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout)
 {
+    en_result_t enRet;
+
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
-    en_result_t enRet = Ok;
-
     /* Clear stop flag */
-    while((Set == I2C_GetStatus(I2Cx, I2C_SR_STOPF)) && u32Timeout)
+    while((Set == I2C_GetStatus(I2Cx, I2C_SR_STOPF)) && (u32Timeout > 0UL))
     {
         I2C_ClearStatus(I2Cx, I2C_CLR_STOPFCLR);
         u32Timeout--;

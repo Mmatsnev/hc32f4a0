@@ -123,7 +123,7 @@ typedef struct
                                                          This parameter can be a value of @ref QSPI_Read_Mode */
     uint8_t u8RomAccessInstr;                       /*!< Rom access instruction. This parameter only supports read instruction of QSPI flash now.
                                                          Tis instruction must correspond to the read mode that specified by parameter 'u32ReadMode'. */
-    uint32_t u32DummyCycles;                        /*!< Specifies the number of dummy cycles for fast read. 
+    uint32_t u32DummyCycles;                        /*!< Specifies the number of dummy cycles for fast read.
                                                          This parameter can be a value between 3U and 18U. */
 } stc_qspi_init_t;
 
@@ -419,6 +419,7 @@ en_result_t QSPI_WriteData(uint32_t u32Instr, uint32_t u32Address, \
 en_result_t QSPI_ReadData(uint32_t u32Address, uint8_t pu8Dest[], uint32_t u32DestSize);
 
 void QSPI_SetReadMode(uint32_t u32ReadMode, uint8_t u8ReadInstr, uint32_t u32DummyCycles);
+void QSPI_DutyCorrectCmd(en_functional_state_t enNewState);
 void QSPI_PrefetchCmd(en_functional_state_t enNewState);
 void QSPI_XIPModeCmd(en_functional_state_t enNewState);
 void QSPI_SetWPPinLevel(uint32_t u32Level);

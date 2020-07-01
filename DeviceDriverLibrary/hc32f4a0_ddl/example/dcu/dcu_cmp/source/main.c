@@ -124,7 +124,7 @@ static __IO en_int_status_t m_enData0GtData2 = Reset;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -150,7 +150,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -175,37 +175,37 @@ static void Peripheral_WP(void)
  */
 static void DCU_IrqCallback(void)
 {
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_DATA0_LS_DATA2))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_DATA0_LS_DATA2))
     {
         m_enData0LsData2 = Set;
     }
 
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_DATA0_EQ_DATA2))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_DATA0_EQ_DATA2))
     {
         m_enData0EqData2 = Set;
     }
 
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_DATA0_GT_DATA2))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_DATA0_GT_DATA2))
     {
         m_enData0GtData2 = Set;
     }
 
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_DATA0_LS_DATA1))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_DATA0_LS_DATA1))
     {
         m_enData0LsData1 = Set;
     }
 
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_DATA0_EQ_DATA1))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_DATA0_EQ_DATA1))
     {
         m_enData0EqData1 = Set;
     }
 
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_DATA0_GT_DATA1))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_DATA0_GT_DATA1))
     {
         m_enData0GtData1 = Set;
     }
 
-    DCU_ClearFlag(DCU_UNIT, (DCU_FLAG_DATA0_LS_DATA2 | DCU_FLAG_DATA0_EQ_DATA2 | \
+    DCU_ClearStatus(DCU_UNIT, (DCU_FLAG_DATA0_LS_DATA2 | DCU_FLAG_DATA0_EQ_DATA2 | \
                              DCU_FLAG_DATA0_GT_DATA2 | DCU_FLAG_DATA0_LS_DATA1 | \
                              DCU_FLAG_DATA0_EQ_DATA1 | DCU_FLAG_DATA0_GT_DATA1));
 }

@@ -263,7 +263,7 @@ void EFM_FWMC_Unlock(void)
  * @note   Call EFM_Unlock() and EFM_FWMC_Unlock() unlock EFM_FWMC register first.
  */
 void EFM_FWMC_Lock(void)
-{   
+{
     DDL_ASSERT(IS_VALID_EFM_UNLOCK());
     DDL_ASSERT(IS_VALID_EFM_FWMC_UNLOCK());
 
@@ -291,7 +291,7 @@ void EFM_OTP_WP_Unlock(void)
  * @note   Call EFM_Unlock() and EFM_FWMC_Unlock() unlock OTP write protect first.
  */
 void EFM_OTP_WP_Lock(void)
-{   
+{
     DDL_ASSERT(IS_VALID_EFM_UNLOCK());
     DDL_ASSERT(IS_VALID_EFM_FWMC_UNLOCK());
 
@@ -347,7 +347,7 @@ en_result_t EFM_StructInit(stc_efm_cfg_t *pstcEfmCfg)
         pstcEfmCfg->u32Prefetch    = EFM_PREFETCH_OFF;
         pstcEfmCfg->u32CacheRst    = EFM_CACHERST_OFF;
         pstcEfmCfg->u32InsCache    = EFM_INSCACHE_OFF;
-        pstcEfmCfg->u32DataCache   = EFM_DATACACHE_OFF; 
+        pstcEfmCfg->u32DataCache   = EFM_DATACACHE_OFF;
         pstcEfmCfg->u32LowVolRead  = EFM_LOWVOLREAD_OFF;
         pstcEfmCfg->u32BusStatus   = EFM_BUS_BUSY;
         pstcEfmCfg->u32OperateMode = EFM_MODE_READONLY;
@@ -654,15 +654,14 @@ void EFM_SectorRegLock(uint32_t u32EfmRegLock)
  */
 void EFM_SectorCmd_Single(uint8_t u8SectorNum, en_functional_state_t enNewState)
 {
+    __IO uint32_t *EFM_FxNWPRTy;
+    const uint8_t u8RegIndex = u8SectorNum / REG_LENGTH;
+    const uint8_t u8BitPos = u8SectorNum % REG_LENGTH;
     DDL_ASSERT(IS_VALID_EFM_UNLOCK());
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
-    __IO uint32_t *EFM_FxNWPRTy;
-    uint8_t u8RegIndex = u8SectorNum / REG_LENGTH;
-    uint8_t u8BitPos = u8SectorNum % REG_LENGTH;
-
     EFM_FxNWPRTy = (__IO uint32_t*)((uint32_t)(&M4_EFM->F0NWPRT0) + ((uint32_t)u8RegIndex << 2UL));
-    MODIFY_REG32(*EFM_FxNWPRTy, 1UL<<u8BitPos, enNewState<<u8BitPos);
+    MODIFY_REG32(*EFM_FxNWPRTy, 1UL<<u8BitPos, (uint32_t)enNewState<<u8BitPos);
 }
 
 /**
@@ -686,7 +685,11 @@ en_result_t EFM_SectorCmd_Sequential(uint32_t u32StartAddr, uint16_t u16SectorCn
     uint32_t EndSect;
     uint32_t EndAddr;
     uint16_t Num;
-    uint16_t NeedSector,StartRegIndex,StartBitPos,EndRegIndex,EndBitPos;
+    uint16_t NeedSector;
+    uint16_t StartRegIndex;
+    uint16_t StartBitPos;
+    uint16_t EndRegIndex;
+    uint16_t EndBitPos;
     EndAddr = u32StartAddr + u16SectorCnt * SECTOR_SIZE -1U;
     DDL_ASSERT(IS_VALID_EFM_UNLOCK());
     DDL_ASSERT(IS_VALID_EFM_SECTOR_NUM(u16SectorCnt));
@@ -925,7 +928,7 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
     /* Set sequence program mode. */
     EFM_SetOperateMode(EFM_MODE_PROGRAMSEQUENCE);
     /* program data. */
-    while(u32LoopWords--)
+    while((u32LoopWords--) > 0UL)
     {
         RW_MEM32(u32Addr) = RW_MEM32(u32SrcDataAddr);
         u32Addr += 4UL;
@@ -1214,7 +1217,7 @@ void EFM_SwapCmd(en_functional_state_t enNewState)
  */
 uint32_t EFM_GetCID(void)
 {
-    uint32_t u32CID = 0UL;
+    uint32_t u32CID;
     u32CID = M4_EFM->FHDFG;
     return u32CID;
 }

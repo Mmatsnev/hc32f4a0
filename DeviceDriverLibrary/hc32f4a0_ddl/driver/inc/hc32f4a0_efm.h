@@ -1134,7 +1134,7 @@ void EFM_FWMC_Lock(void);
 void EFM_OTP_WP_Unlock(void);
 void EFM_OTP_WP_Lock(void);
 
-void EFM_Cmd(uint32_t efmstatus);
+void EFM_Cmd(uint32_t u32EfmStatus);
 void EFM_SetWaitCycle(uint32_t u32WaitCycle);
 void EFM_SetBusStatus(uint32_t u32Status);
 void EFM_DataCacheCmd(en_functional_state_t enNewState);
@@ -1145,7 +1145,7 @@ void EFM_SwapCmd(en_functional_state_t enNewState);
 void EFM_InterruptCmd(uint32_t u32EfmInt, en_functional_state_t enNewState);
 void EFM_LowVolReadCmd(en_functional_state_t enNewState);
 void EFM_SectorRegLock(uint32_t u32EfmRegLock);
-void EFM_SetOperateMode(uint32_t u32PeMode);
+void EFM_SetOperateMode(uint32_t u32PgmMode);
 void EFM_ClearFlag(uint32_t u32Flag);
 void EFM_SectorCmd_Single(uint8_t u8SectorNum, en_functional_state_t enNewState);
 en_result_t EFM_StructInit(stc_efm_cfg_t *pstcEfmCfg);
@@ -1156,8 +1156,8 @@ en_result_t EFM_SingleProgram(uint32_t u32Addr, uint32_t u32Data);
 en_result_t EFM_ProgramReadBack(uint32_t u32Addr, uint32_t u32Data);
 en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_t *pu32Buf);
 en_result_t EFM_SectorErase(uint32_t u32Addr);
-en_result_t EFM_OTPLock(uint32_t Addr);
-en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t Addr);
+en_result_t EFM_OTPLock(uint32_t u32Addr);
+en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr);
 
 en_flag_status_t EFM_GetFlagStatus(uint32_t u32Flag);
 void EFM_GetUID(stc_efm_unique_id_t *stcUID);

@@ -430,40 +430,40 @@ typedef struct
  */
 
 /* Initialization and configuration functions */
-en_result_t           RTC_DeInit(void);
-en_result_t           RTC_Init(const stc_rtc_init_t *pstcRtcInit);
-en_result_t           RTC_StructInit(stc_rtc_init_t *pstcRtcInit);
-en_result_t           RTC_EnterRwMode(void);
-en_result_t           RTC_ExitRwMode(void);
-void                  RTC_PeriodIntConfig(uint8_t u8IntCond);
-en_result_t           RTC_LowPowerCheck(void);
-void                  RTC_SetClkCompenValue(uint16_t u16CompenVal);
-void                  RTC_Cmd(en_functional_state_t enNewSta);
-void                  RTC_LrcCmd(en_functional_state_t enNewSta);
+en_result_t RTC_DeInit(void);
+en_result_t RTC_Init(const stc_rtc_init_t *pstcRtcInit);
+en_result_t RTC_StructInit(stc_rtc_init_t *pstcRtcInit);
+en_result_t RTC_EnterRwMode(void);
+en_result_t RTC_ExitRwMode(void);
+void RTC_PeriodIntConfig(uint8_t u8IntCond);
+en_result_t RTC_LowPowerCheck(void);
+void RTC_SetClkCompenValue(uint16_t u16CompenVal);
+void RTC_Cmd(en_functional_state_t enNewSta);
+void RTC_LrcCmd(en_functional_state_t enNewSta);
 en_functional_state_t RTC_GetCounterState(void);
-void                  RTC_OneHzOutputCmd(en_functional_state_t enNewSta);
-void                  RTC_ClkCompenCmd(en_functional_state_t enNewSta);
+void RTC_OneHzOutputCmd(en_functional_state_t enNewSta);
+void RTC_ClkCompenCmd(en_functional_state_t enNewSta);
 
 /* Date and time functions */
-en_result_t           RTC_SetDate(uint8_t u8Format, stc_rtc_date_t *pstcRtcDate);
-en_result_t           RTC_GetDate(uint8_t u8Format, stc_rtc_date_t *pstcRtcDate);
-en_result_t           RTC_SetTime(uint8_t u8Format, stc_rtc_time_t *pstcRtcTime);
-en_result_t           RTC_GetTime(uint8_t u8Format, stc_rtc_time_t *pstcRtcTime);
+en_result_t RTC_SetDate(uint8_t u8Format, stc_rtc_date_t *pstcRtcDate);
+en_result_t RTC_GetDate(uint8_t u8Format, stc_rtc_date_t *pstcRtcDate);
+en_result_t RTC_SetTime(uint8_t u8Format, stc_rtc_time_t *pstcRtcTime);
+en_result_t RTC_GetTime(uint8_t u8Format, stc_rtc_time_t *pstcRtcTime);
 
 /* Alarm configuration functions */
-en_result_t           RTC_SetAlarm(uint8_t u8Format, stc_rtc_alarm_t *pstcRtcAlarm);
-en_result_t           RTC_GetAlarm(uint8_t u8Format, stc_rtc_alarm_t *pstcRtcAlarm);
-void                  RTC_AlarmCmd(en_functional_state_t enNewSta);
+en_result_t RTC_SetAlarm(uint8_t u8Format, stc_rtc_alarm_t *pstcRtcAlarm);
+en_result_t RTC_GetAlarm(uint8_t u8Format, stc_rtc_alarm_t *pstcRtcAlarm);
+void RTC_AlarmCmd(en_functional_state_t enNewSta);
 
 /* Intrusion timestamp functions */
-en_result_t           RTC_IntrusionConfig(uint8_t u8Ch, const stc_rtc_intrusion_t *pstcIntru);
-en_result_t           RTC_GetIntrusionTimestamp(uint8_t u8Format, stc_rtc_timestamp_t *pstcTimestamp);
-void                  RTC_IntrusionCmd(uint8_t u8Ch, en_functional_state_t enNewSta);
+en_result_t RTC_IntrusionConfig(uint8_t u8Ch, const stc_rtc_intrusion_t *pstcIntru);
+en_result_t RTC_GetIntrusionTimestamp(uint8_t u8Format, stc_rtc_timestamp_t *pstcTimestamp);
+void RTC_IntrusionCmd(uint8_t u8Ch, en_functional_state_t enNewSta);
 
 /* Interrupts and flags management functions */
-void                  RTC_IntCmd(uint32_t u32IntSrc, en_functional_state_t enNewSta);
-en_flag_status_t      RTC_GetStatus(uint32_t u32Flag);
-void                  RTC_ClearStatus(uint32_t u32Flag);
+void RTC_IntCmd(uint32_t u32IntSrc, en_functional_state_t enNewSta);
+en_flag_status_t RTC_GetStatus(uint32_t u32Flag);
+void RTC_ClearStatus(uint32_t u32Flag);
 
 /**
  * @}

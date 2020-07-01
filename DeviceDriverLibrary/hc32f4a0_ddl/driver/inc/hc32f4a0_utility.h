@@ -113,10 +113,10 @@ void SysTick_Resume(void);
 #ifdef __DEBUG
     #define DDL_ASSERT(x)                                                      \
     do{                                                                        \
-        ((x) ? (void)0 : DDL_AssertHandler((uint8_t *)__FILE__, __LINE__));    \
+        ((x) ? (void)0 : DDL_AssertHandler(__FILE__, __LINE__));    \
     }while(0)
     /* Exported function */
-    void DDL_AssertHandler(const uint8_t *file, int16_t line);
+    void DDL_AssertHandler(const char *file, int line);
 #else
     #define DDL_ASSERT(x)               ((void)0U)
 #endif /* __DEBUG */

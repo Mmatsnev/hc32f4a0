@@ -1373,7 +1373,7 @@ typedef struct
  * @{
  */
 /**
- * @brief  GPIO lock. PSPCR, PCCR, PINAER, PCRxy write disable
+ * @brief  GPIO lock. PSPCR, PCCR, PINAER, PCRxy, PFSRxy write disable
  * @param  None
  * @retval None
  */
@@ -1383,7 +1383,7 @@ __STATIC_INLINE void GPIO_Lock(void)
 }
 
 /**
- * @brief  GPIO unlock. PSPCR, PCCR, PINAER, PCRxy write enable
+ * @brief  GPIO unlock. PSPCR, PCCR, PINAER, PCRxy, PFSRxy write enable
  * @param  None
  * @retval None
  */

@@ -150,7 +150,9 @@ void USBH_USR_Init(void)
     if(startup == 0 )
     {
         startup = 1;
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf("> USB Host library started.\n");
+#endif
     }
 }
 
@@ -162,7 +164,9 @@ void USBH_USR_Init(void)
 */
 void USBH_USR_DeviceAttached(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf((void*)MSG_DEV_ATTACHED);
+#endif
 }
 
 /**
@@ -172,7 +176,9 @@ void USBH_USR_DeviceAttached(void)
 */
 void USBH_USR_UnrecoveredError (void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf((void*)MSG_UNREC_ERROR);
+#endif
 }
 
 /**
@@ -183,7 +189,9 @@ void USBH_USR_UnrecoveredError (void)
 */
 void USBH_USR_DeviceDisconnected (void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf((void *)MSG_DEV_DISCONNECTED);
+#endif
 }
 
 /**
@@ -208,19 +216,27 @@ void USBH_USR_DeviceSpeedDetected(uint8_t DeviceSpeed)
 {
     if(DeviceSpeed == HPRT0_PRTSPD_HIGH_SPEED)
     {
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf((void *)MSG_DEV_HIGHSPEED);
+#endif
     }
     else if(DeviceSpeed == HPRT0_PRTSPD_FULL_SPEED)
     {
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf((void *)MSG_DEV_FULLSPEED);
+#endif
     }
     else if(DeviceSpeed == HPRT0_PRTSPD_LOW_SPEED)
     {
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf((void *)MSG_DEV_LOWSPEED);
+#endif
     }
     else
     {
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf((void *)MSG_DEV_ERROR);
+#endif
     }
 }
 
@@ -235,10 +251,12 @@ void USBH_USR_Device_DescAvailable(void *DeviceDesc)
     uint8_t temp[50];
     USBH_DevDesc_TypeDef *hs;
     hs = DeviceDesc;
+#if (DDL_PRINT_ENABLE == DDL_ON)
     sprintf((char *)temp , "VID : %04lXh\n" , (uint32_t)(*hs).idVendor);
     printf((void *)temp);
     sprintf((char *)temp , "PID : %04lXh\n" , (uint32_t)(*hs).idProduct);
     printf((void *)temp);
+#endif
 }
 
 /**
@@ -270,11 +288,15 @@ void USBH_USR_Configuration_DescAvailable(USBH_CfgDesc_TypeDef * cfgDesc,
 
     if((*id).bInterfaceClass  == 0x08)
     {
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf("%s", MSG_MSC_CLASS);
+#endif
     }
     else if((*id).bInterfaceClass  == 0x03)
     {
+#if (DDL_PRINT_ENABLE == DDL_ON)
         printf("%s", MSG_HID_CLASS);
+#endif
     }
 }
 
@@ -287,8 +309,10 @@ void USBH_USR_Configuration_DescAvailable(USBH_CfgDesc_TypeDef * cfgDesc,
 void USBH_USR_Manufacturer_String(void *ManufacturerString)
 {
     char temp[100];
+#if (DDL_PRINT_ENABLE == DDL_ON)
     sprintf(temp, "Manufacturer : %s\n", (char *)ManufacturerString);
     printf((void *)temp);
+#endif
 }
 
 /**
@@ -300,8 +324,10 @@ void USBH_USR_Manufacturer_String(void *ManufacturerString)
 void USBH_USR_Product_String(void *ProductString)
 {
     char temp[100];
+#if (DDL_PRINT_ENABLE == DDL_ON)
     sprintf((char *)temp, "Product : %s\n", (char *)ProductString);
     printf((void *)temp);
+#endif
 }
 
 /**
@@ -313,8 +339,10 @@ void USBH_USR_Product_String(void *ProductString)
 void USBH_USR_SerialNum_String(void *SerialNumString)
 {
     uint8_t temp[100];
+#if (DDL_PRINT_ENABLE == DDL_ON)
     sprintf((char *)temp, "Serial Number : %s\n", (char *)SerialNumString);
     printf((void *)temp);
+#endif
 }
 
 /**
@@ -326,8 +354,10 @@ void USBH_USR_SerialNum_String(void *SerialNumString)
 */
 void USBH_USR_EnumerationDone(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     /* Enumeration complete */
     printf((void *)MSG_DEV_ENUMERATED);
+#endif
 }
 
 /**
@@ -338,7 +368,9 @@ void USBH_USR_EnumerationDone(void)
 */
 void USBH_USR_DeviceNotSupported(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("> Device not supported.\n");
+#endif
 }
 
 
@@ -372,7 +404,9 @@ USBH_USR_Status USBH_USR_UserInput(void)
 */
 void USBH_USR_OverCurrentDetected (void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("Overcurrent detected.\n");
+#endif
 }
 
 /**
@@ -435,9 +469,11 @@ void USR_MOUSE_ProcessData(HID_MOUSE_Data_TypeDef *data)
 */
 void  USR_KEYBRD_Init (void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf((void*)USB_HID_KeybrdStatus);
     printf("> Use Keyboard to tape characters: \n\n");
     printf("\n\n\n\n\n\n");
+#endif
 //    KeybrdCharXpos = KYBRD_FIRST_LINE;
 //    KeybrdCharYpos = KYBRD_FIRST_COLUMN;
 }
@@ -451,7 +487,9 @@ void  USR_KEYBRD_Init (void)
 */
 void  USR_KEYBRD_ProcessData (uint8_t data)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("%c", (char)data);
+#endif
 }
 
 /**

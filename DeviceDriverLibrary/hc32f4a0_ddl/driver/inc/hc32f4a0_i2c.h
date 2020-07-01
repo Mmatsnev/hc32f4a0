@@ -211,8 +211,8 @@ typedef struct
 /* Initialization and Configuration **********************************/
 void I2C_DeInit(M4_I2C_TypeDef* I2Cx);
 en_result_t I2C_StructInit(stc_i2c_init_t* pstcI2C_InitStruct);
-en_result_t I2C_Init(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t* pstcI2C_InitStruct, float32_t *pf32Err);
-en_result_t I2C_BaudrateConfig(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t* pstcI2C_InitStruct, float32_t *pf32Err);
+en_result_t I2C_Init(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI2C_InitStruct, float32_t *pf32Err);
+en_result_t I2C_BaudrateConfig(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI2C_InitStruct, float32_t *pf32Err);
 void I2C_SlaveAddrConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32AddrNum, uint32_t u32AddrMode, uint32_t u32Addr);
 void I2C_SetMasterSlaveMode(M4_I2C_TypeDef* I2Cx, uint32_t u32MSMode);
 void I2C_SetTxRxMode(M4_I2C_TypeDef* I2Cx, uint32_t u32TxRxMode);
@@ -221,11 +221,11 @@ void I2C_FastAckCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_SoftwareResetCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_IntCmd(M4_I2C_TypeDef* I2Cx, uint32_t u32IntEn, en_functional_state_t enNewState);
 
-void I2C_ClkHighTimeOutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeOutH);
-void I2C_ClkLowTimeOutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeOutL);
-void I2C_ClkHighTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
-void I2C_ClkLowTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
-void I2C_ClkTimeOutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
+void I2C_ClkHighTimeoutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeoutH);
+void I2C_ClkLowTimeoutConfig(M4_I2C_TypeDef* I2Cx, uint16_t u16TimeoutL);
+void I2C_ClkHighTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
+void I2C_ClkLowTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
+void I2C_ClkTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_SmbusConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32SmbusConfig, en_functional_state_t enNewState);
 void I2C_SmBusCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_DigitalFilterConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32DigFilterMode);
@@ -239,21 +239,21 @@ void I2C_GenerateReStart(M4_I2C_TypeDef* I2Cx);
 void I2C_GenerateStop(M4_I2C_TypeDef* I2Cx);
 
 /* Status management *************************************************/
-en_flag_status_t I2C_GetStatus(M4_I2C_TypeDef* const I2Cx, uint32_t u32StatusBit);
+en_flag_status_t I2C_GetStatus(const M4_I2C_TypeDef *I2Cx, uint32_t u32StatusBit);
 void I2C_ClearStatus(M4_I2C_TypeDef* I2Cx, uint32_t u32StatusBit);
 
 /* Data transfer ************************************  ***************/
 void I2C_WriteDataReg(M4_I2C_TypeDef* I2Cx, uint8_t u8Data);
-uint8_t I2C_ReadDataReg(M4_I2C_TypeDef* const I2Cx);
+uint8_t I2C_ReadDataReg(const M4_I2C_TypeDef *I2Cx);
 void I2C_NackConfig(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 
 /* High level functions for reference ********************************/
-en_result_t I2C_Start(M4_I2C_TypeDef* I2Cx, uint32_t u32TimeOut);
-en_result_t I2C_Restart(M4_I2C_TypeDef* I2Cx, uint32_t u32TimeOut);
+en_result_t I2C_Start(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout);
+en_result_t I2C_Restart(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout);
 en_result_t I2C_SendAddr(M4_I2C_TypeDef* I2Cx, uint8_t u8Addr, uint32_t u32Timeout);
-en_result_t I2C_SendData(M4_I2C_TypeDef* I2Cx, uint8_t const pau8TxData[], uint32_t u32Size, uint32_t u32TimeOut);
-en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32Size, uint32_t u32TimeOut);
-en_result_t I2C_Stop(M4_I2C_TypeDef* I2Cx, uint32_t u32TimeOut);
+en_result_t I2C_SendData(M4_I2C_TypeDef* I2Cx, uint8_t const pau8TxData[], uint32_t u32Size, uint32_t u32Timeout);
+en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32Size, uint32_t u32Timeout);
+en_result_t I2C_Stop(M4_I2C_TypeDef* I2Cx, uint32_t u32Timeout);
 
 /**
  * @}

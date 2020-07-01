@@ -2,7 +2,7 @@
  *******************************************************************************
  * @file  hc32f4a0_usb_dcd.c
  * @brief Peripheral Device Interface Layer.
- *       
+ *
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -189,10 +189,10 @@ uint32_t DCD_EP_Open(USB_OTG_CORE_HANDLE *pdev ,
     }
     ep->num   = ep_addr & 0x7FU;
 
-    ep->is_in = ((0x80U & ep_addr) != 0U);
+    ep->is_in = (uint8_t)((0x80U & ep_addr) != 0U);
     ep->maxpacket = ep_mps;
     ep->type = ep_type;
-    if (ep->is_in)
+    if (ep->is_in != 0U)
     {
         /* Assign a Tx FIFO */
         ep->tx_fifo_num = ep->num;
@@ -225,7 +225,7 @@ uint32_t DCD_EP_Close(USB_OTG_CORE_HANDLE *pdev , uint8_t  ep_addr)
         ep = &pdev->dev.out_ep[ep_addr & 0x7FU];
     }
     ep->num   = ep_addr & 0x7FU;
-    ep->is_in = ((0x80U & ep_addr) != 0U);
+    ep->is_in = (uint8_t)((0x80U & ep_addr) != 0U);
     USB_OTG_EPDeactivate(pdev, ep);
     return 0U;
 }
@@ -238,14 +238,14 @@ uint32_t DCD_EP_Close(USB_OTG_CORE_HANDLE *pdev , uint8_t  ep_addr)
  * @param buf_len   Data length
  * @retval Status
  */
-uint32_t   DCD_EP_PrepareRx( USB_OTG_CORE_HANDLE *pdev,
-                            uint8_t   ep_addr,
-                            uint8_t *pbuf,
-                            uint16_t  buf_len)
+uint32_t DCD_EP_PrepareRx( USB_OTG_CORE_HANDLE *pdev,
+                           uint8_t ep_addr,
+                           uint8_t *pbuf,
+                           uint16_t  buf_len)
 {
     USB_OTG_EP *ep;
 
-    ep = &pdev->dev.out_ep[ep_addr & 0x7Fu];
+    ep = &pdev->dev.out_ep[ep_addr & 0x7FU];
 
     /*setup and start the Xfer */
     ep->xfer_buff = pbuf;
@@ -312,7 +312,7 @@ uint32_t  DCD_EP_Tx ( USB_OTG_CORE_HANDLE *pdev,
  * @param epnum     Endpoint address
  * @retval Status
  */
-uint32_t  DCD_EP_Stall (USB_OTG_CORE_HANDLE *pdev, uint8_t   epnum)
+uint32_t DCD_EP_Stall (USB_OTG_CORE_HANDLE *pdev, uint8_t epnum)
 {
     USB_OTG_EP *ep;
     if ((0x80U & epnum) == 0x80U)
@@ -326,7 +326,7 @@ uint32_t  DCD_EP_Stall (USB_OTG_CORE_HANDLE *pdev, uint8_t   epnum)
 
     ep->is_stall = 1U;
     ep->num   = epnum & 0x7FU;
-    ep->is_in = ((epnum & 0x80U) == 0x80U);
+    ep->is_in = (uint8_t)((epnum & 0x80U) == 0x80U);
 
     USB_OTG_EPSetStall(pdev, ep);
     return (0U);
@@ -352,7 +352,7 @@ uint32_t  DCD_EP_ClrStall (USB_OTG_CORE_HANDLE *pdev, uint8_t epnum)
 
     ep->is_stall = 0U;
     ep->num   = epnum & 0x7FU;
-    ep->is_in = ((epnum & 0x80U) == 0x80U);
+    ep->is_in = (uint8_t)((epnum & 0x80U) == 0x80U);
 
     USB_OTG_EPClearStall(pdev, ep);
     return (0U);
@@ -388,7 +388,7 @@ void  DCD_EP_SetAddress (USB_OTG_CORE_HANDLE *pdev, uint8_t address)
     USB_OTG_DCFG_TypeDef  dcfg;
     dcfg.d32 = 0UL;
     dcfg.b.devaddr = address;
-    USB_OTG_MODIFY_REG32( &pdev->regs.DREGS->DCFG, 0UL, dcfg.d32);
+    USB_OTG_MODIFY_REG32(&pdev->regs.DREGS->DCFG, 0UL, dcfg.d32);
 }
 
 /**
@@ -434,7 +434,7 @@ void  DCD_DevDisconnect (USB_OTG_CORE_HANDLE *pdev)
 uint32_t DCD_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,uint8_t epnum)
 {
     USB_OTG_EP *ep;
-    uint32_t Status = 0UL;
+    uint32_t Status;
 
     if ((0x80U & epnum) == 0x80U)
     {

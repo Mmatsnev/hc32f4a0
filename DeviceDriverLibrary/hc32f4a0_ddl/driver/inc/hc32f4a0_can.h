@@ -688,7 +688,6 @@ typedef struct
             void CAN_ClrErrCount(M4_CAN_TypeDef *CANx);
      en_result_t CAN_AFConfig(M4_CAN_TypeDef *CANx, uint16_t u16AFSel, const stc_can_af_cfg_t pstcAFCfg[]);
             void CAN_AFCmd(M4_CAN_TypeDef *CANx, uint16_t u16AFSel, en_functional_state_t enNewState);
-            void CAN_AFSetType(M4_CAN_TypeDef *CANx, uint8_t u8AFType);
 
          uint8_t CAN_GetTBType(const M4_CAN_TypeDef *CANx);
             void CAN_AbortTrans(M4_CAN_TypeDef *CANx, uint8_t u8TBType);

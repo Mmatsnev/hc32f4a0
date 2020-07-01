@@ -537,10 +537,8 @@ typedef struct
  * @defgroup ADC_Common_Trigger_Sel ADC Common Trigger Source Select
  * @{
  */
-#define ADC_TRIG_COM1_COM2_OFF          (0x00UL)
-#define ADC_TRIG_COM1_ON_COM2_OFF       (0x01UL << 31U)
-#define ADC_TRIG_COM1_OFF_COM2_ON       (0x01UL << 30U)
-#define ADC_TRIG_COM1_COM2_ON           (0x03UL << 30U)
+#define ADC_COM_TRIG1               (AOS_ADC_1_ITRGSELR_COMTRG_EN_0)
+#define ADC_COM_TRIG2               (AOS_ADC_1_ITRGSELR_COMTRG_EN_1)
 /**
  * @}
  */
@@ -577,7 +575,8 @@ void ADC_SetExChannelSrc(M4_ADC_TypeDef *ADCx, uint8_t u8ExChSrc);
 en_result_t ADC_TrigSrcStructInit(stc_adc_trig_cfg_t *pstcCfg);
 en_result_t ADC_TrigSrcConfig(M4_ADC_TypeDef *ADCx, uint8_t u8Seq, const stc_adc_trig_cfg_t *pstcCfg);
 void ADC_TrigSrcCmd(M4_ADC_TypeDef *ADCx, uint8_t u8Seq, en_functional_state_t enNewState);
-en_result_t ADC_ComTrigCmd(M4_ADC_TypeDef *ADCx, uint16_t u16TrigSrc, uint32_t u32ComTrigEn);
+en_result_t ADC_ComTriggerCmd(M4_ADC_TypeDef *ADCx, uint16_t u16TrigSrc, \
+                              uint32_t u32ComTrig, en_functional_state_t enNewState);
 
 void ADC_SeqIntCmd(M4_ADC_TypeDef *ADCx, uint8_t u8Seq, en_functional_state_t enNewState);
 en_flag_status_t ADC_SeqGetStatus(const M4_ADC_TypeDef *ADCx, uint8_t u8Flag);

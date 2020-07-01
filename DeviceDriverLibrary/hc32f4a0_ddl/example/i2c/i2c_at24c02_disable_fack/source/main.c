@@ -105,8 +105,8 @@
  */
 #define APP_WAIT_EEPROM                 (5UL)
 
-#define LED_PORT                        (GPIO_PORT_C)
-#define LED_PIN                         (GPIO_PIN_09)
+#define LED_GREEN_PORT                  (GPIO_PORT_C)
+#define LED_GREEN_PIN                   (GPIO_PIN_09)
 
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
@@ -132,7 +132,7 @@
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -158,7 +158,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -182,18 +182,18 @@ static void Led_Init(void)
 
     /* RGB LED initialize */
     GPIO_StructInit(&stcGpioInit);
-    GPIO_Init(LED_PORT, LED_PIN, &stcGpioInit);
+    GPIO_Init(LED_GREEN_PORT, LED_GREEN_PIN, &stcGpioInit);
 
     /* "Turn off" LED before set to output */
-    GPIO_ResetPins(LED_PORT, LED_PIN);
+    GPIO_ResetPins(LED_GREEN_PORT, LED_GREEN_PIN);
 
     /* Output enable */
-    GPIO_OE(LED_PORT, LED_PIN, Enable);
+    GPIO_OE(LED_GREEN_PORT, LED_GREEN_PIN, Enable);
 }
 
 static void Led_On(void)
 {
-    GPIO_SetPins(LED_PORT, LED_PIN);
+    GPIO_SetPins(LED_GREEN_PORT, LED_GREEN_PIN);
 }
 
 /**

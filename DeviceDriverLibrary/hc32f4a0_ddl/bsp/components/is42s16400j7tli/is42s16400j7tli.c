@@ -171,6 +171,7 @@ en_result_t IS42S16400J7TLI_WriteMem8(uint32_t u32Address,
                                 const uint8_t au8SrcBuffer[],
                                 uint32_t u32BufferSize)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if (0UL != u32BufferSize)
@@ -178,7 +179,7 @@ en_result_t IS42S16400J7TLI_WriteMem8(uint32_t u32Address,
         DDL_ASSERT(u32Address >= IS42S16400J7TLI_START_ADDRESS);
         DDL_ASSERT((u32Address + u32BufferSize) <= IS42S16400J7TLI_END_ADDRESS);
 
-        for (uint32_t i = 0UL; i < u32BufferSize; i++)
+        for (i = 0UL; i < u32BufferSize; i++)
         {
             *(uint8_t *)(u32Address + i) = au8SrcBuffer[i];
         }
@@ -202,6 +203,7 @@ en_result_t IS42S16400J7TLI_ReadMem8(uint32_t u32Address,
                                 uint8_t au8DstBuffer[],
                                 uint32_t u32BufferSize)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if ((NULL != au8DstBuffer) && (0UL != u32BufferSize))
@@ -209,7 +211,7 @@ en_result_t IS42S16400J7TLI_ReadMem8(uint32_t u32Address,
         DDL_ASSERT(u32Address >= IS42S16400J7TLI_START_ADDRESS);
         DDL_ASSERT((u32Address + u32BufferSize) <= IS42S16400J7TLI_END_ADDRESS);
 
-        for (uint32_t i = 0UL; i < u32BufferSize; i++)
+        for (i = 0UL; i < u32BufferSize; i++)
         {
             au8DstBuffer[i] = *(uint8_t *)(u32Address + i);
         }
@@ -232,6 +234,7 @@ en_result_t IS42S16400J7TLI_WriteMem16(uint32_t u32Address,
                                             const uint16_t au16SrcBuffer[],
                                             uint32_t u32BufferSize)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if (0UL != u32BufferSize)
@@ -240,7 +243,7 @@ en_result_t IS42S16400J7TLI_WriteMem16(uint32_t u32Address,
         DDL_ASSERT(u32Address >= IS42S16400J7TLI_START_ADDRESS);
         DDL_ASSERT((u32Address + (u32BufferSize << 1UL)) <= IS42S16400J7TLI_END_ADDRESS);
 
-        for (uint32_t i = 0UL; i < u32BufferSize; i++)
+        for (i = 0UL; i < u32BufferSize; i++)
         {
             *((uint16_t *)u32Address) = au16SrcBuffer[i];
             u32Address += 2UL;
@@ -265,6 +268,7 @@ en_result_t IS42S16400J7TLI_ReadMem16(uint32_t u32Address,
                                 uint16_t au16DstBuffer[],
                                 uint32_t u32BufferSize)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if ((NULL != au16DstBuffer) && (0UL != u32BufferSize))
@@ -273,7 +277,7 @@ en_result_t IS42S16400J7TLI_ReadMem16(uint32_t u32Address,
         DDL_ASSERT(u32Address >= IS42S16400J7TLI_START_ADDRESS);
         DDL_ASSERT((u32Address + (u32BufferSize << 1UL)) <= IS42S16400J7TLI_END_ADDRESS);
 
-        for (uint32_t i = 0UL; i < u32BufferSize; i++)
+        for (i = 0UL; i < u32BufferSize; i++)
         {
             au16DstBuffer[i] = *((uint16_t *)u32Address);
             u32Address += 2UL;
@@ -297,6 +301,7 @@ en_result_t IS42S16400J7TLI_WriteMem32(uint32_t u32Address,
                                 const uint32_t au32SrcBuffer[],
                                 uint32_t u32BufferSize)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if (0UL != u32BufferSize)
@@ -305,7 +310,7 @@ en_result_t IS42S16400J7TLI_WriteMem32(uint32_t u32Address,
         DDL_ASSERT(u32Address >= IS42S16400J7TLI_START_ADDRESS);
         DDL_ASSERT((u32Address + (u32BufferSize << 2UL)) <= IS42S16400J7TLI_END_ADDRESS);
 
-        for (uint32_t i = 0UL; i < u32BufferSize; i++)
+        for (i = 0UL; i < u32BufferSize; i++)
         {
             *((uint32_t *)u32Address) = au32SrcBuffer[i];
             u32Address += 4UL;
@@ -330,6 +335,7 @@ en_result_t IS42S16400J7TLI_ReadMem32(uint32_t u32Address,
                                 uint32_t au32DstBufferBuf[],
                                 uint32_t u32BufferSize)
 {
+    uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if (NULL != au32DstBufferBuf)
@@ -338,7 +344,7 @@ en_result_t IS42S16400J7TLI_ReadMem32(uint32_t u32Address,
         DDL_ASSERT(u32Address >= IS42S16400J7TLI_START_ADDRESS);
         DDL_ASSERT((u32Address + (u32BufferSize << 2UL)) <= IS42S16400J7TLI_END_ADDRESS);
 
-        for (uint32_t i = 0UL; i < u32BufferSize; i++)
+        for (i = 0UL; i < u32BufferSize; i++)
         {
             au32DstBufferBuf[i] = *((uint32_t *)u32Address);
             u32Address += 4UL;

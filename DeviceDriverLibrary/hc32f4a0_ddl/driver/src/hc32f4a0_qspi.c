@@ -241,26 +241,26 @@ en_result_t QSPI_Init(const stc_qspi_init_t *pstcInit)
     uint32_t u32DutyCorrection = 0U;
     en_result_t enRet = ErrorInvalidParameter;
 
-    DDL_ASSERT(IS_QSPI_CLK_DIV(pstcInit->u32ClkDiv));
-    DDL_ASSERT(IS_QSPI_CS_SETUP_TIMING(pstcInit->u32CSSetupTiming));
-    DDL_ASSERT(IS_QSPI_CS_RELEASE_TIMING(pstcInit->u32CSReleaseTiming));
-    DDL_ASSERT(IS_QSPI_CS_IDLE_TIME(pstcInit->u32CSIdleTime));
-    DDL_ASSERT(IS_QSPI_CS_EXTEND_TIME(pstcInit->u32CSExtendTime));
-    DDL_ASSERT(IS_QSPI_SPI_MODE(pstcInit->u32SPIMode));
-    DDL_ASSERT(IS_QSPI_PREFETCH_STOP_POSITION(pstcInit->u32PrefetchStopPos));
-    DDL_ASSERT(IS_QSPI_PREFETCH_CMD(pstcInit->u32PrefetchCmd));
-    DDL_ASSERT(IS_QSPI_WP_LEVEL(pstcInit->u32WPLevel));
-    DDL_ASSERT(IS_QSPI_READ_MODE(pstcInit->u32ReadMode));
-    DDL_ASSERT(IS_QSPI_COMM_MODE(pstcInit->u32CommMode));
-    DDL_ASSERT(IS_QSPI_ADDR_WIDTH(pstcInit->u32AddrWidth));
-    DDL_ASSERT(IS_QSPI_DUMMY_CYCLES(pstcInit->u32DummyCycles));
-    DDL_ASSERT(IS_QSPI_INSTR_MODE(pstcInit->u32InstrMode));
-    DDL_ASSERT(IS_QSPI_ADDR_MODE(pstcInit->u32AddrMode));
-    DDL_ASSERT(IS_QSPI_DATA_MODE(pstcInit->u32DataMode));
-
     if (pstcInit != NULL)
     {
-        if (pstcInit->u32ClkDiv & 1UL)
+        DDL_ASSERT(IS_QSPI_CLK_DIV(pstcInit->u32ClkDiv));
+        DDL_ASSERT(IS_QSPI_CS_SETUP_TIMING(pstcInit->u32CSSetupTiming));
+        DDL_ASSERT(IS_QSPI_CS_RELEASE_TIMING(pstcInit->u32CSReleaseTiming));
+        DDL_ASSERT(IS_QSPI_CS_IDLE_TIME(pstcInit->u32CSIdleTime));
+        DDL_ASSERT(IS_QSPI_CS_EXTEND_TIME(pstcInit->u32CSExtendTime));
+        DDL_ASSERT(IS_QSPI_SPI_MODE(pstcInit->u32SPIMode));
+        DDL_ASSERT(IS_QSPI_PREFETCH_STOP_POSITION(pstcInit->u32PrefetchStopPos));
+        DDL_ASSERT(IS_QSPI_PREFETCH_CMD(pstcInit->u32PrefetchCmd));
+        DDL_ASSERT(IS_QSPI_WP_LEVEL(pstcInit->u32WPLevel));
+        DDL_ASSERT(IS_QSPI_READ_MODE(pstcInit->u32ReadMode));
+        DDL_ASSERT(IS_QSPI_COMM_MODE(pstcInit->u32CommMode));
+        DDL_ASSERT(IS_QSPI_ADDR_WIDTH(pstcInit->u32AddrWidth));
+        DDL_ASSERT(IS_QSPI_DUMMY_CYCLES(pstcInit->u32DummyCycles));
+        DDL_ASSERT(IS_QSPI_INSTR_MODE(pstcInit->u32InstrMode));
+        DDL_ASSERT(IS_QSPI_ADDR_MODE(pstcInit->u32AddrMode));
+        DDL_ASSERT(IS_QSPI_DATA_MODE(pstcInit->u32DataMode));
+
+        if ((pstcInit->u32ClkDiv & 1UL) != 0UL)
         {
             u32DutyCorrection = QSPI_FCR_DUTY;
         }
@@ -339,7 +339,7 @@ en_result_t QSPI_StructInit(stc_qspi_init_t *pstcInit)
         pstcInit->u32AddrMode        = QSPI_ADDR_1LINE;
         pstcInit->u32DataMode        = QSPI_DATA_1LINE;
         pstcInit->u32ReadMode        = QSPI_READ_STANDARD_READ;
-        pstcInit->u8RomAccessInstr   = 0x0UL;
+        pstcInit->u8RomAccessInstr   = 0x0U;
         pstcInit->u32DummyCycles     = 3UL;
 
         enRet = Ok;
@@ -582,7 +582,7 @@ en_flag_status_t QSPI_GetStatus(uint32_t u32Flag)
 {
     en_flag_status_t enFlag = Reset;
 
-    if (READ_REG32_BIT(M4_QSPI->SR, (u32Flag & QSPI_FLAG_ALL)))
+    if (READ_REG32_BIT(M4_QSPI->SR, (u32Flag & QSPI_FLAG_ALL)) != 0UL)
     {
         enFlag = Set;
     }

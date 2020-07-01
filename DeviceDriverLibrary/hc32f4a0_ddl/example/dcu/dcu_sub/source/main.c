@@ -108,7 +108,7 @@ static uint32_t m_u32AddUnderflowCnt = 0UL;
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -134,7 +134,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -159,10 +159,10 @@ static void Peripheral_WP(void)
  */
 static void DCU_IrqCallback(void)
 {
-    if (Set == DCU_GetFlag(DCU_UNIT, DCU_FLAG_OPERATION))
+    if (Set == DCU_GetStatus(DCU_UNIT, DCU_FLAG_OPERATION))
     {
         m_u32AddUnderflowCnt++;
-        DCU_ClearFlag(DCU_UNIT, DCU_FLAG_OPERATION);
+        DCU_ClearStatus(DCU_UNIT, DCU_FLAG_OPERATION);
     }
 }
 
@@ -173,6 +173,7 @@ static void DCU_IrqCallback(void)
  */
 int32_t main(void)
 {
+    uint32_t i;
     stc_dcu_init_t stcDcuInit;
     en_result_t enTestResult = Ok;
     stc_irq_signin_config_t stcIrqSigninCfg;
@@ -220,7 +221,7 @@ int32_t main(void)
 
     DCU_WriteReg32Data0(DCU_UNIT, u32Data0InitValue);
 
-    for (uint32_t i = 0U; i < ARRAY_SZ(au32Data1Val); i++)
+    for (i = 0UL; i < ARRAY_SZ(au32Data1Val); i++)
     {
         u32SumData1 += au32Data1Val[i];
         DCU_WriteReg32Data1(DCU_UNIT, au32Data1Val[i]);

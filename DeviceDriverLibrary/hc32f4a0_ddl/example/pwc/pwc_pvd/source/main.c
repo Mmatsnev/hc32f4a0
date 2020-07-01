@@ -105,7 +105,7 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -131,7 +131,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -163,7 +163,7 @@ void PWC_PVD1_IrqCallback(void)
         DDL_DelayMS(DLY_MS);
     } while(--u8Cnt);
 
-    PWC_PVD_ClrFlag();
+    PWC_PVD_ClearStatus();
 }
 
 /**
@@ -180,7 +180,7 @@ void PWC_PVD2_IrqCallback(void)
         DDL_DelayMS(DLY_MS);
     } while(--u8Cnt);
 
-    PWC_PVD_ClrFlag();
+    PWC_PVD_ClearStatus();
 }
 
 /**
@@ -193,7 +193,7 @@ void PVD_IntInit(void)
     stc_irq_signin_config_t stcIrqSignConfig;
 
     /* Clear PVD flag */
-    PWC_PVD_ClrFlag();
+    PWC_PVD_ClearStatus();
 
     /* Set PVD interrupt. */
     INTC_ShareIrqCmd(INT_PVD_PVD1, Enable);

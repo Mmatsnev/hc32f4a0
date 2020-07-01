@@ -164,12 +164,12 @@
  * External interrupt pin definition. See \example\exint\exint_key\source\main.c for details.
  * Press SW10 on the board to trigger a CAN transmission.
  */
-#define SW10_PORT                           (GPIO_PORT_A)
-#define SW10_PIN                            (GPIO_PIN_00)
-#define SW10_EXINT_CH                       (EXINT_CH00)
-#define SW10_INT_SRC                        (INT_PORT_EIRQ0)
-#define SW10_IRQn                           (Int025_IRQn)
-#define SW10_INT_PRIO                       (DDL_IRQ_PRIORITY_04)
+#define KEY_PORT                            (GPIO_PORT_A)
+#define KEY_PIN                             (GPIO_PIN_00)
+#define KEY_EXINT_CH                        (EXINT_CH00)
+#define KEY_INT_SRC                         (INT_PORT_EIRQ0)
+#define KEY_IRQn                            (Int025_IRQn)
+#define KEY_INT_PRIO                        (DDL_IRQ_PRIORITY_04)
 
 /* Debug printing definition. */
 #if (DDL_PRINT_ENABLE == DDL_ON)
@@ -314,7 +314,7 @@ int32_t main(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     // PWC_FCG0_Unlock();
@@ -340,7 +340,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     // PWC_FCG0_Lock();
@@ -542,24 +542,24 @@ static void ExintConfig(void)
     GPIO_StructInit(&stcGpioInit);
     stcGpioInit.u16ExInt = PIN_EXINT_ON;
     stcGpioInit.u16PullUp = PIN_PU_ON;
-    GPIO_Init(SW10_PORT, SW10_PIN, &stcGpioInit);
+    GPIO_Init(KEY_PORT, KEY_PIN, &stcGpioInit);
 
     /* Exint config */
     EXINT_StructInit(&stcExintInit);
-    stcExintInit.u32ExIntCh = SW10_EXINT_CH;
+    stcExintInit.u32ExIntCh = KEY_EXINT_CH;
     stcExintInit.u32ExIntLvl= EXINT_TRIGGER_FALLING;
     EXINT_Init(&stcExintInit);
 
     /* IRQ sign-in */
-    stcIrqSignConfig.enIntSrc = SW10_INT_SRC;
-    stcIrqSignConfig.enIRQn   = SW10_IRQn;
+    stcIrqSignConfig.enIntSrc = KEY_INT_SRC;
+    stcIrqSignConfig.enIRQn   = KEY_IRQn;
     stcIrqSignConfig.pfnCallback = &EXINT_IrqCallback;
     INTC_IrqSignIn(&stcIrqSignConfig);
 
     /* NVIC config */
-    NVIC_ClearPendingIRQ(SW10_IRQn);
-    NVIC_SetPriority(SW10_IRQn, SW10_INT_PRIO);
-    NVIC_EnableIRQ(SW10_IRQn);
+    NVIC_ClearPendingIRQ(KEY_IRQn);
+    NVIC_SetPriority(KEY_IRQn, KEY_INT_PRIO);
+    NVIC_EnableIRQ(KEY_IRQn);
 }
 
 /**
@@ -569,6 +569,7 @@ static void ExintConfig(void)
  */
 static void CanTx(void)
 {
+    uint8_t i;
     stc_can_tx_t stcTx;
 
     if (m_u32StatusVal != 0U)
@@ -577,7 +578,7 @@ static void CanTx(void)
     }
     else
     {
-        for (uint8_t i=0U; i<APP_DATA_SIZE; i++)
+        for (i=0U; i<APP_DATA_SIZE; i++)
         {
             m_au8TxPayload[i] = i + 1U;
         }
@@ -819,15 +820,15 @@ static void TMR2_CmpA_IrqCallback(void)
  */
 static void EXINT_IrqCallback(void)
 {
-    if (Set == EXINT_GetExIntSrc(SW10_EXINT_CH))
+    if (Set == EXINT_GetExIntSrc(KEY_EXINT_CH))
     {
         /* Wait for key release. */
-        while (Pin_Reset == GPIO_ReadInputPins(SW10_PORT, SW10_PIN))
+        while (Pin_Reset == GPIO_ReadInputPins(KEY_PORT, KEY_PIN))
         {
             ;
         }
         m_u8ExintFlag = 1U;
-        EXINT_ClrExIntSrc(SW10_EXINT_CH);
+        EXINT_ClrExIntSrc(KEY_EXINT_CH);
     }
 }
 

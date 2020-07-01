@@ -101,7 +101,7 @@
 #define TMR2_CAPT_COND_MSK                  (TMR2_HCONR_HICPA0 | TMR2_HCONR_HICPA1 | TMR2_HCONR_HICPA2)
 #define TMR2_TRIG_COND_MSK                  (TMR2_START_COND_MSK | TMR2_STOP_COND_MSK | TMR2_CLR_COND_MSK | TMR2_CAPT_COND_MSK)
 #define TMR2_INT_TYPE_MSK                   (TMR2_ICONR_CMENA | TMR2_ICONR_OVENA)
-#define TMR2_COM_TRIG_EN_MSK                (TMR2_TRIG_COM1_COM2_ON)
+#define TMR2_COM_TRIG_MSK                   (TMR2_COM_TRIG1 | TMR2_COM_TRIG2)
 #define TMR2_TRIG_EVENT_MSK                 (AOS_TMR2_HTSSR_TRGSEL)
 /**
  * @}
@@ -198,6 +198,10 @@
     ((x) == TMR2_PWM_CMP_HIGH)              ||                                 \
     ((x) == TMR2_PWM_CMP_KEEP)              ||                                 \
     ((x) == TMR2_PWM_CMP_REVERSE))
+
+#define IS_TMR2_COM_TRIGGER(x)                                                 \
+(   ((x) != 0U)                             &&                                 \
+    (((x) | TMR2_COM_TRIG_MSK) == TMR2_COM_TRIG_MSK))
 
 #define IS_TMR2_VALID_VAL(x)                                                   \
 (   (x) <= 0xFFFFUL)
@@ -482,6 +486,7 @@ en_result_t TMR2_SetTrigCond(M4_TMR2_TypeDef *TMR2x, uint8_t u8Tmr2Ch, const stc
                    pstcCond->u32CaptCond) & TMR2_TRIG_COND_MSK;
         u8Tmr2Ch *= TMR2_HCONR_OFFSET;
         MODIFY_REG32(TMR2x->HCONR, (TMR2_TRIG_COND_MSK << u8Tmr2Ch), (u32Cfg << u8Tmr2Ch));
+        enRet = Ok;
     }
 
     return enRet;
@@ -523,17 +528,28 @@ void TMR2_SetTriggerSrc(en_event_src_t enEvent)
 
 /**
  * @brief  Enable or disable common trigger event for the specified usage.
- * @param  [in]  u32ComTrigEn           Common trigger event enable bit mask.
+ * @param  [in]  u32ComTrig             Common trigger event enable bit mask.
  *                                      This parameter can be a value of @ref TMR2_Common_Trigger_Sel
- *   @arg  TMR2_TRIG_COM1_COM2_OFF:     Disable common trigger event 1 and event 2.
- *   @arg  TMR2_TRIG_COM1_ON_COM2_OFF:  Enable common trigger event 1 and disable event 2.
- *   @arg  TMR2_TRIG_COM1_OFF_COM2_ON:  Disable common trigger event 1 and enable event 2.
- *   @arg  TMR2_TRIG_COM1_COM2_ON:      Enable common trigger event 1 and event 2.
+ *   @arg  TMR2_COM_TRIG1:              Common trigger 1.
+ *   @arg  TMR2_COM_TRIG2:              Common trigger 2.
+ * @param  [in]  enNewState             An en_functional_state_t enumeration type value.
+ *   @arg Enable:                       Enable the specified common trigger.
+ *   @arg Disable:                      Disable the specified common trigger.
  * @retval None
  */
-void TMR2_ComTrigCmd(uint32_t u32ComTrigEn)
+void TMR2_ComTriggerCmd(uint32_t u32ComTrig, en_functional_state_t enNewState)
 {
-    MODIFY_REG32(M4_AOS->TMR2_HTSSR, TMR2_COM_TRIG_EN_MSK, u32ComTrigEn);
+    DDL_ASSERT(IS_TMR2_COM_TRIGGER(u32ComTrig));
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+
+    if (enNewState == Enable)
+    {
+        SET_REG32_BIT(M4_AOS->TMR2_HTSSR, u32ComTrig);
+    }
+    else
+    {
+        CLEAR_REG32_BIT(M4_AOS->TMR2_HTSSR, u32ComTrig);
+    }
 }
 
 /**

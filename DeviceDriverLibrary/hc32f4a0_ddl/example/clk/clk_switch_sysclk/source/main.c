@@ -102,7 +102,7 @@ static void Peripheral_WP(void);
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -128,7 +128,7 @@ static void Peripheral_WE(void)
  */
 static void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -242,7 +242,7 @@ int32_t main(void)
     /* Configure clock output system clock */
     CLK_MCO1Config(CLK_MCOSOURCCE_SYSCLK, CLK_MCO_DIV128);
     /* Configure clock output pin */
-    GPIO_SetFunc(MCO_PORT, MCO_PIN, GPIO_FUNC_1_MCO, Disable);
+    GPIO_SetFunc(MCO_PORT, MCO_PIN, GPIO_FUNC_1_MCO, PIN_SUBFUNC_DISABLE);
     /* MCO1 output enable */
     CLK_MCO1Cmd(Enable);
 

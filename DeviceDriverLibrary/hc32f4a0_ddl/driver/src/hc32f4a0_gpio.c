@@ -261,7 +261,7 @@ en_result_t GPIO_Init(uint8_t u8Port, uint16_t u16Pin, const stc_gpio_init_t *ps
 
         for (u16PinPos = 0U; u16PinPos < 16U; u16PinPos++)
         {
-            if (u16Pin & (1UL<<u16PinPos))
+            if ((u16Pin & (1UL<<u16PinPos)) != 0U)
             {
                 PCRx = (__IO uint16_t *)((uint32_t)(&M4_GPIO->PCRA0) +               \
                                   ((uint32_t)(u8Port) * 0x40UL) + u16PinPos * 4UL);
@@ -381,11 +381,11 @@ void GPIO_SetDebugPort(uint8_t u8DebugPort, en_functional_state_t enNewState)
 
     if (Enable == enNewState)
     {
-        SET_REG16_BIT(M4_GPIO->PSPCR, (u8DebugPort & GPIO_PSPCR_SPFE));
+        SET_REG16_BIT(M4_GPIO->PSPCR, ((uint16_t)u8DebugPort & GPIO_PSPCR_SPFE));
     }
     else
     {
-        CLEAR_REG16_BIT(M4_GPIO->PSPCR, (u8DebugPort & GPIO_PSPCR_SPFE));
+        CLEAR_REG16_BIT(M4_GPIO->PSPCR, ((uint16_t)u8DebugPort & GPIO_PSPCR_SPFE));
     }
 }
 
@@ -536,7 +536,7 @@ en_pin_state_t GPIO_ReadInputPins(uint8_t u8Port, uint16_t u16Pin)
 
     PIDRx = (__IO uint16_t *)((uint32_t)(&M4_GPIO->PIDRA) + 0x10UL * u8Port);
 
-    return (READ_REG16(*PIDRx) & (u16Pin)) ? Pin_Set : Pin_Reset;
+    return ((READ_REG16(*PIDRx) & (u16Pin)) != 0U) ? Pin_Set : Pin_Reset;
 }
 
 /**
@@ -572,7 +572,7 @@ en_pin_state_t GPIO_ReadOutputPins(uint8_t u8Port, uint16_t u16Pin)
 
     PODRx = (__IO uint16_t *)((uint32_t)(&M4_GPIO->PODRA) + 0x10UL * u8Port);
 
-    return (*PODRx & (u16Pin)) ? Pin_Set : Pin_Reset;
+    return ((*PODRx & (u16Pin)) != 0U) ? Pin_Set : Pin_Reset;
 }
 
 /**

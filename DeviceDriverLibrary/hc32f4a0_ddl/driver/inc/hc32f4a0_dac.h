@@ -171,147 +171,8 @@ typedef struct
  * @{
  */
 
-/**
- * @brief  Set the specified data holding register value for DAC channel 1
- * @param  [in] DACx   Pointer to the DAC peripheral register.
- *         This parameter can be one of the following values:
- *         @arg M4_DAC1
- *         @arg M4_DAC2
- * @param  [in] data   Data to be loaded into data holding register of channel 1
- * @retval None
- */
-__STATIC_INLINE void DAC_SetChannel1Data(M4_DAC_TypeDef *DACx, uint16_t data)
-{
-    DDL_ASSERT((DACx == M4_DAC1) || (DACx == M4_DAC2));
-
-    if(READ_REG16_BIT(DACx->DACR, DAC_DACR_DPSEL) == DAC_DATA_ALIGN_L)
-    {
-        DDL_ASSERT(0U == (data & 0xFU));
-    }
-    else
-    {
-        DDL_ASSERT(0U == (data & 0xF000U));
-    }
-
-    WRITE_REG16(DACx->DADR1,data);
-}
-
-/**
- * @brief  Set the specified data holding register value for DAC channel 2
- * @param  [in] DACx   Pointer to the DAC peripheral register.
- *         This parameter can be one of the following values:
- *         @arg M4_DAC1
- *         @arg M4_DAC2
- * @param  [in] data   Data to be loaded into data holding register of channel 2
- * @retval None
- */
-__STATIC_INLINE void DAC_SetChannel2Data(M4_DAC_TypeDef *DACx, uint16_t data)
-{
-    DDL_ASSERT((DACx == M4_DAC1) || (DACx == M4_DAC2));
-
-    if(READ_REG16_BIT(DACx->DACR, DAC_DACR_DPSEL) == DAC_DATA_ALIGN_L)
-    {
-        DDL_ASSERT(0U == (data & 0xFU));
-    }
-    else
-    {
-        DDL_ASSERT(0U == (data & 0xF000U));
-    }
-
-    WRITE_REG16(DACx->DADR2,data);
-}
-
-/**
- * @brief  Set the specified data holding register value for channel 1 and channel 2
- * @param  [in] DACx   Pointer to the DAC peripheral register.
- *         This parameter can be one of the following values:
- *         @arg M4_DAC1
- *         @arg M4_DAC2
- * @param  data2:    Data to be loaded into data holding register of channel 2
- * @param  data1:    Data to be loaded into data holding register of channel 1
- * @retval None
- */
-__STATIC_INLINE void DAC_SetDualChannelData(M4_DAC_TypeDef *DACx, uint16_t data2, uint16_t data1)
-{
-    DDL_ASSERT((DACx == M4_DAC1) || (DACx == M4_DAC2));
-
-    if(READ_REG16_BIT(DACx->DACR, DAC_DACR_DPSEL) == DAC_DATA_ALIGN_L)
-    {
-        DDL_ASSERT(0U == (data1 & 0xFU));
-        DDL_ASSERT(0U == (data2 & 0xFU));
-    }
-    else
-    {
-        DDL_ASSERT(0U == (data1 & 0xF000U));
-        DDL_ASSERT(0U == (data2 & 0xF000U));
-    }
-
-    WRITE_REG16(DACx->DADR1,data1);
-    WRITE_REG16(DACx->DADR2,data2);
-}
-
-/**
- * @brief  Get convert status of channel 1 in ADC priority mode
- * @param  [in] DACx   Pointer to the DAC peripheral register.
- *         This parameter can be one of the following values:
- *         @arg M4_DAC1
- *         @arg M4_DAC2
- * @retval An en_dac_conv_sate_t enumeration value:
- *         - ErrorInvalidMode: Could not get convert status when adc priority is not enabled
- *         - Ok: Data convert completed
- *         - OperationInProgress: Data convert is ongoing
- */
-__STATIC_INLINE en_result_t  DAC_GetChannel1ConvState(M4_DAC_TypeDef* const DACx)
-{
-    DDL_ASSERT((DACx == M4_DAC1) || (DACx == M4_DAC2));
-
-    en_result_t enStat = ErrorInvalidMode;
-
-    if(READ_REG16_BIT(DACx->DAADPCR, DAC_DAADPCR_ADPEN))
-    {
-        enStat = OperationInProgress;
-
-        if(READ_REG16_BIT(DACx->DAADPCR, DAC_DAADPCR_DA1SF) == 0U)
-        {
-            enStat = Ok;
-        }
-    }
-
-    return enStat;
-}
-
-/**
- * @brief  Get convert status of channel 2 in ADC priority mode
- * @param  [in] DACx   Pointer to the DAC peripheral register.
- *         This parameter can be one of the following values:
- *         @arg M4_DAC1
- *         @arg M4_DAC2
- * @retval An en_dac_conv_sate_t enumeration value:
- *         - ErrorInvalidMode: Could not get convert status when adc priority is not enabled
- *         - Ok: Data convert completed
- *         - OperationInProgress: Data convert is ongoing
- */
-__STATIC_INLINE en_result_t DAC_GetChannel2ConvState(M4_DAC_TypeDef * const DACx)
-{
-    DDL_ASSERT((DACx == M4_DAC1) || (DACx == M4_DAC2));
-
-    en_result_t enStat = ErrorInvalidMode;
-
-    if(READ_REG16_BIT(DACx->DAADPCR, DAC_DAADPCR_ADPEN))
-    {
-        enStat = OperationInProgress;
-
-        if(READ_REG16_BIT(DACx->DAADPCR, DAC_DAADPCR_DA2SF) == 0U)
-        {
-            enStat = Ok;
-        }
-    }
-
-    return enStat;
-}
-
 en_result_t DAC_StructInit(stc_dac_init_t * pstcInit);
-en_result_t DAC_Init(M4_DAC_TypeDef *DACx, uint16_t u16Ch, stc_dac_init_t const* pstcInit);
+en_result_t DAC_Init(M4_DAC_TypeDef *DACx, uint16_t u16Ch, const stc_dac_init_t *pstcInit);
 void DAC_DeInit(M4_DAC_TypeDef *DACx);
 
 void DAC_SetDataSource(M4_DAC_TypeDef *DACx, uint16_t u16Ch, uint16_t u16Src);
@@ -323,6 +184,12 @@ void DAC_ADCPrioConfig(M4_DAC_TypeDef *DACx, uint16_t u16ADCxPrio, en_functional
 
 en_result_t DAC_ChannelCmd(M4_DAC_TypeDef *DACx, uint16_t u16Ch, en_functional_state_t enNewState);
 void DAC_DualChannelCmd(M4_DAC_TypeDef *DACx, en_functional_state_t enNewState);
+
+void DAC_SetChannel1Data(M4_DAC_TypeDef *DACx, uint16_t data);
+void DAC_SetChannel2Data(M4_DAC_TypeDef *DACx, uint16_t data);
+void DAC_SetDualChannelData(M4_DAC_TypeDef *DACx, uint16_t data2, uint16_t data1);
+en_result_t  DAC_GetChannel1ConvState(const M4_DAC_TypeDef *DACx);
+en_result_t DAC_GetChannel2ConvState(const M4_DAC_TypeDef *DACx);
 
 /**
  * @}

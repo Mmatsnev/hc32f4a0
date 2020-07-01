@@ -155,9 +155,11 @@ extern      USB_OTG_CORE_HANDLE      USB_OTG_Core;
  * @param  None
  * @retval None
  */
-void USB_IRQ_Handler(void)
+static void USB_IRQ_Handler(void)
 {
+#if (DDL_PRINT_ENABLE == DDL_ON)
     //printf("usb isr\n");
+#endif
     USBH_OTG_ISR_Handler(&USB_OTG_Core);
 }
 
@@ -169,7 +171,7 @@ void USB_IRQ_Handler(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -195,7 +197,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -233,9 +235,9 @@ void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
 #endif
     /* USB clock source configurate */
     CLK_USB_ClkConfig(CLK_USB_CLK_MCLK_DIV5);
-
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("USBFS start !!\n");
-
+#endif
     GPIO_StructInit(&stcGpioCfg);
 
 #ifdef USE_EMBEDDED_PHY

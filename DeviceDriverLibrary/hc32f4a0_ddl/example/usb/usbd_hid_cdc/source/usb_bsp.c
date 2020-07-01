@@ -159,15 +159,13 @@ uint8_t PrevXferDone = 1U;
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
 extern  USB_OTG_CORE_HANDLE      USB_OTG_dev;
-extern  uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev);
-
 
 /**
  * @brief  Usb interrupt handle
  * @param  None
  * @retval None
  */
-void USB_IRQ_Handler(void)
+static void USB_IRQ_Handler(void)
 {
     USBD_OTG_ISR_Handler(&USB_OTG_dev);
 }
@@ -182,7 +180,7 @@ static void EXINT_KEY10_IrqCallback(void)
 {
    if (Set == EXINT_GetExIntSrc(KEY10_EXINT_CH))
    {
-      if ((PrevXferDone) && (USB_OTG_dev.dev.device_status == USB_OTG_CONFIGURED))
+      if ((PrevXferDone != 0U) && (USB_OTG_dev.dev.device_status == USB_OTG_CONFIGURED))
       {
           Send_Buf[0U] = KEY_REPORT_ID;
 
@@ -245,7 +243,7 @@ static void Key10_Init(void)
  */
 static void Peripheral_WE(void)
 {
-    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
@@ -271,7 +269,7 @@ static void Peripheral_WE(void)
  */
 static __attribute__((unused)) void Peripheral_WP(void)
 {
-    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy */
+    /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
@@ -288,7 +286,6 @@ static __attribute__((unused)) void Peripheral_WP(void)
     /* Lock all EFM registers */
     EFM_Lock();
 }
-
 /**
  * @brief  Initializes BSP configurations
  * @param  pdev     Selected device
@@ -313,8 +310,9 @@ void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
 
     /* KEY SW10 interrupt function initialize */
     Key10_Init();
-
+#if (DDL_PRINT_ENABLE == DDL_ON)
     printf("USBFS start !!\n");
+#endif
 
     GPIO_StructInit(&stcGpioCfg);
 

@@ -137,13 +137,13 @@
 #define IS_EXMC_NFC_SECTION(x)                  ((x) <= EXMC_NFC_ECC_SECTION15)
 
 #define IS_EXMC_NFC_INT(x)                                                     \
-(   (x)                                         &&                             \
-    (!((x) & (~EXMC_NFC_INT_MASK))))
+(   (0UL != (x))                                 &&                            \
+    (0UL == ((x) & (~EXMC_NFC_INT_MASK))))
 
 
 #define IS_EXMC_NFC_FLAG(x)                                                    \
-(   (x)                                         &&                             \
-    (!((x) & (~EXMC_NFC_FLAG_MASK))))
+(   (0UL != (x))                                 &&                            \
+    (0UL == ((x) & (~EXMC_NFC_FLAG_MASK))))
 
 #define IS_EXMC_NFC_COLUMN(x)                   ((x) <= NFC_COLUMN_MAX)
 
@@ -391,6 +391,12 @@
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
+
+/**
+ * @addtogroup EXMC_NFC_Local_Functions
+ * @{
+ */
+
 static en_result_t EXMC_NFC_Read(uint32_t u32Bank,
                                     uint32_t u32Page,
                                     uint32_t u32Col,
@@ -410,6 +416,10 @@ static en_result_t EXMC_NFC_WaitFlagUntilTo(uint32_t u32Flag,
                                                     en_flag_status_t enStatus,
                                                     uint32_t u32Timeout);
 
+/**
+ * @}
+ */
+
 /*******************************************************************************
  * Local variable definitions ('static')
  ******************************************************************************/
@@ -417,7 +427,7 @@ static en_result_t EXMC_NFC_WaitFlagUntilTo(uint32_t u32Flag,
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
  ******************************************************************************/
-/** 
+/**
  * @defgroup EXMC_NFC_Global_Functions NAND Flash Controller Global Functions
  * @{
  */
@@ -625,7 +635,7 @@ void EXMC_NFC_IntCmd(uint16_t u16IntSource, en_functional_state_t enNewState)
  *           - Set: Flag is set
  *           - Reset: Flag is reset
  */
-en_flag_status_t EXMC_NFC_GetFlag(uint32_t u32Flag)
+en_flag_status_t EXMC_NFC_GetStatus(uint32_t u32Flag)
 {
     en_flag_status_t enStatus1 = Set;
     en_flag_status_t enStatus2 = Set;
@@ -633,17 +643,17 @@ en_flag_status_t EXMC_NFC_GetFlag(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_EXMC_NFC_FLAG(u32Flag));
 
-    if (u32Flag & NFC_NFC_ISTR_MASK)
+    if ((u32Flag & NFC_NFC_ISTR_MASK) != 0UL)
     {
-        if (!(READ_REG32(M4_NFC->ISTR) & (u32Flag & NFC_NFC_ISTR_MASK)))
+        if (0UL == READ_REG32_BIT(M4_NFC->ISTR, (u32Flag & NFC_NFC_ISTR_MASK)))
         {
             enStatus1 = Reset;
         }
     }
 
-    if (u32Flag & EXMC_NFC_FLAG_ECC_CALCULATING)
+    if ((u32Flag & EXMC_NFC_FLAG_ECC_CALCULATING) != 0UL)
     {
-        if (!READ_REG32(bM4_PERIC->NFC_SYSTATREG_b.PECC))
+        if (0UL == READ_REG32(bM4_PERIC->NFC_SYSTATREG_b.PECC))
         {
             enStatus2 = Reset;
         }
@@ -670,7 +680,7 @@ en_flag_status_t EXMC_NFC_GetFlag(uint32_t u32Flag)
  *           @arg EXMC_NFC_FLAG_RB_BANK7: NFC bank 7 device ready flag
  * @retval None
  */
-void EXMC_NFC_ClearFlag(uint32_t u32Flag)
+void EXMC_NFC_ClearStatus(uint32_t u32Flag)
 {
     /* Check parameters */
     DDL_ASSERT(IS_EXMC_NFC_FLAG(u32Flag));
@@ -698,7 +708,7 @@ void EXMC_NFC_ClearFlag(uint32_t u32Flag)
  *           - Set: Flag is set
  *           - Reset: Flag is reset
  */
-en_flag_status_t EXMC_NFC_GetIntResultFlag(uint32_t u32Flag)
+en_flag_status_t EXMC_NFC_GetIntResultStatus(uint32_t u32Flag)
 {
     /* Check parameters */
     DDL_ASSERT(IS_EXMC_NFC_FLAG(u32Flag));
@@ -811,7 +821,7 @@ en_result_t EXMC_NFC_GetSyndrome(uint32_t u32Section,
             RW_MEM16(&au16Synd[i * 2U + 1U ]) = (uint16_t)(u32SyndVal >> 16UL);
         }
 
-        if (u8Length % 2U)
+        if ((u8Length % 2U) != 0U)
         {
             u32SyndVal = READ_REG32(NFC_SYND_REG32(u32Section, i));
             RW_MEM16(&au16Synd[i * 2U]) = (uint16_t)(u32SyndVal);
@@ -921,7 +931,7 @@ en_result_t EXMC_NFC_Reset(uint32_t u32Bank, uint32_t u32Timeout)
     DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
 
     /* Clear Flag */
-    EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+    EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
     /* Reset step:
         1. Write 0x00000MFF to NFC_CMDR, M = bank number
@@ -960,7 +970,7 @@ en_result_t EXMC_NFC_AsyncReset(uint32_t u32Bank, uint32_t u32Timeout)
     en_result_t enRet;
 
     /* Clear Flag */
-    EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+    EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
     /* Reset step:
         1. Write 0x00000MFC to NFC_CMDR, M = bank number
@@ -1000,7 +1010,7 @@ en_result_t EXMC_NFC_ResetLun(uint32_t u32Bank,
     en_result_t enRet;
 
     /* Clear Flag */
-    EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+    EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
     /* Reset lun step:
         1. Write 0x82000MFA to NFC_CMDR, M = bank number
@@ -1033,7 +1043,7 @@ en_result_t EXMC_NFC_ResetLun(uint32_t u32Bank,
  *           @arg EXMC_NFC_BANK_7:      NFC device bank 7
  * @param  [in] u32IdAddr               The address
  * @param  [in] au8DevId                The id buffer
- * @param  [in] u8NumBytes              The number of bytes to read
+ * @param  [in] u32NumBytes             The number of bytes to read
  * @retval An en_result_t enumeration value.
  *   @arg  Ok:                          No errors occurred.
  *   @arg  Error:                       au8DevId == NULL.
@@ -1041,24 +1051,24 @@ en_result_t EXMC_NFC_ResetLun(uint32_t u32Bank,
 en_result_t EXMC_NFC_ReadId(uint32_t u32Bank,
                                 uint32_t u32IdAddr,
                                 uint8_t au8DevId[],
-                                uint8_t u8NumBytes)
+                                uint32_t u32NumBytes)
 {
+    uint32_t i;
     uint64_t u64Val;
-    uint8_t i = 0U;
-    uint8_t u8LoopWords = u8NumBytes/4U;
-    uint8_t u8RemainBytes = u8NumBytes%4U;
+    const uint32_t u32LoopWords = u32NumBytes/4UL;
+    const uint32_t u32RemainBytes = u32NumBytes%4UL;
     uint32_t u32TmpId;
     uint32_t u32CapacityIndex;
     en_result_t enRet = Error;
 
-    if ((NULL != au8DevId) && u8NumBytes)
+    if ((NULL != au8DevId) && (u32NumBytes > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
         DDL_ASSERT(u32IdAddr <= 0xFFUL);
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank) | \
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank) | \
                            EXMC_NFC_FLAG_ECC_UNCORRECTABLE_ERROR | \
                            EXMC_NFC_FLAG_ECC_CORRECTABLE_ERROR | \
                            EXMC_NFC_FLAG_ECC_CALC_COMPLETION | \
@@ -1084,22 +1094,22 @@ en_result_t EXMC_NFC_ReadId(uint32_t u32Bank,
         if (Ok == enRet)
         {
             /* Read Id step:
-                1. Write 0x81000M90 to NFC_CMDR, M = bank number 
+                1. Write 0x81000M90 to NFC_CMDR, M = bank number
                 2. Write 0x40000MAB to NFC_CMDR, M = bank number, AB=ID address
                 3. Read NFC_DATR
                 4. Write 0x000000FE to NFC_CMDR, and invalidate CE */
             WRITE_REG32(M4_NFC->CMDR, CMD_READ_ID(u32Bank));
             WRITE_REG32(M4_NFC->CMDR, CMD_READ_ID_ADDR(u32Bank, u32IdAddr));
-            for (i = 0U; i < u8LoopWords; i++)
+            for (i = 0UL; i < u32LoopWords; i++)
             {
                 u32TmpId = NFC_DATR_REG32(i);
                 memcpy (&au8DevId[i * 4UL], &u32TmpId, 4UL);
             }
 
-            if (u8RemainBytes)
+            if (u32RemainBytes > 0UL)
             {
                 u32TmpId = NFC_DATR_REG32(i);
-                memcpy (&au8DevId[i * 4UL], &u32TmpId, (uint32_t)u8RemainBytes);
+                memcpy (&au8DevId[i * 4UL], &u32TmpId, u32RemainBytes);
             }
 
             enRet = Ok;
@@ -1138,18 +1148,19 @@ en_result_t EXMC_NFC_ReadUniqueId(uint32_t u32Bank,
                                         uint8_t u8NumWords,
                                         uint32_t u32Timeout)
 {
+    uint8_t i;
     en_result_t enRet = Error;
 
-    if ((NULL != au32UniqueId) && u8NumWords)
+    if ((NULL != au32UniqueId) && (u8NumWords > 0U))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
         /* Read Id step:
-            1. Write 0x81000M90 to NFC_CMDR, M = bank number 
+            1. Write 0x81000M90 to NFC_CMDR, M = bank number
             2. Write 0x40000M00 to NFC_CMDR, M = bank number, AB=ID address
             3. Read NFC_DATR
             4. Write 0x000000FE to NFC_CMDR, and invalidate CE */
@@ -1161,7 +1172,7 @@ en_result_t EXMC_NFC_ReadUniqueId(uint32_t u32Bank,
                                          u32Timeout);
         if (Ok == enRet)
         {
-            for (uint8_t i = 0U; i < u8NumWords; i++)
+            for (i = 0U; i < u8NumWords; i++)
             {
                 au32UniqueId[i] = NFC_DATR_REG32(i);
             }
@@ -1199,18 +1210,19 @@ en_result_t EXMC_NFC_ReadParameterPage(uint32_t u32Bank,
                                         uint16_t u16NumWords,
                                         uint32_t u32Timeout)
 {
+    uint16_t i;
     en_result_t enRet = Error;
 
-    if ((NULL != au32Data) && u16NumWords)
+    if ((NULL != au32Data) && (u16NumWords > 0U))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
         /* Read parameter page step:
-            1. Write 0x81000MEC to NFC_CMDR, M = bank number 
+            1. Write 0x81000MEC to NFC_CMDR, M = bank number
             2. Write 0x40000M00 to NFC_CMDR, M = bank number
             3. Read NFC_DATR
             4. Write 0x000000FE to NFC_CMDR, and invalidate CE */
@@ -1222,7 +1234,7 @@ en_result_t EXMC_NFC_ReadParameterPage(uint32_t u32Bank,
                                          u32Timeout);
         if (Ok == enRet)
         {
-            for (uint16_t i = 0U; i < u16NumWords; i++)
+            for (i = 0U; i < u16NumWords; i++)
             {
                 au32Data[i] =  NFC_DATR_REG32(i);
             }
@@ -1262,20 +1274,21 @@ en_result_t EXMC_NFC_SetFeature(uint32_t u32Bank,
                                     uint8_t u8NumWords,
                                     uint32_t u32Timeout)
 {
+    uint8_t i;
     en_result_t enRet = Error;
 
-    if ((NULL != au32Data) && u8NumWords)
+    if ((NULL != au32Data) && (u8NumWords > 0U))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
         WRITE_REG32(M4_NFC->CMDR, CMD_SET_FEATURE(u32Bank));
         WRITE_REG32(M4_NFC->CMDR, CMD_SET_FEATURE_ADDR(u32Bank, u8FeatrueAddr));
 
-        for (uint8_t i = 0U; i < u8NumWords; i++)
+        for (i = 0U; i < u8NumWords; i++)
         {
             NFC_DATR_REG32(i) = au32Data[i];
         }
@@ -1318,15 +1331,16 @@ en_result_t EXMC_NFC_GetFeature(uint32_t u32Bank,
                                     uint8_t u8NumWords,
                                     uint32_t u32Timeout)
 {
+    uint8_t i;
     en_result_t enRet = Error;
 
-    if ((NULL != au32Data) && u8NumWords)
+    if ((NULL != au32Data) && (u8NumWords > 0U))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
         WRITE_REG32(M4_NFC->CMDR, CMD_GET_FEATURE(u32Bank));
         WRITE_REG32(M4_NFC->CMDR, CMD_GET_FEATURE_ADDR(u32Bank, u8FeatrueAddr));
@@ -1336,7 +1350,7 @@ en_result_t EXMC_NFC_GetFeature(uint32_t u32Bank,
                                          u32Timeout);
         if (Ok == enRet)
         {
-            for (uint8_t i = 0U; i < u8NumWords; i++)
+            for (i = 0U; i < u8NumWords; i++)
             {
                 au32Data[i] = NFC_DATR_REG32(i);
             }
@@ -1371,20 +1385,20 @@ en_result_t EXMC_NFC_EraseBlock(uint32_t u32Bank,
                                     uint32_t u32RowAddress,
                                     uint32_t u32Timeout)
 {
-    en_result_t enRet = Error;
+    en_result_t enRet;
 
     /* Check parameters */
     DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
 
     /* Clear Flag */
-    EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+    EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
     /* Erase block step:
         1. Write 0x81000M60 to NFC_CMDR, M = bank number
         2. Write 0x40000MAB to NFC_CMDR, M = bank number, AB= the lowest bytes of Row address
         3. Write 0x40000MAB to NFC_CMDR, M = bank number, AB= the middle bytes of Row address
         4. Write 0x40000MAB to NFC_CMDR, M = bank number, AB= the highest bytes of Row address
-        5. Write 0x00000MD0 to NFC_CMDR, M = bank number 
+        5. Write 0x00000MD0 to NFC_CMDR, M = bank number
         6. Wait RB signal until high level */
     WRITE_REG32(M4_NFC->CMDR, CMD_ERASE_BLOCK_1ST_CYCLE(u32Bank));
     WRITE_REG32(M4_NFC->CMDR, CMD_ADDR_1ST_CYCLE(u32Bank, u32RowAddress));
@@ -1428,14 +1442,14 @@ en_result_t EXMC_NFC_ReadPageMeta(uint32_t u32Bank,
 {
     en_result_t enRet = ErrorInvalidParameter;
 
-    if (pu8Data && u32NumBytes)
+    if ((NULL != pu8Data) && (u32NumBytes > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
         DDL_ASSERT(IS_PARAM_ALIGN_WORD(u32NumBytes));
         DDL_ASSERT(IS_ADDRESS_ALIGN_WORD(pu8Data));
 
-        enRet = EXMC_NFC_Read(u32Bank, u32Page, 0UL, (uint32_t *)pu8Data, u32NumBytes/4UL, Disable, u32Timeout);
+        enRet = EXMC_NFC_Read(u32Bank, u32Page, 0UL, (uint32_t *)((uint32_t)pu8Data), u32NumBytes/4UL, Disable, u32Timeout);
     }
 
     return enRet;
@@ -1471,7 +1485,7 @@ en_result_t EXMC_NFC_WritePageMeta(uint32_t u32Bank,
 {
     en_result_t enRet = ErrorInvalidParameter;
 
-    if (pu8Data && u32NumBytes)
+    if ((NULL != pu8Data) && (u32NumBytes > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
@@ -1512,11 +1526,11 @@ en_result_t EXMC_NFC_ReadPageHwEcc(uint32_t u32Bank,
                                     uint32_t u32NumBytes,
                                     uint32_t u32Timeout)
 {
-    uint32_t u32PageSize = NFC_PAGE_SIZE;
-    uint32_t u32SpareSizeUserData = NFC_SPARE_SIZE_FOR_USER_DATA;
+    const uint32_t u32PageSize = NFC_PAGE_SIZE;
+    const uint32_t u32SpareSizeUserData = NFC_SPARE_SIZE_FOR_USER_DATA;
     en_result_t enRet = ErrorInvalidParameter;
 
-    if (pu8Data && u32NumBytes)
+    if ((NULL != pu8Data) && (u32NumBytes > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
@@ -1558,11 +1572,11 @@ en_result_t EXMC_NFC_WritePageHwEcc(uint32_t u32Bank,
                                     uint32_t u32NumBytes,
                                     uint32_t u32Timeout)
 {
-    uint32_t u32PageSize = NFC_PAGE_SIZE;
-    uint32_t u32SpareSizeUserData = NFC_SPARE_SIZE_FOR_USER_DATA;
+    const uint32_t u32PageSize = NFC_PAGE_SIZE;
+    const uint32_t u32SpareSizeUserData = NFC_SPARE_SIZE_FOR_USER_DATA;
     en_result_t enRet = ErrorInvalidParameter;
 
-    if (pu8Data && u32NumBytes)
+    if ((NULL != pu8Data) && (u32NumBytes > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
@@ -1575,6 +1589,15 @@ en_result_t EXMC_NFC_WritePageHwEcc(uint32_t u32Bank,
 
     return enRet;
 }
+
+/**
+ * @}
+ */
+
+/**
+ * @defgroup EXMC_NFC_Local_Functions NAND Flash Controller Local Functions
+ * @{
+ */
 
 /**
  * @brief  NFC read operation
@@ -1611,9 +1634,9 @@ static en_result_t EXMC_NFC_Read(uint32_t u32Bank,
     uint32_t i;
     uint64_t u64Val;
     en_result_t enRet = ErrorInvalidParameter;
-    uint32_t u32CapacityIndex = EXMC_NFC_GetCapacityIndex();
+    const uint32_t u32CapacityIndex = EXMC_NFC_GetCapacityIndex();
 
-    if (au32Data && u32NumWords)
+    if ((NULL != au32Data) && (u32NumWords > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
@@ -1622,7 +1645,7 @@ static en_result_t EXMC_NFC_Read(uint32_t u32Bank,
         DDL_ASSERT(IS_FUNCTIONAL_STATE(enEccState));
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank) | \
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank) | \
                            EXMC_NFC_FLAG_ECC_UNCORRECTABLE_ERROR | \
                            EXMC_NFC_FLAG_ECC_CORRECTABLE_ERROR | \
                            EXMC_NFC_FLAG_ECC_CALC_COMPLETION | \
@@ -1670,7 +1693,7 @@ static en_result_t EXMC_NFC_Read(uint32_t u32Bank,
             }
 
             /* Clear Flag */
-            EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+            EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
             if (Enable == enEccState)
             {
@@ -1724,11 +1747,12 @@ static en_result_t EXMC_NFC_Write(uint32_t u32Bank,
                                     en_functional_state_t enEccState,
                                     uint32_t u32Timeout)
 {
+    uint32_t i;
     uint64_t u64Val;
     en_result_t enRet = Error;
-    uint32_t u32CapacityIndex = EXMC_NFC_GetCapacityIndex();
+    const uint32_t u32CapacityIndex = EXMC_NFC_GetCapacityIndex();
 
-    if (au32Data && u32NumWords)
+    if ((NULL != au32Data) && (u32NumWords > 0UL))
     {
         /* Check parameters */
         DDL_ASSERT(IS_EXMC_NFC_BANK_NUM(u32Bank));
@@ -1737,14 +1761,14 @@ static en_result_t EXMC_NFC_Write(uint32_t u32Bank,
         DDL_ASSERT(IS_FUNCTIONAL_STATE(enEccState));
 
         /* Check parameters */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank) | \
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank) | \
                            EXMC_NFC_FLAG_ECC_UNCORRECTABLE_ERROR | \
                            EXMC_NFC_FLAG_ECC_CORRECTABLE_ERROR | \
                            EXMC_NFC_FLAG_ECC_CALC_COMPLETION | \
                            EXMC_NFC_FLAG_ECC_ERROR);
 
         /* Clear Flag */
-        EXMC_NFC_ClearFlag(NFC_FLAG_RB_BANKx_MASK(u32Bank));
+        EXMC_NFC_ClearStatus(NFC_FLAG_RB_BANKx_MASK(u32Bank));
 
         if (Enable == enEccState)
         {
@@ -1773,7 +1797,7 @@ static en_result_t EXMC_NFC_Write(uint32_t u32Bank,
         WRITE_REG32(M4_NFC->IDXR1, (uint32_t)(u64Val >> 32UL));
 
         /* 3. Write NFC_DATR */
-        for (uint32_t i = 0UL; i < u32NumWords; i++)
+        for (i = 0UL; i < u32NumWords; i++)
         {
             NFC_DATR_REG32(i) = au32Data[i];
         }
@@ -1814,7 +1838,7 @@ static en_result_t EXMC_NFC_Write(uint32_t u32Bank,
 static uint32_t EXMC_NFC_GetCapacityIndex(void)
 {
     uint32_t u32Index;
-    uint32_t u32BacrSize = READ_REG32_BIT(M4_NFC->BACR, NFC_BACR_SIZE);
+    const uint32_t u32BacrSize = READ_REG32_BIT(M4_NFC->BACR, NFC_BACR_SIZE);
 
     switch (u32BacrSize)
     {
@@ -1879,7 +1903,7 @@ static en_result_t EXMC_NFC_WaitFlagUntilTo(uint32_t u32Flag,
     /* Check parameters */
     DDL_ASSERT(IS_EXMC_NFC_FLAG(u32Flag));
 
-    while (EXMC_NFC_GetFlag(u32Flag) != enStatus)
+    while (EXMC_NFC_GetStatus(u32Flag) != enStatus)
     {
         /* Block checking flag if timeout value is EXMC_NFC_MAX_TIMEOUT */
         if ((u32To++ > u32Timeout) && (u32Timeout < EXMC_NFC_MAX_TIMEOUT))

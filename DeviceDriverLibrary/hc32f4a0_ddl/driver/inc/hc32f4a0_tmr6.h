@@ -103,7 +103,7 @@ typedef struct
 {
     uint32_t    u32BufFunCmd;         /*!< specifies the buffer function status,
                                          and this parameter can be a value of
-                                         @ref TMR6_Buffer_Function_status_Define */
+                                         @ref TMR6_Buffer_Function_sta_Define */
     uint32_t    u32BufNum;            /*!< specifies the buffer number,
                                          and this parameter can be a value of
                                          @ref TMR6_Buffer_Number_Chose_Define */
@@ -136,8 +136,8 @@ typedef struct
 typedef struct
 {
     uint32_t                u32PortMode;     /*!< Port function mode @ref TMR6_Port_Mode_Func */
-    uint32_t                u32FilterStd;    /*!< trig source capture input filter status
-                                                  @ref TMR6_Port_Input_Filter_Std*/
+    uint32_t                u32FilterSta;    /*!< trig source capture input filter status
+                                                  @ref TMR6_Port_Input_Filter_Sta*/
     uint32_t                u32FltClk;       /*!< Filter clock @ref TMR6_Input_Port_Filter_Clk*/
 }stc_tmr6_port_input_cfg_t;
 
@@ -147,24 +147,23 @@ typedef struct
 typedef struct
 {
     uint32_t  u32PortMode;   /*!< Port function mode @ref TMR6_Port_Mode_Func */
-    //bool      bOutEn;        /*!< Output enable / disable */
-    uint32_t  u32NextPeriodForceStd;  /*!< Port State Next period @ref TMR6_Force_Port_Output_Std */
-    uint32_t  u32DownCntMatchAnotherCmpRegStd; /*!< Port state when counter match another compare register
+    uint32_t  u32NextPeriodForceSta;  /*!< Port State Next period @ref TMR6_Force_Port_Output_Sta */
+    uint32_t  u32DownCntMatchAnotherCmpRegSta; /*!< Port state when counter match another compare register
                                                     (CHA matched GCMBR, CHB matched GCMAR) in count-down mode
-                                                    @ref TMR6_Port_Output_Std */
-    uint32_t  u32UpCntMatchAnotherCmpRegStd;   /*!< Port state when counter match another compare register
+                                                    @ref TMR6_Port_Output_Sta */
+    uint32_t  u32UpCntMatchAnotherCmpRegSta;   /*!< Port state when counter match another compare register
                                                     (CHA matched GCMBR, CHB matched GCMAR) in count-up mode
-                                                    @ref TMR6_Port_Output_Std*/
-    uint32_t  u32DownCntMatchCmpRegStd;        /*!< Port state when counter match compare register
+                                                    @ref TMR6_Port_Output_Sta*/
+    uint32_t  u32DownCntMatchCmpRegSta;        /*!< Port state when counter match compare register
                                                     (CHA matched GCMAR, CHB matched GCMBR) in count-down mode
-                                                    @ref TMR6_Port_Output_Std */
-    uint32_t  u32UpCntMatchCmpRegStd;          /*!< Port state when counter match compare register
+                                                    @ref TMR6_Port_Output_Sta */
+    uint32_t  u32UpCntMatchCmpRegSta;          /*!< Port state when counter match compare register
                                                     (CHA matched GCMAR, CHB matched GCMBR) in count-up mode
-                                                    @ref TMR6_Port_Output_Std */
-    uint32_t  u32UnderflowStd;    /*!< Port State when counter underflow @ref TMR6_Port_Output_Std */
-    uint32_t  u32OverflowStd;     /*!< Port State when counter overflow @ref TMR6_Port_Output_Std */
-    uint32_t  u32StopStd;         /*!< Port State when count stop @ref TMR6_Port_Output_Std */
-    uint32_t  u32StartStd;        /*!< Port State when count start @ref TMR6_Port_Output_Std */
+                                                    @ref TMR6_Port_Output_Sta */
+    uint32_t  u32UnderflowSta;    /*!< Port State when counter underflow @ref TMR6_Port_Output_Sta */
+    uint32_t  u32OverflowSta;     /*!< Port State when counter overflow @ref TMR6_Port_Output_Sta */
+    uint32_t  u32StopSta;         /*!< Port State when count stop @ref TMR6_Port_Output_Sta */
+    uint32_t  u32StartSta;        /*!< Port State when count start @ref TMR6_Port_Output_Sta */
 }stc_tmr6_port_output_cfg_t;
 
 /**
@@ -174,7 +173,7 @@ typedef struct
 {
     uint32_t      u32ValidCh;       /*!< Invalid EMB event channel @ref TMR6_Emb_channel */
     uint32_t      u32ReleaseMode;   /*!< Port release mode when EMB event invalid @ref TMR6_Emb_Release_Mode */
-    uint32_t      u32PortStd;       /*!< Port Output status when EMB event valid @ref TMR6_Emb_Port_Status */
+    uint32_t      u32PortSta;       /*!< Port Output status when EMB event valid @ref TMR6_Emb_Port_Sta */
 }stc_tmr6_emb_cfg_t;
 
 /**
@@ -183,13 +182,13 @@ typedef struct
 typedef struct
 {
     uint32_t     u32DtEqualUpDwn;    /*!< Enable down count dead time register equal to up count DT register
-                                      @ref TMR6_Dt_Reg_Equal_Func_define */
+                                      @ref TMR6_Deadtime_Reg_Equal_Func_define */
     uint32_t     u32EnDtBufUp;       /*!< Enable buffer transfer for up count dead time register
-                                      (DTUBR-->DTUAR) @ref TMR6_Dt_CountUp_Buf_Func_define*/
+                                      (DTUBR-->DTUAR) @ref TMR6_Deadtime_CountUp_Buf_Func_define*/
     uint32_t     u32EnDtBufDwn;      /*!< Enable buffer transfer for down count dead time register
-                                      (DTDBR-->DTDAR) @ref TMR6_Dt_CountDown_Buf_Func_define*/
+                                      (DTDBR-->DTDAR) @ref TMR6_Deadtime_CountDown_Buf_Func_define*/
     uint32_t     u32DtUpdCond;       /*!< Buffer transfer condition for triangular wave mode
-                                       @ref TMR6_Dt_Buf_Transfer_Condition_define */
+                                       @ref TMR6_Deadtime_Buf_Transfer_Condition_define */
 }stc_tmr6_deadtime_cfg_t;
 
 /**
@@ -218,7 +217,7 @@ typedef struct
  */
 
 
-/** @defgroup TMR6_Status_Bit_Get_Define TMR6 status bit define
+/** @defgroup TMR6_Sta_Bit_Get_Define TMR6 status bit define
  * @{
  */
 /* Status bit indicate that GCMAR register matched with counter register */
@@ -318,7 +317,7 @@ typedef struct
  * @}
  */
 
-/** @defgroup TMR6_Buffer_Function_status_Define TMR6 buffer function status define
+/** @defgroup TMR6_Buffer_Function_sta_Define TMR6 buffer function status define
  * @{
  */
 #define TMR6_BUF_FUNC_OFF   (0x00000000UL)
@@ -440,10 +439,10 @@ typedef struct
 /** @defgroup TMR6_Input_Port_Filter_Clk TMR6 input port define
  * @{
  */
-#define TMR6_INPUT_FILTER_PCLK0                 (0x00U)
-#define TMR6_INPUT_FILTER_DIV4                  (0x01U)
-#define TMR6_INPUT_FILTER_DIV16                 (0x02U)
-#define TMR6_INPUT_FILTER_DIV64                 (0x03U)
+#define TMR6_INPUT_FILTER_PCLK0_DIV1            (0x00U)
+#define TMR6_INPUT_FILTER_PCLK0_DIV4            (0x01U)
+#define TMR6_INPUT_FILTER_PCLK0_DIV16           (0x02U)
+#define TMR6_INPUT_FILTER_PCLK0_DIV64           (0x03U)
 /**
  * @}
  */
@@ -457,32 +456,32 @@ typedef struct
  * @}
  */
 
-/** @defgroup TMR6_Port_Input_Filter_Std TMR6 port input filter function status
+/** @defgroup TMR6_Port_Input_Filter_Sta TMR6 port input filter function status
  * @{
  */
-#define TMR6_PORT_INPUT_FITLER_OFF               (0x00U)
-#define TMR6_PORT_INPUT_FITLER_ON                (0x01U)
+#define TMR6_PORT_INPUT_FILTER_OFF               (0x00U)
+#define TMR6_PORT_INPUT_FILTER_ON                (0x01U)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Port_Output_Std TMR6 port output status
+/** @defgroup TMR6_Port_Output_Sta TMR6 port output status
  * @{
  */
-#define TMR6_PORT_OUTPUT_STD_LOW                 (0x00U)
-#define TMR6_PORT_OUTPUT_STD_HIGH                (0x01U)
-#define TMR6_PORT_OUTPUT_STD_HOLD                (0x02U)
-#define TMR6_PORT_OUTPUT_STD_REVERSE             (0x03U)
+#define TMR6_PORT_OUTPUT_STA_LOW                 (0x00U)
+#define TMR6_PORT_OUTPUT_STA_HIGH                (0x01U)
+#define TMR6_PORT_OUTPUT_STA_HOLD                (0x02U)
+#define TMR6_PORT_OUTPUT_STA_REVERSE             (0x03U)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Force_Port_Output_Std TMR6 force port output status next period
+/** @defgroup TMR6_Force_Port_Output_Sta TMR6 force port output status next period
  * @{
  */
 #define TMR6_FORCE_PORT_OUTPUT_INVALID          (0x00U)
-#define TMR6_FORCE_PORT_OUTPUT_STD_LOW          (0x02U)
-#define TMR6_FORCE_PORT_OUTPUT_STD_HIGH         (0x03U)
+#define TMR6_FORCE_PORT_OUTPUT_STA_LOW          (0x02U)
+#define TMR6_FORCE_PORT_OUTPUT_STA_HIGH         (0x03U)
 /**
  * @}
  */
@@ -509,66 +508,66 @@ typedef struct
  * @}
  */
 
-/** @defgroup TMR6_Emb_Port_Status TMR6 EMB port output status when EMB event valid
+/** @defgroup TMR6_Emb_Port_Sta TMR6 EMB port output status when EMB event valid
  * @{
  */
-#define TMR6_EMB_PORTSTD_NORMAL              (0x00U)
-#define TMR6_EMB_PORTSTD_HIZ                 (TMR6_PCNAR_EMBCA_0)
-#define TMR6_EMB_PORTSTD_LOW                 (TMR6_PCNAR_EMBCA_1)
-#define TMR6_EMB_PORTSTD_HIGH                (TMR6_PCNAR_EMBCA_0 | TMR6_PCNAR_EMBCA_1)
+#define TMR6_EMB_PORTSTA_NORMAL              (0x00U)
+#define TMR6_EMB_PORTSTA_HIZ                 (TMR6_PCNAR_EMBCA_0)
+#define TMR6_EMB_PORTSTA_LOW                 (TMR6_PCNAR_EMBCA_1)
+#define TMR6_EMB_PORTSTA_HIGH                (TMR6_PCNAR_EMBCA_0 | TMR6_PCNAR_EMBCA_1)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Dt_CountUp_Buf_Func_define TMR6 Dead time buffer function for count up stage
+/** @defgroup TMR6_Deadtime_CountUp_Buf_Func_define TMR6 Dead time buffer function for count up stage
  * @{
  */
-#define TMR6_DT_CNT_UP_BUF_OFF              (0x00U)
-#define TMR6_DT_CNT_UP_BUF_ON               (TMR6_DCONR_DTBENU)
+#define TMR6_DEADTIME_CNT_UP_BUF_OFF              (0x00U)
+#define TMR6_DEADTIME_CNT_UP_BUF_ON               (TMR6_DCONR_DTBENU)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Dt_CountDown_Buf_Func_define TMR6 Dead time buffer function for count down stage
+/** @defgroup TMR6_Deadtime_CountDown_Buf_Func_define TMR6 Dead time buffer function for count down stage
  * @{
  */
-#define TMR6_DT_CNT_DOWN_BUF_OFF              (0x00U)
-#define TMR6_DT_CNT_DOWN_BUF_ON               (TMR6_DCONR_DTBEND)
+#define TMR6_DEADTIME_CNT_DOWN_BUF_OFF              (0x00U)
+#define TMR6_DEADTIME_CNT_DOWN_BUF_ON               (TMR6_DCONR_DTBEND)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Dt_Buf_Transfer_Condition_define TMR6 Dead time buffer transfer condition define for triangular count mode
+/** @defgroup TMR6_Deadtime_Buf_Transfer_Condition_define TMR6 Dead time buffer transfer condition define for triangular count mode
  * @{
  */
-#define TMR6_DT_TRANS_COND_NONE                (0x00U)
-#define TMR6_DT_TRANS_COND_OVERFLOW            (TMR6_DCONR_DTBTRU)
-#define TMR6_DT_TRANS_COND_UNDERFLOW           (TMR6_DCONR_DTBTRD)
-#define TMR6_DT_TRANS_COND_BOTHFLOW            (TMR6_DCONR_DTBTRU | TMR6_DCONR_DTBTRD)
+#define TMR6_DEADTIME_TRANS_COND_NONE                (0x00U)
+#define TMR6_DEADTIME_TRANS_COND_OVERFLOW            (TMR6_DCONR_DTBTRU)
+#define TMR6_DEADTIME_TRANS_COND_UNDERFLOW           (TMR6_DCONR_DTBTRD)
+#define TMR6_DEADTIME_TRANS_COND_BOTHFLOW            (TMR6_DCONR_DTBTRU | TMR6_DCONR_DTBTRD)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Dt_Reg_Equal_Func_define TMR6 Dead time function DTDAR equal DTUAR
+/** @defgroup TMR6_Deadtime_Reg_Equal_Func_define TMR6 Dead time function DTDAR equal DTUAR
  * @{
  */
-#define TMR6_DT_EQUAL_OFF                     (0x00U)
-#define TMR6_DT_EQUAL_ON                      (TMR6_DCONR_SEPA)
+#define TMR6_DEADTIME_EQUAL_OFF                     (0x00U)
+#define TMR6_DEADTIME_EQUAL_ON                      (TMR6_DCONR_SEPA)
 /**
  * @}
  */
 
-/** @defgroup TMR6_Soft_Sync_Ctl_Unit_Number_define TMR6 Software synchronization start/stop/clear/update unit number define
+/** @defgroup TMR6_Soft_Sync_Ctrl_Unit_Number_define TMR6 Software synchronization start/stop/clear/update unit number define
  * @{
  */
-#define TMR6_SOFT_SYNC_CTL_U1              (TMR6_SSTAR_SSTA1)
-#define TMR6_SOFT_SYNC_CTL_U2              (TMR6_SSTAR_SSTA2)
-#define TMR6_SOFT_SYNC_CTL_U3              (TMR6_SSTAR_SSTA3)
-#define TMR6_SOFT_SYNC_CTL_U4              (TMR6_SSTAR_SSTA4)
-#define TMR6_SOFT_SYNC_CTL_U5              (TMR6_SSTAR_SSTA5)
-#define TMR6_SOFT_SYNC_CTL_U6              (TMR6_SSTAR_SSTA6)
-#define TMR6_SOFT_SYNC_CTL_U7              (TMR6_SSTAR_SSTA7)
-#define TMR6_SOFT_SYNC_CTL_U8              (TMR6_SSTAR_SSTA8)
+#define TMR6_SOFT_SYNC_CTRL_U1              (TMR6_SSTAR_SSTA1)
+#define TMR6_SOFT_SYNC_CTRL_U2              (TMR6_SSTAR_SSTA2)
+#define TMR6_SOFT_SYNC_CTRL_U3              (TMR6_SSTAR_SSTA3)
+#define TMR6_SOFT_SYNC_CTRL_U4              (TMR6_SSTAR_SSTA4)
+#define TMR6_SOFT_SYNC_CTRL_U5              (TMR6_SSTAR_SSTA5)
+#define TMR6_SOFT_SYNC_CTRL_U6              (TMR6_SSTAR_SSTA6)
+#define TMR6_SOFT_SYNC_CTRL_U7              (TMR6_SSTAR_SSTA7)
+#define TMR6_SOFT_SYNC_CTRL_U8              (TMR6_SSTAR_SSTA8)
 /**
  * @}
  */
@@ -576,22 +575,22 @@ typedef struct
 /** @defgroup TMR6_hardware_control_event_define TMR6 hardware start/stop/clear/update/capture events define
  * @{
  */
-#define TMR6_HW_CTL_PWMA_RISING             (TMR6_HSTAR_HSTA0)
-#define TMR6_HW_CTL_PWMA_FAILLING           (TMR6_HSTAR_HSTA1)
-#define TMR6_HW_CTL_PWMB_RISING             (TMR6_HSTAR_HSTA2)
-#define TMR6_HW_CTL_PWMB_FAILLING           (TMR6_HSTAR_HSTA3)
-#define TMR6_HW_CTL_INTER_EVENT0            (TMR6_HSTAR_HSTA8)
-#define TMR6_HW_CTL_INTER_EVENT1            (TMR6_HSTAR_HSTA9)
-#define TMR6_HW_CTL_INTER_EVENT2            (TMR6_HSTAR_HSTA10)
-#define TMR6_HW_CTL_INTER_EVENT3            (TMR6_HSTAR_HSTA11)
-#define TMR6_HW_CTL_TRIGEA_RISING           (TMR6_HSTAR_HSTA16)
-#define TMR6_HW_CTL_TRIGEA_FAILLING         (TMR6_HSTAR_HSTA17)
-#define TMR6_HW_CTL_TRIGEB_RISING           (TMR6_HSTAR_HSTA18)
-#define TMR6_HW_CTL_TRIGEB_FAILLING         (TMR6_HSTAR_HSTA19)
-#define TMR6_HW_CTL_TRIGEC_RISING           (TMR6_HSTAR_HSTA20)
-#define TMR6_HW_CTL_TRIGEC_FAILLING         (TMR6_HSTAR_HSTA21)
-#define TMR6_HW_CTL_TRIGED_RISING           (TMR6_HSTAR_HSTA22)
-#define TMR6_HW_CTL_TRIGED_FAILLING         (TMR6_HSTAR_HSTA23)
+#define TMR6_HW_CTRL_PWMA_RISING             (TMR6_HSTAR_HSTA0)
+#define TMR6_HW_CTRL_PWMA_FAILLING           (TMR6_HSTAR_HSTA1)
+#define TMR6_HW_CTRL_PWMB_RISING             (TMR6_HSTAR_HSTA2)
+#define TMR6_HW_CTRL_PWMB_FAILLING           (TMR6_HSTAR_HSTA3)
+#define TMR6_HW_CTRL_INTER_EVENT0            (TMR6_HSTAR_HSTA8)
+#define TMR6_HW_CTRL_INTER_EVENT1            (TMR6_HSTAR_HSTA9)
+#define TMR6_HW_CTRL_INTER_EVENT2            (TMR6_HSTAR_HSTA10)
+#define TMR6_HW_CTRL_INTER_EVENT3            (TMR6_HSTAR_HSTA11)
+#define TMR6_HW_CTRL_TRIGEA_RISING           (TMR6_HSTAR_HSTA16)
+#define TMR6_HW_CTRL_TRIGEA_FAILLING         (TMR6_HSTAR_HSTA17)
+#define TMR6_HW_CTRL_TRIGEB_RISING           (TMR6_HSTAR_HSTA18)
+#define TMR6_HW_CTRL_TRIGEB_FAILLING         (TMR6_HSTAR_HSTA19)
+#define TMR6_HW_CTRL_TRIGEC_RISING           (TMR6_HSTAR_HSTA20)
+#define TMR6_HW_CTRL_TRIGEC_FAILLING         (TMR6_HSTAR_HSTA21)
+#define TMR6_HW_CTRL_TRIGED_RISING           (TMR6_HSTAR_HSTA22)
+#define TMR6_HW_CTRL_TRIGED_FAILLING         (TMR6_HSTAR_HSTA23)
 /**
  * @}
  */
@@ -644,7 +643,7 @@ typedef struct
 /** @defgroup TMR6_Count_Clock_define TMR6 base counter clock source define
  * @{
  */
-#define TMR6_CLK_PCLK0                       (0x00UL)
+#define TMR6_CLK_PCLK0_DIV1                  (0x00UL)
 #define TMR6_CLK_PCLK0_DIV2                  (0x01UL << TMR6_GCONR_CKDIV_POS)
 #define TMR6_CLK_PCLK0_DIV4                  (0x02UL << TMR6_GCONR_CKDIV_POS)
 #define TMR6_CLK_PCLK0_DIV8                  (0x03UL << TMR6_GCONR_CKDIV_POS)
@@ -708,17 +707,15 @@ typedef struct
  * @}
  */
 
-/** @defgroup TMR6_Hardware_Common_Trigger_Cfg_define TMR6 hardware common trigger configuration define
+/** @defgroup TMR6_Common_Trigger_Source_Cfg_define TMR6 common Trigger Source Config
  * @{
  */
-#define TMR6_TRIG_COM1_COM2_OFF                (0x00UL)
-#define TMR6_TRIG_COM1_ON_COM2_OFF             (AOS_TMR6_HTSSR1_COMTRG_EN_0)
-#define TMR6_TRIG_COM1_OFF_COM2_ON             (AOS_TMR6_HTSSR1_COMTRG_EN_1)
-#define TMR6_TRIG_COM1_COM2_ON                 (AOS_TMR6_HTSSR1_COMTRG_EN_0 | AOS_TMR6_HTSSR1_COMTRG_EN_1)
+#define TMR6_COM_TRIG1                         (AOS_TMR6_HTSSR_COMTRG_EN_0)
+#define TMR6_COM_TRIG2                         (AOS_TMR6_HTSSR_COMTRG_EN_1)
+#define TMR6_COM_TRIG_MASK                     (AOS_TMR6_HTSSR_COMTRG_EN)
 /**
  * @}
  */
-
 
 /**
  * @}
@@ -736,7 +733,7 @@ typedef struct
  * @{
  */
 /**
- * @brief  Get Software Synchrony start status
+ * @brief  Get Software Sync start status
  * @param  None
  * @retval An uint32_t data indicate the read status.
  */
@@ -745,40 +742,10 @@ __STATIC_INLINE uint32_t TMR6_GetSwSyncStaState(void)
     return READ_REG32(M4_TMR6_1->SSTAR);
 }
 
-/**
- * @brief  Get Software Synchrony stop status
- * @param  None
- * @retval An uint32_t data indicate the read status.
- */
-__STATIC_INLINE uint32_t TMR6_GetSwSyncStpState(void)
-{
-    return READ_REG32(M4_TMR6_1->SSTPR);
-}
-
-/**
- * @brief  Get Software Synchrony clear status
- * @param  None
- * @retval An uint32_t data indicate the read status.
- */
-__STATIC_INLINE uint32_t TMR6_GetSwSyncClrState(void)
-{
-    return READ_REG32(M4_TMR6_1->SCLRR);
-}
-
-/**
- * @brief  Get Software Synchrony update status
- * @param  None
- * @retval An uint32_t data indicate the read status.
- */
-__STATIC_INLINE uint32_t TMR6_GetSwSyncUpdState(void)
-{
-    return READ_REG32(M4_TMR6_1->SUPDR);
-}
-
 /* TMR6 interrupt request enable or disable */
 void TMR6_IntCmd(M4_TMR6_TypeDef *TMR6x, uint32_t u32Tmr6Irq, en_functional_state_t enNewState);
 /* Get Timer6 status flag */
-en_flag_status_t TMR6_GetStatus(const M4_TMR6_TypeDef *TMR6x, uint32_t u32StdBit);
+en_flag_status_t TMR6_GetSta(const M4_TMR6_TypeDef *TMR6x, uint32_t u32StaBit);
 /* Get Timer6 period number when valid period function enable */
 uint32_t TMR6_GetPeriodNum(const M4_TMR6_TypeDef *TMR6x);
 /* De-initialize the timer6 unit */
@@ -814,43 +781,43 @@ uint32_t TMR6_GetSpecialCmpReg(const M4_TMR6_TypeDef *TMR6x, uint32_t u32Special
 /* Timer6 get dead time register */
 uint32_t TMR6_GetDeadTimeReg(const M4_TMR6_TypeDef *TMR6x, uint32_t u32DeadTimeReg);
 
-/* Timer6 general compare buffer function configurate */
+/* Timer6 general compare buffer function configuration */
 en_result_t TMR6_GenCmpBufCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32CmpChIdx, const stc_tmr6_buf_func_cfg_t* pstcGenBufCfg);
-/* Timer6 special compare buffer function configurate */
+/* Timer6 special compare buffer function configuration */
 en_result_t TMR6_SpecialCmpBufCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32CmpChIdx, const stc_tmr6_buf_func_cfg_t* pstcSpecialBufCfg);
-/* Timer6 period buffer function configurate */
+/* Timer6 period buffer function configuration */
 en_result_t TMR6_PeriodBufCfg(M4_TMR6_TypeDef *TMR6x, const stc_tmr6_buf_func_cfg_t* pstcPeriodBufCfg);
 
 /* Timer6 valid period function configuration for special compare function */
 en_result_t TMR6_ValidPeriodCfg(M4_TMR6_TypeDef *TMR6x, const stc_tmr6_valid_period_func_cfg_t* pstcValidPeriodCfg);
-/* Port input configurate(Trig) */
+/* Port input configuration(Trig) */
 en_result_t TMR6_PortInputConfig(M4_TMR6_TypeDef *TMR6x,
                                     uint32_t u32PortSel,
                                     const stc_tmr6_port_input_cfg_t* pstcTmr6PortInputCfg);
-/* Port output configurate(Trig) */
+/* Port output configuration(Trig) */
 en_result_t TMR6_PortOutputConfig(M4_TMR6_TypeDef *TMR6x,
                                     uint32_t u32PortSel,
                                     const stc_tmr6_port_output_cfg_t* pstcTmr6PortOutputCfg);
-/* EMB function configurate */
+/* EMB function configuration */
 en_result_t TMR6_EMBConfig(M4_TMR6_TypeDef *TMR6x,
                                     uint32_t u32PortSel,
                                     const stc_tmr6_emb_cfg_t* pstcTmr6EmbCfg);
 
 /* Timer6 dead time function command */
 void TMR6_DeadTimeFuncCmd(M4_TMR6_TypeDef *TMR6x, en_functional_state_t enNewState);
-/* DeadTime function configurate */
+/* DeadTime function configuration */
 en_result_t TMR6_DeadTimeCfg(M4_TMR6_TypeDef *TMR6x, const stc_tmr6_deadtime_cfg_t* pstcTmr6DTCfg);
 
 /* Timer6 unit Z phase input mask config */
 en_result_t TMR6_ZMaskCfg(M4_TMR6_TypeDef *TMR6x, const stc_tmr6_zmask_cfg_t* pstcTmr6ZMaskCfg);
 
-/* Software Synchrony Start */
+/* Software Sync Start */
 void TMR6_SwSyncStart(uint32_t u32UnitCombine);
-/* Software Synchrony Stop */
+/* Software Sync Stop */
 void TMR6_SwSyncStop(uint32_t u32UnitCombine);
-/* Software Synchrony clear */
+/* Software Sync clear */
 void TMR6_SwSyncClr(uint32_t u32UnitCombine);
-/* Software Synchrony update */
+/* Software Sync update */
 void TMR6_SwSyncUpdate(uint32_t u32UnitCombine);
 
 /* Hardware start function command */
@@ -862,44 +829,60 @@ void TMR6_HwClrFuncCmd(M4_TMR6_TypeDef *TMR6x, en_functional_state_t enNewState)
 /* Hardware update function command */
 void TMR6_HwUpdateFuncCmd(M4_TMR6_TypeDef *TMR6x, en_functional_state_t enNewState);
 
-/* Hardware start function configurate */
-void TMR6_HwStartFuncCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware stop function configurate */
-void TMR6_HwStopFuncCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware clear function configurate */
-void TMR6_HwClrFuncCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware update function configurate */
-void TMR6_HwUpdtFuncCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware capture function configuration for channel A */
-void TMR6_HwCaptureFuncChACfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware capture function configuration for channel B */
-void TMR6_HwCaptureFuncChBCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware increase function configurate */
-void TMR6_HwIncreaseFuncCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
-/* Hardware decrease function configurate */
-void TMR6_HwDecreaseFuncCfg(M4_TMR6_TypeDef *TMR6x, uint32_t u32Events);
+/* Hardware start condtion command */
+void TMR6_HwStartCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware stop condtion command */
+void TMR6_HwStopCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware clear condtion command */
+void TMR6_HwClrCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware update condtion command */
+void TMR6_HwUpdCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware capture condtion command for channel A */
+void TMR6_HwCaptureChACondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware capture condtion command for channel B */
+void TMR6_HwCaptureChBCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware increase conditon command */
+void TMR6_HwIncreaseCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
+/* Hardware decrease conditon command */
+void TMR6_HwDecreaseCondCmd(M4_TMR6_TypeDef *TMR6x,
+                            uint32_t u32CondSrc,
+                            en_functional_state_t enNewState);
 
-/* Hardware start function register clear */
-void TMR6_HwStartFuncRegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware stop function register clear */
-void TMR6_HwStopFuncRegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware clear function register clear */
-void TMR6_HwClrFuncRegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware update function register clear */
-void TMR6_HwUpdtFuncRegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware capture configuration register clear for channel A */
-void TMR6_HwCaptureFuncChARegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware capture configuration register clear for channel B */
-void TMR6_HwCaptureFuncChBRegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware increase function configuration register clear */
-void TMR6_HwIncreaseFuncRegClr(M4_TMR6_TypeDef *TMR6x);
-/* Hardware decrease function configurate register clear */
-void TMR6_HwDecreaseFuncRegClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware start function condition clear */
+void TMR6_HwStartCondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware stop function condition clear */
+void TMR6_HwStopCondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware clear function condition clear */
+void TMR6_HwClrCondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware update function condition clear */
+void TMR6_HwUpdCondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware capture condition clear for channel A */
+void TMR6_HwCaptureChACondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware capture condition clear for channel B */
+void TMR6_HwCaptureChBCondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware increase condition clear */
+void TMR6_HwIncreaseCondClr(M4_TMR6_TypeDef *TMR6x);
+/* Hardware decrease condition clear */
+void TMR6_HwDecreaseCondClr(M4_TMR6_TypeDef *TMR6x);
 
-/* Timer6 Hardware trigger event configurate for(trigger0~trigger3) */
-void TMR6_HwTrigEventCfg(uint32_t u32TrigNum, en_event_src_t enEvent);
-/* Timer6 Hardware trigger common event configurate for(trigger0~trigger3) */
-void TMR6_ComTrigEnCfg(uint32_t u32TrigIndex, uint32_t u32ComTrigEnCfg);
+/* Timer6 Hardware trigger event configuration for(trigger0~trigger3) */
+void TMR6_SetTriggerSrc(uint32_t u32TrigIndex, en_event_src_t enEvent);
+/* Timer6 Hardware trigger common event function command for(trigger0~trigger3) */
+void TMR6_ComTriggerCmd(uint32_t u32TrigIndex, uint32_t u32ComTrig, en_functional_state_t enNewState);
 
 /* Set the fields of structure stc_timer4_pwm_init_t to default values */
 en_result_t TMR6_BaseCntStructInit(stc_tmr6_basecnt_cfg_t *pstcInit);

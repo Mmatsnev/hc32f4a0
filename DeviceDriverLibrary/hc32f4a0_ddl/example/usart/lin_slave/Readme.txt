@@ -57,7 +57,7 @@ EV_F4A0_LQ176_V10
 4）LIN master/slave板通过USB线连接J25 DAP
 5）打开工程lin_master并重新编译，下载代码LIN master板，并且全速运行
 6）打开工程lin_slave并重新编译，下载代码LIN slave板，并且全速运行
-7）按LIN master板SW10按键
+7）按LIN master板按键SW10
 8）观察LIN master板RGB LED灯，蓝色LED灯点亮
 9）重复步骤7）~8），观察LIN master板蓝色LED灯状态
 

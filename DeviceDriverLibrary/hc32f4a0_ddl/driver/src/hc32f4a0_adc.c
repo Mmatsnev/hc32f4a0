@@ -105,8 +105,8 @@
 #define ADC_CH_MAP_PIN_MSK                  (ADC_CHMUXR0_CH00MUX)
 #define ADC_SH_CFG_MSK                      (ADC_SHCR_SHSST)
 #define ADC_SH_CH_MSK                       (ADC_SHCR_SHSEL)
-#define ADC_COM_TRIG_EN_MSK                 (ADC_TRIG_COM1_COM2_ON)
-#define ADC_TRIG_EVENT_MSK                  (AOS_ADC_1_ITRGSELR0_TRGSEL)
+#define ADC_COM_TRIG_MSK                    (ADC_COM_TRIG1 | ADC_COM_TRIG2)
+#define ADC_TRIG_EVENT_MSK                  (AOS_ADC_1_ITRGSELR_TRGSEL)
 /**
  * @}
  */
@@ -799,22 +799,27 @@ void ADC_TrigSrcCmd(M4_ADC_TypeDef *ADCx, uint8_t u8Seq, en_functional_state_t e
  *                                      Only one event can be configured to trigger ADC.
  *   @arg  ADC_TRIG_SRC_EVENT0_EVENT1:  The trigger source are two internal events from other peripheral(s). \
  *                                      Two events can be configured to trigger ADC and one of which can trigger the ADC.
- * @param  [in]  u32ComTrigEn           Common trigger event enable bit mask.
+ * @param  [in]  u32ComTrig             Common trigger event enable bit mask.
  *                                      This parameter can be a value of @ref ADC_Common_Trigger_Sel
- *   @arg  ADC_TRIG_COM1_COM2_OFF:      Disable common trigger event 1 and 2 to start ADC.
- *   @arg  ADC_TRIG_COM1_ON_COM2_OFF:   Enable common trigger event 1 and disable 2 to start ADC.
- *   @arg  ADC_TRIG_COM1_OFF_COM2_ON:   Disable common trigger event 1 and enable 1 to start ADC.
- *   @arg  ADC_TRIG_COM1_COM2_ON:       Enable common trigger event 1 and 2 to start ADC.
+ *   @arg  ADC_COM_TRIG1:               Common trigger 1.
+ *   @arg  ADC_COM_TRIG2:               Common trigger 2.
+ * @param  [in]  enNewState             An en_functional_state_t enumeration type value.
+ *   @arg Enable:                       Enable the specified common trigger.
+ *   @arg Disable:                      Disable the specified common trigger.
  * @retval An en_result_t enumeration value.
  *   @arg  Ok:                          No errors occurred.
  *   @arg  ErrorInvalidParameter:       (u16TrigSrc & ADC_TRIG_SRC_EVENT0_EVENT1) == 0U.
  */
-en_result_t ADC_ComTrigCmd(M4_ADC_TypeDef *ADCx, uint16_t u16TrigSrc, uint32_t u32ComTrigEn)
+en_result_t ADC_ComTriggerCmd(M4_ADC_TypeDef *ADCx, uint16_t u16TrigSrc, \
+                              uint32_t u32ComTrig, en_functional_state_t enNewState)
 {
     uint32_t u32AdcIdx;
     uint32_t u32RegOffset = 0U;
     uint32_t u32ITRGSELRAddr;
     en_result_t enRet = ErrorInvalidParameter;
+
+    DDL_ASSERT(IS_ADC_BIT_MSK(u32ComTrig, ADC_COM_TRIG_MSK));
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     if ((u16TrigSrc & ADC_TRIG_SRC_EVENT0_EVENT1) != 0U)
     {
@@ -826,7 +831,15 @@ en_result_t ADC_ComTrigCmd(M4_ADC_TypeDef *ADCx, uint16_t u16TrigSrc, uint32_t u
             u32RegOffset = 4U;
         }
         u32ITRGSELRAddr = (uint32_t)&M4_AOS->ADC_1_ITRGSELR0 + u32AdcIdx * 8U + u32RegOffset;
-        MODIFY_REG32(RW_MEM32(u32ITRGSELRAddr), ADC_COM_TRIG_EN_MSK, u32ComTrigEn);
+        if (enNewState == Enable)
+        {
+            SET_REG32_BIT(RW_MEM32(u32ITRGSELRAddr), u32ComTrig);
+        }
+        else
+        {
+            CLEAR_REG32_BIT(RW_MEM32(u32ITRGSELRAddr), u32ComTrig);
+        }
+
         enRet = Ok;
     }
 
@@ -1137,7 +1150,7 @@ void ADC_PGA_Config(uint8_t u8PGAx, uint8_t u8GainFactor, uint8_t u8PgaVss)
 {
     uint32_t u32Addr;
     uint32_t u32PGACRAddr;
-    M4_ADC_TypeDef *ADCx = NULL;
+    M4_ADC_TypeDef *ADCx;
     uint32_t au32AdcBase[] = {ADC1_BASE, ADC1_BASE, ADC1_BASE, ADC2_BASE};
 
     DDL_ASSERT(IS_PGA_GAIN(u8GainFactor));
@@ -1168,7 +1181,7 @@ void ADC_PGA_Config(uint8_t u8PGAx, uint8_t u8GainFactor, uint8_t u8PgaVss)
 void ADC_PGA_Cmd(uint8_t u8PGAx, en_functional_state_t enNewState)
 {
     uint32_t u32PGACRAddr;
-    M4_ADC_TypeDef *ADCx   = NULL;
+    M4_ADC_TypeDef *ADCx;
     uint32_t au32AdcBase[] = {ADC1_BASE, ADC1_BASE, ADC1_BASE, ADC2_BASE};
     uint8_t au8Cmd[] = {ADC_PGA_DISABLE, ADC_PGA_ENABLE};
 
@@ -1378,7 +1391,7 @@ uint8_t ADC_GetChannelPinNum(const M4_ADC_TypeDef *ADCx, uint32_t u32AdcCh)
  */
 en_result_t ADC_PollingSA(M4_ADC_TypeDef *ADCx, uint16_t pu16AdcVal[], uint8_t u8Length, uint32_t u32Timeout)
 {
-    uint32_t u32Ch = 0U;
+    uint32_t u32Ch;
     uint32_t u32TimeCnt;
     uint8_t au8DrLen[ADC_UNIT_COUNT] = {ADC1_CH_COUNT, ADC2_CH_COUNT, ADC3_CH_COUNT};
     en_result_t enRet = ErrorInvalidParameter;
@@ -1400,11 +1413,11 @@ en_result_t ADC_PollingSA(M4_ADC_TypeDef *ADCx, uint16_t pu16AdcVal[], uint8_t u
                 if (u8Length < au8DrLen[ADC_IDX(ADCx)])
                 {
                     u32Ch = ADCx->CHSELRA;
-                    ADC_GetChannelData(ADCx, u32Ch, pu16AdcVal, u8Length);
+                    (void)ADC_GetChannelData(ADCx, u32Ch, pu16AdcVal, u8Length);
                 }
                 else
                 {
-                    ADC_GetAllData(ADCx, pu16AdcVal, u8Length);
+                    (void)ADC_GetAllData(ADCx, pu16AdcVal, u8Length);
                 }
                 /* Clear EOC flag. */
                 SET_REG8_BIT(ADCx->ISCLRR, ADC_ISCLRR_CLREOCAF);

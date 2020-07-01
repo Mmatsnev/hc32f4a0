@@ -64,7 +64,7 @@
 
 /**
  * @defgroup DDL_WDT WDT
- * @brief Special Watch Dog Timer
+ * @brief General Watch Dog Timer
  * @{
  */
 
@@ -110,7 +110,7 @@
     ((x) == WDT_CLOCK_DIV256)                   ||                             \
     ((x) == WDT_CLOCK_DIV512)                   ||                             \
     ((x) == WDT_CLOCK_DIV1024)                  ||                             \
-    ((x) == WDT_CLOCK_DIV2028)                  ||                             \
+    ((x) == WDT_CLOCK_DIV2048)                  ||                             \
     ((x) == WDT_CLOCK_DIV8192))
 
 #define IS_WDT_ALLOW_REFRESH_RANGE(x)                                          \
@@ -233,7 +233,7 @@ en_flag_status_t WDT_GetStatus(uint32_t u32Flag)
     /* Check parameters */
     DDL_ASSERT(IS_WDT_FLAG(u32Flag));
 
-    if (Reset != (READ_REG32_BIT(M4_WDT->SR, u32Flag)))
+    if (0UL != (READ_REG32_BIT(M4_WDT->SR, u32Flag)))
     {
         enFlagSta = Set;
     }
@@ -253,7 +253,7 @@ en_flag_status_t WDT_GetStatus(uint32_t u32Flag)
  */
 en_result_t WDT_ClearStatus(uint32_t u32Flag)
 {
-    __IO uint32_t u32Count = 0UL;
+    __IO uint32_t u32Count;
     en_result_t enRet = Ok;
 
     /* Check parameters */
