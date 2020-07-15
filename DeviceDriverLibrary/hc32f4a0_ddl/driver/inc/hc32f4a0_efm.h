@@ -7,6 +7,9 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Heqb           First version
+   2020-07-03       Heqb           Add flag judgment when operate SWAP
+   2020-07-07       Heqb           Modify the return value type of the function
+                                   EFM_SetOperateMode from void to en_result_t
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -105,8 +108,8 @@ typedef struct
     uint32_t            u32DataCache;   /*!< Specifies the data cache on or off.
                                             This parameter can be a value of @ref EFM_DCache_Func.          */
 
-    uint32_t            u32LowVolRead;  /*!< Specifies the read of low-voltage mode on or off.          
-                                            This parameter can be a value of @ref EFM_LowVolRead_Mode.        */                                          
+    uint32_t            u32LowVolRead;  /*!< Specifies the read of low-voltage mode on or off.
+                                            This parameter can be a value of @ref EFM_LowVolRead_Mode.        */
 
     uint32_t            u32BusStatus;   /*!< Specifies the bus status busy or release while program & erase.
                                             This parameter can be a value of @ref EFM_Bus_Status.           */
@@ -1141,11 +1144,9 @@ void EFM_DataCacheCmd(en_functional_state_t enNewState);
 void EFM_InsCacheCmd(en_functional_state_t enNewState);
 void EFM_DataCacheRstCmd(en_functional_state_t enNewState);
 void EFM_PrefetchCmd(en_functional_state_t enNewState);
-void EFM_SwapCmd(en_functional_state_t enNewState);
 void EFM_InterruptCmd(uint32_t u32EfmInt, en_functional_state_t enNewState);
 void EFM_LowVolReadCmd(en_functional_state_t enNewState);
 void EFM_SectorRegLock(uint32_t u32EfmRegLock);
-void EFM_SetOperateMode(uint32_t u32PgmMode);
 void EFM_ClearFlag(uint32_t u32Flag);
 void EFM_SectorCmd_Single(uint8_t u8SectorNum, en_functional_state_t enNewState);
 en_result_t EFM_StructInit(stc_efm_cfg_t *pstcEfmCfg);
@@ -1158,6 +1159,8 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
 en_result_t EFM_SectorErase(uint32_t u32Addr);
 en_result_t EFM_OTPLock(uint32_t u32Addr);
 en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr);
+en_result_t EFM_SwapCmd(en_functional_state_t enNewState);
+en_result_t EFM_SetOperateMode(uint32_t u32PgmMode);
 
 en_flag_status_t EFM_GetFlagStatus(uint32_t u32Flag);
 void EFM_GetUID(stc_efm_unique_id_t *stcUID);

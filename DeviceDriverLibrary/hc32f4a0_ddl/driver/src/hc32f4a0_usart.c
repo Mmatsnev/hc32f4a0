@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-03       Hongjh          Add doxygen group:USART_Local_Functions
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -362,6 +363,10 @@
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
+/**
+ * @addtogroup USART_Local_Functions
+ * @{
+ */
 
 static en_result_t CalcUartBaudrate(const M4_USART_TypeDef *USARTx,
                                         uint32_t u32UartClk,
@@ -381,6 +386,10 @@ static en_result_t CalcSmartcardBaudrate(const M4_USART_TypeDef *USARTx,
                                             uint32_t *pu32BrrVal,
                                             uint32_t *pu32FractEn,
                                             float32_t *pf32Err);
+
+/**
+ * @}
+ */
 
 /*******************************************************************************
  * Local variable definitions ('static')
@@ -2379,6 +2388,15 @@ en_result_t USART_SetBaudrate(M4_USART_TypeDef *USARTx,
 
     return enRet;
 }
+
+/**
+ * @}
+ */
+
+/**
+ * @defgroup USART_Local_Functions USART Local Functions
+ * @{
+ */
 
 /**
  * @brief  Calculate baudrate for UART mode.

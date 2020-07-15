@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Yangjp          First version
+   2020-07-03       Yangjp          Optimize stc_eth_mac_init_t structure
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -146,9 +147,6 @@ typedef struct
     uint32_t u32ReceiveOwn;                     /*!< Specifies the validity of the Receive Own (Half-Duplex mode).
                                                      This parameter can be a value of @ref ETH_Receive_Own */
 
-    uint32_t u32LoopbackMode;                   /*!< Specifies the internal MAC Loopback mode.
-                                                     This parameter can be a value of @ref ETH_Loop_Back_Mode */
-
     uint32_t u32ChecksumOffload;                /*!< Specifies the validity of the IPv4 checksum Offload.
                                                      This parameter can be a value of @ref ETH_Checksum_Offload */
 
@@ -187,9 +185,6 @@ typedef struct
 
     uint32_t u32DropNotTcpUdp;                  /*!< Specifies the validity of Dropping all IP datagram without TCP/UDP field.
                                                      This parameter can be a value of @ref ETH_Drop_Not_TcpUdp */
-
-    uint32_t u32L3L4Filter;                     /*!< Specifies the validity of the L3&L4 Filter.
-                                                     This parameter can be a value of @ref ETH_L3_L4_Filter */
 
     uint32_t u32VlanTagFilter;                  /*!< Specifies the validity of the VLAN Tag Filter.
                                                      This parameter can be a value of @ref ETH_VLAN_Tag_Filter */
@@ -238,48 +233,6 @@ typedef struct
 
     uint16_t u16RxVlanHashTable;                /*!< Specifies the lower 16 bits of VLAN Hash table.
                                                      This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFF */
-
-    uint32_t u32L4DestPortFilter;               /*!< Specifies the L4 Destination port filter mode.
-                                                     This parameter can be a value of @ref ETH_L4_Dest_Port_Filter */
-
-    uint32_t u32L4SourcePortFilter;             /*!< Specifies the L4 Source port filter mode.
-                                                     This parameter can be a value of @ref ETH_L4_Source_Port_Filter */
-
-    uint32_t u32L4PortFilterProtocol;           /*!< Specifies the L4 protocol for port filter operation.
-                                                     This parameter can be a value of @ref ETH_L4_Port_Filter_Protocol */
-
-    uint32_t u32L3Ipv4DAFilterMask;             /*!< Specifies the L3 Destination Address filter mask in IPv4.
-                                                     This parameter can be a value of @ref ETH_L3_Dest_Addr_Filter_Mask */
-
-    uint32_t u32L3Ipv4SAFilterMask;             /*!< Specifies the L3 Source Address filter Mask in IPv4.
-                                                     This parameter can be a value of @ref ETH_L3_Source_Addr_Filter_Mask */
-
-    uint32_t u32L3Ipv6AddrFilterMask;           /*!< Specifies the L3 Destination/Source Address filter Mask in IPv6.
-                                                     This parameter can be a value of @ref ETH_L3_DA_SA_Filter_Mask */
-
-    uint32_t u32L3DAFilter;                     /*!< Specifies the L3 Destination Address filter mode.
-                                                     This parameter can be a value of @ref ETH_L3_Dest_Addr_Filter */
-
-    uint32_t u32L3SAFilter;                     /*!< Specifies the L3 Source Address filter mode.
-                                                     This parameter can be a value of @ref ETH_L3_Source_Addr_Filter */
-
-    uint32_t u32L3AddrFilterProtocol;           /*!< Specifies the L3 protocol for address filter operation.
-                                                     This parameter can be a value of @ref ETH_L3_Addr_Filter_Protocol */
-
-    uint16_t u16L4DestProtFilterValue;          /*!< Specifies the L4 Destination port filter value.
-                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFF */
-
-    uint16_t u16L4SourceProtFilterValue;        /*!< Specifies the L4 Source port filter value.
-                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFF */
-
-    uint32_t u32L3Ipv4DAFilterValue;            /*!< Specifies the L3 Destination Address filter value in IPv4.
-                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFFFFFF */
-
-    uint32_t u32L3Ipv4SAFilterValue;            /*!< Specifies the L3 Source Address filter value in IPv4.
-                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFFFFFF */
-
-    uint32_t au32L3Ipv6AddrFilterValue[4];      /*!< Specifies the L3 Destination/Source Address filter value in IPv6.
-                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFFFFFF */
 } stc_eth_mac_init_t;
 
 /**
@@ -472,6 +425,54 @@ typedef struct
 
     uint8_t  au8MACAddr[6];                     /*!< Specifies the MAC Address of used Hardware */
 } stc_eth_mac_addr_config_t;
+
+/**
+ * @brief ETH L3L4 Filter Configuration Structure Definition
+ */
+typedef struct
+{
+    uint32_t u32L4DestPortFilter;               /*!< Specifies the L4 Destination port filter mode.
+                                                     This parameter can be a value of @ref ETH_L4_Dest_Port_Filter */
+
+    uint32_t u32L4SourcePortFilter;             /*!< Specifies the L4 Source port filter mode.
+                                                     This parameter can be a value of @ref ETH_L4_Source_Port_Filter */
+
+    uint32_t u32L4PortFilterProtocol;           /*!< Specifies the L4 protocol for port filter operation.
+                                                     This parameter can be a value of @ref ETH_L4_Port_Filter_Protocol */
+
+    uint32_t u32L3Ipv4DAFilterMask;             /*!< Specifies the L3 Destination Address filter mask in IPv4.
+                                                     This parameter can be a value of @ref ETH_L3_Dest_Addr_Filter_Mask */
+
+    uint32_t u32L3Ipv4SAFilterMask;             /*!< Specifies the L3 Source Address filter Mask in IPv4.
+                                                     This parameter can be a value of @ref ETH_L3_Source_Addr_Filter_Mask */
+
+    uint32_t u32L3Ipv6AddrFilterMask;           /*!< Specifies the L3 Destination/Source Address filter Mask in IPv6.
+                                                     This parameter can be a value of @ref ETH_L3_DA_SA_Filter_Mask */
+
+    uint32_t u32L3DAFilter;                     /*!< Specifies the L3 Destination Address filter mode.
+                                                     This parameter can be a value of @ref ETH_L3_Dest_Addr_Filter */
+
+    uint32_t u32L3SAFilter;                     /*!< Specifies the L3 Source Address filter mode.
+                                                     This parameter can be a value of @ref ETH_L3_Source_Addr_Filter */
+
+    uint32_t u32L3AddrFilterProtocol;           /*!< Specifies the L3 protocol for address filter operation.
+                                                     This parameter can be a value of @ref ETH_L3_Addr_Filter_Protocol */
+
+    uint16_t u16L4DestProtFilterValue;          /*!< Specifies the L4 Destination port filter value.
+                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFF */
+
+    uint16_t u16L4SourceProtFilterValue;        /*!< Specifies the L4 Source port filter value.
+                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFF */
+
+    uint32_t u32L3Ipv4DAFilterValue;            /*!< Specifies the L3 Destination Address filter value in IPv4.
+                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFFFFFF */
+
+    uint32_t u32L3Ipv4SAFilterValue;            /*!< Specifies the L3 Source Address filter value in IPv4.
+                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFFFFFF */
+
+    uint32_t au32L3Ipv6AddrFilterValue[4];      /*!< Specifies the L3 Destination/Source Address filter value in IPv6.
+                                                     This parameter must be a number between Min_Data = 0x0 and Max_Data = 0xFFFFFFFF */
+} stc_eth_l3l4_filter_config_t;
 
 /**
  * @}
@@ -921,16 +922,6 @@ typedef struct
  */
 
 /**
- * @defgroup ETH_Loop_Back_Mode ETH Loop Back Mode
- * @{
- */
-#define ETH_MAC_LOOPBACK_MODE_DISABLE               (0UL)
-#define ETH_MAC_LOOPBACK_MODE_ENABLE                (ETH_MAC_CONFIGR_LM)
-/**
- * @}
- */
-
-/**
  * @defgroup ETH_Checksum_Offload ETH Checksum Offload
  * @{
  */
@@ -1050,16 +1041,6 @@ typedef struct
  */
 #define ETH_MAC_DROP_NOT_TCPUDP_DISABLE             (0UL)
 #define ETH_MAC_DROP_NOT_TCPUDP_ENABLE              (ETH_MAC_FLTCTLR_DNTU)
-/**
- * @}
- */
-
-/**
- * @defgroup ETH_L3_L4_Filter ETH L3 L4 Filter
- * @{
- */
-#define ETH_MAC_L3_L4_FILTER_DISABLE                (0UL)
-#define ETH_MAC_L3_L4_FILTER_ENABLE                 (ETH_MAC_FLTCTLR_IPFE)
 /**
  * @}
  */
@@ -2397,11 +2378,6 @@ void ETH_MAC_SetHashTable(uint32_t u32HashHigh, uint32_t u32HashLow);
 void ETH_MAC_SetTxVlanTagVal(uint16_t u16TxTag);
 void ETH_MAC_SetRxVlanTagVal(uint16_t u16RxTag);
 void ETH_MAC_SetRxVlanHashTable(uint16_t u16HashVal);
-void ETH_MAC_SetDestPortFilterVal(uint16_t u16Port);
-void ETH_MAC_SetSrcPortFilterVal(uint16_t u16Port);
-void ETH_MAC_SetIpv4DestAddrFilterVal(uint32_t u32Addr);
-void ETH_MAC_SetIpv4SrcAddrFilterVal(uint32_t u32Addr);
-en_result_t ETH_MAC_SetIpv6AddrFilterVal(const uint32_t au32Addr[]);
 void ETH_MAC_LoopBackCmd(en_functional_state_t enNewSta);
 void ETH_MAC_GeneratePauseCtrlFrame(void);
 void ETH_MAC_BackPressureCmd(en_functional_state_t enNewSta);
@@ -2419,6 +2395,19 @@ en_result_t ETH_MACADDR_SetAddress(uint32_t u32Index, uint8_t au8Addr[]);
 en_result_t ETH_MACADDR_GetAddress(uint32_t u32Index, uint8_t au8Addr[]);
 void ETH_MACADDR_SetFilterMode(uint32_t u32Index, uint32_t u32Mode);
 void ETH_MACADDR_SetFilterMask(uint32_t u32Index, uint32_t u32Mask);
+
+/* MAC L3L4 Filter Functions */
+void ETH_MAC_L3L4FilterDeInit(void);
+en_result_t ETH_MAC_L3L4FilterInit(const stc_eth_l3l4_filter_config_t *pstcL3L4FilterInit);
+en_result_t ETH_MAC_L3L4FilterStructInit(stc_eth_l3l4_filter_config_t *pstcL3L4FilterInit);
+void ETH_MAC_L3L4FilterCmd(en_functional_state_t enNewSta);
+void ETH_MAC_SetPortFilterProtocol(uint32_t u32PortProtocol);
+void ETH_MAC_SetDestPortFilterVal(uint16_t u16Port);
+void ETH_MAC_SetSrcPortFilterVal(uint16_t u16Port);
+void ETH_MAC_SetAddrFilterProtocol(uint32_t u32AddrProtocol);
+void ETH_MAC_SetIpv4DestAddrFilterVal(uint32_t u32Addr);
+void ETH_MAC_SetIpv4SrcAddrFilterVal(uint32_t u32Addr);
+en_result_t ETH_MAC_SetIpv6AddrFilterVal(const uint32_t au32Addr[]);
 
 /* DMA Functions */
 void ETH_DMA_DeInit(void);

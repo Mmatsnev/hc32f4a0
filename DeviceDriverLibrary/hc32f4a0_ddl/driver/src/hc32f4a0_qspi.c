@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-07-15       Wuze            Refined QSPI_WriteData().
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -386,7 +387,7 @@ en_result_t QSPI_WriteData(uint32_t u32Instr, uint32_t u32Address, \
             WRITE_REG32(M4_QSPI->DCOM, pu8Src[i]);
         }
         /* Exit direct communication mode. */
-        CLEAR_REG32_BIT(M4_QSPI->CR, QSPI_CR_DCOME);
+        QSPI_ExitDirectCommMode();
 
         enRet = Ok;
     }

@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-15       Hongjh          Replace DAC_ChannelCmd by DAC_Start
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -261,7 +262,7 @@ static void DacConfig(void)
     DAC_DataRegAlignConfig(DAC_UNIT, DAC_DATA_ALIGN_R);
 
     /* Enable DAC */
-    DAC_ChannelCmd(DAC_UNIT, DAC_CH, Enable);
+    DAC_Start(DAC_UNIT, DAC_CH);
 }
 
 /**

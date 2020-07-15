@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-07-03       Zhangxl         Delay ms before HCLK switches to XTAL32
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -74,6 +75,8 @@
 #define MCO_PORT        (GPIO_PORT_A)
 #define MCO_PIN         (GPIO_PIN_08)
 
+#define DLY_MS          (100UL)
+
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
  ******************************************************************************/
@@ -131,7 +134,7 @@ static void Peripheral_WP(void)
     /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
-    PWC_FCG0_Lock();
+//    PWC_FCG0_Lock();
     /* Lock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
 //    PWC_Lock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1);
     /* Lock SRAM register: WTCR */
@@ -284,6 +287,7 @@ int32_t main(void)
         if (Set == BSP_KEY_GetStatus(BSP_KEY_5))
         {
             CLK_Xtal32Cmd(Enable);
+            DDL_DelayMS(DLY_MS);
             CLK_SetSysClkSrc(CLK_SYSCLKSOURCE_XTAL32);
         }
         /* PLLH output */

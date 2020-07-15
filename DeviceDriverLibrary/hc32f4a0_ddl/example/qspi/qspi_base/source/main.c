@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-07-15       Wuze            Refined this sample.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -70,7 +71,6 @@
  * Local type definitions ('typedef')
  ******************************************************************************/
 
-
 /*******************************************************************************
  * Local pre-processor symbols/macros ('#define')
  ******************************************************************************/
@@ -85,9 +85,9 @@
  *     QSPI_READ_FAST_READ_QUAD_OUTPUT  |     W25Q64_FAST_READ_QUAD_OUTPUT  |             8
  *     QSPI_READ_FAST_READ_QUAD_IO      |     W25Q64_FAST_READ_QUAD_IO      |             6
  */
-#define APP_QSPI_READ_MODE                  (QSPI_READ_FAST_READ_DUAL_IO)
-#define APP_W25Q64_READ_INSTR               (W25Q64_FAST_READ_DUAL_IO)
-#define APP_W25Q64_READ_INSTR_DUMMY_CYCLES  (4U)
+#define APP_QSPI_READ_MODE                  (QSPI_READ_FAST_READ_DUAL_OUTPUT)
+#define APP_W25Q64_READ_INSTR               (W25Q64_FAST_READ_DUAL_OUTPUT)
+#define APP_W25Q64_READ_INSTR_DUMMY_CYCLES  (8U)
 
 /* Pin definitions. */
 #define QSPI_CS_PORT                (GPIO_PORT_C)
@@ -143,7 +143,7 @@ static void QspiPinConfig(void);
 static void QspiInitConfig(void);
 
 /* Some API for W25Q64 */
-void W25Q64_GetUniqueID(uint8_t pu8ID[], uint32_t u32IDSize);
+void W25Q64_GetUniqueID(void);
 void W25Q64_WriteEnable(void);
 void W25Q64_WriteDisable(void);
 
@@ -154,10 +154,15 @@ en_result_t W25Q64_EraseBlock(uint8_t u8EraseBlockInstr, uint32_t u32BlockAddres
 en_result_t W25Q64_WriteData(uint32_t u32Address, const uint8_t pu8WriteBuf[], uint32_t u32NumByteToWrite);
 void W25Q64_ReadData(uint32_t u32Address, uint8_t pu8ReadBuf[], uint32_t u32NumByteToRead);
 
+void W25Q64_ReadAndVerify(uint32_t u32Address, uint8_t pu8ReadBuf[], uint32_t u32NumByteToRead);
+
+en_result_t W25Q64_ReadRegister(uint8_t u8Instr, uint8_t au8RegData[], uint8_t u8Length);
 void W25Q64_WriteCommand(uint8_t u8Instr, uint8_t pu8InstrData[], uint32_t u32InstrDataSize);
 en_result_t W25Q64_CheckProcessDone(void);
 
-/* Some function for testing. */
+void W25Q64_Config(void);
+
+/* Functions for testing. */
 static void AppLoadData(void);
 static void AppClearData(void);
 static uint8_t AppCheckPageProgram(void);
@@ -179,8 +184,6 @@ uint8_t m_au8ReadData[APP_TEST_DATA_SIZE];
  */
 int32_t main(void)
 {
-    uint32_t i;
-
     /* MCU Peripheral registers write unprotected. */
     Peripheral_WE();
     /* Configures the PLLHP(240MHz) as the system clock. */
@@ -192,49 +195,37 @@ int32_t main(void)
     QspiConfig();
     /* MCU Peripheral registers write protected. */
     Peripheral_WP();
+    /*
+     * Some QSPI flashes maybe need set QE(Quad Enable) bit and set driver strength as highest to support quad I/O protocol.
+     * It is NOT needed by W25Q64 on the board.
+     */
+    /* W25Q64_Config(); */
 
-    AppLoadData();
+    DBG("W25Q64 testing start====>>.\n");
+    W25Q64_GetUniqueID();
 
     while (1)
     {
-        DBG("W25Q64 read unique ID......\n");
-        W25Q64_GetUniqueID(m_au8ReadData, W25Q64_UNIQUE_ID_SIZE);
-        DBG("W25Q64 unique ID:\n");
-        for (i = 0UL; i < W25Q64_UNIQUE_ID_SIZE; i++)
-        {
-            DBG("0x%.2x ", m_au8ReadData[i]);
-        }
-        DBG("\n");
+        /* Read data with initialized mode. */
+        DBG("Read data with initialized mode.\n");
+        W25Q64_ReadData(APP_TEST_ADDRESS, m_au8ReadData, APP_TEST_DATA_SIZE);
 
-
-        DBG("W25Q64 erase sector test......\n");
-        AppClearData();
-
-        if (W25Q64_EraseSector(APP_TEST_ADDRESS) == Ok)
-        {
-            W25Q64_ReadData(APP_TEST_ADDRESS, m_au8ReadData, APP_TEST_DATA_SIZE);
-        }
-        else
-        {
-            DBG("W25Q64 erase sector timeout. Extend timeout value in function W25Q64_CheckProcessDone and try again.\n");
-            while (1U);
-        }
-        if (AppCheckErase(APP_TEST_DATA_SIZE) == 0U)
-        {
-            DBG("W25Q64 erase sector test successfully.\n");
-        }
-        else
-        {
-            DBG("--->F W25Q64 erase sector test failed.\n");
-            while (1U);
-        }
-
-
-        DBG("W25Q64 page program test......\n");
+        DBG("W25Q64 page program......\n");
         AppClearData();
         /* Erase sector before write data. The erase address is the start address of the sector. */
         if (W25Q64_EraseSector(APP_TEST_ADDRESS) == Ok)
         {
+            W25Q64_ReadData(APP_TEST_ADDRESS, m_au8ReadData, APP_TEST_DATA_SIZE);
+            if (AppCheckErase(APP_TEST_DATA_SIZE) == Ok)
+            {
+                DBG("W25Q64 erase sector successfully.\n");
+            }
+            else
+            {
+                DBG("--->F W25Q64 erase sector failed.\n");
+                while (1U);
+            }
+            AppLoadData();
             W25Q64_WriteData(APP_TEST_ADDRESS, m_au8WriteData, APP_TEST_DATA_SIZE);
         }
         else
@@ -242,34 +233,11 @@ int32_t main(void)
             DBG("W25Q64 write timeout. Extend timeout value in function W25Q64_CheckProcessDone and try again.\n");
             while (1U);
         }
-        W25Q64_ReadData(APP_TEST_ADDRESS, m_au8ReadData, APP_TEST_DATA_SIZE);
-        if (AppCheckPageProgram() == 0U)
-        {
-            DBG("W25Q64 page program test successfully.\n");
-        }
-        else
-        {
-            DBG("--->F W25Q64 page program test failed.\n");
-            while (1U);
-        }
+        DBG("W25Q64 page program done.\n");
 
-
-        /* Change read mode. */
-        QSPI_SetReadMode(QSPI_READ_FAST_READ_QUAD_IO, W25Q64_FAST_READ_QUAD_IO, 6UL);
-        QSPI_ReadData(APP_TEST_ADDRESS, m_au8ReadData, APP_TEST_DATA_SIZE);
-        if (AppCheckPageProgram() == 0U)
-        {
-            DBG("++++W25Q64 page program test successfully.\n");
-        }
-        else
-        {
-            DBG("++++--->F W25Q64 page program test failed.\n");
-            while (1U);
-        }
-
-
-        /* Resume to initial mode */
-        QSPI_SetReadMode(APP_QSPI_READ_MODE, APP_W25Q64_READ_INSTR, APP_W25Q64_READ_INSTR_DUMMY_CYCLES);
+        /* Page program verification. */
+        DBG("W25Q64 page program verification.\n");
+        W25Q64_ReadAndVerify(APP_TEST_ADDRESS, m_au8ReadData, APP_TEST_DATA_SIZE);
     }
 }
 
@@ -284,7 +252,7 @@ static void Peripheral_WE(void)
     /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
-    // PWC_FCG0_Unlock();
+    PWC_FCG0_Unlock();
     /* Unlock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Unlock(PWC_UNLOCK_CODE_0);
     /* Unlock SRAM register: WTCR */
@@ -310,7 +278,7 @@ static void Peripheral_WP(void)
     /* Lock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Lock();
     /* Lock PWC register: FCG0 */
-    // PWC_FCG0_Lock();
+    PWC_FCG0_Lock();
     /* Lock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Lock(PWC_UNLOCK_CODE_0);
     /* Lock SRAM register: WTCR */
@@ -386,8 +354,8 @@ static void SystemClockConfig(void)
  */
 static void QspiConfig(void)
 {
-    QspiPinConfig();
     QspiInitConfig();
+    QspiPinConfig();
 }
 
 /**
@@ -397,6 +365,12 @@ static void QspiConfig(void)
  */
 static void QspiPinConfig(void)
 {
+    stc_gpio_init_t stcGpioInit;
+    GPIO_StructInit(&stcGpioInit);
+    stcGpioInit.u16PullUp = PIN_PU_ON;
+    stcGpioInit.u16PinDrv = PIN_DRV_HIGH;
+    GPIO_Init(GPIO_PORT_B, QSPI_IO0_PIN|QSPI_IO1_PIN|QSPI_IO2_PIN|QSPI_IO3_PIN, &stcGpioInit);
+
     GPIO_SetFunc(QSPI_CS_PORT, QSPI_CS_PIN, \
                  QSPI_PIN_FUNC, PIN_SUBFUNC_DISABLE);
     GPIO_SetFunc(QSPI_SCK_PORT, QSPI_SCK_PIN, \
@@ -487,30 +461,96 @@ en_result_t W25Q64_CheckProcessDone(void)
 }
 
 /**
- * @brief  Get the UID of W25Q64.
- * @param  [in]  pu8ID                  Pointer to an array which is used to store the UID.
- * @param  [in]  u32IDSize              Size of pu8ID.
+ * @brief  W25Q64 read register.
+ * @param  [in]  u8Instr                W25Q64 instruction.
+ * @param  [in]  au8RegData             Pointer to an array which is used to store register data.
+ * @param  [in]  u8Length               Size of register data.
  * @retval None
  */
-void W25Q64_GetUniqueID(uint8_t pu8ID[], uint32_t u32IDSize)
+en_result_t W25Q64_ReadRegister(uint8_t u8Instr, uint8_t au8RegData[], uint8_t u8Length)
 {
+    uint8_t i;
+    en_result_t enRet = ErrorInvalidParameter;
+
+    if ((au8RegData != NULL) && (u8Length != 0U))
+    {
+        QSPI_EnterDirectCommMode();
+        QSPI_WriteDirectCommValue(u8Instr);
+        for (i=0U; i<u8Length; i++)
+        {
+            au8RegData[i] = QSPI_ReadDirectCommValue();
+        }
+        QSPI_ExitDirectCommMode();
+        enRet = Ok;
+    }
+
+    return enRet;
+}
+
+/**
+ * @brief  W25Q64 Configuration. May be needed by some chip.
+ *         Some QSPI flash maybe needs set QE(Quad Enable) bit and set driver strength as highest to support quad I/O protocol.
+ * @param  None
+ * @retval None
+ * @note   Different manufacturers maybe different instructions, different configuration values and different configuration flows.
+ */
+void W25Q64_Config(void)
+{
+    uint8_t au8RegData[4U];
+
+    W25Q64_ReadRegister(W25Q64_READ_STATUS_REGISTER_1, au8RegData, 1U);
+    W25Q64_ReadRegister(W25Q64_READ_STATUS_REGISTER_2, &au8RegData[1U], 1U);
+    W25Q64_ReadRegister(W25Q64_READ_STATUS_REGISTER_3, &au8RegData[2U], 1U);
+
+    au8RegData[0U] = 0x00U;
+    au8RegData[1U] = 0x02U;
+    au8RegData[2U] = 0x60U;
+
+    W25Q64_WriteEnable();
+    W25Q64_WriteCommand(W25Q64_WRITE_STATUS_REGISTER_1, au8RegData, 1U);
+    W25Q64_CheckProcessDone();
+    W25Q64_WriteEnable();
+    W25Q64_WriteCommand(W25Q64_WRITE_STATUS_REGISTER_2, &au8RegData[1U], 1U);
+    W25Q64_CheckProcessDone();
+    W25Q64_WriteEnable();
+    W25Q64_WriteCommand(W25Q64_WRITE_STATUS_REGISTER_3, &au8RegData[2U], 1U);
+    W25Q64_CheckProcessDone();
+}
+
+/**
+ * @brief  Get the UID of W25Q64.
+ * @param  None
+ * @retval None
+ */
+void W25Q64_GetUniqueID(void)
+{
+    uint8_t au8ID[W25Q64_UNIQUE_ID_SIZE];
     uint32_t i;
 
     QSPI_EnterDirectCommMode();
     QSPI_WriteDirectCommValue(W25Q64_READ_UNIQUE_ID);
 
     /* Four dummy bytes. */
-    for (i=0U; i<4U; i++)
+    for (i=0UL; i<4UL; i++)
     {
         QSPI_WriteDirectCommValue(0xFFU);
     }
 
-    for (i=0U; i<u32IDSize; i++)
+    for (i=0UL; i<W25Q64_UNIQUE_ID_SIZE; i++)
     {
-        pu8ID[i] = QSPI_ReadDirectCommValue();
+        au8ID[i] = QSPI_ReadDirectCommValue();
     }
 
     QSPI_ExitDirectCommMode();
+
+#ifdef __DEBUG
+    DBG("W25Q64 unique ID:\n");
+    for (i=0UL; i<W25Q64_UNIQUE_ID_SIZE; i++)
+    {
+        DBG("0x%.2x ", au8ID[i]);
+    }
+    DBG("\n");
+#endif
 }
 
 /**
@@ -635,7 +675,81 @@ en_result_t W25Q64_WriteData(uint32_t u32Address, const uint8_t pu8WriteBuf[], u
  */
 void W25Q64_ReadData(uint32_t u32Address, uint8_t pu8ReadBuf[], uint32_t u32NumByteToRead)
 {
+    QSPI_SetReadMode(APP_QSPI_READ_MODE, APP_W25Q64_READ_INSTR, APP_W25Q64_READ_INSTR_DUMMY_CYCLES);
     QSPI_ReadData(u32Address, pu8ReadBuf, u32NumByteToRead);
+}
+
+/**
+ * @brief  W25Q64 read and verify.
+ * @param  [in]  u32Address             Target address.
+ * @param  [in]  pu8ReadBuf             Destination data buffer.
+ * @param  [in]  u32NumByteToRead       Number of byte to be read.
+ * @retval None
+ */
+void W25Q64_ReadAndVerify(uint32_t u32Address, uint8_t pu8ReadBuf[], uint32_t u32NumByteToRead)
+{
+#ifdef __DEBUG
+    typedef struct
+    {
+        uint32_t u32QSPIReadMode;
+        uint8_t u8W25Q64Instr;
+        uint32_t u32DummyCycle;
+    } stc_read_cmd_t;
+
+    /* Read mode count. */
+    #define APP_READ_MODE_COUNT                 (6U)
+
+    /* Read command for this example. */
+    stc_read_cmd_t m_stcReadCmd[APP_READ_MODE_COUNT] = \
+    {
+        {QSPI_READ_STANDARD_READ ,        W25Q64_READ_DATA,             3U},
+        {QSPI_READ_FAST_READ,             W25Q64_FAST_READ,             8U},
+        {QSPI_READ_FAST_READ_DUAL_OUTPUT, W25Q64_FAST_READ_DUAL_OUTPUT, 8U},
+        {QSPI_READ_FAST_READ_DUAL_IO,     W25Q64_FAST_READ_DUAL_IO,     4U},
+        {QSPI_READ_FAST_READ_QUAD_OUTPUT, W25Q64_FAST_READ_QUAD_OUTPUT, 8U},
+        {QSPI_READ_FAST_READ_QUAD_IO,     W25Q64_FAST_READ_QUAD_IO,     6U},
+    };
+
+    /* Read command logs. */
+    const static char *m_s8ReadCmdLog[] = \
+    {
+        "QSPI Standard Read",
+        "QSPI Fast Read",
+        "QSPI Fast Read Dual Output",
+        "QSPI Fast Read Dual IO",
+        "QSPI Fast Read Quad Output",
+        "QSPI Fast Read Quad IO",
+    };
+    uint8_t i;
+    for (i=0U; i<APP_READ_MODE_COUNT; i++)
+    {
+        QSPI_SetReadMode(m_stcReadCmd[i].u32QSPIReadMode, \
+                         m_stcReadCmd[i].u8W25Q64Instr,   \
+                         m_stcReadCmd[i].u32DummyCycle);
+        QSPI_ReadData(u32Address, pu8ReadBuf, u32NumByteToRead);
+        if (AppCheckPageProgram() == Ok)
+        {
+            DBG("Verify with \"%s\" OK.\n", m_s8ReadCmdLog[i]);
+        }
+        else
+        {
+            DBG("--->F Verify with \"%s\" failed.\n", m_s8ReadCmdLog[i]);
+            while (1U);
+        }
+    }
+    /* Resume initialization read mode. */
+    QSPI_SetReadMode(APP_QSPI_READ_MODE, APP_W25Q64_READ_INSTR, APP_W25Q64_READ_INSTR_DUMMY_CYCLES);
+#else
+    W25Q64_ReadData(u32Address, pu8ReadBuf, u32NumByteToRead);
+    if (AppCheckPageProgram() == Ok)
+    {
+        DBG("Verify OK.\n");
+    }
+    else
+    {
+        DBG("--->F Verify failed.\n");
+    }
+#endif
 }
 
 /**
@@ -646,9 +760,11 @@ void W25Q64_ReadData(uint32_t u32Address, uint8_t pu8ReadBuf[], uint32_t u32NumB
 static void AppLoadData(void)
 {
     uint32_t i;
+    static uint32_t u32Start = 0U;
+    u32Start++;
     for (i=0UL; i<APP_TEST_DATA_SIZE; i++)
     {
-        m_au8WriteData[i] = (uint8_t)i;
+        m_au8WriteData[i] = (uint8_t)(u32Start + i);
     }
 }
 
@@ -668,11 +784,11 @@ static uint8_t AppCheckPageProgram(void)
     {
         if (m_au8ReadData[i] != m_au8WriteData[i])
         {
-            return 1U;
+            return Error;
         }
     }
 
-    return 0U;
+    return Ok;
 }
 
 static uint8_t AppCheckErase(uint32_t u32Szie)
@@ -682,11 +798,11 @@ static uint8_t AppCheckErase(uint32_t u32Szie)
     {
         if (m_au8ReadData[i] != 0xFFU)
         {
-            return 1U;
+            return Error;
         }
     }
 
-    return 0U;
+    return Ok;
 }
 
 /**

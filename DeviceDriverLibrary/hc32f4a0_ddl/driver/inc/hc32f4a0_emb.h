@@ -7,6 +7,9 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-07       Hongjh          1. Modify structure member comments for 
+                                       stc_emb_monitor_port_t/stc_emb_monitor_tmr_pwm_t
+                                    2. Replace the word Timer with TMR abbreviation
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -91,13 +94,13 @@ extern "C"
 typedef struct
 {
     uint32_t    u32PortSel;         /*!< Enable or disable EMB detect port in control function
-                                         This parameter can be a value of EMB_Port_EMBINx_Selection(x=1~4) */
+                                         This parameter can be a value of EMB_Portx_Selection(x=1~4) */
 
     uint32_t    u32PortLevel;       /*!< EMB detect port level
                                          This parameter can be a value of EMB_Detect_Portx_Level(x=1~4) */
 
     uint32_t    u32PortFilterDiv;   /*!< EMB port filter division
-                                         This parameter can be a value of EMB_Port_EMBINx_Filter_Clock_Division(x=1~4) */
+                                         This parameter can be a value of EMB_Portx_Filter_Clock_Division(x=1~4) */
 } stc_emb_monitor_port_t;
 
 /**
@@ -105,17 +108,17 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t    u32PwmSel;      /*!< Enable or disable EMB detect Timer4/6 PWM x channel same phase function
-                                     This parameter can be a value of EMB_Timer4_PWM_x_Selection(x=U/V/W) or
-                                     EMB_Timer6_x_PWM_Selection(x=1~8) */
+    uint32_t    u32PwmSel;      /*!< Enable or disable EMB detect TMR4/6 PWM x channel same phase function
+                                     This parameter can be a value of EMB_TMR4_PWM_x_Selection(x=U/V/W) or
+                                     EMB_TMR6_x_PWM_Selection(x=1~8) */
 
-    uint32_t    u32PwmLevel;    /*!< Detect Timer4/6 PWM x channel polarity level
-                                     This parameter can be a value of EMB_Detect_Timer4_PWM_x_Level(x=U/V/W) or 
-                                     EMB_Detect_Timer6_x_PWM_Level(x=1~8) */
+    uint32_t    u32PwmLevel;    /*!< Detect TMR4/6 PWM x channel polarity level
+                                     This parameter can be a value of EMB_Detect_TMR4_PWM_x_Level(x=U/V/W) or 
+                                     EMB_Detect_TMR6_x_PWM_Level(x=1~8) */
 } stc_emb_monitor_tmr_pwm_t;
 
 /**
- * @brief EMB control Timer4 initialization configuration
+ * @brief EMB control TMR4 initialization configuration
  */
 typedef struct
 {
@@ -146,18 +149,18 @@ typedef struct
     stc_emb_monitor_port_t      stcPort4;       /*!< EMB detect port EMBIN1 function
                                                      This parameter details refer @ref stc_emb_monitor_port_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr4PwmU;    /*!< EMB detect Timer4 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr4PwmU;    /*!< EMB detect TMR4 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr4PwmV;    /*!< EMB detect Timer4 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr4PwmV;    /*!< EMB detect TMR4 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr4PwmW;    /*!< EMB detect Timer4 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr4PwmW;    /*!< EMB detect TMR4 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 } stc_emb_tmr4_init_t;
 
 /**
- * @brief EMB control Timer6 initialization configuration
+ * @brief EMB control TMR6 initialization configuration
  */
 typedef struct
 {
@@ -188,28 +191,28 @@ typedef struct
     stc_emb_monitor_port_t      stcPort4;       /*!< EMB detect port EMBIN1 function
                                                      This parameter details refer @ref stc_emb_monitor_port_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_1;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_1;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_2;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_2;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_3;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_3;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_4;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_4;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_5;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_5;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_6;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_6;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_7;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_7;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 
-    stc_emb_monitor_tmr_pwm_t   stcTmr6_8;      /*!< EMB detect Timer6 function
+    stc_emb_monitor_tmr_pwm_t   stcTmr6_8;      /*!< EMB detect TMR6 function
                                                      This parameter details refer @ref stc_emb_monitor_tmr_pwm_t structure */
 } stc_emb_tmr6_init_t;
 
@@ -229,8 +232,8 @@ typedef struct
  * @defgroup EMB_CMP1_Selection EMB CMP1 Selection
  * @{
  */
-#define EMB_CMP1_ENABLE                     (EMB_CTL1_CMPEN_0)
 #define EMB_CMP1_DISABLE                    (0UL)
+#define EMB_CMP1_ENABLE                     (EMB_CTL1_CMPEN_0)
 /**
  * @}
  */
@@ -239,8 +242,8 @@ typedef struct
  * @defgroup EMB_CMP2_Selection EMB CMP2 Selection
  * @{
  */
-#define EMB_CMP2_ENABLE                     (EMB_CTL1_CMPEN_1)
 #define EMB_CMP2_DISABLE                    (0UL)
+#define EMB_CMP2_ENABLE                     (EMB_CTL1_CMPEN_1)
 /**
  * @}
  */
@@ -249,8 +252,8 @@ typedef struct
  * @defgroup EMB_CMP3_Selection EMB CMP3 Selection
  * @{
  */
-#define EMB_CMP3_ENABLE                     (EMB_CTL1_CMPEN_2)
 #define EMB_CMP3_DISABLE                    (0UL)
+#define EMB_CMP3_ENABLE                     (EMB_CTL1_CMPEN_2)
 /**
  * @}
  */
@@ -259,8 +262,8 @@ typedef struct
  * @defgroup EMB_CMP4_Selection EMB CMP4 Selection
  * @{
  */
-#define EMB_CMP4_ENABLE                     (EMB_CTL1_CMPEN_3)
 #define EMB_CMP4_DISABLE                    (0UL)
+#define EMB_CMP4_ENABLE                     (EMB_CTL1_CMPEN_3)
 /**
  * @}
  */
@@ -269,118 +272,118 @@ typedef struct
  * @defgroup EMB_OSC_Stop_Selection EMB OSC Stop Selection
  * @{
  */
-#define EMB_OSC_ENABLE                      (EMB_CTL1_OSCSTPEN)
 #define EMB_OSC_DISABLE                     (0UL)
+#define EMB_OSC_ENABLE                      (EMB_CTL1_OSCSTPEN)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer4_PWM_W_Selection EMB Timer4 PWM W Selection
+ * @defgroup EMB_TMR4_PWM_W_Selection EMB TMR4 PWM W Selection
  * @{
  */
-#define EMB_TMR4_PWM_W_ENABLE               (EMB_CTL1_PWMSEN_0)
 #define EMB_TMR4_PWM_W_DISABLE              (0UL)
+#define EMB_TMR4_PWM_W_ENABLE               (EMB_CTL1_PWMSEN_0)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer4_PWM_V_Selection EMB Timer4 PWM V Selection
+ * @defgroup EMB_TMR4_PWM_V_Selection EMB TMR4 PWM V Selection
  * @{
  */
-#define EMB_TMR4_PWM_V_ENABLE               (EMB_CTL1_PWMSEN_1)
 #define EMB_TMR4_PWM_V_DISABLE              (0UL)
+#define EMB_TMR4_PWM_V_ENABLE               (EMB_CTL1_PWMSEN_1)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer4_PWM_U_Selection EMB Timer4 PWM U Selection
+ * @defgroup EMB_TMR4_PWM_U_Selection EMB TMR4 PWM U Selection
  * @{
  */
-#define EMB_TMR4_PWM_U_ENABLE               (EMB_CTL1_PWMSEN_2)
 #define EMB_TMR4_PWM_U_DISABLE              (0UL)
+#define EMB_TMR4_PWM_U_ENABLE               (EMB_CTL1_PWMSEN_2)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_1_PWM_Selection EMB_Timer6_1_PWM Selection
+ * @defgroup EMB_TMR6_1_PWM_Selection EMB TMR6_1 PWM Selection
  * @{
  */
-#define EMB_TMR6_1_PWM_ENABLE               (EMB_CTL1_PWMSEN_0)
 #define EMB_TMR6_1_PWM_DISABLE              (0UL)
+#define EMB_TMR6_1_PWM_ENABLE               (EMB_CTL1_PWMSEN_0)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_2_PWM_Selection EMB_Timer6_2_PWM Selection
+ * @defgroup EMB_TMR6_2_PWM_Selection EMB TMR6_2 PWM Selection
  * @{
  */
-#define EMB_TMR6_2_PWM_ENABLE               (EMB_CTL1_PWMSEN_1)
 #define EMB_TMR6_2_PWM_DISABLE              (0UL)
+#define EMB_TMR6_2_PWM_ENABLE               (EMB_CTL1_PWMSEN_1)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_3_PWM_Selection EMB_Timer6_3_PWM Selection
+ * @defgroup EMB_TMR6_3_PWM_Selection EMB TMR6_3 PWM Selection
  * @{
  */
-#define EMB_TMR6_3_PWM_ENABLE               (EMB_CTL1_PWMSEN_2)
 #define EMB_TMR6_3_PWM_DISABLE              (0UL)
+#define EMB_TMR6_3_PWM_ENABLE               (EMB_CTL1_PWMSEN_2)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_4_PWM_Selection EMB_Timer6_4_PWM Selection
+ * @defgroup EMB_TMR6_4_PWM_Selection EMB TMR6_4 PWM Selection
  * @{
  */
-#define EMB_TMR6_4_PWM_ENABLE               (EMB_CTL1_PWMSEN_3)
 #define EMB_TMR6_4_PWM_DISABLE              (0UL)
+#define EMB_TMR6_4_PWM_ENABLE               (EMB_CTL1_PWMSEN_3)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_5_PWM_Selection EMB_Timer6_5_PWM Selection
+ * @defgroup EMB_TMR6_5_PWM_Selection EMB TMR6_5 PWM Selection
  * @{
  */
-#define EMB_TMR6_5_PWM_ENABLE               (EMB_CTL1_PWMSEN_4)
 #define EMB_TMR6_5_PWM_DISABLE              (0UL)
+#define EMB_TMR6_5_PWM_ENABLE               (EMB_CTL1_PWMSEN_4)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_6_PWM_Selection EMB_Timer6_6_PWM Selection
+ * @defgroup EMB_TMR6_6_PWM_Selection EMB TMR6_6 PWM Selection
  * @{
  */
-#define EMB_TMR6_6_PWM_ENABLE               (EMB_CTL1_PWMSEN_5)
 #define EMB_TMR6_6_PWM_DISABLE              (0UL)
+#define EMB_TMR6_6_PWM_ENABLE               (EMB_CTL1_PWMSEN_5)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_7_PWM_Selection EMB_Timer6_7_PWM Selection
+ * @defgroup EMB_TMR6_7_PWM_Selection EMB TMR6_7 PWM Selection
  * @{
  */
-#define EMB_TMR6_7_PWM_ENABLE               (EMB_CTL1_PWMSEN_6)
 #define EMB_TMR6_7_PWM_DISABLE              (0UL)
+#define EMB_TMR6_7_PWM_ENABLE               (EMB_CTL1_PWMSEN_6)
 /**
  * @}
  */
 
 /**
- * @defgroup EMB_Timer6_8_PWM_Selection EMB_Timer6_8_PWM Selection
+ * @defgroup EMB_TMR6_8_PWM_Selection EMB TMR6_8 PWM Selection
  * @{
  */
-#define EMB_TMR6_8_PWM_ENABLE               (EMB_CTL1_PWMSEN_7)
 #define EMB_TMR6_8_PWM_DISABLE              (0UL)
+#define EMB_TMR6_8_PWM_ENABLE               (EMB_CTL1_PWMSEN_7)
 /**
  * @}
  */
@@ -466,7 +469,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer4_PWM_W_Level EMB Detect Timer4 PWM W Level
+ * @defgroup EMB_Detect_TMR4_PWM_W_Level EMB Detect TMR4 PWM W Level
  * @{
  */
 #define EMB_DETECT_TMR4_PWM_W_BOTH_LOW      (0UL)
@@ -476,7 +479,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer4_PWM_V_Level EMB Detect Timer4 PWM V Level
+ * @defgroup EMB_Detect_TMR4_PWM_V_Level EMB Detect TMR4 PWM V Level
  * @{
  */
 #define EMB_DETECT_TMR4_PWM_V_BOTH_LOW      (0UL)
@@ -485,7 +488,7 @@ typedef struct
  * @}
  */
 /**
- * @defgroup EMB_Detect_Timer4_PWM_U_Level EMB Detect Timer4 PWM U Level
+ * @defgroup EMB_Detect_TMR4_PWM_U_Level EMB Detect TMR4 PWM U Level
  * @{
  */
 #define EMB_DETECT_TMR4_PWM_U_BOTH_LOW      (0UL)
@@ -495,7 +498,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_1_PWM_Level EMB Detect Timer6_1 PWM Level
+ * @defgroup EMB_Detect_TMR6_1_PWM_Level EMB Detect TMR6_1 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_1_PWM_BOTH_LOW      (0UL)
@@ -505,7 +508,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_2_PWM_Level EMB Detect Timer6_2 PWM Level
+ * @defgroup EMB_Detect_TMR6_2_PWM_Level EMB Detect TMR6_2 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_2_PWM_BOTH_LOW      (0UL)
@@ -515,7 +518,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_3_PWM_Level EMB Detect Timer6_3 PWM Level
+ * @defgroup EMB_Detect_TMR6_3_PWM_Level EMB Detect TMR6_3 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_3_PWM_BOTH_LOW      (0UL)
@@ -525,7 +528,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_4_PWM_Level EMB Detect Timer6_4 PWM Level
+ * @defgroup EMB_Detect_TMR6_4_PWM_Level EMB Detect TMR6_4 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_4_PWM_BOTH_LOW      (0UL)
@@ -535,7 +538,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_5_PWM_Level EMB Detect Timer6_5 PWM Level
+ * @defgroup EMB_Detect_TMR6_5_PWM_Level EMB Detect TMR6_5 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_5_PWM_BOTH_LOW      (0UL)
@@ -545,7 +548,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_6_PWM_Level EMB Detect Timer6_6 PWM Level
+ * @defgroup EMB_Detect_TMR6_6_PWM_Level EMB Detect TMR6_6 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_6_PWM_BOTH_LOW      (0UL)
@@ -555,7 +558,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_7_PWM_Level EMB Detect Timer6_7 PWM Level
+ * @defgroup EMB_Detect_TMR6_7_PWM_Level EMB Detect TMR6_7 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_7_PWM_BOTH_LOW      (0UL)
@@ -565,7 +568,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Detect_Timer6_8_PWM_Level EMB Detect Timer6_8 PWM Level
+ * @defgroup EMB_Detect_TMR6_8_PWM_Level EMB Detect TMR6_8 PWM Level
  * @{
  */
 #define EMB_DETECT_TMR6_8_PWM_BOTH_LOW      (0UL)
@@ -668,7 +671,7 @@ typedef struct
  */
 
 /**
- * @defgroup EMB_Release_Timer_PWM_Selection EMB Release Timer PWM Selection
+ * @defgroup EMB_Release_TMR_PWM_Selection EMB Release TMR PWM Selection
  * @{
  */
 #define EMB_RELEASE_PWM_SEL_FLAG_ZERO       (0UL)

@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-07-02       Wuze            API TMRA_SyncStartCmd() refine.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -151,6 +152,14 @@
     ((x) == M4_TMRA_9)                      ||                                 \
     ((x) == M4_TMRA_10)                     ||                                 \
     ((x) == M4_TMRA_11)                     ||                                 \
+    ((x) == M4_TMRA_12))
+
+#define IS_TMRA_EVEN_UNIT(x)                                                   \
+(   ((x) == M4_TMRA_2)                      ||                                 \
+    ((x) == M4_TMRA_4)                      ||                                 \
+    ((x) == M4_TMRA_6)                      ||                                 \
+    ((x) == M4_TMRA_8)                      ||                                 \
+    ((x) == M4_TMRA_10)                     ||                                 \
     ((x) == M4_TMRA_12))
 
 #define IS_TMRA_CH(x)                                                          \
@@ -997,20 +1006,28 @@ void TMRA_SetOvfOperation(M4_TMRA_TypeDef *TMRAx, uint32_t u32OvfOp)
 }
 
 /**
- * @brief  Enable or disable synchronous start.
+ * @brief  Enable or disable synchronous-start. When an even unit enables synchronous-start function, \
+ *         start the symmetric odd unit can start the even unit at the same time.
  * @param  [in]  TMRAx                  Pointer to TMRA instance register base.
  *                                      This parameter can be a value of the following:
- *   @arg  M4_TMRA_1 ~ M4_TMRA_12:      TMRA unit 1 ~ 12 instance register base.
+ *   @arg  M4_TMRA_2:                   TMRA unit 2 instance register base.
+ *   @arg  M4_TMRA_4:                   TMRA unit 4 instance register base.
+ *   @arg  M4_TMRA_6:                   TMRA unit 6 instance register base.
+ *   @arg  M4_TMRA_8:                   TMRA unit 8 instance register base.
+ *   @arg  M4_TMRA_10:                  TMRA unit 10 instance register base.
+ *   @arg  M4_TMRA_12:                  TMRA unit 12 instance register base.
  * @param  [in]  enNewState             An en_functional_state_t enumeration type value.
  *   @arg  Enable:                      Enable the synchronous start.
  *   @arg  Disable:                     Disable the synchronous start.
  * @retval None
+ * @note   Only even units can be enabled/disabled synchronous-start function.
+ * @note   Symmetric units: uint 1 and 2; uint 3 and 4; ...; uint 11 and 12.
  */
 void TMRA_SyncStartCmd(M4_TMRA_TypeDef *TMRAx, en_functional_state_t enNewState)
 {
     uint32_t u32Addr;
 
-    DDL_ASSERT(IS_TMRA_UNIT(TMRAx));
+    DDL_ASSERT(IS_TMRA_EVEN_UNIT(TMRAx));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     u32Addr = (uint32_t)&TMRAx->BCSTR;

@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-07-15       Hexiao          Modify I2C_SmBusCmd to I2C_SetMode
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -98,6 +99,10 @@
     ((x) == M4_I2C4)                               ||                          \
     ((x) == M4_I2C5)                               ||                          \
     ((x) == M4_I2C6))
+
+#define IS_VALID_MODE(x)                                                       \
+(   ((x) == I2C_MODE_I2C)                          ||                          \
+    ((x) == I2C_MODE_SMBUS))
 
 #define IS_VALID_CLEARBIT(x)       ((0U != (x)) && (0U == ((x) & (~I2C_CLR_MASK))))
 
@@ -501,6 +506,29 @@ void I2C_SetTxRxMode(M4_I2C_TypeDef* I2Cx, uint32_t u32TxRxMode)
 }
 
 /**
+ * @brief  Configure peripheral mode
+ * @param  [in] I2Cx   Pointer to the I2C peripheral register.
+ *         This parameter can be one of the following values:
+ *         @arg M4_I2C1
+ *         @arg M4_I2C2
+ *         @arg M4_I2C3
+ *         @arg M4_I2C4
+ *         @arg M4_I2C5
+ *         @arg M4_I2C6
+ * @param  [in] u32Mode This parameter can be one of the following values:
+ *         @arg I2C_MODE_I2C
+ *         @arg I2C_MODE_SMBUS
+ * @retval None
+ */
+void I2C_SetMode(M4_I2C_TypeDef* I2Cx, uint32_t u32Mode)
+{
+    DDL_ASSERT(IS_VALID_UNIT(I2Cx));
+    DDL_ASSERT(IS_VALID_MODE(u32Mode));
+
+    MODIFY_REG32(I2Cx->CR1, I2C_CR1_SMBUS, u32Mode);
+}
+
+/**
  * @brief  Enables or disables the specified I2C peripheral
  * @param  [in] I2Cx                Pointer to the I2C peripheral register.
  *         This parameter can be one of the following values:
@@ -714,28 +742,6 @@ void I2C_SmbusConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32SmbusConfig, en_functiona
     {
         CLEAR_REG32_BIT(I2Cx->CR1, u32SmbusConfig);
     }
-}
-
-/**
- * @brief  I2C SMBUS function command
- * @param  [in] I2Cx                 Pointer to the I2C peripheral register.
- *         This parameter can be one of the following values:
- *         @arg M4_I2C1
- *         @arg M4_I2C2
- *         @arg M4_I2C3
- *         @arg M4_I2C4
- *         @arg M4_I2C5
- *         @arg M4_I2C6
- * @param  [in] enNewState           New state of the I2Cx SMBUS match function,
- *                                   @ref en_functional_state_t
- * @retval None
- */
-void I2C_SmBusCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState)
-{
-    DDL_ASSERT(IS_VALID_UNIT(I2Cx));
-    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
-
-    MODIFY_REG32(I2Cx->CR1, I2C_CR1_SMBUS, (uint32_t)enNewState << I2C_CR1_SMBUS_POS);
 }
 
 /**

@@ -7,6 +7,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-07-02       Wuze            1. API ADC_SH_ChannelCmd() refine.
+                                    2. Some other optimizations.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -293,15 +295,12 @@
 #define IS_ADC3_DR_LENGTH(x)                                                   \
 (   ((x) >= ADC3_CH_COUNT))
 
-#define IS_ADC_SH_CH(x)                                                        \
-(   ((x) <= (ADC_CH0 | ADC_CH1 | ADC_CH2)))
-
 #define IS_ADC_1_BIT_MSK(x)                                                    \
-(   ((x) != 0U)                                 &&                             \
+(   ((x) != 0U)                             &&                                 \
     (((x) & ((x) - 1U)) == 0U))
 
 #define IS_ADC_BIT_MSK(x, msk)                                                 \
-(   ((x) != 0U)                                 &&                             \
+(   ((x) != 0U)                             &&                                 \
     (((x) | (msk)) == (msk)))
 
 /**
@@ -371,7 +370,7 @@ en_result_t ADC_Init(M4_ADC_TypeDef *ADCx, const stc_adc_init_t *pstcInit)
 
         /* Configures scan convert mode, resolution, data automatically clear command
            and data alignment. */
-        WRITE_REG16(ADCx->CR0,
+        WRITE_REG16(ADCx->CR0,                 \
                     (pstcInit->u16ScanMode   | \
                      pstcInit->u16Resolution | \
                      pstcInit->u16AutoClrCmd | \
@@ -1241,7 +1240,7 @@ void ADC_SYNC_Cmd(en_functional_state_t enNewState)
 }
 
 /**
- * @brief  Configures sample-hold. Specify the sample time of sample-hold.
+ * @brief  Configures sample-hold. Specifies the sample time of sample-hold.
  * @param  [in]  u8SplTime              Sample time(ADCLK cycles) for sample-hold. \
  *                                      It should be more than 0.4 microseconds.
  * @retval None
@@ -1265,13 +1264,17 @@ void ADC_SH_Config(uint8_t u8SplTime)
  */
 void ADC_SH_ChannelCmd(uint32_t u32AdcCh, en_functional_state_t enNewState)
 {
-    DDL_ASSERT(IS_ADC_SH_CH(u32AdcCh));
+    DDL_ASSERT(IS_ADC_BIT_MSK(u32AdcCh, ADC_CH0|ADC_CH1|ADC_CH2));
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     u32AdcCh <<= ADC_SHCR_SHSEL_POS;
-    CLEAR_REG16_BIT(M4_ADC1->SHCR, ADC_SH_CH_MSK);
     if (enNewState == Enable)
     {
         SET_REG16_BIT(M4_ADC1->SHCR, u32AdcCh);
+    }
+    else
+    {
+        CLEAR_REG16_BIT(M4_ADC1->SHCR, u32AdcCh);
     }
 }
 
@@ -1370,7 +1373,7 @@ uint8_t ADC_GetChannelPinNum(const M4_ADC_TypeDef *ADCx, uint32_t u32AdcCh)
  *   @arg  M4_ADC3:                     ADC unit 3 instance register base.
  * @param  [out]  pu16AdcVal            Pointer to an uint16_t type memory which the ADC values to be stored.
  *                                      The location of the value store depends on the parameter u8Length.
- *                                      u8Length >= ADCx_CH_CNT, all of the ADC data registers will be read:
+ *                                      u8Length >= ADCx_CH_COUNT, all of the ADC data registers will be read:
  *                                      pu16AdcVal[0] = value of Channel 0,
  *                                      pu16AdcVal[1] = value of Channel 1,
  *                                      pu16AdcVal[2] = value of Channel 2,
@@ -1500,7 +1503,7 @@ en_result_t ADC_GetAllData(const M4_ADC_TypeDef *ADCx, uint16_t pu16AdcVal[], ui
 
         if (u8Length > au8DrLen[u8AdcIdx])
         {
-            u8Length  = au8DrLen[u8AdcIdx];
+            u8Length = au8DrLen[u8AdcIdx];
         }
         u32DRAddr = (uint32_t)&ADCx->DR0;
         for (i=0U; i<u8Length; i++)

@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-15       Hongjh          Modify error parameter assert condition for 
+                                    the function TMR4_PWM_SetPclkDiv.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -2201,7 +2203,7 @@ void TMR4_PWM_SetPclkDiv(M4_TMR4_TypeDef *TMR4x,
     /* Check parameters */
     DDL_ASSERT(IS_VALID_TMR4_INSTANCE(TMR4x));
     DDL_ASSERT(IS_VALID_TMR4_PWM_CH(u32Ch));
-    DDL_ASSERT(IS_VALID_TMR4_CNT_PCLK_DIV(u16Div));
+    DDL_ASSERT(IS_VALID_TMR4_PWM_PCLK_DIV(u16Div));
 
     /* Get pointer of current channel PWM register address */
     TMR4_POCR = TMR4_POCRx(TMR4x, u32Ch);

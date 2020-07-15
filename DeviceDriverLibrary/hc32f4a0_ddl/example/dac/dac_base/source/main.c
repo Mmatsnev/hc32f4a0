@@ -6,6 +6,10 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-07-15       Hexiao          1. Replace DAC_ChannelCmd by DAC_Start and DAC_Stop
+                                    2. Replace DAC_DualChannelCmd by DAC_DualChannelStart
+                                       and DAC_DualChannelStop
+                                    3. function rename
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -303,7 +307,7 @@ static void DAC_PClkEnable(en_dac_unit enUnit)
  * @param    [in] enUnit  The selected DAC unit
  * @retval   A pointer of DAC handler
  */
-st_dac_handle_t* DAC_SingleChnInit(en_dac_unit enUnit)
+st_dac_handle_t* DAC_SingleConversionInit(en_dac_unit enUnit)
 {
     uint8_t u8Port;
     uint16_t u16Pin;
@@ -387,7 +391,7 @@ st_dac_handle_t* DAC_SingleChnInit(en_dac_unit enUnit)
  * @param    [in] enUnit  The selected DAC unit
  * @retval   A pointer of DAC handler
  */
-st_dac_handle_t* DAC_DualChnInit(en_dac_unit enUnit)
+st_dac_handle_t* DAC_DualConversionInit(en_dac_unit enUnit)
 {
     uint8_t u8Port;
     st_dac_handle_t* pDac = NULL;
@@ -459,7 +463,7 @@ st_dac_handle_t* DAC_DualChnInit(en_dac_unit enUnit)
  * @param    [in] pDac       A pointer of DAC handler
  * @retval   None
  */
-static void DAC_DualChnStart(const st_dac_handle_t* pDac)
+static void DAC_StartDualConversion(const st_dac_handle_t* pDac)
 {
     #ifdef SUPPORT_AMP
     /* Enalbe AMP */
@@ -467,8 +471,8 @@ static void DAC_DualChnStart(const st_dac_handle_t* pDac)
     DAC_AMPCmd(pDac->pUnit,DAC_CH_2,Enable);
     #endif
 
-    /* Enalbe Dual Channel */
-    DAC_DualChannelCmd(pDac->pUnit,Enable);
+    /* Start Dual Channel Conversion */
+    DAC_DualChannelStart(pDac->pUnit);
 
     #ifdef SUPPORT_AMP
     /* delay 3us before setting data*/
@@ -481,14 +485,14 @@ static void DAC_DualChnStart(const st_dac_handle_t* pDac)
  * @param    [in] pDac       A pointer of DAC handler
  * @retval   None
  */
-static void DAC_SingleChnStart(const st_dac_handle_t* pDac)
+static void DAC_StartSingleConversion(const st_dac_handle_t* pDac)
 {
     /* Enalbe AMP */
     #ifdef SUPPORT_AMP
     DAC_AMPCmd(pDac->pUnit,pDac->u16Ch,Enable);
     #endif
 
-    DAC_ChannelCmd(pDac->pUnit,pDac->u16Ch,Enable);
+    DAC_Start(pDac->pUnit,pDac->u16Ch);
 
     #ifdef SUPPORT_AMP
     /* delay 3us before setting data*/
@@ -503,7 +507,7 @@ static void DAC_SingleChnStart(const st_dac_handle_t* pDac)
  * @param    [in] u32count   Number of data table items
  * @retval   None
  */
-__STATIC_INLINE void DAC_SingleChnConvert(const st_dac_handle_t* pDac, uint32_t const pDataTable[],uint32_t u32count)
+__STATIC_INLINE void DAC_SetSingleConversionData(const st_dac_handle_t* pDac, uint32_t const pDataTable[],uint32_t u32count)
 {
     for(uint32_t i = 0U; i < u32count; i++)
     {
@@ -529,7 +533,7 @@ __STATIC_INLINE void DAC_SingleChnConvert(const st_dac_handle_t* pDac, uint32_t 
  * @param    [in] u32count   Number of data table items
  * @retval   None
  */
-__STATIC_INLINE void DAC_DualChnConvert(const st_dac_handle_t* pDac, uint32_t const pDataTable[],uint32_t u32count)
+__STATIC_INLINE void DAC_SetDualConversionData(const st_dac_handle_t* pDac, uint32_t const pDataTable[],uint32_t u32count)
 {
     for(uint32_t i = 0U; i < u32count; i++)
     {
@@ -559,7 +563,7 @@ __STATIC_INLINE void DAC_DualChnConvert(const st_dac_handle_t* pDac, uint32_t co
  * @param    [in] pDac A pointer of DAC handler
  * @retval   None
  */
-static void DAC_Stop(const st_dac_handle_t* pDac)
+static void DAC_StopConversion(const st_dac_handle_t* pDac)
 {
     if(NULL == pDac)
     {
@@ -568,11 +572,11 @@ static void DAC_Stop(const st_dac_handle_t* pDac)
     }
     else if(pDac->enCvtType != E_Dac_Dual)
     {
-        DAC_ChannelCmd(pDac->pUnit,pDac->u16Ch,Disable);
+        DAC_Stop(pDac->pUnit,pDac->u16Ch);
     }
     else
     {
-        DAC_DualChannelCmd(pDac->pUnit,Disable);
+        DAC_DualChannelStop(pDac->pUnit);
     }
 }
 
@@ -604,8 +608,8 @@ int32_t main(void)
     SinTable_Init(gu32SinTable, SINE_DOT_NUMBER);
 
     /* Init DAC */
-    st_dac_handle_t* pSingleDac = DAC_SingleChnInit(DAC_Unit1);
-    st_dac_handle_t* pDualDac = DAC_DualChnInit(DAC_Unit2);
+    st_dac_handle_t* pSingleDac = DAC_SingleConversionInit(DAC_Unit1);
+    st_dac_handle_t* pDualDac = DAC_DualConversionInit(DAC_Unit2);
     /**
     * Output sine waves after system restart,
     * Press KEY2(SW2) to stop the single sine wave ,and Press KEY1(SW1) to restart
@@ -614,9 +618,9 @@ int32_t main(void)
     */
     en_key_event enEvent = E_KEY_NOT_PRESSED;
     uint8_t u8EnableSingle = 1U,u8EnableDual = 1U;
-    DAC_SingleChnStart(pSingleDac);
+    DAC_StartSingleConversion(pSingleDac);
     BSP_LED_On(LED_BLUE);
-    DAC_DualChnStart(pDualDac);
+    DAC_StartDualConversion(pDualDac);
     BSP_LED_On(LED_RED);
 
     while (1U)
@@ -627,25 +631,25 @@ int32_t main(void)
             case E_KEY1_PRESSED:
                 u8EnableSingle = 1U;
                 BSP_LED_On(LED_BLUE);
-                DAC_SingleChnStart(pSingleDac);
+                DAC_StartSingleConversion(pSingleDac);
                 break;
             case E_KEY2_PRESSED:
                 u8EnableSingle = 0U;
-                DAC_Stop(pSingleDac);
+                DAC_StopConversion(pSingleDac);
                 BSP_LED_Off(LED_BLUE);
                 break;
             case E_KEY3_PRESSED:
                 u8EnableDual = 1U;
                 BSP_LED_On(LED_RED);
-                DAC_DualChnStart(pDualDac);
+                DAC_StartDualConversion(pDualDac);
                 break;
             case E_KEY4_PRESSED:
                 u8EnableDual = 0U;
-                DAC_Stop(pDualDac);
+                DAC_StopConversion(pDualDac);
                 BSP_LED_Off(LED_RED);
                 break;
             case E_KEY5_PRESSED:
-                DAC_Stop(NULL);
+                DAC_StopConversion(NULL);
                 u8EnableSingle = 0U;
                 u8EnableDual = 0U;
                 BSP_LED_Off(LED_BLUE);
@@ -656,11 +660,11 @@ int32_t main(void)
         }
         if(u8EnableSingle)
         {
-            DAC_SingleChnConvert(pSingleDac,gu32SinTable, SINE_DOT_NUMBER);
+            DAC_SetSingleConversionData(pSingleDac,gu32SinTable, SINE_DOT_NUMBER);
         }
         if(u8EnableDual)
         {
-            DAC_DualChnConvert(pDualDac,gu32SinTable, SINE_DOT_NUMBER);
+            DAC_SetDualConversionData(pDualDac,gu32SinTable, SINE_DOT_NUMBER);
         }
     }
 }

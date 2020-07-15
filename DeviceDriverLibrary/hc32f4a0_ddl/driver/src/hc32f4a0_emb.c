@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-07       Hongjh          Replace the word Timer with TMR abbreviation
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -96,7 +97,7 @@
     ((x) == M4_EMB5)                            ||                             \
     ((x) == M4_EMB6))
 
-#define IS_VALID_EMB_TIMER6(x)                                                 \
+#define IS_VALID_EMB_TMR6(x)                                                   \
 (   ((x) == M4_EMB0)                            ||                             \
     ((x) == M4_EMB1)                            ||                             \
     ((x) == M4_EMB2)                            ||                             \
@@ -155,35 +156,35 @@
 (   ((x) == EMB_TMR4_PWM_U_ENABLE)              ||                             \
     ((x) == EMB_TMR4_PWM_U_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_1_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_1_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_1_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_1_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_2_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_2_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_2_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_2_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_3_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_3_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_3_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_3_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_4_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_4_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_4_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_4_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_5_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_5_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_5_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_5_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_6_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_6_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_6_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_6_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_7_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_7_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_7_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_7_PWM_DISABLE))
 
-#define IS_VALID_EMB_TIMER6_8_PWM_SEL(x)                                       \
+#define IS_VALID_EMB_TMR6_8_PWM_SEL(x)                                         \
 (   ((x) == EMB_TMR6_8_PWM_ENABLE)              ||                             \
     ((x) == EMB_TMR6_8_PWM_DISABLE))
 
@@ -374,7 +375,7 @@
  */
 
 /**
- * @brief  Initialize EMB for Timer4.
+ * @brief  Initialize EMB for TMR4.
  * @param  [in] EMBx                    Pointer to EMB instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_EMB4:              EMB group 4 instance register base
@@ -384,7 +385,7 @@
  * @retval An en_result_t enumeration value:
  *           - Ok: Initialize successfully
  *           - ErrorInvalidParameter: pstcInit = NULL
- * @note   Timer4 feature is supported by M4_EMB4/M4_EMB5/M4_EMB6
+ * @note   TMR4 feature is supported by M4_EMB4/M4_EMB5/M4_EMB6
  */
 en_result_t EMB_Tmr4Init(M4_EMB_TypeDef *EMBx,
                             const stc_emb_tmr4_init_t *pstcInit)
@@ -519,7 +520,7 @@ en_result_t EMB_Tmr4StructInit(stc_emb_tmr4_init_t *pstcInit)
 }
 
 /**
- * @brief  Initialize EMB for Timer6.
+ * @brief  Initialize EMB for TMR6.
  * @param  [in] EMBx                    Pointer to EMB instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_EMB0:              EMB group 0 instance register base
@@ -530,7 +531,7 @@ en_result_t EMB_Tmr4StructInit(stc_emb_tmr4_init_t *pstcInit)
  * @retval An en_result_t enumeration value:
  *           - Ok: Initialize successfully
  *           - ErrorInvalidParameter: pstcInit = NULL
- * @note   Timer6 feature is supported by M4_EMB0/M4_EMB1/M4_EMB2/M4_EMB3
+ * @note   TMR6 feature is supported by M4_EMB0/M4_EMB1/M4_EMB2/M4_EMB3
  */
 en_result_t EMB_Tmr6Init(M4_EMB_TypeDef *EMBx,
                             const stc_emb_tmr6_init_t *pstcInit)
@@ -542,7 +543,7 @@ en_result_t EMB_Tmr6Init(M4_EMB_TypeDef *EMBx,
     if (NULL != pstcInit)
     {
         /* Check parameters */
-        DDL_ASSERT(IS_VALID_EMB_TIMER6(EMBx));
+        DDL_ASSERT(IS_VALID_EMB_TMR6(EMBx));
         DDL_ASSERT(IS_VALID_EMB_CMP1_SEL(pstcInit->u32Cmp1));
         DDL_ASSERT(IS_VALID_EMB_CMP2_SEL(pstcInit->u32Cmp2));
         DDL_ASSERT(IS_VALID_EMB_CMP3_SEL(pstcInit->u32Cmp3));
@@ -560,21 +561,21 @@ en_result_t EMB_Tmr6Init(M4_EMB_TypeDef *EMBx,
         DDL_ASSERT(IS_VALID_EMB_PORT4_SEL(pstcInit->stcPort4.u32PortSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_PORT4_LEVEL(pstcInit->stcPort4.u32PortLevel));
         DDL_ASSERT(IS_VALID_EMB_PORT4_FILTER_DIV(pstcInit->stcPort4.u32PortFilterDiv));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_1_PWM_SEL(pstcInit->stcTmr6_1.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_1_PWM_SEL(pstcInit->stcTmr6_1.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_1_PWM_LEVEL(pstcInit->stcTmr6_1.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_2_PWM_SEL(pstcInit->stcTmr6_2.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_2_PWM_SEL(pstcInit->stcTmr6_2.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_2_PWM_LEVEL(pstcInit->stcTmr6_2.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_3_PWM_SEL(pstcInit->stcTmr6_3.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_3_PWM_SEL(pstcInit->stcTmr6_3.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_3_PWM_LEVEL(pstcInit->stcTmr6_3.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_4_PWM_SEL(pstcInit->stcTmr6_4.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_4_PWM_SEL(pstcInit->stcTmr6_4.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_4_PWM_LEVEL(pstcInit->stcTmr6_4.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_5_PWM_SEL(pstcInit->stcTmr6_5.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_5_PWM_SEL(pstcInit->stcTmr6_5.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_5_PWM_LEVEL(pstcInit->stcTmr6_5.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_6_PWM_SEL(pstcInit->stcTmr6_6.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_6_PWM_SEL(pstcInit->stcTmr6_6.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_6_PWM_LEVEL(pstcInit->stcTmr6_6.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_7_PWM_SEL(pstcInit->stcTmr6_7.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_7_PWM_SEL(pstcInit->stcTmr6_7.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_7_PWM_LEVEL(pstcInit->stcTmr6_7.u32PwmLevel));
-        DDL_ASSERT(IS_VALID_EMB_TIMER6_8_PWM_SEL(pstcInit->stcTmr6_8.u32PwmSel));
+        DDL_ASSERT(IS_VALID_EMB_TMR6_8_PWM_SEL(pstcInit->stcTmr6_8.u32PwmSel));
         DDL_ASSERT(IS_VALID_EMB_DETECT_TMR6_8_PWM_LEVEL(pstcInit->stcTmr6_8.u32PwmLevel));
 
         /* Set default value && clear flag */

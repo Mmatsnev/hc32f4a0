@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Yangjp          First version
+   2020-07-03       Yangjp          Optimize stc_eth_mac_init_t structure
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -92,7 +93,7 @@
 #define ETH_MAC_FLOCTLR_CLEAR_MASK                          (0xFFFF00BEUL)
 
 /* Ethernet MAC_FLTCTLR register Mask */
-#define ETH_MAC_FLTCTLR_CLEAR_MASK                          (0x803107FFUL)
+#define ETH_MAC_FLTCTLR_CLEAR_MASK                          (0x802107FFUL)
 
 /* Ethernet MAC_SMIADDR register Mask */
 #define ETH_MAC_SMIADDR_CLEAR_MASK                          (0x0000FFC3UL)
@@ -230,10 +231,6 @@
 (   ((x) == ETH_MAC_RECEIVE_OWN_DISABLE)                    ||                 \
     ((x) == ETH_MAC_RECEIVE_OWN_ENABLE))
 
-#define IS_ETH_MAC_LOOPBACK_MODE(x)                                            \
-(   ((x) == ETH_MAC_LOOPBACK_MODE_DISABLE)                  ||                 \
-    ((x) == ETH_MAC_LOOPBACK_MODE_ENABLE))
-
 #define IS_ETH_MAC_CHECKSUM_OFFLAOD(x)                                         \
 (   ((x) == ETH_MAC_CHECKSUM_OFFLAOD_DISABLE)               ||                 \
     ((x) == ETH_MAC_CHECKSUM_OFFLAOD_ENABLE))
@@ -285,10 +282,6 @@
 #define IS_ETH_MAC_DROP_NOT_TCPUDP(x)                                          \
 (   ((x) == ETH_MAC_DROP_NOT_TCPUDP_DISABLE)                ||                 \
     ((x) == ETH_MAC_DROP_NOT_TCPUDP_ENABLE))
-
-#define IS_ETH_MAC_L3_L4_FILTER(x)                                             \
-(   ((x) == ETH_MAC_L3_L4_FILTER_DISABLE)                   ||                 \
-    ((x) == ETH_MAC_L3_L4_FILTER_ENABLE))
 
 #define IS_ETH_MAC_VLAN_TAG_FILTER(x)                                          \
 (   ((x) == ETH_MAC_VLAN_TAG_FILTER_DISABLE)                ||                 \
@@ -865,6 +858,7 @@ en_result_t ETH_DeInit(void)
     ETH_MACADDR_DeInit(ETH_MAC_ADDRESS2);
     ETH_MACADDR_DeInit(ETH_MAC_ADDRESS3);
     ETH_MACADDR_DeInit(ETH_MAC_ADDRESS4);
+    ETH_MAC_L3L4FilterDeInit();
     ETH_PTP_DeInit();
     ETH_PPS_DeInit(ETH_PPS_TARGET_CH0);
     ETH_PPS_DeInit(ETH_PPS_TARGET_CH1);
@@ -1372,7 +1366,7 @@ void ETH_MAC_DeInit(void)
 {
     WRITE_REG32(M4_ETH->MAC_IFCONFR,  0UL);
     WRITE_REG32(M4_ETH->MAC_CONFIGR,  0x00008000UL);
-    WRITE_REG32(M4_ETH->MAC_FLTCTLR,  0UL);
+    MODIFY_REG32(M4_ETH->MAC_FLTCTLR, ETH_MAC_FLTCTLR_CLEAR_MASK, 0UL);
     WRITE_REG32(M4_ETH->MAC_FLOCTLR,  0UL);
     WRITE_REG32(M4_ETH->MAC_INTMSKR,  0UL);
     WRITE_REG32(M4_ETH->MAC_SMIADDR,  0UL);
@@ -1384,12 +1378,6 @@ void ETH_MAC_DeInit(void)
     WRITE_REG32(M4_ETH->MAC_VTACTLR,  0UL);
     WRITE_REG32(M4_ETH->MAC_VTAFLTR,  0UL);
     WRITE_REG32(M4_ETH->MAC_VLAHTBR,  0UL);
-    WRITE_REG32(M4_ETH->MAC_L34CTLR,  0UL);
-    WRITE_REG32(M4_ETH->MAC_L4PORTR,  0UL);
-    WRITE_REG32(M4_ETH->MAC_L3ADDRR0, 0UL);
-    WRITE_REG32(M4_ETH->MAC_L3ADDRR1, 0UL);
-    WRITE_REG32(M4_ETH->MAC_L3ADDRR2, 0UL);
-    WRITE_REG32(M4_ETH->MAC_L3ADDRR3, 0UL);
 }
 
 /**
@@ -1421,7 +1409,6 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
         DDL_ASSERT(IS_ETH_MAC_CARRIER_SENCE(pstcMacInit->u32CarrierSense));
         DDL_ASSERT(IS_ETH_MAC_SPEED(pstcEthHandle->stcCommInit.u32Speed));
         DDL_ASSERT(IS_ETH_MAC_RECEIVE_OWN(pstcMacInit->u32ReceiveOwn));
-        DDL_ASSERT(IS_ETH_MAC_LOOPBACK_MODE(pstcMacInit->u32LoopbackMode));
         DDL_ASSERT(IS_ETH_MAC_DUPLEX_MODE(pstcEthHandle->stcCommInit.u32DuplexMode));
         DDL_ASSERT(IS_ETH_MAC_CHECKSUM_OFFLAOD(pstcMacInit->u32ChecksumOffload));
         DDL_ASSERT(IS_ETH_MAC_RETRY_TRANSMIT(pstcMacInit->u32RetryTransmit));
@@ -1435,7 +1422,6 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
         DDL_ASSERT(IS_ETH_MAC_TRANSMIT_FLOWCONTROL(pstcMacInit->u32TransmitFlowControl));
         DDL_ASSERT(IS_ETH_MAC_RECEIVE_All(pstcMacInit->u32ReceiveAll));
         DDL_ASSERT(IS_ETH_MAC_DROP_NOT_TCPUDP(pstcMacInit->u32DropNotTcpUdp));
-        DDL_ASSERT(IS_ETH_MAC_L3_L4_FILTER(pstcMacInit->u32L3L4Filter));
         DDL_ASSERT(IS_ETH_MAC_VLAN_TAG_FILTER(pstcMacInit->u32VlanTagFilter));
         DDL_ASSERT(IS_ETH_MAC_SOURCE_ADDR_FILTER(pstcMacInit->u32SAFilter));
         DDL_ASSERT(IS_ETH_MAC_PASS_CTRLFRAME(pstcMacInit->u32PassControlFrame));
@@ -1447,15 +1433,6 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
         DDL_ASSERT(IS_ETH_MAC_TXVLAN_MODE(pstcMacInit->u32TxVlanInsertMode));
         DDL_ASSERT(IS_ETH_MAC_RXVLAN_FILTER(pstcMacInit->u32RxVlanFilter));
         DDL_ASSERT(IS_ETH_MAC_RXVLAN_COMPARISON(pstcMacInit->u32RxVlanComparison));
-        DDL_ASSERT(IS_ETH_MAC_L4_DESTPORT_FILTER(pstcMacInit->u32L4DestPortFilter));
-        DDL_ASSERT(IS_ETH_MAC_L4_SOURCEPORT_FILTER(pstcMacInit->u32L4SourcePortFilter));
-        DDL_ASSERT(IS_ETH_MAC_L4_PORT_FILTER_PROTOCOL(pstcMacInit->u32L4PortFilterProtocol));
-        DDL_ASSERT(IS_ETH_MAC_L3_DA_FILTER_MASK(pstcMacInit->u32L3Ipv4DAFilterMask));
-        DDL_ASSERT(IS_ETH_MAC_L3_SA_FILTER_MASK(pstcMacInit->u32L3Ipv4SAFilterMask));
-        DDL_ASSERT(IS_ETH_MAC_L3_DA_SA_FILTER_MASK(pstcMacInit->u32L3Ipv6AddrFilterMask));
-        DDL_ASSERT(IS_ETH_MAC_L3_DA_FILTER(pstcMacInit->u32L3DAFilter));
-        DDL_ASSERT(IS_ETH_MAC_L3_SA_FILTER(pstcMacInit->u32L3SAFilter));
-        DDL_ASSERT(IS_ETH_MAC_L3_ADDR_FILTER_PROTOCOL(pstcMacInit->u32L3AddrFilterProtocol));
 
         /* Set MAC_IFCONFR register */
         MODIFY_REG32(M4_ETH->MAC_IFCONFR, ETH_MAC_IFCONFR_CLEAR_MASK,
@@ -1466,10 +1443,9 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
                       pstcMacInit->u32Watchdog            | pstcMacInit->u32Jabber                   |
                       pstcMacInit->u32InterFrameGap       | pstcMacInit->u32CarrierSense             |
                       pstcEthHandle->stcCommInit.u32Speed | pstcMacInit->u32ReceiveOwn               |
-                      pstcMacInit->u32LoopbackMode        | pstcEthHandle->stcCommInit.u32DuplexMode |
+                      pstcMacInit->u32DeferralCheck       | pstcEthHandle->stcCommInit.u32DuplexMode |
                       pstcMacInit->u32ChecksumOffload     | pstcMacInit->u32RetryTransmit            |
-                      pstcMacInit->u32AutoStripPadFCS     | pstcMacInit->u32BackOffLimit             |
-                      pstcMacInit->u32DeferralCheck));
+                      pstcMacInit->u32AutoStripPadFCS     | pstcMacInit->u32BackOffLimit));
         /* Set MAC_FLOCTLR register */
         MODIFY_REG32(M4_ETH->MAC_FLOCTLR, ETH_MAC_FLOCTLR_CLEAR_MASK,
                      ((((uint32_t)pstcMacInit->u16PauseTime) << 16U) | pstcMacInit->u32ZeroQuantaPause         |
@@ -1478,11 +1454,10 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
         /* Set MAC_FLTCTLR register */
         MODIFY_REG32(M4_ETH->MAC_FLTCTLR, ETH_MAC_FLTCTLR_CLEAR_MASK,
                      (pstcMacInit->u32ReceiveAll              | pstcMacInit->u32DropNotTcpUdp         |
-                      pstcMacInit->u32L3L4Filter              | pstcMacInit->u32VlanTagFilter         |
+                      pstcMacInit->u32PromiscuousMode         | pstcMacInit->u32VlanTagFilter         |
                       pstcMacInit->u32SAFilter                | pstcMacInit->u32PassControlFrame      |
                       pstcMacInit->u32BroadcastFrameReception | pstcMacInit->u32DAFilter              |
-                      pstcMacInit->u32MulticastFrameFilter    | pstcMacInit->u32UnicastFrameFilter    |
-                      pstcMacInit->u32PromiscuousMode));
+                      pstcMacInit->u32MulticastFrameFilter    | pstcMacInit->u32UnicastFrameFilter));
         /* Set Hash table register */
         WRITE_REG32(M4_ETH->MAC_HASHTLR, pstcMacInit->u32HashTableLow);
         WRITE_REG32(M4_ETH->MAC_HASHTHR, pstcMacInit->u32HashTableHigh);
@@ -1492,33 +1467,6 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
         WRITE_REG32(M4_ETH->MAC_VTAFLTR, (pstcMacInit->u32RxVlanFilter |
                     pstcMacInit->u32RxVlanComparison | pstcMacInit->u16RxVlanTag));
         WRITE_REG32(M4_ETH->MAC_VLAHTBR, pstcMacInit->u16RxVlanHashTable);
-        /* Set L3/L4 control register */
-        if (ETH_MAC_L3_ADDR_FILTER_PROTOCOL_IPV4 != pstcMacInit->u32L3AddrFilterProtocol)
-        {
-            WRITE_REG32(M4_ETH->MAC_L34CTLR,
-                        (pstcMacInit->u32L4DestPortFilter     | pstcMacInit->u32L4SourcePortFilter   |
-                         pstcMacInit->u32L4PortFilterProtocol | pstcMacInit->u32L3Ipv6AddrFilterMask |
-                         pstcMacInit->u32L3DAFilter           | pstcMacInit->u32L3SAFilter           |
-                         pstcMacInit->u32L3AddrFilterProtocol));
-            WRITE_REG32(M4_ETH->MAC_L3ADDRR0, pstcMacInit->au32L3Ipv6AddrFilterValue[0]);
-            WRITE_REG32(M4_ETH->MAC_L3ADDRR1, pstcMacInit->au32L3Ipv6AddrFilterValue[1]);
-            WRITE_REG32(M4_ETH->MAC_L3ADDRR2, pstcMacInit->au32L3Ipv6AddrFilterValue[2]);
-            WRITE_REG32(M4_ETH->MAC_L3ADDRR3, pstcMacInit->au32L3Ipv6AddrFilterValue[3]);
-        }
-        /* IPv4 protocol*/
-        else
-        {
-            WRITE_REG32(M4_ETH->MAC_L34CTLR,
-                        (pstcMacInit->u32L4DestPortFilter     | pstcMacInit->u32L4SourcePortFilter |
-                         pstcMacInit->u32L4PortFilterProtocol | pstcMacInit->u32L3Ipv4DAFilterMask |
-                         pstcMacInit->u32L3Ipv4SAFilterMask   | pstcMacInit->u32L3DAFilter         |
-                         pstcMacInit->u32L3SAFilter           | pstcMacInit->u32L3AddrFilterProtocol));
-            WRITE_REG32(M4_ETH->MAC_L3ADDRR0, pstcMacInit->u32L3Ipv4SAFilterValue);
-            WRITE_REG32(M4_ETH->MAC_L3ADDRR1, pstcMacInit->u32L3Ipv4DAFilterValue);
-        }
-        WRITE_REG32(M4_ETH->MAC_L4PORTR, ((((uint32_t)pstcMacInit->u16L4DestProtFilterValue) << ETH_MAC_L4PORTR_L4DPVAL_POS) |
-                    pstcMacInit->u16L4SourceProtFilterValue));
-
         /* Config MAC address in ETH MAC0 */
         ETH_MACADDR_SetAddress(ETH_MAC_ADDRESS0, pstcEthHandle->stcCommInit.au8MACAddr);
     }
@@ -1536,7 +1484,6 @@ en_result_t ETH_MAC_Init(stc_eth_handle_t *pstcEthHandle, const stc_eth_mac_init
 en_result_t ETH_MAC_StructInit(stc_eth_mac_init_t *pstcMacInit)
 {
     en_result_t enRet = Ok;
-    uint8_t i;
 
     if (NULL == pstcMacInit)
     {
@@ -1553,7 +1500,6 @@ en_result_t ETH_MAC_StructInit(stc_eth_mac_init_t *pstcMacInit)
         pstcMacInit->u32InterFrameGap           = ETH_MAC_INTERFRAME_GAP_96BIT;
         pstcMacInit->u32CarrierSense            = ETH_MAC_CARRIER_SENCE_ENABLE;
         pstcMacInit->u32ReceiveOwn              = ETH_MAC_RECEIVE_OWN_ENABLE;
-        pstcMacInit->u32LoopbackMode            = ETH_MAC_LOOPBACK_MODE_DISABLE;
         pstcMacInit->u32ChecksumOffload         = ETH_MAC_CHECKSUM_OFFLAOD_DISABLE;
         pstcMacInit->u32RetryTransmit           = ETH_MAC_RETRY_TRANSMIT_DISABLE;
         pstcMacInit->u32AutoStripPadFCS         = ETH_MAC_AUTO_STRIP_PAD_FCS_DISABLE;
@@ -1567,7 +1513,7 @@ en_result_t ETH_MAC_StructInit(stc_eth_mac_init_t *pstcMacInit)
         pstcMacInit->u32TransmitFlowControl     = ETH_MAC_TRANSMIT_FLOWCONTROL_DISABLE;
         pstcMacInit->u32ReceiveAll              = ETH_MAC_RECEIVE_All_DISABLE;
         pstcMacInit->u32DropNotTcpUdp           = ETH_MAC_DROP_NOT_TCPUDP_DISABLE;
-        pstcMacInit->u32L3L4Filter              = ETH_MAC_L3_L4_FILTER_DISABLE;
+
         pstcMacInit->u32VlanTagFilter           = ETH_MAC_VLAN_TAG_FILTER_DISABLE;
         pstcMacInit->u32SAFilter                = ETH_MAC_SOURCE_ADDR_FILTER_DISABLE;
         pstcMacInit->u32PassControlFrame        = ETH_MAC_PASS_CTRLFRAME_FORWARD_NOTPAUSE_ALL;
@@ -1584,23 +1530,6 @@ en_result_t ETH_MAC_StructInit(stc_eth_mac_init_t *pstcMacInit)
         pstcMacInit->u32RxVlanComparison        = ETH_MAC_RXVLAN_COMPARISON_16BIT;
         pstcMacInit->u16RxVlanTag               = 0U;
         pstcMacInit->u16RxVlanHashTable         = 0U;
-        pstcMacInit->u32L4DestPortFilter        = ETH_MAC_L4_DESTPORT_FILTER_DISABLE;
-        pstcMacInit->u32L4SourcePortFilter      = ETH_MAC_L4_SOURCEPORT_FILTER_DISABLE;
-        pstcMacInit->u32L4PortFilterProtocol    = ETH_MAC_L4_PORT_FILTER_PROTOCOL_TCP;
-        pstcMacInit->u32L3Ipv4DAFilterMask      = ETH_MAC_L3_DA_FILTER_MASK_NONE;
-        pstcMacInit->u32L3Ipv4SAFilterMask      = ETH_MAC_L3_SA_FILTER_MASK_NONE;
-        pstcMacInit->u32L3Ipv6AddrFilterMask    = ETH_MAC_L3_DA_SA_FILTER_MASK_NONE;
-        pstcMacInit->u32L3DAFilter              = ETH_MAC_L3_DA_FILTER_DISABLE;
-        pstcMacInit->u32L3SAFilter              = ETH_MAC_L3_SA_FILTER_DISABLE;
-        pstcMacInit->u32L3AddrFilterProtocol    = ETH_MAC_L3_ADDR_FILTER_PROTOCOL_IPV4;
-        pstcMacInit->u16L4DestProtFilterValue   = 0U;
-        pstcMacInit->u16L4SourceProtFilterValue = 0U;
-        pstcMacInit->u32L3Ipv4DAFilterValue     = 0UL;
-        pstcMacInit->u32L3Ipv4SAFilterValue     = 0UL;
-        for (i=0U; i<4U; i++)
-        {
-            pstcMacInit->au32L3Ipv6AddrFilterValue[i] = 0UL;
-        }
     }
 
     return enRet;
@@ -1668,72 +1597,6 @@ void ETH_MAC_SetRxVlanTagVal(uint16_t u16RxTag)
 void ETH_MAC_SetRxVlanHashTable(uint16_t u16HashVal)
 {
     WRITE_REG32(M4_ETH->MAC_VLAHTBR, u16HashVal);
-}
-
-/**
- * @brief  Set L4 Destination port filter value.
- * @param  [in] u16Port                     The value of Destination port.
- * @retval None
- */
-void ETH_MAC_SetDestPortFilterVal(uint16_t u16Port)
-{
-    MODIFY_REG32(M4_ETH->MAC_L4PORTR, ETH_MAC_L4PORTR_L4DPVAL, ((uint32_t)u16Port << 16U));
-}
-
-/**
- * @brief  Set L4 Source port filter value.
- * @param  [in] u16Port                     The value of Source port.
- * @retval None
- */
-void ETH_MAC_SetSrcPortFilterVal(uint16_t u16Port)
-{
-    MODIFY_REG32(M4_ETH->MAC_L4PORTR, ETH_MAC_L4PORTR_L4SPVAL, u16Port);
-}
-
-/**
- * @brief  Set L3 Destination address filter value of IPv4.
- * @param  [in] u32Addr                     The value of Destination address.
- * @retval None
- */
-void ETH_MAC_SetIpv4DestAddrFilterVal(uint32_t u32Addr)
-{
-    WRITE_REG32(M4_ETH->MAC_L3ADDRR1, u32Addr);
-}
-
-/**
- * @brief  Set L3 Source address filter value of IPv4.
- * @param  [in] u32Addr                     The value of Source address.
- * @retval None
- */
-void ETH_MAC_SetIpv4SrcAddrFilterVal(uint32_t u32Addr)
-{
-    WRITE_REG32(M4_ETH->MAC_L3ADDRR0, u32Addr);
-}
-
-/**
- * @brief  Set L3 Destination/Source Address filter value of IPv6.
- * @param  [in] au32Addr                    Pointer to Destination/Source Address buffer(4 words).
- * @retval An en_result_t enumeration value:
- *           - Ok: Set Address filter value success
- *           - ErrorInvalidParameter: au32Addr == NULL
- */
-en_result_t ETH_MAC_SetIpv6AddrFilterVal(const uint32_t au32Addr[])
-{
-    en_result_t enRet = Ok;
-
-    if (NULL == au32Addr)
-    {
-        enRet = ErrorInvalidParameter;
-    }
-    else
-    {
-        WRITE_REG32(M4_ETH->MAC_L3ADDRR0, au32Addr[0]);
-        WRITE_REG32(M4_ETH->MAC_L3ADDRR1, au32Addr[1]);
-        WRITE_REG32(M4_ETH->MAC_L3ADDRR2, au32Addr[2]);
-        WRITE_REG32(M4_ETH->MAC_L3ADDRR3, au32Addr[3]);
-    }
-
-    return enRet;
 }
 
 /**
@@ -2104,6 +1967,236 @@ void ETH_MACADDR_SetFilterMask(uint32_t u32Index, uint32_t u32Mask)
 
     MACADHR = (__IO uint32_t *)ETH_MAC_MACADHRx(u32Index);
     MODIFY_REG32(*MACADHR, ETH_MAC_MACADHR1_MBC1, u32Mask);
+}
+
+/******************************************************************************/
+/*                        MAC L3L4 Filter Functions                           */
+/******************************************************************************/
+/**
+ * @brief  De-Initialize MAC L3L4 Filter.
+ * @param  None
+ * @retval None
+ */
+void ETH_MAC_L3L4FilterDeInit(void)
+{
+    WRITE_REG32(bM4_ETH->MAC_FLTCTLR_b.IPFE, Disable);
+    WRITE_REG32(M4_ETH->MAC_L34CTLR,  0UL);
+    WRITE_REG32(M4_ETH->MAC_L4PORTR,  0UL);
+    WRITE_REG32(M4_ETH->MAC_L3ADDRR0, 0UL);
+    WRITE_REG32(M4_ETH->MAC_L3ADDRR1, 0UL);
+    WRITE_REG32(M4_ETH->MAC_L3ADDRR2, 0UL);
+    WRITE_REG32(M4_ETH->MAC_L3ADDRR3, 0UL);
+}
+
+/**
+ * @brief  Initialize MAC L3L4 Filter.
+ * @param  [in] pstcL3L4FilterInit          Pointer to a @ref stc_eth_l3l4_filter_config_t structure
+ * @retval An en_result_t enumeration value:
+ *           - Ok: MAC L3L4 Filter Initialize success
+ *           - ErrorInvalidParameter: pstcL3L4FilterInit == NULL
+ */
+en_result_t ETH_MAC_L3L4FilterInit(const stc_eth_l3l4_filter_config_t *pstcL3L4FilterInit)
+{
+    en_result_t enRet = Ok;
+
+    if (NULL == pstcL3L4FilterInit)
+    {
+        enRet = ErrorInvalidParameter;
+    }
+    else
+    {
+        /* Check parameters */
+        DDL_ASSERT(IS_ETH_MAC_L4_DESTPORT_FILTER(pstcL3L4FilterInit->u32L4DestPortFilter));
+        DDL_ASSERT(IS_ETH_MAC_L4_SOURCEPORT_FILTER(pstcL3L4FilterInit->u32L4SourcePortFilter));
+        DDL_ASSERT(IS_ETH_MAC_L4_PORT_FILTER_PROTOCOL(pstcL3L4FilterInit->u32L4PortFilterProtocol));
+        DDL_ASSERT(IS_ETH_MAC_L3_DA_FILTER_MASK(pstcL3L4FilterInit->u32L3Ipv4DAFilterMask));
+        DDL_ASSERT(IS_ETH_MAC_L3_SA_FILTER_MASK(pstcL3L4FilterInit->u32L3Ipv4SAFilterMask));
+        DDL_ASSERT(IS_ETH_MAC_L3_DA_SA_FILTER_MASK(pstcL3L4FilterInit->u32L3Ipv6AddrFilterMask));
+        DDL_ASSERT(IS_ETH_MAC_L3_DA_FILTER(pstcL3L4FilterInit->u32L3DAFilter));
+        DDL_ASSERT(IS_ETH_MAC_L3_SA_FILTER(pstcL3L4FilterInit->u32L3SAFilter));
+        DDL_ASSERT(IS_ETH_MAC_L3_ADDR_FILTER_PROTOCOL(pstcL3L4FilterInit->u32L3AddrFilterProtocol));
+
+        /* Set L3/L4 control register */
+        if (ETH_MAC_L3_ADDR_FILTER_PROTOCOL_IPV4 != pstcL3L4FilterInit->u32L3AddrFilterProtocol)
+        {
+            WRITE_REG32(M4_ETH->MAC_L34CTLR,
+                        (pstcL3L4FilterInit->u32L4DestPortFilter     | pstcL3L4FilterInit->u32L4SourcePortFilter   |
+                         pstcL3L4FilterInit->u32L4PortFilterProtocol | pstcL3L4FilterInit->u32L3Ipv6AddrFilterMask |
+                         pstcL3L4FilterInit->u32L3DAFilter           | pstcL3L4FilterInit->u32L3SAFilter           |
+                         pstcL3L4FilterInit->u32L3AddrFilterProtocol));
+            WRITE_REG32(M4_ETH->MAC_L3ADDRR0, pstcL3L4FilterInit->au32L3Ipv6AddrFilterValue[0]);
+            WRITE_REG32(M4_ETH->MAC_L3ADDRR1, pstcL3L4FilterInit->au32L3Ipv6AddrFilterValue[1]);
+            WRITE_REG32(M4_ETH->MAC_L3ADDRR2, pstcL3L4FilterInit->au32L3Ipv6AddrFilterValue[2]);
+            WRITE_REG32(M4_ETH->MAC_L3ADDRR3, pstcL3L4FilterInit->au32L3Ipv6AddrFilterValue[3]);
+        }
+        /* IPv4 protocol*/
+        else
+        {
+            WRITE_REG32(M4_ETH->MAC_L34CTLR,
+                        (pstcL3L4FilterInit->u32L4DestPortFilter     | pstcL3L4FilterInit->u32L4SourcePortFilter |
+                         pstcL3L4FilterInit->u32L4PortFilterProtocol | pstcL3L4FilterInit->u32L3Ipv4DAFilterMask |
+                         pstcL3L4FilterInit->u32L3Ipv4SAFilterMask   | pstcL3L4FilterInit->u32L3DAFilter         |
+                         pstcL3L4FilterInit->u32L3SAFilter           | pstcL3L4FilterInit->u32L3AddrFilterProtocol));
+            WRITE_REG32(M4_ETH->MAC_L3ADDRR0, pstcL3L4FilterInit->u32L3Ipv4SAFilterValue);
+            WRITE_REG32(M4_ETH->MAC_L3ADDRR1, pstcL3L4FilterInit->u32L3Ipv4DAFilterValue);
+        }
+        WRITE_REG32(M4_ETH->MAC_L4PORTR, ((((uint32_t)pstcL3L4FilterInit->u16L4DestProtFilterValue) << ETH_MAC_L4PORTR_L4DPVAL_POS) |
+                    pstcL3L4FilterInit->u16L4SourceProtFilterValue));
+    }
+
+    return enRet;
+}
+
+/**
+ * @brief  Set the fields of structure stc_eth_l3l4_filter_config_t to default values.
+ * @param  [out] pstcL3L4FilterInit         Pointer to a @ref stc_eth_l3l4_filter_config_t structure
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Structure Initialize success
+ *           - ErrorInvalidParameter: pstcL3L4FilterInit == NULL
+ */
+en_result_t ETH_MAC_L3L4FilterStructInit(stc_eth_l3l4_filter_config_t *pstcL3L4FilterInit)
+{
+    en_result_t enRet = Ok;
+    uint8_t i;
+
+    if (NULL == pstcL3L4FilterInit)
+    {
+        enRet = ErrorInvalidParameter;
+    }
+    else
+    {
+        pstcL3L4FilterInit->u32L4DestPortFilter        = ETH_MAC_L4_DESTPORT_FILTER_DISABLE;
+        pstcL3L4FilterInit->u32L4SourcePortFilter      = ETH_MAC_L4_SOURCEPORT_FILTER_DISABLE;
+        pstcL3L4FilterInit->u32L4PortFilterProtocol    = ETH_MAC_L4_PORT_FILTER_PROTOCOL_TCP;
+        pstcL3L4FilterInit->u32L3Ipv4DAFilterMask      = ETH_MAC_L3_DA_FILTER_MASK_NONE;
+        pstcL3L4FilterInit->u32L3Ipv4SAFilterMask      = ETH_MAC_L3_SA_FILTER_MASK_NONE;
+        pstcL3L4FilterInit->u32L3Ipv6AddrFilterMask    = ETH_MAC_L3_DA_SA_FILTER_MASK_NONE;
+        pstcL3L4FilterInit->u32L3DAFilter              = ETH_MAC_L3_DA_FILTER_DISABLE;
+        pstcL3L4FilterInit->u32L3SAFilter              = ETH_MAC_L3_SA_FILTER_DISABLE;
+        pstcL3L4FilterInit->u32L3AddrFilterProtocol    = ETH_MAC_L3_ADDR_FILTER_PROTOCOL_IPV4;
+        pstcL3L4FilterInit->u16L4DestProtFilterValue   = 0U;
+        pstcL3L4FilterInit->u16L4SourceProtFilterValue = 0U;
+        pstcL3L4FilterInit->u32L3Ipv4DAFilterValue     = 0UL;
+        pstcL3L4FilterInit->u32L3Ipv4SAFilterValue     = 0UL;
+        for (i=0U; i<4U; i++)
+        {
+            pstcL3L4FilterInit->au32L3Ipv6AddrFilterValue[i] = 0UL;
+        }
+    }
+
+    return enRet;
+}
+
+/**
+ * @brief  Enable or disable MAC L3L4 Filter function.
+ * @param  [in] enNewSta                    The function new state.
+ *           @arg This parameter can be: Enable or Disable.
+ * @retval None
+ */
+void ETH_MAC_L3L4FilterCmd(en_functional_state_t enNewSta)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewSta));
+
+    WRITE_REG32(bM4_ETH->MAC_FLTCTLR_b.IPFE, enNewSta);
+}
+
+/**
+ * @brief  Set L4 port filter protocol.
+ * @param  [in] u32PortProtocol             MAC L4 port filter protocol.
+ *         This parameter can be one of the following values:
+ *           @arg ETH_MAC_L4_PORT_FILTER_PROTOCOL_TCP:  Port filter for TCP frame
+ *           @arg ETH_MAC_L4_PORT_FILTER_PROTOCOL_UDP:  Port filter for UDP frame
+ * @retval None
+ */
+void ETH_MAC_SetPortFilterProtocol(uint32_t u32PortProtocol)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_ETH_MAC_L4_PORT_FILTER_PROTOCOL(u32PortProtocol));
+
+    WRITE_REG32(bM4_ETH->MAC_L34CTLR_b.L4PEN, (u32PortProtocol >> ETH_MAC_L34CTLR_L4PEN_POS));
+}
+
+/**
+ * @brief  Set L4 Destination port filter value.
+ * @param  [in] u16Port                     The value of Destination port.
+ * @retval None
+ */
+void ETH_MAC_SetDestPortFilterVal(uint16_t u16Port)
+{
+    MODIFY_REG32(M4_ETH->MAC_L4PORTR, ETH_MAC_L4PORTR_L4DPVAL, ((uint32_t)u16Port << 16U));
+}
+
+/**
+ * @brief  Set L4 Source port filter value.
+ * @param  [in] u16Port                     The value of Source port.
+ * @retval None
+ */
+void ETH_MAC_SetSrcPortFilterVal(uint16_t u16Port)
+{
+    MODIFY_REG32(M4_ETH->MAC_L4PORTR, ETH_MAC_L4PORTR_L4SPVAL, u16Port);
+}
+
+/**
+ * @brief  Set L3 address filter protocol.
+ * @param  [in] u32AddrProtocol             MAC L3 address filter protocol.
+ *         This parameter can be one of the following values:
+ *           @arg ETH_MAC_L3_ADDR_FILTER_PROTOCOL_IPV4: Ip Address filter for IPv4
+ *           @arg ETH_MAC_L3_ADDR_FILTER_PROTOCOL_IPV6: Ip Address filter for IPv6
+ * @retval None
+ */
+void ETH_MAC_SetAddrFilterProtocol(uint32_t u32AddrProtocol)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_ETH_MAC_L3_ADDR_FILTER_PROTOCOL(u32AddrProtocol));
+
+    WRITE_REG32(bM4_ETH->MAC_L34CTLR_b.L3PEN, u32AddrProtocol);
+}
+
+/**
+ * @brief  Set L3 Destination address filter value of IPv4.
+ * @param  [in] u32Addr                     The value of Destination address.
+ * @retval None
+ */
+void ETH_MAC_SetIpv4DestAddrFilterVal(uint32_t u32Addr)
+{
+    WRITE_REG32(M4_ETH->MAC_L3ADDRR1, u32Addr);
+}
+
+/**
+ * @brief  Set L3 Source address filter value of IPv4.
+ * @param  [in] u32Addr                     The value of Source address.
+ * @retval None
+ */
+void ETH_MAC_SetIpv4SrcAddrFilterVal(uint32_t u32Addr)
+{
+    WRITE_REG32(M4_ETH->MAC_L3ADDRR0, u32Addr);
+}
+
+/**
+ * @brief  Set L3 Destination/Source Address filter value of IPv6.
+ * @param  [in] au32Addr                    Pointer to Destination/Source Address buffer(4 words).
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Set Address filter value success
+ *           - ErrorInvalidParameter: au32Addr == NULL
+ */
+en_result_t ETH_MAC_SetIpv6AddrFilterVal(const uint32_t au32Addr[])
+{
+    en_result_t enRet = Ok;
+
+    if (NULL == au32Addr)
+    {
+        enRet = ErrorInvalidParameter;
+    }
+    else
+    {
+        WRITE_REG32(M4_ETH->MAC_L3ADDRR0, au32Addr[0]);
+        WRITE_REG32(M4_ETH->MAC_L3ADDRR1, au32Addr[1]);
+        WRITE_REG32(M4_ETH->MAC_L3ADDRR2, au32Addr[2]);
+        WRITE_REG32(M4_ETH->MAC_L3ADDRR3, au32Addr[3]);
+    }
+
+    return enRet;
 }
 
 /******************************************************************************/

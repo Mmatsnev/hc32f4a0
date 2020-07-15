@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-07-15       Wuze            Corrected the definition of 'QSPI_4BIC_ENABLE'.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -275,7 +276,7 @@ typedef struct
  * @{
  */
 #define QSPI_4BIC_DISABLE                   (0x0U)                  /*!< Do not use 4-byte address read instruction code. */
-#define QSPI_4BIC_ENABLE                    (QSPI_FCR_4BIC)         /*!< Use 4-byte address read instruction code. */
+#define QSPI_4BIC_ENABLE                    (QSPI_FCR_FOUR_BIC)     /*!< Use 4-byte address read instruction code. */
 /**
  * @}
  */

@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-14       Hongjh          Merge API from EXMC_SMC_Enable/Disable to EXMC_SMC_Cmd
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -332,26 +333,6 @@ typedef struct
  */
 
 /**
- * @brief  Enable SMC.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_SMC_Enable(void)
-{
-    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.SMCEN, 1UL);
-}
-
-/**
- * @brief  Disable SMC.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_SMC_Disable(void)
-{
-    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.SMCEN, 0UL);
-}
-
-/**
  * @brief  SMC entry low power state
  * @param  None
  * @retval None
@@ -388,6 +369,7 @@ en_result_t EXMC_SMC_Init(uint32_t u32Chip, const stc_exmc_smc_init_t *pstcInit)
 void EXMC_SMC_DeInit(void);
 en_result_t EXMC_SMC_StructInit(stc_exmc_smc_init_t *pstcInit);
 
+void EXMC_SMC_Cmd(en_functional_state_t enNewState);
 void EXMC_SMC_SetCommand(uint32_t u32Chip,
                                 uint32_t u32Cmd,
                                 uint32_t u32CrePolarity,

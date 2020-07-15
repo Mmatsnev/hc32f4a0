@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-14       Hongjh          Merge API from EXMC_SMC_Enable/Disable to EXMC_SMC_Cmd
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -355,6 +356,22 @@ en_result_t EXMC_SMC_StructInit(stc_exmc_smc_init_t *pstcInit)
     }
 
     return enRet;
+}
+
+/**
+ * @brief  Enable/Disable SMC.
+ * @param  [in]  enNewState                 An en_functional_state_t enumeration value.
+ *         This parameter can be one of the following values:
+ *           @arg Enable:                   Enable function.
+ *           @arg Disable:                  Disable function.
+ * @retval None
+ */
+void EXMC_SMC_Cmd(en_functional_state_t enNewState)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+
+    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.SMCEN, enNewState);
 }
 
 /**

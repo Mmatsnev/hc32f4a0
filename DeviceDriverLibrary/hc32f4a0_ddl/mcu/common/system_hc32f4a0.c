@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-07-03       Zhangxl         Modify for 16MHz & 20MHz HRC
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -81,10 +82,13 @@
 /*!< System clock frequency (Core clock) */
 #if defined ( __GNUC__ ) && !defined (__CC_ARM) /*!< GNU Compiler */
 __NO_INIT uint32_t SystemCoreClock;
+__NO_INIT uint32_t HRC_VALUE;
 #elif defined (__ICCARM__)                      /*!< IAR Compiler */
 __NO_INIT uint32_t SystemCoreClock;
+__NO_INIT uint32_t HRC_VALUE;
 #else
-uint32_t SystemCoreClock = HRC_VALUE;
+uint32_t HRC_VALUE = HRC_16MHz_VALUE;
+uint32_t SystemCoreClock = MRC_VALUE;
 #endif
 
 /**
@@ -133,6 +137,18 @@ void SystemCoreClockUpdate(void)
     uint32_t pllp;
     uint32_t pllm;
 
+    /* Select proper HRC_VALUE according to ICG1.HRCFREQSEL bit */
+    /* ICG1.HRCFREQSEL = '0' represent HRC_VALUE = 20000000UL   */
+    /* ICG1.HRCFREQSEL = '1' represent HRC_VALUE = 16000000UL   */
+    if (1UL == (HRC_FREQ_MON() & 1UL))
+    {
+        HRC_VALUE = HRC_16MHz_VALUE;
+    }
+    else
+    {
+        HRC_VALUE = HRC_20MHz_VALUE;
+    }
+
     tmp = M4_CMU->CKSWR & CMU_CKSWR_CKSW;
     switch(tmp)
     {
@@ -145,10 +161,10 @@ void SystemCoreClockUpdate(void)
         case 0x02U:  /* use internal low speed RC */
             SystemCoreClock = LRC_VALUE;
             break;
-        case 0x03U:  /* use external high speed RC */
+        case 0x03U:  /* use external high speed OSC */
             SystemCoreClock = XTAL_VALUE;
             break;
-        case 0x04U:  /* use external low speed RC */
+        case 0x04U:  /* use external low speed OSC */
             SystemCoreClock = XTAL32_VALUE;
             break;
         case 0x05U:  /* use PLLH */

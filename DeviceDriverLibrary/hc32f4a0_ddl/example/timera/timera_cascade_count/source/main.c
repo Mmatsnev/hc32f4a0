@@ -245,7 +245,7 @@ static void Peripheral_WE(void)
     /* Unlock GPIO register: PSPCR, PCCR, PINAER, PCRxy, PFSRxy */
     GPIO_Unlock();
     /* Unlock PWC register: FCG0 */
-    // PWC_FCG0_Unlock();
+    PWC_FCG0_Unlock();
     /* Unlock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
     PWC_Unlock(PWC_UNLOCK_CODE_0);
     /* Unlock SRAM register: WTCR */
@@ -338,7 +338,6 @@ static void SystemClockConfig(void)
     EFM_SetWaitCycle(EFM_WAIT_CYCLE_5);
 
     CLK_SetSysClkSrc(CLK_SYSCLKSOURCE_PLLH);
-    PWC_Lock(PWC_UNLOCK_CODE_0);
 }
 
 /**

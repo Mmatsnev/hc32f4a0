@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-07-15       Wangmin         Refine macro define
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -356,7 +357,7 @@ typedef struct
 /* Counted when Sawtooth waveform overflow and underflow, triangular wave overflow */
 #define TMR6_VALID_PERIOD_CNT_COND_OVERFLOW    (TMR6_VPERR_PCNTE_1)
 /* Counted when Sawtooth waveform overflow and underflow, triangular wave overflow and underflow */
-#define TMR6_VALID_PERIOD_CNT_COND_BOTHFLOW    (TMR6_VPERR_PCNTE_0 | TMR6_VPERR_PCNTE_1)
+#define TMR6_VALID_PERIOD_CNT_COND_BOTH        (TMR6_VPERR_PCNTE_0 | TMR6_VPERR_PCNTE_1)
 /**
  * @}
  */
@@ -543,7 +544,7 @@ typedef struct
 #define TMR6_DEADTIME_TRANS_COND_NONE                (0x00U)
 #define TMR6_DEADTIME_TRANS_COND_OVERFLOW            (TMR6_DCONR_DTBTRU)
 #define TMR6_DEADTIME_TRANS_COND_UNDERFLOW           (TMR6_DCONR_DTBTRD)
-#define TMR6_DEADTIME_TRANS_COND_BOTHFLOW            (TMR6_DCONR_DTBTRU | TMR6_DCONR_DTBTRD)
+#define TMR6_DEADTIME_TRANS_COND_BOTH                (TMR6_DCONR_DTBTRU | TMR6_DCONR_DTBTRD)
 /**
  * @}
  */

@@ -7,6 +7,11 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-14       Hongjh          1. Merge API from EXMC_NFC_Enable/Disable to EXMC_NFC_Cmd
+                                    2. Merge API from EXMC_NFC_Enable/DisableEcc
+                                       to EXMC_NFC_EccCmd
+                                    3. Merge API from EXMC_NFC_Enable/DisableWriteProtect
+                                       to EXMC_NFC_WriteProtectCmd
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -576,6 +581,68 @@ en_result_t EXMC_NFC_StructInit(stc_exmc_nfc_init_t *pstcInit)
     }
 
     return enRet;
+}
+
+/**
+ * @brief  Enable/disable NFC.
+ * @param  [in]  enNewState                 An en_functional_state_t enumeration value.
+ *         This parameter can be one of the following values:
+ *           @arg Enable:                   Enable function.
+ *           @arg Disable:                  Disable function.
+ * @retval None
+ */
+void EXMC_NFC_Cmd(en_functional_state_t enNewState)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+
+    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.NFCEN, enNewState);
+}
+
+/**
+ * @brief  Enable/disable NFC ECC function.
+ * @param  [in]  enNewState                 An en_functional_state_t enumeration value.
+ *         This parameter can be one of the following values:
+ *           @arg Enable:                   Enable function.
+ *           @arg Disable:                  Disable function.
+ * @retval None
+ */
+void EXMC_NFC_EccCmd(en_functional_state_t enNewState)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+
+    if (Enable == enNewState)
+    {
+        CLEAR_REG32_BIT(M4_NFC->IENR, NFC_IENR_ECCDIS);
+    }
+    else
+    {
+        SET_REG32_BIT(M4_NFC->IENR, NFC_IENR_ECCDIS);
+    }
+}
+
+/**
+ * @brief  Enable/disable NFC write protection function.
+ * @param  [in]  enNewState                 An en_functional_state_t enumeration value.
+ *         This parameter can be one of the following values:
+ *           @arg Enable:                   Enable function.
+ *           @arg Disable:                  Disable function.
+ * @retval None
+ */
+void EXMC_NFC_WriteProtectCmd(en_functional_state_t enNewState)
+{
+    /* Check parameters */
+    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+
+    if (Enable == enNewState)
+    {
+        CLEAR_REG32_BIT(M4_NFC->BACR, NFC_BACR_WP);
+    }
+    else
+    {
+        SET_REG32_BIT(M4_NFC->BACR, NFC_BACR_WP);
+    }
 }
 
 /**
@@ -1653,11 +1720,11 @@ static en_result_t EXMC_NFC_Read(uint32_t u32Bank,
 
         if (Enable == enEccState)
         {
-            EXMC_NFC_EnableEcc();
+            EXMC_NFC_EccCmd(Enable);
         }
         else
         {
-            EXMC_NFC_DisableEcc();
+            EXMC_NFC_EccCmd(Disable);
         }
 
         u64Val = (NFC_IDXR_VAL(u32Bank, u32Page, u32Col, u32CapacityIndex) & NFC_IDXR_MASK);
@@ -1704,7 +1771,7 @@ static en_result_t EXMC_NFC_Read(uint32_t u32Bank,
                 enRet = EXMC_NFC_WaitFlagUntilTo(EXMC_NFC_FLAG_ECC_CALCULATING, \
                                                  Reset, \
                                                  u32Timeout);
-                EXMC_NFC_DisableEcc();
+                EXMC_NFC_EccCmd(Disable);
             }
         }
 
@@ -1772,11 +1839,11 @@ static en_result_t EXMC_NFC_Write(uint32_t u32Bank,
 
         if (Enable == enEccState)
         {
-            EXMC_NFC_EnableEcc();
+            EXMC_NFC_EccCmd(Enable);
         }
         else
         {
-            EXMC_NFC_DisableEcc();
+            EXMC_NFC_EccCmd(Disable);
         }
 
         u64Val = (NFC_IDXR_VAL(u32Bank, u32Page, u32Col, u32CapacityIndex) & NFC_IDXR_MASK);
@@ -1815,7 +1882,7 @@ static en_result_t EXMC_NFC_Write(uint32_t u32Bank,
 
         if (Enable == enEccState)
         {
-            EXMC_NFC_DisableEcc();
+            EXMC_NFC_EccCmd(Disable);
         }
     }
 

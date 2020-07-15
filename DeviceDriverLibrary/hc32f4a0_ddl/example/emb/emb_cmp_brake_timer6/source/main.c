@@ -1,12 +1,13 @@
 /**
  *******************************************************************************
  * @file  emb/emb_cmp_brake_timer6/source/main.c
- * @brief This example demonstrates how to use CMP brake function of EMB 
+ * @brief This example demonstrates how to use CMP brake function of EMB
  *        function.
  @verbatim
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-15       Hongjh          Replace DAC_ChannelCmd by DAC_Start
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -281,7 +282,7 @@ static void DacConfig(void)
     DAC_SetChannel1Data(M4_DAC1, 4096U/2U);
 
     /* Start Convert */
-    DAC_ChannelCmd(M4_DAC1, DAC_CH_1, Enable);
+    DAC_Start(M4_DAC1, DAC_CH_1);
 }
 
 /**

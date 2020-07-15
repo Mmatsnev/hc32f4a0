@@ -7,6 +7,9 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-07-15       Hexiao          1. Modify DAC_ChannelCmd to DAC_Start and DAC_Stop
+                                    2. Modify DAC_DualChannelCmd to DAC_DualChannelStart
+                                       and DAC_DualChannelStop
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -182,8 +185,10 @@ en_result_t DAC_AMPCmd(M4_DAC_TypeDef *DACx, uint16_t u16Ch, en_functional_state
 void DAC_ADCPrioCmd(M4_DAC_TypeDef *DACx, en_functional_state_t enNewState);
 void DAC_ADCPrioConfig(M4_DAC_TypeDef *DACx, uint16_t u16ADCxPrio, en_functional_state_t enNewState);
 
-en_result_t DAC_ChannelCmd(M4_DAC_TypeDef *DACx, uint16_t u16Ch, en_functional_state_t enNewState);
-void DAC_DualChannelCmd(M4_DAC_TypeDef *DACx, en_functional_state_t enNewState);
+en_result_t DAC_Start(M4_DAC_TypeDef *DACx, uint16_t u16Ch);
+en_result_t DAC_Stop(M4_DAC_TypeDef *DACx, uint16_t u16Ch);
+void DAC_DualChannelStart(M4_DAC_TypeDef *DACx);
+void DAC_DualChannelStop(M4_DAC_TypeDef *DACx);
 
 void DAC_SetChannel1Data(M4_DAC_TypeDef *DACx, uint16_t data);
 void DAC_SetChannel2Data(M4_DAC_TypeDef *DACx, uint16_t data);

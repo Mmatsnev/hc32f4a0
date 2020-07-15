@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-07-15       Wangmin         Refine macro define
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -258,7 +259,7 @@
 (   (TMR6_VALID_PERIOD_FUNC_OFF == (x))             ||                         \
     (TMR6_VALID_PERIOD_CNT_COND_UNDERFLOW == (x))   ||                         \
     (TMR6_VALID_PERIOD_CNT_COND_OVERFLOW == (x))    ||                         \
-    (TMR6_VALID_PERIOD_CNT_COND_BOTHFLOW == (x)))
+    (TMR6_VALID_PERIOD_CNT_COND_BOTH == (x)))
 
 /* Parameter valid check for count condition for valid period count */
 #define IS_VALID_PERIOD_CNT(x)                                                 \
@@ -367,7 +368,7 @@
 (   (TMR6_DEADTIME_TRANS_COND_NONE == (x))      ||                             \
     (TMR6_DEADTIME_TRANS_COND_OVERFLOW == (x))  ||                             \
     (TMR6_DEADTIME_TRANS_COND_UNDERFLOW == (x)) ||                             \
-    (TMR6_DEADTIME_TRANS_COND_BOTHFLOW == (x)))
+    (TMR6_DEADTIME_TRANS_COND_BOTH == (x)))
 
 /* Parameter valid check for dead time equal function for DTUAR and DTDAR register */
 #define IS_VALID_DEADTIME_EQUAL_FUNC_REG(x)                                    \

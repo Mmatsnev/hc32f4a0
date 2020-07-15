@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-14       Hongjh          Merge API from EXMC_DMC_Enable/Disable to EXMC_DMC_Cmd
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -417,26 +418,6 @@ typedef struct
  */
 
 /**
- * @brief  Enable DMC.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_DMC_Enable(void)
-{
-    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.DMCEN, 1UL);
-}
-
-/**
- * @brief  Disable DMC.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_DMC_Disable(void)
-{
-    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.DMCEN, 0UL);
-}
-
-/**
  * @brief  Get DMC status.
  * @param  None
  * @retval Returned value can be one of the following values:
@@ -454,6 +435,7 @@ __STATIC_INLINE uint32_t EXMC_DMC_GetStatus(void)
 en_result_t EXMC_DMC_Init(const stc_exmc_dmc_init_t *pstcInit);
 void EXMC_DMC_DeInit(void);
 en_result_t EXMC_DMC_StructInit(stc_exmc_dmc_init_t *pstcInit);
+void EXMC_DMC_Cmd(en_functional_state_t enNewState);
 en_result_t EXMC_DMC_CsConfig(uint32_t u32Chip,
                                 const stc_exmc_dmc_cs_cfg_t *pstcCfg);
 uint32_t EXMC_DMC_ChipStartAddress(uint32_t u32Chip);

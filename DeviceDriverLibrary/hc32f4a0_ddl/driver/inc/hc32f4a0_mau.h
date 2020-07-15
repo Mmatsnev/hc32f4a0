@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-07-15       Hexiao          Modify MAU_SqrtStartCmd to MAU_SqrtStart
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -122,7 +123,7 @@ void MAU_SqrtIntCmd(M4_MAU_TypeDef *MAUx, en_functional_state_t enNewState);
 void MAU_SqrtWriteDataReg(M4_MAU_TypeDef *MAUx, uint32_t u32Radicand);
 en_flag_status_t MAU_SqrtGetStatus(const M4_MAU_TypeDef *MAUx);
 uint32_t MAU_SqrtReadDataReg(const M4_MAU_TypeDef *MAUx);
-void MAU_SqrtStartCmd(M4_MAU_TypeDef* MAUx);
+void MAU_SqrtStart(M4_MAU_TypeDef* MAUx);
 
 en_result_t MAU_Sqrt(M4_MAU_TypeDef *MAUx, uint32_t u32Radicand, uint32_t *pu32Result);
 

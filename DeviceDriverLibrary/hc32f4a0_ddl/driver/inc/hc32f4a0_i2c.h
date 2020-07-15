@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-07-15       Hexiao          Modify I2C_SmBusCmd to I2C_SetMode
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -108,13 +109,28 @@ typedef struct
  * @{
  */
 
+/** @defgroup I2C_Buadrate_Max I2C baudrate max value
+  * @{
+  */
 #define I2C_BAUDRATE_MAX                    (400000UL)
+/**
+ * @}
+ */
+
+/** @defgroup I2C_mode Peripheral Mode
+  * @{
+  */
+#define I2C_MODE_I2C                        (0UL)
+#define I2C_MODE_SMBUS                      (2UL)
+/**
+ * @}
+ */
 
 /** @defgroup I2C_Master_Slave_Mode I2C master mode or slave mode
   * @{
   */
 #define I2C_MASTER_SLAVE_MODE_MASTER        (I2C_SR_MSL)
-#define I2C_MASTER_SLAVE_MODE_SLAVE         (0X00000UL)
+#define I2C_MASTER_SLAVE_MODE_SLAVE         (0x00000UL)
 /**
  * @}
  */
@@ -123,7 +139,7 @@ typedef struct
   * @{
   */
 #define I2C_TX_RX_MODE_TX                   (I2C_SR_TRA)
-#define I2C_TX_RX_MODE_RX                   (0X00000UL)
+#define I2C_TX_RX_MODE_RX                   (0x00000UL)
 /**
  * @}
  */
@@ -216,6 +232,7 @@ en_result_t I2C_BaudrateConfig(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI
 void I2C_SlaveAddrConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32AddrNum, uint32_t u32AddrMode, uint32_t u32Addr);
 void I2C_SetMasterSlaveMode(M4_I2C_TypeDef* I2Cx, uint32_t u32MSMode);
 void I2C_SetTxRxMode(M4_I2C_TypeDef* I2Cx, uint32_t u32TxRxMode);
+void I2C_SetMode(M4_I2C_TypeDef* I2Cx, uint32_t u32Mode);
 void I2C_Cmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_FastAckCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_SoftwareResetCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
@@ -227,7 +244,6 @@ void I2C_ClkHighTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewStat
 void I2C_ClkLowTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_ClkTimeoutCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_SmbusConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32SmbusConfig, en_functional_state_t enNewState);
-void I2C_SmBusCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_DigitalFilterConfig(M4_I2C_TypeDef* I2Cx, uint32_t u32DigFilterMode);
 void I2C_DigitalFilterCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);
 void I2C_AnalogFilterCmd(M4_I2C_TypeDef* I2Cx, en_functional_state_t enNewState);

@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-03       Hongjh          Adjust EXMC pin drive capacity to high drive
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -304,7 +305,7 @@ en_result_t BSP_DMC_IS42S16400J7TLI_Init(void)
     PWC_Fcg3PeriphClockCmd(PWC_FCG3_DMC, Enable);
 
     /* Enable DMC. */
-    EXMC_DMC_Enable();
+    EXMC_DMC_Cmd(Enable);
 
     /* Configure DMC width && refresh period & chip & timing. */
     EXMC_DMC_StructInit(&stcDmcInit);
@@ -426,7 +427,7 @@ static void EV_EXMC_DMC_PortInit(void)
 
     /************************* Set pin drive capacity *************************/
     GPIO_StructInit(&stcGpioInit);
-    stcGpioInit.u16PinDrv = PIN_DRV_MID;
+    stcGpioInit.u16PinDrv = PIN_DRV_HIGH;
 
     /* DMC_CKE */
     GPIO_Init(DMC_CKE_PORT, DMC_CKE_PIN, &stcGpioInit);

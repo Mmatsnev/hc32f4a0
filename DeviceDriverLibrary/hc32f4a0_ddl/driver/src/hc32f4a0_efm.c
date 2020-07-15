@@ -7,6 +7,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Heqb           First version
+   2020-07-03       Heqb           Add flag judgment when operate SWAP
+   2020-07-07       Heqb           Add flag judgment for EFM_SetOperateMode function
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -530,17 +532,33 @@ void EFM_LowVolReadCmd(en_functional_state_t enNewState)
  *   @arg  EFM_MODE_ERASECHIP1:             A flash Chip erase
  *   @arg  EFM_MODE_ERASEFULL:              Two flash Chip erase
  *   @arg  EFM_MODE_READONLY:               Read only
- * @retval None
+ * @retval An en_result_t enumeration value:
+ *         - Ok: Success
+ *         - ErrorTimeout: Process timeout
  * @note   Call EFM_Unlock() and EFM_FWMC_Unlock() unlock EFM_FWMC register first.
  */
-void EFM_SetOperateMode(uint32_t u32PgmMode)
+en_result_t EFM_SetOperateMode(uint32_t u32PgmMode)
 {
+    en_result_t enRet = Ok;
+    uint32_t u32Timeout = 0UL;
     DDL_ASSERT(IS_VALID_EFM_OPERATE_MD(u32PgmMode));
     DDL_ASSERT(IS_VALID_EFM_UNLOCK());
     DDL_ASSERT(IS_VALID_EFM_FWMC_UNLOCK());
-
-    /* Set the program or erase mode. */
-    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, u32PgmMode);
+    while ((READ_REG32(M4_EFM->FSR) & 0x01000100UL) != 0x01000100UL)
+    {
+        u32Timeout ++;
+        if (u32Timeout > EFM_SEQ_PGM_TIMEOUT)
+        {
+            enRet = ErrorTimeout;
+            break;
+        }
+    }
+    if (enRet == Ok)
+    {
+        /* Set the program or erase mode. */
+        MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, u32PgmMode);
+    }
+    return enRet;
 }
 
 /**
@@ -610,7 +628,7 @@ en_flag_status_t EFM_GetFlagStatus(uint32_t u32Flag)
  *   @arg  EFM_FLAG_CLR_OPTEND1:         Clear Flash1 end of operation flag
  *   @arg  EFM_FLAG_CLR_CLOLERR1:        Clear Flash1 read collide error flag
  * @retval None
- * note    Call EFM_Unlock() unlock EFM register first.
+ * @note   Call EFM_Unlock() unlock EFM register first.
  */
 void EFM_ClearFlag(uint32_t u32Flag)
 {
@@ -794,7 +812,7 @@ en_result_t EFM_SingleProgram(uint32_t u32Addr, uint32_t u32Data)
     /* Disable CACHE function */
     CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
     /* Set single program mode. */
-    EFM_SetOperateMode(EFM_MODE_PROGRAMSINGLE);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSINGLE);
     /* Program data. */
     RW_MEM32(u32Addr) = (uint32_t)u32Data;
     if((u32Addr < EFM_ADDR_SECTOR128) || (u32Addr >= EFM_OTP_BLOCK16))
@@ -819,7 +837,7 @@ en_result_t EFM_SingleProgram(uint32_t u32Addr, uint32_t u32Data)
     /* CLear the end of operate flag */
     EFM_ClearFlag(u32EfmClrFlag);
     /* Set read only mode. */
-    EFM_SetOperateMode(EFM_MODE_READONLY);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* Recover CACHE function */
     MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
 
@@ -858,7 +876,7 @@ en_result_t EFM_ProgramReadBack(uint32_t u32Addr, uint32_t u32Data)
     /* Disable CACHE */
     CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
     /* Set Program and read back mode. */
-    EFM_SetOperateMode(EFM_MODE_PROGRAMREADBACK);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMREADBACK);
     /* Program data. */
     RW_MEM32(u32Addr) = (uint32_t)u32Data;
     if((u32Addr < EFM_ADDR_SECTOR128) || (u32Addr >= EFM_OTP_BLOCK16))
@@ -887,7 +905,7 @@ en_result_t EFM_ProgramReadBack(uint32_t u32Addr, uint32_t u32Data)
     /* CLear the end of operate flag */
     EFM_ClearFlag(u32EfmClrFlag);
     /* Set read only mode. */
-    EFM_SetOperateMode(EFM_MODE_READONLY);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* recover CACHE function */
     MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
 
@@ -926,7 +944,7 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
     /* Disable CACHE */
     CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
     /* Set sequence program mode. */
-    EFM_SetOperateMode(EFM_MODE_PROGRAMSEQUENCE);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSEQUENCE);
     /* program data. */
     while((u32LoopWords--) > 0UL)
     {
@@ -968,7 +986,7 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
     }
 
     /* Set read only mode. */
-    EFM_SetOperateMode(EFM_MODE_READONLY);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     u32Timeout = 0UL;
     /* wait for flash ready . */
     while(Set != EFM_GetFlagStatus(u32EfmFlag1))
@@ -1012,7 +1030,7 @@ en_result_t EFM_SectorErase(uint32_t u32Addr)
     /* Disable CACHE */
     CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
     /* Set sector erase mode. */
-    EFM_SetOperateMode(EFM_MODE_ERASESECTOR);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_ERASESECTOR);
     /* Erase */
     RW_MEM32(u32Addr & 0xFFFFFFFCUL) = (uint32_t)0UL;
     if((u32Addr < EFM_ADDR_SECTOR128) || (u32Addr >= EFM_OTP_BLOCK16))
@@ -1031,9 +1049,8 @@ en_result_t EFM_SectorErase(uint32_t u32Addr)
     }
     /* Clear the end of operate flag */
     EFM_ClearFlag(u32EfmClrFlag);
-
     /* Set read only mode. */
-    EFM_SetOperateMode(EFM_MODE_READONLY);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* Recover CACHE */
     MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
 
@@ -1052,21 +1069,50 @@ en_result_t EFM_SectorErase(uint32_t u32Addr)
 en_result_t EFM_OTPLock(uint32_t u32Addr)
 {
     en_result_t enRet = ErrorInvalidParameter;
+    uint32_t u32Timeout = 0UL;
 
     if((u32Addr >= OTP_LOCK_ADDR_START) && (u32Addr < OTP_LOCK_ADDR_END ))
     {
         DDL_ASSERT(IS_VALID_EFM_UNLOCK());
         DDL_ASSERT(IS_VALID_EFM_OTP_UNLOCK());
 
+        enRet = Ok;
         /* Set single program mode. */
-        EFM_SetOperateMode(EFM_MODE_PROGRAMSINGLE);
+        MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSINGLE);
         /* Enable OTP */
         RW_MEM32(OTP_ENABLE_ADDR) = (uint32_t)0UL;
-        /* OTP latch */
-        RW_MEM32(u32Addr & 0xFFFFFFFCUL) = (uint32_t)0UL;
+        /* Wait for operation end */
+        while(Set != EFM_GetFlagStatus(EFM_FLAG_RDY0))
+        {
+            u32Timeout ++;
+            if(u32Timeout >= EFM_PGM_TIMEOUT)
+            {
+                enRet = ErrorTimeout;
+                break;
+            }
+        }
+        /* CLear the end of operate flag */
+        EFM_ClearFlag(EFM_FLAG_CLR_OPTEND0);
+        if (enRet == Ok)
+        {
+            /* OTP latch */
+            RW_MEM32(u32Addr & 0xFFFFFFFCUL) = (uint32_t)0UL;
+            /* Wait for operation end */
+            u32Timeout = 0UL;
+            while(Set != EFM_GetFlagStatus(EFM_FLAG_RDY0))
+            {
+                u32Timeout ++;
+                if(u32Timeout >= EFM_PGM_TIMEOUT)
+                {
+                    enRet = ErrorTimeout;
+                    break;
+                }
+            }
+        }
+        /* CLear the end of operate flag */
+        EFM_ClearFlag(EFM_FLAG_CLR_OPTEND0);
         /* Set read only mode. */
-        EFM_SetOperateMode(EFM_MODE_READONLY);
-        enRet = Ok;
+        MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     }
 
     return enRet;
@@ -1106,12 +1152,23 @@ en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr)
     if (RW_MEM32(EFM_SWAP_ADDR) == EFM_SWAP_DATA)
     {
         /* Set Sector erase mode. */
-        EFM_SetOperateMode(EFM_MODE_ERASESECTOR);
+        MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_ERASESECTOR);
         /* Disable flash switch function */
         RW_MEM32(EFM_SWAP_ADDR) = 0x0UL;
+        while(Set != EFM_GetFlagStatus(EFM_FLAG_OPTEND0))
+        {
+            u32Timeout ++;
+            if(u32Timeout >= EFM_ERASE_TIMEOUT)
+            {
+                enRet = ErrorTimeout;
+                break;
+            }
+        }
+        /* CLear the end of operate flag */
+        EFM_ClearFlag(EFM_FLAG_CLR_OPTEND0);
     }
     /* Set chip erase mode. */
-    EFM_SetOperateMode(EraseMode);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EraseMode);
     if(EraseMode == EFM_MODE_ERASECHIP1)
     {
         if (u32Addr >= EFM_ADDR_SECTOR128)
@@ -1176,7 +1233,7 @@ en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr)
         EFM_ClearFlag(EFM_FLAG_CLR_OPTEND1);
     }
     /* Set read only mode. */
-    EFM_SetOperateMode(EFM_MODE_READONLY);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* recover CACHE */
     MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
     return enRet;
@@ -1186,28 +1243,57 @@ en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr)
  * @brief  Enable or disable the EFM swap function.
  * @param  [in] enNewState                The new state of the flash swap function.
  *   @arg  This parameter can be: Enable or Disable.
- * @retval None
+ * @retval An en_result_t enumeration value:
+ *         - Ok: program success
+ *         - ErrorTimeout: program error timeout
  * @note   Call EFM_Unlock() unlock EFM register first.
  */
-void EFM_SwapCmd(en_functional_state_t enNewState)
+en_result_t EFM_SwapCmd(en_functional_state_t enNewState)
 {
+    en_result_t enRet = Ok;
+    uint32_t u32Timeout = 0UL;
+
     DDL_ASSERT(IS_VALID_EFM_UNLOCK());
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
     if (enNewState ==Enable)
     {
         /* Set Program single mode. */
-        EFM_SetOperateMode(EFM_MODE_PROGRAMSINGLE);
+        MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSINGLE);
         /* Enable flash swap function */
         RW_MEM32(EFM_SWAP_ADDR) = EFM_SWAP_DATA;
+        while(Set != EFM_GetFlagStatus(EFM_FLAG_OPTEND0))
+        {
+            u32Timeout ++;
+            if(u32Timeout >= EFM_PGM_TIMEOUT)
+            {
+                enRet = ErrorTimeout;
+                break;
+            }
+        }
+        /* CLear the end of operate flag */
+        EFM_ClearFlag(EFM_FLAG_CLR_OPTEND0);
     }
     else{
         /* Set Sector erase mode. */
-        EFM_SetOperateMode(EFM_MODE_ERASESECTOR);
+        MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_ERASESECTOR);
         /* Disable flash switch function */
         RW_MEM32(EFM_SWAP_ADDR) = 0x0UL;
+        while(Set != EFM_GetFlagStatus(EFM_FLAG_OPTEND0))
+        {
+            u32Timeout ++;
+            if(u32Timeout >= EFM_ERASE_TIMEOUT)
+            {
+                enRet = ErrorTimeout;
+                break;
+            }
+        }
+        /* CLear the end of operate flag */
+        EFM_ClearFlag(EFM_FLAG_CLR_OPTEND0);
     }
     /* Set read only mode. */
-    EFM_SetOperateMode(EFM_MODE_READONLY);
+    MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
+
+    return enRet;
 }
 
 /**

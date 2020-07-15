@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-15       Hongjh          Modify macro define for TMR4 SEVT match mask.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -743,8 +744,8 @@ typedef struct
 /** @defgroup TMR4_SEVT_Zero_Match_Mask_Selection TMR4 SEVT Zero Match Mask Selection
  * @{
  */
-#define TMR4_SEVT_ZERO_MATCH_MASK_DISABLE       (0U)            /*!< Disable perform to compare with the CNT zero interrupt mask counter */
-#define TMR4_SEVT_ZERO_MATCH_MASK_ENABLE        (TMR4_SCSR_UEN) /*!< Enable perform to compare with the CNT zero interrupt mask counter */
+#define TMR4_SEVT_ZERO_MATCH_MASK_DISABLE       (0U)             /*!< Disable perform to compare with the CNT zero interrupt mask counter */
+#define TMR4_SEVT_ZERO_MATCH_MASK_ENABLE        (TMR4_SCMR_MZCE) /*!< Enable perform to compare with the CNT zero interrupt mask counter */
 /**
  * @}
  */
@@ -752,8 +753,8 @@ typedef struct
 /** @defgroup TMR4_SEVT_Peak_Match_Mask_Selection TMR4 SEVT Peak Match Mask Selection
  * @{
  */
-#define TMR4_SEVT_PEAK_MATCH_MASK_DISABLE       (0U)            /*!< Disable perform to compare with the CNT peak interrupt mask counter */
-#define TMR4_SEVT_PEAK_MATCH_MASK_ENABLE        (TMR4_SCSR_UEN) /*!< Enable perform to compare with the CNT peak interrupt mask counter */
+#define TMR4_SEVT_PEAK_MATCH_MASK_DISABLE       (0U)             /*!< Disable perform to compare with the CNT peak interrupt mask counter */
+#define TMR4_SEVT_PEAK_MATCH_MASK_ENABLE        (TMR4_SCMR_MPCE) /*!< Enable perform to compare with the CNT peak interrupt mask counter */
 /**
  * @}
  */

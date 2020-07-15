@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-03       Hongjh          Adjust EXMC pin drive capacity to high drive
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -199,7 +200,7 @@ en_result_t BSP_NFC_MT29F2G08AB_Init(void)
     PWC_Fcg3PeriphClockCmd(PWC_FCG3_NFC, Enable);
 
     /* Enable NFC. */
-    EXMC_NFC_Enable();
+    EXMC_NFC_Cmd(Enable);
 
     /* Configure NFC width && refresh period & chip & timing. */
     stcInit.u32OpenPage = EXMC_NFC_OPEN_PAGE_DISABLE;
@@ -413,7 +414,7 @@ static void EV_EXMC_NFC_PortInit(void)
 
     /************************* Set pin drive capacity *************************/
     GPIO_StructInit(&stcGpioInit);
-    stcGpioInit.u16PinDrv = PIN_DRV_MID;
+    stcGpioInit.u16PinDrv = PIN_DRV_HIGH;
 
     /* NFC_CE */
     GPIO_Init(NFC_CE_PORT, NFC_CE_PIN, &stcGpioInit);

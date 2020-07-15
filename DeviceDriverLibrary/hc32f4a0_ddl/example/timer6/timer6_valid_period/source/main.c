@@ -5,7 +5,8 @@
  @verbatim
    Change Logs:
    Date             Author          Notes
-   2020-06-12       Wangmin          First version
+   2020-06-12       Wangmin         First version
+   2020-07-15       Wangmin         Modify after Refine macro define in driver
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -537,7 +538,7 @@ int32_t main(void)
 
 #ifdef SCMA_ValidPeriod
     /* Valid period function configurate */
-    stcValidPeriodCfg.u32CntCond = TMR6_VALID_PERIOD_CNT_COND_BOTHFLOW;
+    stcValidPeriodCfg.u32CntCond = TMR6_VALID_PERIOD_CNT_COND_BOTH;
     stcValidPeriodCfg.u32PeriodInterval = TMR6_VALID_PERIOD_CNT_1;
     stcValidPeriodCfg.u32StatChA = TMR6_VALID_PERIOD_FUNC_CHA_ON;
     stcValidPeriodCfg.u32StatChB = TMR6_VALID_PERIOD_FUNC_CHB_OFF;

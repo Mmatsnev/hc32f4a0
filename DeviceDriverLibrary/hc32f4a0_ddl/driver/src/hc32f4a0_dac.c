@@ -7,6 +7,9 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-07-15       Hexiao          1. Modify DAC_ChannelCmd to DAC_Start and DAC_Stop
+                                    2. Modify DAC_DualChannelCmd to DAC_DualChannelStart
+                                       and DAC_DualChannelStop
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -319,30 +322,27 @@ void DAC_ADCPrioConfig(M4_DAC_TypeDef *DACx, uint16_t u16ADCxPrio, en_functional
 }
 
 /**
- * @brief  DAC channel 1 or channel 2 function command
+ * @brief  Start the specified DAC channel
  * @param  [in] DACx   Pointer to the DAC peripheral register.
  *         This parameter can be one of the following values:
  *         @arg M4_DAC1
  *         @arg M4_DAC2
- * @param  [in] u16Ch      Specify DAC channel @ref DAC_CH.
+ * @param  [in] u16Ch  Specify DAC channel @ref DAC_CH.
  *         This parameter can be one of the following values:
  *         @arg DAC_CH_1
  *         @arg DAC_CH_2
- * @param  [in] enNewState    New state of DAC channel 1 or channel 2 function,
- *                            @ref en_functional_state_t
  * @retval An en_result_t enumeration value:
  *         - Ok: No errors occurred
- *         - ErrorInvalidMode: cannot enable or disable single channel when \n
- *                           these two channels have already been enabled by \n
- *                           @ref DAC_DualChannelCmd
+ *         - ErrorInvalidMode: cannot start single channel when \n
+ *                           this channel have already been started by \n
+ *                           @ref DAC_DualChannelStart
  */
-en_result_t DAC_ChannelCmd(M4_DAC_TypeDef *DACx, uint16_t u16Ch, en_functional_state_t enNewState)
+en_result_t DAC_Start(M4_DAC_TypeDef *DACx, uint16_t u16Ch)
 {
     en_result_t enRet = Ok;
 
     DDL_ASSERT(IS_VALID_UNIT(DACx));
     DDL_ASSERT(IS_VALID_CH(u16Ch));
-    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     if((DACx->DACR & DAC_DACR_DAE) != 0U)
     {
@@ -351,43 +351,76 @@ en_result_t DAC_ChannelCmd(M4_DAC_TypeDef *DACx, uint16_t u16Ch, en_functional_s
     else
     {
         const uint16_t u16Cmd = (uint16_t)1U << (DAC_DACR_DA1E_POS + u16Ch);
-
-        if(Enable == enNewState)
-        {
-            SET_REG16_BIT(DACx->DACR, u16Cmd);
-        }
-        else
-        {
-            CLEAR_REG16_BIT(DACx->DACR, u16Cmd);
-        }
+        SET_REG16_BIT(DACx->DACR, u16Cmd);
     }
 
     return enRet;
 }
 
 /**
- * @brief  DAC channel 1 and channel 2 function command
+ * @brief  Stop the specified DAC channel
  * @param  [in] DACx   Pointer to the DAC peripheral register.
  *         This parameter can be one of the following values:
  *         @arg M4_DAC1
  *         @arg M4_DAC2
- * @param  [in] enNewState    New state of DAC channel 1 and channel 2 function,
- *                            @ref en_functional_state_t
- * @retval None
+ * @param  [in] u16Ch  Specify DAC channel @ref DAC_CH.
+ *         This parameter can be one of the following values:
+ *         @arg DAC_CH_1
+ *         @arg DAC_CH_2
+ * @retval An en_result_t enumeration value:
+ *         - Ok: No errors occurred
+ *         - ErrorInvalidMode: cannot stop single channel when \n
+ *                           this channel is started by \n
+ *                           @ref DAC_DualChannelStart
  */
-void DAC_DualChannelCmd(M4_DAC_TypeDef *DACx, en_functional_state_t enNewState)
+en_result_t DAC_Stop(M4_DAC_TypeDef *DACx, uint16_t u16Ch)
 {
-    DDL_ASSERT(IS_VALID_UNIT(DACx));
-    DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
+    en_result_t enRet = Ok;
 
-    if(Enable == enNewState)
+    DDL_ASSERT(IS_VALID_UNIT(DACx));
+    DDL_ASSERT(IS_VALID_CH(u16Ch));
+
+    if((DACx->DACR & DAC_DACR_DAE) != 0U)
     {
-        SET_REG16_BIT(DACx->DACR, DAC_DACR_DAE);
+        enRet = ErrorInvalidMode;
     }
     else
     {
-        CLEAR_REG16_BIT(DACx->DACR, DAC_DACR_DAE);
+        const uint16_t u16Cmd = (uint16_t)1U << (DAC_DACR_DA1E_POS + u16Ch);
+        CLEAR_REG16_BIT(DACx->DACR, u16Cmd);
     }
+
+    return enRet;
+}
+
+/**
+ * @brief  Start DAC channel 1 and channel 2
+ * @param  [in] DACx   Pointer to the DAC peripheral register.
+ *         This parameter can be one of the following values:
+ *         @arg M4_DAC1
+ *         @arg M4_DAC2
+ * @retval None
+ */
+void DAC_DualChannelStart(M4_DAC_TypeDef *DACx)
+{
+    DDL_ASSERT(IS_VALID_UNIT(DACx));
+
+    SET_REG16_BIT(DACx->DACR, DAC_DACR_DAE);
+}
+
+/**
+ * @brief  Stop DAC channel 1 and channel 2
+ * @param  [in] DACx   Pointer to the DAC peripheral register.
+ *         This parameter can be one of the following values:
+ *         @arg M4_DAC1
+ *         @arg M4_DAC2
+ * @retval None
+ */
+void DAC_DualChannelStop(M4_DAC_TypeDef *DACx)
+{
+    DDL_ASSERT(IS_VALID_UNIT(DACx));
+
+    CLEAR_REG16_BIT(DACx->DACR, DAC_DACR_DAE);
 }
 
 /**
@@ -598,7 +631,7 @@ en_result_t DAC_Init(M4_DAC_TypeDef *DACx, uint16_t u16Ch, const stc_dac_init_t 
  */
 void DAC_DeInit(M4_DAC_TypeDef *DACx)
 {
-    DAC_DualChannelCmd(DACx, Disable);
+    DAC_DualChannelStop(DACx);
 
     DAC_SetDataSource(DACx, DAC_CH_1, DAC_DATA_SRC_DATAREG);
     DAC_SetDataSource(DACx, DAC_CH_2, DAC_DATA_SRC_DATAREG);

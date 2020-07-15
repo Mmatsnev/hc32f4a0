@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-07-03       Zhangxl         _DIV64 definition for BUS clock division
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -656,6 +657,7 @@ typedef struct
 #define CLK_HCLK_DIV8               (0x03U << CMU_SCFGR_HCLKS_POS)
 #define CLK_HCLK_DIV16              (0x04U << CMU_SCFGR_HCLKS_POS)
 #define CLK_HCLK_DIV32              (0x05U << CMU_SCFGR_HCLKS_POS)
+#define CLK_HCLK_DIV64              (0x06U << CMU_SCFGR_HCLKS_POS)
 /**
  * @}
  */
@@ -670,6 +672,7 @@ typedef struct
 #define CLK_EXCLK_DIV8              (0x03U << CMU_SCFGR_EXCKS_POS)
 #define CLK_EXCLK_DIV16             (0x04U << CMU_SCFGR_EXCKS_POS)
 #define CLK_EXCLK_DIV32             (0x05U << CMU_SCFGR_EXCKS_POS)
+#define CLK_EXCLK_DIV64             (0x06U << CMU_SCFGR_EXCKS_POS)
 /**
  * @}
  */
@@ -684,6 +687,7 @@ typedef struct
 #define CLK_PCLK4_DIV8              (0x03U << CMU_SCFGR_PCLK4S_POS)
 #define CLK_PCLK4_DIV16             (0x04U << CMU_SCFGR_PCLK4S_POS)
 #define CLK_PCLK4_DIV32             (0x05U << CMU_SCFGR_PCLK4S_POS)
+#define CLK_PCLK4_DIV64             (0x06U << CMU_SCFGR_PCLK4S_POS)
 /**
  * @}
  */
@@ -698,6 +702,7 @@ typedef struct
 #define CLK_PCLK3_DIV8              (0x03U << CMU_SCFGR_PCLK3S_POS)
 #define CLK_PCLK3_DIV16             (0x04U << CMU_SCFGR_PCLK3S_POS)
 #define CLK_PCLK3_DIV32             (0x05U << CMU_SCFGR_PCLK3S_POS)
+#define CLK_PCLK3_DIV64             (0x06U << CMU_SCFGR_PCLK3S_POS)
 /**
  * @}
  */
@@ -712,6 +717,7 @@ typedef struct
 #define CLK_PCLK2_DIV8              (0x03U << CMU_SCFGR_PCLK2S_POS)
 #define CLK_PCLK2_DIV16             (0x04U << CMU_SCFGR_PCLK2S_POS)
 #define CLK_PCLK2_DIV32             (0x05U << CMU_SCFGR_PCLK2S_POS)
+#define CLK_PCLK2_DIV64             (0x06U << CMU_SCFGR_PCLK2S_POS)
 /**
  * @}
  */
@@ -726,6 +732,7 @@ typedef struct
 #define CLK_PCLK1_DIV8              (0x03U << CMU_SCFGR_PCLK1S_POS)
 #define CLK_PCLK1_DIV16             (0x04U << CMU_SCFGR_PCLK1S_POS)
 #define CLK_PCLK1_DIV32             (0x05U << CMU_SCFGR_PCLK1S_POS)
+#define CLK_PCLK1_DIV64             (0x06U << CMU_SCFGR_PCLK1S_POS)
 /**
  * @}
  */
@@ -740,6 +747,7 @@ typedef struct
 #define CLK_PCLK0_DIV8              (0x03U << CMU_SCFGR_PCLK0S_POS)
 #define CLK_PCLK0_DIV16             (0x04U << CMU_SCFGR_PCLK0S_POS)
 #define CLK_PCLK0_DIV32             (0x05U << CMU_SCFGR_PCLK0S_POS)
+#define CLK_PCLK0_DIV64             (0x06U << CMU_SCFGR_PCLK0S_POS)
 /**
  * @}
  */

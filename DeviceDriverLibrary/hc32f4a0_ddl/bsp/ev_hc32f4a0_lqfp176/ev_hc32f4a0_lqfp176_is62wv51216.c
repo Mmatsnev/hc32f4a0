@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-03       Hongjh          Adjust EXMC pin drive capacity to high drive
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -261,7 +262,7 @@ en_result_t BSP_SMC_IS62WV51216_Init(void)
     PWC_Fcg3PeriphClockCmd(PWC_FCG3_SMC, Enable);
 
     /* Enable SMC. */
-    EXMC_SMC_Enable();
+    EXMC_SMC_Cmd(Enable);
 
     EXMC_SMC_ExitLowPower();
     while (EXMC_SMC_READY != EXMC_SMC_GetStatus())
@@ -346,7 +347,7 @@ static void EV_EXMC_SMC_PortInit(void)
 
     /************************* Set pin drive capacity *************************/
     GPIO_StructInit(&stcGpioInit);
-    stcGpioInit.u16PinDrv = PIN_DRV_MID;
+    stcGpioInit.u16PinDrv = PIN_DRV_HIGH;
 
     /* SMC_CS */
     GPIO_Init(SMC_CS_PORT, SMC_CS_PIN, &stcGpioInit);

@@ -167,7 +167,7 @@ int32_t main(void)
 {
     stc_efm_cfg_t stcEfmCfg;
     uint32_t flag1, flag2;
-    uint32_t u32TestData = 0x5A5A5A5AU;
+    uint32_t u32TestData = 0x5A5A5A5AUL;
     uint32_t u32Addr;
 
     /* Unlock peripherals or registers */

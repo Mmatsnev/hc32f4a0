@@ -7,6 +7,11 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-14       Hongjh          1. Merge API from EXMC_NFC_Enable/Disable to EXMC_NFC_Cmd
+                                    2. Merge API from EXMC_NFC_Enable/DisableEcc
+                                       to EXMC_NFC_EccCmd
+                                    3. Merge API from EXMC_NFC_Enable/DisableWriteProtect
+                                       to EXMC_NFC_WriteProtectCmd
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -512,26 +517,6 @@ typedef struct
  */
 
 /**
- * @brief  Enable NFC.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_NFC_Enable(void)
-{
-    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.NFCEN, 1UL);
-}
-
-/**
- * @brief  Disable NFC.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_NFC_Disable(void)
-{
-    WRITE_REG32(bM4_PERIC->EXMC_ENAR_b.NFCEN, 0UL);
-}
-
-/**
  * @brief  Set EXMC NFC command register value.
  * @param  [in] u32Val                      The combination value of command and arguments.
  * @retval None
@@ -574,46 +559,6 @@ __STATIC_INLINE void EXMC_NFC_DeselectChip(void)
 }
 
 /**
- * @brief  Enable NFC ECC function.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_NFC_EnableEcc(void)
-{
-    CLEAR_REG32_BIT(M4_NFC ->IENR, NFC_IENR_ECCDIS);
-}
-
-/**
- * @brief  Disable NFC ECC function.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_NFC_DisableEcc(void)
-{
-    SET_REG32_BIT(M4_NFC ->IENR, NFC_IENR_ECCDIS);
-}
-
-/**
- * @brief  Enable NFC write protection function.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_NFC_EnableWriteProtect(void)
-{
-    CLEAR_REG32_BIT(M4_NFC ->BACR, NFC_BACR_WP);
-}
-
-/**
- * @brief  Disable NFC write protection function.
- * @param  None
- * @retval None
- */
-__STATIC_INLINE void EXMC_NFC_DisableWriteProtect(void)
-{
-    SET_REG32_BIT(M4_NFC ->BACR, NFC_BACR_WP);
-}
-
-/**
  * @brief  Get the 4BIT ECC error section.
  * @param  None
  * @retval The register value
@@ -627,6 +572,9 @@ __STATIC_INLINE uint32_t EXMC_NFC_GetEcc4BitsErrSection(void)
 en_result_t EXMC_NFC_Init(const stc_exmc_nfc_init_t *pstcInit);
 void EXMC_NFC_DeInit(void);
 en_result_t EXMC_NFC_StructInit(stc_exmc_nfc_init_t *pstcInit);
+void EXMC_NFC_Cmd(en_functional_state_t enNewState);
+void EXMC_NFC_EccCmd(en_functional_state_t enNewState);
+void EXMC_NFC_WriteProtectCmd(en_functional_state_t enNewState);
 void EXMC_NFC_IntCmd(uint16_t u16IntSource, en_functional_state_t enNewState);
 en_flag_status_t EXMC_NFC_GetStatus(uint32_t u32Flag);
 void EXMC_NFC_ClearStatus(uint32_t u32Flag);
