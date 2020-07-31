@@ -7,6 +7,10 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-23       Hongjh          1. Modify macro define for interrupt, flag and mode;
+                                    2. Rename API: from DCU_IntFuncCmd to DCU_GlobalIntCmd;
+                                    3. Refine API: DCU_IntCmd and delete DCU_SetCmpIntMode;
+                                    4. Refine API: DCU DATA read/write.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -106,15 +110,15 @@
 (   (DCU_CMP == (x))                            ||                             \
     (DCU_ADD == (x))                            ||                             \
     (DCU_SUB == (x))                            ||                             \
-    (DCU_HW_TRIG_ADD == (x))                    ||                             \
-    (DCU_HW_TRIG_SUB == (x)))
+    (DCU_HW_ADD == (x))                         ||                             \
+    (DCU_HW_SUB == (x)))
 
 #define IS_DCU_WAVE_FUNC_UNIT_MODE(x)                                          \
 (   (DCU_CMP == (x))                            ||                             \
     (DCU_ADD == (x))                            ||                             \
     (DCU_SUB == (x))                            ||                             \
-    (DCU_HW_TRIG_ADD == (x))                    ||                             \
-    (DCU_HW_TRIG_SUB == (x))                    ||                             \
+    (DCU_HW_ADD == (x))                         ||                             \
+    (DCU_HW_SUB == (x))                         ||                             \
     (DCU_TRIANGLE_WAVE == (x))                  ||                             \
     (DCU_SAWTOOTH_WAVE_INC == (x))              ||                             \
     (DCU_SAWTOOTH_WAVE_DEC == (x)))
@@ -136,23 +140,42 @@
     (0UL == ((x) & (~DCU_WAVE_FUNC_UNIT_FLAG_MASK))))
 
 #define IS_DCU_INTERRUPT_STATE(x)                                              \
-(   DCU_INT_ENABLE == (x)                       ||                             \
-    DCU_INT_DISABLE == (x))
+(   (DCU_INT_ENABLE == (x))                     ||                             \
+    (DCU_INT_DISABLE == (x)))
 
 #define IS_DCU_CMP_TRIG_MODE(x)                                                \
-(   DCU_CMP_TRIG_BY_DATA0 == (x)                ||                             \
-    DCU_CMP_TRIG_BY_DATA012 == (x))
+(   (DCU_CMP_TRIG_DATA0 == (x))                 ||                             \
+    (DCU_CMP_TRIG_DATA012 == (x)))
 
 #define IS_DCU_DATA_SIZE(x)                                                    \
-(   DCU_DATA_SIZE_8BIT == (x)                   ||                             \
-    DCU_DATA_SIZE_16BIT == (x)                  ||                             \
-    DCU_DATA_SIZE_32BIT == (x))
+(   (DCU_DATA_SIZE_8BIT == (x))                 ||                             \
+    (DCU_DATA_SIZE_16BIT == (x))                ||                             \
+    (DCU_DATA_SIZE_32BIT == (x)))
 
-#define IS_DCU_CMP_INTERRUPT_MODE(x)                                           \
-(   (DCU_CMP_WINDOW_INT_INVALID == (x))         ||                             \
-    (DCU_CMP_WINDOW_INT_INSIDE == (x))          ||                             \
-    (DCU_CMP_WINDOW_INT_OUTSIDE == (x))         ||                             \
-    (DCU_CMP_INT_INVALID == (x)))
+#define IS_DCU_INT_CATEGORY(x)                                                 \
+(   ((x) == DCU_INT_OP)                         ||                             \
+    ((x) == DCU_INT_WAVE_MD)                    ||                             \
+    ((x) == DCU_INT_CMP_WIN)                    ||                             \
+    ((x) == DCU_INT_CMP_NON_WIN))
+
+#define IS_DCU_INT_OP(x)                        ((x) == DCU_INT_OP_UDF_OVF)
+
+#define IS_DCU_INT_CMP_WIN(x)                                                  \
+(   ((x) != 0UL)                                &&                             \
+    (((x) | DCU_INT_CMP_WIN_ALL) == DCU_INT_CMP_WIN_ALL))
+
+#define IS_DCU_INT_WAVE_MD(x)                                                  \
+(   ((x) != 0UL)                                &&                             \
+    (((x) | DCU_INT_WAVE_MD_ALL) == DCU_INT_WAVE_MD_ALL))
+
+#define IS_DCU_INT_CMP_NON_WIN(x)                                              \
+(   ((x) != 0UL)                                ||                             \
+    (((x) | DCU_INT_CMP_NON_WIN_ALL) == DCU_INT_CMP_NON_WIN_ALL))
+
+#define IS_DCU_DATA_REG(x)                                                     \
+(   ((x) == DCU_DATA0_IDX)                      ||                             \
+    ((x) == DCU_DATA1_IDX)                      ||                             \
+    ((x) == DCU_DATA2_IDX))
 
 #define IS_DCU_COM_TRIG(x)                                                     \
 (   (0UL != (x))                                &&                             \
@@ -172,8 +195,7 @@
  * @{
  */
 #define DCU_BASE_FUNC_UNIT_FLAG_MASK                                           \
-(   DCU_FLAG_OPERATION                          |                              \
-    DCU_FLAG_DATA0_LS_DATA2                     |                              \
+(   DCU_FLAG_DATA0_LS_DATA2                     |                              \
     DCU_FLAG_DATA0_EQ_DATA2                     |                              \
     DCU_FLAG_DATA0_GT_DATA2                     |                              \
     DCU_FLAG_DATA0_LS_DATA1                     |                              \
@@ -188,37 +210,9 @@
     DCU_FLAG_DATA0_LS_DATA1                     |                              \
     DCU_FLAG_DATA0_EQ_DATA1                     |                              \
     DCU_FLAG_DATA0_GT_DATA1                     |                              \
-    DCU_INT_SAWTOOTH_WAVE_RELOAD                |                              \
-    DCU_INT_TRIANGLE_WAVE_BOTTOM                |                              \
-    DCU_INT_TRIANGLE_WAVE_TOP)
-/**
- * @}
- */
-
-/**
- * @defgroup DCU_Interrupt_Mask DCU Interrupt Mask
- * @{
- */
-#define DCU_BASE_FUNC_UNIT_INT_MASK                                            \
-(   DCU_INT_OPERATION                           |                              \
-    DCU_INT_DATA0_LS_DATA2                      |                              \
-    DCU_INT_DATA0_EQ_DATA2                      |                              \
-    DCU_INT_DATA0_GT_DATA2                      |                              \
-    DCU_INT_DATA0_LS_DATA1                      |                              \
-    DCU_INT_DATA0_EQ_DATA1                      |                              \
-    DCU_INT_DATA0_GT_DATA1)
-
-#define DCU_WAVE_FUNC_UNIT_INT_MASK                                            \
-(   DCU_INT_OPERATION                           |                              \
-    DCU_INT_DATA0_LS_DATA2                      |                              \
-    DCU_INT_DATA0_EQ_DATA2                      |                              \
-    DCU_INT_DATA0_GT_DATA2                      |                              \
-    DCU_INT_DATA0_LS_DATA1                      |                              \
-    DCU_INT_DATA0_EQ_DATA1                      |                              \
-    DCU_INT_DATA0_GT_DATA1                      |                              \
-    DCU_INT_SAWTOOTH_WAVE_RELOAD                |                              \
-    DCU_INT_TRIANGLE_WAVE_BOTTOM                |                              \
-    DCU_INT_TRIANGLE_WAVE_TOP)
+    DCU_FLAG_WAVE_SAWTOOTH_RELOAD               |                              \
+    DCU_FLAG_WAVE_TRIANGLE_BOTTOM               |                              \
+    DCU_FLAG_WAVE_TRIANGLE_TOP)
 /**
  * @}
  */
@@ -233,7 +227,8 @@
  * @defgroup DCU_Register_Address Get DCU register address
  * @{
  */
-#define REG_ADDR(__REG__)                   ((uint32_t)(&(__REG__)))
+#define REG_ADDR(__REG__)                       ((uint32_t)(&(__REG__)))
+#define DATA_REG_ADDR(__DCUx__, __IDX__)        (REG_ADDR((__DCUx__)->DATA0) + ((__IDX__) << 2UL))
 /**
  * @}
  */
@@ -254,9 +249,7 @@
  * @addtogroup DCU_Local_Functions
  * @{
  */
-
 static __IO uint32_t* DCU_TRGSELx(const M4_DCU_TypeDef *DCUx);
-
 /**
  * @}
  */
@@ -275,7 +268,7 @@ static __IO uint32_t* DCU_TRGSELx(const M4_DCU_TypeDef *DCUx);
 
 /**
  * @brief  Initialize DCU function.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -337,7 +330,7 @@ en_result_t DCU_StructInit(stc_dcu_init_t *pstcInit)
     {
         pstcInit->u32Mode = DCU_SUB;
         pstcInit->u32DataSize = DCU_DATA_SIZE_8BIT;
-        pstcInit->u32CmpTriggerMode = DCU_CMP_TRIG_BY_DATA0;
+        pstcInit->u32CmpTriggerMode = DCU_CMP_TRIG_DATA0;
         pstcInit->u32IntEn = DCU_INT_DISABLE;
         enRet = Ok;
     }
@@ -372,7 +365,7 @@ void DCU_DeInit(M4_DCU_TypeDef *DCUx)
 
 /**
  * @brief  Initialize DCU function.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -382,6 +375,7 @@ void DCU_DeInit(M4_DCU_TypeDef *DCUx)
  * @retval An en_result_t enumeration value:
  *           - Ok: Initialize successfully
  *           - ErrorInvalidParameter: pstcCfg is NULL pointer
+ * @note   The DCU sawtooth/triangle wave mode is supported by M4_DCU1/2/3/4.
  */
 en_result_t DCU_WaveCfg(M4_DCU_TypeDef *DCUx,
                            const stc_dcu_wave_cfg_t *pstcCfg)
@@ -407,8 +401,8 @@ en_result_t DCU_WaveCfg(M4_DCU_TypeDef *DCUx,
 }
 
 /**
- * @brief Set DCU operation mode.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Set DCU operation mode.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -423,13 +417,14 @@ en_result_t DCU_WaveCfg(M4_DCU_TypeDef *DCUx,
  *           @arg DCU_INVALID:          DCU invalid
  *           @arg DCU_ADD:              DCU add operation
  *           @arg DCU_SUB:              DCU sub operation
- *           @arg DCU_HW_TRIG_ADD:      DCU hardware trigger add
- *           @arg DCU_HW_TRIG_SUB:      DCU hardware trigger sub
+ *           @arg DCU_HW_ADD:           DCU hardware trigger add
+ *           @arg DCU_HW_SUB:           DCU hardware trigger sub
  *           @arg DCU_CMP:              DCU compare
  *           @arg DCU_TRIANGLE_WAVE:    DCU triangle wave output mode
  *           @arg DCU_SAWTOOTH_WAVE_INC:DCU increasing sawtooth wave output mode
  *           @arg DCU_SAWTOOTH_WAVE_DEC:DCU decreasing sawtooth wave output mode
  * @retval None
+ * @note   The DCU sawtooth/triangle wave mode is supported by M4_DCU1/2/3/4.
  */
 void DCU_SetMode(M4_DCU_TypeDef *DCUx, uint32_t u32Mode)
 {
@@ -441,8 +436,8 @@ void DCU_SetMode(M4_DCU_TypeDef *DCUx, uint32_t u32Mode)
 }
 
 /**
- * @brief Get DCU operation mode.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Get DCU operation mode.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -456,12 +451,13 @@ void DCU_SetMode(M4_DCU_TypeDef *DCUx, uint32_t u32Mode)
  *           @arg DCU_INVALID:          DCU invalid
  *           @arg DCU_ADD:              DCU add operation
  *           @arg DCU_SUB:              DCU sub operation
- *           @arg DCU_HW_TRIG_ADD:      DCU hardware trigger add
- *           @arg DCU_HW_TRIG_SUB:      DCU hardware trigger sub
+ *           @arg DCU_HW_ADD:           DCU hardware trigger add
+ *           @arg DCU_HW_SUB:           DCU hardware trigger sub
  *           @arg DCU_CMP:              DCU compare
  *           @arg DCU_TRIANGLE_WAVE:    DCU triangle wave output mode
  *           @arg DCU_SAWTOOTH_WAVE_INC:DCU increasing sawtooth wave output mode
  *           @arg DCU_SAWTOOTH_WAVE_DEC:DCU decreasing sawtooth wave output mode
+ * @note   The DCU sawtooth/triangle wave mode is supported by M4_DCU1/2/3/4.
  */
 uint32_t DCU_GetMode(const M4_DCU_TypeDef *DCUx)
 {
@@ -472,8 +468,8 @@ uint32_t DCU_GetMode(const M4_DCU_TypeDef *DCUx)
 }
 
 /**
- * @brief Set DCU data size.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Set DCU data size.
+ * @param  [in] DCUx                     Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -500,8 +496,8 @@ void DCU_SetDataSize(M4_DCU_TypeDef *DCUx, uint32_t u32DataSize)
 }
 
 /**
- * @brief Get DCU data size.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Get DCU data size.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
  *           @arg M4_DCU3:              DCU unit 3 instance register base
@@ -524,8 +520,8 @@ uint32_t DCU_GetDataSize(const M4_DCU_TypeDef *DCUx)
 }
 
 /**
- * @brief Get DCU flag.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Get DCU flag.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -535,7 +531,7 @@ uint32_t DCU_GetDataSize(const M4_DCU_TypeDef *DCUx)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32Flag                  The specified DCU flag
+ * @param  [in] u32Flag                 The specified DCU flag
  *         This parameter can be one of the following values:
  *           @arg DCU_FLAG_OPERATION:       DCU addition overflow or subtraction underflow flag
  *           @arg DCU_FLAG_DATA0_LS_DATA2:  DCU DATA0 < DATA2 flag
@@ -561,8 +557,8 @@ en_flag_status_t DCU_GetStatus(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
 }
 
 /**
- * @brief Get DCU flag.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Clear DCU flag.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -572,7 +568,7 @@ en_flag_status_t DCU_GetStatus(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32Flag                  The specified DCU flag
+ * @param  [in] u32Flag                 The specified DCU flag
  *         This parameter can be one of the following values:
  *           @arg DCU_FLAG_OPERATION:       DCU addition overflow or subtraction underflow flag
  *           @arg DCU_FLAG_DATA0_LS_DATA2:  DCU DATA0 < DATA2 flag
@@ -596,86 +592,87 @@ void DCU_ClearStatus(M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
 }
 
 /**
- * @brief Set compare interrupt mode.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Enable/disable DCU the specified interrupt source.
+ * @param  [in] u32IntCategory          DCU interrupt categorye
  *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32CmpIntMode            The compare interrupt mode
- *         This parameter can be one of the following values:
- *           @arg DCU_CMP_WINDOW_INT_INVALID: DCU window interrupt is invalid
- *           @arg DCU_CMP_WINDOW_INT_INSIDE: DCU (DATA2 <= DATA0 <= DATA1) interrupt
- *           @arg DCU_CMP_WINDOW_INT_OUTSIDE: DCU (DATA0 < DATA2 & DATA0 > DATA1 ) interrupt
- *           @arg DCU_CMP_INT_INVALID: DCU CMP mode don't occur interrupt
- * @retval None
- */
-void DCU_SetCmpIntMode(M4_DCU_TypeDef *DCUx, uint32_t u32CmpIntMode)
-{
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-    DDL_ASSERT(IS_DCU_CMP_INTERRUPT_MODE(u32CmpIntMode));
-
-    MODIFY_REG32(DCUx->INTEVTSEL, DCU_INTEVTSEL_SEL_WIN, u32CmpIntMode);
-}
-
-/**
- * @brief Enable/disable DCU the specified interrupt source.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32IntSource             The specified DCU interrupt
- *         This parameter can be one of the following values:
- *           @arg DCU_INT_OPERATION:       DCU addition overflow or subtraction underflow flag
- *           @arg DCU_INT_DATA0_LS_DATA2:  DCU DATA0 < DATA2 interrupt
- *           @arg DCU_INT_DATA0_EQ_DATA2:  DCU DATA0 = DATA2 interrupt
- *           @arg DCU_INT_DATA0_GT_DATA2:  DCU DATA0 > DATA2 interrupt
- *           @arg DCU_INT_DATA0_LS_DATA1:  DCU DATA0 < DATA1 interrupt
- *           @arg DCU_INT_DATA0_EQ_DATA1:  DCU DATA0 = DATA1 interrupt
- *           @arg DCU_INT_DATA0_GT_DATA1:  DCU DATA0 > DATA1 interrupt
- *           @arg DCU_INT_DATA0_INSIDE_WINDOW:  DCU (DATA0 > DATA1& DATA0 < DATA2) interrupt
- *           @arg DCU_INT_DATA0_OUTSIDE_WINDOW: DCU (DATA0 < DATA1& DATA0 > DATA2) interrupt
- *           @arg DCU_INT_SAWTOOTH_WAVE_RELOAD:  DCU sawtooth wave mode reload interrupt
- *           @arg DCU_INT_TRIANGLE_WAVE_BOTTOM:  DCU triangle wave mode bottom interrupt
- *           @arg DCU_INT_TRIANGLE_WAVE_TOP: DCU triangle wave mode top interrupt
- * @param  [in] enNewState                  The function new state.
+ *           @arg DCU_INT_OP:           DCU operation result(overflow/underflow) interrupt
+ *           @arg DCU_INT_WAVE_MD:      DCU wave mode(sawtooth/triangle wave mode) interrupt
+ *           @arg DCU_INT_CMP_WIN:      DCU comparison(window) interrupt
+ *           @arg DCU_INT_CMP_NON_WIN:  DCU comparison(non-window) interrupt
+ * @param  [in] u32IntType              DCU interrupt type
+ *         This parameter can be one of the following case:
+ *         a. this parameter can be one of the following values when u16IntType = DCU_INT_OP:
+ *           @arg DCU_INT_OP_UDF_OVF: DCU addition overflow or subtraction underflow interrupt
+ *         b. this parameter can be any composed value of the following values when u16IntType = DCU_INT_CMP_WIN:
+ *           @arg DCU_INT_CMP_WIN_INSIDE:DCU comparison(DATA2 <= DATA0 <= DATA1) interrupt
+ *           @arg DCU_INT_CMP_WIN_OUTSIDE: DCU comparison(DATA0 < DATA2 & DATA0 > DATA1 ) interrupt
+ *           @note Only one of the window inside and outside interrupt is valid.
+ *           @note Both of the window inside and outside interrupt is disabled and the window interrupt is invalid.
+ *           @note Both of the window inside and outside interrupt is enabled and the compare mode interrupt is invalid.
+ *         c. this parameter can be any composed value of the following values when u16IntType = DCU_INT_CMP_NON_WIN:
+ *           @arg DCU_INT_CMP_DATA0_LS_DATA2: DCU DATA0 < DATA2 interrupt
+ *           @arg DCU_INT_CMP_DATA0_EQ_DATA2: DCU DATA0 = DATA2 interrupt
+ *           @arg DCU_INT_CMP_DATA0_GT_DATA2: DCU DATA0 > DATA2 interrupt
+ *           @arg DCU_INT_CMP_DATA0_LS_DATA1: DCU DATA0 < DATA1 interrupt
+ *           @arg DCU_INT_CMP_DATA0_EQ_DATA1: DCU DATA0 = DATA1 interrupt
+ *           @arg DCU_INT_CMP_DATA0_GT_DATA1: DCU DATA0 > DATA1 interrupt
+ *           @note Both of the window inside and outside interrupt is disabled and the compare non-window interrupt is valid.
+ *         d. this parameter can be any composed value of the following values when u16IntType = DCU_INT_WAVE_MD:
+ *           @arg DCU_INT_WAVE_SAWTOOTH_RELOAD: DCU sawtooth wave mode reload interrupt
+ *           @arg DCU_INT_WAVE_TRIANGLE_BOTTOM: DCU triangle wave mode bottom interrupt
+ *           @arg DCU_INT_WAVE_TRIANGLE_TOP:    DCU triangle wave mode top interrupt
+ * @param  [in] enNewState              The function new state.
  *           @arg  This parameter can be: Enable or Disable.
  * @retval None
+ * @note   The DCU sawtooth/triangle wave mode is supported by M4_DCU1/2/3/4.
  */
 void DCU_IntCmd(M4_DCU_TypeDef *DCUx,
-                    uint32_t u32IntSource,
-                    en_functional_state_t enNewState)
+                uint32_t u32IntCategory,
+                uint32_t u32IntType,
+                en_functional_state_t enNewState)
 {
+    uint32_t u32Type;
+
     /* Check parameters */
-    DDL_ASSERT((IS_DCU_WAVE_FUNC_UNIT(DCUx) && IS_DCU_WAVE_FUNC_UNIT_INT(u32IntSource)) || \
-               (IS_DCU_BASE_FUNC_UNIT(DCUx) && IS_DCU_BASE_FUNC_UNIT_INT(u32IntSource)));
+    DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_INT_CATEGORY(u32IntCategory));
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
-    if (Enable == enNewState)
+    if (DCU_INT_OP == u32IntCategory)
     {
-        SET_REG32_BIT(DCUx->INTEVTSEL, u32IntSource);
+        DDL_ASSERT(IS_DCU_INT_OP(u32IntType));
+        u32Type = (u32IntType & DCU_INT_OP_UDF_OVF);
+    }
+    else if (DCU_INT_CMP_WIN == u32IntCategory)
+    {
+        DDL_ASSERT(IS_DCU_INT_CMP_WIN(u32IntType));
+        u32Type = (u32IntType & DCU_INT_CMP_WIN_ALL);
+    }
+    else if (DCU_INT_CMP_NON_WIN == u32IntCategory)
+    {
+        DDL_ASSERT(IS_DCU_INT_CMP_NON_WIN(u32IntType));
+        u32Type = (u32IntType & DCU_INT_CMP_NON_WIN_ALL);
     }
     else
     {
-        CLEAR_REG32_BIT(DCUx->INTEVTSEL, u32IntSource);
+        DDL_ASSERT(IS_DCU_WAVE_FUNC_UNIT(DCUx));
+        DDL_ASSERT(IS_DCU_INT_WAVE_MD(u32IntType));
+        u32Type = (u32IntType & DCU_INT_WAVE_MD_ALL);
+    }
+
+    if (Enable == enNewState)
+    {
+        SET_REG32_BIT(DCUx->INTEVTSEL, u32Type);
+    }
+    else
+    {
+        CLEAR_REG32_BIT(DCUx->INTEVTSEL, u32Type);
     }
 }
 
 /**
  * @brief  Enable or disable DCU interrupt funtion.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -685,11 +682,11 @@ void DCU_IntCmd(M4_DCU_TypeDef *DCUx,
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param  [in] enNewState                  The function new state.
+ * @param  [in] enNewState              The function new state.
  *           @arg  This parameter can be: Enable or Disable.
  * @retval None
  */
-void DCU_IntFuncCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState)
+void DCU_GlobalIntCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState)
 {
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
@@ -707,7 +704,7 @@ void DCU_IntFuncCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState)
 
 /**
  * @brief  AOS common trigger function config for DCU
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -748,8 +745,8 @@ void DCU_ComTriggerCmd(M4_DCU_TypeDef *DCUx,
 }
 
 /**
- * @brief Set the specified event trigger source for DCU.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Set the specified event trigger source for DCU.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -759,12 +756,12 @@ void DCU_ComTriggerCmd(M4_DCU_TypeDef *DCUx,
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] enEventSrc               The trigger external event source source.
+ * @param  [in] enEventSrc              The trigger external event source source.
  *           @arg This parameter can be any value of @ref en_event_src_t
  * @retval An en_result_t enumeration value:
  *           - Ok: Initialize successfully
  *           - ErrorInvalidParameter: DCUx is invalid
- * @note This register belongs to AOS module, please ensure enable it in advance.
+ * @note   This register belongs to AOS module, please ensure enable it in advance.
  */
 en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
                                 en_event_src_t enEventSrc)
@@ -782,8 +779,8 @@ en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
 }
 
 /**
- * @brief  Read DCU register DATA0 for byte.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Read DCU register DATA for byte.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -793,21 +790,28 @@ en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA0 value for byte
+ * @param  [in] u32DataIndex            DCU data register index
+ *         This parameter can be one of the following values:
+ *           @arg DCU_DATA0_IDX:        DCU DATA0
+ *           @arg DCU_DATA1_IDX:        DCU DATA1
+ *           @arg DCU_DATA2_IDX:        DCU DATA2
+ * @retval DCU register DATA value for byte
  */
-uint8_t DCU_ReadReg8Data0(M4_DCU_TypeDef *DCUx)
+uint8_t DCU_ReadData8(const M4_DCU_TypeDef *DCUx, uint32_t u32DataIndex)
 {
-    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA0);
+    __IO uint8_t *DATA;
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_DATA_REG(u32DataIndex));
 
+    DATA = (__IO uint8_t *)DATA_REG_ADDR(DCUx, u32DataIndex);
     return READ_REG8(*DATA);
 }
 
 /**
- * @brief  Write DCU register DATA0 for byte.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Write DCU register DATA for byte.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -817,22 +821,31 @@ uint8_t DCU_ReadReg8Data0(M4_DCU_TypeDef *DCUx)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u8Data                   The data to write.
+ * @param  [in] u32DataIndex            DCU data register index
+ *         This parameter can be one of the following values:
+ *           @arg DCU_DATA0_IDX:        DCU DATA0
+ *           @arg DCU_DATA1_IDX:        DCU DATA1
+ *           @arg DCU_DATA2_IDX:        DCU DATA2
+ * @param  [in] u8Data                  The data to write.
  * @retval None
  */
-void DCU_WriteReg8Data0(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
+void DCU_WriteData8(M4_DCU_TypeDef *DCUx,
+                    uint32_t u32DataIndex,
+                    uint8_t u8Data)
 {
-    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA0);
+    __IO uint8_t *DATA;
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_DATA_REG(u32DataIndex));
 
+    DATA = (__IO uint8_t *)DATA_REG_ADDR(DCUx, u32DataIndex);
     WRITE_REG8(*DATA, u8Data);
 }
 
 /**
- * @brief  Read DCU register DATA1 for byte.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Read DCU register DATA for half-word.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -842,119 +855,28 @@ void DCU_WriteReg8Data0(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA1 value for byte
- */
-uint8_t DCU_ReadReg8Data1(M4_DCU_TypeDef *DCUx)
-{
-    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA1);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG8(*DATA);
-}
-
-/**
- * @brief  Write DCU register DATA1 for byte.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] u32DataIndex            DCU data register index
  *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u8Data                   The data to write.
- * @retval None
+ *           @arg DCU_DATA0_IDX:        DCU DATA0
+ *           @arg DCU_DATA1_IDX:        DCU DATA1
+ *           @arg DCU_DATA2_IDX:        DCU DATA2
+ * @retval DCU register DATA value for half-word
  */
-void DCU_WriteReg8Data1(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
+uint16_t DCU_ReadData16(const M4_DCU_TypeDef *DCUx, uint32_t u32DataIndex)
 {
-    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA1);
+    __IO uint16_t *DATA;
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_DATA_REG(u32DataIndex));
 
-    WRITE_REG8(*DATA, u8Data);
-}
-
-/**
- * @brief  Read DCU register DATA2 for byte.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA2 value for byte
- */
-uint8_t DCU_ReadReg8Data2(M4_DCU_TypeDef *DCUx)
-{
-    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA2);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG8(*DATA);
-}
-
-/**
- * @brief  Write DCU register DATA2 for byte.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u8Data                   The data to write.
- * @retval None
- */
-void DCU_WriteReg8Data2(M4_DCU_TypeDef *DCUx, uint8_t u8Data)
-{
-    __IO uint8_t *const DATA = (__IO uint8_t *)REG_ADDR(DCUx->DATA2);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    WRITE_REG8(*DATA, u8Data);
-}
-
-/**
- * @brief  Read DCU register DATA0 for half-word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA0 value for half-word
- */
-uint16_t DCU_ReadReg16Data0(M4_DCU_TypeDef *DCUx)
-{
-    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA0);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
+    DATA = (__IO uint16_t *)DATA_REG_ADDR(DCUx, u32DataIndex);
     return READ_REG16(*DATA);
 }
 
 /**
- * @brief  Write DCU register DATA0 for half-word.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Write DCU register DATA for half-word.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -964,22 +886,31 @@ uint16_t DCU_ReadReg16Data0(M4_DCU_TypeDef *DCUx)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u16Data                  The data to write.
+ * @param  [in] u32DataIndex            DCU data register index
+ *         This parameter can be one of the following values:
+ *           @arg DCU_DATA0_IDX:        DCU DATA0
+ *           @arg DCU_DATA1_IDX:        DCU DATA1
+ *           @arg DCU_DATA2_IDX:        DCU DATA2
+ * @param  [in] u16Data                 The data to write.
  * @retval None
  */
-void DCU_WriteReg16Data0(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
+void DCU_WriteData16(M4_DCU_TypeDef *DCUx,
+                        uint32_t u32DataIndex,
+                        uint16_t u16Data)
 {
-    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA0);
+    __IO uint16_t *DATA;
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_DATA_REG(u32DataIndex));
 
+    DATA = (__IO uint16_t *)DATA_REG_ADDR(DCUx, u32DataIndex);
     WRITE_REG16(*DATA, u16Data);
 }
 
 /**
- * @brief  Read DCU register DATA1 for half-word.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Read DCU register DATA for word.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -989,117 +920,28 @@ void DCU_WriteReg16Data0(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA1 value for half-word
- */
-uint16_t DCU_ReadReg16Data1(M4_DCU_TypeDef *DCUx)
-{
-    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA1);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG16(*DATA);
-}
-
-/**
- * @brief  Write DCU register DATA1 for half-word.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] u32DataIndex            DCU data register index
  *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u16Data                  The data to write.
- * @retval None
+ *           @arg DCU_DATA0_IDX:        DCU DATA0
+ *           @arg DCU_DATA1_IDX:        DCU DATA1
+ *           @arg DCU_DATA2_IDX:        DCU DATA2
+ * @retval DCU register DATA value for word
  */
-void DCU_WriteReg16Data1(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
+uint32_t DCU_ReadData32(const M4_DCU_TypeDef *DCUx, uint32_t u32DataIndex)
 {
-    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA1);
+    __IO uint32_t *DATA;
 
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_DATA_REG(u32DataIndex));
 
-    WRITE_REG16(*DATA, u16Data);
-}
-
-/**
- * @brief  Read DCU register DATA2 for half-word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA2 value for half-word
- */
-uint16_t DCU_ReadReg16Data2(M4_DCU_TypeDef *DCUx)
-{
-    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA2);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG16(*DATA);
-}
-
-/**
- * @brief  Write DCU register DATA2 for half-word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u16Data                  The data to write.
- * @retval None
- */
-void DCU_WriteReg16Data2(M4_DCU_TypeDef *DCUx, uint16_t u16Data)
-{
-    __IO uint16_t *const DATA = (__IO uint16_t *)REG_ADDR(DCUx->DATA2);
-
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    WRITE_REG16(*DATA, u16Data);
-}
-
-/**
- * @brief  Read DCU register DATA0 for word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA0 value for word
- */
-uint32_t DCU_ReadReg32Data0(const M4_DCU_TypeDef *DCUx)
-{
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG32(DCUx->DATA0);
+    DATA = (__IO uint32_t *)DATA_REG_ADDR(DCUx, u32DataIndex);
+    return READ_REG32(*DATA);
 }
 
 /**
  * @brief  Write DCU register DATA0 for word.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base
@@ -1109,105 +951,26 @@ uint32_t DCU_ReadReg32Data0(const M4_DCU_TypeDef *DCUx)
  *           @arg M4_DCU6:              DCU unit 6 instance register base
  *           @arg M4_DCU7:              DCU unit 7 instance register base
  *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32Data                  The data to write.
+ * @param  [in] u32DataIndex            DCU data register index
+ *         This parameter can be one of the following values:
+ *           @arg DCU_DATA0_IDX:        DCU DATA0
+ *           @arg DCU_DATA1_IDX:        DCU DATA1
+ *           @arg DCU_DATA2_IDX:        DCU DATA2
+ * @param  [in] u32Data                 The data to write.
  * @retval None
  */
-void DCU_WriteReg32Data0(M4_DCU_TypeDef *DCUx, uint32_t u32Data)
+void DCU_WriteData32(M4_DCU_TypeDef *DCUx,
+                        uint32_t u32DataIndex,
+                        uint32_t u32Data)
 {
+    __IO uint32_t *DATA;
+
     /* Check parameters */
     DDL_ASSERT(IS_DCU_UNIT(DCUx));
+    DDL_ASSERT(IS_DCU_DATA_REG(u32DataIndex));
 
-    WRITE_REG32(DCUx->DATA0, u32Data);
-}
-
-/**
- * @brief  Read DCU register DATA1 for word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA1 value for word
- */
-uint32_t DCU_ReadReg32Data1(const M4_DCU_TypeDef *DCUx)
-{
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG32(DCUx->DATA1);
-}
-
-/**
- * @brief  Write DCU register DATA1 for word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32Data                  The data to write.
- * @retval None
- */
-void DCU_WriteReg32Data1(M4_DCU_TypeDef *DCUx, uint32_t u32Data)
-{
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    WRITE_REG32(DCUx->DATA1, u32Data);
-}
-
-/**
- * @brief  Read DCU register DATA2 for word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @retval DCU register DATA2 value for word
- */
-uint32_t DCU_ReadReg32Data2(const M4_DCU_TypeDef *DCUx)
-{
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    return READ_REG32(DCUx->DATA2);
-}
-
-/**
- * @brief  Write DCU register DATA2 for word.
- * @param [in] DCUx                     Pointer to DCU instance register base
- *         This parameter can be one of the following values:
- *           @arg M4_DCU1:              DCU unit 1 instance register base
- *           @arg M4_DCU2:              DCU unit 2 instance register base
- *           @arg M4_DCU3:              DCU unit 3 instance register base
- *           @arg M4_DCU4:              DCU unit 4 instance register base
- *           @arg M4_DCU5:              DCU unit 5 instance register base
- *           @arg M4_DCU6:              DCU unit 6 instance register base
- *           @arg M4_DCU7:              DCU unit 7 instance register base
- *           @arg M4_DCU8:              DCU unit 8 instance register base
- * @param [in] u32Data                  The data to write.
- * @retval None
- */
-void DCU_WriteReg32Data2(M4_DCU_TypeDef *DCUx, uint32_t u32Data)
-{
-    /* Check parameters */
-    DDL_ASSERT(IS_DCU_UNIT(DCUx));
-
-    WRITE_REG32(DCUx->DATA2, u32Data);
+    DATA = (__IO uint32_t *)DATA_REG_ADDR(DCUx, u32DataIndex);
+    WRITE_REG32(*DATA, u32Data);
 }
 
 /**
@@ -1220,8 +983,8 @@ void DCU_WriteReg32Data2(M4_DCU_TypeDef *DCUx, uint32_t u32Data)
  */
 
 /**
- * @brief Get DCU trigger selection register of the specified DCU unit.
- * @param [in] DCUx                     Pointer to DCU instance register base
+ * @brief  Get DCU trigger selection register of the specified DCU unit.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
  *         This parameter can be one of the following values:
  *           @arg M4_DCU1:              DCU unit 1 instance register base
  *           @arg M4_DCU2:              DCU unit 2 instance register base

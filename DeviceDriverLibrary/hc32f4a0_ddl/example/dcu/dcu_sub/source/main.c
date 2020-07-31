@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-23       Hongjh          1. Modify DCU DATA read/write API;
+                                    2. Modify paramters after refine DCU_IntCmd.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -94,7 +96,7 @@ static void DCU_IrqCallback(void);
 /*******************************************************************************
  * Local variable definitions ('static')
  ******************************************************************************/
-static uint32_t m_u32AddUnderflowCnt = 0UL;
+static __IO uint32_t m_u32AddUnderflowCnt = 0UL;
 
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
@@ -178,7 +180,7 @@ int32_t main(void)
     en_result_t enTestResult = Ok;
     stc_irq_signin_config_t stcIrqSigninCfg;
     uint32_t u32SumData1 = 0UL;
-    uint32_t u32Data0InitValue = 0x88888888UL;
+    const uint32_t u32Data0InitValue = 0x88888888UL;
     uint32_t u32UnderflowData0 = 0UL;
     uint32_t au32Data0Val[4];
     uint32_t au32Data2Val[4];
@@ -208,7 +210,7 @@ int32_t main(void)
     stcDcuInit.u32Mode = DCU_SUB;
     stcDcuInit.u32DataSize = DCU_DATA_SIZE_32BIT;
     DCU_Init(DCU_UNIT, &stcDcuInit);
-    DCU_IntCmd(DCU_UNIT, DCU_INT_OPERATION, Enable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_OP, DCU_INT_OP_UDF_OVF, Enable);
 
     /* Set DCU IRQ */
     stcIrqSigninCfg.enIRQn = DCU_UNIT_INT_IRQn;
@@ -219,15 +221,15 @@ int32_t main(void)
     NVIC_ClearPendingIRQ(stcIrqSigninCfg.enIRQn);
     NVIC_EnableIRQ(stcIrqSigninCfg.enIRQn);
 
-    DCU_WriteReg32Data0(DCU_UNIT, u32Data0InitValue);
+    DCU_WriteData32(DCU_UNIT, DCU_DATA0_IDX, u32Data0InitValue);
 
     for (i = 0UL; i < ARRAY_SZ(au32Data1Val); i++)
     {
         u32SumData1 += au32Data1Val[i];
-        DCU_WriteReg32Data1(DCU_UNIT, au32Data1Val[i]);
+        DCU_WriteData32(DCU_UNIT, DCU_DATA1_IDX, au32Data1Val[i]);
 
-        au32Data0Val[i] = DCU_ReadReg32Data0(DCU_UNIT);
-        au32Data2Val[i] = DCU_ReadReg32Data2(DCU_UNIT);
+        au32Data0Val[i] = DCU_ReadData32(DCU_UNIT, DCU_DATA0_IDX);
+        au32Data2Val[i] = DCU_ReadData32(DCU_UNIT, DCU_DATA2_IDX);
 
         /* Compare DCU regisger DATA0 && DATA2 value: DATA0 value == 2 * DATA2 value */
         if (au32Data0Val[i] != (2UL * au32Data2Val[i]))
@@ -238,13 +240,13 @@ int32_t main(void)
     }
 
     u32SumData1 += 0x22222223UL;
-    DCU_WriteReg32Data1(DCU_UNIT, 0x22222223UL);
+    DCU_WriteData32(DCU_UNIT, DCU_DATA1_IDX, 0x22222223UL);
 
-    while (!m_u32AddUnderflowCnt)    /* Wait sub underflow */
+    while (0UL == m_u32AddUnderflowCnt)    /* Wait sub underflow */
     {
     }
 
-    u32UnderflowData0 = DCU_ReadReg32Data0(DCU_UNIT);
+    u32UnderflowData0 += DCU_ReadData32(DCU_UNIT, DCU_DATA0_IDX);
 
     /* Compare DCU regisger DATA0 value: DATA0 value == 0 - 0x22222222UL */
     if (u32UnderflowData0 != (u32Data0InitValue - u32SumData1))

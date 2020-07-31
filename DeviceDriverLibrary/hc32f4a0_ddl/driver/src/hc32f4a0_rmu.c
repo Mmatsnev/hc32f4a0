@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Heqb          First version
+   2020-07-21       Heqb          Add write protect check for RMU_ClrStatus function
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -89,8 +90,8 @@
  */
 
 /*  Parameter validity check for RMU reset cause. */
-#define IS_VALID_RMU_RESET_STATUS(x)                                            \
-(   ((x) != 0U)                              ||                                 \
+#define IS_VALID_RMU_RESET_STATUS(x)                                           \
+(   ((x) != 0U)                              ||                                \
     ((x) | RMU_STATUS_MASK) == RMU_STATUS_MASK)
 
 /**
@@ -156,9 +157,12 @@ en_flag_status_t RMU_GetStatus(uint32_t u32RmuResetCause)
  * @param  None
  * @retval NOne
  * @note   Clear reset flag should be done after read RMU_RSTF0 register.
+ *         Call PWC_Unlock(PWC_UNLOCK_CODE_1) unlock RMU_RSTF0 register first.
  */
 void RMU_ClrStatus(void)
 {
+    DDL_ASSERT((M4_PWC->FPRC & PWC_FPRC_FPRCB1) == PWC_FPRC_FPRCB1);
+
     SET_REG32_BIT(M4_RMU->RSTF0, RMU_RSTF0_CLRF);
     __NOP();
     __NOP();
@@ -172,9 +176,11 @@ void RMU_ClrStatus(void)
  * @brief  Enable or disable LOCKUP reset.
  * @param  [in] enNewState    Enable or disable LOCKUP reset.
  * @retval None
+ * @note   Call PWC_Unlock(PWC_UNLOCK_CODE_1) unlock RMU_PRSTCR0 register first.
  */
 void RMU_CPULockUpCmd(en_functional_state_t enNewState)
 {
+    DDL_ASSERT((M4_PWC->FPRC & PWC_FPRC_FPRCB1) == PWC_FPRC_FPRCB1);
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
     WRITE_REG8(bM4_RMU->PRSTCR0_b.LKUPREN, enNewState);
 }

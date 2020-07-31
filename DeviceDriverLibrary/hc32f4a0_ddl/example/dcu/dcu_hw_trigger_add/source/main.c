@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-23       Hongjh          1. Modify macro from DCU_HW_TRIG_ADD to DCU_HW_ADD;
+                                    2. Modify DCU DATA read/write API.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -183,7 +185,7 @@ int32_t main(void)
 
     /* Initialize DCU */
     DCU_StructInit(&stcDcuInit);
-    stcDcuInit.u32Mode = DCU_HW_TRIG_ADD;
+    stcDcuInit.u32Mode = DCU_HW_ADD;
     stcDcuInit.u32DataSize = DCU_DATA_SIZE_16BIT;
     DCU_Init(DCU_UNIT, &stcDcuInit);
 
@@ -192,13 +194,13 @@ int32_t main(void)
 
     for (i = 0UL; i < ARRAY_SZ(au16Data1Val); i++)
     {
-        DCU_WriteReg16Data1(DCU_UNIT, au16Data1Val[i]);
+        DCU_WriteData16(DCU_UNIT, DCU_DATA0_IDX, au16Data1Val[i]);
 
         /* Start soft trigger event */
         AOS_SW_Trigger();
 
-        au16Data0Val[i] = DCU_ReadReg16Data0(DCU_UNIT);
-        au16Data2Val[i] = DCU_ReadReg16Data2(DCU_UNIT);
+        au16Data0Val[i] = DCU_ReadData16(DCU_UNIT, DCU_DATA0_IDX);
+        au16Data2Val[i] = DCU_ReadData16(DCU_UNIT, DCU_DATA2_IDX);
 
         /* Compare DCU regisger DATA0 && DATA2 value: DATA0 value == 2 * DATA2 value */
         if (au16Data0Val[i] != (2U * au16Data2Val[i]))

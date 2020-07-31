@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-23       Hongjh          1. Modify DCU DATA read/write API;
+                                    2. Modify paramters after refine DCU_IntCmd.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -207,7 +209,7 @@ int32_t main(void)
     stcDcuInit.u32Mode = DCU_ADD;
     stcDcuInit.u32DataSize = DCU_DATA_SIZE_16BIT;
     DCU_Init(DCU_UNIT, &stcDcuInit);
-    DCU_IntCmd(DCU_UNIT, DCU_INT_OPERATION, Enable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_OP, DCU_INT_OP_UDF_OVF, Enable);
 
     /* Set DCU IRQ */
     stcIrqSigninCfg.enIRQn = DCU_UNIT_INT_IRQn;
@@ -221,10 +223,10 @@ int32_t main(void)
     for (i = 0UL; i < ARRAY_SZ(au16Data1Val); i++)
     {
         u32SumData1 += (uint32_t)au16Data1Val[i];
-        DCU_WriteReg16Data1(DCU_UNIT, au16Data1Val[i]);
+        DCU_WriteData16(DCU_UNIT, DCU_DATA1_IDX, au16Data1Val[i]);
 
-        au16Data0Val[i] = DCU_ReadReg16Data0(DCU_UNIT);
-        au16Data2Val[i] = DCU_ReadReg16Data2(DCU_UNIT);
+        au16Data0Val[i] = DCU_ReadData16(DCU_UNIT, DCU_DATA0_IDX);
+        au16Data2Val[i] = DCU_ReadData16(DCU_UNIT, DCU_DATA2_IDX);
 
         /* Compare DCU regisger DATA0 && DATA2 value: DATA0 value == 2 * DATA2 value */
         if (au16Data0Val[i] != (2U * au16Data2Val[i]))
@@ -234,10 +236,10 @@ int32_t main(void)
         }
     }
 
-    DCU_WriteReg16Data1(DCU_UNIT, 0x2222U);
+    DCU_WriteData16(DCU_UNIT, DCU_DATA1_IDX, 0x2222U);
     u32SumData1 += 0x2222UL;
 
-    u32SumData0 = (uint32_t)DCU_ReadReg16Data0(DCU_UNIT) + (m_u32AddOverflowCnt * 0x10000UL);
+    u32SumData0 += (uint32_t)DCU_ReadData16(DCU_UNIT, DCU_DATA0_IDX) + (m_u32AddOverflowCnt * 0x10000UL);
 
     /* Compare : DATA0 value + 0x10000 == DATA1 sum value */
     if (u32SumData0 != u32SumData1)

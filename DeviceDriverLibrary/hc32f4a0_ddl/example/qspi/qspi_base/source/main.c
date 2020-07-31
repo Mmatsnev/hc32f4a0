@@ -76,7 +76,7 @@
  ******************************************************************************/
 /*
  * QSPI read mode and W25Q64 instruction.
- * 
+ *
  *           QSPI_Read_Mode                  W25Q64_Instruction                 W25Q64_Instruction_Dummy_Cycles
  *     QSPI_READ_STANDARD_READ          |     W25Q64_READ_DATA              |          (Ignore)
  *     QSPI_READ_FAST_READ              |     W25Q64_FAST_READ              |             8
@@ -349,7 +349,7 @@ static void SystemClockConfig(void)
 
 /**
  * @brief  QSPI configuration.
- * @param  None 
+ * @param  None
  * @retval None
  */
 static void QspiConfig(void)
@@ -550,6 +550,8 @@ void W25Q64_GetUniqueID(void)
         DBG("0x%.2x ", au8ID[i]);
     }
     DBG("\n");
+#else
+    (void)au8ID;
 #endif
 }
 

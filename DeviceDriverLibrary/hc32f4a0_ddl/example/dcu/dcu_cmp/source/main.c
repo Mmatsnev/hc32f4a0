@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-23       Hongjh          1. Replace DCU_SetCmpIntMode by DCU_IntCmd;
+                                    2. Modify DCU DATA read/write API.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -79,15 +81,6 @@
 /* DCU unit interrupt definition */
 #define DCU_UNIT_INT_SRC                (INT_DCU1)
 #define DCU_UNIT_INT_IRQn               (Int000_IRQn)
-
-/* DCU unit interrupt selection */
-#define DCU_INT_SELECTION                                                      \
-(   DCU_INT_DATA0_LS_DATA2              |                                      \
-    DCU_INT_DATA0_EQ_DATA2              |                                      \
-    DCU_INT_DATA0_GT_DATA2              |                                      \
-    DCU_INT_DATA0_LS_DATA1              |                                      \
-    DCU_INT_DATA0_EQ_DATA1              |                                      \
-    DCU_INT_DATA0_GT_DATA1)
 
 /*******************************************************************************
  * Global variable definitions (declared in header file with 'extern')
@@ -247,7 +240,7 @@ int32_t main(void)
     stcDcuInit.u32Mode = DCU_CMP;
     stcDcuInit.u32IntEn = DCU_INT_ENABLE;
     DCU_Init(DCU_UNIT, &stcDcuInit);
-    DCU_IntCmd(DCU_UNIT, DCU_INT_SELECTION, Enable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_CMP_NON_WIN, DCU_INT_CMP_NON_WIN_ALL, Enable);
 
     /* Set DCU IRQ */
     stcIrqSigninCfg.enIRQn = DCU_UNIT_INT_IRQn;
@@ -259,41 +252,42 @@ int32_t main(void)
     NVIC_EnableIRQ(stcIrqSigninCfg.enIRQn);
 
     /* DATA0 = DATA1  &&  DATA0 = DATA2 */
-    DCU_WriteReg8Data1(DCU_UNIT, au8Data1Val[0]);
-    DCU_WriteReg8Data2(DCU_UNIT, au8Data2Val[0]);
-    DCU_WriteReg8Data0(DCU_UNIT, au8Data0Val[0]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA1_IDX, au8Data1Val[0]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA2_IDX, au8Data2Val[0]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA0_IDX, au8Data0Val[0]);
     if ((Set != m_enData0EqData1) || (Set != m_enData0EqData2))
     {
         enTestResult = Error;
     }
 
     /* DATA0 > DATA1  &&  DATA0 > DATA2 */
-    DCU_WriteReg8Data1(DCU_UNIT, au8Data1Val[1]);
-    DCU_WriteReg8Data2(DCU_UNIT, au8Data2Val[1]);
-    DCU_WriteReg8Data0(DCU_UNIT, au8Data0Val[1]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA1_IDX, au8Data1Val[1]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA2_IDX, au8Data2Val[1]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA0_IDX, au8Data0Val[1]);
     if ((Set != m_enData0GtData1) || (Set != m_enData0GtData2))
     {
         enTestResult = Error;
     }
 
     /* DATA0 < DATA1  &&  DATA0 < DATA2 */
-    DCU_WriteReg8Data1(DCU_UNIT, au8Data1Val[2]);
-    DCU_WriteReg8Data2(DCU_UNIT, au8Data2Val[2]);
-    DCU_WriteReg8Data0(DCU_UNIT, au8Data0Val[2]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA1_IDX, au8Data1Val[2]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA2_IDX, au8Data2Val[2]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA0_IDX, au8Data0Val[2]);
     if ((Set != m_enData0LsData1) || (Set != m_enData0LsData2))
     {
         enTestResult = Error;
     }
 
-    DCU_IntCmd(DCU_UNIT, DCU_INT_SELECTION, Disable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_CMP_NON_WIN, DCU_INT_CMP_NON_WIN_ALL, Disable);
 
     /* Inside window: DATA2 <= DATA0 <= DATA1 */
     m_enData0LsData1 = Reset;
     m_enData0GtData2 = Reset;
-    DCU_SetCmpIntMode(DCU_UNIT, DCU_CMP_WINDOW_INT_INSIDE);
-    DCU_WriteReg8Data1(DCU_UNIT, au8Data1Val[3]);
-    DCU_WriteReg8Data2(DCU_UNIT, au8Data2Val[3]);
-    DCU_WriteReg8Data0(DCU_UNIT, au8Data0Val[3]);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_CMP_WIN, DCU_INT_CMP_WIN_INSIDE, Enable);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA1_IDX, au8Data1Val[3]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA2_IDX, au8Data2Val[3]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA0_IDX, au8Data0Val[3]);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_CMP_WIN, DCU_INT_CMP_WIN_INSIDE, Disable);
     if (!((Set == m_enData0LsData1) && (Set == m_enData0GtData2)))
     {
         enTestResult = Error;
@@ -302,10 +296,10 @@ int32_t main(void)
     /* Outside window: DATA0 < DATA2 or DATA0 > DATA1 */
     m_enData0GtData1 = Reset;
     m_enData0LsData2 = Reset;
-    DCU_SetCmpIntMode(DCU_UNIT, DCU_CMP_WINDOW_INT_OUTSIDE);
-    DCU_WriteReg8Data1(DCU_UNIT, au8Data1Val[4]);
-    DCU_WriteReg8Data2(DCU_UNIT, au8Data2Val[4]);
-    DCU_WriteReg8Data0(DCU_UNIT, au8Data0Val[4]);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_CMP_WIN, DCU_INT_CMP_WIN_OUTSIDE, Enable);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA1_IDX, au8Data1Val[4]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA2_IDX, au8Data2Val[4]);
+    DCU_WriteData8(DCU_UNIT, DCU_DATA0_IDX, au8Data0Val[4]);
     if (!((Set == m_enData0GtData1) || (Set == m_enData0LsData2)))
     {
         enTestResult = Error;

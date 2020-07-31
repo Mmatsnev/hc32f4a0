@@ -1,9 +1,24 @@
 version     date            comment
+ 1.0.2
+            Jul 31, 2020    [CRC]
+                                1.  Fixed a bug for CRC_Check function.
+                            [DCU]
+                                1.  Correct the macro define: DCU_CMP_TRIG_DATA01;
+                                2.  Refine the macro define for interrupt, flag and mode;
+                                3.  Rename API: from DCU_IntFuncCmd to DCU_GlobalIntCmd;
+                                4.  Refine API: DCU DATA read/write and DCU_IntCmd;
+                                5.  Delete API: DCU_SetCmpIntMode.
+                            [PWC]
+                                1.  Refine power mode switch function.
+                            [TMR4]
+                                1.  Modify TMR4_OCO_SetLowChCompareMode function comment from TMR4_OCO_UH/VH/WH to TMR4_OCO_UL/VL/WL.
+                            [RMU]
+                                1.  Add write protect check for RMU_ClrStatus function.
  1.0.1
             Jul 15, 2020    [CLK]
                                 1.  Refine driver and sample;
                                 2.  Support 16MHz & 20MHz HRC;
-                                3.  Use XTAL 8MHz as PLL source for BSP and all examples. 
+                                3.  Use XTAL 8MHz as PLL source for BSP and all examples.
                             [DAC]
                                 1.  Modify DAC_ChannelCmd to Dac_Start and Dac_Stop;
                                 2.  Modify DAC_DualChannelCmd to DAC_DualChannelStart and DAC_DualChannelStop;

@@ -8,6 +8,8 @@
    2020-06-12       Hongjh          First version
    2020-07-15       Hongjh          Modify error parameter assert condition for 
                                     the function TMR4_PWM_SetPclkDiv.
+   2020-07-25       Hongjh          Modify TMR4_OCO_SetLowChCompareMode function 
+                                    comment:from TMR4_OCO_UH/VH/WH to TMR4_OCO_UL/VL/WL
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -1697,9 +1699,9 @@ en_result_t TMR4_OCO_SetHighChCompareMode(M4_TMR4_TypeDef *TMR4x,
  *           @arg M4_TMR4_3:        TMR4 unit 3 instance register base
  * @param  [in] u32Ch               TMR4 OCO channel.
  *         This parameter can be one of the following values:
- *           @arg TMR4_OCO_UH:      TMR4 OCO channel - UH
- *           @arg TMR4_OCO_VH:      TMR4 OCO channel - VH
- *           @arg TMR4_OCO_WH:      TMR4 OCO channel - WH
+ *           @arg TMR4_OCO_UL:      TMR4 OCO channel - UL
+ *           @arg TMR4_OCO_VL:      TMR4 OCO channel - VL
+ *           @arg TMR4_OCO_WL:      TMR4 OCO channel - WL
  * @param  [in] pstcMode            Pointer to a @ref stc_oco_low_ch_compare_mode_t structure of the TMR4 OCO low channel mode
  * @retval An en_result_t enumeration value:
  *           - Ok: Set successfully

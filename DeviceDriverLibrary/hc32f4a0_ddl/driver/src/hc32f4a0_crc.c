@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Heqb            First version
+   2020-07-21       Heqb            Fixed a bug for CRC_Check function
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -221,6 +222,7 @@ en_flag_status_t CRC_Check(uint32_t u32CrcProtocol,
                            uint8_t u8BitWidth)
 {
     en_flag_status_t enFlag = Reset;
+    uint32_t u32DataAddr = (uint32_t)&M4_CRC->DAT0;
     DDL_ASSERT(IS_CRC_PROCOTOL(u32CrcProtocol));
     DDL_ASSERT(IS_CRC_BIT_WIDTH(u8BitWidth));
     if ((pvData != NULL) && (u32Length != 0UL))
@@ -230,7 +232,7 @@ en_flag_status_t CRC_Check(uint32_t u32CrcProtocol,
         /* Set initial value */
         if (u32CrcProtocol == CRC_CRC32)
         {
-            WRITE_REG32(M4_CRC->DAT0, u32InitVal);
+            WRITE_REG32(M4_CRC->RESLT, u32InitVal);
         }
         else
         {
@@ -252,11 +254,12 @@ en_flag_status_t CRC_Check(uint32_t u32CrcProtocol,
         /* Write checksum */
         if (u32CrcProtocol == CRC_CRC32)
         {
-            WRITE_REG32(M4_CRC->DAT0, u32CheckSum);
+            RW_MEM32(u32DataAddr) = u32CheckSum;
         }
         else
         {
-            WRITE_REG16(M4_CRC->DAT0, u32CheckSum);
+
+            RW_MEM16(u32DataAddr) = (uint16_t)u32CheckSum;
         }
         /* Get flag */
         if (READ_REG32_BIT(M4_CRC->CR, CRC_CR_FLAG) != 0UL)

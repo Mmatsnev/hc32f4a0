@@ -7,6 +7,11 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-07-23       Hongjh          1. Correct the macro define: DCU_CMP_TRIG_DATA01;
+                                    2. Refine the macro define for interrupt, flag and mode;
+                                    3. Modify API: from DCU_IntFuncCmd to DCU_GlobalIntCmd;
+                                    4. Delete API: DCU_SetCmpIntMode;
+                                    5. Modify DCU DATA read/write API.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -145,8 +150,8 @@ typedef struct
  * @defgroup DCU_Compare_Trigger_Mode DCU Compare Trigger Mode
  * @{
  */
-#define DCU_CMP_TRIG_BY_DATA0                   (0UL)                   /*!< DCU compare triggered by DATA0 */
-#define DCU_CMP_TRIG_BY_DATA012                 (DCU_CTL_DATASIZE_0)    /*!< DCU compare triggered by DATA0 or DATA1 or DATA2 */
+#define DCU_CMP_TRIG_DATA0                      (0UL)               /*!< DCU compare triggered by DATA0 */
+#define DCU_CMP_TRIG_DATA012                    (DCU_CTL_COMP_TRG)  /*!< DCU compare triggered by DATA0 or DATA1 or DATA2 */
 /**
  * @}
  */
@@ -158,9 +163,9 @@ typedef struct
 #define DCU_INVALID                             (0UL)               /*!< DCU invalid */
 #define DCU_ADD                                 (DCU_CTL_MODE_0)    /*!< DCU add operation */
 #define DCU_SUB                                 (DCU_CTL_MODE_1)    /*!< DCU sub operation */
-#define DCU_HW_TRIG_ADD                         (DCU_CTL_MODE_1 | \
+#define DCU_HW_ADD                              (DCU_CTL_MODE_1 | \
                                                  DCU_CTL_MODE_0)    /*!< Hardware trigger DCU add */
-#define DCU_HW_TRIG_SUB                         (DCU_CTL_MODE_2)    /*!< Hardware trigger DCU sub */
+#define DCU_HW_SUB                              (DCU_CTL_MODE_2)    /*!< Hardware trigger DCU sub */
 #define DCU_CMP                                 (DCU_CTL_MODE_2 | \
                                                  DCU_CTL_MODE_0)    /*!< DCU compare */
 #define DCU_TRIANGLE_WAVE                       (DCU_CTL_MODE_3)    /*!< DCU triangle wave output mode */
@@ -193,39 +198,95 @@ typedef struct
 #define DCU_FLAG_DATA0_LS_DATA1                 (DCU_FLAG_FLAG_LS1) /*!< DCU DATA0 < DATA1 flag */
 #define DCU_FLAG_DATA0_EQ_DATA1                 (DCU_FLAG_FLAG_EQ1) /*!< DCU DATA0 = DATA1 flag */
 #define DCU_FLAG_DATA0_GT_DATA1                 (DCU_FLAG_FLAG_GT1) /*!< DCU DATA0 > DATA1 flag */
-#define DCU_FLAG_SAWTOOTH_WAVE_RELOAD           (DCU_FLAG_FLAG_RLD) /*!< DCU sawtooth wave mode reload interrupt */
-#define DCU_FLAG_TRIANGLE_WAVE_BOTTOM           (DCU_FLAG_FLAG_BTM) /*!< DCU triangle wave mode bottom interrupt */
-#define DCU_FLAG_TRIANGLE_WAVE_TOP              (DCU_FLAG_FLAG_TOP) /*!< DCU triangle wave mode top interrupt */
+#define DCU_FLAG_WAVE_SAWTOOTH_RELOAD           (DCU_FLAG_FLAG_RLD) /*!< DCU sawtooth wave mode reload interrupt */
+#define DCU_FLAG_WAVE_TRIANGLE_BOTTOM           (DCU_FLAG_FLAG_BTM) /*!< DCU triangle wave mode bottom interrupt */
+#define DCU_FLAG_WAVE_TRIANGLE_TOP              (DCU_FLAG_FLAG_TOP) /*!< DCU triangle wave mode top interrupt */
 /**
  * @}
  */
 
 /**
- * @defgroup DCU_CMP_Interrupt_Configure DCU CMP Interrupt Configure
+ * @defgroup DCU_Interrupt_Category DCU Interrupt Category
  * @{
  */
-#define DCU_CMP_WINDOW_INT_INVALID              (0UL)                       /*!< DCU window interrupt is invalid */
-#define DCU_CMP_WINDOW_INT_INSIDE               (DCU_INTEVTSEL_SEL_WIN_0)   /*!< DCU (DATA2 <= DATA0 <= DATA1) interrupt */
-#define DCU_CMP_WINDOW_INT_OUTSIDE              (DCU_INTEVTSEL_SEL_WIN_1)   /*!< DCU (DATA0 < DATA2 & DATA0 > DATA1 ) interrupt */
-#define DCU_CMP_INT_INVALID                     (DCU_INTEVTSEL_SEL_WIN)     /*!< DCU CMP mode don't occur interrupt */
+#define DCU_INT_OP                              (0UL)   /*!< DCU operation result(overflow/underflow) interrupt */
+#define DCU_INT_WAVE_MD                         (1UL)   /*!< DCU wave mode(sawtooth/triangle wave mode) interrupt */
+#define DCU_INT_CMP_WIN                         (2UL)   /*!< DCU comparison(window) interrupt */
+#define DCU_INT_CMP_NON_WIN                     (3UL)   /*!< DCU comparison(non-window) interrupt */
 /**
  * @}
  */
 
 /**
- * @defgroup DCU_Interrupt_Selection DCU Interrupt Selection
+ * @defgroup DCU_Interrupt_Type DCU Interrupt Type
  * @{
  */
-#define DCU_INT_OPERATION                       (DCU_INTEVTSEL_SEL_OP)  /*!< DCU addition overflow or subtraction underflow interrupt */
-#define DCU_INT_DATA0_LS_DATA2                  (DCU_INTEVTSEL_SEL_LS2) /*!< DCU DATA0 < DATA2 interrupt */
-#define DCU_INT_DATA0_EQ_DATA2                  (DCU_INTEVTSEL_SEL_EQ2) /*!< DCU DATA0 = DATA2 interrupt */
-#define DCU_INT_DATA0_GT_DATA2                  (DCU_INTEVTSEL_SEL_GT2) /*!< DCU DATA0 > DATA2 interrupt */
-#define DCU_INT_DATA0_LS_DATA1                  (DCU_INTEVTSEL_SEL_LS1) /*!< DCU DATA0 < DATA1 interrupt */
-#define DCU_INT_DATA0_EQ_DATA1                  (DCU_INTEVTSEL_SEL_EQ1) /*!< DCU DATA0 = DATA1 interrupt */
-#define DCU_INT_DATA0_GT_DATA1                  (DCU_INTEVTSEL_SEL_GT1) /*!< DCU DATA0 > DATA1 interrupt */
-#define DCU_INT_SAWTOOTH_WAVE_RELOAD            (DCU_INTEVTSEL_SEL_RLD) /*!< DCU sawtooth wave mode reload interrupt */
-#define DCU_INT_TRIANGLE_WAVE_BOTTOM            (DCU_INTEVTSEL_SEL_BTM) /*!< DCU triangle wave mode bottom interrupt */
-#define DCU_INT_TRIANGLE_WAVE_TOP               (DCU_INTEVTSEL_SEL_TOP) /*!< DCU triangle wave mode top interrupt */
+/**
+ * @defgroup DCU_Compare_Interrupt DCU Compare(Non-window) Interrupt
+ * @{
+ * @note Compare interrupt selection is valid only when select DCU comparison(non-window) interrupt(DCU_INTSEL.INT_WIN=0) under DCU compare mode
+ */
+#define DCU_INT_CMP_DATA0_LS_DATA2              (DCU_INTEVTSEL_SEL_LS2)    /*!< DCU DATA0 < DATA2 interrupt */
+#define DCU_INT_CMP_DATA0_EQ_DATA2              (DCU_INTEVTSEL_SEL_EQ2)    /*!< DCU DATA0 = DATA2 interrupt */
+#define DCU_INT_CMP_DATA0_GT_DATA2              (DCU_INTEVTSEL_SEL_GT2)    /*!< DCU DATA0 > DATA2 interrupt */
+#define DCU_INT_CMP_DATA0_LS_DATA1              (DCU_INTEVTSEL_SEL_LS1)    /*!< DCU DATA0 < DATA1 interrupt */
+#define DCU_INT_CMP_DATA0_EQ_DATA1              (DCU_INTEVTSEL_SEL_EQ1)    /*!< DCU DATA0 = DATA1 interrupt */
+#define DCU_INT_CMP_DATA0_GT_DATA1              (DCU_INTEVTSEL_SEL_GT1)    /*!< DCU DATA0 > DATA1 interrupt */
+#define DCU_INT_CMP_NON_WIN_ALL                 (DCU_INT_CMP_DATA0_LS_DATA2 |  \
+                                                 DCU_INT_CMP_DATA0_EQ_DATA2 |  \
+                                                 DCU_INT_CMP_DATA0_GT_DATA2 |  \
+                                                 DCU_INT_CMP_DATA0_LS_DATA1 |  \
+                                                 DCU_INT_CMP_DATA0_EQ_DATA1 |  \
+                                                 DCU_INT_CMP_DATA0_GT_DATA1)
+/**
+ * @}
+ */
+
+/**
+ * @defgroup DCU_Window_Compare_Interrupt DCU Window Compare Interrupt
+ * @{
+ */
+#define DCU_INT_CMP_WIN_INSIDE                  (DCU_INTEVTSEL_SEL_WIN_0)  /*!< DCU comparison(DATA2 <= DATA0 <= DATA1) interrupt */
+#define DCU_INT_CMP_WIN_OUTSIDE                 (DCU_INTEVTSEL_SEL_WIN_1)  /*!< DCU comparison(DATA0 < DATA2 & DATA0 > DATA1 ) interrupt */
+#define DCU_INT_CMP_WIN_ALL                     (DCU_INT_CMP_WIN_INSIDE |      \
+                                                 DCU_INT_CMP_WIN_OUTSIDE)
+/**
+ * @}
+ */
+
+/**
+ * @defgroup DCU_Wave_Mode_Interrupt DCU Wave Mode Interrupt
+ * @{
+ */
+#define DCU_INT_WAVE_SAWTOOTH_RELOAD            (DCU_INTEVTSEL_SEL_RLD) /*!< DCU sawtooth wave mode reload interrupt */
+#define DCU_INT_WAVE_TRIANGLE_BOTTOM            (DCU_INTEVTSEL_SEL_BTM) /*!< DCU triangle wave mode bottom interrupt */
+#define DCU_INT_WAVE_TRIANGLE_TOP               (DCU_INTEVTSEL_SEL_TOP) /*!< DCU triangle wave mode top interrupt */
+#define DCU_INT_WAVE_MD_ALL                     (DCU_INT_WAVE_TRIANGLE_TOP    |\
+                                                 DCU_INT_WAVE_TRIANGLE_BOTTOM |\
+                                                 DCU_INT_WAVE_SAWTOOTH_RELOAD)
+/**
+ * @}
+ */
+
+/**
+ * @defgroup DCU_Operation_Interrupt DCU Operation Interrupt
+ * @{
+ */
+#define DCU_INT_OP_UDF_OVF                      (DCU_INTEVTSEL_SEL_OP)  /*!< DCU addition overflow or subtraction underflow interrupt */
+/**
+ * @}
+ */
+/**
+ * @}
+ */
+
+/**
+ * @defgroup DCU_Data_Register_Index DCU Data Register Index
+ * @{
+ */
+#define DCU_DATA0_IDX                           (0UL)   /*!< DCU DATA0 */
+#define DCU_DATA1_IDX                           (1UL)   /*!< DCU DATA1 */
+#define DCU_DATA2_IDX                           (2UL)   /*!< DCU DATA2 */
 /**
  * @}
  */
@@ -269,37 +330,29 @@ void DCU_SetDataSize(M4_DCU_TypeDef *DCUx, uint32_t u32DataSize);
 uint32_t DCU_GetDataSize(const M4_DCU_TypeDef *DCUx);
 en_flag_status_t DCU_GetStatus(const M4_DCU_TypeDef *DCUx, uint32_t u32Flag);
 void DCU_ClearStatus(M4_DCU_TypeDef *DCUx, uint32_t u32Flag);
-void DCU_SetCmpIntMode(M4_DCU_TypeDef *DCUx, uint32_t u32CmpIntMode);
 void DCU_IntCmd(M4_DCU_TypeDef *DCUx,
-                    uint32_t u32IntSource,
-                    en_functional_state_t enNewState);
-void DCU_IntFuncCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState);
+                uint32_t u32IntCategory,
+                uint32_t u32IntType,
+                en_functional_state_t enNewState);
+void DCU_GlobalIntCmd(M4_DCU_TypeDef *DCUx, en_functional_state_t enNewState);
 void DCU_ComTriggerCmd(M4_DCU_TypeDef *DCUx,
                             uint32_t u32ComTrig,
                             en_functional_state_t enNewState);
 en_result_t DCU_SetTriggerSrc(const M4_DCU_TypeDef *DCUx,
                                 en_event_src_t enEventSrc);
 
-uint8_t DCU_ReadReg8Data0(M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg8Data0(M4_DCU_TypeDef *DCUx, uint8_t u8Data);
-uint8_t DCU_ReadReg8Data1(M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg8Data1(M4_DCU_TypeDef *DCUx, uint8_t u8Data);
-uint8_t DCU_ReadReg8Data2(M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg8Data2(M4_DCU_TypeDef *DCUx, uint8_t u8Data);
-
-uint16_t DCU_ReadReg16Data0(M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg16Data0(M4_DCU_TypeDef *DCUx, uint16_t u16Data);
-uint16_t DCU_ReadReg16Data1(M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg16Data1(M4_DCU_TypeDef *DCUx, uint16_t u16Data);
-uint16_t DCU_ReadReg16Data2(M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg16Data2(M4_DCU_TypeDef *DCUx, uint16_t u16Data);
-
-uint32_t DCU_ReadReg32Data0(const M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg32Data0(M4_DCU_TypeDef *DCUx, uint32_t u32Data);
-uint32_t DCU_ReadReg32Data1(const M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg32Data1(M4_DCU_TypeDef *DCUx, uint32_t u32Data);
-uint32_t DCU_ReadReg32Data2(const M4_DCU_TypeDef *DCUx);
-void DCU_WriteReg32Data2(M4_DCU_TypeDef *DCUx, uint32_t u32Data);
+uint8_t DCU_ReadData8(const M4_DCU_TypeDef *DCUx, uint32_t u32DataIndex);
+void DCU_WriteData8(M4_DCU_TypeDef *DCUx,
+                    uint32_t u32DataIndex,
+                    uint8_t u8Data);
+uint16_t DCU_ReadData16(const M4_DCU_TypeDef *DCUx, uint32_t u32DataIndex);
+void DCU_WriteData16(M4_DCU_TypeDef *DCUx,
+                        uint32_t u32DataIndex,
+                        uint16_t u16Data);
+uint32_t DCU_ReadData32(const M4_DCU_TypeDef *DCUx, uint32_t u32DataIndex);
+void DCU_WriteData32(M4_DCU_TypeDef *DCUx,
+                        uint32_t u32DataIndex,
+                        uint32_t u32Data);
 
 /**
  * @}

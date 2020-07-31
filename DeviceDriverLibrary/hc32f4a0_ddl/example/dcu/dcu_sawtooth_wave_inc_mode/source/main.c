@@ -7,6 +7,8 @@
    Date             Author          Notes
    2020-06-12       Hongjh          First version
    2020-07-15       Hongjh          Replace DAC_ChannelCmd by DAC_Start
+   2020-07-23       Hongjh          1. Replace DCU_IntFuncCmd by DCU_GlobalIntCmd;
+                                    2. Modify paramters after refine DCU_IntCmd.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -192,8 +194,8 @@ static void TMR0_CmpIrqCallback(void)
     if (DCU_WAVE_UPPER_LIMIT == m_u16Timer0IrqCnt++)
     {
         m_u16Timer0IrqCnt = 0U;
-        DCU_ClearStatus(DCU_UNIT, DCU_FLAG_SAWTOOTH_WAVE_RELOAD);
-        DCU_IntFuncCmd(DCU_UNIT, Enable);
+        DCU_ClearStatus(DCU_UNIT, DCU_FLAG_WAVE_SAWTOOTH_RELOAD);
+        DCU_GlobalIntCmd(DCU_UNIT, Enable);
     }
 
     /* Clear the compare matching flag */
@@ -274,8 +276,8 @@ static void DCU_IrqCallback(void)
 {
     GPIO_TogglePins(GPIO_PORT_E, GPIO_PIN_04);
 
-    DCU_IntFuncCmd(DCU_UNIT, Disable);
-    DCU_ClearStatus(DCU_UNIT, DCU_FLAG_SAWTOOTH_WAVE_RELOAD);
+    DCU_GlobalIntCmd(DCU_UNIT, Disable);
+    DCU_ClearStatus(DCU_UNIT, DCU_FLAG_WAVE_SAWTOOTH_RELOAD);
 }
 
 /**
@@ -316,7 +318,7 @@ int32_t main(void)
     stcDcuInit.u32Mode = DCU_SAWTOOTH_WAVE_INC;
     stcDcuInit.u32DataSize = DCU_DATA_SIZE_16BIT;
     DCU_Init(DCU_UNIT, &stcDcuInit);
-    DCU_IntCmd(DCU_UNIT, DCU_INT_SAWTOOTH_WAVE_RELOAD, Enable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_WAVE_MD, DCU_INT_WAVE_SAWTOOTH_RELOAD, Enable);
 
     stcIrqSigninCfg.enIRQn = DCU_INT_IRQn;
     stcIrqSigninCfg.enIntSrc = DCU_INT_SRC;

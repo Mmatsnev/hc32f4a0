@@ -87,7 +87,7 @@ extern "C"
  */
 #define HC32_DDL_VERSION_MAIN           0x01U  /*!< [31:24] main version */
 #define HC32_DDL_VERSION_SUB1           0x00U  /*!< [23:16] sub1 version */
-#define HC32_DDL_VERSION_SUB2           0x01U  /*!< [15:8]  sub2 version */
+#define HC32_DDL_VERSION_SUB2           0x02U  /*!< [15:8]  sub2 version */
 #define HC32_DDL_VERSION_RC             0x00U  /*!< [7:0]   release candidate */
 #define HC32_DDL_VERSION                ((HC32_DDL_VERSION_MAIN << 24) | \
                                          (HC32_DDL_VERSION_SUB1 << 16) | \

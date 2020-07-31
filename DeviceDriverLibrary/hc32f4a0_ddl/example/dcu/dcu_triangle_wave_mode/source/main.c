@@ -7,6 +7,8 @@
    Date             Author          Notes
    2020-06-12       Hongjh          First version
    2020-07-15       Hongjh          Replace DAC_ChannelCmd by DAC_Start
+   2020-07-23       Hongjh          1. Replace DCU_IntFuncCmd by DCU_GlobalIntCmd£»
+                                    2. Modify paramters after refine DCU_IntCmd.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -192,7 +194,7 @@ static void TMR0_CmpIrqCallback(void)
     if ((2U * DCU_WAVE_UPPER_LIMIT + 1U) == m_u16Timer0IrqCnt++)
     {
         m_u16Timer0IrqCnt = 0U;
-        DCU_IntCmd(DCU_UNIT, DCU_INT_TRIANGLE_WAVE_BOTTOM, Enable);
+        DCU_IntCmd(DCU_UNIT, DCU_INT_WAVE_MD, DCU_INT_WAVE_TRIANGLE_BOTTOM, Enable);
     }
 
     /* Clear the compare matching flag */
@@ -271,10 +273,10 @@ static void DacConfig(void)
  */
 static void DCU_IrqCallback(void)
 {
-    DCU_IntCmd(DCU_UNIT, DCU_INT_TRIANGLE_WAVE_BOTTOM, Disable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_WAVE_MD, DCU_INT_WAVE_TRIANGLE_BOTTOM, Disable);
 
     GPIO_TogglePins(GPIO_PORT_E, GPIO_PIN_04);
-    DCU_ClearStatus(DCU_UNIT, DCU_FLAG_TRIANGLE_WAVE_BOTTOM);
+    DCU_ClearStatus(DCU_UNIT, DCU_FLAG_WAVE_TRIANGLE_BOTTOM);
 }
 
 /**
@@ -314,7 +316,7 @@ int32_t main(void)
     stcDcuInit.u32Mode = DCU_TRIANGLE_WAVE;
     stcDcuInit.u32DataSize = DCU_DATA_SIZE_16BIT;
     DCU_Init(DCU_UNIT, &stcDcuInit);
-    DCU_IntCmd(DCU_UNIT, DCU_INT_TRIANGLE_WAVE_BOTTOM, Enable);
+    DCU_IntCmd(DCU_UNIT, DCU_INT_WAVE_MD, DCU_INT_WAVE_TRIANGLE_BOTTOM, Enable);
 
     /* Set DCU IRQ */
     stcIrqSigninCfg.enIRQn = DCU_UNIT_INT_IRQn;
@@ -335,7 +337,7 @@ int32_t main(void)
     Tmr0Config();
 
     /* Eanble DCU interrupt function */
-    DCU_IntFuncCmd(DCU_UNIT, Enable);
+    DCU_GlobalIntCmd(DCU_UNIT, Enable);
 
     /* MCU Peripheral registers write protected */
     Peripheral_WP();

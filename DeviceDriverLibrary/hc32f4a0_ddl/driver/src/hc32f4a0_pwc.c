@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-07-30       Zhangxl         Refine power mode switch function
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -1038,27 +1039,41 @@ void PWC_PllPwrCmd(en_functional_state_t enNewState)
 en_result_t PWC_HighSpeedToLowSpeed(void)
 {
     en_result_t enRet = Ok;
+    uint32_t u32To;
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
 
     WRITE_REG32(bM4_EFM->FRMC_b.LVM, 0x01UL);
     WRITE_REG16(M4_PWC->RAMOPM, PWC_RAM_LOW);
 
-    if (1UL == READ_REG32(bM4_EFM->FRMC_b.LVM))
+    u32To = 0x1000UL;
+    while (1UL != READ_REG32(bM4_EFM->FRMC_b.LVM))
     {
-        if (PWC_RAM_LOW == READ_REG16(M4_PWC->RAMOPM))
+        if (0UL == u32To--)
         {
-            MODIFY_REG8(M4_PWC->PWRC2, PWC_PWRC2_DDAS, 0x01UL);
-            WRITE_REG8(M4_PWC->PWRC3, 0x00UL);
-            MODIFY_REG8(M4_PWC->PWRC2, PWC_PWRC2_DVS ,PWC_NOR_DRV_LOW);
-            DDL_DelayMS(1UL);
+            enRet = Error;
+            break;
         }
     }
-    else
+    if (Ok == enRet)
     {
-        enRet = Error;
+        u32To = 0x1000UL;
+        while(PWC_RAM_LOW != READ_REG16(M4_PWC->RAMOPM))
+        {
+            if (0UL == u32To--)
+            {
+                enRet = Error;
+                break;
+            }
+        }
     }
-
+    if (Ok == enRet)
+    {
+        MODIFY_REG8(M4_PWC->PWRC2, PWC_PWRC2_DDAS, 0x01UL);
+        WRITE_REG8(M4_PWC->PWRC3, 0x00UL);
+        MODIFY_REG8(M4_PWC->PWRC2, PWC_PWRC2_DVS ,PWC_NOR_DRV_LOW);
+        DDL_DelayMS(1UL);
+    }
     return enRet;
 }
 
@@ -1071,7 +1086,8 @@ en_result_t PWC_HighSpeedToLowSpeed(void)
  */
 en_result_t PWC_LowSpeedToHighSpeed(void)
 {
-    en_result_t enRet = Error;
+    en_result_t enRet = Ok;
+    uint32_t u32To;
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
 
@@ -1083,15 +1099,27 @@ en_result_t PWC_LowSpeedToHighSpeed(void)
     WRITE_REG32(bM4_EFM->FRMC_b.LVM, 0x00UL);
     WRITE_REG16(M4_PWC->RAMOPM, PWC_RAM_HIGH);
 
-    DDL_DelayMS(1UL);
-    if (0UL == READ_REG32(bM4_EFM->FRMC_b.LVM))
+    u32To = 0x1000UL;
+    while (0UL != READ_REG32(bM4_EFM->FRMC_b.LVM))
     {
-        if (PWC_RAM_HIGH == READ_REG16(M4_PWC->RAMOPM))
+        if (0UL == u32To--)
         {
-            enRet = Ok;
+            enRet = Error;
+            break;
         }
     }
-
+    if (Ok == enRet)
+    {
+        u32To = 0x1000UL;
+        while(PWC_RAM_HIGH != READ_REG16(M4_PWC->RAMOPM))
+        {
+            if (0UL == u32To--)
+            {
+                enRet = Error;
+                break;
+            }
+        }
+    }
     return enRet;
 }
 
