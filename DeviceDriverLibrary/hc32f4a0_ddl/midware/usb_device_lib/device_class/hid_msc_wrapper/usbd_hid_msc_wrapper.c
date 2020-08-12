@@ -75,7 +75,7 @@
  * @{
  */
 
-/** @defgroup USBD_HID_MSC_WRAPPER
+/** @defgroup USBD_HID_MSC_WRAPPER USB HID and MSC device wrapper
  * @{
  */
 
@@ -252,8 +252,8 @@ __USB_ALIGN_BEGIN static uint8_t USBD_MSC_HID_CfgDesc[USB_MSC_HID_CONFIG_DESC_SI
 /**
   * @brief  USBD_MSC_HID_Init
   *         Initialize the MSC-HID interface
-  * @param  pdev: device instance
-  * @param  cfgidx: Configuration index
+  * @param  [in] pdev: device instance
+  * @param  [in] cfgidx: Configuration index
   * @retval status
   */
 static uint8_t  USBD_MSC_HID_Init (void  *pdev, uint8_t cfgidx)
@@ -270,8 +270,8 @@ static uint8_t  USBD_MSC_HID_Init (void  *pdev, uint8_t cfgidx)
 /**
   * @brief  USBD_MSC_HID_DeInit
   *         DeInitialize the MSC_HID layer
-  * @param  pdev: device instance
-  * @param  cfgidx: Configuration index
+  * @param  [in] pdev: device instance
+  * @param  [in] cfgidx: Configuration index
   * @retval status
   */
 static uint8_t  USBD_MSC_HID_DeInit (void  *pdev, uint8_t cfgidx)
@@ -288,8 +288,8 @@ static uint8_t  USBD_MSC_HID_DeInit (void  *pdev, uint8_t cfgidx)
 /**
   * @brief  USBD_MSC_HID_Setup
   *         Handle the MSC_HID specific requests
-  * @param  pdev: instance
-  * @param  req: usb requests
+  * @param  [in] pdev: instance
+  * @param  [in] req: usb requests
   * @retval status
   */
 static uint8_t  USBD_MSC_HID_Setup (void  *pdev, USB_SETUP_REQ *req)
@@ -327,8 +327,8 @@ static uint8_t  USBD_MSC_HID_Setup (void  *pdev, USB_SETUP_REQ *req)
 /**
   * @brief  USBD_MSC_HID_GetCfgDesc
   *         return configuration descriptor
-  * @param  speed : current device speed
-  * @param  length : pointer data length
+  * @param  [in] speed : current device speed
+  * @param  [in] length : pointer data length
   * @retval pointer to descriptor buffer
   */
 static uint8_t  *USBD_MSC_HID_GetCfgDesc (uint8_t speed, uint16_t *length)
@@ -340,8 +340,8 @@ static uint8_t  *USBD_MSC_HID_GetCfgDesc (uint8_t speed, uint16_t *length)
 /**
   * @brief  USBD_MSC_HID_DataIn
   *         handle data IN Stage
-  * @param  pdev: device instance
-  * @param  epnum: endpoint index
+  * @param  [in] pdev: device instance
+  * @param  [in] epnum: endpoint index
   * @retval status
   */
 static uint8_t  USBD_MSC_HID_DataIn (void  *pdev, uint8_t epnum)
@@ -362,8 +362,8 @@ static uint8_t  USBD_MSC_HID_DataIn (void  *pdev, uint8_t epnum)
 /**
   * @brief  USBD_MSC_HID_DataOut
   *         handle data OUT Stage
-  * @param  pdev: device instance
-  * @param  epnum: endpoint index
+  * @param  [in] pdev: device instance
+  * @param  [in] epnum: endpoint index
   * @retval status
   */
 static uint8_t  USBD_MSC_HID_DataOut(void *pdev , uint8_t epnum)

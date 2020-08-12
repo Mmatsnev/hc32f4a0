@@ -107,43 +107,43 @@
  * @defgroup INTC_Check_Parameters_Validity INTC Check Parameters Validity
  * @{
  */
-/*  Parameter validity check for wakeup source from stop mode. */
+/*! Parameter validity check for wakeup source from stop mode. */
 #define IS_INTC_WKUP_SRC(src)                                                   \
 (   ((src) != 0x00UL)                           &&                              \
     (((src) | INTC_WUPEN_MASK) == INTC_WUPEN_MASK))
 
-/*  Parameter validity check for event index. */
+/*! Parameter validity check for event index. */
 #define IS_INTC_EVENT(event)        ((event) != 0x00UL)
 
-/*  Parameter validity check for interrupt index. */
+/*! Parameter validity check for interrupt index. */
 #define IS_INTC_INT(it)             ((it) != 0x00UL)
 
-/*  Parameter validity check for software interrupt index. */
+/*! Parameter validity check for software interrupt index. */
 #define IS_INTC_SWI(swi)            ((swi) != 0x00UL)
 
-/*  Parameter validity check for NMI trigger source. */
+/*! Parameter validity check for NMI trigger source. */
 #define IS_NMI_SRC(src)                                                         \
 (   ((src) != 0x00UL)                           &&                              \
     (((src) | NMI_SRC_MASK) == NMI_SRC_MASK))
 
-/*  Parameter validity check for EXINT filter A function. */
+/*! Parameter validity check for EXINT filter A function. */
 #define IS_EXINT_FAE(fae)                                                       \
 (   ((fae) == EXINT_FILTER_A_OFF)               ||                              \
     ((fae) == EXINT_FILTER_A_ON))
 
-/*  Parameter validity check for EXINT filter A clock division. */
+/*! Parameter validity check for EXINT filter A clock division. */
 #define IS_EXINT_FACLK(faclk)                                                    \
 (   ((faclk) == EXINT_FACLK_HCLK_DIV1)          ||                              \
     ((faclk) == EXINT_FACLK_HCLK_DIV8)          ||                              \
     ((faclk) == EXINT_FACLK_HCLK_DIV32)         ||                              \
     ((faclk) == EXINT_FACLK_HCLK_DIV64))
 
-/*  Parameter validity check for EXINT filter B function. */
+/*! Parameter validity check for EXINT filter B function. */
 #define IS_EXINT_FBE(fbe)                                                       \
 (   ((fbe) == EXINT_FILTER_B_OFF)               ||                              \
     ((fbe) == EXINT_FILTER_B_ON))
 
-/*  Parameter validity check for EXINT filter B time. */
+/*! Parameter validity check for EXINT filter B time. */
 #define IS_EXINT_FBTIME(fbtime)                                                  \
 (   ((fbtime) == EXINT_FBTIM_500NS)             ||                              \
     ((fbtime) == EXINT_FBTIM_1US)               ||                              \
@@ -151,14 +151,14 @@
     ((fbtime) == EXINT_FBTIM_4US))
 
 
-/*  Parameter validity check for EXINT trigger edge. */
+/*! Parameter validity check for EXINT trigger edge. */
 #define IS_EXINT_TRIGGER(trigger)                                               \
 (   ((trigger) == EXINT_TRIGGER_LOW)            ||                              \
     ((trigger) == EXINT_TRIGGER_RISING)         ||                              \
     ((trigger) == EXINT_TRIGGER_FALLING)        ||                              \
     ((trigger) == EXINT_TRIGGER_BOTH))
 
-/*  Parameter validity check for EXINT channel. */
+/*! Parameter validity check for EXINT channel. */
 #define IS_EXINT_CH(ch)                                                         \
 (   ((ch) != 0x00UL)                            &&                              \
     (((ch) | EXINT_CH_MASK) == EXINT_CH_MASK))

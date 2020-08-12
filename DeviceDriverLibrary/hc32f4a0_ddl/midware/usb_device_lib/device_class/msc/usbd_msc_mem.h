@@ -80,7 +80,7 @@ extern "C"
  * @{
  */
 
-/** @defgroup USBD_MSC_MEM
+/** @defgroup USBD_MSC_MEM USB MSC device memory
  * @{
  */
 
@@ -88,7 +88,7 @@ extern "C"
  * Global type definitions ('typedef')
  ******************************************************************************/
 /**
- * @defgroup USBD_MSC_MEM_Global_Types
+ * @defgroup USBD_MSC_MEM_Global_Types USB MSC device memory global types
  * @{
  */
 typedef struct
@@ -110,7 +110,7 @@ typedef struct
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
 /**
- * @defgroup USBD_MSC_MEM_Global_Macros
+ * @defgroup USBD_MSC_MEM_Global_Macros USB MSC device memory global macros
  * @{
  */
 #define USBD_STD_INQUIRY_LENGTH     (36U)

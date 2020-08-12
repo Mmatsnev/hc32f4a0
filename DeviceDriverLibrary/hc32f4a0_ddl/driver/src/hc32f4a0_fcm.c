@@ -86,7 +86,7 @@
  * @defgroup FCM_Check_Parameters_Validity FCM Check Parameters Validity
  * @{
  */
-/* Parameter validity check for FCM target clock source. */
+/*! Parameter validity check for FCM target clock source. */
 #define IS_FCM_TAR_SOURCE(src)                                                  \
 (   ((src) == FCM_TAR_CLK_XTAL)             ||                                  \
     ((src) == FCM_TAR_CLK_XTAL32)           ||                                  \
@@ -99,32 +99,32 @@
     ((src) == FCM_TAR_CLK_PLLHP)            ||                                  \
     ((src) == FCM_TAR_CLK_RTCLRC))
 
-/* Parameter validity check for FCM target clock division. */
+/*! Parameter validity check for FCM target clock division. */
 #define IS_FCM_TAR_DIV(div)                                                     \
 (   ((div) == FCM_TAR_CLK_DIV1)             ||                                  \
     ((div) == FCM_TAR_CLK_DIV4)             ||                                  \
     ((div) == FCM_TAR_CLK_DIV8)             ||                                  \
     ((div) == FCM_TAR_CLK_DIV32))
 
-/* Parameter validity check for FCM external reference input function. */
+/*! Parameter validity check for FCM external reference input function. */
 #define IS_FCM_EX_REF_FUNC(func)                                                \
 (   ((func) == FCM_EX_REF_OFF)              ||                                  \
     ((func) == FCM_EX_REF_ON))
 
-/* Parameter validity check for FCM reference clock edge. */
+/*! Parameter validity check for FCM reference clock edge. */
 #define IS_FCM_REF_EDGE(edge)                                                   \
 (   ((edge) == FCM_REF_CLK_RISING)          ||                                  \
     ((edge) == FCM_REF_CLK_FALLING)         ||                                  \
     ((edge) == FCM_REF_CLK_BOTH))
 
-/* Parameter validity check for FCM digital filter function. */
+/*! Parameter validity check for FCM digital filter function. */
 #define IS_FCM_DF(df)                                                           \
 (   ((df) == FCM_DF_OFF)                    ||                                  \
     ((df) == FCM_DF_MCKS_DIV1)              ||                                  \
     ((df) == FCM_DF_MCKS_DIV4)              ||                                  \
     ((df) == FCM_DF_MCKS_DIV16))
 
-/* Parameter validity check for FCM reference clock source. */
+/*! Parameter validity check for FCM reference clock source. */
 #define IS_FCM_REF_SOURCE(src)                                                  \
 (   ((src) == FCM_REF_CLK_EXINPUT)          ||                                  \
     ((src) == FCM_REF_CLK_XTAL)             ||                                  \
@@ -138,27 +138,27 @@
     ((src) == FCM_REF_CLK_PLLHP)            ||                                  \
     ((src) == FCM_REF_CLK_RTCLRC))
 
-/* Parameter validity check for FCM reference clock division. */
+/*! Parameter validity check for FCM reference clock division. */
 #define IS_FCM_REF_DIV(div)                                                     \
 (   ((div) == FCM_REF_CLK_DIV32)            ||                                  \
     ((div) == FCM_REF_CLK_DIV128)           ||                                  \
     ((div) == FCM_REF_CLK_DIV1024)          ||                                  \
     ((div) == FCM_REF_CLK_DIV8192))
 
-/* Parameter validity check for FCM abnormal reset function. */
+/*! Parameter validity check for FCM abnormal reset function. */
 #define IS_FCM_RESET_FUNC(func)                                                 \
 (   ((func) == FCM_RST_OFF)                 ||                                  \
     ((func) == FCM_RST_ON))
 
-/* Parameter validity check for FCM abnormal behavior function. */
+/*! Parameter validity check for FCM abnormal behavior function. */
 #define IS_FCM_ERR_HANDLE(hd)                                                   \
 (   ((hd) == FCM_ERR_INT)                   ||                                  \
     ((hd) == FCM_ERR_RESET))
 
-/* Parameter validity check for FCM interrupt. */
+/*! Parameter validity check for FCM interrupt. */
 #define IS_FCM_INT(it)      (((it) | FCM_INT_MSK) == FCM_INT_MSK)
 
-/* Parameter validity check for FCM flag state. */
+/*! Parameter validity check for FCM flag state. */
 #define IS_FCM_FLAG(flag)                                                       \
 (   ((flag) != 0x00UL)                      &&                                  \
     (((flag) | FCM_FLAG_MSK) == FCM_FLAG_MSK))

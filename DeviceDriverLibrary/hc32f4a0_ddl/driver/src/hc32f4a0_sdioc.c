@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Yangjp          First version
+   2020-08-11       Yangjp          Fix a known potential risk in SDIOC_VerifyClockDiv function
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -724,6 +725,7 @@ en_result_t SDIOC_VerifyClockDiv(uint32_t u32Mode, uint8_t u8SpeedMode, uint16_t
     uint32_t u32BusClk;
     uint32_t u32ClkFreq;
     uint32_t u32MaxFreq;
+    uint32_t u32DivValue;
 
     /* Check parameters */
     DDL_ASSERT(IS_SDIOC_MODE(u32Mode));
@@ -732,7 +734,16 @@ en_result_t SDIOC_VerifyClockDiv(uint32_t u32Mode, uint8_t u8SpeedMode, uint16_t
 
     /* Get PCLK1 frequency */
     u32BusClk = SystemCoreClock / (0x01UL << (READ_REG32_BIT(M4_CMU->SCFGR, CMU_SCFGR_PCLK1S) >> CMU_SCFGR_PCLK1S_POS));
-    u32ClkFreq = u32BusClk / ((uint32_t)u16ClkDiv >> (SDIOC_CLKCON_FS_POS - 1U));
+    u32DivValue = ((uint32_t)u16ClkDiv >> (SDIOC_CLKCON_FS_POS - 1U));
+    if (0UL == u32DivValue)
+    {
+        u32ClkFreq = u32BusClk;
+    }
+    else
+    {
+        u32ClkFreq = u32BusClk / u32DivValue;
+    }
+
     if (SDIOC_SPEED_MODE_NORMAL == u8SpeedMode)
     {
         if (SDIOC_MODE_SD != u32Mode)   /* MMC mode */

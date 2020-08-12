@@ -8,6 +8,8 @@
    Date             Author          Notes
    2020-06-12       Heqb            First version
    2020-07-21       Heqb            Fixed a bug for CRC_Check function
+   2020-08-11       Heqb            Modify macro definition name IS_CRC_PROCOTOL
+                                    to IS_CRC_PROTOCOL
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -87,7 +89,7 @@
  * @defgroup CRC_Check_Parameters_Validity CRC check parameters validity
  * @{
  */
-#define IS_CRC_PROCOTOL(x)                                                     \
+#define IS_CRC_PROTOCOL(x)                                                     \
 (   ((x) == CRC_CRC16)                      ||                                 \
     ((x) == CRC_CRC32))
 
@@ -158,7 +160,7 @@ uint32_t CRC_Calculate(uint32_t u32CrcProtocol,
 
     if ((pvData != NULL) && (u32Length != 0U))
     {
-        DDL_ASSERT(IS_CRC_PROCOTOL(u32CrcProtocol));
+        DDL_ASSERT(IS_CRC_PROTOCOL(u32CrcProtocol));
         DDL_ASSERT(IS_CRC_BIT_WIDTH(u8BitWidth));
         /* Set operation mode (CRC16 or CRC32) */
         WRITE_REG32(M4_CRC->CR, u32CrcProtocol);
@@ -223,7 +225,7 @@ en_flag_status_t CRC_Check(uint32_t u32CrcProtocol,
 {
     en_flag_status_t enFlag = Reset;
     uint32_t u32DataAddr = (uint32_t)&M4_CRC->DAT0;
-    DDL_ASSERT(IS_CRC_PROCOTOL(u32CrcProtocol));
+    DDL_ASSERT(IS_CRC_PROTOCOL(u32CrcProtocol));
     DDL_ASSERT(IS_CRC_BIT_WIDTH(u8BitWidth));
     if ((pvData != NULL) && (u32Length != 0UL))
     {

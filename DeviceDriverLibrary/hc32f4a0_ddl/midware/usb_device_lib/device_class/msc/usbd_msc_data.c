@@ -71,7 +71,7 @@
  * @{
  */
 
-/** @defgroup USBD_MSC_DATA
+/** @defgroup USBD_MSC_DATA USB MSC device data
  * @{
  */
 

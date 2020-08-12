@@ -96,7 +96,7 @@ USB_OTG_CORE_HANDLE  USB_OTG_dev;
 
 /**
  * @brief  main function
- * @param  [in]  None
+ * @param  None
  * @retval int32_t Return value, if needed
  */
 int32_t main (void)

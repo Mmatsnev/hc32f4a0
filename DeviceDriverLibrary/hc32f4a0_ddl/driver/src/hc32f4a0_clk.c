@@ -96,30 +96,30 @@
  * @{
  */
 
-/*  Check CLK register lock status. */
+/* Check CLK register lock status. */
 #define IS_CLK_UNLOCKED()       ((M4_PWC->FPRC & PWC_FPRC_FPRCB0) == PWC_FPRC_FPRCB0)
 
-/*  Check CLK register lock status. */
+/* Check CLK register lock status. */
 #define IS_CLK_SEL_UNLOCKED()   ((M4_PWC->FPRC & PWC_FPRC_FPRCB1) == PWC_FPRC_FPRCB1)
 
-/* Parameter valid check for XTAL state */
+/*! Parameter valid check for XTAL state */
 #define IS_CLK_XTAL_STATE(sta)                                                  \
 (   ((sta) == CLK_XTAL_OFF)                         ||                          \
     ((sta) == CLK_XTAL_ON))
 
-/* Parameter valid check for XTAL mode */
+/*! Parameter valid check for XTAL mode */
 #define IS_CLK_XTAL_MODE(MODE)                                                  \
 (   ((MODE) == CLK_XTALMODE_OSC)                    ||                          \
     ((MODE) == CLK_XTALMODE_EXCLK))
 
-/* Parameter valid check for XTAL driver ability mode */
+/*! Parameter valid check for XTAL driver ability mode */
 #define IS_CLK_XTALDRV_MODE(drv)                                                \
 (   ((drv) == CLK_XTALDRV_HIGH)                     ||                          \
     ((drv) == CLK_XTALDRV_MID)                      ||                          \
     ((drv) == CLK_XTALDRV_LOW)                      ||                          \
     ((drv) == CLK_XTALDRV_ULOW))
 
-/* Parameter valid check for XTAL stable time selection */
+/*! Parameter valid check for XTAL stable time selection */
 #define IS_CLK_XTALSTB_SEL(stb)                                                 \
 (   ((stb) == CLK_XTALSTB_133US)                    ||                          \
     ((stb) == CLK_XTALSTB_255US)                    ||                          \
@@ -131,53 +131,53 @@
     ((stb) == CLK_XTALSTB_16MS)                     ||                          \
     ((stb) == CLK_XTALSTB_31MS))
 
-/* Parameter valid check for XTALSTD state */
+/*! Parameter valid check for XTALSTD state */
 #define IS_CLK_XTALSTD_STATE(sta)                                               \
 (   ((sta) == CLK_XTALSTD_OFF)                      ||                          \
     ((sta) == CLK_XTALSTD_ON))
 
-/* Parameter valid check for XTALSTD mode */
+/*! Parameter valid check for XTALSTD mode */
 #define IS_CLK_XTALSTD_MODE(mode)                                               \
 (   ((mode) == CLK_XTALSTD_MODE_RST)                ||                          \
     ((mode) == CLK_XTALSTD_MODE_INT))
 
-/* Parameter valid check for XTALSTD interrupt state */
+/*! Parameter valid check for XTALSTD interrupt state */
 #define IS_CLK_XTALSTD_INT_STATE(sta)                                           \
 (   ((sta) == CLK_XTALSTD_INT_OFF)                  ||                          \
     ((sta) == CLK_XTALSTD_INT_ON))
 
-/* Parameter valid check for XTALSTD reset state */
+/*! Parameter valid check for XTALSTD reset state */
 #define IS_CLK_XTALSTD_RST_STATE(sta)                                           \
 (   ((sta) == CLK_XTALSTD_RST_OFF)                  ||                          \
     ((sta) == CLK_XTALSTD_RST_ON))
 
-/* Parameter valid check for PLLA state */
+/*! Parameter valid check for PLLA state */
 #define IS_CLK_PLLA_STATE(sta)                                                  \
 (   ((sta) == CLK_PLLA_OFF)                         ||                          \
     ((sta) == CLK_PLLA_ON))
 
-/* Parameter valid check for PLLH state */
+/*! Parameter valid check for PLLH state */
 #define IS_CLK_PLLH_STATE(sta)                                                  \
 (   ((sta) == CLK_PLLH_OFF)                         ||                          \
     ((sta) == CLK_PLLH_ON))
 
-/* Parameter valid check for XTAL32 state */
+/*! Parameter valid check for XTAL32 state */
 #define IS_CLK_XTAL32_STATE(sta)                                                \
 (   ((sta) == CLK_XTAL32_OFF)                       ||                          \
     ((sta) == CLK_XTAL32_ON))
 
-/* Parameter valid check for XTAL32 driver ability mode */
+/*! Parameter valid check for XTAL32 driver ability mode */
 #define IS_CLK_XTAL32DRV_MODE(mode)                                             \
 (   ((mode) == CLK_XTAL32DRV_MID)                   ||                          \
     ((mode) == CLK_XTAL32DRV_HIGH))
 
-/* Parameter valid check for XTAL32 filtering selection */
+/*! Parameter valid check for XTAL32 filtering selection */
 #define IS_CLK_XTAL32_FILT_SEL(sel)                                             \
 (   ((sel) == CLK_XTAL32NF_FULL)                    ||                          \
     ((sel) == CLK_XTAL32NF_PART)                    ||                          \
     ((sel) == CLK_XTAL32NF_NONE))
 
-/* Parameter valid check for system clock source */
+/*! Parameter valid check for system clock source */
 #define IS_CLK_SYSCLK_SRC(src)                                                  \
 (   ((src) == CLK_SYSCLKSOURCE_HRC)                 ||                          \
     ((src) == CLK_SYSCLKSOURCE_MRC)                 ||                          \
@@ -271,15 +271,15 @@
 (   (CLK_PLLA_VCO_OUT_MIN <= (vco_out))             &&                          \
     (CLK_PLLA_VCO_OUT_MAX >= (vco_out)))
 
-/* Parameter valid check for CLK stable flag. */
+/*! Parameter valid check for CLK stable flag. */
 #define IS_CLK_STB_FLAG(flag)                                                   \
 (   ((flag) != 0x00U)                               &&                          \
     (((flag) | CLK_STB_FLAG_MASK) == CLK_STB_FLAG_MASK))
 
-/* Parameter valid check for clock category */
+/*! Parameter valid check for clock category */
 #define IS_CLK_CATE(cate)       (((cate) & CLK_CATE_ALL) != (uint8_t)(0x00U))
 
-/* Parameter valid check for HCLK divider */
+/*! Parameter valid check for HCLK divider */
 #define IS_CLK_HCLK_DIV(div)                                                    \
 (   ((div) == CLK_HCLK_DIV1)                        ||                          \
     ((div) == CLK_HCLK_DIV2)                        ||                          \
@@ -289,7 +289,7 @@
     ((div) == CLK_HCLK_DIV32)                       ||                          \
     ((div) == CLK_HCLK_DIV64))
 
-/* Parameter valid check for EXCLK divider */
+/*! Parameter valid check for EXCLK divider */
 #define IS_CLK_EXCLK_DIV(div)                                                   \
 (   ((div) == CLK_EXCLK_DIV1)                       ||                          \
     ((div) == CLK_EXCLK_DIV2)                       ||                          \
@@ -299,7 +299,7 @@
     ((div) == CLK_EXCLK_DIV32)                      ||                          \
     ((div) == CLK_EXCLK_DIV64))
 
-/* Parameter valid check for PCLK0 divider */
+/*! Parameter valid check for PCLK0 divider */
 #define IS_CLK_PCLK0_DIV(div)                                                   \
 (   ((div) == CLK_PCLK0_DIV1)                       ||                          \
     ((div) == CLK_PCLK0_DIV2)                       ||                          \
@@ -309,7 +309,7 @@
     ((div) == CLK_PCLK0_DIV32)                      ||                          \
     ((div) == CLK_PCLK0_DIV64))
 
-/* Parameter valid check for PCLK1 divider */
+/*! Parameter valid check for PCLK1 divider */
 #define IS_CLK_PCLK1_DIV(div)                                                   \
 (   ((div) == CLK_PCLK1_DIV1)                       ||                          \
     ((div) == CLK_PCLK1_DIV2)                       ||                          \
@@ -319,7 +319,7 @@
     ((div) == CLK_PCLK1_DIV32)                      ||                          \
     ((div) == CLK_PCLK1_DIV64))
 
-/* Parameter valid check for PCLK2 divider */
+/*! Parameter valid check for PCLK2 divider */
 #define IS_CLK_PCLK2_DIV(div)                                                   \
 (   ((div) == CLK_PCLK2_DIV1)                       ||                          \
     ((div) == CLK_PCLK2_DIV2)                       ||                          \
@@ -329,7 +329,7 @@
     ((div) == CLK_PCLK2_DIV32)                      ||                          \
     ((div) == CLK_PCLK2_DIV64))
 
-/* Parameter valid check for PCLK3 divider */
+/*! Parameter valid check for PCLK3 divider */
 #define IS_CLK_PCLK3_DIV(div)                                                   \
 (   ((div) == CLK_PCLK3_DIV1)                       ||                          \
     ((div) == CLK_PCLK3_DIV2)                       ||                          \
@@ -339,7 +339,7 @@
     ((div) == CLK_PCLK3_DIV32)                      ||                          \
     ((div) == CLK_PCLK3_DIV64))
 
-/* Parameter valid check for PCLK4 divider */
+/*! Parameter valid check for PCLK4 divider */
 #define IS_CLK_PCLK4_DIV(div)                                                   \
 (   ((div) == CLK_PCLK4_DIV1)                       ||                          \
     ((div) == CLK_PCLK4_DIV2)                       ||                          \
@@ -349,7 +349,7 @@
     ((div) == CLK_PCLK4_DIV32)                      ||                          \
     ((div) == CLK_PCLK4_DIV64))
 
-/* Parameter valid check for USB clock source */
+/*! Parameter valid check for USB clock source */
 #define IS_CLK_USB_CLK(src)                                                     \
 (   ((src) == CLK_USB_CLK_MCLK_DIV2)                ||                          \
     ((src) == CLK_USB_CLK_MCLK_DIV3)                ||                          \
@@ -364,7 +364,7 @@
     ((src) == CLK_USB_CLK_PLLAQ)                    ||                          \
     ((src) == CLK_USB_CLK_PLLAR))
 
-/* Parameter valid check for CAN clock source */
+/*! Parameter valid check for CAN clock source */
 #define IS_CLK_CAN_CLK(src)                                                     \
 (   ((src) == CLK_CAN1_CLK_MCLK_DIV2)               ||                          \
     ((src) == CLK_CAN1_CLK_MCLK_DIV3)               ||                          \
@@ -393,10 +393,10 @@
     ((src) == CLK_CAN2_CLK_PLLAR)                   ||                          \
     ((src) == CLK_CAN2_CLK_XTAL))
 
-/* Parameter valid check for CAN channel for clock source config */
+/*! Parameter valid check for CAN channel for clock source config */
 #define IS_CLK_CAN_CH(ch)       (((ch) & CLK_CAN_CH_ALL) != (uint8_t)(0x00U))
 
-/* Parameter valid check for I2S clock source */
+/*! Parameter valid check for I2S clock source */
 #define IS_CLK_I2S_CLK(src)                                                     \
 (   ((src) == CLK_I2S1_CLK_PCLK)                    ||                          \
     ((src) == CLK_I2S1_CLK_PLLHQ)                   ||                          \
@@ -423,10 +423,10 @@
     ((src) == CLK_I2S4_CLK_PLLAQ)                   ||                          \
     ((src) == CLK_I2S4_CLK_PLLAR))
 
-/* Parameter valid check for I2S channel for clock source config */
+/*! Parameter valid check for I2S channel for clock source config */
 #define IS_CLK_I2S_CH(ch)       (((ch) & CLK_I2S_CH_ALL) != (uint8_t)(0x00U))
 
-/* Parameter valid check for PCLK2/PCLK4 source */
+/*! Parameter valid check for PCLK2/PCLK4 source */
 #define IS_CLK_PERI_CLK(src)                                                    \
 (   ((src) == CLK_PERI_CLK_PCLK)                    ||                          \
     ((src) == CLK_PERI_CLK_PLLHQ)                   ||                          \
@@ -435,13 +435,13 @@
     ((src) == CLK_PERI_CLK_PLLAQ)                   ||                          \
     ((src) == CLK_PERI_CLK_PLLAR))
 
-/* Parameter valid check for TPIU clock divider */
+/*! Parameter valid check for TPIU clock divider */
 #define IS_CLK_TPIU_CLK_DIV(div)                                                \
 (   ((div) == CLK_TPIU_CLK_DIV1)                    ||                          \
     ((div) == CLK_TPIU_CLK_DIV2)                    ||                          \
     ((div) == CLK_TPIU_CLK_DIV4))
 
-/* Parameter valid check for CLK MCO clock source. */
+/*! Parameter valid check for CLK MCO clock source. */
 #define IS_CLK_MCOSOURCE(src)                                                   \
 (   ((src) == CLK_MCOSOURCCE_HRC)                   ||                          \
     ((src) == CLK_MCOSOURCCE_MRC)                   ||                          \
@@ -455,7 +455,7 @@
     ((src) == CLK_MCOSOURCCE_PLLAR)                 ||                          \
     ((src) == CLK_MCOSOURCCE_SYSCLK))
 
-/* Parameter valid check for CLK MCO clock divider. */
+/*! Parameter valid check for CLK MCO clock divider. */
 #define IS_CLK_MCODIV(div)                                                      \
 (   ((div) == CLK_MCO_DIV1)                         ||                          \
     ((div) == CLK_MCO_DIV2)                         ||                          \

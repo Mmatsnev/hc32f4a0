@@ -79,7 +79,7 @@ extern "C"
  * @{
  */
 
-/** @defgroup USBD_CONF
+/** @defgroup USBD_CONF USB device configurate
  * @{
  */
 

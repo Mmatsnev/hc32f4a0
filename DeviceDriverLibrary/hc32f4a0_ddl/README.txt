@@ -1,4 +1,23 @@
 version     date            comment
+ 1.0.3
+            Aug 11, 2020    [ADC]
+                                1.  ADC_SeqClrStatus(): ADC_SEQ_FLAG_NESTED can be cleared.
+                            [CAN]
+                                1.  Refined CAN_GetStatusVal().
+                            [CRC]
+                                1.  Modify macro definition name IS_CRC_PROCOTOL to IS_CRC_PROTOCOL.
+                            [EFM]
+                                1.  Refine function EFM_SequenceProgram();
+                                2.  Typo.
+                            [ETH]
+                                1.  Fix a known potential risk in ETH_Init function;
+                                2.  Add the eth_twoboards example.
+                            [OTS]
+                                1.  New added.
+                            [QSPI]
+                                1.  Refined function W25Q64_GetUniqueID() of sample qspi_base.
+                            [SDIOC]
+                                1.  Fix a known potential risk in SDIOC_VerifyClockDiv function.
  1.0.2
             Jul 31, 2020    [CRC]
                                 1.  Fixed a bug for CRC_Check function.
@@ -52,8 +71,8 @@ version     date            comment
                                 2.  Call the PWC_FCG0_Unlock function in the examples of CLK, CAN,
                                     ETH, ICG, PWC, QSPI, RTC, SRAM, SWDT, TMRA, WDT, SYSTICK;
  1.0.0
-            Jun 30, 2020    1. Official release
+            Jun 30, 2020    1. Official release.
  0.9.0
-            Jun 16, 2020    1. Alpha release for hc32f4a0 series DDL(Device Driver Library)
+            Jun 16, 2020    1. Alpha release for hc32f4a0 series DDL(Device Driver Library).
 
 EOF

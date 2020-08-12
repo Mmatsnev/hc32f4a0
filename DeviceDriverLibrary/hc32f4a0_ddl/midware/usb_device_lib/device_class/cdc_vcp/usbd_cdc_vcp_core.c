@@ -73,7 +73,7 @@
  * @{
  */
 
-/** @defgroup USBD_CDC_VCP_CORE
+/** @defgroup USBD_CDC_VCP_CORE USB CDC Device core
  * @{
  */
 
@@ -427,8 +427,8 @@ __USB_ALIGN_BEGIN uint8_t usbd_cdc_OtherCfgDesc[USB_CDC_CONFIG_DESC_SIZ]  __USB_
 /**
  * @brief  usbd_cdc_Init
  *         Initialize the CDC interface
- * @param  pdev: device instance
- * @param  cfgidx: Configuration index
+ * @param  [in] pdev: device instance
+ * @param  [in] cfgidx: Configuration index
  * @retval status
  */
 uint8_t usbd_cdc_Init (void  *pdev, uint8_t cfgidx)
@@ -472,8 +472,8 @@ uint8_t usbd_cdc_Init (void  *pdev, uint8_t cfgidx)
 /**
  * @brief  usbd_cdc_Init
  *         DeInitialize the CDC layer
- * @param  pdev: device instance
- * @param  cfgidx: Configuration index
+ * @param  [in] pdev: device instance
+ * @param  [in] cfgidx: Configuration index
  * @retval status
  */
 uint8_t  usbd_cdc_DeInit (void  *pdev, uint8_t cfgidx)
@@ -496,8 +496,8 @@ uint8_t  usbd_cdc_DeInit (void  *pdev, uint8_t cfgidx)
 /**
  * @brief  usbd_cdc_Setup
  *         Handle the CDC specific requests
- * @param  pdev: instance
- * @param  req: usb requests
+ * @param  [in] pdev: instance
+ * @param  [in] req: usb requests
  * @retval status
  */
 uint8_t  usbd_cdc_Setup (void  *pdev,
@@ -598,7 +598,7 @@ uint8_t  usbd_cdc_Setup (void  *pdev,
 /**
  * @brief  usbd_cdc_EP0_RxReady
  *         Data received on control endpoint
- * @param  pdev: device device instance
+ * @param  [in] pdev: device device instance
  * @retval status
  */
 uint8_t usbd_cdc_EP0_RxReady (void *pdev)
@@ -617,8 +617,8 @@ uint8_t usbd_cdc_EP0_RxReady (void *pdev)
 /**
  * @brief  usbd_audio_DataIn
  *         Data sent on non-control IN endpoint
- * @param  pdev: device instance
- * @param  epnum: endpoint number
+ * @param  [in] pdev: device instance
+ * @param  [in] epnum: endpoint number
  * @retval status
  */
 uint8_t usbd_cdc_DataIn (void *pdev, uint8_t epnum)
@@ -661,8 +661,8 @@ uint8_t usbd_cdc_DataIn (void *pdev, uint8_t epnum)
 /**
  * @brief  usbd_cdc_DataOut
  *         Data received on non-control Out endpoint
- * @param  pdev: device instance
- * @param  epnum: endpoint number
+ * @param  [in] pdev: device instance
+ * @param  [in] epnum: endpoint number
  * @retval status
  */
 uint8_t  usbd_cdc_DataOut (void *pdev, uint8_t epnum)
@@ -688,8 +688,7 @@ uint8_t  usbd_cdc_DataOut (void *pdev, uint8_t epnum)
 /**
  * @brief  usbd_audio_SOF
  *         Start Of Frame event management
- * @param  pdev: instance
- * @param  epnum: endpoint number
+ * @param  [in] pdev: instance
  * @retval status
  */
 uint8_t  usbd_cdc_SOF (void *pdev)
@@ -719,7 +718,7 @@ uint8_t  usbd_cdc_SOF (void *pdev)
 /**
  * @brief  Handle_USBAsynchXfer
  *         Send data to USB
- * @param  pdev: instance
+ * @param  [in] pdev: instance
  * @retval None
  */
 static void Handle_USBAsynchXfer (void *pdev)
@@ -781,8 +780,8 @@ static void Handle_USBAsynchXfer (void *pdev)
 /**
  * @brief  USBD_cdc_GetCfgDesc
  *         Return configuration descriptor
- * @param  speed : current device speed
- * @param  length : pointer data length
+ * @param  [in] speed : current device speed
+ * @param  [in] length : pointer data length
  * @retval pointer to descriptor buffer
  */
 static uint8_t  *USBD_cdc_GetCfgDesc (uint8_t speed, uint16_t *length)
@@ -794,8 +793,8 @@ static uint8_t  *USBD_cdc_GetCfgDesc (uint8_t speed, uint16_t *length)
 /**
  * @brief  USBD_cdc_GetCfgDesc
  *         Return configuration descriptor
- * @param  speed : current device speed
- * @param  length : pointer data length
+ * @param  [in] speed : current device speed
+ * @param  [in] length : pointer data length
  * @retval pointer to descriptor buffer
  */
 #ifdef USE_USB_OTG_HS

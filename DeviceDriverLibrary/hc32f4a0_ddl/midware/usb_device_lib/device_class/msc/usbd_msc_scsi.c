@@ -74,7 +74,7 @@
  * @{
  */
 
-/** @defgroup USBD_MSC_SCSI
+/** @defgroup USBD_MSC_SCSI USB MSC device SCSI
  * @{
  */
 

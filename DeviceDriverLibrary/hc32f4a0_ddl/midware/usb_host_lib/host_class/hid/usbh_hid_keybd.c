@@ -72,7 +72,7 @@
  * @{
  */
 
-/** @defgroup USBH_HID_KEYBD
+/** @defgroup USBH_HID_KEYBD USB host HID keyboard
  * @{
  */
 

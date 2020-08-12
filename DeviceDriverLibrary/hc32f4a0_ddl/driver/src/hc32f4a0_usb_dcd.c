@@ -427,8 +427,8 @@ void  DCD_DevDisconnect (USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  returns the EP Status
- * @param  pdev     Selected device
- * @param  epnum    Endpoint address
+ * @param  [in] pdev     Selected device
+ * @param  [in] epnum    Endpoint address
  * @retval EP status
  */
 uint32_t DCD_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,uint8_t epnum)
@@ -452,9 +452,9 @@ uint32_t DCD_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,uint8_t epnum)
 
 /**
  * @brief  Set the EP Status
- * @param  pdev         Selected device
- * @param  Status       New Status
- * @param  epnum        EP address
+ * @param  [in] pdev         Selected device
+ * @param  [in] Status       New Status
+ * @param  [in] epnum        EP address
  * @retval None
  */
 void DCD_SetEPStatus (USB_OTG_CORE_HANDLE *pdev , uint8_t epnum , uint32_t Status)

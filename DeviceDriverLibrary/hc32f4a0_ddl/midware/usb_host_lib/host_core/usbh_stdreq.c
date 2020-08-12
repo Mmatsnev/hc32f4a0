@@ -72,7 +72,7 @@
  * @{
  */
 
-/** @defgroup USBH_STDREQ
+/** @defgroup USBH_STDREQ USB host standard request
  * @{
  */
 
@@ -141,10 +141,9 @@ static void USBH_ParseStringDesc (uint8_t* psrc, uint8_t* pdest, uint16_t length
  * @brief  USBH_Get_DevDesc
  *         Issue Get Device Descriptor command to the device. Once the response
  *         received, it parses the device descriptor and updates the status.
- * @param  pdev: Selected device
- * @param  dev_desc: Device Descriptor buffer address
- * @param  pdev->host.Rx_Buffer: Receive Buffer address
- * @param  length: Length of the descriptor
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] length: Length of the descriptor
  * @retval Status
  */  
 USBH_Status USBH_Get_DevDesc(USB_OTG_CORE_HANDLE *pdev,
@@ -171,15 +170,13 @@ USBH_Status USBH_Get_DevDesc(USB_OTG_CORE_HANDLE *pdev,
  *         Issues Configuration Descriptor to the device. Once the response
  *         received, it parses the configuartion descriptor and updates the
  *         status.
- * @param  pdev: Selected device
- * @param  cfg_desc: Configuration Descriptor address
- * @param  itf_desc: Interface Descriptor address
- * @param  ep_desc: Endpoint Descriptor address
- * @param  length: Length of the descriptor
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] length: Length of the descriptor
  * @retval Status
  */  
 USBH_Status USBH_Get_CfgDesc(USB_OTG_CORE_HANDLE *pdev,
-                             USBH_HOST           *phost,
+                             USBH_HOST *phost,
                              uint16_t length)
 
 {
@@ -213,10 +210,11 @@ USBH_Status USBH_Get_CfgDesc(USB_OTG_CORE_HANDLE *pdev,
  * @brief  USBH_Get_StringDesc
  *         Issues string Descriptor command to the device. Once the response
  *         received, it parses the string descriptor and updates the status.
- * @param  pdev: Selected device
- * @param  string_index: String index for the descriptor
- * @param  buff: Buffer address for the descriptor
- * @param  length: Length of the descriptor
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] string_index: String index for the descriptor
+ * @param  [in] buff: Buffer address for the descriptor
+ * @param  [in] length: Length of the descriptor
  * @retval Status
  */  
 USBH_Status USBH_Get_StringDesc(USB_OTG_CORE_HANDLE *pdev,
@@ -243,15 +241,16 @@ USBH_Status USBH_Get_StringDesc(USB_OTG_CORE_HANDLE *pdev,
  * @brief  USBH_GetDescriptor
  *         Issues Descriptor command to the device. Once the response received,
  *         it parses the descriptor and updates the status.
- * @param  pdev: Selected device
- * @param  req_type: Descriptor type
- * @param  value_idx: wValue for the GetDescriptr request
- * @param  buff: Buffer to store the descriptor
- * @param  length: Length of the descriptor
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] req_type: Descriptor type
+ * @param  [in] value_idx: wValue for the GetDescriptr request
+ * @param  [in] buff: Buffer to store the descriptor
+ * @param  [in] length: Length of the descriptor
  * @retval Status
  */  
 USBH_Status USBH_GetDescriptor(USB_OTG_CORE_HANDLE *pdev,
-                               USBH_HOST           *phost,
+                               USBH_HOST *phost,
                                uint8_t  req_type,
                                uint16_t value_idx,
                                uint8_t* buff,
@@ -276,8 +275,9 @@ USBH_Status USBH_GetDescriptor(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_SetAddress
  *         This command sets the address to the connected device
- * @param  pdev: Selected device
- * @param  DeviceAddress: Device address to assign
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] DeviceAddress: Device address to assign
  * @retval Status
  */  
 USBH_Status USBH_SetAddress(USB_OTG_CORE_HANDLE *pdev,
@@ -298,8 +298,9 @@ USBH_Status USBH_SetAddress(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_SetCfg
  *         The command sets the configuration value to the connected device
- * @param  pdev: Selected device
- * @param  cfg_idx: Configuration value
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] cfg_idx: Configuration value
  * @retval Status
  */  
 USBH_Status USBH_SetCfg(USB_OTG_CORE_HANDLE *pdev,
@@ -318,13 +319,15 @@ USBH_Status USBH_SetCfg(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_SetInterface
  *         The command sets the Interface value to the connected device
- * @param  pdev: Selected device
- * @param  itf_idx: Interface value
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] ep_num: End point number
+ * @param  [in] altSetting: wValue set
  * @retval Status
  */  
 USBH_Status USBH_SetInterface(USB_OTG_CORE_HANDLE *pdev,
-                        USBH_HOST *phost,
-                        uint8_t ep_num, uint8_t altSetting)
+                              USBH_HOST *phost,
+                              uint8_t ep_num, uint8_t altSetting)
 {
     phost->Control.setup.b.bmRequestType = USB_H2D | USB_REQ_RECIPIENT_INTERFACE | USB_REQ_TYPE_STANDARD;
 
@@ -339,9 +342,10 @@ USBH_Status USBH_SetInterface(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_ClrFeature
  *         This request is used to clear or disable a specific feature.
- * @param  pdev: Selected device
- * @param  ep_num: endpoint number
- * @param  hc_num: Host channel number
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] ep_num: endpoint number
+ * @param  [in] hc_num: Host channel number
  * @retval Status
  */  
 USBH_Status USBH_ClrFeature(USB_OTG_CORE_HANDLE *pdev,
@@ -373,11 +377,11 @@ USBH_Status USBH_ClrFeature(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_GetNextDesc
  *         This function return the next descriptor header
- * @param  buf: Buffer where the cfg descriptor is available
- * @param  ptr: data popinter inside the cfg descriptor
+ * @param  [in] pbuf: Buffer where the cfg descriptor is available
+ * @param  [in] ptr: data popinter inside the cfg descriptor
  * @retval next header
  */  
-USBH_DescHeader_t  *USBH_GetNextDesc (uint8_t   *pbuf, uint16_t  *ptr)
+USBH_DescHeader_t  *USBH_GetNextDesc (uint8_t *pbuf, uint16_t *ptr)
 {
     USBH_DescHeader_t  *pnext;
 
@@ -399,9 +403,9 @@ USBH_DescHeader_t  *USBH_GetNextDesc (uint8_t   *pbuf, uint16_t  *ptr)
 /**
  * @brief  USBH_ParseDevDesc
  *         This function Parses the device descriptor
- * @param  dev_desc: device_descriptor destinaton address
- * @param  buf: Buffer where the source descriptor is available
- * @param  length: Length of the descriptor
+ * @param  [in] dev_desc: device_descriptor destinaton address
+ * @param  [in] buf: Buffer where the source descriptor is available
+ * @param  [in] length: Length of the descriptor
  * @retval None
  */  
 static void  USBH_ParseDevDesc (USBH_DevDesc_TypeDef* dev_desc,
@@ -432,11 +436,11 @@ static void  USBH_ParseDevDesc (USBH_DevDesc_TypeDef* dev_desc,
 /**
  * @brief  USBH_ParseCfgDesc
  *         This function Parses the configuration descriptor
- * @param  cfg_desc: Configuration Descriptor address
- * @param  itf_desc: Interface Descriptor address
- * @param  ep_desc: Endpoint Descriptor address
- * @param  buf: Buffer where the source descriptor is available
- * @param  length: Length of the descriptor
+ * @param  [in] cfg_desc: Configuration Descriptor address
+ * @param  [in] itf_desc: Interface Descriptor address
+ * @param  [in] ep_desc: Endpoint Descriptor address
+ * @param  [in] buf: Buffer where the source descriptor is available
+ * @param  [in] length: Length of the descriptor
  * @retval None
  */  
 static void  USBH_ParseCfgDesc (USBH_CfgDesc_TypeDef* cfg_desc,
@@ -533,8 +537,8 @@ static void  USBH_ParseCfgDesc (USBH_CfgDesc_TypeDef* cfg_desc,
 /**
  * @brief  USBH_ParseInterfaceDesc
  *         This function Parses the interface descriptor
- * @param  if_descriptor : Interface descriptor destination
- * @param  buf: Buffer where the descriptor data is available
+ * @param  [in] if_descriptor : Interface descriptor destination
+ * @param  [in] buf: Buffer where the descriptor data is available
  * @retval None
  */  
 static void  USBH_ParseInterfaceDesc (USBH_InterfaceDesc_TypeDef *if_descriptor,
@@ -554,8 +558,8 @@ static void  USBH_ParseInterfaceDesc (USBH_InterfaceDesc_TypeDef *if_descriptor,
 /**
  * @brief  USBH_ParseEPDesc
  *         This function Parses the endpoint descriptor
- * @param  ep_descriptor: Endpoint descriptor destination address
- * @param  buf: Buffer where the parsed descriptor stored
+ * @param  [in] ep_descriptor: Endpoint descriptor destination address
+ * @param  [in] buf: Buffer where the parsed descriptor stored
  * @retval None
  */  
 static void  USBH_ParseEPDesc (USBH_EpDesc_TypeDef  *ep_descriptor,
@@ -572,9 +576,9 @@ static void  USBH_ParseEPDesc (USBH_EpDesc_TypeDef  *ep_descriptor,
 /**
  * @brief  USBH_ParseStringDesc
  *         This function Parses the string descriptor
- * @param  psrc: Source pointer containing the descriptor data
- * @param  pdest: Destination address pointer
- * @param  length: Length of the descriptor
+ * @param  [in] psrc: Source pointer containing the descriptor data
+ * @param  [in] pdest: Destination address pointer
+ * @param  [in] length: Length of the descriptor
  * @retval None
  */  
 static void USBH_ParseStringDesc (uint8_t* psrc,

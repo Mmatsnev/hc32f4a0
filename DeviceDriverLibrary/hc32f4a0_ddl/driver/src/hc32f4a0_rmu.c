@@ -89,7 +89,7 @@
  * @{
  */
 
-/*  Parameter validity check for RMU reset cause. */
+/*! Parameter validity check for RMU reset cause. */
 #define IS_VALID_RMU_RESET_STATUS(x)                                           \
 (   ((x) != 0U)                              ||                                \
     ((x) | RMU_STATUS_MASK) == RMU_STATUS_MASK)

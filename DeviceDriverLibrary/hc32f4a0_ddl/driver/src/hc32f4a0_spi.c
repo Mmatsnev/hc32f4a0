@@ -112,53 +112,53 @@
  * @{
  */
 
-/* Parameter valid check for SPI peripheral */
+/*! Parameter valid check for SPI peripheral */
 #define IS_VALID_SPI_UNIT(x)                                                   \
-(   (M4_SPI1 == (x))                            ||                             \
-    (M4_SPI2 == (x))                            ||                             \
-    (M4_SPI3 == (x))                            ||                             \
-    (M4_SPI4 == (x))                            ||                             \
-    (M4_SPI5 == (x))                            ||                             \
+(   (M4_SPI1 == (x))                        ||                                 \
+    (M4_SPI2 == (x))                        ||                                 \
+    (M4_SPI3 == (x))                        ||                                 \
+    (M4_SPI4 == (x))                        ||                                 \
+    (M4_SPI5 == (x))                        ||                                 \
     (M4_SPI6 == (x)))
 
-/* Parameter valid check for SPI wire mode */
+/*! Parameter valid check for SPI wire mode */
 #define IS_SPI_WIRE_MODE(x)                                                    \
 (   ((x) == SPI_WIRE_4)                     ||                                 \
     ((x) == SPI_WIRE_3))
 
-/* Parameter valid check for SPI transfer mode */
+/*! Parameter valid check for SPI transfer mode */
 #define IS_SPI_TRANS_MODE(x)                                                   \
 (   ((x) == SPI_FULL_DUPLEX)                ||                                 \
     ((x) == SPI_SEND_ONLY))
 
-/* Parameter valid check for SPI master slave mode */
+/*! Parameter valid check for SPI master slave mode */
 #define IS_SPI_MASTER_SLAVE(x)                                                 \
 (   ((x) == SPI_SLAVE)                      ||                                 \
     ((x) == SPI_MASTER))
 
-/* Parameter valid check for SPI loopback mode */
+/*! Parameter valid check for SPI loopback mode */
 #define IS_SPI_SPLPBK(x)                                                       \
 (   ((x) == SPI_SPLPBK_INVALID)             ||                                 \
     ((x) == SPI_SPLPBK_MOSI_INVERT)         ||                                 \
     ((x) == SPI_SPLPBK_MOSI))
 
-/* Parameter valid check for SPI communication suspend function status */
+/*! Parameter valid check for SPI communication suspend function status */
 #define IS_SPI_SUSP_MODE_STD(x)                                                \
 (   ((x) == SPI_COM_SUSP_FUNC_OFF)          ||                                 \
     ((x) == SPI_COM_SUSP_FUNC_ON))
 
-/* Parameter valid check for SPI fault dectet function status */
+/*! Parameter valid check for SPI fault dectet function status */
 #define IS_SPI_MODFE_CMD(x)                                                    \
 (   ((x) == SPI_MODFE_DISABLE)              ||                                 \
     ((x) == SPI_MODFE_ENABLE))
 
-/* Parameter valid check for SPI parity check mode */
+/*! Parameter valid check for SPI parity check mode */
 #define IS_SPI_PARITY_CHECK(x)                                                 \
 (   ((x) == SPI_PARITY_INVALID)             ||                                 \
     ((x) == SPI_PARITY_EVEN)                ||                                 \
     ((x) == SPI_PARITY_ODD))
 
-/* Parameter valid check for SPI interval time delay */
+/*! Parameter valid check for SPI interval time delay */
 #define IS_SPI_INTERVAL_DELAY(x)                                               \
 (   ((x) == SPI_INTERVAL_TIME_1SCK_2PCLK1)  ||                                 \
     ((x) == SPI_INTERVAL_TIME_2SCK_2PCLK1)  ||                                 \
@@ -169,7 +169,7 @@
     ((x) == SPI_INTERVAL_TIME_7SCK_2PCLK1)  ||                                 \
     ((x) == SPI_INTERVAL_TIME_8SCK_2PCLK1))
 
-/* Parameter valid check for SPI release time delay */
+/*! Parameter valid check for SPI release time delay */
 #define IS_SPI_RELEASE_DELAY(x)                                                \
 (   ((x) == SPI_RELEASE_TIME_1SCK)          ||                                 \
     ((x) == SPI_RELEASE_TIME_2SCK)          ||                                 \
@@ -180,7 +180,7 @@
     ((x) == SPI_RELEASE_TIME_7SCK)          ||                                 \
     ((x) == SPI_RELEASE_TIME_8SCK))
 
-/* Parameter valid check for SPI Setup time delay delay */
+/*! Parameter valid check for SPI Setup time delay delay */
 #define IS_SPI_SETUP_DELAY(x)                                                  \
 (   ((x) == SPI_SETUP_TIME_1SCK)            ||                                 \
     ((x) == SPI_SETUP_TIME_2SCK)            ||                                 \
@@ -191,31 +191,31 @@
     ((x) == SPI_SETUP_TIME_7SCK)            ||                                 \
     ((x) == SPI_SETUP_TIME_8SCK))
 
-/* Parameter valid check for SPI SS active level */
+/*! Parameter valid check for SPI SS active level */
 #define IS_SPI_SS_ACTIVE_LEVEL(x)                                              \
 (   ((x) == SPI_SS_ACTIVE_LOW)              ||                                 \
     ((x) == SPI_SS_ACTIVE_HIGH))
 
-/* Parameter valid check for SPI read data register target buffer */
+/*! Parameter valid check for SPI read data register target buffer */
 #define IS_SPI_RD_TARGET_BUFF(x)                                               \
 (   ((x) == SPI_RD_TARGET_RD_BUF)           ||                                 \
     ((x) == SPI_RD_TARGET_WR_BUF))
 
-/* Parameter valid check for SPI mode */
+/*! Parameter valid check for SPI mode */
 #define IS_SPI_SPI_MODE(x)                                                     \
 (   ((x) == SPI_MODE_0)                     ||                                 \
     ((x) == SPI_MODE_1)                     ||                                 \
     ((x) == SPI_MODE_2)                     ||                                 \
     ((x) == SPI_MODE_3))
 
-/* Parameter valid check for SPI SS signal */
+/*! Parameter valid check for SPI SS signal */
 #define IS_SPI_SS_PIN(x)                                                       \
 (   ((x) == SPI_PIN_SS0)                    ||                                 \
     ((x) == SPI_PIN_SS1)                    ||                                 \
     ((x) == SPI_PIN_SS2)                    ||                                 \
     ((x) == SPI_PIN_SS3))
 
-/* Parameter valid check for SPI baudrate prescaler */
+/*! Parameter valid check for SPI baudrate prescaler */
 #define IS_SPI_BIT_RATE_DIV(x)                                                 \
 (   ((x) == SPI_BR_PCLK1_DIV2)              ||                                 \
     ((x) == SPI_BR_PCLK1_DIV4)              ||                                 \
@@ -226,7 +226,7 @@
     ((x) == SPI_BR_PCLK1_DIV128)            ||                                 \
     ((x) == SPI_BR_PCLK1_DIV256))
 
-/* Parameter valid check for SPI data bits */
+/*! Parameter valid check for SPI data bits */
 #define IS_SPI_DATA_SIZE(x)                                                    \
 (   ((x) == SPI_DATA_SIZE_4BIT)             ||                                 \
     ((x) == SPI_DATA_SIZE_5BIT)             ||                                 \
@@ -245,29 +245,29 @@
     ((x) == SPI_DATA_SIZE_24BIT)            ||                                 \
     ((x) == SPI_DATA_SIZE_32BIT))
 
-/* Parameter valid check for SPI data frame level */
+/*! Parameter valid check for SPI data frame level */
 #define IS_SPI_DATA_FRAME(x)                                                   \
 (   ((x) == SPI_FRAME_1)                     ||                                \
     ((x) == SPI_FRAME_2)                     ||                                \
     ((x) == SPI_FRAME_3)                     ||                                \
     ((x) == SPI_FRAME_4))
 
-/* Parameter valid check for SPI LSB MSB mode */
+/*! Parameter valid check for SPI LSB MSB mode */
 #define IS_SPI_FIRST_BIT(x)                                                    \
 (   ((x) == SPI_FIRST_MSB)                  ||                                 \
     ((x) == SPI_FIRST_LSB))
 
-/* Parameter valid check for interrupt flag */
+/*! Parameter valid check for interrupt flag */
 #define IS_SPI_IRQ_FLAG(x)                                                     \
 (   ((x) != 0UL)                            &&                                 \
     (((x) | SPI_IRQ_MASK) == SPI_IRQ_MASK))
 
-/* Parameter valid check for SPI status flag */
+/*! Parameter valid check for SPI status flag */
 #define IS_SPI_STD_FLAG(x)                                                     \
 (   ((x) != 0UL)                            &&                                 \
     (((x) | SPI_GET_STD_MASK) == SPI_GET_STD_MASK))
 
-/* Parameter valid check for SPI status flag for clear */
+/*! Parameter valid check for SPI status flag for clear */
 #define IS_SPI_CLR_STD_FLAG(x)                                                 \
 (   ((x) != 0UL)                            &&                                 \
     (((x) | SPI_CLR_STD_MASK) == SPI_CLR_STD_MASK))

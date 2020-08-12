@@ -72,7 +72,6 @@ extern "C"
  * Include files
  ******************************************************************************/
 #include "hc32_ddl.h"
-#include "usbd_conf.h"
 
 /**
  * @addtogroup MIDWARE
@@ -101,7 +100,7 @@ extern "C"
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
 /**
- * @defgroup USBD_MSC_DATA_Global_Macros
+ * @defgroup USBD_MSC_DATA_Global_Macros USB MSC device data global macros
  * @{
  */
 

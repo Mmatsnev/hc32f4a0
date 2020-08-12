@@ -75,7 +75,7 @@
  * @{
  */
 
-/** @defgroup USBD_HID_CDC_WRAPPER
+/** @defgroup USBD_HID_CDC_WRAPPER USB HID and CDC device wapper
  * @{
  */
 
@@ -342,8 +342,8 @@ __USB_ALIGN_BEGIN static uint8_t USBD_HID_CDC_CfgDesc[USB_HID_CDC_CONFIG_DESC_SI
 /**
   * @brief  USBD_HID_CDC_Init
   *         Initialize the HID & CDC interfaces
-  * @param  pdev: device instance
-  * @param  cfgidx: Configuration index
+  * @param  [in] pdev: device instance
+  * @param  [in] cfgidx: Configuration index
   * @retval status
   */
 static uint8_t  USBD_HID_CDC_Init (void  *pdev,
@@ -363,8 +363,8 @@ static uint8_t  USBD_HID_CDC_Init (void  *pdev,
 /**
   * @brief  USBD_HID_CDC_DeInit
   *         DeInitialize the HID/CDC interfaces
-  * @param  pdev: device instance
-  * @param  cfgidx: Configuration index
+  * @param  [in] pdev: device instance
+  * @param  [in] cfgidx: Configuration index
   * @retval status
   */
 static uint8_t  USBD_HID_CDC_DeInit (void  *pdev,
@@ -382,8 +382,8 @@ static uint8_t  USBD_HID_CDC_DeInit (void  *pdev,
 /**
   * @brief  USBD_HID_CDC_Setup
   *         Handle the HID/CDC specific requests
-  * @param  pdev: instance
-  * @param  req: usb requests
+  * @param  [in] pdev: instance
+  * @param  [in] req: usb requests
   * @retval status
   */
 static uint8_t  USBD_HID_CDC_Setup (void  *pdev,
@@ -423,8 +423,8 @@ static uint8_t  USBD_HID_CDC_Setup (void  *pdev,
 /**
   * @brief  USBD_HID_CDC_DataIn
   *         handle data IN Stage
-  * @param  pdev: device instance
-  * @param  epnum: endpoint index
+  * @param  [in] pdev: device instance
+  * @param  [in] epnum: endpoint index
   * @retval status
   */
 static uint8_t  USBD_HID_CDC_DataIn (void  *pdev,
@@ -446,8 +446,8 @@ static uint8_t  USBD_HID_CDC_DataIn (void  *pdev,
 /**
   * @brief  USBD_HID_CDC_GetCfgDesc
   *         return configuration descriptor
-  * @param  speed : current device speed
-  * @param  length : pointer data length
+  * @param  [in] speed : current device speed
+  * @param  [in] length : pointer data length
   * @retval pointer to descriptor buffer
   */
 static uint8_t  *USBD_HID_CDC_GetConfigDescriptor (uint8_t speed, uint16_t *length)

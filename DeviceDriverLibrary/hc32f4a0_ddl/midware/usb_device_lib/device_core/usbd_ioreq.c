@@ -71,7 +71,7 @@
  * @{
  */
 
-/** @defgroup USBD_IOREQ
+/** @defgroup USBD_IOREQ USB device IO request
  * @{
  */
 
@@ -109,9 +109,9 @@
 /**
  * @brief  USBD_CtlSendData
  *         send data on the ctl pipe
- * @param  pdev: device instance
- * @param  buff: pointer to data buffer
- * @param  len: length of data to be sent
+ * @param  [in] pdev: device instance
+ * @param  [in] pbuf: pointer to data buffer
+ * @param  [in] len: length of data to be sent
  * @retval status
  */
 USBD_Status  USBD_CtlSendData (USB_OTG_CORE_HANDLE  *pdev,
@@ -134,9 +134,9 @@ USBD_Status  USBD_CtlSendData (USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_CtlContinueSendData
  *         continue sending data on the ctl pipe
- * @param  pdev: device instance
- * @param  buff: pointer to data buffer
- * @param  len: length of data to be sent
+ * @param  [in] pdev: device instance
+ * @param  [in] pbuf: pointer to data buffer
+ * @param  [in] len: length of data to be sent
  * @retval status
  */
 USBD_Status  USBD_CtlContinueSendData (USB_OTG_CORE_HANDLE  *pdev,
@@ -152,9 +152,9 @@ USBD_Status  USBD_CtlContinueSendData (USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_CtlPrepareRx
  *         receive data on the ctl pipe
- * @param  pdev: USB OTG device instance
- * @param  buff: pointer to data buffer
- * @param  len: length of data to be received
+ * @param  [in] pdev: USB OTG device instance
+ * @param  [in] pbuf: pointer to data buffer
+ * @param  [in] len: length of data to be received
  * @retval status
  */
 USBD_Status  USBD_CtlPrepareRx (USB_OTG_CORE_HANDLE  *pdev,
@@ -177,9 +177,9 @@ USBD_Status  USBD_CtlPrepareRx (USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_CtlContinueRx
  *         continue receive data on the ctl pipe
- * @param  pdev: USB OTG device instance
- * @param  buff: pointer to data buffer
- * @param  len: length of data to be received
+ * @param  [in] pdev: USB OTG device instance
+ * @param  [in] pbuf: pointer to data buffer
+ * @param  [in] len: length of data to be received
  * @retval status
  */
 USBD_Status  USBD_CtlContinueRx (USB_OTG_CORE_HANDLE  *pdev,
@@ -197,7 +197,7 @@ USBD_Status  USBD_CtlContinueRx (USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_CtlSendStatus
  *         send zero lzngth packet on the ctl pipe
- * @param  pdev: USB OTG device instance
+ * @param  [in] pdev: USB OTG device instance
  * @retval status
  */
 USBD_Status  USBD_CtlSendStatus (USB_OTG_CORE_HANDLE  *pdev)
@@ -219,7 +219,7 @@ USBD_Status  USBD_CtlSendStatus (USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_CtlReceiveStatus
  *         receive zero lzngth packet on the ctl pipe
- * @param  pdev: USB OTG device instance
+ * @param  [in] pdev: USB OTG device instance
  * @retval status
  */
 USBD_Status  USBD_CtlReceiveStatus (USB_OTG_CORE_HANDLE  *pdev)
@@ -238,9 +238,9 @@ USBD_Status  USBD_CtlReceiveStatus (USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_GetRxCount
  *         returns the received data length
- * @param  pdev: USB OTG device instance
- *         epnum: endpoint index
- * @retval Rx Data blength
+ * @param  [in] pdev: USB OTG device instance
+ * @param  [in] epnum: endpoint index
+ * @retval Rx Data length
  */
 uint16_t  USBD_GetRxCount (USB_OTG_CORE_HANDLE  *pdev , uint8_t epnum)
 {

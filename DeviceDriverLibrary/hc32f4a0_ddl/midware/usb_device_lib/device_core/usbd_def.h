@@ -79,7 +79,7 @@ extern "C"
  * @{
  */
 
-/** @defgroup USBD_DEF
+/** @defgroup USBD_DEF USB device define
  * @{
  */
 

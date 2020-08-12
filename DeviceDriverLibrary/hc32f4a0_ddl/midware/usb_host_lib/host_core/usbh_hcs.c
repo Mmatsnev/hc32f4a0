@@ -71,7 +71,7 @@
  * @{
  */
 
-/** @defgroup USBH_HCS
+/** @defgroup USBH_HCS USB host HCS
  * @{
  */
 
@@ -116,12 +116,12 @@ static uint16_t USBH_GetFreeChannel (USB_OTG_CORE_HANDLE *pdev);
 /**
  * @brief  USBH_Open_Channel
  *         Open a  pipe
- * @param  pdev : Selected device
- * @param  hc_num: Host channel Number
- * @param  dev_address: USB Device address allocated to attached device
- * @param  speed : USB device speed (Full/Low)
- * @param  ep_type: end point type (Bulk/int/ctl)
- * @param  mps: max pkt size
+ * @param  [in] pdev : Selected device
+ * @param  [in] hc_num: Host channel Number
+ * @param  [in] dev_address: USB Device address allocated to attached device
+ * @param  [in] speed : USB device speed (Full/Low)
+ * @param  [in] ep_type: end point type (Bulk/int/ctl)
+ * @param  [in] mps: max pkt size
  * @retval Status
  */
 uint8_t USBH_Open_Channel  (USB_OTG_CORE_HANDLE *pdev,
@@ -151,12 +151,12 @@ uint8_t USBH_Open_Channel  (USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_Modify_Channel
  *         Modify a  pipe
- * @param  pdev : Selected device
- * @param  hc_num: Host channel Number
- * @param  dev_address: USB Device address allocated to attached device
- * @param  speed : USB device speed (Full/Low)
- * @param  ep_type: end point type (Bulk/int/ctl)
- * @param  mps: max pkt size
+ * @param  [in] pdev : Selected device
+ * @param  [in] hc_num: Host channel Number
+ * @param  [in] dev_address: USB Device address allocated to attached device
+ * @param  [in] speed : USB device speed (Full/Low)
+ * @param  [in] ep_type: end point type (Bulk/int/ctl)
+ * @param  [in] mps: max pkt size
  * @retval Status
  */
 uint8_t USBH_Modify_Channel (USB_OTG_CORE_HANDLE *pdev,
@@ -188,7 +188,8 @@ uint8_t USBH_Modify_Channel (USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_Alloc_Channel
  *         Allocate a new channel for the pipe
- * @param  ep_addr: End point for which the channel to be allocated
+ * @param  [in] pdev: Select device
+ * @param  [in] ep_addr: End point for which the channel to be allocated
  * @retval hc_num: Host channel number
  */
 uint8_t USBH_Alloc_Channel  (USB_OTG_CORE_HANDLE *pdev, uint8_t ep_addr)
@@ -207,7 +208,8 @@ uint8_t USBH_Alloc_Channel  (USB_OTG_CORE_HANDLE *pdev, uint8_t ep_addr)
 /**
  * @brief  USBH_Free_Pipe
  *         Free the USB host channel
- * @param  idx: Channel number to be freed
+ * @param  [in] pdev: Select device
+ * @param  [in] idx: Channel number to be freed
  * @retval Status
  */
 uint8_t USBH_Free_Channel  (USB_OTG_CORE_HANDLE *pdev, uint8_t idx)
@@ -222,7 +224,7 @@ uint8_t USBH_Free_Channel  (USB_OTG_CORE_HANDLE *pdev, uint8_t idx)
 /**
  * @brief  USBH_DeAllocate_AllChannel
  *         Free all USB host channel
- * @param  pdev : core instance
+ * @param  [in] pdev : core instance
  * @retval Status
  */
 uint8_t USBH_DeAllocate_AllChannel  (USB_OTG_CORE_HANDLE *pdev)
@@ -247,7 +249,7 @@ uint8_t USBH_DeAllocate_AllChannel  (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_GetFreeChannel
  *         Get a free channel number for allocation to a device endpoint
- * @param  None
+ * @param  [in] pdev: Select device
  * @retval idx: Free Channel number
  */
 static uint16_t USBH_GetFreeChannel (USB_OTG_CORE_HANDLE *pdev)

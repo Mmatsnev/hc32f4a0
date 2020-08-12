@@ -396,9 +396,6 @@ typedef struct
 #define ADC_SEQ_FLAG_ALL            (ADC_SEQ_FLAG_EOCA | \
                                      ADC_SEQ_FLAG_EOCB | \
                                      ADC_SEQ_FLAG_NESTED)
-
-#define ADC_SEQ_FLAG_CLR_ALL        (ADC_SEQ_FLAG_EOCA | \
-                                     ADC_SEQ_FLAG_EOCB)
 /**
  * @}
  */

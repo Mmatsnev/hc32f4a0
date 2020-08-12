@@ -593,6 +593,16 @@ void DCU_ClearStatus(M4_DCU_TypeDef *DCUx, uint32_t u32Flag)
 
 /**
  * @brief  Enable/disable DCU the specified interrupt source.
+ * @param  [in] DCUx                    Pointer to DCU instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_DCU1:              DCU unit 1 instance register base
+ *           @arg M4_DCU2:              DCU unit 2 instance register base
+ *           @arg M4_DCU3:              DCU unit 3 instance register base
+ *           @arg M4_DCU4:              DCU unit 4 instance register base
+ *           @arg M4_DCU5:              DCU unit 5 instance register base
+ *           @arg M4_DCU6:              DCU unit 6 instance register base
+ *           @arg M4_DCU7:              DCU unit 7 instance register base
+ *           @arg M4_DCU8:              DCU unit 8 instance register base
  * @param  [in] u32IntCategory          DCU interrupt categorye
  *         This parameter can be one of the following values:
  *           @arg DCU_INT_OP:           DCU operation result(overflow/underflow) interrupt

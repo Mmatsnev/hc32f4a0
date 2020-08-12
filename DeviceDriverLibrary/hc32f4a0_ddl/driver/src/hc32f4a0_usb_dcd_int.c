@@ -136,7 +136,7 @@ static uint32_t DCD_SessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev);
 /**
  * @brief  USBD_OTG_EP1OUT_ISR_Handler
  *        handles all USB Interrupts
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval status
  */
 uint32_t USBD_OTG_EP1OUT_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
@@ -177,7 +177,7 @@ uint32_t USBD_OTG_EP1OUT_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBD_OTG_EP1IN_ISR_Handler
  *         handles all USB Interrupts
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval status
  */
 uint32_t USBD_OTG_EP1IN_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
@@ -226,7 +226,7 @@ uint32_t USBD_OTG_EP1IN_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBF_OTG_ISR_Handler
  *         handles all USB Interrupts
- * @param  pdev     Device instance
+ * @param  [in] pdev     Device instance
  * @retval Status
  */
 uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
@@ -342,7 +342,7 @@ uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_SessionRequest_ISR
  *         Indicates that the USB_OTG controller has detected a connection
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_SessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -375,7 +375,7 @@ static uint32_t DCD_SessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
  * @brief  DCD_OTG_ISR
  *         Indicates that the USB_OTG controller has detected an OTG event:
  *                used to detect the end of session i.e. disconnection
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 //static uint32_t DCD_OTG_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -401,7 +401,7 @@ static uint32_t DCD_SessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
  * @brief  DCD_HandleResume_ISR
  *         Indicates that the USB_OTG controller has detected a resume or
  *                 remote Wake-up sequence
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleResume_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -442,7 +442,7 @@ static uint32_t DCD_HandleResume_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_HandleUSBSuspend_ISR
  *        Indicates that SUSPEND state has been detected on the USB
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleUSBSuspend_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -485,7 +485,7 @@ static uint32_t DCD_HandleUSBSuspend_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_HandleInEP_ISR
  *        Indicates that an IN EP has a pending Interrupt
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleInEP_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -567,7 +567,7 @@ static uint32_t DCD_HandleInEP_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_HandleOutEP_ISR
  *         Indicates that an OUT EP has a pending Interrupt
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleOutEP_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -658,7 +658,7 @@ static uint32_t DCD_HandleOutEP_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_HandleSof_ISR
  *         Handles the SOF Interrupts
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleSof_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -679,7 +679,7 @@ static uint32_t DCD_HandleSof_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_HandleRxStatusQueueLevel_ISR
  *         Handles the Rx Status Queue Level Interrupt
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleRxStatusQueueLevel_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -744,8 +744,8 @@ static uint32_t DCD_HandleRxStatusQueueLevel_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_WriteEmptyTxFifo
  *         check FIFO for the next packet to be loaded
- * @param  pdev     Device instance
- * @param  epnum    Endpoint number
+ * @param  [in] pdev     Device instance
+ * @param  [in] epnum    Endpoint number
  * @retval Status
  */
 static uint32_t DCD_WriteEmptyTxFifo(USB_OTG_CORE_HANDLE *pdev, uint32_t epnum)
@@ -795,7 +795,7 @@ static uint32_t DCD_WriteEmptyTxFifo(USB_OTG_CORE_HANDLE *pdev, uint32_t epnum)
 /**
  * @brief  DCD_HandleUsbReset_ISR
  *         This interrupt occurs when a USB Reset is detected
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleUsbReset_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -876,7 +876,7 @@ static uint32_t DCD_HandleUsbReset_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_HandleEnumDone_ISR
  *         Read the device status register and set the device speed
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_HandleEnumDone_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -915,7 +915,7 @@ static uint32_t DCD_HandleEnumDone_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_IsoINIncomplete_ISR
  *         handle the ISO IN incomplete interrupt
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_IsoINIncomplete_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -936,7 +936,7 @@ static uint32_t DCD_IsoINIncomplete_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  DCD_IsoOUTIncomplete_ISR
  *         handle the ISO OUT incomplete interrupt
- * @param  pdev     device instance
+ * @param  [in] pdev     device instance
  * @retval Status
  */
 static uint32_t DCD_IsoOUTIncomplete_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -955,8 +955,8 @@ static uint32_t DCD_IsoOUTIncomplete_ISR(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  DCD_ReadDevInEP Reads ep flags
- * @param  pdev     Device instance
- * @param  epnum    Endpoint number
+ * @param  [in] pdev     Device instance
+ * @param  [in] epnum    Endpoint number
  * @retval Status
  */
 static uint32_t DCD_ReadDevInEP (USB_OTG_CORE_HANDLE *pdev, uint8_t epnum)

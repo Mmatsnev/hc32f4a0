@@ -74,7 +74,7 @@
  * @{
  */
 
-/** @defgroup USBD_MSC_BOT
+/** @defgroup USBD_MSC_BOT USB MSC device BOT
  * @{
  */
 
@@ -265,8 +265,8 @@ void MSC_BOT_DataOut(USB_OTG_CORE_HANDLE  *pdev,
 
 /**
  * @brief Send the Command Status Wrapper
- * @param pdev: device instance
- * @param status : CSW status
+ * @param pdev:         device instance
+ * @param CSW_Status :  CSW status
  * @retval None
  */
 void  MSC_BOT_SendCSW(USB_OTG_CORE_HANDLE  *pdev,

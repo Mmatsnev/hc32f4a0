@@ -96,66 +96,66 @@
  * @defgroup GPIO_Check_Parameters_Validity GPIO Check Parameters Validity
  * @{
  */
-/*  Parameter validity check for pin state. */
+/*! Parameter validity check for pin state. */
 #define IS_GPIO_PIN_STATE(state)                                                \
 (   ((state) == PIN_STATE_RESET)                ||                              \
     ((state) == PIN_STATE_SET))
 
-/*  Parameter validity check for pin direction. */
+/*! Parameter validity check for pin direction. */
 #define IS_GPIO_DIR(dir)                                                        \
 (   ((dir) == PIN_DIR_IN)                       ||                              \
     ((dir) == PIN_DIR_OUT))
 
-/*  Parameter validity check for pin output type. */
+/*! Parameter validity check for pin output type. */
 #define IS_GPIO_OTYPE(otype)                                                    \
 (   ((otype) == PIN_OTYPE_CMOS)                 ||                              \
     ((otype) == PIN_OTYPE_NMOS))
 
-/*  Parameter validity check for pin driver capacity. */
+/*! Parameter validity check for pin driver capacity. */
 #define IS_GPIO_PIN_DRV(drv)                                                    \
 (   ((drv) == PIN_DRV_LOW)                      ||                              \
     ((drv) == PIN_DRV_MID)                      ||                              \
     ((drv) == PIN_DRV_HIGH))
 
-/*  Parameter validity check for pin latch function. */
+/*! Parameter validity check for pin latch function. */
 #define IS_GPIO_LATCH(latch)                                                    \
 (   ((latch) == PIN_LATCH_OFF)                  ||                              \
     ((latch) == PIN_LATCH_ON))
 
-/*  Parameter validity check for internal pull-up resistor. */
+/*! Parameter validity check for internal pull-up resistor. */
 #define IS_GPIO_PIN_PU(pu)                                                      \
 (   ((pu) == PIN_PU_OFF)                        ||                              \
     ((pu) == PIN_PU_ON))
 
-/*  Parameter validity check for pin state invert. */
+/*! Parameter validity check for pin state invert. */
 #define IS_GPIO_PIN_INVERT(invert)                                              \
 (   ((invert) == PIN_INVERT_OFF)                ||                              \
     ((invert) == PIN_INVERT_ON))
 
-/*  Parameter validity check for pin input type. */
+/*! Parameter validity check for pin input type. */
 #define IS_GPIO_ITYPE(itype)                                                    \
 (   ((itype) == PIN_ITYPE_SMT)                  ||                              \
     ((itype) == PIN_ITYPE_CMOS))
 
-/*  Parameter validity check for external interrupt function. */
+/*! Parameter validity check for external interrupt function. */
 #define IS_GPIO_EXINT(exint)                                                    \
 (   ((exint) == PIN_EXINT_OFF)                  ||                              \
     ((exint) == PIN_EXINT_ON))
 
-/*  Parameter validity check for pin attribute. */
+/*! Parameter validity check for pin attribute. */
 #define IS_GPIO_ATTR(attr)                                                      \
 (   ((attr) == PIN_ATTR_DIGITAL)                ||                              \
     ((attr) == PIN_ATTR_ANALOG))
 
-/*  Parameter validity check for pin number. */
+/*! Parameter validity check for pin number. */
 #define IS_GPIO_PIN(pin)    (((pin) & GPIO_PIN_MASK ) != 0x0000U)
 
-/*  Parameter validity check for port source. */
+/*! Parameter validity check for port source. */
 #define IS_GPIO_PORT(port)                                                      \
 (   ((port) != 0x00U)                           &&                              \
     (((port) | GPIO_PORT_MASK) == GPIO_PORT_MASK))
 
-/*  Parameter validity check for port source. */
+/*! Parameter validity check for port source. */
 #define IS_GPIO_PORT_SOURCE(port)                                               \
 (   ((port) == GPIO_PORT_A)                     ||                              \
     ((port) == GPIO_PORT_B)                     ||                              \
@@ -167,22 +167,22 @@
     ((port) == GPIO_PORT_H)                     ||                              \
     ((port) == GPIO_PORT_I))
 
-/*  Parameter validity check for pin function. */
+/*! Parameter validity check for pin function. */
 #define IS_GPIO_FUNC(func)                                                      \
 (   ((func) <= GPIO_FUNC_20)                    ||                              \
     (((func) >= GPIO_FUNC_32) && ((func) <= GPIO_FUNC_63)))
 
-/*  Parameter validity check for debug pin definition. */
+/*! Parameter validity check for debug pin definition. */
 #define IS_GPIO_DEBUG_PORT(port)                                                \
 (   ((port) != 0x00U)                           &&                              \
     (((port) | GPIO_PIN_DEBUG_JTAG) == GPIO_PIN_DEBUG_JTAG))
 
-/*  Parameter validity check for pin sub-function setting. */
+/*! Parameter validity check for pin sub-function setting. */
 #define IS_GPIO_PIN_BFE(bfe)                                                    \
 (   ((bfe) == PIN_SUBFUNC_ENABLE)               ||                              \
     ((bfe) == PIN_SUBFUNC_DISABLE))
 
-/*  Parameter validity check for pin read wait cycle. */
+/*! Parameter validity check for pin read wait cycle. */
 #define IS_GPIO_READ_WAIT(wait)                                                 \
 (   ((wait) == GPIO_READ_WAIT_0)                ||                              \
     ((wait) == GPIO_READ_WAIT_1)                ||                              \

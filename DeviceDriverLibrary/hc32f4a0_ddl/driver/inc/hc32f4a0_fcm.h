@@ -284,7 +284,7 @@ typedef struct
  */
 /**
  * @brief  Set FCM upper limit value.
- * @param  u16Lmt
+ * @param  [in] u16Lmt
  * @retval None.
  */
 __STATIC_INLINE void FCM_SetUpLimit(uint16_t u16Lmt)

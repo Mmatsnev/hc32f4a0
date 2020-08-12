@@ -77,7 +77,7 @@
  * @{
  */
 
-/** @defgroup USBH_CORE
+/** @defgroup USBH_CORE USB host core
  * @{
  */
 
@@ -148,8 +148,11 @@ USBH_HCD_INT_cb_TypeDef  *USBH_HCD_INT_fops = &USBH_HCD_INT_cb;
 /**
  * @brief  USBH_Init
  *         Host hardware and stack initializations
- * @param  class_cb: Class callback structure address
- * @param  usr_cb: User callback structure address
+ * @param  [in] pdev: Select device
+ * @param  [in] coreID: Core ID
+ * @param  [in] phost: Host
+ * @param  [in] class_cb: Class callback structure address
+ * @param  [in] usr_cb: User callback structure address
  * @retval None
  */
 void USBH_Init(USB_OTG_CORE_HANDLE *pdev,
@@ -184,7 +187,8 @@ void USBH_Init(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_DeInit
  *         Re-Initialize Host
- * @param  None
+ * @param  [in] pdev: Device select
+ * @param  [in] phost: Host
  * @retval status: USBH_Status
  */
 USBH_Status USBH_DeInit(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
@@ -209,7 +213,8 @@ USBH_Status USBH_DeInit(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
 /**
  * @brief  USBH_Process
  *         USB Host core main state machine process
- * @param  None
+ * @param  [in] pdev: Select device
+ * @param  [in] phost: Host
  * @retval None
  */
 void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
@@ -346,6 +351,7 @@ void USBH_Process(USB_OTG_CORE_HANDLE *pdev , USBH_HOST *phost)
 /**
   * \brief  USBH_ErrorHandle
   *         This function handles the Error on Host side.
+  * \param  phost: Host
   * \param  errType : Type of Error or Busy/OK state
   * \retval None
  */
@@ -382,7 +388,7 @@ void USBH_ErrorHandle(USBH_HOST *phost, USBH_Status errType)
 /**
  * @brief  USBH_Connected
  *         USB Connect callback function from the Interrupt.
- * @param  selected device
+ * @param  [in] pdev: selected device
  * @retval Status
  */
 static uint8_t USBH_Connected (USB_OTG_CORE_HANDLE *pdev)
@@ -394,7 +400,7 @@ static uint8_t USBH_Connected (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_Disconnected
  *         USB Disconnect callback function from the Interrupt.
- * @param  selected device
+ * @param  [in] pdev: selected device
  * @retval Status
  */
 static uint8_t USBH_Disconnected (USB_OTG_CORE_HANDLE *pdev)
@@ -406,7 +412,7 @@ static uint8_t USBH_Disconnected (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_SOF
  *         USB SOF callback function from the Interrupt.
- * @param  selected device
+ * @param  [in] pdev: selected device
  * @retval Status
  */
 static uint8_t USBH_SOF (USB_OTG_CORE_HANDLE *pdev)
@@ -418,7 +424,8 @@ static uint8_t USBH_SOF (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_HandleEnum
  *         This function includes the complete enumeration process
- * @param  pdev: Selected device
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
  * @retval USBH_Status
  */
 static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
@@ -593,7 +600,8 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
 /**
  * @brief  USBH_HandleControl
  *         Handles the USB control transfer state machine
- * @param  pdev: Selected device
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
  * @retval Status
  */
 static USBH_Status USBH_HandleControl (USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)

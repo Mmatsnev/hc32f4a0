@@ -87,7 +87,7 @@ extern "C"
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
 /**
- * @defgroup USBD_HID_MSC_WRAPPER_Global_Macros
+ * @defgroup USBD_HID_MSC_WRAPPER_Global_Macros USB HID and MSC device wapper global macros
  * @{
  */
 #define HID_INTERFACE (0x0U)

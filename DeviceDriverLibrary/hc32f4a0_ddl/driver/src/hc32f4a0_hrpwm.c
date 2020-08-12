@@ -100,17 +100,17 @@
  * @{
  */
 
-/* Parameter valid check for HRPWM output channel */
+/*! Parameter valid check for HRPWM output channel */
 #define IS_VALID_HRPWM_CH(x)                                                   \
 (   ((x) >= HRPWM_CH_MIN)                       &&                             \
     ((x) <= HRPWM_CH_MAX))
 
-/* Parameter valid check for HRPWM caliration unit */
+/*! Parameter valid check for HRPWM caliration unit */
 #define IS_VALID_HRPWM_CAL_UNIT(x)                                             \
 (   (HRPWM_CAL_UNIT0 == (x))                   ||                             \
     (HRPWM_CAL_UNIT1 == (x)))
 
-/* Parameter valid check for HRPWM delay number */
+/*! Parameter valid check for HRPWM delay number */
 #define IS_VALID_HRPWM_DELAY_NUM(x)                                            \
 (   ((x) >= HRPWM_CH_DELAY_NUM_MIN)             &&                             \
     ((x) <= HRPWM_CH_DELAY_NUM_MAX))

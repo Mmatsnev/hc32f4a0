@@ -74,7 +74,7 @@
  * @{
  */
 
-/** @defgroup USBD_MSC_CORE
+/** @defgroup USBD_MSC_CORE USB MSC device core
  * @{
  */
 

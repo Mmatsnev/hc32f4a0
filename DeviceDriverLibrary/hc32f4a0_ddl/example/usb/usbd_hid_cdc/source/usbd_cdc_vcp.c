@@ -220,9 +220,9 @@ static uint16_t VCP_DeInit(void)
 /**
   * @brief  VCP_Ctrl
   *         Manage the CDC class requests
-  * @param  Cmd: Command code
-  * @param  Buf: Buffer containing command data (request parameters)
-  * @param  Len: Number of data to be sent (in bytes)
+  * @param  [in] Cmd: Command code
+  * @param  [in] Buf: Buffer containing command data (request parameters)
+  * @param  [in] Len: Number of data to be sent (in bytes)
   * @retval Result of the opeartion (USBD_OK in all cases)
   */
 static uint16_t VCP_Ctrl (uint32_t Cmd, uint8_t* Buf, uint32_t Len)
@@ -282,7 +282,7 @@ static uint16_t VCP_Ctrl (uint32_t Cmd, uint8_t* Buf, uint32_t Len)
   * @brief  VCP_DataTx
   *         CDC received data to be send over USB IN endpoint are managed in
   *         this function.
-  * @param  Len: Number of data to be sent (in bytes)
+  * @param  [in] Len: Number of data to be sent (in bytes)
   * @retval Result of the opeartion: USBD_OK if all operations are OK else VCP_FAIL
   */
 static uint16_t VCP_DataTx (uint32_t Len)
@@ -322,8 +322,8 @@ static uint16_t VCP_DataTx (uint32_t Len)
   *         is complete on CDC interface (ie. using DMA controller) it will result
   *         in receiving more data while previous ones are still not sent.
   *
-  * @param  Buf: Buffer of data to be received
-  * @param  Len: Number of data received (in bytes)
+  * @param  [in] Buf: Buffer of data to be received
+  * @param  [in] Len: Number of data received (in bytes)
   * @retval Result of the opeartion: USBD_OK if all operations are OK else VCP_FAIL
   */
 static uint16_t VCP_DataRx (uint8_t* Buf, uint32_t Len)

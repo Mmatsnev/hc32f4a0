@@ -129,7 +129,7 @@ void USBD_USR_Init(void)
 
 /**
  * @brief  USBD_USR_DeviceReset
- * @param  speed : device speed
+ * @param  [in] speed : device speed
  * @retval None
  */
 void USBD_USR_DeviceReset(uint8_t speed )

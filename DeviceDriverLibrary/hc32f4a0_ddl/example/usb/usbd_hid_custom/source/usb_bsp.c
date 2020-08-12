@@ -290,7 +290,7 @@ static __attribute__((unused)) void Peripheral_WP(void)
 
 /**
  * @brief  Initializes BSP configurations
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval None
  */
 void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
@@ -401,8 +401,8 @@ void USB_OTG_BSP_EnableInterrupt(void)
 
 /**
  * @brief  Drives the Vbus signal through IO
- * @param  speed    Full, Low
- * @param  state    VBUS states
+ * @param  [in] speed    Full, Low
+ * @param  [in] state    VBUS states
  * @retval None
  */
 void USB_OTG_BSP_DriveVBUS(uint32_t speed, uint8_t state)
@@ -412,7 +412,7 @@ void USB_OTG_BSP_DriveVBUS(uint32_t speed, uint8_t state)
 
 /**
  * @brief  Configures the IO for the Vbus and OverCurrent
- * @param  speed    Full, Low
+ * @param  [in] speed    Full, Low
  * @retval None
 */
 void  USB_OTG_BSP_ConfigVBUS(uint32_t speed)
@@ -432,7 +432,7 @@ void USB_OTG_BSP_TimeInit ( void )
 
 /**
  * @brief  This function provides delay time in micro sec
- * @param  usec    Value of delay required in micro sec
+ * @param  [in] usec    Value of delay required in micro sec
  * @retval None
 */
 void USB_OTG_BSP_uDelay (const uint32_t usec)
@@ -448,7 +448,7 @@ void USB_OTG_BSP_uDelay (const uint32_t usec)
 
 /**
  * @brief  This function provides delay time in milli sec
- * @param  msec : Value of delay required in milli sec
+ * @param  [in] msec : Value of delay required in milli sec
  * @retval None
 */
 void USB_OTG_BSP_mDelay (const uint32_t msec)

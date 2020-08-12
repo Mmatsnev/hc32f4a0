@@ -9,6 +9,7 @@
    2020-06-12       Wuze            First version
    2020-07-02       Wuze            1. API ADC_SH_ChannelCmd() refine.
                                     2. Some other optimizations.
+   2020-08-10       Wuze            ADC_SeqClrStatus(): ADC_SEQ_FLAG_NESTED can be cleared.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -912,15 +913,15 @@ en_flag_status_t ADC_SeqGetStatus(const M4_ADC_TypeDef *ADCx, uint8_t u8Flag)
  *   @arg  M4_ADC3:                     ADC unit 3 instance register base.
  * @param  [in]  u8Flag                 Status flag type.
  *                                      This parameter can be values of @ref ADC_Sequence_Status_Flag
- *                                      except ADC_SEQ_FLAG_NESTED.
  *   @arg  ADC_SEQ_FLAG_EOCA:           Status flag of the end of conversion of sequence A.
  *   @arg  ADC_SEQ_FLAG_EOCB:           Status flag of the end of conversion of sequence B.
+ *   @arg  ADC_SEQ_FLAG_NESTED:         Status flag of sequence A was interrupted by sequence B.
  * @retval None
  */
 void ADC_SeqClrStatus(M4_ADC_TypeDef *ADCx, uint8_t u8Flag)
 {
     DDL_ASSERT(IS_ADC_UNIT(ADCx));
-    SET_REG8_BIT(ADCx->ISCLRR, (u8Flag & (uint8_t)ADC_SEQ_FLAG_CLR_ALL));
+    SET_REG8_BIT(ADCx->ISCLRR, (u8Flag & (uint8_t)ADC_SEQ_FLAG_ALL));
 }
 
 /**

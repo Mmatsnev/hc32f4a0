@@ -78,7 +78,7 @@ extern "C"
  * @{
  */
 
-/** @defgroup USBH_CONF
+/** @defgroup USBH_CONF USB host configurate
  * @{
  */
 

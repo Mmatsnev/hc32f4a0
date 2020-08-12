@@ -186,7 +186,7 @@
  * @{
  */
 
-/* Parameter valid check for normal timer6 unit */
+/*! Parameter valid check for normal timer6 unit */
 #define IS_VALID_TMR6_UNIT(__TMR6x__)                                          \
 (   (M4_TMR6_1 == (__TMR6x__))                  ||                             \
     (M4_TMR6_2 == (__TMR6x__))                  ||                             \
@@ -197,23 +197,23 @@
     (M4_TMR6_7 == (__TMR6x__))                  ||                             \
     (M4_TMR6_8 == (__TMR6x__)))
 
-/* Parameter valid check for interrupt source configuration */
+/*! Parameter valid check for interrupt source configuration */
 #define IS_VALID_IRQ_SOURCE_CONFIG(x)                                          \
 (   ((x) != 0UL)                                     &&                        \
     (((x) | TMR6_IRQ_EN_MASK) == TMR6_IRQ_EN_MASK))
 
-/* Parameter valid check for status bit read */
+/*! Parameter valid check for status bit read */
 #define IS_VALID_STABIT_GET(x)                                                 \
 (   ((x) != 0UL)                          &&                                   \
     (((x) | TMR6_STAT_FLAG_MASK) == TMR6_STAT_FLAG_MASK))
 
-/* Param   ter valid check for period register */
+/*! Parameter valid check for period register */
 #define IS_VALID_PERIOD_REG(x)                                                 \
 (   (TMR6_PERIOD_REG_A == (x))           ||                                    \
     (TMR6_PERIOD_REG_B == (x))           ||                                    \
     (TMR6_PERIOD_REG_C == (x)))
 
-/* Parameter valid check for general compare register */
+/*! Parameter valid check for general compare register */
 #define IS_VALID_CMP_REG(x)                                                    \
 (   (TMR6_CMP_REG_A == (x))              ||                                    \
     (TMR6_CMP_REG_B == (x))              ||                                    \
@@ -222,46 +222,46 @@
     (TMR6_CMP_REG_E == (x))              ||                                    \
     (TMR6_CMP_REG_F == (x)))
 
-/* Parameter valid check for general/special compare channel */
+/*! Parameter valid check for general/special compare channel */
 #define IS_VALID_CMP_CH(x)                                                     \
 (   (TMR6_CH_A == (x))                   ||                                    \
     (TMR6_CH_B == (x)))
 
-/* Parameter valid check for buffer function status */
+/*! Parameter valid check for buffer function status */
 #define IS_VALID_BUF_STAT(x)                                                   \
 (   (TMR6_BUF_FUNC_OFF == (x))           ||                                    \
     (TMR6_BUF_FUNC_ON == (x)))
 
-/* Parameter valid check for buffer function number */
+/*! Parameter valid check for buffer function number */
 #define IS_VALID_BUF_FUN_NUM(x)                                                \
 (   (TMR6_BUF_FUNC_SINGLE == (x))        ||                                    \
     (TMR6_BUF_FUNC_DOUBLE == (x)))
 
-/* Parameter valid check for buffer transfer timer configuration */
+/*! Parameter valid check for buffer transfer timer configuration */
 #define IS_VALID_BUF_TRANS_TIM(x)                                              \
 (   (TMR6_BUF_TRANS_TIM_NONE == (x))     ||                                    \
     (TMR6_BUF_TRANS_TIM_OVERFLOW == (x)) ||                                    \
     (TMR6_BUF_TRANS_TIM_UNDERFLOW == (x))||                                    \
     (TMR6_BUF_TRANS_TIM_BOTH == (x)))
 
-/* Parameter valid check for valid period function status for channel A */
+/*! Parameter valid check for valid period function status for channel A */
 #define IS_VALID_VALID_PERIOD_STAT_CHA(x)                                      \
 (   (TMR6_VALID_PERIOD_FUNC_CHA_OFF == (x))   ||                               \
     (TMR6_VALID_PERIOD_FUNC_CHA_ON == (x)))
 
-/* Parameter valid check for valid period function status for channel B */
+/*! Parameter valid check for valid period function status for channel B */
 #define IS_VALID_VALID_PERIOD_STAT_CHB(x)                                      \
 (   (TMR6_VALID_PERIOD_FUNC_CHB_OFF == (x))   ||                               \
     (TMR6_VALID_PERIOD_FUNC_CHB_ON == (x)))
 
-/* Parameter valid check for count condition for valid period function */
+/*! Parameter valid check for count condition for valid period function */
 #define IS_VALID_PERIOD_CNT_COND(x)                                            \
 (   (TMR6_VALID_PERIOD_FUNC_OFF == (x))             ||                         \
     (TMR6_VALID_PERIOD_CNT_COND_UNDERFLOW == (x))   ||                         \
     (TMR6_VALID_PERIOD_CNT_COND_OVERFLOW == (x))    ||                         \
     (TMR6_VALID_PERIOD_CNT_COND_BOTH == (x)))
 
-/* Parameter valid check for count condition for valid period count */
+/*! Parameter valid check for count condition for valid period count */
 #define IS_VALID_PERIOD_CNT(x)                                                 \
 (   (TMR6_VALID_PERIOD_CNT_INVALID == (x))          ||                         \
     (TMR6_VALID_PERIOD_CNT_1 == (x))                ||                         \
@@ -272,17 +272,17 @@
     (TMR6_VALID_PERIOD_CNT_6 == (x))                ||                         \
     (TMR6_VALID_PERIOD_CNT_7 == (x)))
 
-/* Parameter valid check for count register data range */
+/*! Parameter valid check for count register data range */
 #define IS_VALID_REG_RANGE_U16(x)               ((x) <= 0xFFFFUL)
 
-/* Parameter valid check for dead time register */
+/*! Parameter valid check for dead time register */
 #define IS_VALID_DEADTIME_REG(x)                                               \
 (   (TMR6_DEADTIME_REG_UP_A == (x))             ||                             \
     (TMR6_DEADTIME_REG_DOWN_A == (x))           ||                             \
     (TMR6_DEADTIME_REG_UP_B == (x))             ||                             \
     (TMR6_DEADTIME_REG_DOWN_B == (x)))
 
-/* Parameter valid check for input port */
+/*! Parameter valid check for input port */
 #define IS_VALID_INPUT_PORT(x)                                                 \
 (   (TMR6_IO_PWMA == (x))                       ||                             \
     (TMR6_IO_PWMB == (x))                       ||                             \
@@ -291,111 +291,111 @@
     (TMR6_INPUT_TRIGC == (x))                   ||                             \
     (TMR6_INPUT_TRIGD == (x)))
 
-/* Parameter valid check for output port */
+/*! Parameter valid check for output port */
 #define IS_VALID_OUTPUT_PORT(x)                                                \
 (   (TMR6_IO_PWMA == (x))                       ||                             \
     (TMR6_IO_PWMB == (x)))
 
-/* Parameter valid check for input port filter clock */
+/*! Parameter valid check for input port filter clock */
 #define IS_VALID_INPUT_FILTER_CLK(x)                                           \
 (   (TMR6_INPUT_FILTER_PCLK0_DIV1 == (x))       ||                             \
     (TMR6_INPUT_FILTER_PCLK0_DIV4 == (x))       ||                             \
     (TMR6_INPUT_FILTER_PCLK0_DIV16 == (x))      ||                             \
     (TMR6_INPUT_FILTER_PCLK0_DIV64 == (x)))
 
-/* Parameter valid check for port function mode*/
+/*! Parameter valid check for port function mode*/
 #define IS_VALID_PORT_MODE_FUNC(x)                                             \
 (   (TMR6_PORT_COMPARE_OUTPUT == (x))           ||                             \
     (TMR6_PORT_CAPTURE_INPUT == (x)))
 
-/* Parameter valid check for port input filter function status */
+/*! Parameter valid check for port input filter function status */
 #define IS_VALID_PORT_INPUT_FILTER_STA(x)                                      \
 (   (TMR6_PORT_INPUT_FILTER_OFF == (x))         ||                             \
     (TMR6_PORT_INPUT_FILTER_ON == (x)))
 
-/* Parameter valid check for output port status for count result  */
+/*! Parameter valid check for output port status for count result  */
 #define IS_VALID_OUTPUT_STA_RESULT(x)                                          \
 (   (TMR6_PORT_OUTPUT_STA_LOW == (x))           ||                             \
     (TMR6_PORT_OUTPUT_STA_HIGH == (x))          ||                             \
     (TMR6_PORT_OUTPUT_STA_HOLD == (x))          ||                             \
     (TMR6_PORT_OUTPUT_STA_REVERSE == (x)))
 
-/* Parameter valid check for force output port status for count result  */
+/*! Parameter valid check for force output port status for count result  */
 #define IS_VALID_FORCE_OUTPUT_STA_RESULT(x)                                    \
 (   (TMR6_FORCE_PORT_OUTPUT_INVALID == (x))     ||                             \
     (TMR6_FORCE_PORT_OUTPUT_STA_LOW == (x))     ||                             \
     (TMR6_FORCE_PORT_OUTPUT_STA_HIGH == (x)))
 
-/* Parameter valid check for output port status for count status  */
+/*! Parameter valid check for output port status for count status  */
 #define IS_VALID_OUTPUT_STA_STA(x)                                             \
 (   (TMR6_PORT_OUTPUT_STA_LOW == (x))           ||                             \
     (TMR6_PORT_OUTPUT_STA_HIGH == (x))          ||                             \
     (TMR6_PORT_OUTPUT_STA_HOLD == (x)))
 
-/* Parameter valid check for EMB event valid channel  */
+/*! Parameter valid check for EMB event valid channel  */
 #define IS_VALID_EMB_CH(x)                                                     \
 (   (TMR6_EMB_EVENT_VALID_CH0 == (x))           ||                             \
     (TMR6_EMB_EVENT_VALID_CH1 == (x))           ||                             \
     (TMR6_EMB_EVENT_VALID_CH2 == (x))           ||                             \
     (TMR6_EMB_EVENT_VALID_CH3 == (x)))
 
-/* Parameter valid check for EMB release mode when EMB event invalid   */
+/*! Parameter valid check for EMB release mode when EMB event invalid   */
 #define IS_VALID_EMB_RELEASE_MODE(x)                                           \
 (   (TMR6_EMB_RELEASE_IMMEDIATE == (x))         ||                             \
     (TMR6_EMB_RELEASE_OVERFLOW == (x))          ||                             \
     (TMR6_EMB_RELEASE_UNDERFLOW == (x))         ||                             \
     (TMR6_EMB_RELEASE_OVERFLOW_UNDERFLOW == (x)))
 
-/* Parameter valid check for port output status when EMB event valid */
+/*! Parameter valid check for port output status when EMB event valid */
 #define IS_VALID_EMB_VALID_PORT_STA(x)                                         \
 (   (TMR6_EMB_PORTSTA_NORMAL == (x))            ||                             \
     (TMR6_EMB_PORTSTA_HIZ == (x))               ||                             \
     (TMR6_EMB_PORTSTA_LOW == (x))               ||                             \
     (TMR6_EMB_PORTSTA_HIGH == (x)))
 
-/* Parameter valid check for dead time buffer function for DTUAR and DTUBR register */
+/*! Parameter valid check for dead time buffer function for DTUAR and DTUBR register */
 #define IS_VALID_DEADTIME_BUF_FUNC_DTUAR_REG(x)                                \
 (   (TMR6_DEADTIME_CNT_UP_BUF_OFF == (x))       ||                             \
     (TMR6_DEADTIME_CNT_UP_BUF_ON == (x)))
 
-/* Parameter valid check for dead time buffer function for DTDAR and DTDBR register */
+/*! Parameter valid check for dead time buffer function for DTDAR and DTDBR register */
 #define IS_VALID_DEADTIME_BUF_FUNC_DTDAR_REG(x)                                \
 (   (TMR6_DEADTIME_CNT_DOWN_BUF_OFF == (x))     ||                             \
     (TMR6_DEADTIME_CNT_DOWN_BUF_ON == (x)))
 
-/* Parameter valid check for dead time buffer transfer condition */
+/*! Parameter valid check for dead time buffer transfer condition */
 #define IS_VALID_DEADTIME_BUF_TRANS_COND_REG(x)                                \
 (   (TMR6_DEADTIME_TRANS_COND_NONE == (x))      ||                             \
     (TMR6_DEADTIME_TRANS_COND_OVERFLOW == (x))  ||                             \
     (TMR6_DEADTIME_TRANS_COND_UNDERFLOW == (x)) ||                             \
     (TMR6_DEADTIME_TRANS_COND_BOTH == (x)))
 
-/* Parameter valid check for dead time equal function for DTUAR and DTDAR register */
+/*! Parameter valid check for dead time equal function for DTUAR and DTDAR register */
 #define IS_VALID_DEADTIME_EQUAL_FUNC_REG(x)                                    \
 (   (TMR6_DEADTIME_EQUAL_OFF == (x))            ||                             \
     (TMR6_DEADTIME_EQUAL_ON == (x)))
 
-/* Parameter valid check for hardware control events   */
+/*! Parameter valid check for hardware control events   */
 #define IS_VALID_HW_CTRL_EVENTS(x)                                             \
 (   ((x) != 0UL)                                     &&                        \
     (((x) | TMR6_HW_CTRL_EVENT_MASK) == TMR6_HW_CTRL_EVENT_MASK))
 
-/* Parameter valid check for hardware count events   */
+/*! Parameter valid check for hardware count events   */
 #define IS_VALID_HW_CNT_EVENTS(x)                                              \
 (   ((x) != 0UL)                                     &&                        \
     (((x) | TMR6_HW_CNT_EVENT_MASK) == TMR6_HW_CNT_EVENT_MASK))
 
-/* Parameter valid check for count Mode */
+/*! Parameter valid check for count Mode */
 #define IS_VALID_CNT_MODE(x)                                                   \
 (   (TMR6_MODE_SAWTOOTH == (x))                 ||                             \
     (TMR6_MODE_TRIANGLE == (x)))
 
-/* Parameter valid check for count direction */
+/*! Parameter valid check for count direction */
 #define IS_VALID_CNT_DIRECTION(x)                                              \
 (   (TMR6_CNT_INCREASE == (x))                  ||                             \
     (TMR6_CNT_DECREASE == (x)))
 
-/* Parameter valid check for count clock source  */
+/*! Parameter valid check for count clock source  */
 #define IS_VALID_CNT_CLK_SRC(x)                                                \
 (   (TMR6_CLK_PCLK0_DIV1 == (x))                ||                             \
     (TMR6_CLK_PCLK0_DIV2 == (x))                ||                             \
@@ -409,41 +409,41 @@
     (TMR6_CLK_PCLK0_DIV512 == (x))              ||                             \
     (TMR6_CLK_PCLK0_DIV1024 == (x)))
 
-/* Parameter valid check for stop when overflow mode */
+/*! Parameter valid check for stop when overflow mode */
 #define IS_VALID_STOP_AFTER_OVF_MODE(x)                                        \
 (   (TMR6_CNT_CONTINUOUS == (x))                ||                             \
     (TMR6_STOP_AFTER_OVF == (x)))
 
-/* Parameter valid check for Z Mask input function mask cycles number  */
+/*! Parameter valid check for Z Mask input function mask cycles number  */
 #define IS_VALID_ZMASK_CYCLES(x)                                               \
 (   (TMR6_ZMASK_CYCLE_FUNC_INVALID == (x))      ||                             \
     (TMR6_ZMASK_CYCLE_4 == (x))                 ||                             \
     (TMR6_ZMASK_CYCLE_8 == (x))                 ||                             \
     (TMR6_ZMASK_CYCLE_16 == (x)))
 
-/* Parameter valid check for Z Mask function of timer6 position unit */
+/*! Parameter valid check for Z Mask function of timer6 position unit */
 #define IS_VALID_POS_UNIT_ZMASK_FUNC(x)                                        \
 (   (TMR6_POS_CLR_ZMASK_FUNC_INVALID == (x))    ||                             \
     (TMR6_POS_CLR_ZMASK_FUNC_VALID == (x)))
 
-/* Parameter valid check for Z Mask function of timer6 revolution unit */
+/*! Parameter valid check for Z Mask function of timer6 revolution unit */
 #define IS_VALID_REVO_UNIT_ZMASK_FUNC(x)                                       \
 (   (TMR6_REVO_CNT_ZMASK_FUNC_INVALID == (x))   ||                             \
     (TMR6_REVO_CNT_ZMASK_FUNC_VALID == (x)))
 
-/* Parameter valid check for hardware trigger index  */
+/*! Parameter valid check for hardware trigger index  */
 #define IS_VALID_HW_TRIGGER_INDEX(x)                                           \
 (   (TMR6_HW_TRIG_0 == (x))                     ||                             \
     (TMR6_HW_TRIG_1 == (x))                     ||                             \
     (TMR6_HW_TRIG_2 == (x))                     ||                             \
     (TMR6_HW_TRIG_3 == (x)))
 
-/* Parameter valid check for software sync control unit configuration */
+/*! Parameter valid check for software sync control unit configuration */
 #define IS_VALID_SW_CTRL_CFG(x)                                                \
 (   ((x) != 0UL)                                     &&                        \
     (((x) | TMR6_SW_CTRL_REG_MASK) == TMR6_SW_CTRL_REG_MASK))
 
-/* Parameter valid check for DMA common trigger configuration. */
+/*! Parameter valid check for DMA common trigger configuration. */
 #define IS_VALID_TMR6_COM_TRIG(x)                                              \
 (   ((x) != 0x00UL)                        &&                                  \
     (((x) | TMR6_COM_TRIG_MASK) == TMR6_COM_TRIG_MASK))

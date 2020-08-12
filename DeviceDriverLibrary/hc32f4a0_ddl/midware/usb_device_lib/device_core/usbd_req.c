@@ -74,7 +74,7 @@
  * @{
  */
 
-/** @defgroup USBD_REQ
+/** @defgroup USBD_REQ USB device request
  * @{
  */
 
@@ -131,7 +131,7 @@ __USB_ALIGN_BEGIN uint8_t USBD_StrDesc[USB_MAX_STR_DESC_SIZ] __USB_ALIGN_END;
  * Local function prototypes ('static')
  ******************************************************************************/
 /**
- * @defgroup USBD_REQ_Local_Functions USBD Core Local Functions
+ * @defgroup USBD_REQ_Local_Functions USBD request Local Functions
  * @{
  */
 static void USBD_GetDescriptor(USB_OTG_CORE_HANDLE  *pdev,
@@ -171,8 +171,8 @@ extern __IO USB_OTG_DCTL_TypeDef SET_TEST_MODE;
 /**
  * @brief  USBD_StdDevReq
  *         Handle standard usb device requests
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 USBD_Status  USBD_StdDevReq (USB_OTG_CORE_HANDLE  *pdev, USB_SETUP_REQ  *req)
@@ -223,8 +223,8 @@ USBD_Status  USBD_StdDevReq (USB_OTG_CORE_HANDLE  *pdev, USB_SETUP_REQ  *req)
 /**
  * @brief  USBD_StdItfReq
  *         Handle standard usb interface requests
- * @param  pdev: USB OTG device instance
- * @param  req: usb request
+ * @param  [in] pdev: USB OTG device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 USBD_Status  USBD_StdItfReq (USB_OTG_CORE_HANDLE  *pdev, USB_SETUP_REQ  *req)
@@ -290,8 +290,8 @@ USBD_Status  USBD_StdItfReq (USB_OTG_CORE_HANDLE  *pdev, USB_SETUP_REQ  *req)
 /**
  * @brief  USBD_StdEPReq
  *         Handle standard usb endpoint requests
- * @param  pdev: USB OTG device instance
- * @param  req: usb request
+ * @param  [in] pdev: USB OTG device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 USBD_Status  USBD_StdEPReq (USB_OTG_CORE_HANDLE  *pdev, USB_SETUP_REQ  *req)
@@ -406,8 +406,8 @@ USBD_Status  USBD_StdEPReq (USB_OTG_CORE_HANDLE  *pdev, USB_SETUP_REQ  *req)
 /**
  * @brief  USBD_ParseSetupRequest
  *         Copy buffer into setup structure
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval None
  */
 void USBD_ParseSetupRequest( USB_OTG_CORE_HANDLE  *pdev,
@@ -426,7 +426,7 @@ void USBD_ParseSetupRequest( USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_CtlError
  *         Handle USB low level Error
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval None
  */
 void USBD_CtlError( USB_OTG_CORE_HANDLE  *pdev)  /* MISRAC 2004*/
@@ -443,9 +443,9 @@ void USBD_CtlError( USB_OTG_CORE_HANDLE  *pdev)  /* MISRAC 2004*/
 /**
  * @brief  USBD_GetString
  *         Convert Ascii string into unicode one
- * @param  desc : descriptor buffer
- * @param  unicode : Formatted string buffer (unicode)
- * @param  len : descriptor length
+ * @param  [in] desc : descriptor buffer
+ * @param  [in] unicode : Formatted string buffer (unicode)
+ * @param  [in] len : descriptor length
  * @retval None
  */
 void USBD_GetString(uint8_t *desc, uint8_t *unicode, uint16_t *len)
@@ -471,15 +471,15 @@ void USBD_GetString(uint8_t *desc, uint8_t *unicode, uint16_t *len)
  */
 
 /**
- * @addtogroup USBD_REQ_Local_Functions USBD Request Local Functions
+ * @addtogroup USBD_REQ_Local_Functions
  * @{
  */
 
 /**
  * @brief  USBD_GetDescriptor
  *         Handle Get Descriptor requests
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_GetDescriptor(USB_OTG_CORE_HANDLE  *pdev,
@@ -606,8 +606,8 @@ static void USBD_GetDescriptor(USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_SetAddress
  *         Set device address
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_SetAddress(USB_OTG_CORE_HANDLE  *pdev,
@@ -648,8 +648,8 @@ static void USBD_SetAddress(USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_SetConfig
  *         Handle Set device configuration request
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_SetConfig(USB_OTG_CORE_HANDLE  *pdev,
@@ -717,8 +717,8 @@ static void USBD_SetConfig(USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_GetConfig
  *         Handle Get device configuration request
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_GetConfig(USB_OTG_CORE_HANDLE  *pdev,
@@ -752,8 +752,8 @@ static void USBD_GetConfig(USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_GetStatus
  *         Handle Get Status request
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_GetStatus(USB_OTG_CORE_HANDLE  *pdev,
@@ -794,8 +794,8 @@ static void USBD_GetIntf(USB_OTG_CORE_HANDLE  *pdev)  /* MISRAC2004*/
 /**
  * @brief  USBD_SetFeature
  *         Handle Set device feature request
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_SetFeature(USB_OTG_CORE_HANDLE  *pdev,
@@ -847,8 +847,8 @@ static void USBD_SetFeature(USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_ClrFeature
  *         Handle clear device feature request
- * @param  pdev: device instance
- * @param  req: usb request
+ * @param  [in] pdev: device instance
+ * @param  [in] req: usb request
  * @retval status
  */
 static void USBD_ClrFeature(USB_OTG_CORE_HANDLE  *pdev,
@@ -874,7 +874,7 @@ static void USBD_ClrFeature(USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_GetLen
  *         return the string length
- * @param  buf : pointer to the ascii string buffer
+ * @param  [in] buf : pointer to the ascii string buffer
  * @retval string length
  */
 static uint8_t USBD_GetLen(uint8_t *buf)

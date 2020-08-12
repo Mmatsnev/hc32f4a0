@@ -114,7 +114,7 @@ static USB_OTG_STS USB_OTG_CoreReset(USB_OTG_CORE_HANDLE *pdev);
 /**
  * @brief  USB_OTG_EnableCommonInt
  *         Initializes the commmon interrupts, used in both device and modes
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval None
  */
 static void USB_OTG_EnableCommonInt(USB_OTG_CORE_HANDLE *pdev)
@@ -196,10 +196,10 @@ static USB_OTG_STS USB_OTG_CoreReset(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_WritePacket Writes a packet into the Tx FIFO associated
  *         with the EP
- * @param  pdev         Selected device
- * @param  src          Source pointer
- * @param  ch_ep_num    End point number
- * @param  len          No. of bytes
+ * @param  [in] pdev         Selected device
+ * @param  [in] src          Source pointer
+ * @param  [in] ch_ep_num    End point number
+ * @param  [in] len          No. of bytes
  * @retval USB_OTG_STS  Status
  */
 USB_OTG_STS USB_OTG_WritePacket(USB_OTG_CORE_HANDLE *pdev,
@@ -231,9 +231,9 @@ USB_OTG_STS USB_OTG_WritePacket(USB_OTG_CORE_HANDLE *pdev,
 
 /**
  * @brief  USB_OTG_ReadPacket  Reads a packet from the Rx FIFO
- * @param  pdev     Selected device
- * @param  dest     Destination Pointer
- * @param  len      No. of bytes
+ * @param  [in] pdev     Selected device
+ * @param  [in] dest     Destination Pointer
+ * @param  [in] len      No. of bytes
  * @retval None
  */
 void *USB_OTG_ReadPacket(USB_OTG_CORE_HANDLE *pdev,
@@ -261,7 +261,7 @@ void *USB_OTG_ReadPacket(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USB_OTG_GetDeviceSpeed
  *         Get the device speed from the device status register
- * @param  pdev             Selected device
+ * @param  [in] pdev             Selected device
  * @retval status
  */
 enum USB_OTG_SPEED USB_OTG_GetDeviceSpeed (USB_OTG_CORE_HANDLE *pdev)
@@ -292,7 +292,7 @@ enum USB_OTG_SPEED USB_OTG_GetDeviceSpeed (USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_GetMode : Get current mode
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval current mode
  */
 uint32_t USB_OTG_GetMode(USB_OTG_CORE_HANDLE *pdev)
@@ -302,7 +302,7 @@ uint32_t USB_OTG_GetMode(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_IsDeviceMode : Check if it is device mode
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval num_in_ep
  */
 uint8_t USB_OTG_IsDeviceMode(USB_OTG_CORE_HANDLE *pdev)
@@ -313,7 +313,7 @@ uint8_t USB_OTG_IsDeviceMode(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_ReadCoreItr : returns the Core Interrupt register
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval Status
  */
 uint32_t USB_OTG_ReadCoreItr(USB_OTG_CORE_HANDLE *pdev)
@@ -327,8 +327,8 @@ uint32_t USB_OTG_ReadCoreItr(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_SelectCore
  *         Initialize core registers address.
- * @param  pdev         Selected device
- * @param  coreID       USB OTG Core ID
+ * @param  [in] pdev         Selected device
+ * @param  [in] coreID       USB OTG Core ID
  * @retval USB_OTG_STS  status
  */
 USB_OTG_STS USB_OTG_SelectCore(USB_OTG_CORE_HANDLE *pdev,
@@ -430,8 +430,8 @@ USB_OTG_STS USB_OTG_SelectCore(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USB_OTG_InitDevSpeed :Initializes the DevSpd field of DCFG register
  *         depending the PHY type and the enumeration speed of the device.
- * @param  pdev     Selected device
- * @param  speed    Speed for USB
+ * @param  [in] pdev     Selected device
+ * @param  [in] speed    Speed for USB
  * @retval None
  */
 void USB_OTG_InitDevSpeed(USB_OTG_CORE_HANDLE *pdev , uint8_t speed)
@@ -447,7 +447,7 @@ void USB_OTG_InitDevSpeed(USB_OTG_CORE_HANDLE *pdev , uint8_t speed)
  * @brief  USB_OTG_CoreInit
  *         Initializes the USB_OTG controller registers and prepares the core
  *         device mode or host mode operation.
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_CoreInit(USB_OTG_CORE_HANDLE *pdev)
@@ -523,7 +523,7 @@ USB_OTG_STS USB_OTG_CoreInit(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_EnableGlobalInt
  *         Enables the controller's Global Int in the AHB Config reg
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_EnableGlobalInt(USB_OTG_CORE_HANDLE *pdev)
@@ -541,7 +541,7 @@ USB_OTG_STS USB_OTG_EnableGlobalInt(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_DisableGlobalInt
  *         Enables the controller's Global Int in the AHB Config reg
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_DisableGlobalInt(USB_OTG_CORE_HANDLE *pdev)
@@ -589,8 +589,8 @@ USB_OTG_STS USB_OTG_stop_xfer (USB_OTG_CORE_HANDLE *pdev , uint32_t num )
 
 /**
  * @brief  USB_OTG_FlushTxFifo : Flush a Tx FIFO
- * @param  pdev     Selected device
- * @param  num      FO num
+ * @param  [in] pdev     Selected device
+ * @param  [in] num      FO num
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_FlushTxFifo (USB_OTG_CORE_HANDLE *pdev , uint32_t num )
@@ -620,7 +620,7 @@ USB_OTG_STS USB_OTG_FlushTxFifo (USB_OTG_CORE_HANDLE *pdev , uint32_t num )
 
 /**
  * @brief  USB_OTG_FlushRxFifo : Flush a Rx FIFO
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_FlushRxFifo( USB_OTG_CORE_HANDLE *pdev )
@@ -650,8 +650,8 @@ USB_OTG_STS USB_OTG_FlushRxFifo( USB_OTG_CORE_HANDLE *pdev )
 
 /**
  * @brief  USB_OTG_SetCurrentMode : Set ID line
- * @param  pdev     Selected device
- * @param  mode     (Host/device)
+ * @param  [in] pdev     Selected device
+ * @param  [in] mode     (Host/device)
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_SetCurrentMode(USB_OTG_CORE_HANDLE *pdev , uint8_t mode)
@@ -681,7 +681,7 @@ USB_OTG_STS USB_OTG_SetCurrentMode(USB_OTG_CORE_HANDLE *pdev , uint8_t mode)
 /**
  * @brief  USB_OTG_CoreInitDev : Initializes the USB_OTG controller registers
  *         for device mode
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_CoreInitDev (USB_OTG_CORE_HANDLE *pdev)
@@ -871,7 +871,7 @@ USB_OTG_STS USB_OTG_CoreInitDev (USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_EnableDevInt : Enables the Device mode interrupts
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_EnableDevInt(USB_OTG_CORE_HANDLE *pdev)
@@ -912,8 +912,8 @@ USB_OTG_STS USB_OTG_EnableDevInt(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  returns the EP Status
- * @param  pdev     Selected device
- * @param  ep       Endpoint structure
+ * @param  [in] pdev     Selected device
+ * @param  [in] ep       Endpoint structure
  * @retval EP status
  */
 uint32_t USB_OTG_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,USB_OTG_EP *ep)
@@ -965,7 +965,7 @@ uint32_t USB_OTG_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,USB_OTG_EP *ep)
 /**
  * @brief  enables EP0 OUT to receive SETUP packets and configures EP0
  *   for transmitting packets
- * @param  pdev         USB_OTG_EP0Activate
+ * @param  [in] pdev         USB_OTG_EP0Activate
  * @retval USB_OTG_STS  Status
  */
 USB_OTG_STS  USB_OTG_EP0Activate(USB_OTG_CORE_HANDLE *pdev)
@@ -1002,8 +1002,8 @@ USB_OTG_STS  USB_OTG_EP0Activate(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_EPActivate : Activates an EP
- * @param  pdev             Selected device
- * @param  ep               Endpoint
+ * @param  [in] pdev             Selected device
+ * @param  [in] ep               Endpoint
  * @retval USB_OTG_STS      Status
  */
 USB_OTG_STS USB_OTG_EPActivate(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
@@ -1055,8 +1055,8 @@ USB_OTG_STS USB_OTG_EPActivate(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 
 /**
  * @brief  USB_OTG_EPDeactivate : Deactivates an EP
- * @param  pdev             Selected device
- * @param  ep               Endpoint
+ * @param  [in] pdev             Selected device
+ * @param  [in] ep               Endpoint
  * @retval USB_OTG_STS      Status
  */
 USB_OTG_STS USB_OTG_EPDeactivate(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
@@ -1097,8 +1097,8 @@ USB_OTG_STS USB_OTG_EPDeactivate(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 /**
  * @brief  USB_OTG_EPStartXfer : Handle the setup for data xfer for an EP and
  *         starts the xfer
- * @param  pdev             Selected device
- * @param  ep               Endpoint
+ * @param  [in] pdev             Selected device
+ * @param  [in] ep               Endpoint
  * @retval USB_OTG_STS      Status
  */
 USB_OTG_STS USB_OTG_EPStartXfer(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
@@ -1229,8 +1229,8 @@ USB_OTG_STS USB_OTG_EPStartXfer(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 /**
  * @brief  USB_OTG_EP0StartXfer : Handle the setup for a data xfer for EP0 and
  *         starts the xfer
- * @param  pdev             Selected device
- * @param  ep               Endpoint
+ * @param  [in] pdev             Selected device
+ * @param  [in] ep               Endpoint
  * @retval USB_OTG_STS      Status
  */
 USB_OTG_STS USB_OTG_EP0StartXfer(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
@@ -1327,8 +1327,8 @@ USB_OTG_STS USB_OTG_EP0StartXfer(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 
 /**
  * @brief  USB_OTG_EPSetStall : Set the EP STALL
- * @param  pdev             Selected device
- * @param  ep               Endpoint
+ * @param  [in] pdev             Selected device
+ * @param  [in] ep               Endpoint
  * @retval USB_OTG_STS      Status
  */
 USB_OTG_STS USB_OTG_EPSetStall(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
@@ -1364,8 +1364,8 @@ USB_OTG_STS USB_OTG_EPSetStall(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 
 /**
  * @brief  Clear the EP STALL
- * @param  pdev             Selected device
- * @param  ep               Endpoint
+ * @param  [in] pdev             Selected device
+ * @param  [in] ep               Endpoint
  * @retval USB_OTG_STS      Status
  */
 USB_OTG_STS USB_OTG_EPClearStall(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
@@ -1396,7 +1396,7 @@ USB_OTG_STS USB_OTG_EPClearStall(USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep)
 }
 /**
  * @brief  USB_OTG_ReadDevAllOutEp_itr : returns OUT endpoint interrupt bits
- * @param  pdev : Selected device
+ * @param  [in] pdev : Selected device
  * @retval OUT endpoint interrupt bits
  */
 uint32_t USB_OTG_ReadDevAllOutEp_itr(USB_OTG_CORE_HANDLE *pdev)
@@ -1410,8 +1410,8 @@ uint32_t USB_OTG_ReadDevAllOutEp_itr(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_ReadDevOutEP_itr : returns Device OUT EP Interrupt register
- * @param  pdev     Selected device
- * @param  epnum    Endpoint number
+ * @param  [in] pdev     Selected device
+ * @param  [in] epnum    Endpoint number
  * @retval Device OUT EP Interrupt register
  */
 uint32_t USB_OTG_ReadDevOutEP_itr(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
@@ -1425,7 +1425,7 @@ uint32_t USB_OTG_ReadDevOutEP_itr(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
 
 /**
  * @brief  USB_OTG_ReadDevAllInEPItr : Get int status register
- * @param  pdev : Selected device
+ * @param  [in] pdev : Selected device
  * @retval int status register
  */
 uint32_t USB_OTG_ReadDevAllInEPItr(USB_OTG_CORE_HANDLE *pdev)
@@ -1438,7 +1438,7 @@ uint32_t USB_OTG_ReadDevAllInEPItr(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  configures EPO to receive SETUP packets
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval None
  */
 void USB_OTG_EP0_OutStart(USB_OTG_CORE_HANDLE *pdev)
@@ -1471,7 +1471,7 @@ void USB_OTG_EP0_OutStart(USB_OTG_CORE_HANDLE *pdev)
 }
 /**
  * @brief  USB_OTG_RemoteWakeup : active remote wakeup signalling
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval None
  */
 void USB_OTG_ActiveRemoteWakeup(USB_OTG_CORE_HANDLE *pdev)
@@ -1504,9 +1504,9 @@ void USB_OTG_ActiveRemoteWakeup(USB_OTG_CORE_HANDLE *pdev)
 }
 /**
  * @brief  Set the EP Status
- * @param  pdev     Selected device
- * @param  Status   New Status
- * @param  ep       EP structure
+ * @param  [in] pdev     Selected device
+ * @param  [in] Status   New Status
+ * @param  [in] ep       EP structure
  * @retval None
  */
 void USB_OTG_SetEPStatus (USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep , uint32_t Status)
@@ -1600,7 +1600,7 @@ void USB_OTG_SetEPStatus (USB_OTG_CORE_HANDLE *pdev , USB_OTG_EP *ep , uint32_t 
 #ifdef USE_HOST_MODE
 /**
  * @brief  USB_OTG_CoreInitHost : Initializes USB_OTG controller for host mode
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval status
  */
 USB_OTG_STS USB_OTG_CoreInitHost(USB_OTG_CORE_HANDLE *pdev)
@@ -1701,8 +1701,8 @@ USB_OTG_STS USB_OTG_CoreInitHost(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_DriveVbus : set/reset vbus
- * @param  pdev         Selected device
- * @param  state        VBUS state
+ * @param  [in] pdev         Selected device
+ * @param  [in] state        VBUS state
  * @retval None
  */
 void USB_OTG_DriveVbus (USB_OTG_CORE_HANDLE *pdev, uint8_t state)
@@ -1736,7 +1736,7 @@ void USB_OTG_DriveVbus (USB_OTG_CORE_HANDLE *pdev, uint8_t state)
 
 /**
  * @brief  USB_OTG_EnableHostInt: Enables the Host mode interrupts
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_EnableHostInt(USB_OTG_CORE_HANDLE *pdev)
@@ -1769,7 +1769,7 @@ USB_OTG_STS USB_OTG_EnableHostInt(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_ReadHPRT0 : Reads HPRT0 to modify later
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval HPRT0 value
  */
 uint32_t USB_OTG_ReadHPRT0(USB_OTG_CORE_HANDLE *pdev)
@@ -1786,7 +1786,7 @@ uint32_t USB_OTG_ReadHPRT0(USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_ReadHostAllChannels_intr : Register PCD Callbacks
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval Status
  */
 uint32_t USB_OTG_ReadHostAllChannels_intr (USB_OTG_CORE_HANDLE *pdev)
@@ -1796,7 +1796,7 @@ uint32_t USB_OTG_ReadHostAllChannels_intr (USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  USB_OTG_ResetPort : Reset Host Port
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval status
  * @note    (1)The application must wait at least 10 ms (+ 10 ms security)
  *   before clearing the reset bit.
@@ -1829,8 +1829,8 @@ uint32_t USB_OTG_testmode(USB_OTG_CORE_HANDLE *pdev,int mode)
 
 /**
  * @brief  USB_OTG_HC_Init : Prepares a host channel for transferring packets
- * @param  pdev     Selected device
- * @param  hc_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] hc_num   Channel number
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_HC_Init(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
@@ -1934,8 +1934,8 @@ USB_OTG_STS USB_OTG_HC_Init(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
 
 /**
  * @brief  USB_OTG_HC_StartXfer : Start transfer
- * @param  pdev     Selected device
- * @param  hc_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] hc_num   Channel number
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
@@ -2045,8 +2045,8 @@ USB_OTG_STS USB_OTG_HC_StartXfer(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
 
 /**
  * @brief  USB_OTG_HC_Halt : Halt channel
- * @param  pdev     Selected device
- * @param  hc_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] hc_num   Channel number
  * @retval USB_OTG_STS status
  */
 USB_OTG_STS USB_OTG_HC_Halt(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
@@ -2085,8 +2085,8 @@ USB_OTG_STS USB_OTG_HC_Halt(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
 
 /**
  * @brief  Issue a ping token
- * @param  pdev     Selected device
- * @param  hc_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] hc_num   Channel number
  * @retval None
  */
 USB_OTG_STS USB_OTG_HC_DoPing(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
@@ -2110,7 +2110,7 @@ USB_OTG_STS USB_OTG_HC_DoPing(USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
 
 /**
  * @brief  USB_OTG_IsHostMode : Check if it is host mode
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval num_in_ep
  */
 uint8_t USB_OTG_IsHostMode(USB_OTG_CORE_HANDLE *pdev)
@@ -2121,7 +2121,7 @@ uint8_t USB_OTG_IsHostMode(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_IsEvenFrame
 *          This function returns the frame number for sof packet
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval Frame number
  */
 uint8_t USB_OTG_IsEvenFrame (USB_OTG_CORE_HANDLE *pdev)
@@ -2132,8 +2132,8 @@ uint8_t USB_OTG_IsEvenFrame (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_InitFSLSPClkSel : Initializes the FSLSPClkSel field of the
  *         HCFG register on the PHY type
- * @param  pdev     Selected device
- * @param  freq     Clock frequency
+ * @param  [in] pdev     Selected device
+ * @param  [in] freq     Clock frequency
  * @retval None
  */
 void USB_OTG_InitFSLSPClkSel(USB_OTG_CORE_HANDLE *pdev , uint8_t freq)
@@ -2147,7 +2147,7 @@ void USB_OTG_InitFSLSPClkSel(USB_OTG_CORE_HANDLE *pdev , uint8_t freq)
 
 /**
  * @brief  Stop the device and clean up fifo's
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval None
  */
 void USB_OTG_StopHost(USB_OTG_CORE_HANDLE *pdev)

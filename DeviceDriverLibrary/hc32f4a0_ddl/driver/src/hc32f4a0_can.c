@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-08-10       Wuze            Refined CAN_GetStatusVal()
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -1130,7 +1131,8 @@ uint32_t CAN_GetStatusVal(const M4_CAN_TypeDef *CANx)
     DDL_ASSERT(IS_CAN_UNIT(CANx));
 
     u32RetVal  = CANx->CFG_STAT;
-    u32RCTRL   = READ_REG8_BIT(CANx->RCTRL, CAN_FLAG_RB_OVF);
+    u32RCTRL   = CANx->RCTRL;
+    u32RCTRL  &= CAN_FLAG_RB_OVF;
     u32RTIE    = CANx->RTIE;
     u32RTIF    = CANx->RTIF;
     u32ERRINT  = CANx->ERRINT;

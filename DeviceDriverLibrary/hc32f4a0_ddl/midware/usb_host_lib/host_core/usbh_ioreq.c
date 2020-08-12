@@ -71,7 +71,7 @@
  * @{
  */
 
-/** @defgroup USBH_IOREQ
+/** @defgroup USBH_IOREQ USB host IO request
  * @{
  */
 
@@ -118,12 +118,12 @@ static USBH_Status USBH_SubmitSetupRequest(USBH_HOST *phost,
 
 /**
  * @brief  USBH_CtlReq
- *         USBH_CtlReq sends a control request and provide the status after
- *            completion of the request
- * @param  pdev: Selected device
- * @param  req: Setup Request Structure
- * @param  buff: data buffer address to store the response
- * @param  length: length of the response
+ *         Sends a control request and provide the status after
+ *         completion of the request
+ * @param  [in] pdev: Selected device
+ * @param  [in] phost: Host
+ * @param  [in] buff: data buffer address to store the response
+ * @param  [in] length: length of the response
  * @retval Status
  */
 USBH_Status USBH_CtlReq     (USB_OTG_CORE_HANDLE *pdev,
@@ -176,9 +176,9 @@ USBH_Status USBH_CtlReq     (USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_CtlSendSetup
  *         Sends the Setup Packet to the Device
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer from which the Data will be send to Device
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer from which the Data will be send to Device
+ * @param  [in] hc_num: Host channel Number
  * @retval Status
  */
 USBH_Status USBH_CtlSendSetup ( USB_OTG_CORE_HANDLE *pdev,
@@ -197,10 +197,10 @@ USBH_Status USBH_CtlSendSetup ( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_CtlSendData
  *         Sends a data Packet to the Device
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer from which the Data will be sent to Device
- * @param  length: Length of the data to be sent
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer from which the Data will be sent to Device
+ * @param  [in] length: Length of the data to be sent
+ * @param  [in] hc_num: Host channel Number
  * @retval Status
  */
 USBH_Status USBH_CtlSendData ( USB_OTG_CORE_HANDLE *pdev,
@@ -236,10 +236,10 @@ USBH_Status USBH_CtlSendData ( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_CtlReceiveData
  *         Receives the Device Response to the Setup Packet
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer in which the response needs to be copied
- * @param  length: Length of the data to be received
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer in which the response needs to be copied
+ * @param  [in] length: Length of the data to be received
+ * @param  [in] hc_num: Host channel Number
  * @retval Status.
  */
 USBH_Status USBH_CtlReceiveData(USB_OTG_CORE_HANDLE *pdev,
@@ -260,10 +260,10 @@ USBH_Status USBH_CtlReceiveData(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_BulkSendData
  *         Sends the Bulk Packet to the device
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer from which the Data will be sent to Device
- * @param  length: Length of the data to be sent
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer from which the Data will be sent to Device
+ * @param  [in] length: Length of the data to be sent
+ * @param  [in] hc_num: Host channel Number
  * @retval Status
  */
 USBH_Status USBH_BulkSendData ( USB_OTG_CORE_HANDLE *pdev,
@@ -293,10 +293,10 @@ USBH_Status USBH_BulkSendData ( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_BulkReceiveData
  *         Receives IN bulk packet from device
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer in which the received data packet to be copied
- * @param  length: Length of the data to be received
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer in which the received data packet to be copied
+ * @param  [in] length: Length of the data to be received
+ * @param  [in] hc_num: Host channel Number
  * @retval Status.
  */
 USBH_Status USBH_BulkReceiveData( USB_OTG_CORE_HANDLE *pdev,
@@ -325,10 +325,10 @@ USBH_Status USBH_BulkReceiveData( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_InterruptReceiveData
  *         Receives the Device Response to the Interrupt IN token
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer in which the response needs to be copied
- * @param  length: Length of the data to be received
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer in which the response needs to be copied
+ * @param  [in] length: Length of the data to be received
+ * @param  [in] hc_num: Host channel Number
  * @retval Status.
  */
 USBH_Status USBH_InterruptReceiveData( USB_OTG_CORE_HANDLE *pdev,
@@ -359,10 +359,10 @@ USBH_Status USBH_InterruptReceiveData( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_InterruptSendData
  *         Sends the data on Interrupt OUT Endpoint
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer from where the data needs to be copied
- * @param  length: Length of the data to be sent
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer from where the data needs to be copied
+ * @param  [in] length: Length of the data to be sent
+ * @param  [in] hc_num: Host channel Number
  * @retval Status.
  */
 USBH_Status USBH_InterruptSendData( USB_OTG_CORE_HANDLE *pdev,
@@ -391,10 +391,10 @@ USBH_Status USBH_InterruptSendData( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_IsocReceiveData
  *         Receives the Device Response to the Isochronous IN token
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer in which the response needs to be copied
- * @param  length: Length of the data to be received
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer in which the response needs to be copied
+ * @param  [in] length: Length of the data to be received
+ * @param  [in] hc_num: Host channel Number
  * @retval Status.
  */
 USBH_Status USBH_IsocReceiveData( USB_OTG_CORE_HANDLE *pdev,
@@ -415,10 +415,10 @@ USBH_Status USBH_IsocReceiveData( USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_IsocSendData
  *         Sends the data on Isochronous OUT Endpoint
- * @param  pdev: Selected device
- * @param  buff: Buffer pointer from where the data needs to be copied
- * @param  length: Length of the data to be sent
- * @param  hc_num: Host channel Number
+ * @param  [in] pdev: Selected device
+ * @param  [in] buff: Buffer pointer from where the data needs to be copied
+ * @param  [in] length: Length of the data to be sent
+ * @param  [in] hc_num: Host channel Number
  * @retval Status.
  */
 USBH_Status USBH_IsocSendData( USB_OTG_CORE_HANDLE *pdev,
@@ -449,10 +449,9 @@ USBH_Status USBH_IsocSendData( USB_OTG_CORE_HANDLE *pdev,
  * @brief  USBH_SubmitSetupRequest
  *         Start a setup transfer by changing the state-machine and
  *         initializing  the required variables needed for the Control Transfer
- * @param  pdev: Selected device
- * @param  setup: Setup Request Structure
- * @param  buff: Buffer used for setup request
- * @param  length: Length of the data
+ * @param  [in] phost: Host
+ * @param  [in] buff: Buffer used for setup request
+ * @param  [in] length: Length of the data
  * @retval Status.
  */
 static USBH_Status USBH_SubmitSetupRequest(USBH_HOST *phost,

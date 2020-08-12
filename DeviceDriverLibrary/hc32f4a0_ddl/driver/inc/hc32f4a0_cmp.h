@@ -146,8 +146,6 @@ typedef struct
  * @{
  */
 
-#define CMP_TWSR_MASK           ((0xFFFFU)
-
 /** @defgroup CMP_Mode CMP compare mode
   * @{
   */
@@ -160,7 +158,7 @@ typedef struct
 /** @defgroup CMP_CVSL_Channal CMP compare voltage channel selection
   * @{
   */
-#define CMP_CVSL_NONE           (0x0U)                    /*!< Don't input compare voltage */
+#define CMP_CVSL_NONE           (0x0U)                    /*!< No input compare voltage */
 #define CMP_CVSL_INP1           (CMP_PMSR_CVSL_0)         /*!< Select INP1 as compare voltage */
 #define CMP_CVSL_INP2           (CMP_PMSR_CVSL_1)         /*!< Select INP2 as compare voltage */
 #define CMP_CVSL_INP3           (CMP_PMSR_CVSL_2)         /*!< Select INP3 as compare voltage */
@@ -172,7 +170,7 @@ typedef struct
 /** @defgroup CMP_RVSL_Source CMP reference voltage selection
   * @{
   */
-#define CMP_RVSL_NONE           (0x0U)                    /*!< Don't input reference voltage */
+#define CMP_RVSL_NONE           (0x0U)                    /*!< No input reference voltage */
 #define CMP_RVSL_INM1           (CMP_PMSR_RVSL_0)         /*!< Select INM1 as reference voltage */
 #define CMP_RVSL_INM2           (CMP_PMSR_RVSL_1)         /*!< Select INM2 as reference voltage */
 #define CMP_RVSL_INM3           (CMP_PMSR_RVSL_2)         /*!< Select INM3 as reference voltage */
@@ -184,17 +182,17 @@ typedef struct
 /** @defgroup CMP1_3_CVSL_Source CMP1 CMP3 compare voltage selection
   * @{
   */
-#define CMP1_INP3_NONE          (0x0U)                    /*!< Don't input voltage to CMP1 INP3 */
+#define CMP1_INP3_NONE          (0x0U)                    /*!< No input voltage to CMP1 INP3 */
 #define CMP1_INP3_CMP1_INP3     (CMP_VISR_P3SL_0)         /*!< Select CMP1_INP3 as CMP1 INP3 input */
 #define CMP1_INP3_CMP2_INP3     (CMP_VISR_P3SL_1)         /*!< Select CMP2_INP3 as CMP1 INP3 input */
-#define CMP1_INP2_NONE          (0x0U)                    /*!< Don't input voltage to CMP1 INP2 */
+#define CMP1_INP2_NONE          (0x0U)                    /*!< No input voltage to CMP1 INP2 */
 #define CMP1_INP2_PGA1          (CMP_VISR_P2SL_0)         /*!< Select PGA1 as CMP1 INP2 input */
 #define CMP1_INP2_PGA2          (CMP_VISR_P2SL_1)         /*!< Select PGA2 as CMP1 INP2 input */
 #define CMP1_INP2_CMP1_INP2     (CMP_VISR_P2SL_2)         /*!< Select CMP1_INP2 as CMP1 INP2 input */
-#define CMP3_INP3_NONE          (0x0U)                    /*!< Don't input voltage to CMP3 INP3 */
+#define CMP3_INP3_NONE          (0x0U)                    /*!< No input voltage to CMP3 INP3 */
 #define CMP3_INP3_CMP3_INP3     (CMP_VISR_P3SL_0)         /*!< Select CMP3_INP3 as CMP3 INP3 input */
 #define CMP3_INP3_CMP4_INP3     (CMP_VISR_P3SL_1)         /*!< Select CMP4_INP3 as CMP3 INP3 input */
-#define CMP3_INP2_NONE          (0x0U)                    /*!< Don't input voltage to CMP3 INP2 */
+#define CMP3_INP2_NONE          (0x0U)                    /*!< No input voltage to CMP3 INP2 */
 #define CMP3_INP2_PGA3          (CMP_VISR_P2SL_0)         /*!< Select PGA3 as CMP3 INP2 input */
 #define CMP3_INP2_PGA4          (CMP_VISR_P2SL_1)         /*!< Select PGA4 as CMP3 INP2 input */
 #define CMP3_INP2_CMP3_INP2     (CMP_VISR_P2SL_2)         /*!< Select CMP3_INP2 as CMp3 INP2 input */

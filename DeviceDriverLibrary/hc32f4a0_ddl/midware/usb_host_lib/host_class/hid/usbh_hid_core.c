@@ -73,7 +73,7 @@
  * @{
  */
 
-/** @defgroup USBH_HID
+/** @defgroup USBH_HID USB host HID
  * @{
  */
 
@@ -177,7 +177,7 @@ USBH_Class_cb_TypeDef  USBH_HID_cb =
 * @brief  USBH_HID_InterfaceDeInit
 *         The function DeInit the Host Channels used for the HID class.
 * @param  pdev: Selected device
-* @param  hdev: Selected device property
+* @param  phost: Host
 * @retval None
 */
 void USBH_HID_InterfaceDeInit ( USB_OTG_CORE_HANDLE *pdev, void *phost)
@@ -205,8 +205,9 @@ void USBH_HID_InterfaceDeInit ( USB_OTG_CORE_HANDLE *pdev, void *phost)
 * @brief  USBH_Set_Report
 *         Issues Set Report
 * @param  pdev: Selected device
+* @param  phost: Host
 * @param  reportType  : Report type to be sent
-* @param  reportID    : Targetted report ID for Set Report request
+* @param  reportId    : Targetted report ID for Set Report request
 * @param  reportLen   : Length of data report to be send
 * @param  reportBuff  : Report Buffer
 * @retval USBH_Status : Response for USB Set Idle request
@@ -241,8 +242,8 @@ USBH_Status USBH_Set_Report (USB_OTG_CORE_HANDLE *pdev,
 * @brief  USBH_HID_InterfaceInit
 *         The function init the HID class.
 * @param  pdev: Selected device
-* @param  hdev: Selected device property
-* @retval  USBH_Status :Response for USB HID driver intialization
+* @param  phost: Host
+* @retval  USBH_Status :Response for USB HID driver initialize
 */
 static USBH_Status USBH_HID_InterfaceInit ( USB_OTG_CORE_HANDLE *pdev,
                                            void *phost)
@@ -336,7 +337,7 @@ static USBH_Status USBH_HID_InterfaceInit ( USB_OTG_CORE_HANDLE *pdev,
 *         The function is responsible for handling HID Class requests
 *         for HID class.
 * @param  pdev: Selected device
-* @param  hdev: Selected device property
+* @param  phost: Host
 * @retval  USBH_Status :Response for USB Set Protocol request
 */
 static USBH_Status USBH_HID_ClassRequest(USB_OTG_CORE_HANDLE *pdev ,
@@ -401,10 +402,10 @@ static USBH_Status USBH_HID_ClassRequest(USB_OTG_CORE_HANDLE *pdev ,
 * @brief  USBH_HID_Handle
 *         The function is for managing state machine for HID data transfers
 * @param  pdev: Selected device
-* @param  hdev: Selected device property
+* @param  phost: Host
 * @retval USBH_Status
 */
-static USBH_Status USBH_HID_Handle(USB_OTG_CORE_HANDLE *pdev , void   *phost)
+static USBH_Status USBH_HID_Handle(USB_OTG_CORE_HANDLE *pdev , void *phost)
 {
     USBH_HOST *pphost = phost;
     USBH_Status status = USBH_OK;
@@ -472,8 +473,9 @@ static USBH_Status USBH_HID_Handle(USB_OTG_CORE_HANDLE *pdev , void   *phost)
 * @brief  USBH_Get_HID_ReportDescriptor
 *         Issue report Descriptor command to the device. Once the response
 *         received, parse the report descriptor and update the status.
-* @param  pdev   : Selected device
-* @param  Length : HID Report Descriptor Length
+* @param  pdev : Selected device
+* @param  phost : Host
+* @param  length : HID Report Descriptor Length
 * @retval USBH_Status : Response for USB HID Get Report Descriptor Request
 */
 static USBH_Status USBH_Get_HID_ReportDescriptor (USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost, uint16_t length)
@@ -500,7 +502,8 @@ static USBH_Status USBH_Get_HID_ReportDescriptor (USB_OTG_CORE_HANDLE *pdev, USB
 *         Issue HID Descriptor command to the device. Once the response
 *         received, parse the report descriptor and update the status.
 * @param  pdev   : Selected device
-* @param  Length : HID Descriptor Length
+* @param  phost   : Host
+* @param  length : HID Descriptor Length
 * @retval USBH_Status : Response for USB HID Get Report Descriptor Request
 */
 static USBH_Status USBH_Get_HID_Descriptor (USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost, uint16_t length)
@@ -522,8 +525,9 @@ static USBH_Status USBH_Get_HID_Descriptor (USB_OTG_CORE_HANDLE *pdev, USBH_HOST
 * @brief  USBH_Set_Idle
 *         Set Idle State.
 * @param  pdev: Selected device
+* @param  phost: Host
 * @param  duration: Duration for HID Idle request
-* @param  reportID : Targetted report ID for Set Idle request
+* @param  reportId : Targetted report ID for Set Idle request
 * @retval USBH_Status : Response for USB Set Idle request
 */
 static USBH_Status USBH_Set_Idle (USB_OTG_CORE_HANDLE *pdev,
@@ -548,6 +552,7 @@ static USBH_Status USBH_Set_Idle (USB_OTG_CORE_HANDLE *pdev,
 * @brief  USBH_Set_Protocol
 *         Set protocol State.
 * @param  pdev: Selected device
+* @param  phost: Host
 * @param  protocol : Set Protocol for HID : boot/report protocol
 * @retval USBH_Status : Response for USB Set Protocol request
 */
@@ -578,6 +583,7 @@ static USBH_Status USBH_Set_Protocol(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost
 /**
 * @brief  USBH_ParseHIDDesc
 *         This function Parse the HID descriptor
+* @param  desc: Descriptor structure
 * @param  buf: Buffer where the source descriptor is available
 * @retval None
 */

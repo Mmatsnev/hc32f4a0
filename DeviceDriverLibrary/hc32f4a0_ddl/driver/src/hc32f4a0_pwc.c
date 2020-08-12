@@ -204,64 +204,64 @@
 (   ((per) != 0x00UL)                           &&                              \
     (((per) | PWC_FCG3_MASK) == PWC_FCG3_MASK))
 
-/*  Parameter validity check for internal RAM setting of power mode control */
+/*! Parameter validity check for internal RAM setting of power mode control */
 #define IS_PWC_RAM_CONTROL(ram)                                                 \
 (   ((ram) != 0x00UL)                           &&                              \
     (((ram) | PWC_RAM_MASK) == PWC_RAM_MASK))
 
-/*  Parameter validity check for peripheral RAM setting of power mode control */
+/*! Parameter validity check for peripheral RAM setting of power mode control */
 #define IS_PWC_PRAM_CONTROL(pram)                                               \
 (   ((pram) != 0x00UL)                          &&                              \
     (((pram) | PWC_PRAM_MASK) == PWC_PRAM_MASK))
 
-/*  Parameter validity check for RAM setting of MCU operating mode */
+/*! Parameter validity check for RAM setting of MCU operating mode */
 #define IS_PWC_RAM_MODE(mode)                                                   \
 (   ((mode) == PWC_RAM_HIGH)                    ||                              \
     ((mode) == PWC_RAM_LOW))
 
-/*  Parameter validity check for PVD channel. */
+/*! Parameter validity check for PVD channel. */
 #define IS_PWC_PVD_CH(ch)                                                       \
 (   ((ch) == PWC_PVD_CH1)                       ||                              \
     ((ch) == PWC_PVD_CH2))
 
-/*  Parameter validity check for PVD2 ext. input function setting. */
+/*! Parameter validity check for PVD2 ext. input function setting. */
 #define IS_PWC_PVD2_EXINP(func)                                                 \
 (   ((func) == PWC_PVD2_EXINP_ON)               ||                              \
     ((func) == PWC_PVD2_EXINP_OFF))
 
-/*  Parameter validity check for PVD function setting. */
+/*! Parameter validity check for PVD function setting. */
 #define IS_PWC_PVD_EN(func)                                                     \
 (   ((func) == PWC_PVD_ON)                      ||                              \
     ((func) == PWC_PVD_OFF))
 
-/*  Parameter validity check for PVD interrupt or reset function setting. */
+/*! Parameter validity check for PVD interrupt or reset function setting. */
 #define IS_PWC_PVD_IR_EN(func)                                                  \
 (   ((func) == PWC_PVD_IR_ON)                   ||                              \
     ((func) == PWC_PVD_IR_OFF))
 
-/*  Parameter validity check for PVD interrupt or reset selection. */
+/*! Parameter validity check for PVD interrupt or reset selection. */
 #define IS_PWC_PVD_IR_SEL(sel)                                                  \
 (   ((sel) == PWC_PVD_RST)                      ||                              \
     ((sel) == PWC_PVD_INT))
 
-/*  Parameter validity check for PVD compare output setting. */
+/*! Parameter validity check for PVD compare output setting. */
 #define IS_PWC_PVD_CMP_EN(out)                                                  \
 (   ((out) == PWC_PVD_CMP_ON)                   ||                              \
     ((out) == PWC_PVD_CMP_OFF))
 
-/*  Parameter validity check for PVD digital noise filter function setting. */
+/*! Parameter validity check for PVD digital noise filter function setting. */
 #define IS_PWC_PVD_DFS_EN(func)                                                 \
 (   ((func) == PWC_PVD_DF_ON)                   ||                              \
     ((func) == PWC_PVD_DF_OFF))
 
-/*  Parameter validity check for PVD digital noise filter clock setting. */
+/*! Parameter validity check for PVD digital noise filter clock setting. */
 #define IS_PWC_PVD_DFS_CLK(clk)                                                 \
 (   ((clk) == PWC_PVD_DFS_DIV1)                 ||                              \
     ((clk) == PWC_PVD_DFS_DIV2)                 ||                              \
     ((clk) == PWC_PVD_DFS_DIV4)                 ||                              \
     ((clk) == PWC_PVD_DFS_MUL2))
 
-/*  Parameter validity check for PVD detect voltage setting. */
+/*! Parameter validity check for PVD detect voltage setting. */
 #define IS_PWC_PVD_VOLTAGE(vol)                                                 \
 (   ((vol) == PWC_PVD1_2V0_PVD2_2V1)            ||                              \
     ((vol) == PWC_PVD1_2V1_PVD2_2V3)            ||                              \
@@ -272,53 +272,53 @@
     ((vol) == PWC_PVD1_2V8_PVD2_2V9)            ||                              \
     ((vol) == PWC_PVD1_2V9_PVD2_1V1))
 
-/*  Parameter validity check for PVD NMI function setting. */
+/*! Parameter validity check for PVD NMI function setting. */
 #define IS_PWC_PVD_NMI(func)                                                    \
 (   ((func) == PWC_PVD_INT_MASK)                ||                              \
     ((func) == PWC_PVD_INT_NONMASK))
 
-/*  Parameter validity check for PVD trigger setting. */
+/*! Parameter validity check for PVD trigger setting. */
 #define IS_PWC_PVD_TRIG(trig)                                                   \
 (   ((trig) == PWC_PVD_TRIGGER_FALLING)         ||                              \
     ((trig) == PWC_PVD_TRIGGER_RISING)          ||                              \
     ((trig) == PWC_PVD_TRIGGER_BOTH))
 
-/*  Parameter validity check for PVD flag. */
+/*! Parameter validity check for PVD flag. */
 #define IS_PWC_PVD_GET_FLAG(flag)                                               \
 (   ((flag) != 0x00U)                           &&                              \
     (((flag) | PWC_PVD_FLAG_MASK) == PWC_PVD_FLAG_MASK))
 
-/*  Parameter validity check for wakeup0 event. */
+/*! Parameter validity check for wakeup0 event. */
 #define IS_PWC_WAKEUP0_EVENT(evt)                                               \
 (   ((evt) != 0x00U)                            &&                              \
     (((evt) | PWC_PDWK0_MASK) == PWC_PDWK0_MASK))
 
-/*  Parameter validity check for wakeup1 event. */
+/*! Parameter validity check for wakeup1 event. */
 #define IS_PWC_WAKEUP1_EVENT(evt)                                               \
 (   ((evt) != 0x00U)                            &&                              \
     (((evt) | PWC_PDWK1_MASK) == PWC_PDWK1_MASK))
 
-/*  Parameter validity check for wakeup2 event. */
+/*! Parameter validity check for wakeup2 event. */
 #define IS_PWC_WAKEUP2_EVENT(evt)                                               \
 (   ((evt) != 0x00U)                            &&                              \
     (((evt) | PWC_PDWK2_MASK) == PWC_PDWK2_MASK))
 
-/*  Parameter validity check for wakeup0 flag. */
+/*! Parameter validity check for wakeup0 flag. */
 #define IS_PWC_WAKEUP0_FLAG(flag)                                               \
 (   ((flag) != 0x00U)                           &&                              \
     (((flag) | PWC_PDWK_FLG0_MASK) == PWC_PDWK_FLG0_MASK))
 
-/*  Parameter validity check for wakeup1 flag. */
+/*! Parameter validity check for wakeup1 flag. */
 #define IS_PWC_WAKEUP1_FLAG(flag)                                               \
 (   ((flag) != 0x00U)                           &&                              \
     (((flag) | PWC_PDWK_FLG1_MASK) == PWC_PDWK_FLG1_MASK))
 
-/*  Parameter validity check for power down mode wakeup event with trigger. */
+/*! Parameter validity check for power down mode wakeup event with trigger. */
 #define IS_PWC_WAKEUP_TRIG_EVENT(evt)                                           \
 (   ((evt) != 0x00U)                            &&                              \
     (((evt) | PWC_PD_WKUP_TRIG_MASK) == PWC_PD_WKUP_TRIG_MASK))
 
-/*  Parameter validity check for power down mode wakeup trigger edge. */
+/*! Parameter validity check for power down mode wakeup trigger edge. */
 #define IS_PWC_WAKEUP_TRIG(edge)                                                \
 (   ((edge) == PWC_PD_WKUP_FALLING)             ||                              \
     ((edge) == PWC_PD_WKUP_RISING))

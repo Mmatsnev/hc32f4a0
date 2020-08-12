@@ -104,8 +104,8 @@
 /**
  * @brief  HCD_Init
  *         Initialize the HOST portion of the driver.
- * @param  pdev         Selected device
- * @param  coreID       USB Core select
+ * @param  [in] pdev         Selected device
+ * @param  [in] coreID       USB Core select
  * @retval Status
  */
 uint32_t HCD_Init(USB_OTG_CORE_HANDLE *pdev, USB_OTG_CORE_ID_TypeDef coreID)
@@ -140,7 +140,7 @@ uint32_t HCD_Init(USB_OTG_CORE_HANDLE *pdev, USB_OTG_CORE_ID_TypeDef coreID)
 /**
  * @brief  HCD_GetCurrentSpeed
  *         Get Current device Speed.
- * @param  pdev : Selected device
+ * @param  [in] pdev : Selected device
  * @retval Status
  */
 uint32_t HCD_GetCurrentSpeed (USB_OTG_CORE_HANDLE *pdev)
@@ -154,7 +154,7 @@ uint32_t HCD_GetCurrentSpeed (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  HCD_ResetPort
  *         Issues the reset command to device
- * @param  pdev : Selected device
+ * @param  [in] pdev : Selected device
  * @retval Status
  */
 uint32_t HCD_ResetPort(USB_OTG_CORE_HANDLE *pdev)
@@ -173,7 +173,7 @@ uint32_t HCD_ResetPort(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  HCD_IsDeviceConnected
  *         Check if the device is connected.
- * @param  pdev : Selected device
+ * @param  [in] pdev : Selected device
  * @retval Device connection status. 1 -> connected and 0 -> disconnected
  */
 uint32_t HCD_IsDeviceConnected(USB_OTG_CORE_HANDLE *pdev)
@@ -184,7 +184,7 @@ uint32_t HCD_IsDeviceConnected(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  HCD_GetCurrentFrame
  *         This function returns the frame number for sof packet
- * @param  pdev : Selected device
+ * @param  [in] pdev : Selected device
  * @retval Frame number
  */
 uint32_t HCD_GetCurrentFrame (USB_OTG_CORE_HANDLE *pdev)
@@ -195,8 +195,8 @@ uint32_t HCD_GetCurrentFrame (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  HCD_GetURB_State
  *         This function returns the last URBstate
- * @param  pdev     Selected device
- * @param  ch_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] ch_num   Channel number
  * @retval URB_STATE
  */
 URB_STATE HCD_GetURB_State (USB_OTG_CORE_HANDLE *pdev , uint8_t ch_num)
@@ -207,8 +207,8 @@ URB_STATE HCD_GetURB_State (USB_OTG_CORE_HANDLE *pdev , uint8_t ch_num)
 /**
  * @brief  HCD_GetXferCnt
  *         This function returns the last URBstate
- * @param  pdev     Selected device
- * @param  ch_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] ch_num   Channel number
  * @retval No. of data bytes transferred
  */
 uint32_t HCD_GetXferCnt (USB_OTG_CORE_HANDLE *pdev, uint8_t ch_num)
@@ -219,8 +219,8 @@ uint32_t HCD_GetXferCnt (USB_OTG_CORE_HANDLE *pdev, uint8_t ch_num)
 /**
  * @brief  HCD_GetHCState
  *         This function returns the HC Status
- * @param  pdev     Selected device
- * @param  ch_num   Channel number
+ * @param  [in] pdev     Selected device
+ * @param  [in] ch_num   Channel number
  * @retval HC_STATUS
  */
 HC_STATUS HCD_GetHCState (USB_OTG_CORE_HANDLE *pdev ,  uint8_t ch_num)
@@ -231,8 +231,8 @@ HC_STATUS HCD_GetHCState (USB_OTG_CORE_HANDLE *pdev ,  uint8_t ch_num)
 /**
  * @brief  HCD_HC_Init
  *         This function prepare a HC and start a transfer
- * @param  pdev: Selected device
- * @param  hc_num: Channel number
+ * @param  [in] pdev: Selected device
+ * @param  [in] hc_num: Channel number
  * @retval status
  */
 uint32_t HCD_HC_Init (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
@@ -243,8 +243,8 @@ uint32_t HCD_HC_Init (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)
 /**
  * @brief  HCD_SubmitRequest
  *         This function prepare a HC and start a transfer
- * @param  pdev: Selected device
- * @param  hc_num: Channel number
+ * @param  [in] pdev: Selected device
+ * @param  [in] hc_num: Channel number
  * @retval status
  */
 uint32_t HCD_SubmitRequest (USB_OTG_CORE_HANDLE *pdev , uint8_t hc_num)

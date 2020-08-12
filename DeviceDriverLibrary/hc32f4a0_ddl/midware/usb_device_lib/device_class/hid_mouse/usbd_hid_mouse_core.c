@@ -73,7 +73,7 @@
  * @{
  */
 
-/** @defgroup USBD_HID_MOUSE_CORE
+/** @defgroup USBD_HID_MOUSE_CORE USB Mouse device core
   * @{
   */
 
@@ -323,8 +323,8 @@ static uint8_t u8HidRevBuf[4U];
 /**
  * @brief  USBD_HID_Init
  *         Initialize the HID interface
- * @param  pdev: device instance
- * @param  cfgidx: Configuration index
+ * @param  [in] pdev: device instance
+ * @param  [in] cfgidx: Configuration index
  * @retval status
  */
 uint8_t  USBD_HID_Init (void  *pdev,
@@ -355,8 +355,8 @@ uint8_t  USBD_HID_Init (void  *pdev,
 /**
  * @brief  USBD_HID_Init
  **         DeInitialize the HID layer
- * @param  pdev: device instance
- * @param  cfgidx: Configuration index
+ * @param  [in] pdev: device instance
+ * @param  [in] cfgidx: Configuration index
  * @retval status
  */
 uint8_t  USBD_HID_DeInit (void  *pdev,
@@ -371,8 +371,8 @@ uint8_t  USBD_HID_DeInit (void  *pdev,
 /**
  * @brief  USBD_HID_Setup
  *         Handle the HID specific requests
- * @param  pdev: instance
- * @param  req: usb requests
+ * @param  [in] pdev: instance
+ * @param  [in] req: usb requests
  * @retval status
  */
 uint8_t  USBD_HID_Setup (void  *pdev,
@@ -456,8 +456,9 @@ uint8_t  USBD_HID_Setup (void  *pdev,
 /**
  * @brief  USBD_HID_SendReport
  *         Send HID Report
- * @param  pdev: device instance
- * @param  buff: pointer to report
+ * @param  [in] pdev:   device instance
+ * @param  [in] report: pointer to report
+ * @param  [in] len: length
  * @retval status
  */
 uint8_t USBD_HID_SendReport     (USB_OTG_CORE_HANDLE  *pdev,
@@ -474,8 +475,8 @@ uint8_t USBD_HID_SendReport     (USB_OTG_CORE_HANDLE  *pdev,
 /**
  * @brief  USBD_HID_GetCfgDesc
  *         return configuration descriptor
- * @param  speed : current device speed
- * @param  length : pointer data length
+ * @param  [in] speed : current device speed
+ * @param  [in] length : pointer data length
  * @retval pointer to descriptor buffer
  */
 static uint8_t  *USBD_HID_GetCfgDesc (uint8_t speed, uint16_t *length)
@@ -487,8 +488,8 @@ static uint8_t  *USBD_HID_GetCfgDesc (uint8_t speed, uint16_t *length)
 /**
  * @brief  USBD_HID_DataIn
  *         handle data IN Stage
- * @param  pdev: device instance
- * @param  epnum: endpoint index
+ * @param  [in] pdev: device instance
+ * @param  [in] epnum: endpoint index
  * @retval status
  */
 uint8_t  USBD_HID_DataIn (void  *pdev,

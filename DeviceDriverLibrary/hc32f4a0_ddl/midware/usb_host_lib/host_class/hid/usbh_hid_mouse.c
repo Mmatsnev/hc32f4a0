@@ -71,7 +71,7 @@
  * @{
  */
 
-/** @defgroup USBH_HID_MOUSE
+/** @defgroup USBH_HID_MOUSE USB host HID mouse
  * @{
  */
 

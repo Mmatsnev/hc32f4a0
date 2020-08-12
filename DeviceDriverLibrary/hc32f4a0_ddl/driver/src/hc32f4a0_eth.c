@@ -8,6 +8,7 @@
    Date             Author          Notes
    2020-06-12       Yangjp          First version
    2020-07-03       Yangjp          Optimize stc_eth_mac_init_t structure
+   2020-08-11       Yangjp          Fix a known potential risk in ETH_Init function
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -888,7 +889,7 @@ en_result_t ETH_Init(stc_eth_handle_t *pstcEthHandle, stc_eth_init_t *pstcEthIni
     uint32_t u32TempReg;
     uint32_t u32BusClk;
     uint32_t u32PhyTimeout;
-    uint16_t u16PhyReg;
+    uint16_t u16PhyReg = 0U;
 
     if ((NULL == pstcEthHandle) || (NULL == pstcEthInit))
     {

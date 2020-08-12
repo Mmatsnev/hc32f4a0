@@ -149,8 +149,6 @@
 (   ((x) == CMP_TIMERWIN_OFF)                   ||                             \
     ((x) == CMP_TIMERWIN_ON))
 
-#define IS_CMP_TIMWIN_SELECT(x)                      ((x) <= CMP_TWSR_MASK)
-
 #define IS_CMP_TIMWIN_INVALIDLEVEL(x)                                          \
 (   ((x) == CMP_TIMERWIN_INVALID_LEVEL_LOW)     ||                             \
     ((x) == CMP_TIMERWIN_INVALID_LEVEL_HIGH))
@@ -158,7 +156,6 @@
 #define IS_CMP_TIMWIN_OUT_LEVEL(x)                                             \
 (   ((x) == CMP_TIMERWIN_OUT_LEVEL_LOW)         ||                             \
     ((x) == CMP_TIMERWIN_OUT_LEVEL_HIGH))
-
 /**
  * @}
  */

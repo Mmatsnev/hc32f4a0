@@ -76,7 +76,7 @@
  * @{
  */
 
-/** @defgroup USBD_CORE
+/** @defgroup USBD_CORE USB device core
  * @{
  */
 
@@ -167,10 +167,11 @@ USBD_DCD_INT_cb_TypeDef  *USBD_DCD_INT_fops = &USBD_DCD_INT_cb;
 /**
  * @brief  USBD_Init
  *         Initailizes the device stack and load the class driver
- * @param  pdev: device instance
- * @param  core_address: USB OTG core ID
- * @param  class_cb: Class callback structure address
- * @param  usr_cb: User callback structure address
+ * @param  [in] pdev: device instance
+ * @param  [in] coreID: USB OTG core ID
+ * @param  [in] pDevice: USB device
+ * @param  [in] class_cb: Class callback structure address
+ * @param  [in] usr_cb: User callback structure address
  * @retval None
  */
 void USBD_Init(USB_OTG_CORE_HANDLE *pdev,
@@ -202,7 +203,7 @@ void USBD_Init(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBD_DeInit
  *         Re-Initialize th device library
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status: status
  */
 USBD_Status USBD_DeInit(USB_OTG_CORE_HANDLE *pdev)
@@ -214,8 +215,8 @@ USBD_Status USBD_DeInit(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBD_SetCfg
  *        Configure device and start the interface
- * @param  pdev: device instance
- * @param  cfgidx: configuration index
+ * @param  [in] pdev: device instance
+ * @param  [in] cfgidx: configuration index
  * @retval status
  */
 USBD_Status USBD_SetCfg(USB_OTG_CORE_HANDLE  *pdev, uint8_t cfgidx)
@@ -230,8 +231,8 @@ USBD_Status USBD_SetCfg(USB_OTG_CORE_HANDLE  *pdev, uint8_t cfgidx)
 /**
  * @brief  USBD_ClrCfg
  *         Clear current configuration
- * @param  pdev: device instance
- * @param  cfgidx: configuration index
+ * @param  [in] pdev: device instance
+ * @param  [in] cfgidx: configuration index
  * @retval status: USBD_Status
  */
 USBD_Status USBD_ClrCfg(USB_OTG_CORE_HANDLE  *pdev, uint8_t cfgidx)
@@ -252,7 +253,7 @@ USBD_Status USBD_ClrCfg(USB_OTG_CORE_HANDLE  *pdev, uint8_t cfgidx)
 /**
  * @brief  USBD_SetupStage
  *         Handle the setup stage
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_SetupStage(USB_OTG_CORE_HANDLE *pdev)
@@ -285,8 +286,8 @@ static uint8_t USBD_SetupStage(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBD_DataOutStage
  *         Handle data out stage
- * @param  pdev: device instance
- * @param  epnum: endpoint index
+ * @param  [in] pdev: device instance
+ * @param  [in] epnum: endpoint index
  * @retval status
  */
 static uint8_t USBD_DataOutStage(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
@@ -349,8 +350,8 @@ static uint8_t USBD_DataOutStage(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
 /**
  * @brief  USBD_DataInStage
  *         Handle data in stage
- * @param  pdev: device instance
- * @param  epnum: endpoint index
+ * @param  [in] pdev: device instance
+ * @param  [in] epnum: endpoint index
  * @retval status
  */
 static uint8_t USBD_DataInStage(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
@@ -418,7 +419,7 @@ static uint8_t USBD_DataInStage(USB_OTG_CORE_HANDLE *pdev , uint8_t epnum)
 /**
  * @brief  USBD_RunTestMode
  *         Launch test mode process
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t  USBD_RunTestMode (USB_OTG_CORE_HANDLE  *pdev)
@@ -430,7 +431,7 @@ static uint8_t  USBD_RunTestMode (USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_Reset
  *         Handle Reset event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_Reset(USB_OTG_CORE_HANDLE  *pdev)
@@ -457,7 +458,7 @@ static uint8_t USBD_Reset(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_Resume
  *         Handle Resume event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_Resume(USB_OTG_CORE_HANDLE  *pdev)
@@ -472,7 +473,7 @@ static uint8_t USBD_Resume(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_Suspend
  *         Handle Suspend event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_Suspend(USB_OTG_CORE_HANDLE  *pdev)
@@ -487,7 +488,7 @@ static uint8_t USBD_Suspend(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_SOF
  *         Handle SOF event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_SOF(USB_OTG_CORE_HANDLE  *pdev)
@@ -502,7 +503,7 @@ static uint8_t USBD_SOF(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_IsoINIncomplete
  *         Handle iso in incomplete event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_IsoINIncomplete(USB_OTG_CORE_HANDLE  *pdev)
@@ -514,7 +515,7 @@ static uint8_t USBD_IsoINIncomplete(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_IsoOUTIncomplete
  *         Handle iso out incomplete event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_IsoOUTIncomplete(USB_OTG_CORE_HANDLE  *pdev)
@@ -527,7 +528,7 @@ static uint8_t USBD_IsoOUTIncomplete(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_DevConnected
  *         Handle device connection event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_DevConnected(USB_OTG_CORE_HANDLE  *pdev)
@@ -540,7 +541,7 @@ static uint8_t USBD_DevConnected(USB_OTG_CORE_HANDLE  *pdev)
 /**
  * @brief  USBD_DevDisconnected
  *         Handle device disconnection event
- * @param  pdev: device instance
+ * @param  [in] pdev: device instance
  * @retval status
  */
 static uint8_t USBD_DevDisconnected(USB_OTG_CORE_HANDLE  *pdev)

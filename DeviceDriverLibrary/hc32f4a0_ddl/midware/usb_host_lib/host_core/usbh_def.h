@@ -79,7 +79,7 @@ extern "C"
  * @{
  */
 
-/** @defgroup USBH_DEF
+/** @defgroup USBH_DEF USB host define
  * @{
  */
 

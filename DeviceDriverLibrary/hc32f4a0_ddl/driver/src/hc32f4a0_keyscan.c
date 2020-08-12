@@ -86,7 +86,7 @@
  * @defgroup KEYSCAN_Check_Parameters_Validity KEYSCAN Check Parameters Validity
  * @{
  */
-/* Parameter valid check for KEYSCAN HiZ state cycles. */
+/*! Parameter valid check for KEYSCAN HiZ state cycles. */
 #define IS_KEYSCAN_HIZ_CLC(clc)                                                 \
 (   ((clc) == KEYSCAN_HIZ_CLC_4)            ||                                  \
     ((clc) == KEYSCAN_HIZ_CLC_8)            ||                                  \
@@ -97,7 +97,7 @@
     ((clc) == KEYSCAN_HIZ_CLC_512)          ||                                  \
     ((clc) == KEYSCAN_HIZ_CLC_1024))
 
-/* Parameter valid check for KEYSCAN low level output cycles. */
+/*! Parameter valid check for KEYSCAN low level output cycles. */
 #define IS_KEYSCAN_LOW_CLC(clc)                                                 \
 (   ((clc) == KEYSCAN_LOW_CLC_4)            ||                                  \
     ((clc) == KEYSCAN_LOW_CLC_8)            ||                                  \
@@ -123,13 +123,13 @@
     ((clc) == KEYSCAN_LOW_CLC_8M)           ||                                  \
     ((clc) == KEYSCAN_LOW_CLC_16M))
 
-/* Parameter valid check for KEYSCAN scan clock. */
+/*! Parameter valid check for KEYSCAN scan clock. */
 #define IS_KEYSCAN_CLK(clk)                                                     \
 (   ((clk) == KEYSCAN_CLK_HCLK)             ||                                  \
     ((clk) == KEYSCAN_CLK_LRC)              ||                                  \
     ((clk) == KEYSCAN_CLK_XTAL32))
 
-/* Parameter valid check for KEYSCAN keyout pins. */
+/*! Parameter valid check for KEYSCAN keyout pins. */
 #define IS_KEYSCAN_OUT(out)                                                     \
 (   ((out) == KEYSCAN_OUT_0T1)              ||                                  \
     ((out) == KEYSCAN_OUT_0T2)              ||                                  \
@@ -139,7 +139,7 @@
     ((out) == KEYSCAN_OUT_0T6)              ||                                  \
     ((out) == KEYSCAN_OUT_0T7))
 
-/* Parameter valid check for KEYSCAN keyin(EIRQ) pins. */
+/*! Parameter valid check for KEYSCAN keyin(EIRQ) pins. */
 #define IS_KEYSCAN_IN(in)                                                       \
 (   ((in) != 0x00U)                         &&                                  \
     (((in) | KEYSCAN_IN_MASK) == KEYSCAN_IN_MASK))

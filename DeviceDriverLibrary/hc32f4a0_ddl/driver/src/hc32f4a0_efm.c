@@ -9,6 +9,8 @@
    2020-06-12       Heqb           First version
    2020-07-03       Heqb           Add flag judgment when operate SWAP
    2020-07-07       Heqb           Add flag judgment for EFM_SetOperateMode function
+   2020-08-11       Heqb           1.Refine function EFM_SequenceProgram()
+                                   2.Typo
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -100,7 +102,7 @@
                                 EFM_FLAG_CLR_PRTWERR1 | EFM_FLAG_CLR_PGSZERR1 | EFM_FLAG_CLR_MISMTCH1 | \
                                 EFM_FLAG_CLR_OPTEND1  | EFM_FLAG_CLR_CLOLERR1)
 
-#define EFM_CHCHE_MASK         (EFM_FRMC_CRST | EFM_FRMC_PREFE | EFM_FRMC_DCACHE | EFM_FRMC_ICACHE)
+#define EFM_CACHE_MASK         (EFM_FRMC_CRST | EFM_FRMC_PREFE | EFM_FRMC_DCACHE | EFM_FRMC_ICACHE)
 
 #define EFM_FLAG_MASK          (EFM_FLAG_OTPWERR0 | EFM_FLAG_PRTWERR0 | EFM_FLAG_PGSZERR0 | \
                                 EFM_FLAG_MISMTCH0 | EFM_FLAG_OPTEND0  | EFM_FLAG_CLOLERR0 | \
@@ -116,10 +118,10 @@
  * @{
  */
 
-/*  Parameter validity check for flash latency. */
+/*! Parameter validity check for flash latency. */
 #define IS_VALID_EFM_WAIT_CYCLE(x)         ((x) <= EFM_WAIT_CYCLE_15)
 
-/*  Parameter validity check for operate mode. */
+/*! Parameter validity check for operate mode. */
 #define IS_VALID_EFM_OPERATE_MD(x)                                   \
 (   ((x) == EFM_MODE_PROGRAMSINGLE)   ||                             \
     ((x) == EFM_MODE_PROGRAMREADBACK) ||                             \
@@ -129,80 +131,80 @@
     ((x) == EFM_MODE_ERASEFULL)       ||                             \
     ((x) == EFM_MODE_READONLY))
 
-/*  Parameter validity check for flash interrupt select. */
+/*! Parameter validity check for flash interrupt select. */
 #define IS_VALID_EFM_INT_SEL(x)       (((x) | EFM_INT_MASK) == EFM_INT_MASK)
 
-/*  Parameter validity check for flash flag. */
+/*! Parameter validity check for flash flag. */
 #define IS_VALID_EFM_FLAG(x)          (((x) | EFM_FLAG_MASK) == EFM_FLAG_MASK)
 
-/*  Parameter validity check for flash clear flag. */
+/*! Parameter validity check for flash clear flag. */
 #define IS_VALID_EFM_CLRFLAG(x)       (((x) | EFM_CLR_FLAG_MASK) == EFM_CLR_FLAG_MASK)
 
-/*  Parameter validity check for bus status while flash program or erase. */
+/*! Parameter validity check for bus status while flash program or erase. */
 #define IS_VALID_EFM_BUS_STATUS(x)                                   \
 (   ((x) == EFM_BUS_BUSY)              ||                            \
     ((x) == EFM_BUS_RELEASE))
 
-/*  Parameter validity check for efm data cache reset function. */
+/*! Parameter validity check for efm data cache reset function. */
 #define IS_VALID_EFM_CACHERST_FUNC(x)                                \
 (   ((x) == EFM_CACHERST_ON)           ||                            \
     ((x) == EFM_CACHERST_OFF))
 
-/*  Parameter validity check for efm prefetch function. */
+/*! Parameter validity check for efm prefetch function. */
 #define IS_VALID_EFM_PREFETCH_FUNC(x)                                \
 (   ((x) == EFM_PREFETCH_ON)           ||                            \
     ((x) == EFM_PREFETCH_OFF))
 
-/*  Parameter validity check for efm data cache function. */
+/*! Parameter validity check for efm data cache function. */
 #define IS_VALID_EFM_DCHEEN_FUNC(x)                                  \
 (   ((x) == EFM_DATACACHE_ON)          ||                            \
     ((x) == EFM_DATACACHE_OFF))
 
-/*  Parameter validity check for efm instruction cache function. */
+/*! Parameter validity check for efm instruction cache function. */
 #define IS_VALID_EFM_ICHEEN_FUNC(x)                                  \
 (   ((x) == EFM_INSCACHE_ON)           ||                            \
     ((x) == EFM_INSCACHE_OFF))
 
-/*  Parameter validity check for efm status. */
+/*! Parameter validity check for efm status. */
 #define IS_VALID_EFM_STATUS(x)                                       \
 (   ((x) == EFM_FLASH0_ACT_FLASH1_ACT)     ||                        \
     ((x) == EFM_FLASH0_STP_FLASH1_ACT)     ||                        \
     ((x) == EFM_FLASH0_ACT_FLASH1_STP)     ||                        \
     ((x) == EFM_FLASH0_STP_FLASH1_STP))
 
-/*  Parameter validity check for efm address. */
+/*! Parameter validity check for efm address. */
 #define IS_VALID_EFM_ADDR(x)                                         \
 (   ((x) <= EFM_END_ADDR)              ||                            \
     (((x) >= EFM_OTP_BLOCK16) && ((x) <= EFM_OTP_BLOCK181)))
 
-/*  Parameter validity check for efm chip erase address. */
+/*! Parameter validity check for efm chip erase address. */
 #define IS_VALID_EFM_CHIP_ERASE_ADDR(x)          ((x) <= EFM_END_ADDR)
 
-/*  Parameter validity check for sector protected register locking. */
+/*! Parameter validity check for sector protected register locking. */
 #define IS_VALID_EFM_REG_LOCK(x)                       ((x) <= 0xFFU)
 
-/*  Parameter validity check for efm protect register . */
+/*! Parameter validity check for efm protect register . */
 #define IS_VALID_EFM_PRTREG(x)                                       \
 (   ((x) == EFM_PROTECT_FWMC)          ||                            \
     ((x) == EFM_PROTECT_OTP))
 
-/*  Parameter validity check for efm chip . */
+/*! Parameter validity check for efm chip . */
 #define IS_VALID_EFM_CHIP(x)    (((x) | EFM_FLASH0_STP_FLASH1_STP) == EFM_FLASH0_STP_FLASH1_STP)
 
-/*  Parameter validity check for efm read mode . */
+/*! Parameter validity check for efm read mode . */
 #define IS_VALID_EFM_LVREAD_MODE(x)                                  \
 (   ((x) == EFM_LOWVOLREAD_ON)         ||                            \
     ((x) == EFM_LOWVOLREAD_OFF))
 
-/*  Parameter validity check for efm erase mode . */
+/*! Parameter validity check for efm erase mode . */
 #define IS_VALID_EFM_ERASE_MODE(x)                                   \
 (   ((x) == EFM_MODE_ERASECHIP1)       ||                            \
     ((x) == EFM_MODE_ERASEFULL))
 
-/*  Parameter validity check for efm address alignment . */
+/*! Parameter validity check for efm address alignment . */
 #define IS_VALID_EFM_ADDR_ALIGNMENT(x)    (((x) | 0xFFFFFFFCUL) == 0xFFFFFFFCUL)
 
-/*  Parameter validity check for efm sector . */
+/*! Parameter validity check for efm sector . */
 #define IS_VALID_EFM_SECTOR(x)            ((x) <= EFM_SECTOR_255)
 
 /*  Check EFM lock status. */
@@ -808,9 +810,9 @@ en_result_t EFM_SingleProgram(uint32_t u32Addr, uint32_t u32Data)
     /* Clear the error flag. */
     EFM_ClearFlag(EFM_CLR_FLAG_MASK);
     /* Get CACHE status */
-    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Disable CACHE function */
-    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Set single program mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSINGLE);
     /* Program data. */
@@ -839,7 +841,7 @@ en_result_t EFM_SingleProgram(uint32_t u32Addr, uint32_t u32Data)
     /* Set read only mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* Recover CACHE function */
-    MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
+    MODIFY_REG32(M4_EFM->FRMC, EFM_CACHE_MASK, u32tmp);
 
     return enRet;
 }
@@ -872,9 +874,9 @@ en_result_t EFM_ProgramReadBack(uint32_t u32Addr, uint32_t u32Data)
     /* Clear the error flag. */
     EFM_ClearFlag(EFM_CLR_FLAG_MASK);
     /* Get CACHE status */
-    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Disable CACHE */
-    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Set Program and read back mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMREADBACK);
     /* Program data. */
@@ -907,7 +909,7 @@ en_result_t EFM_ProgramReadBack(uint32_t u32Addr, uint32_t u32Data)
     /* Set read only mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* recover CACHE function */
-    MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
+    MODIFY_REG32(M4_EFM->FRMC, EFM_CACHE_MASK, u32tmp);
 
     return enRet;
 }
@@ -929,9 +931,9 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
     uint32_t u32Timeout;
     uint32_t u32tmp;
     uint32_t u32LoopWords = u32Len >> 2UL;
-    uint32_t u32EfmFlag = EFM_FLAG_OPTEND1;
-    uint32_t u32EfmFlag1 = EFM_FLAG_RDY1;
-    uint32_t u32EfmClrFlag = EFM_FLAG_CLR_OPTEND1;
+    uint32_t u32EfmFlag = EFM_FLAG_OPTEND0;
+    uint32_t u32EfmFlag1 = EFM_FLAG_RDY0;
+    uint32_t u32EfmClrFlag = EFM_FLAG_CLR_OPTEND0;
     uint32_t u32SrcDataAddr = (uint32_t)pu32Buf;
     DDL_ASSERT(IS_VALID_EFM_ADDR(u32Addr));
     DDL_ASSERT(IS_VALID_EFM_ADDR_ALIGNMENT(u32Addr));
@@ -940,23 +942,21 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
     /* CLear the error flag. */
     EFM_ClearFlag(EFM_CLR_FLAG_MASK);
     /* Get CACHE status */
-    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Disable CACHE */
-    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Set sequence program mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSEQUENCE);
     /* program data. */
     while((u32LoopWords--) > 0UL)
     {
         RW_MEM32(u32Addr) = RW_MEM32(u32SrcDataAddr);
-        u32Addr += 4UL;
-        u32SrcDataAddr += 4UL;
         /* wait operate end. */
-        if((u32Addr < EFM_ADDR_SECTOR128) || (u32Addr >= EFM_OTP_BLOCK16))
+        if((u32Addr >= EFM_ADDR_SECTOR128) && (u32Addr < EFM_END_ADDR))
         {
-            u32EfmFlag = EFM_FLAG_OPTEND0;
-            u32EfmFlag1 = EFM_FLAG_RDY0;
-            u32EfmClrFlag = EFM_FLAG_CLR_OPTEND0;
+            u32EfmFlag = EFM_FLAG_OPTEND1;
+            u32EfmFlag1 = EFM_FLAG_RDY1;
+            u32EfmClrFlag = EFM_FLAG_CLR_OPTEND1;
         }
         u32Timeout = 0UL;
         while(Set != EFM_GetFlagStatus(u32EfmFlag))
@@ -983,8 +983,30 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
         {
             break;
         }
+        u32Addr += 4UL;
+        u32SrcDataAddr += 4UL;
+        if (u32Addr == EFM_ADDR_SECTOR128)
+        {
+            /* Set read only mode. */
+            MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
+            u32Timeout = 0UL;
+            /* wait for flash ready . */
+            while(Set != EFM_GetFlagStatus(u32EfmFlag1))
+            {
+                u32Timeout ++;
+                if(u32Timeout >= EFM_PGM_TIMEOUT)
+                {
+                    enRet = ErrorTimeout;
+                    break;
+                }
+            }
+            if (enRet == Ok)
+            {
+                /* Set sequence program mode. */
+                MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_PROGRAMSEQUENCE);
+            }
+        }
     }
-
     /* Set read only mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     u32Timeout = 0UL;
@@ -999,7 +1021,7 @@ en_result_t EFM_SequenceProgram(uint32_t u32Addr, uint32_t u32Len, const uint32_
         }
     }
     /* Recover CACHE */
-    MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
+    MODIFY_REG32(M4_EFM->FRMC, EFM_CACHE_MASK, u32tmp);
     return enRet;
 }
 
@@ -1026,9 +1048,9 @@ en_result_t EFM_SectorErase(uint32_t u32Addr)
     /* CLear the error flag. */
     EFM_ClearFlag(EFM_CLR_FLAG_MASK);
     /* Get CACHE status */
-    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Disable CACHE */
-    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Set sector erase mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_ERASESECTOR);
     /* Erase */
@@ -1052,7 +1074,7 @@ en_result_t EFM_SectorErase(uint32_t u32Addr)
     /* Set read only mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* Recover CACHE */
-    MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
+    MODIFY_REG32(M4_EFM->FRMC, EFM_CACHE_MASK, u32tmp);
 
     return enRet;
 }
@@ -1145,9 +1167,9 @@ en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr)
     /* CLear the error flag. */
     EFM_ClearFlag(EFM_CLR_FLAG_MASK);
     /* Get CACHE status */
-    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    u32tmp = READ_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* Disable CACHE */
-    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CHCHE_MASK);
+    CLEAR_REG32_BIT(M4_EFM->FRMC, EFM_CACHE_MASK);
     /* If wsap enable, Disable it */
     if (RW_MEM32(EFM_SWAP_ADDR) == EFM_SWAP_DATA)
     {
@@ -1235,7 +1257,7 @@ en_result_t EFM_ChipErase(uint32_t EraseMode, uint32_t u32Addr)
     /* Set read only mode. */
     MODIFY_REG32(M4_EFM->FWMC, EFM_FWMC_PEMOD, EFM_MODE_READONLY);
     /* recover CACHE */
-    MODIFY_REG32(M4_EFM->FRMC, EFM_CHCHE_MASK, u32tmp);
+    MODIFY_REG32(M4_EFM->FRMC, EFM_CACHE_MASK, u32tmp);
     return enRet;
 }
 

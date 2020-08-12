@@ -118,7 +118,7 @@ static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev);
 /**
  * @brief  USBO_OTG_ISR_Handler
  *
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval uint32_t
  */
 uint32_t USBO_OTG_ISR_Handler(USB_OTG_CORE_HANDLE *pdev)
@@ -150,7 +150,7 @@ uint32_t USBO_OTG_ISR_Handler(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_InitiateSRP
  *         Initiate an srp session
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval None
  */
 void USB_OTG_InitiateSRP(USB_OTG_CORE_HANDLE *pdev)
@@ -172,8 +172,8 @@ void USB_OTG_InitiateSRP(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_InitiateHNP
  *         Initiate HNP
- * @param  pdev     Selected device
- * @param  mode     Host or device mode
+ * @param  [in] pdev     Selected device
+ * @param  [in] mode     Host or device mode
  * @retval None
  */
 void USB_OTG_InitiateHNP(USB_OTG_CORE_HANDLE *pdev , uint8_t state, uint8_t mode)
@@ -239,7 +239,7 @@ uint32_t USB_OTG_GetCurrentState (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_HandleConnectorIDStatusChange_ISR
  *         handles the Connector ID Status Change Interrupt
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval Status
  */
 static uint32_t USB_OTG_HandleConnectorIDStatusChange_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -281,7 +281,7 @@ static uint32_t USB_OTG_HandleConnectorIDStatusChange_ISR(USB_OTG_CORE_HANDLE *p
 /**
  * @brief  USB_OTG_HandleSessionRequest_ISR
  *           Initiating the Session Request Protocol
-  * @param  pdev     Selected device
+  * @param  [in] pdev     Selected device
  * @retval Status
  */
 static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -313,7 +313,7 @@ static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_Read_itr
  *         returns the Core Interrupt register
- * @param  pdev     Selected device
+ * @param  [in] pdev     Selected device
  * @retval Status
  */
 static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev)
