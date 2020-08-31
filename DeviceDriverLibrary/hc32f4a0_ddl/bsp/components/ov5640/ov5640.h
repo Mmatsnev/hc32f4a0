@@ -1,13 +1,12 @@
 /**
  *******************************************************************************
- * @file  s29gl064n90tfi03.h
- * @brief This file contains all the functions prototypes of the NOR Flash 
- *        component library for s29gl064n90tfi03.
+ * @file  ov5640.h
+ * @brief This file contains all the functions prototypes of the OV5640 driver
+ *        library.
  @verbatim
    Change Logs:
    Date             Author          Notes
-   2020-06-12       Hongjh          First version
-   2020-08-25       Hongjh          Typo
+   2020-08-20       Zhangxl         First version
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -51,8 +50,8 @@
  * at all times.
  *******************************************************************************
  */
-#ifndef __S29GL064N90TFI03_H__
-#define __S29GL064N90TFI03_H__
+#ifndef __OV5640_H__
+#define __OV5640_H__
 
 /* C binding of definitions if building with C++ compiler */
 #ifdef __cplusplus
@@ -64,7 +63,6 @@ extern "C"
  * Include files
  ******************************************************************************/
 #include "hc32_common.h"
-#include "ddl_config.h"
 
 /**
  * @addtogroup BSP
@@ -76,12 +74,11 @@ extern "C"
  * @{
  */
 
-/**
- * @addtogroup S29GL064N90TFI03
- * @{
- */
+/** @defgroup OV5640
+  * @{
+  */
 
-#if (BSP_S29GL064N90TFI03_ENABLE == DDL_ON)
+#if (BSP_OV5640_ENABLE == BSP_ON)
 
 /*******************************************************************************
  * Global type definitions ('typedef')
@@ -91,18 +88,32 @@ extern "C"
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
 /**
- * @defgroup S29GL064N90TFI03_Global_Macros S29GL064N90TFI03 Global Macros
+ * @defgroup OV5640_Global_Macros OV5640 Global Macros
  * @{
  */
 
 /**
- * @defgroup S29GL064N90TFI03_ID_Information S29GL064N90TFI03 ID Information
- * @{
+ * @brief  OV5640 Chip ID
  */
-#define S29GL064N90TFI03_MANUFACTURER_ID    (0x0001U)
-#define S29GL064N90TFI03_DEVICE_ID1         (0x227EU)
-#define S29GL064N90TFI03_DEVICE_ID2         (0x2210U)
-#define S29GL064N90TFI03_DEVICE_ID3         (0x2201U)
+#define OV5640_CHIPIDH              (0x300AU)
+#define OV5640_CHIPIDL              (0x300BU)
+/**
+ * @}
+ */
+
+/**
+ * @brief  OV5640 ID
+ */
+#define OV5640_ID                   (0x5640U)
+/**
+ * @}
+ */
+
+/**
+ * @defgroup OV5640_Light_Control OV5640 Light Control
+ */
+#define OV5640_LIGHT_ON             (1U)
+#define OV5640_LIGHT_OFF            (0U)
 /**
  * @}
  */
@@ -119,65 +130,33 @@ extern "C"
   Global function prototypes (definition in C source)
  ******************************************************************************/
 /**
- * @addtogroup S29GL064N90TFI03_Global_Functions S29GL064N90TFI03 Global Functions
+ * @defgroup OV5640_Global_Functions OV5640 Global Functions
  * @{
  */
-en_result_t S29GL064_Init(void);
-void S29GL064_GetMemInfo(uint32_t *pu32MemStartAddr,
-                                        uint32_t *pu32SectorsNumber,
-                                        uint32_t *pu32BytesPerSector,
-                                        uint32_t *pu32BytesPerBufProgram);
-void S29GL064_Reset(void);
-en_result_t S29GL064_ReadId(uint16_t au16Id[], uint32_t u32Length);
-en_result_t S29GL064_ReadCfiId(uint16_t au16Id[], uint32_t u32Length);
-en_result_t S29GL064_EraseChip(void);
-en_result_t S29GL064_EraseSector(uint32_t u32SectorAddress);
-en_result_t S29GL064_Program(uint32_t u32ProgramAddress, uint16_t u16Data);
-en_result_t S29GL064_ProgramBuffer(uint32_t u32ProgramAddress,
-                                            uint16_t au16Data[],
-                                            uint32_t u32NumHalfwords);
-uint16_t S29GL064_Read(uint32_t u32ReadAddress);
-en_result_t S29GL064_ReadBuffer(uint32_t u32ReadAddress,
-                                    uint16_t au16DataBuf[],
-                                    uint32_t u32NumHalfwords);
+void OV5640_Init(void);
+uint16_t OV5640_ReadID(void);
+void OV5640_RGB565_Mode(void);
+void OV5640_SetOutSize(uint16_t u16X,
+                        uint16_t u16Y,
+                        uint16_t u16Width,
+                        uint16_t u16Height);
+void OV5640_LightContrl(uint8_t u8Switch);
+void OV5640_TestPattern(uint8_t u8Mode);
 
 /* Implement the below functions for the specified BSP board */
-en_result_t BSP_SMC_S29GL064_Init(void);
-void BSP_SMC_S29GL064_GetMemInfo(uint32_t *pu32MemStartAddr,
-                                        uint32_t *pu32SectorsNumber,
-                                        uint32_t *pu32BytesPerSector,
-                                        uint32_t *pu32BytesPerBufProgram);
-en_result_t BSP_SMC_S29GL064_ReadId(uint32_t u32DevicBaseAddress,
-                                        uint16_t au16Id[],
-                                        uint32_t u32Length);
-en_result_t BSP_SMC_S29GL064_ReadCfiId(uint32_t u32DevicBaseAddress,
-                                            uint16_t au16Id[],
-                                            uint32_t u32Length);
-en_result_t BSP_SMC_S29GL064_GetStatus(uint32_t u32DevicBaseAddress,
-                                            uint32_t Timeout);
-void BSP_SMC_S29GL064_Reset(uint32_t u32DevicBaseAddress);
-en_result_t BSP_SMC_S29GL064_EraseChip(uint32_t u32DevicBaseAddress);
-void BSP_SMC_S29GL064_EraseSector(uint32_t u32DevicBaseAddress,
-                                        uint32_t u32SectorAddress);
-en_result_t BSP_SMC_S29GL064_Program(uint32_t u32DevicBaseAddress,
-                                            uint32_t u32ProgramAddress,
-                                            uint16_t u16Data);
-uint16_t BSP_SMC_S29GL064_Read(uint32_t u32DevicBaseAddress,
-                                    uint32_t u32ReadAddress);
-en_result_t BSP_SMC_S29GL064_ProgramBuffer(uint32_t u32DevicBaseAddress,
-                                                  uint32_t u32ProgramAddress,
-                                                  const uint16_t au16Data[],
-                                                  uint32_t u32NumHalfwords);
-en_result_t BSP_SMC_S29GL064_ReadBuffer(uint32_t u32DevicBaseAddress,
-                                            uint32_t u32ReadAddress,
-                                            uint16_t au16DataBuf[],
-                                            uint32_t u32NumHalfwords);
+en_result_t BSP_OV5640_Init(void);
+en_result_t BSP_OV5640_ReadReg(uint16_t u16Reg,
+                                uint8_t *pu8RxBuf,
+                                uint32_t u32Len);
+en_result_t BSP_OV5640_WriteReg(uint16_t u16Reg,
+                                const uint8_t *pu8TxBuf,
+                                uint32_t u32Len);
 
 /**
  * @}
  */
 
-#endif /* BSP_S29GL064N90TFI03_ENABLE */
+#endif /* BSP_OV5640_ENABLE */
 
 /**
  * @}
@@ -188,14 +167,14 @@ en_result_t BSP_SMC_S29GL064_ReadBuffer(uint32_t u32DevicBaseAddress,
  */
 
 /**
-* @}
-*/
+ * @}
+ */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __S29GL064N90TFI03_H__ */
+#endif /* __OV5640_H__ */
 
 /*******************************************************************************
  * EOF (not truncated)

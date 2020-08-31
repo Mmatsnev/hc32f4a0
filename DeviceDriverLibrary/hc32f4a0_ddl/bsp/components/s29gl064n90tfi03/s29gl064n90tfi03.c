@@ -1,12 +1,13 @@
 /**
  *******************************************************************************
  * @file  s29gl064n90tfi03.c
- * @brief This midware file provides firmware functions to manage the NOR Flash 
+ * @brief This midware file provides firmware functions to manage the NOR Flash
  *        component library for s29gl064n90tfi03.
  @verbatim
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
+   2020-08-25       Hongjh          The macro-define parameter add parentheses
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -92,12 +93,12 @@
  */
 
 #define IS_S29GL064_BUFPROMGRAM_SIZE(halfwords)                                \
-(   (0UL < halfwords)             &&                                           \
-    ((halfwords << 1UL) <= S29GL064_BYTES_PER_BUFPROMGRAM))
+(   (0UL < (halfwords)) &&                                                     \
+    (((halfwords) << 1UL) <= S29GL064_BYTES_PER_BUFPROMGRAM))
 
 #define IS_S29GL064_ADDRESS(address, halfwords)                                \
-(   (S29GL064_START_ADDRESS <= address) &&                                     \
-    (address + (halfwords << 1UL)) <= S29GL064_END_ADDRESS)
+(   (S29GL064_START_ADDRESS <= (address)) &&                                   \
+    ((address) + ((halfwords) << 1UL)) <= S29GL064_END_ADDRESS)
 
 /**
  * @}

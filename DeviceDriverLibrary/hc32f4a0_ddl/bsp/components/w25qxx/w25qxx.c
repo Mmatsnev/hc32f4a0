@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-31       Wangmin         Modify for MISRAC2012
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -341,7 +342,7 @@ static void W25QXX_Write_NoCheck(const uint8_t *pBuffer, uint32_t WriteAddr, uin
     {
         pageremain = NumByteToWrite;
     }
-    while (1)
+    for(;;)
     {
         W25QXX_WritePage(WriteAddr, (uint8_t *)u32BufAdrTmp, pageremain);
         if (NumByteToWrite == (uint16_t)pageremain)
@@ -382,6 +383,7 @@ void W25QXX_WriteData(uint32_t u32Address, const uint8_t *pu8WriteBuf, uint32_t 
     uint16_t i;
     uint8_t  *pW25QXX_BUF;
     pW25QXX_BUF = W25QXX_BUFFER;
+    uint32_t u32WriteBufAddr = (uint32_t)&pu8WriteBuf;
 
     secpos     = u32Address / 4096U;
     secoff     = (uint16_t)(u32Address % 4096U);
@@ -389,9 +391,9 @@ void W25QXX_WriteData(uint32_t u32Address, const uint8_t *pu8WriteBuf, uint32_t 
 
     if (u32NumByteToWrite <= secremain)
     {
-        secremain = (uint16_t)u32NumByteToWrite;                                //��less than 4K
+        secremain = (uint16_t)u32NumByteToWrite;
     }
-    while (1)
+    for(;;)
     {
         W25QXX_ReadData(secpos * 4096U, pW25QXX_BUF, 4096U);         // read one sector content
         for (i = 0U; i < secremain; i++)                            // check if blank sector
@@ -413,7 +415,7 @@ void W25QXX_WriteData(uint32_t u32Address, const uint8_t *pu8WriteBuf, uint32_t 
         }
         else
         {
-            W25QXX_Write_NoCheck(pu8WriteBuf, u32Address, secremain);
+            W25QXX_Write_NoCheck((const uint8_t *)u32WriteBufAddr, u32Address, secremain);
         }
         if (u32NumByteToWrite == secremain)
         {
@@ -424,7 +426,7 @@ void W25QXX_WriteData(uint32_t u32Address, const uint8_t *pu8WriteBuf, uint32_t 
             secpos++;                                              // next sector
             secoff          = 0U;
 
-            pu8WriteBuf        += secremain;
+            u32WriteBufAddr    += secremain;
             u32Address         += secremain;
             u32NumByteToWrite  -= secremain;
             if (u32NumByteToWrite > 4096U)
