@@ -7,6 +7,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-08-28       Zhangxl         1. Add TCA9539/OV5640 macro-define.
+                                    2. Modify macro-define: LCD_RST_PORT
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -171,12 +173,14 @@ extern "C"
 /** @defgroup BSP_LCD_PortPin_Sel BSP LCD panel port/pin definition
  * @{
  */
-#define LCD_RST_PORT            (EIO_PORT1)
+#define LCD_RST_PORT            (EIO_PORT0)
 #define LCD_RST_PIN             (EIO_LCD_RST)
 #define LCD_RTCS_PORT           (EIO_PORT0)
 #define LCD_RTCS_PIN            (EIO_RTCS_CTRST)
 #define LCD_CTRST_PORT          (EIO_PORT0)
 #define LCD_CTRST_PIN           (EIO_RTCS_CTRST)
+#define LCD_CTINT_PORT          (EIO_PORT0)
+#define LCD_CTINT_PIN           (EIO_TOUCH_INT)
 
 /**
  * @}
@@ -215,21 +219,35 @@ extern "C"
  * @}
  */
 
-/** @defgroup BSP_TCA9539_Config BSP TCA9539 expand IC I2C config
+/** @defgroup BSP_I2C_Config BSP BSP I2C config
+ *  @note TCA9539/LCD/TOUCH/WM8731SEDS share the below I2C unit.
  * @{
  */
-#define TCA9539_ADDR            ((uint8_t)0xE8U)
-#define TCA9539_WRITE           ((uint8_t)0x00U)
-#define TCA9539_READ            ((uint8_t)0x01U)
+#define BSP_I2C_CH              (M4_I2C1)
+#define BSP_I2C_FCG             (PWC_FCG1_IIC1)
+#define BSP_I2C_BAUDRATE        (200000UL)
+#define BSP_I2C_TIMEOUT         (10000UL)
 
-#define TCA9539_SCL_PORT        (GPIO_PORT_D)
-#define TCA9539_SCL_PIN         (GPIO_PIN_03)
-#define TCA9539_SDA_PORT        (GPIO_PORT_F)
-#define TCA9539_SDA_PIN         (GPIO_PIN_10)
+#define BSP_I2C_SCL_PORT        (GPIO_PORT_D)
+#define BSP_I2C_SCL_PIN         (GPIO_PIN_03)
+#define BSP_I2C_SCL_GPIO_FUNC   (GPIO_FUNC_49_I2C1_SCL)
 
-#define TCA9539_I2C_CH          (M4_I2C1)
-#define TCA9539_BAUDRATE        (200000UL)
-#define TCA9539_TIMEOUT         (10000UL)
+#define BSP_I2C_SDA_PORT        (GPIO_PORT_F)
+#define BSP_I2C_SDA_PIN         (GPIO_PIN_10)
+#define BSP_I2C_SDA_GPIO_FUNC   (GPIO_FUNC_48_I2C1_SDA)
+
+#define BSP_I2C_WR              (0x00U)
+#define BSP_I2C_RD              (0x01U)
+
+/* TCA9539 I2C Parameter */
+#define TCA9539_I2C_CH          (BSP_I2C_CH)
+#define TCA9539_ADDR            (0xE8U)
+#define TCA9539_TIMEOUT         (BSP_I2C_TIMEOUT)
+
+/* OV5640 I2C Parameter */
+#define OV5640_I2C_CH           (BSP_I2C_CH)
+#define OV5640_ADDR             (0x78U)
+#define OV5640_TIMEOUT          (BSP_I2C_TIMEOUT)
 /**
  * @}
  */
@@ -249,24 +267,28 @@ extern "C"
  * @addtogroup BSP_Global_Functions
  * @{
  */
-void BSP_LED_Init(void);
-void BSP_LED_On(uint8_t u8Led);
-void BSP_LED_Off(uint8_t u8Led);
-void BSP_LED_Toggle(uint8_t u8Led);
+void BSP_CLK_Init(void);
+
 void BSP_KEY_Init(void);
 en_flag_status_t BSP_KEY_GetStatus(uint32_t u32Key);
-void BSP_CLK_Init(void);
-void BSP_CAM_Init(void);
+
+void BSP_CAM_IO_Init(void);
 void BSP_CAM_RSTCmd(uint8_t Cmd);
 void BSP_CAM_STBCmd(uint8_t Cmd);
 
 void BSP_CAN_STB_IO_Init(void);
 void BSP_CAN_STBCmd(uint8_t Cmd);
 
+void BSP_CT_RSTCmd(uint8_t Cmd);
+
 void BSP_LCD_IO_Init(void);
 void BSP_LCD_RSTCmd(uint8_t Cmd);
 void BSP_LCD_BKLCmd(uint8_t Cmd);
 
+void BSP_LED_Init(void);
+void BSP_LED_On(uint8_t u8Led);
+void BSP_LED_Off(uint8_t u8Led);
+void BSP_LED_Toggle(uint8_t u8Led);
 /**
  * @}
  */
