@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao         First version
+   2020-08-31       Hexiao         Modify I2C init flow
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -267,7 +268,7 @@ en_result_t Master_Stop(void)
  *          - I2C_RET_ERROR  Process failed
  *          - I2C_RET_OK     Process success
  */
-uint8_t Master_Initialize(void)
+en_result_t Master_Initialize(void)
 {
     stc_i2c_init_t stcI2cInit;
     float32_t fErr;
@@ -277,12 +278,15 @@ uint8_t Master_Initialize(void)
     I2C_StructInit(&stcI2cInit);
     stcI2cInit.u32Baudrate = I2C_BAUDRATE;
     stcI2cInit.u32SclTime = 5U;
-    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV1;
-    I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
+    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV4;
+    en_result_t enRet = I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
 
-    I2C_Cmd(M4_I2C1, Enable);
+    if(enRet == Ok)
+    {
+        I2C_Cmd(M4_I2C1, Enable);
+    }
 
-    return I2C_RET_OK;
+    return enRet;
 }
 
 /**
@@ -356,6 +360,7 @@ int32_t main(void)
     BSP_CLK_Init();
     Master_LedInit();
 
+
     uint32_t i;
     en_result_t enRet = Ok;
     uint8_t u8TxBuf[TEST_DATA_LEN];
@@ -379,7 +384,8 @@ int32_t main(void)
     PWC_Fcg1PeriphClockCmd(PWC_FCG1_IIC1, Enable);
 
     /* Initialize I2C peripheral and enable function*/
-    Master_Initialize();
+    enRet = Master_Initialize();
+    JudgeResult(enRet);
     #ifdef Debug
     uint32_t test = TimeCntForWaitAStatus(5U);
     #endif

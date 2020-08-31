@@ -460,7 +460,7 @@ en_result_t RTC_IntrusionConfig(uint8_t u8Ch, const stc_rtc_intrusion_t *pstcInt
 en_result_t RTC_GetIntrusionTimestamp(uint8_t u8Format, stc_rtc_timestamp_t *pstcTimestamp);
 void RTC_IntrusionCmd(uint8_t u8Ch, en_functional_state_t enNewSta);
 
-/* Interrupts and flags management functions */
+/* Interrupt and flag management functions */
 void RTC_IntCmd(uint32_t u32IntSrc, en_functional_state_t enNewSta);
 en_flag_status_t RTC_GetStatus(uint32_t u32Flag);
 void RTC_ClearStatus(uint32_t u32Flag);

@@ -288,7 +288,7 @@ __WEAKDEF void DDL_AssertHandler(const char *file, int line)
     printf("Wrong parameters value: file %s on line %d\r\n", file, line);
 #endif
 
-    while (1)
+    for (;;)
     {
         ;
     }

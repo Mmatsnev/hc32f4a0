@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-08-19       Wuze            Refined
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -216,7 +217,9 @@ int32_t main(void)
     uint32_t i;
     uint32_t u32Temp;
     float32_t f32Temp;
-
+#if (APP_FUNC == APP_FUNC_CAPTURE_EVENT)
+    uint8_t u8FirstCapt = 0U;
+#endif
     /* MCU Peripheral registers write unprotected. */
     Peripheral_WE();
     /* System clock is configured as 200MHz. */
@@ -237,10 +240,21 @@ int32_t main(void)
 
     while (1U)
     {
+#if (APP_FUNC == APP_FUNC_CAPTURE_EVENT)
+        if (m_u32CaptCnt == 1U)
+        {
+            if (u8FirstCapt == 0U)
+            {
+                DBG("First capturing.\n");
+                u8FirstCapt = 1U;
+            }
+        }
+#endif
         if (m_u32CaptCnt >= APP_CAPT_COUNT)
         {
 #if (APP_FUNC == APP_FUNC_CAPTURE_EVENT)
             (void)i;
+            u8FirstCapt = 0U;
             TMR2_Stop(APP_TMR2_UNIT, APP_TMR2_CH);
 
             if (m_u32OvfCnt > 0U)

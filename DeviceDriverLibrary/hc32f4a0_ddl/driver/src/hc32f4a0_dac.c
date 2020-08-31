@@ -10,6 +10,7 @@
    2020-07-15       Hexiao          1. Modify DAC_ChannelCmd to DAC_Start and DAC_Stop
                                     2. Modify DAC_DualChannelCmd to DAC_DualChannelStart
                                        and DAC_DualChannelStop
+   2020-08-31       Hexiao          Refine DAC_AMPCmd
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -242,7 +243,7 @@ en_result_t DAC_AMPCmd(M4_DAC_TypeDef *DACx, uint16_t u16Ch, en_functional_state
     en_result_t ret = Ok;
     uint16_t u16Cmd = (uint16_t)1U << (DAC_DACR_EXTDSL1_POS + u16Ch);
 
-    if(0U != (READ_REG16_BIT(DACx->DACR, u16Cmd)))
+    if((0U != (READ_REG16_BIT(DACx->DACR, u16Cmd))) && (Enable == enNewState))
     {
         ret = ErrorInvalidMode;
     }

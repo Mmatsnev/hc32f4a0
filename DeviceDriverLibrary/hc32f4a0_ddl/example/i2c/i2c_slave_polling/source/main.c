@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao         First version
+   2020-08-31       Hexiao         Modify I2C init flow
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -263,20 +264,23 @@ static uint8_t Slave_Initialize(void)
 
     I2C_StructInit(&stcI2cInit);
     stcI2cInit.u32Baudrate = I2C_BAUDRATE;
-    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV1;
+    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV4;
     stcI2cInit.u32SclTime = 5U;
-    I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
+    en_result_t enRet = I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
 
-    I2C_Cmd(M4_I2C1, Enable);
+    if(enRet == Ok)
+    {
+        I2C_Cmd(M4_I2C1, Enable);
 
-    /* Set slave address*/
-#ifdef I2C_10BITS_ADDRESS
-    I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_10BIT, DEVICE_ADDRESS);
-#else
-    I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_7BIT, DEVICE_ADDRESS);
-#endif
+        /* Set slave address*/
+        #ifdef I2C_10BITS_ADDRESS
+        I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_10BIT, DEVICE_ADDRESS);
+        #else
+        I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_7BIT, DEVICE_ADDRESS);
+        #endif
+    }
 
-    return I2C_RET_OK;
+    return enRet;
 }
 
 /**
@@ -304,7 +308,16 @@ int32_t main(void)
     PWC_Fcg1PeriphClockCmd(PWC_FCG1_IIC1, Enable);
 
     /* Initialize I2C peripheral and enable function*/
-    Slave_Initialize();
+    uint8_t u8Ret = Slave_Initialize();
+    if(u8Ret != Ok)
+    {
+        /* Initialize Fail*/
+        while(1U)
+        {
+            DDL_DelayMS(500U);
+        }
+    }
+
     uint8_t u8RxBuf[TEST_DATA_LEN] = {0};
     while(1)
     {

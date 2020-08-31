@@ -50,15 +50,6 @@
  * at all times.
  *******************************************************************************
  */
-
-/** \file usbd_msc_data.h
- **
- ** A detailed description is available at
- ** @link header file for the usbd_msc_data.c @endlink
- **
- **   - 2020-06-12  1.0  Zhangxl First version for USB MSC device demo.
- **
- ******************************************************************************/
 #ifndef __USBD_MSC_DATA_H__
 #define __USBD_MSC_DATA_H__
 

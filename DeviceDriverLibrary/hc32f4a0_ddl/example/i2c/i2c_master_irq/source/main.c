@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao          First version
+   2020-08-31       Hexiao          Modify I2C init flow
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -501,56 +502,59 @@ static uint8_t Master_Initialize(void)
     I2C_StructInit(&stcI2cInit);
     stcI2cInit.u32Baudrate = I2C_BAUDRATE;
     stcI2cInit.u32SclTime = 5U;
-    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV1;
-    I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
+    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV4;
+    en_result_t enRet = I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
+    
+    if(enRet == Ok)
+    {
+        /* Set slave address*/
+        #ifdef I2C_10BITS_ADDRESS
+        I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_10BIT, DEVICE_ADDRESS);
+        #else
+        I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_7BIT, DEVICE_ADDRESS);
+        #endif
+    
+        /* Register IRQ handler && configure NVIC. */
+        stcIrqSignCfg.enIRQn = I2C_EEI_IRQn;
+        stcIrqSignCfg.enIntSrc = I2C_EEI_SOURCE;
+        stcIrqSignCfg.pfnCallback = &I2C_EEI_Callback;
+        INTC_IrqSignIn(&stcIrqSignCfg);
+        NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
+        NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
+        NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
+    
+        stcIrqSignCfg.enIRQn = I2C_RXI_IRQn;
+        stcIrqSignCfg.enIntSrc = I2C_RXI_SOURCE;
+        stcIrqSignCfg.pfnCallback = &I2C_RXI_Callback;
+        INTC_IrqSignIn(&stcIrqSignCfg);
+        NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
+        NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
+        NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
+    
+        stcIrqSignCfg.enIRQn = I2C_TXI_IRQn;
+        stcIrqSignCfg.enIntSrc = I2C_TXI_SOURCE;
+        stcIrqSignCfg.pfnCallback = &I2C_TXI_Callback;
+        INTC_IrqSignIn(&stcIrqSignCfg);
+        NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
+        NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
+        NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
+    
+        stcIrqSignCfg.enIRQn = I2C_TEI_IRQn;
+        stcIrqSignCfg.enIntSrc = I2C_TEI_SOURCE;
+        stcIrqSignCfg.pfnCallback = &I2C_TEI_Callback;
+        INTC_IrqSignIn(&stcIrqSignCfg);
+        NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
+        NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
+        NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
+    
+        /* I2C function command */
+        I2C_Cmd(M4_I2C1, Enable);
+    
+        /* Config startf and slave address match interrupt function*/
+        I2C_IntCmd(M4_I2C1, I2C_CR2_STARTIE | I2C_CR2_SLADDR0IE, Enable);
+    }
 
-    /* Set slave address*/
-#ifdef I2C_10BITS_ADDRESS
-    I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_10BIT, DEVICE_ADDRESS);
-#else
-    I2C_SlaveAddrConfig(M4_I2C1, I2C_ADDR_0, I2C_ADDR_MODE_7BIT, DEVICE_ADDRESS);
-#endif
-
-    /* Register IRQ handler && configure NVIC. */
-    stcIrqSignCfg.enIRQn = I2C_EEI_IRQn;
-    stcIrqSignCfg.enIntSrc = I2C_EEI_SOURCE;
-    stcIrqSignCfg.pfnCallback = &I2C_EEI_Callback;
-    INTC_IrqSignIn(&stcIrqSignCfg);
-    NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
-    NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
-    NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
-
-    stcIrqSignCfg.enIRQn = I2C_RXI_IRQn;
-    stcIrqSignCfg.enIntSrc = I2C_RXI_SOURCE;
-    stcIrqSignCfg.pfnCallback = &I2C_RXI_Callback;
-    INTC_IrqSignIn(&stcIrqSignCfg);
-    NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
-    NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
-    NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
-
-    stcIrqSignCfg.enIRQn = I2C_TXI_IRQn;
-    stcIrqSignCfg.enIntSrc = I2C_TXI_SOURCE;
-    stcIrqSignCfg.pfnCallback = &I2C_TXI_Callback;
-    INTC_IrqSignIn(&stcIrqSignCfg);
-    NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
-    NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
-    NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
-
-    stcIrqSignCfg.enIRQn = I2C_TEI_IRQn;
-    stcIrqSignCfg.enIntSrc = I2C_TEI_SOURCE;
-    stcIrqSignCfg.pfnCallback = &I2C_TEI_Callback;
-    INTC_IrqSignIn(&stcIrqSignCfg);
-    NVIC_ClearPendingIRQ(stcIrqSignCfg.enIRQn);
-    NVIC_SetPriority(stcIrqSignCfg.enIRQn, DDL_IRQ_PRIORITY_03);
-    NVIC_EnableIRQ(stcIrqSignCfg.enIRQn);
-
-    /* I2C function command */
-    I2C_Cmd(M4_I2C1, Enable);
-
-    /* Config startf and slave address match interrupt function*/
-    I2C_IntCmd(M4_I2C1, I2C_CR2_STARTIE | I2C_CR2_SLADDR0IE, Enable);
-
-    return I2C_RET_OK;
+    return enRet;
 }
 
 /**
@@ -587,7 +591,16 @@ int32_t main(void)
     /* Enable peripheral clock */
     PWC_Fcg1PeriphClockCmd(PWC_FCG1_IIC1, Enable);
     /* Initialize I2C peripheral and enable function*/
-    Master_Initialize();
+    uint8_t u8Ret = Master_Initialize();
+    if(u8Ret != Ok)
+    {
+        /* Initialize Fail*/
+        while(1U)
+        {
+            DDL_DelayMS(500U);
+        }
+    }
+
     /* I2C master data write */
     MasterSendData(TEST_DATA_LEN, u8TxBuf);
 

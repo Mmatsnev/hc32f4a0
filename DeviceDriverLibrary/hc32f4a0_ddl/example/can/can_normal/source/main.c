@@ -122,7 +122,6 @@
     #define APP_CAN_CLK_CH                  (CLK_CAN_CH2)
     #define APP_CAN_CLK_DIV                 (CLK_CAN2_CLK_MCLK_DIV3)
 
-    #define CAN_SHARE_IRQn                  (Int138_IRQn)
     #define APP_CAN_INT_TYPE                (CAN_INT_ALL)
     #define APP_CAN_INT_PRIO                (DDL_IRQ_PRIORITY_03)
     #define APP_CAN_INT_SRC                 (INT_CAN2_HOST)

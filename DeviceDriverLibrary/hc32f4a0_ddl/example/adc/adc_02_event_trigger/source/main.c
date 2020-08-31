@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-08-28       Wuze            Refined code for interrupt.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -82,14 +83,14 @@
  * ADC unit instance for this example.
  * Marco 'APP_ADC_UNIT' can be defined as M4_ADCx(x=1, 2, 3).
  * Definition of 'APP_ADC_PERIP_CLK' depends on 'APP_ADC_UNIT'.
- * 
+ *
  * NOTE!!! The following definitions are depend on the definitions of 'APP_ADC_UNIT'.
  *   APP_ADC_SA_IRQ_HANDLER
  *   APP_ADC_SB_IRQ_HANDLER
  *   APP_ADC_SA_IRQ_SRC
  *   APP_ADC_SB_IRQ_SRC
  *   APP_ADC_SB_TRIG_SRC_PORT
- *   APP_ADC_SB_TRIG_SRC_PIN 
+ *   APP_ADC_SB_TRIG_SRC_PIN
  */
 #define APP_ADC_UNIT                        (M4_ADC1)
 #define APP_ADC_PERIP_CLK                   (PWC_FCG3_ADC1)
@@ -98,16 +99,15 @@
  * Definitions of interrupt.
  * All interrupts of ADC can use independent interrupt vectors Int000_IRQn ~ Int031_IRQn
  *     and Int122_IRQn ~ Int127_IRQn, sharing interrupt vector Int143_IRQn.
- * 'APP_ADC_USE_SHARE_INTERRUPT': Defines as non-zero to use sharing interrupt.
  */
 #if (APP_ADC_USE_INTERRUPT > 0U)
-    #define APP_ADC_USE_SHARE_INTERRUPT     (0U)
     #define ADC_SHARE_IRQn                  (Int143_IRQn)
+
     #define APP_ADC_SA_IRQ_HANDLER          ADC_1_SeqA_IrqHandler
     #define APP_ADC_SB_IRQ_HANDLER          ADC_1_SeqB_IrqHandler
     #define APP_ADC_SA_IRQ_SRC              (INT_ADC1_EOCA)
     #define APP_ADC_SB_IRQ_SRC              (INT_ADC1_EOCB)
-    #define APP_ADC_SA_IRQn                 (Int016_IRQn)
+    #define APP_ADC_SA_IRQn                 (ADC_SHARE_IRQn)
     #define APP_ADC_SB_IRQn                 (Int017_IRQn)
     #define APP_ADC_SA_INT_PRIO             (DDL_IRQ_PRIORITY_03)
     #define APP_ADC_SB_INT_PRIO             (DDL_IRQ_PRIORITY_04)
@@ -577,15 +577,11 @@ static void AdcIrqConfig(void)
 }
 
 /**
- * @brief  Sequence A IRQ handler.
+ * @brief  Sequence A IRQ handler. Independent ISR.
  * @param  None
  * @retval None
  */
-#if (APP_ADC_USE_SHARE_INTERRUPT > 0U)
-void APP_ADC_SA_IRQ_HANDLER(void)
-#else
 static void ADC_SeqA_IrqCallback(void)
-#endif
 {
     if (ADC_SeqGetStatus(APP_ADC_UNIT, ADC_SEQ_FLAG_EOCA) == Set)
     {
@@ -596,15 +592,26 @@ static void ADC_SeqA_IrqCallback(void)
 }
 
 /**
- * @brief  Sequence B IRQ handler.
+ * @brief  Sequence A IRQ handler. Sharing ISR.
  * @param  None
  * @retval None
  */
-#if (APP_ADC_USE_SHARE_INTERRUPT > 0U)
-void APP_ADC_SB_IRQ_HANDLER(void)
-#else
+void APP_ADC_SA_IRQ_HANDLER(void)
+{
+    if (ADC_SeqGetStatus(APP_ADC_UNIT, ADC_SEQ_FLAG_EOCA) == Set)
+    {
+        ADC_SeqClrStatus(APP_ADC_UNIT, ADC_SEQ_FLAG_EOCA);
+        ADC_GetChannelData(APP_ADC_UNIT, APP_ADC_SA_CH, m_au16AdcSaVal, APP_ADC_SA_CH_COUNT);
+        m_u32AdcIrqFlag |= ADC_SEQ_FLAG_EOCA;
+    }
+}
+
+/**
+ * @brief  Sequence B IRQ handler. Independent ISR.
+ * @param  None
+ * @retval None
+ */
 static void ADC_SeqB_IrqCallback(void)
-#endif
 {
     if (ADC_SeqGetStatus(APP_ADC_UNIT, ADC_SEQ_FLAG_EOCB) == Set)
     {
@@ -613,6 +620,22 @@ static void ADC_SeqB_IrqCallback(void)
         m_u32AdcIrqFlag |= ADC_SEQ_FLAG_EOCB;
     }
 }
+
+/**
+ * @brief  Sequence B IRQ handler. Sharing ISR.
+ * @param  None
+ * @retval None
+ */
+void APP_ADC_SB_IRQ_HANDLER(void)
+{
+    if (ADC_SeqGetStatus(APP_ADC_UNIT, ADC_SEQ_FLAG_EOCB) == Set)
+    {
+        ADC_SeqClrStatus(APP_ADC_UNIT, ADC_SEQ_FLAG_EOCB);
+        ADC_GetChannelData(APP_ADC_UNIT, APP_ADC_SB_CH, m_au16AdcSbVal, APP_ADC_SB_CH_COUNT);
+        m_u32AdcIrqFlag |= ADC_SEQ_FLAG_EOCB;
+    }
+}
+
 #endif /* #if (APP_ADC_USE_INTERRUPT > 0U) */
 
 /**

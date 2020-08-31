@@ -189,7 +189,9 @@
     ((wait) == GPIO_READ_WAIT_2)                ||                              \
     ((wait) == GPIO_READ_WAIT_3)                ||                              \
     ((wait) == GPIO_READ_WAIT_4)                ||                              \
-    ((wait) == GPIO_READ_WAIT_5))
+    ((wait) == GPIO_READ_WAIT_5)                ||                              \
+    ((wait) == GPIO_READ_WAIT_6)                ||                              \
+    ((wait) == GPIO_READ_WAIT_7))
 
 /*  Check GPIO register lock status. */
 #define IS_GPIO_UNLOCKED()      (GPIO_PWPR_WE == (M4_GPIO->PWPR & GPIO_PWPR_WE))

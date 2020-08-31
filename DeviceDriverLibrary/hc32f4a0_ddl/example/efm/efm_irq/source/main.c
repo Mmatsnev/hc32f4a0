@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Heqb          First version
+   2020-08-28       Heqb          Adjust the BSP_CLK_Init() position
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -172,13 +173,13 @@ int32_t main(void)
 
     /* Unlock peripherals or registers */
     Peripheral_WE();
-    /* LED & KEY Init */
-    BSP_IO_Init();
-    BSP_LED_Init();
-    BSP_KEY_Init();
-    BSP_LED_On(LED_BLUE);
     /* Configure system clock. HClK = 240MHZ */
     BSP_CLK_Init();
+    /* LED & KEY Init */
+    BSP_IO_Init();
+    BSP_KEY_Init();
+    BSP_LED_Init();
+    BSP_LED_On(LED_BLUE);
     /* Configure GPIO read wait cycle */
     GPIO_SetReadWaitCycle(GPIO_READ_WAIT_5);
     /*Configure IRQ handler && NVIC*/

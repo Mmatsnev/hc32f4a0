@@ -51,8 +51,8 @@ EV_F4A0_LQ176_V10
      数据位：8
      校验位：None
      停止位：1
-4）打开工程uart_halfduplex_polling_master，重新编译，下载代码至master板，并且全速运行
-5）打开工程uart_halfduplex_polling_slave，重新编译，下载代码至slave板，并且全速运行
+4）打开工程uart_halfduplex_int_master，重新编译，下载代码至master板，并且全速运行
+5）打开工程uart_halfduplex_int_slave，重新编译，下载代码至slave板，并且全速运行
 6）按master板按键SW10
 7）观察master板LED灯，蓝色LED灯点亮
 8）观察串口助手提示信息，接收和发送数据一致，且为偶数

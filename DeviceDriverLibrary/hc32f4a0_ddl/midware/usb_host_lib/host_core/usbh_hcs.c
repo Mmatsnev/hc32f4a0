@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -116,7 +117,7 @@ static uint16_t USBH_GetFreeChannel (USB_OTG_CORE_HANDLE *pdev);
 /**
  * @brief  USBH_Open_Channel
  *         Open a  pipe
- * @param  [in] pdev : Selected device
+ * @param  [in] pdev : Instance for USB core
  * @param  [in] hc_num: Host channel Number
  * @param  [in] dev_address: USB Device address allocated to attached device
  * @param  [in] speed : USB device speed (Full/Low)
@@ -151,7 +152,7 @@ uint8_t USBH_Open_Channel  (USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_Modify_Channel
  *         Modify a  pipe
- * @param  [in] pdev : Selected device
+ * @param  [in] pdev : Instance for USB core
  * @param  [in] hc_num: Host channel Number
  * @param  [in] dev_address: USB Device address allocated to attached device
  * @param  [in] speed : USB device speed (Full/Low)

@@ -207,16 +207,16 @@
 /*! Parameter validity check for efm sector . */
 #define IS_VALID_EFM_SECTOR(x)            ((x) <= EFM_SECTOR_255)
 
-/*  Check EFM lock status. */
+/*! Parameter validity check for EFM lock status. */
 #define IS_VALID_EFM_UNLOCK()             (M4_EFM->FAPRT == 0x00000001UL)
 
-/*  Check EFM_FWMC register lock status. */
+/*! Parameter validity check for EFM_FWMC register lock status. */
 #define IS_VALID_EFM_FWMC_UNLOCK()        (bM4_EFM->FWMC_b.KEY1LOCK == 0U)
 
-/*  Check OTP lock status. */
+/*! Parameter validity check for OTP lock status. */
 #define IS_VALID_EFM_OTP_UNLOCK()         (bM4_EFM->FWMC_b.KEY2LOCK == 0U)
 
-/*  Check EFM sector number */
+/*! Parameter validity check for EFM sector number */
 #define IS_VALID_EFM_SECTOR_NUM(x)         ((x) <= 256U)
 /**
  * @}

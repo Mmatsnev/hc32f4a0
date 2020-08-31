@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-08-25       Zhangxl         Modify for MISRAC2012-8.4, 8.6, 10.1
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -808,6 +809,36 @@ void HardFault_Handler(void)
 }
 
 /**
+ * @brief  Mem manage fault IRQ handler
+ * @param  None
+ * @retval None
+ */
+void MemManage_Handler(void)
+{
+    MemManage_IrqHandler();
+}
+
+/**
+ * @brief  Bus fault IRQ handler
+ * @param  None
+ * @retval None
+ */
+void BusFault_Handler(void)
+{
+    BusFault_IrqHandler();
+}
+
+/**
+ * @brief  Usage fault IRQ handler
+ * @param  None
+ * @retval None
+ */
+void UsageFault_Handler(void)
+{
+    UsageFault_IrqHandler();
+}
+
+/**
  * @brief  SVCall IRQ handler
  * @param  None
  * @retval None
@@ -815,6 +846,16 @@ void HardFault_Handler(void)
 void SVC_Handler(void)
 {
     SVC_IrqHandler();
+}
+
+/**
+ * @brief  Debbug monitor IRQ handler
+ * @param  None
+ * @retval None
+ */
+void DebugMon_Handler(void)
+{
+    DebugMon_IrqHandler();
 }
 
 /**
@@ -2127,82 +2168,82 @@ void IRQ128_Handler(void)
     const uint32_t VSSEL128 = M4_INTC->VSSEL128;
 
     /* external interrupt 00 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR0) && (VSSEL128 & BIT_MASK_00))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR0) && (0UL != (VSSEL128 & BIT_MASK_00)))
     {
         EXTINT_00_IrqHandler();
     }
     /* external interrupt 01 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR1) && (VSSEL128 & BIT_MASK_01))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR1) && (0UL != (VSSEL128 & BIT_MASK_01)))
     {
         EXTINT_01_IrqHandler();
     }
     /* external interrupt 02 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR2) && (VSSEL128 & BIT_MASK_02))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR2) && (0UL != (VSSEL128 & BIT_MASK_02)))
     {
         EXTINT_02_IrqHandler();
     }
     /* external interrupt 03 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR3) && (VSSEL128 & BIT_MASK_03))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR3) && (0UL != (VSSEL128 & BIT_MASK_03)))
     {
         EXTINT_03_IrqHandler();
     }
     /* external interrupt 04 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR4) && (VSSEL128 & BIT_MASK_04))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR4) && (0UL != (VSSEL128 & BIT_MASK_04)))
     {
         EXTINT_04_IrqHandler();
     }
     /* external interrupt 05 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR5) && (VSSEL128 & BIT_MASK_05))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR5) && (0UL != (VSSEL128 & BIT_MASK_05)))
     {
         EXTINT_05_IrqHandler();
     }
     /* external interrupt 06 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR6) && (VSSEL128 & BIT_MASK_06))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR6) && (0UL != (VSSEL128 & BIT_MASK_06)))
     {
         EXTINT_06_IrqHandler();
     }
     /* external interrupt 07 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR7) && (VSSEL128 & BIT_MASK_07))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR7) && (0UL != (VSSEL128 & BIT_MASK_07)))
     {
         EXTINT_07_IrqHandler();
     }
     /* external interrupt 08 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR8) && (VSSEL128 & BIT_MASK_08))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR8) && (0UL != (VSSEL128 & BIT_MASK_08)))
     {
         EXTINT_08_IrqHandler();
     }
     /* external interrupt 09 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR9) && (VSSEL128 & BIT_MASK_09))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR9) && (0UL != (VSSEL128 & BIT_MASK_09)))
     {
         EXTINT_09_IrqHandler();
     }
     /* external interrupt 10 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR10) && (VSSEL128 & BIT_MASK_10))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR10) && (0UL != (VSSEL128 & BIT_MASK_10)))
     {
         EXTINT_10_IrqHandler();
     }
     /* external interrupt 11 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR11) && (VSSEL128 & BIT_MASK_11))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR11) && (0UL != (VSSEL128 & BIT_MASK_11)))
     {
         EXTINT_11_IrqHandler();
     }
     /* external interrupt 12 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR12) && (VSSEL128 & BIT_MASK_12))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR12) && (0UL != (VSSEL128 & BIT_MASK_12)))
     {
         EXTINT_12_IrqHandler();
     }
     /* external interrupt 13 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR13) && (VSSEL128 & BIT_MASK_13))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR13) && (0UL != (VSSEL128 & BIT_MASK_13)))
     {
         EXTINT_13_IrqHandler();
     }
     /* external interrupt 14 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR14) && (VSSEL128 & BIT_MASK_14))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR14) && (0UL != (VSSEL128 & BIT_MASK_14)))
     {
         EXTINT_14_IrqHandler();
     }
     /* external interrupt 15 */
-    if ((1UL == bM4_INTC->EIFR_b.EIFR15) && (VSSEL128 & BIT_MASK_15))
+    if ((1UL == bM4_INTC->EIFR_b.EIFR15) && (0UL != (VSSEL128 & BIT_MASK_15)))
     {
         EXTINT_15_IrqHandler();
     }
@@ -2225,7 +2266,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.0 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC0)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC0) && (VSSEL129 && BIT_MASK_00))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC0) && (0UL != (VSSEL129 & BIT_MASK_00)))
             {
                 DMA_1_Tc0_IrqHandler();
             }
@@ -2233,7 +2274,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.0 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC0)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC0) && (VSSEL129 && BIT_MASK_08))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC0) && (0UL != (VSSEL129 & BIT_MASK_08)))
             {
                 DMA_1_Btc0_IrqHandler();
             }
@@ -2241,7 +2282,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.0 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_00 | BIT_MASK_16);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_00 | BIT_MASK_16));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err0_IrqHandler();
         }
@@ -2252,7 +2293,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.1 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC1)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC1) && (VSSEL129 && BIT_MASK_01))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC1) && (0UL != (VSSEL129 & BIT_MASK_01)))
             {
                 DMA_1_Tc1_IrqHandler();
             }
@@ -2260,7 +2301,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.1 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC1)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC1) && (VSSEL129 && BIT_MASK_09))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC1) && (0UL != (VSSEL129 & BIT_MASK_09)))
             {
                 DMA_1_Btc1_IrqHandler();
             }
@@ -2268,7 +2309,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.1 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_01 | BIT_MASK_17);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_01 | BIT_MASK_17));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err1_IrqHandler();
         }
@@ -2279,7 +2320,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.2 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC2)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC2) && (VSSEL129 && BIT_MASK_02))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC2) && (0UL != (VSSEL129 & BIT_MASK_02)))
             {
                 DMA_1_Tc2_IrqHandler();
             }
@@ -2287,7 +2328,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.2 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC2)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC2) && (VSSEL129 && BIT_MASK_10))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC2) && (0UL != (VSSEL129 & BIT_MASK_10)))
             {
                 DMA_1_Btc2_IrqHandler();
             }
@@ -2295,7 +2336,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.2 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_02 | BIT_MASK_18);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_02 | BIT_MASK_18));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err2_IrqHandler();
         }
@@ -2306,7 +2347,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.3 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC3)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC3) && (VSSEL129 && BIT_MASK_03))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC3) && (0UL != (VSSEL129 & BIT_MASK_03)))
             {
                 DMA_1_Tc3_IrqHandler();
             }
@@ -2314,7 +2355,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.3 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC3)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC3) && (VSSEL129 && BIT_MASK_11))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC3) && (0UL != (VSSEL129 & BIT_MASK_11)))
             {
                 DMA_1_Btc3_IrqHandler();
             }
@@ -2322,7 +2363,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.3 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_03 | BIT_MASK_19);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_03 | BIT_MASK_19));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err3_IrqHandler();
         }
@@ -2333,7 +2374,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.4 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC4)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC4) && (VSSEL129 && BIT_MASK_04))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC4) && (0UL != (VSSEL129 & BIT_MASK_04)))
             {
                 DMA_1_Tc4_IrqHandler();
             }
@@ -2341,7 +2382,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.4 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC4)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC4) && (VSSEL129 && BIT_MASK_12))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC4) && (0UL != (VSSEL129 & BIT_MASK_12)))
             {
                 DMA_1_Btc4_IrqHandler();
             }
@@ -2349,7 +2390,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.4 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_04 | BIT_MASK_20);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_04 | BIT_MASK_20));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err4_IrqHandler();
         }
@@ -2360,7 +2401,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.5 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC5)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC5) && (VSSEL129 && BIT_MASK_05))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC5) && (0UL != (VSSEL129 & BIT_MASK_05)))
             {
                 DMA_1_Tc5_IrqHandler();
             }
@@ -2368,7 +2409,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.5 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC5)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC5) && (VSSEL129 && BIT_MASK_13))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC5) && (0UL != (VSSEL129 & BIT_MASK_13)))
             {
                 DMA_1_Btc5_IrqHandler();
             }
@@ -2376,7 +2417,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.5 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_05 | BIT_MASK_21);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_05 | BIT_MASK_21));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err5_IrqHandler();
         }
@@ -2387,7 +2428,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.6 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC6)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC6) && (VSSEL129 && BIT_MASK_06))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC6) && (0UL != (VSSEL129 & BIT_MASK_06)))
             {
                 DMA_1_Tc6_IrqHandler();
             }
@@ -2395,7 +2436,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.6 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC6)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC6) && (VSSEL129 && BIT_MASK_14))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC6) && (0UL != (VSSEL129 & BIT_MASK_14)))
             {
                 DMA_1_Btc6_IrqHandler();
             }
@@ -2403,7 +2444,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.6 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_06 | BIT_MASK_22);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_06 | BIT_MASK_22));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err6_IrqHandler();
         }
@@ -2414,7 +2455,7 @@ void IRQ129_Handler(void)
         /* DMA1 Ch.7 Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKTC7)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.TC7) && (VSSEL129 && BIT_MASK_07))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.TC7) && (0UL != (VSSEL129 & BIT_MASK_07)))
             {
                 DMA_1_Tc7_IrqHandler();
             }
@@ -2422,7 +2463,7 @@ void IRQ129_Handler(void)
         /* DMA1 ch.7 Block Tx completed */
         if (0UL == bM4_DMA1->INTMASK1_b.MSKBTC7)
         {
-            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC7) && (VSSEL129 && BIT_MASK_15))
+            if ((1UL == bM4_DMA1->INTSTAT1_b.BTC7) && (0UL != (VSSEL129 & BIT_MASK_15)))
             {
                 DMA_1_Btc7_IrqHandler();
             }
@@ -2430,114 +2471,114 @@ void IRQ129_Handler(void)
         /* DMA1 ch.7 Transfer/Request Error */
         u32Tmp1 = M4_DMA1->INTSTAT0 & (BIT_MASK_07 | BIT_MASK_22);
         u32Tmp2 = (uint32_t)(~(M4_DMA1->INTMASK0) & (BIT_MASK_07 | BIT_MASK_22));
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL129 & BIT_MASK_16))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL129 & BIT_MASK_16)))
         {
             DMA_1_Err7_IrqHandler();
         }
     }
     /* EFM error */
-    if (bM4_EFM->FITE_b.PEERRITE)
+    if (0UL != bM4_EFM->FITE_b.PEERRITE)
     {
         /* EFM0 program/erase/protect/otp error */
         u32Tmp1 = M4_EFM->FSR & (EFM_FSR_OTPWERR0 | EFM_FSR_PRTWERR0 | EFM_FSR_PGSZERR0 | EFM_FSR_MISMTCH0);
-        if ((u32Tmp1) && (VSSEL129 & BIT_MASK_17))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL129 & BIT_MASK_17)))
         {
             EFM_0_PgmEraseErr_IrqHandler();
         }
         /* EFM1 program/erase/protect error */
         u32Tmp1 = M4_EFM->FSR & (EFM_FSR_PRTWERR1 | EFM_FSR_PGSZERR1 | EFM_FSR_MISMTCH1);
-        if ((u32Tmp1) && (VSSEL129 & BIT_MASK_17))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL129 & BIT_MASK_17)))
         {
             EFM_1_PgmEraseErr_IrqHandler();
         }
     }
     /* EFM read collision */
-    if (bM4_EFM->FITE_b.COLERRITE)
+    if (0UL != bM4_EFM->FITE_b.COLERRITE)
     {
         /* EFM0 read collision */
-        if (bM4_EFM->FSR_b.COLERR0 && (VSSEL129 & BIT_MASK_18))
+        if ((0UL != bM4_EFM->FSR_b.COLERR0) && (0UL != (VSSEL129 & BIT_MASK_18)))
         {
             EFM_0_ColErr_IrqHandler();
         }
         /* EFM1 read collision */
-        if (bM4_EFM->FSR_b.COLERR1 && (VSSEL129 & BIT_MASK_18))
+        if ((0UL != bM4_EFM->FSR_b.COLERR1) && (0UL != (VSSEL129 & BIT_MASK_18)))
         {
             EFM_1_ColErr_IrqHandler();
         }
     }
     /* EFM operate end */
-    if (bM4_EFM->FITE_b.OPTENDITE)
+    if (0UL != bM4_EFM->FITE_b.OPTENDITE)
     {
         /* EFM0 operate end */
-        if (bM4_EFM->FSR_b.OPTEND0 && (VSSEL129 & BIT_MASK_19))
+        if ((0UL != bM4_EFM->FSR_b.OPTEND0) && (0UL != (VSSEL129 & BIT_MASK_19)))
         {
             EFM_0_OpEnd_IrqHandler();
         }
         /* EFM1 operate end */
-        if (bM4_EFM->FSR_b.OPTEND1 && (VSSEL129 & BIT_MASK_19))
+        if ((0UL != bM4_EFM->FSR_b.OPTEND1) && (0UL != (VSSEL129 & BIT_MASK_19)))
         {
             EFM_1_OpEnd_IrqHandler();
         }
     }
     /* QSPI access error */
     u32Tmp1 = M4_QSPI->SR & QSPI_SR_RAER;
-    if ((u32Tmp1) && (VSSEL129 & BIT_MASK_22))
+    if ((0UL != u32Tmp1) && (0UL != (VSSEL129 & BIT_MASK_22)))
     {
         QSPI_Err_IrqHandler();
     }
     /*DCU1 */
     u32Tmp1 = M4_DCU1->INTEVTSEL;
     u32Tmp2 = M4_DCU1->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_23))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_23)))
     {
         DCU_1_IrqHandler();
     }
     /*DCU2 */
     u32Tmp1 = M4_DCU2->INTEVTSEL;
     u32Tmp2 = M4_DCU2->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_24))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_24)))
     {
         DCU_2_IrqHandler();
     }
     /*DCU3 */
     u32Tmp1 = M4_DCU3->INTEVTSEL;
     u32Tmp2 = M4_DCU3->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_25))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_25)))
     {
         DCU_3_IrqHandler();
     }
     /*DCU4 */
     u32Tmp1 = M4_DCU4->INTEVTSEL;
     u32Tmp2 = M4_DCU4->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_26))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_26)))
     {
         DCU_4_IrqHandler();
     }
     /*DCU5 */
     u32Tmp1 = M4_DCU5->INTEVTSEL;
     u32Tmp2 = M4_DCU5->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_27))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_27)))
     {
         DCU_5_IrqHandler();
     }
     /*DCU6 */
     u32Tmp1 = M4_DCU6->INTEVTSEL;
     u32Tmp2 = M4_DCU6->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_28))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_28)))
     {
         DCU_6_IrqHandler();
     }
     /*DCU7 */
     u32Tmp1 = M4_DCU7->INTEVTSEL;
     u32Tmp2 = M4_DCU7->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_29))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_29)))
     {
         DCU_7_IrqHandler();
     }
     /*DCU8 */
     u32Tmp1 = M4_DCU8->INTEVTSEL;
     u32Tmp2 = M4_DCU8->FLAG;
-    if (((u32Tmp1) & (u32Tmp2) & 0x0E7FUL) && (VSSEL129 & BIT_MASK_30))
+    if ((0UL != ((u32Tmp1) & (u32Tmp2) & 0x0E7FUL)) && (0UL != (VSSEL129 & BIT_MASK_30)))
     {
         DCU_8_IrqHandler();
     }
@@ -2555,7 +2596,7 @@ void IRQ130_Handler(void)
     uint32_t u32Tmp2;
 
     /* MAU square */
-    if (VSSEL130 & BIT_MASK_19)
+    if (0UL != (VSSEL130 & BIT_MASK_19))
     {
         MAU_Sqrt_IrqHandler();
     }
@@ -2567,7 +2608,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.0 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC0)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC0) && (VSSEL130 && BIT_MASK_00))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC0) && (0UL != (VSSEL130 & BIT_MASK_00)))
                 {
                     DMA_2_Tc0_IrqHandler();
                 }
@@ -2575,7 +2616,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.0 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC0)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC0) && (VSSEL130 && BIT_MASK_08))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC0) && (0UL != (VSSEL130 & BIT_MASK_08)))
                 {
                     DMA_2_Btc0_IrqHandler();
                 }
@@ -2583,7 +2624,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.0 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_00 | BIT_MASK_16);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_00 | BIT_MASK_16));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err0_IrqHandler();
             }
@@ -2594,7 +2635,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.1 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC1)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC1) && (VSSEL130 && BIT_MASK_01))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC1) && (0UL != (VSSEL130 & BIT_MASK_01)))
                 {
                     DMA_2_Tc1_IrqHandler();
                 }
@@ -2602,7 +2643,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.1 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC1)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC1) && (VSSEL130 && BIT_MASK_09))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC1) && (0UL != (VSSEL130 & BIT_MASK_09)))
                 {
                     DMA_2_Btc1_IrqHandler();
                 }
@@ -2610,7 +2651,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.1 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_01 | BIT_MASK_17);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_01 | BIT_MASK_17));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err1_IrqHandler();
             }
@@ -2621,7 +2662,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.2 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC2)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC2) && (VSSEL130 && BIT_MASK_02))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC2) && (0UL != (VSSEL130 & BIT_MASK_02)))
                 {
                     DMA_2_Tc2_IrqHandler();
                 }
@@ -2629,7 +2670,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.2 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC2)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC2) && (VSSEL130 && BIT_MASK_10))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC2) && (0UL != (VSSEL130 & BIT_MASK_10)))
                 {
                     DMA_2_Btc2_IrqHandler();
                 }
@@ -2637,7 +2678,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.2 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_02 | BIT_MASK_18);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_02 | BIT_MASK_18));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err2_IrqHandler();
             }
@@ -2648,7 +2689,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.3 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC3)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC3) && (VSSEL130 && BIT_MASK_03))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC3) && (0UL != (VSSEL130 & BIT_MASK_03)))
                 {
                     DMA_2_Tc3_IrqHandler();
                 }
@@ -2656,7 +2697,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.3 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC3)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC3) && (VSSEL130 && BIT_MASK_11))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC3) && (0UL != (VSSEL130 & BIT_MASK_11)))
                 {
                     DMA_2_Btc3_IrqHandler();
                 }
@@ -2664,7 +2705,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.3 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_03 | BIT_MASK_19);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_03 | BIT_MASK_19));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err3_IrqHandler();
             }
@@ -2675,7 +2716,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.4 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC4)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC4) && (VSSEL130 && BIT_MASK_04))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC4) && (0UL != (VSSEL130 & BIT_MASK_04)))
                 {
                     DMA_2_Tc4_IrqHandler();
                 }
@@ -2683,7 +2724,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.4 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC4)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC4) && (VSSEL130 && BIT_MASK_12))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC4) && (0UL != (VSSEL130 & BIT_MASK_12)))
                 {
                     DMA_2_Btc4_IrqHandler();
                 }
@@ -2691,7 +2732,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.4 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_04 | BIT_MASK_20);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_04 | BIT_MASK_20));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err4_IrqHandler();
             }
@@ -2702,7 +2743,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.5 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC5)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC5) && (VSSEL130 && BIT_MASK_05))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC5) && (0UL != (VSSEL130 & BIT_MASK_05)))
                 {
                     DMA_2_Tc5_IrqHandler();
                 }
@@ -2710,7 +2751,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.5 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC5)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC5) && (VSSEL130 && BIT_MASK_13))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC5) && (0UL != (VSSEL130 & BIT_MASK_13)))
                 {
                     DMA_2_Btc5_IrqHandler();
                 }
@@ -2718,7 +2759,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.5 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_05 | BIT_MASK_21);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_05 | BIT_MASK_21));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err5_IrqHandler();
             }
@@ -2729,7 +2770,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.6 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC6)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC6) && (VSSEL130 && BIT_MASK_06))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC6) && (0UL != (VSSEL130 & BIT_MASK_06)))
                 {
                     DMA_2_Tc6_IrqHandler();
                 }
@@ -2737,7 +2778,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.6 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC6)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC6) && (VSSEL130 && BIT_MASK_14))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC6) && (0UL != (VSSEL130 & BIT_MASK_14)))
                 {
                     DMA_2_Btc6_IrqHandler();
                 }
@@ -2745,7 +2786,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.6 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_06 | BIT_MASK_22);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_06 | BIT_MASK_22));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err6_IrqHandler();
             }
@@ -2756,7 +2797,7 @@ void IRQ130_Handler(void)
             /* DMA2 Ch.7 Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKTC7)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.TC7) && (VSSEL130 && BIT_MASK_07))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.TC7) && (0UL != (VSSEL130 & BIT_MASK_07)))
                 {
                     DMA_2_Tc7_IrqHandler();
                 }
@@ -2764,7 +2805,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.7 Block Tx completed */
             if (0UL == bM4_DMA2->INTMASK1_b.MSKBTC7)
             {
-                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC7) && (VSSEL130 && BIT_MASK_15))
+                if ((1UL == bM4_DMA2->INTSTAT1_b.BTC7) && (0UL != (VSSEL130 & BIT_MASK_15)))
                 {
                     DMA_2_Btc7_IrqHandler();
                 }
@@ -2772,7 +2813,7 @@ void IRQ130_Handler(void)
             /* DMA2 ch.7 Transfer/Request Error */
             u32Tmp1 = M4_DMA2->INTSTAT0 & (BIT_MASK_07 | BIT_MASK_22);
             u32Tmp2 = (uint32_t)(~(M4_DMA2->INTMASK0) & (BIT_MASK_07 | BIT_MASK_22));
-            if ((u32Tmp1 & u32Tmp2) && (VSSEL130 & BIT_MASK_16))
+            if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL130 & BIT_MASK_16)))
             {
                 DMA_2_Err7_IrqHandler();
             }
@@ -2780,7 +2821,7 @@ void IRQ130_Handler(void)
         /* DVP frame start */
         if (1UL == bM4_DVP->IER_b.FSIEN)
         {
-            if ((1UL == bM4_DVP->STR_b.FSF) && (VSSEL130 & BIT_MASK_20))
+            if ((1UL == bM4_DVP->STR_b.FSF) && (0UL != (VSSEL130 & BIT_MASK_20)))
             {
                 DVP_FrameStart_IrqHandler();
             }
@@ -2788,7 +2829,7 @@ void IRQ130_Handler(void)
         /* DVP line start */
         if (1UL == bM4_DVP->IER_b.LSIEN)
         {
-            if ((1UL == bM4_DVP->STR_b.LSF) && (VSSEL130 & BIT_MASK_21))
+            if ((1UL == bM4_DVP->STR_b.LSF) && (0UL != (VSSEL130 & BIT_MASK_21)))
             {
                 DVP_LineStart_IrqHandler();
             }
@@ -2796,7 +2837,7 @@ void IRQ130_Handler(void)
         /* DVP line end */
         if (1UL == bM4_DVP->IER_b.LEIEN)
         {
-            if ((1UL == bM4_DVP->STR_b.LEF) && (VSSEL130 & BIT_MASK_22))
+            if ((1UL == bM4_DVP->STR_b.LEF) && (0UL != (VSSEL130 & BIT_MASK_22)))
             {
                 DVP_LineEnd_IrqHandler();
             }
@@ -2804,7 +2845,7 @@ void IRQ130_Handler(void)
         /* DVP frame end */
         if (1UL == bM4_DVP->IER_b.FEIEN)
         {
-            if ((1UL == bM4_DVP->STR_b.FEF) && (VSSEL130 & BIT_MASK_23))
+            if ((1UL == bM4_DVP->STR_b.FEF) && (0UL != (VSSEL130 & BIT_MASK_23)))
             {
                 DVP_FrameEnd_IrqHandler();
             }
@@ -2812,7 +2853,7 @@ void IRQ130_Handler(void)
         /* DVP software sync err */
         if (1UL == bM4_DVP->IER_b.SQUERIEN)
         {
-            if ((1UL == bM4_DVP->STR_b.SQUERF) && (VSSEL130 & BIT_MASK_24))
+            if ((1UL == bM4_DVP->STR_b.SQUERF) && (0UL != (VSSEL130 & BIT_MASK_24)))
             {
                 DVP_SwSyncErr_IrqHandler();
             }
@@ -2820,7 +2861,7 @@ void IRQ130_Handler(void)
         /* DVP fifo overfolw err */
         if (1UL == bM4_DVP->IER_b.FIFOERIEN)
         {
-            if ((1UL == bM4_DVP->STR_b.FIFOERF) && (VSSEL130 & BIT_MASK_25))
+            if ((1UL == bM4_DVP->STR_b.FIFOERF) && (0UL != (VSSEL130 & BIT_MASK_25)))
             {
                 DVP_FifoErr_IrqHandler();
             }
@@ -2828,7 +2869,7 @@ void IRQ130_Handler(void)
         /* FMAC 1 */
         if (1UL == bM4_FMAC1->IER_b.INTEN)
         {
-            if ((1UL == bM4_FMAC1->STR_b.READY) && (VSSEL130 & BIT_MASK_27))
+            if ((1UL == bM4_FMAC1->STR_b.READY) && (0UL != (VSSEL130 & BIT_MASK_27)))
             {
                 FMAC_1_IrqHandler();
             }
@@ -2836,7 +2877,7 @@ void IRQ130_Handler(void)
         /* FMAC 2 */
         if (1UL == bM4_FMAC1->IER_b.INTEN)
         {
-            if ((1UL == bM4_FMAC2->STR_b.READY) && (VSSEL130 & BIT_MASK_28))
+            if ((1UL == bM4_FMAC2->STR_b.READY) && (0UL != (VSSEL130 & BIT_MASK_28)))
             {
                 FMAC_2_IrqHandler();
             }
@@ -2844,7 +2885,7 @@ void IRQ130_Handler(void)
         /* FMAC 3 */
         if (1UL == bM4_FMAC3->IER_b.INTEN)
         {
-            if ((1UL == bM4_FMAC3->STR_b.READY) && (VSSEL130 & BIT_MASK_29))
+            if ((1UL == bM4_FMAC3->STR_b.READY) && (0UL != (VSSEL130 & BIT_MASK_29)))
             {
                 FMAC_3_IrqHandler();
             }
@@ -2852,7 +2893,7 @@ void IRQ130_Handler(void)
         /* FMAC 4 */
         if (1UL == bM4_FMAC4->IER_b.INTEN)
         {
-            if ((1UL == bM4_FMAC4->STR_b.READY) && (VSSEL130 & BIT_MASK_30))
+            if ((1UL == bM4_FMAC4->STR_b.READY) && (0UL != (VSSEL130 & BIT_MASK_30)))
             {
                 FMAC_4_IrqHandler();
             }
@@ -2873,7 +2914,7 @@ void IRQ131_Handler(void)
     /* Timer0 unit1, Ch.A compare match */
     if (1UL == bM4_TMR0_1->BCONR_b.INTENA)
     {
-        if ((1UL ==bM4_TMR0_1->STFLR_b.CMFA) && (VSSEL131 & BIT_MASK_00))
+        if ((1UL ==bM4_TMR0_1->STFLR_b.CMFA) && (0UL != (VSSEL131 & BIT_MASK_00)))
         {
             TMR0_1_CmpA_IrqHandler();
         }
@@ -2881,7 +2922,7 @@ void IRQ131_Handler(void)
     /* Timer0 unit1, Ch.B compare match */
     if (1UL == bM4_TMR0_1->BCONR_b.INTENB)
     {
-        if ((1UL ==bM4_TMR0_1->STFLR_b.CMFB) && (VSSEL131 & BIT_MASK_01))
+        if ((1UL ==bM4_TMR0_1->STFLR_b.CMFB) && (0UL != (VSSEL131 & BIT_MASK_01)))
         {
             TMR0_1_CmpB_IrqHandler();
         }
@@ -2889,7 +2930,7 @@ void IRQ131_Handler(void)
     /* Timer0 unit2, Ch.A compare match */
     if (1UL == bM4_TMR0_2->BCONR_b.INTENA)
     {
-        if ((1UL ==bM4_TMR0_2->STFLR_b.CMFA) && (VSSEL131 & BIT_MASK_02))
+        if ((1UL ==bM4_TMR0_2->STFLR_b.CMFA) && (0UL != (VSSEL131 & BIT_MASK_02)))
         {
             TMR0_2_CmpA_IrqHandler();
         }
@@ -2897,7 +2938,7 @@ void IRQ131_Handler(void)
     /* Timer0 unit2, Ch.B compare match */
     if (1UL == bM4_TMR0_2->BCONR_b.INTENB)
     {
-        if ((1UL ==bM4_TMR0_2->STFLR_b.CMFB) && (VSSEL131 & BIT_MASK_03))
+        if ((1UL ==bM4_TMR0_2->STFLR_b.CMFB) && (0UL != (VSSEL131 & BIT_MASK_03)))
         {
             TMR0_2_CmpB_IrqHandler();
         }
@@ -2905,7 +2946,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit1, Ch.A compare match */
     if (1UL == bM4_TMR2_1->ICONR_b.CMENA)
     {
-        if ((1UL == bM4_TMR2_1->STFLR_b.CMFA) && (VSSEL131 & BIT_MASK_04))
+        if ((1UL == bM4_TMR2_1->STFLR_b.CMFA) && (0UL != (VSSEL131 & BIT_MASK_04)))
         {
             TMR2_1_CmpA_IrqHandler();
         }
@@ -2913,7 +2954,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit1, Ch.B compare match */
     if (1UL == bM4_TMR2_1->ICONR_b.CMENB)
     {
-        if ((1UL == bM4_TMR2_1->STFLR_b.CMFB) && (VSSEL131 & BIT_MASK_05))
+        if ((1UL == bM4_TMR2_1->STFLR_b.CMFB) && (0UL != (VSSEL131 & BIT_MASK_05)))
         {
             TMR2_1_CmpB_IrqHandler();
         }
@@ -2921,7 +2962,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit1, Ch.A overflow */
     if (1UL == bM4_TMR2_1->ICONR_b.OVENA)
     {
-        if ((1UL == bM4_TMR2_1->STFLR_b.OVFA) && (VSSEL131 & BIT_MASK_06))
+        if ((1UL == bM4_TMR2_1->STFLR_b.OVFA) && (0UL != (VSSEL131 & BIT_MASK_06)))
         {
             TMR2_1_OvfA_IrqHandler();
         }
@@ -2929,7 +2970,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit1, Ch.B overflow */
     if (1UL == bM4_TMR2_1->ICONR_b.OVENB)
     {
-        if ((1UL == bM4_TMR2_1->STFLR_b.OVFB) && (VSSEL131 & BIT_MASK_07))
+        if ((1UL == bM4_TMR2_1->STFLR_b.OVFB) && (0UL != (VSSEL131 & BIT_MASK_07)))
         {
             TMR2_1_OvfB_IrqHandler();
         }
@@ -2937,7 +2978,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit2, Ch.A compare match */
     if (1UL == bM4_TMR2_2->ICONR_b.CMENA)
     {
-        if ((1UL == bM4_TMR2_2->STFLR_b.CMFA) && (VSSEL131 & BIT_MASK_08))
+        if ((1UL == bM4_TMR2_2->STFLR_b.CMFA) && (0UL != (VSSEL131 & BIT_MASK_08)))
         {
             TMR2_2_CmpA_IrqHandler();
         }
@@ -2945,7 +2986,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit2, Ch.B compare match */
     if (1UL == bM4_TMR2_2->ICONR_b.CMENB)
     {
-        if ((1UL == bM4_TMR2_2->STFLR_b.CMFB) && (VSSEL131 & BIT_MASK_09))
+        if ((1UL == bM4_TMR2_2->STFLR_b.CMFB) && (0UL != (VSSEL131 & BIT_MASK_09)))
         {
             TMR2_2_CmpB_IrqHandler();
         }
@@ -2953,7 +2994,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit2, Ch.A overflow */
     if (1UL == bM4_TMR2_2->ICONR_b.OVENA)
     {
-        if ((1UL == bM4_TMR2_2->STFLR_b.OVFA) && (VSSEL131 & BIT_MASK_10))
+        if ((1UL == bM4_TMR2_2->STFLR_b.OVFA) && (0UL != (VSSEL131 & BIT_MASK_10)))
         {
             TMR2_2_OvfA_IrqHandler();
         }
@@ -2961,7 +3002,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit2, Ch.B overflow */
     if (1UL == bM4_TMR2_2->ICONR_b.OVENB)
     {
-        if ((1UL == bM4_TMR2_2->STFLR_b.OVFB) && (VSSEL131 & BIT_MASK_11))
+        if ((1UL == bM4_TMR2_2->STFLR_b.OVFB) && (0UL != (VSSEL131 & BIT_MASK_11)))
         {
             TMR2_2_OvfB_IrqHandler();
         }
@@ -2969,7 +3010,7 @@ void IRQ131_Handler(void)
         /* Timer2 unit3, Ch.A compare match */
     if (1UL == bM4_TMR2_3->ICONR_b.CMENA)
     {
-        if ((1UL == bM4_TMR2_3->STFLR_b.CMFA) && (VSSEL131 & BIT_MASK_12))
+        if ((1UL == bM4_TMR2_3->STFLR_b.CMFA) && (0UL != (VSSEL131 & BIT_MASK_12)))
         {
             TMR2_3_CmpA_IrqHandler();
         }
@@ -2977,7 +3018,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit3, Ch.B compare match */
     if (1UL == bM4_TMR2_3->ICONR_b.CMENB)
     {
-        if ((1UL == bM4_TMR2_3->STFLR_b.CMFB) && (VSSEL131 & BIT_MASK_13))
+        if ((1UL == bM4_TMR2_3->STFLR_b.CMFB) && (0UL != (VSSEL131 & BIT_MASK_13)))
         {
             TMR2_3_CmpB_IrqHandler();
         }
@@ -2985,7 +3026,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit3, Ch.A overflow */
     if (1UL == bM4_TMR2_3->ICONR_b.OVENA)
     {
-        if ((1UL == bM4_TMR2_3->STFLR_b.OVFA) && (VSSEL131 & BIT_MASK_14))
+        if ((1UL == bM4_TMR2_3->STFLR_b.OVFA) && (0UL != (VSSEL131 & BIT_MASK_14)))
         {
             TMR2_3_OvfA_IrqHandler();
         }
@@ -2993,7 +3034,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit3, Ch.B overflow */
     if (1UL == bM4_TMR2_3->ICONR_b.OVENB)
     {
-        if ((1UL == bM4_TMR2_3->STFLR_b.OVFB) && (VSSEL131 & BIT_MASK_15))
+        if ((1UL == bM4_TMR2_3->STFLR_b.OVFB) && (0UL != (VSSEL131 & BIT_MASK_15)))
         {
             TMR2_3_OvfB_IrqHandler();
         }
@@ -3001,7 +3042,7 @@ void IRQ131_Handler(void)
         /* Timer2 unit4, Ch.A compare match */
     if (1UL == bM4_TMR2_4->ICONR_b.CMENA)
     {
-        if ((1UL == bM4_TMR2_4->STFLR_b.CMFA) && (VSSEL131 & BIT_MASK_16))
+        if ((1UL == bM4_TMR2_4->STFLR_b.CMFA) && (0UL != (VSSEL131 & BIT_MASK_16)))
         {
             TMR2_4_CmpA_IrqHandler();
         }
@@ -3009,7 +3050,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit4, Ch.B compare match */
     if (1UL == bM4_TMR2_4->ICONR_b.CMENB)
     {
-        if ((1UL == bM4_TMR2_4->STFLR_b.CMFB) && (VSSEL131 & BIT_MASK_17))
+        if ((1UL == bM4_TMR2_4->STFLR_b.CMFB) && (0UL != (VSSEL131 & BIT_MASK_17)))
         {
             TMR2_4_CmpB_IrqHandler();
         }
@@ -3017,7 +3058,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit4, Ch.A overflow */
     if (1UL == bM4_TMR2_4->ICONR_b.OVENA)
     {
-        if ((1UL == bM4_TMR2_4->STFLR_b.OVFA) && (VSSEL131 & BIT_MASK_18))
+        if ((1UL == bM4_TMR2_4->STFLR_b.OVFA) && (0UL != (VSSEL131 & BIT_MASK_18)))
         {
             TMR2_4_OvfA_IrqHandler();
         }
@@ -3025,7 +3066,7 @@ void IRQ131_Handler(void)
     /* Timer2 unit4, Ch.B overflow */
     if (1UL == bM4_TMR2_4->ICONR_b.OVENB)
     {
-        if ((1UL == bM4_TMR2_4->STFLR_b.OVFB) && (VSSEL131 & BIT_MASK_19))
+        if ((1UL == bM4_TMR2_4->STFLR_b.OVFB) && (0UL != (VSSEL131 & BIT_MASK_19)))
         {
             TMR2_4_OvfB_IrqHandler();
         }
@@ -3033,7 +3074,7 @@ void IRQ131_Handler(void)
     /* RTC time stamp 0 */
     if (1UL == bM4_RTC->TPCR0_b.TPIE0)
     {
-        if ((1UL == bM4_RTC->TPSR_b.TPF0) && (VSSEL131 & BIT_MASK_24))
+        if ((1UL == bM4_RTC->TPSR_b.TPF0) && (0UL != (VSSEL131 & BIT_MASK_24)))
         {
             RTC_TimeStamp0_IrqHandler();
         }
@@ -3041,7 +3082,7 @@ void IRQ131_Handler(void)
     /* RTC time stamp 1 */
     if (1UL == bM4_RTC->TPCR1_b.TPIE1)
     {
-        if ((1UL == bM4_RTC->TPSR_b.TPF1) && (VSSEL131 & BIT_MASK_24))
+        if ((1UL == bM4_RTC->TPSR_b.TPF1) && (0UL != (VSSEL131 & BIT_MASK_24)))
         {
             RTC_TimeStamp1_IrqHandler();
         }
@@ -3049,7 +3090,7 @@ void IRQ131_Handler(void)
     /* RTC alarm */
     if (1UL == bM4_RTC->CR2_b.ALMIE)
     {
-        if ((1UL == bM4_RTC->CR2_b.ALMF) && (VSSEL131 & BIT_MASK_25))
+        if ((1UL == bM4_RTC->CR2_b.ALMF) && (0UL != (VSSEL131 & BIT_MASK_25)))
         {
             RTC_Alarm_IrqHandler();
         }
@@ -3057,7 +3098,7 @@ void IRQ131_Handler(void)
     /* RTC period */
     if (1UL == bM4_RTC->CR2_b.PRDIE)
     {
-        if ((1UL == bM4_RTC->CR2_b.PRDF) && (VSSEL131 & BIT_MASK_26))
+        if ((1UL == bM4_RTC->CR2_b.PRDF) && (0UL != (VSSEL131 & BIT_MASK_26)))
         {
             RTC_Period_IrqHandler();
         }
@@ -3065,7 +3106,7 @@ void IRQ131_Handler(void)
     /* XTAL stop */
     if (1UL == bM4_CMU->XTALSTDCR_b.XTALSTDIE)
     {
-        if ((1UL == bM4_CMU->XTALSTDSR_b.XTALSTDF) && (VSSEL131 & BIT_MASK_29))
+        if ((1UL == bM4_CMU->XTALSTDSR_b.XTALSTDF) && (0UL != (VSSEL131 & BIT_MASK_29)))
         {
             CLK_XtalStop_IrqHandler();
         }
@@ -3073,14 +3114,14 @@ void IRQ131_Handler(void)
     /* Wakeup timer overflow */
     if (1UL == bM4_PWC->WKTC2_b.WKTCE)
     {
-        if ((1UL == bM4_PWC->WKTC2_b.WKOVF) && (VSSEL131 & BIT_MASK_30))
+        if ((1UL == bM4_PWC->WKTC2_b.WKOVF) && (0UL != (VSSEL131 & BIT_MASK_30)))
         {
             PWC_WakeupTimer_IrqHandler();
         }
     }
     /* SWDT underflow or refresh error */
     u32Tmp1 = M4_SWDT->SR & (SWDT_SR_UDF | SWDT_SR_REF);
-    if (u32Tmp1 && (VSSEL131 & BIT_MASK_31))
+    if ((0UL != u32Tmp1) && (0UL != (VSSEL131 & BIT_MASK_31)))
     {
         SWDT_IrqHandler();
     }
@@ -3098,7 +3139,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 general compare match A */
     if (1UL == bM4_TMR6_1->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMAF) && (VSSEL132 & BIT_MASK_00))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMAF) && (0UL != (VSSEL132 & BIT_MASK_00)))
         {
             TMR6_1_GCmpA_IrqHandler();
         }
@@ -3106,7 +3147,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 general compare match B */
     if (1UL == bM4_TMR6_1->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMBF) && (VSSEL132 & BIT_MASK_01))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMBF) && (0UL != (VSSEL132 & BIT_MASK_01)))
         {
             TMR6_1_GCmpB_IrqHandler();
         }
@@ -3114,7 +3155,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 general compare match C */
     if (1UL == bM4_TMR6_1->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMCF) && (VSSEL132 & BIT_MASK_02))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMCF) && (0UL != (VSSEL132 & BIT_MASK_02)))
         {
             TMR6_1_GCmpC_IrqHandler();
         }
@@ -3122,7 +3163,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 general compare match D */
     if (1UL == bM4_TMR6_1->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMDF) && (VSSEL132 & BIT_MASK_03))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMDF) && (0UL != (VSSEL132 & BIT_MASK_03)))
         {
             TMR6_1_GCmpD_IrqHandler();
         }
@@ -3130,7 +3171,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 general compare match E */
     if (1UL == bM4_TMR6_1->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMEF) && (VSSEL132 & BIT_MASK_04))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMEF) && (0UL != (VSSEL132 & BIT_MASK_04)))
         {
             TMR6_1_GCmpE_IrqHandler();
         }
@@ -3138,7 +3179,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 general compare match F */
     if (1UL == bM4_TMR6_1->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMFF) && (VSSEL132 & BIT_MASK_05))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMFF) && (0UL != (VSSEL132 & BIT_MASK_05)))
         {
             TMR6_1_GCmpF_IrqHandler();
         }
@@ -3146,7 +3187,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 overflow*/
     if (1UL == bM4_TMR6_1->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.OVFF) && (VSSEL132 & BIT_MASK_06))
+        if ((1UL == bM4_TMR6_1->STFLR_b.OVFF) && (0UL != (VSSEL132 & BIT_MASK_06)))
         {
             TMR6_1_GOvf_IrqHandler();
         }
@@ -3154,7 +3195,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.1 underflow*/
     if (1UL == bM4_TMR6_1->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.UDFF) && (VSSEL132 & BIT_MASK_07))
+        if ((1UL == bM4_TMR6_1->STFLR_b.UDFF) && (0UL != (VSSEL132 & BIT_MASK_07)))
         {
             TMR6_1_GUdf_IrqHandler();
         }
@@ -3162,7 +3203,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 U phase higher compare match */
     if (1UL == bM4_TMR4_1->OCSRU_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_1->OCSRU_b.OCFH) && (VSSEL132 & BIT_MASK_08))
+        if ((1UL == bM4_TMR4_1->OCSRU_b.OCFH) && (0UL != (VSSEL132 & BIT_MASK_08)))
         {
             TMR4_1_GCmpUH_IrqHandler();
         }
@@ -3170,7 +3211,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 U phase lower compare match */
     if (1UL == bM4_TMR4_1->OCSRU_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_1->OCSRU_b.OCFL) && (VSSEL132 & BIT_MASK_09))
+        if ((1UL == bM4_TMR4_1->OCSRU_b.OCFL) && (0UL != (VSSEL132 & BIT_MASK_09)))
         {
             TMR4_1_GCmpUL_IrqHandler();
         }
@@ -3178,7 +3219,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 V phase higher compare match */
     if (1UL == bM4_TMR4_1->OCSRV_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_1->OCSRV_b.OCFH) && (VSSEL132 & BIT_MASK_10))
+        if ((1UL == bM4_TMR4_1->OCSRV_b.OCFH) && (0UL != (VSSEL132 & BIT_MASK_10)))
         {
             TMR4_1_GCmpVH_IrqHandler();
         }
@@ -3186,7 +3227,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 V phase lower compare match */
     if (1UL == bM4_TMR4_1->OCSRV_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_1->OCSRV_b.OCFL) && (VSSEL132 & BIT_MASK_11))
+        if ((1UL == bM4_TMR4_1->OCSRV_b.OCFL) && (0UL != (VSSEL132 & BIT_MASK_11)))
         {
             TMR4_1_GCmpVL_IrqHandler();
         }
@@ -3194,7 +3235,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 W phase higher compare match */
     if (1UL == bM4_TMR4_1->OCSRW_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_1->OCSRW_b.OCFH) && (VSSEL132 & BIT_MASK_12))
+        if ((1UL == bM4_TMR4_1->OCSRW_b.OCFH) && (0UL != (VSSEL132 & BIT_MASK_12)))
         {
             TMR4_1_GCmpWH_IrqHandler();
         }
@@ -3202,7 +3243,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 W phase lower compare match */
     if (1UL == bM4_TMR4_1->OCSRW_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_1->OCSRW_b.OCFL) && (VSSEL132 & BIT_MASK_13))
+        if ((1UL == bM4_TMR4_1->OCSRW_b.OCFL) && (0UL != (VSSEL132 & BIT_MASK_13)))
         {
             TMR4_1_GCmpWL_IrqHandler();
         }
@@ -3210,7 +3251,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 overflow */
     if (1UL == bM4_TMR4_1->CCSR_b.IRQPEN)
     {
-        if ((1UL == bM4_TMR4_1->CCSR_b.IRQPF) && (VSSEL132 & BIT_MASK_14))
+        if ((1UL == bM4_TMR4_1->CCSR_b.IRQPF) && (0UL != (VSSEL132 & BIT_MASK_14)))
         {
             TMR4_1_Ovf_IrqHandler();
         }
@@ -3218,7 +3259,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.1 underflow */
     if (1UL == bM4_TMR4_1->CCSR_b.IRQZEN)
     {
-        if ((1UL == bM4_TMR4_1->CCSR_b.IRQZF) && (VSSEL132 & BIT_MASK_15))
+        if ((1UL == bM4_TMR4_1->CCSR_b.IRQZF) && (0UL != (VSSEL132 & BIT_MASK_15)))
         {
             TMR4_1_Udf_IrqHandler();
         }
@@ -3226,7 +3267,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 general compare match A */
     if (1UL == bM4_TMR6_2->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMAF) && (VSSEL132 & BIT_MASK_16))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMAF) && (0UL != (VSSEL132 & BIT_MASK_16)))
         {
             TMR6_2_GCmpA_IrqHandler();
         }
@@ -3234,7 +3275,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 general compare match B */
     if (1UL == bM4_TMR6_2->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMBF) && (VSSEL132 & BIT_MASK_17))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMBF) && (0UL != (VSSEL132 & BIT_MASK_17)))
         {
             TMR6_2_GCmpB_IrqHandler();
         }
@@ -3242,7 +3283,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 general compare match C */
     if (1UL == bM4_TMR6_2->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMCF) && (VSSEL132 & BIT_MASK_18))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMCF) && (0UL != (VSSEL132 & BIT_MASK_18)))
         {
             TMR6_2_GCmpC_IrqHandler();
         }
@@ -3250,7 +3291,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 general compare match D */
     if (1UL == bM4_TMR6_2->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMDF) && (VSSEL132 & BIT_MASK_19))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMDF) && (0UL != (VSSEL132 & BIT_MASK_19)))
         {
             TMR6_2_GCmpD_IrqHandler();
         }
@@ -3258,7 +3299,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 general compare match E */
     if (1UL == bM4_TMR6_2->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMEF) && (VSSEL132 & BIT_MASK_20))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMEF) && (0UL != (VSSEL132 & BIT_MASK_20)))
         {
             TMR6_2_GCmpE_IrqHandler();
         }
@@ -3266,7 +3307,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 general compare match F */
     if (1UL == bM4_TMR6_2->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMFF) && (VSSEL132 & BIT_MASK_21))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMFF) && (0UL != (VSSEL132 & BIT_MASK_21)))
         {
             TMR6_2_GCmpF_IrqHandler();
         }
@@ -3274,7 +3315,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 overflow*/
     if (1UL == bM4_TMR6_2->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.OVFF) && (VSSEL132 & BIT_MASK_22))
+        if ((1UL == bM4_TMR6_2->STFLR_b.OVFF) && (0UL != (VSSEL132 & BIT_MASK_22)))
         {
             TMR6_2_GOvf_IrqHandler();
         }
@@ -3282,7 +3323,7 @@ void IRQ132_Handler(void)
     /* Timer6 Ch.2 underflow*/
     if (1UL == bM4_TMR6_2->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.UDFF) && (VSSEL132 & BIT_MASK_23))
+        if ((1UL == bM4_TMR6_2->STFLR_b.UDFF) && (0UL != (VSSEL132 & BIT_MASK_23)))
         {
             TMR6_2_GUdf_IrqHandler();
         }
@@ -3290,7 +3331,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 U phase higher compare match */
     if (1UL == bM4_TMR4_2->OCSRU_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_2->OCSRU_b.OCFH) && (VSSEL132 & BIT_MASK_24))
+        if ((1UL == bM4_TMR4_2->OCSRU_b.OCFH) && (0UL != (VSSEL132 & BIT_MASK_24)))
         {
             TMR4_2_GCmpUH_IrqHandler();
         }
@@ -3298,7 +3339,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 U phase lower compare match */
     if (1UL == bM4_TMR4_2->OCSRU_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_2->OCSRU_b.OCFL) && (VSSEL132 & BIT_MASK_25))
+        if ((1UL == bM4_TMR4_2->OCSRU_b.OCFL) && (0UL != (VSSEL132 & BIT_MASK_25)))
         {
             TMR4_2_GCmpUL_IrqHandler();
         }
@@ -3306,7 +3347,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 V phase higher compare match */
     if (1UL == bM4_TMR4_2->OCSRV_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_2->OCSRV_b.OCFH) && (VSSEL132 & BIT_MASK_26))
+        if ((1UL == bM4_TMR4_2->OCSRV_b.OCFH) && (0UL != (VSSEL132 & BIT_MASK_26)))
         {
             TMR4_2_GCmpVH_IrqHandler();
         }
@@ -3314,7 +3355,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 V phase lower compare match */
     if (1UL == bM4_TMR4_2->OCSRV_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_2->OCSRV_b.OCFL) && (VSSEL132 & BIT_MASK_27))
+        if ((1UL == bM4_TMR4_2->OCSRV_b.OCFL) && (0UL != (VSSEL132 & BIT_MASK_27)))
         {
             TMR4_2_GCmpVL_IrqHandler();
         }
@@ -3322,7 +3363,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 W phase higher compare match */
     if (1UL == bM4_TMR4_2->OCSRW_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_2->OCSRW_b.OCFH) && (VSSEL132 & BIT_MASK_28))
+        if ((1UL == bM4_TMR4_2->OCSRW_b.OCFH) && (0UL != (VSSEL132 & BIT_MASK_28)))
         {
             TMR4_2_GCmpWH_IrqHandler();
         }
@@ -3330,7 +3371,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 W phase lower compare match */
     if (1UL == bM4_TMR4_2->OCSRW_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_2->OCSRW_b.OCFL) && (VSSEL132 & BIT_MASK_29))
+        if ((1UL == bM4_TMR4_2->OCSRW_b.OCFL) && (0UL != (VSSEL132 & BIT_MASK_29)))
         {
             TMR4_2_GCmpWL_IrqHandler();
         }
@@ -3338,7 +3379,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 overflow */
     if (1UL == bM4_TMR4_2->CCSR_b.IRQPEN)
     {
-        if ((1UL == bM4_TMR4_2->CCSR_b.IRQPF) && (VSSEL132 & BIT_MASK_30))
+        if ((1UL == bM4_TMR4_2->CCSR_b.IRQPF) && (0UL != (VSSEL132 & BIT_MASK_30)))
         {
             TMR4_2_Ovf_IrqHandler();
         }
@@ -3346,7 +3387,7 @@ void IRQ132_Handler(void)
     /* Timer4 Ch.2 underflow */
     if (1UL == bM4_TMR4_2->CCSR_b.IRQZEN)
     {
-        if ((1UL == bM4_TMR4_2->CCSR_b.IRQZF) && (VSSEL132 & BIT_MASK_31))
+        if ((1UL == bM4_TMR4_2->CCSR_b.IRQZF) && (0UL != (VSSEL132 & BIT_MASK_31)))
         {
             TMR4_2_Udf_IrqHandler();
         }
@@ -3365,7 +3406,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 general compare match A */
     if (1UL == bM4_TMR6_3->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMAF) && (VSSEL133 & BIT_MASK_00))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMAF) && (0UL != (VSSEL133 & BIT_MASK_00)))
         {
             TMR6_3_GCmpA_IrqHandler();
         }
@@ -3373,7 +3414,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 general compare match B */
     if (1UL == bM4_TMR6_3->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMBF) && (VSSEL133 & BIT_MASK_01))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMBF) && (0UL != (VSSEL133 & BIT_MASK_01)))
         {
             TMR6_3_GCmpB_IrqHandler();
         }
@@ -3381,7 +3422,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 general compare match C */
     if (1UL == bM4_TMR6_3->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMCF) && (VSSEL133 & BIT_MASK_02))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMCF) && (0UL != (VSSEL133 & BIT_MASK_02)))
         {
             TMR6_3_GCmpC_IrqHandler();
         }
@@ -3389,7 +3430,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 general compare match D */
     if (1UL == bM4_TMR6_3->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMDF) && (VSSEL133 & BIT_MASK_03))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMDF) && (0UL != (VSSEL133 & BIT_MASK_03)))
         {
             TMR6_3_GCmpD_IrqHandler();
         }
@@ -3397,7 +3438,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 general compare match E */
     if (1UL == bM4_TMR6_3->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMEF) && (VSSEL133 & BIT_MASK_04))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMEF) && (0UL != (VSSEL133 & BIT_MASK_04)))
         {
             TMR6_3_GCmpE_IrqHandler();
         }
@@ -3405,7 +3446,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 general compare match F */
     if (1UL == bM4_TMR6_3->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMFF) && (VSSEL133 & BIT_MASK_05))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMFF) && (0UL != (VSSEL133 & BIT_MASK_05)))
         {
             TMR6_3_GCmpF_IrqHandler();
         }
@@ -3413,7 +3454,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 overflow*/
     if (1UL == bM4_TMR6_3->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.OVFF) && (VSSEL133 & BIT_MASK_06))
+        if ((1UL == bM4_TMR6_3->STFLR_b.OVFF) && (0UL != (VSSEL133 & BIT_MASK_06)))
         {
             TMR6_3_GOvf_IrqHandler();
         }
@@ -3421,7 +3462,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.3 underflow*/
     if (1UL == bM4_TMR6_3->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.UDFF) && (VSSEL133 & BIT_MASK_07))
+        if ((1UL == bM4_TMR6_3->STFLR_b.UDFF) && (0UL != (VSSEL133 & BIT_MASK_07)))
         {
             TMR6_3_GUdf_IrqHandler();
         }
@@ -3429,7 +3470,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 U phase higher compare match */
     if (1UL == bM4_TMR4_3->OCSRU_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_3->OCSRU_b.OCFH) && (VSSEL133 & BIT_MASK_08))
+        if ((1UL == bM4_TMR4_3->OCSRU_b.OCFH) && (0UL != (VSSEL133 & BIT_MASK_08)))
         {
             TMR4_3_GCmpUH_IrqHandler();
         }
@@ -3437,7 +3478,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 U phase lower compare match */
     if (1UL == bM4_TMR4_3->OCSRU_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_3->OCSRU_b.OCFL) && (VSSEL133 & BIT_MASK_09))
+        if ((1UL == bM4_TMR4_3->OCSRU_b.OCFL) && (0UL != (VSSEL133 & BIT_MASK_09)))
         {
             TMR4_3_GCmpUL_IrqHandler();
         }
@@ -3445,7 +3486,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 V phase higher compare match */
     if (1UL == bM4_TMR4_3->OCSRV_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_3->OCSRV_b.OCFH) && (VSSEL133 & BIT_MASK_10))
+        if ((1UL == bM4_TMR4_3->OCSRV_b.OCFH) && (0UL != (VSSEL133 & BIT_MASK_10)))
         {
             TMR4_3_GCmpVH_IrqHandler();
         }
@@ -3453,7 +3494,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 V phase lower compare match */
     if (1UL == bM4_TMR4_3->OCSRV_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_3->OCSRV_b.OCFL) && (VSSEL133 & BIT_MASK_11))
+        if ((1UL == bM4_TMR4_3->OCSRV_b.OCFL) && (0UL != (VSSEL133 & BIT_MASK_11)))
         {
             TMR4_3_GCmpVL_IrqHandler();
         }
@@ -3461,7 +3502,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 W phase higher compare match */
     if (1UL == bM4_TMR4_3->OCSRW_b.OCIEH)
     {
-        if ((1UL == bM4_TMR4_3->OCSRW_b.OCFH) && (VSSEL133 & BIT_MASK_12))
+        if ((1UL == bM4_TMR4_3->OCSRW_b.OCFH) && (0UL != (VSSEL133 & BIT_MASK_12)))
         {
             TMR4_3_GCmpWH_IrqHandler();
         }
@@ -3469,7 +3510,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 W phase lower compare match */
     if (1UL == bM4_TMR4_3->OCSRW_b.OCIEL)
     {
-        if ((1UL == bM4_TMR4_3->OCSRW_b.OCFL) && (VSSEL133 & BIT_MASK_13))
+        if ((1UL == bM4_TMR4_3->OCSRW_b.OCFL) && (0UL != (VSSEL133 & BIT_MASK_13)))
         {
             TMR4_3_GCmpWL_IrqHandler();
         }
@@ -3477,7 +3518,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 overflow */
     if (1UL == bM4_TMR4_3->CCSR_b.IRQPEN)
     {
-        if ((1UL == bM4_TMR4_3->CCSR_b.IRQPF) && (VSSEL133 & BIT_MASK_14))
+        if ((1UL == bM4_TMR4_3->CCSR_b.IRQPF) && (0UL != (VSSEL133 & BIT_MASK_14)))
         {
             TMR4_3_Ovf_IrqHandler();
         }
@@ -3485,7 +3526,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.3 underflow */
     if (1UL == bM4_TMR4_3->CCSR_b.IRQZEN)
     {
-        if ((1UL == bM4_TMR4_3->CCSR_b.IRQZF) && (VSSEL133 & BIT_MASK_15))
+        if ((1UL == bM4_TMR4_3->CCSR_b.IRQZF) && (0UL != (VSSEL133 & BIT_MASK_15)))
         {
             TMR4_3_Udf_IrqHandler();
         }
@@ -3493,7 +3534,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.1 dead time */
     if (1UL == bM4_TMR6_1->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.DTEF) && (VSSEL133 & BIT_MASK_16))
+        if ((1UL == bM4_TMR6_1->STFLR_b.DTEF) && (0UL != (VSSEL133 & BIT_MASK_16)))
         {
             TMR6_1_Gdte_IrqHandler();
         }
@@ -3501,7 +3542,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.1 specified up compare match A*/
     if (1UL == bM4_TMR6_1->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMSAUF) && (VSSEL133 & BIT_MASK_19))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMSAUF) && (0UL != (VSSEL133 & BIT_MASK_19)))
         {
             TMR6_1_SCmpUpA_IrqHandler();
         }
@@ -3509,7 +3550,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.1 specified down compare match A*/
     if (1UL == bM4_TMR6_1->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMSADF) && (VSSEL133 & BIT_MASK_19))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMSADF) && (0UL != (VSSEL133 & BIT_MASK_19)))
         {
             TMR6_1_SCmpDownA_IrqHandler();
         }
@@ -3517,7 +3558,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.1 specified up compare match B*/
     if (1UL == bM4_TMR6_1->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMSBUF) && (VSSEL133 & BIT_MASK_20))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMSBUF) && (0UL != (VSSEL133 & BIT_MASK_20)))
         {
             TMR6_1_SCmpUpB_IrqHandler();
         }
@@ -3525,7 +3566,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.1 specified down compare match B*/
     if (1UL == bM4_TMR6_1->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_1->STFLR_b.CMSBDF) && (VSSEL133 & BIT_MASK_20))
+        if ((1UL == bM4_TMR6_1->STFLR_b.CMSBDF) && (0UL != (VSSEL133 & BIT_MASK_20)))
         {
             TMR6_1_SCmpDownB_IrqHandler();
         }
@@ -3533,7 +3574,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.1 U phase reload */
     if (0UL == bM4_TMR4_1->RCSR_b.RTIDU)
     {
-        if ((1UL == bM4_TMR4_1->RCSR_b.RTIFU) && (VSSEL133 & BIT_MASK_21))
+        if ((1UL == bM4_TMR4_1->RCSR_b.RTIFU) && (0UL != (VSSEL133 & BIT_MASK_21)))
         {
             TMR4_1_ReloadU_IrqHandler();
         }
@@ -3541,7 +3582,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.1 V phase reload */
     if (0UL == bM4_TMR4_1->RCSR_b.RTIDV)
     {
-        if ((1UL == bM4_TMR4_1->RCSR_b.RTIFV) && (VSSEL133 & BIT_MASK_22))
+        if ((1UL == bM4_TMR4_1->RCSR_b.RTIFV) && (0UL != (VSSEL133 & BIT_MASK_22)))
         {
             TMR4_1_ReloadU_IrqHandler();
         }
@@ -3549,7 +3590,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.1 W phase reload */
     if (0UL == bM4_TMR4_1->RCSR_b.RTIDW)
     {
-        if ((1UL == bM4_TMR4_1->RCSR_b.RTIFW) && (VSSEL133 & BIT_MASK_23))
+        if ((1UL == bM4_TMR4_1->RCSR_b.RTIFW) && (0UL != (VSSEL133 & BIT_MASK_23)))
         {
             TMR4_1_ReloadU_IrqHandler();
         }
@@ -3557,7 +3598,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.2 dead time */
     if (1UL == bM4_TMR6_2->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.DTEF) && (VSSEL133 & BIT_MASK_24))
+        if ((1UL == bM4_TMR6_2->STFLR_b.DTEF) && (0UL != (VSSEL133 & BIT_MASK_24)))
         {
             TMR6_2_Gdte_IrqHandler();
         }
@@ -3565,7 +3606,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.2 specified up compare match A*/
     if (1UL == bM4_TMR6_2->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMSAUF) && (VSSEL133 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMSAUF) && (0UL != (VSSEL133 & BIT_MASK_27)))
         {
             TMR6_2_SCmpUpA_IrqHandler();
         }
@@ -3573,7 +3614,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.2 specified down compare match A*/
     if (1UL == bM4_TMR6_2->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMSADF) && (VSSEL133 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMSADF) && (0UL != (VSSEL133 & BIT_MASK_27)))
         {
             TMR6_2_SCmpDownA_IrqHandler();
         }
@@ -3581,7 +3622,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.2 specified up compare match B*/
     if (1UL == bM4_TMR6_2->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMSBUF) && (VSSEL133 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMSBUF) && (0UL != (VSSEL133 & BIT_MASK_28)))
         {
             TMR6_2_SCmpUpB_IrqHandler();
         }
@@ -3589,7 +3630,7 @@ void IRQ133_Handler(void)
     /* Timer6 Ch.2 specified down compare match B*/
     if (1UL == bM4_TMR6_2->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_2->STFLR_b.CMSBDF) && (VSSEL133 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_2->STFLR_b.CMSBDF) && (0UL != (VSSEL133 & BIT_MASK_28)))
         {
             TMR6_2_SCmpDownB_IrqHandler();
         }
@@ -3597,7 +3638,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.2 U phase reload */
     if (0UL == bM4_TMR4_2->RCSR_b.RTIDU)
     {
-        if ((1UL == bM4_TMR4_2->RCSR_b.RTIFU) && (VSSEL133 & BIT_MASK_29))
+        if ((1UL == bM4_TMR4_2->RCSR_b.RTIFU) && (0UL != (VSSEL133 & BIT_MASK_29)))
         {
             TMR4_2_ReloadU_IrqHandler();
         }
@@ -3605,7 +3646,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.2 V phase reload */
     if (0UL == bM4_TMR4_2->RCSR_b.RTIDV)
     {
-        if ((1UL == bM4_TMR4_2->RCSR_b.RTIFV) && (VSSEL133 & BIT_MASK_30))
+        if ((1UL == bM4_TMR4_2->RCSR_b.RTIFV) && (0UL != (VSSEL133 & BIT_MASK_30)))
         {
             TMR4_2_ReloadU_IrqHandler();
         }
@@ -3613,7 +3654,7 @@ void IRQ133_Handler(void)
     /* Timer4 Ch.2 W phase reload */
     if (0UL == bM4_TMR4_2->RCSR_b.RTIDW)
     {
-        if ((1UL == bM4_TMR4_2->RCSR_b.RTIFW) && (VSSEL133 & BIT_MASK_31))
+        if ((1UL == bM4_TMR4_2->RCSR_b.RTIFW) && (0UL != (VSSEL133 & BIT_MASK_31)))
         {
             TMR4_2_ReloadU_IrqHandler();
         }
@@ -3632,7 +3673,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.3 dead time */
     if (1UL == bM4_TMR6_3->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.DTEF) && (VSSEL134 & BIT_MASK_00))
+        if ((1UL == bM4_TMR6_3->STFLR_b.DTEF) && (0UL != (VSSEL134 & BIT_MASK_00)))
         {
             TMR6_3_Gdte_IrqHandler();
         }
@@ -3640,7 +3681,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.3 specified up compare match A*/
     if (1UL == bM4_TMR6_3->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMSAUF) && (VSSEL134 & BIT_MASK_03))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMSAUF) && (0UL != (VSSEL134 & BIT_MASK_03)))
         {
             TMR6_3_SCmpUpA_IrqHandler();
         }
@@ -3648,7 +3689,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.3 specified down compare match A*/
     if (1UL == bM4_TMR6_3->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMSADF) && (VSSEL134 & BIT_MASK_03))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMSADF) && (0UL != (VSSEL134 & BIT_MASK_03)))
         {
             TMR6_3_SCmpDownA_IrqHandler();
         }
@@ -3656,7 +3697,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.3 specified up compare match B*/
     if (1UL == bM4_TMR6_3->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMSBUF) && (VSSEL134 & BIT_MASK_04))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMSBUF) && (0UL != (VSSEL134 & BIT_MASK_04)))
         {
             TMR6_3_SCmpUpB_IrqHandler();
         }
@@ -3664,7 +3705,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.3 specified down compare match B*/
     if (1UL == bM4_TMR6_3->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_3->STFLR_b.CMSBDF) && (VSSEL134 & BIT_MASK_04))
+        if ((1UL == bM4_TMR6_3->STFLR_b.CMSBDF) && (0UL != (VSSEL134 & BIT_MASK_04)))
         {
             TMR6_3_SCmpDownB_IrqHandler();
         }
@@ -3672,7 +3713,7 @@ void IRQ134_Handler(void)
     /* Timer4 Ch.3 U phase reload */
     if (0UL == bM4_TMR4_3->RCSR_b.RTIDU)
     {
-        if ((1UL == bM4_TMR4_3->RCSR_b.RTIFU) && (VSSEL134 & BIT_MASK_05))
+        if ((1UL == bM4_TMR4_3->RCSR_b.RTIFU) && (0UL != (VSSEL134 & BIT_MASK_05)))
         {
             TMR4_3_ReloadU_IrqHandler();
         }
@@ -3680,7 +3721,7 @@ void IRQ134_Handler(void)
     /* Timer4 Ch.3 V phase reload */
     if (0UL == bM4_TMR4_3->RCSR_b.RTIDV)
     {
-        if ((1UL == bM4_TMR4_3->RCSR_b.RTIFV) && (VSSEL134 & BIT_MASK_06))
+        if ((1UL == bM4_TMR4_3->RCSR_b.RTIFV) && (0UL != (VSSEL134 & BIT_MASK_06)))
         {
             TMR4_3_ReloadU_IrqHandler();
         }
@@ -3688,7 +3729,7 @@ void IRQ134_Handler(void)
     /* Timer4 Ch.3 W phase reload */
     if (0UL == bM4_TMR4_3->RCSR_b.RTIDW)
     {
-        if ((1UL == bM4_TMR4_3->RCSR_b.RTIFW) && (VSSEL134 & BIT_MASK_07))
+        if ((1UL == bM4_TMR4_3->RCSR_b.RTIFW) && (0UL != (VSSEL134 & BIT_MASK_07)))
         {
             TMR4_3_ReloadU_IrqHandler();
         }
@@ -3696,7 +3737,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 general compare match A */
     if (1UL == bM4_TMR6_4->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMAF) && (VSSEL134 & BIT_MASK_16))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMAF) && (0UL != (VSSEL134 & BIT_MASK_16)))
         {
             TMR6_4_GCmpA_IrqHandler();
         }
@@ -3704,7 +3745,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 general compare match B */
     if (1UL == bM4_TMR6_4->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMBF) && (VSSEL134 & BIT_MASK_17))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMBF) && (0UL != (VSSEL134 & BIT_MASK_17)))
         {
             TMR6_4_GCmpB_IrqHandler();
         }
@@ -3712,7 +3753,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 general compare match C */
     if (1UL == bM4_TMR6_4->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMCF) && (VSSEL134 & BIT_MASK_18))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMCF) && (0UL != (VSSEL134 & BIT_MASK_18)))
         {
             TMR6_4_GCmpC_IrqHandler();
         }
@@ -3720,7 +3761,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 general compare match D */
     if (1UL == bM4_TMR6_4->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMDF) && (VSSEL134 & BIT_MASK_19))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMDF) && (0UL != (VSSEL134 & BIT_MASK_19)))
         {
             TMR6_4_GCmpD_IrqHandler();
         }
@@ -3728,7 +3769,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 general compare match E */
     if (1UL == bM4_TMR6_4->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMEF) && (VSSEL134 & BIT_MASK_20))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMEF) && (0UL != (VSSEL134 & BIT_MASK_20)))
         {
             TMR6_4_GCmpE_IrqHandler();
         }
@@ -3736,7 +3777,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 general compare match F */
     if (1UL == bM4_TMR6_4->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMFF) && (VSSEL134 & BIT_MASK_21))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMFF) && (0UL != (VSSEL134 & BIT_MASK_21)))
         {
             TMR6_4_GCmpF_IrqHandler();
         }
@@ -3744,7 +3785,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 overflow*/
     if (1UL == bM4_TMR6_4->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.OVFF) && (VSSEL134 & BIT_MASK_22))
+        if ((1UL == bM4_TMR6_4->STFLR_b.OVFF) && (0UL != (VSSEL134 & BIT_MASK_22)))
         {
             TMR6_4_GOvf_IrqHandler();
         }
@@ -3752,7 +3793,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 underflow*/
     if (1UL == bM4_TMR6_4->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.UDFF) && (VSSEL134 & BIT_MASK_23))
+        if ((1UL == bM4_TMR6_4->STFLR_b.UDFF) && (0UL != (VSSEL134 & BIT_MASK_23)))
         {
             TMR6_4_GUdf_IrqHandler();
         }
@@ -3760,7 +3801,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 dead time */
     if (1UL == bM4_TMR6_4->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.DTEF) && (VSSEL134 & BIT_MASK_24))
+        if ((1UL == bM4_TMR6_4->STFLR_b.DTEF) && (0UL != (VSSEL134 & BIT_MASK_24)))
         {
             TMR6_4_Gdte_IrqHandler();
         }
@@ -3768,7 +3809,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 specified up compare match A*/
     if (1UL == bM4_TMR6_4->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMSAUF) && (VSSEL134 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMSAUF) && (0UL != (VSSEL134 & BIT_MASK_27)))
         {
             TMR6_4_SCmpUpA_IrqHandler();
         }
@@ -3776,7 +3817,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 specified down compare match A*/
     if (1UL == bM4_TMR6_4->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMSADF) && (VSSEL134 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMSADF) && (0UL != (VSSEL134 & BIT_MASK_27)))
         {
             TMR6_4_SCmpDownA_IrqHandler();
         }
@@ -3784,7 +3825,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 specified up compare match B*/
     if (1UL == bM4_TMR6_4->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMSBUF) && (VSSEL134 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMSBUF) && (0UL != (VSSEL134 & BIT_MASK_28)))
         {
             TMR6_4_SCmpUpB_IrqHandler();
         }
@@ -3792,7 +3833,7 @@ void IRQ134_Handler(void)
     /* Timer6 Ch.4 specified down compare match B*/
     if (1UL == bM4_TMR6_4->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_4->STFLR_b.CMSBDF) && (VSSEL134 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_4->STFLR_b.CMSBDF) && (0UL != (VSSEL134 & BIT_MASK_28)))
         {
             TMR6_4_SCmpDownB_IrqHandler();
         }
@@ -3811,7 +3852,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 general compare match A */
     if (1UL == bM4_TMR6_5->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMAF) && (VSSEL135 & BIT_MASK_00))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMAF) && (0UL != (VSSEL135 & BIT_MASK_00)))
         {
             TMR6_5_GCmpA_IrqHandler();
         }
@@ -3819,7 +3860,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 general compare match B */
     if (1UL == bM4_TMR6_5->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMBF) && (VSSEL135 & BIT_MASK_01))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMBF) && (0UL != (VSSEL135 & BIT_MASK_01)))
         {
             TMR6_5_GCmpB_IrqHandler();
         }
@@ -3827,7 +3868,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 general compare match C */
     if (1UL == bM4_TMR6_5->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMCF) && (VSSEL135 & BIT_MASK_02))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMCF) && (0UL != (VSSEL135 & BIT_MASK_02)))
         {
             TMR6_5_GCmpC_IrqHandler();
         }
@@ -3835,7 +3876,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 general compare match D */
     if (1UL == bM4_TMR6_5->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMDF) && (VSSEL135 & BIT_MASK_03))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMDF) && (0UL != (VSSEL135 & BIT_MASK_03)))
         {
             TMR6_5_GCmpD_IrqHandler();
         }
@@ -3843,7 +3884,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 general compare match E */
     if (1UL == bM4_TMR6_5->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMEF) && (VSSEL135 & BIT_MASK_04))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMEF) && (0UL != (VSSEL135 & BIT_MASK_04)))
         {
             TMR6_5_GCmpE_IrqHandler();
         }
@@ -3851,7 +3892,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 general compare match F */
     if (1UL == bM4_TMR6_5->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMFF) && (VSSEL135 & BIT_MASK_05))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMFF) && (0UL != (VSSEL135 & BIT_MASK_05)))
         {
             TMR6_5_GCmpF_IrqHandler();
         }
@@ -3859,7 +3900,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 overflow*/
     if (1UL == bM4_TMR6_5->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.OVFF) && (VSSEL135 & BIT_MASK_06))
+        if ((1UL == bM4_TMR6_5->STFLR_b.OVFF) && (0UL != (VSSEL135 & BIT_MASK_06)))
         {
             TMR6_5_GOvf_IrqHandler();
         }
@@ -3867,7 +3908,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 underflow*/
     if (1UL == bM4_TMR6_5->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.UDFF) && (VSSEL135 & BIT_MASK_07))
+        if ((1UL == bM4_TMR6_5->STFLR_b.UDFF) && (0UL != (VSSEL135 & BIT_MASK_07)))
         {
             TMR6_5_GUdf_IrqHandler();
         }
@@ -3875,7 +3916,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 dead time */
     if (1UL == bM4_TMR6_5->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.DTEF) && (VSSEL135 & BIT_MASK_08))
+        if ((1UL == bM4_TMR6_5->STFLR_b.DTEF) && (0UL != (VSSEL135 & BIT_MASK_08)))
         {
             TMR6_5_Gdte_IrqHandler();
         }
@@ -3883,7 +3924,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 specified up compare match A*/
     if (1UL == bM4_TMR6_5->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMSAUF) && (VSSEL135 & BIT_MASK_11))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMSAUF) && (0UL != (VSSEL135 & BIT_MASK_11)))
         {
             TMR6_5_SCmpUpA_IrqHandler();
         }
@@ -3891,7 +3932,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 specified down compare match A*/
     if (1UL == bM4_TMR6_5->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMSADF) && (VSSEL135 & BIT_MASK_11))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMSADF) && (0UL != (VSSEL135 & BIT_MASK_11)))
         {
             TMR6_5_SCmpDownA_IrqHandler();
         }
@@ -3899,7 +3940,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 specified up compare match B*/
     if (1UL == bM4_TMR6_5->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMSBUF) && (VSSEL135 & BIT_MASK_12))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMSBUF) && (0UL != (VSSEL135 & BIT_MASK_12)))
         {
             TMR6_5_SCmpUpB_IrqHandler();
         }
@@ -3907,7 +3948,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.5 specified down compare match B*/
     if (1UL == bM4_TMR6_5->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_5->STFLR_b.CMSBDF) && (VSSEL135 & BIT_MASK_12))
+        if ((1UL == bM4_TMR6_5->STFLR_b.CMSBDF) && (0UL != (VSSEL135 & BIT_MASK_12)))
         {
             TMR6_5_SCmpDownB_IrqHandler();
         }
@@ -3915,7 +3956,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.1 overflow */
     if (1UL == bM4_TMRA_1->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_1->BCSTR_b.OVFF) && (VSSEL135 & BIT_MASK_13))
+        if ((1UL == bM4_TMRA_1->BCSTR_b.OVFF) && (0UL != (VSSEL135 & BIT_MASK_13)))
         {
             TMRA_1_Ovf_IrqHandler();
         }
@@ -3923,7 +3964,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.1 underflow */
     if (1UL == bM4_TMRA_1->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_1->BCSTR_b.UDFF) && (VSSEL135 & BIT_MASK_14))
+        if ((1UL == bM4_TMRA_1->BCSTR_b.UDFF) && (0UL != (VSSEL135 & BIT_MASK_14)))
         {
             TMRA_1_Udf_IrqHandler();
         }
@@ -3931,7 +3972,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.1 compare match 1 */
     if (1UL == bM4_TMRA_1->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF1) && (VSSEL135 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF1) && (0UL != (VSSEL135 & BIT_MASK_15)))
         {
             TMRA_1_Cmp1_IrqHandler();
         }
@@ -3939,7 +3980,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.1 compare match 2 */
     if (1UL == bM4_TMRA_1->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF2) && (VSSEL135 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF2) && (0UL != (VSSEL135 & BIT_MASK_15)))
         {
             TMRA_1_Cmp2_IrqHandler();
         }
@@ -3947,7 +3988,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.1 compare match 3 */
     if (1UL == bM4_TMRA_1->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF3) && (VSSEL135 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF3) && (0UL != (VSSEL135 & BIT_MASK_15)))
         {
             TMRA_1_Cmp3_IrqHandler();
         }
@@ -3955,7 +3996,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.1 compare match 4 */
     if (1UL == bM4_TMRA_1->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF4) && (VSSEL135 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_1->STFLR_b.CMPF4) && (0UL != (VSSEL135 & BIT_MASK_15)))
         {
             TMRA_1_Cmp4_IrqHandler();
         }
@@ -3963,7 +4004,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 general compare match A */
     if (1UL == bM4_TMR6_6->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMAF) && (VSSEL135 & BIT_MASK_16))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMAF) && (0UL != (VSSEL135 & BIT_MASK_16)))
         {
             TMR6_6_GCmpA_IrqHandler();
         }
@@ -3971,7 +4012,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 general compare match B */
     if (1UL == bM4_TMR6_6->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMBF) && (VSSEL135 & BIT_MASK_17))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMBF) && (0UL != (VSSEL135 & BIT_MASK_17)))
         {
             TMR6_6_GCmpB_IrqHandler();
         }
@@ -3979,7 +4020,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 general compare match C */
     if (1UL == bM4_TMR6_6->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMCF) && (VSSEL135 & BIT_MASK_18))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMCF) && (0UL != (VSSEL135 & BIT_MASK_18)))
         {
             TMR6_6_GCmpC_IrqHandler();
         }
@@ -3987,7 +4028,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 general compare match D */
     if (1UL == bM4_TMR6_6->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMDF) && (VSSEL135 & BIT_MASK_19))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMDF) && (0UL != (VSSEL135 & BIT_MASK_19)))
         {
             TMR6_6_GCmpD_IrqHandler();
         }
@@ -3995,7 +4036,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 general compare match E */
     if (1UL == bM4_TMR6_6->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMEF) && (VSSEL135 & BIT_MASK_20))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMEF) && (0UL != (VSSEL135 & BIT_MASK_20)))
         {
             TMR6_6_GCmpE_IrqHandler();
         }
@@ -4003,7 +4044,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 general compare match F */
     if (1UL == bM4_TMR6_6->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMFF) && (VSSEL135 & BIT_MASK_21))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMFF) && (0UL != (VSSEL135 & BIT_MASK_21)))
         {
             TMR6_6_GCmpF_IrqHandler();
         }
@@ -4011,7 +4052,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 overflow*/
     if (1UL == bM4_TMR6_6->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.OVFF) && (VSSEL135 & BIT_MASK_22))
+        if ((1UL == bM4_TMR6_6->STFLR_b.OVFF) && (0UL != (VSSEL135 & BIT_MASK_22)))
         {
             TMR6_6_GOvf_IrqHandler();
         }
@@ -4019,7 +4060,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 underflow*/
     if (1UL == bM4_TMR6_6->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.UDFF) && (VSSEL135 & BIT_MASK_23))
+        if ((1UL == bM4_TMR6_6->STFLR_b.UDFF) && (0UL != (VSSEL135 & BIT_MASK_23)))
         {
             TMR6_6_GUdf_IrqHandler();
         }
@@ -4027,7 +4068,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 dead time */
     if (1UL == bM4_TMR6_6->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.DTEF) && (VSSEL135 & BIT_MASK_24))
+        if ((1UL == bM4_TMR6_6->STFLR_b.DTEF) && (0UL != (VSSEL135 & BIT_MASK_24)))
         {
             TMR6_6_Gdte_IrqHandler();
         }
@@ -4035,7 +4076,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 specified up compare match A*/
     if (1UL == bM4_TMR6_6->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMSAUF) && (VSSEL135 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMSAUF) && (0UL != (VSSEL135 & BIT_MASK_27)))
         {
             TMR6_6_SCmpUpA_IrqHandler();
         }
@@ -4043,7 +4084,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 specified down compare match A*/
     if (1UL == bM4_TMR6_6->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMSADF) && (VSSEL135 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMSADF) && (0UL != (VSSEL135 & BIT_MASK_27)))
         {
             TMR6_6_SCmpDownA_IrqHandler();
         }
@@ -4051,7 +4092,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 specified up compare match B*/
     if (1UL == bM4_TMR6_6->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMSBUF) && (VSSEL135 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMSBUF) && (0UL != (VSSEL135 & BIT_MASK_28)))
         {
             TMR6_6_SCmpUpB_IrqHandler();
         }
@@ -4059,7 +4100,7 @@ void IRQ135_Handler(void)
     /* Timer6 Ch.6 specified down compare match B*/
     if (1UL == bM4_TMR6_6->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_6->STFLR_b.CMSBDF) && (VSSEL135 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_6->STFLR_b.CMSBDF) && (0UL != (VSSEL135 & BIT_MASK_28)))
         {
             TMR6_6_SCmpDownB_IrqHandler();
         }
@@ -4067,7 +4108,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.2 overflow */
     if (1UL == bM4_TMRA_2->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_2->BCSTR_b.OVFF) && (VSSEL135 & BIT_MASK_29))
+        if ((1UL == bM4_TMRA_2->BCSTR_b.OVFF) && (0UL != (VSSEL135 & BIT_MASK_29)))
         {
             TMRA_2_Ovf_IrqHandler();
         }
@@ -4075,7 +4116,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.2 underflow */
     if (1UL == bM4_TMRA_2->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_2->BCSTR_b.UDFF) && (VSSEL135 & BIT_MASK_30))
+        if ((1UL == bM4_TMRA_2->BCSTR_b.UDFF) && (0UL != (VSSEL135 & BIT_MASK_30)))
         {
             TMRA_2_Udf_IrqHandler();
         }
@@ -4083,7 +4124,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.2 compare match 1 */
     if (1UL == bM4_TMRA_2->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF1) && (VSSEL135 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF1) && (0UL != (VSSEL135 & BIT_MASK_31)))
         {
             TMRA_2_Cmp1_IrqHandler();
         }
@@ -4091,7 +4132,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.2 compare match 2 */
     if (1UL == bM4_TMRA_2->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF2) && (VSSEL135 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF2) && (0UL != (VSSEL135 & BIT_MASK_31)))
         {
             TMRA_2_Cmp2_IrqHandler();
         }
@@ -4099,7 +4140,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.2 compare match 3 */
     if (1UL == bM4_TMRA_2->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF3) && (VSSEL135 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF3) && (0UL != (VSSEL135 & BIT_MASK_31)))
         {
             TMRA_2_Cmp3_IrqHandler();
         }
@@ -4107,7 +4148,7 @@ void IRQ135_Handler(void)
     /* TimerA Ch.2 compare match 4 */
     if (1UL == bM4_TMRA_2->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF4) && (VSSEL135 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_2->STFLR_b.CMPF4) && (0UL != (VSSEL135 & BIT_MASK_31)))
         {
             TMRA_2_Cmp4_IrqHandler();
         }
@@ -4126,7 +4167,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 general compare match A */
     if (1UL == bM4_TMR6_7->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMAF) && (VSSEL136 & BIT_MASK_00))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMAF) && (0UL != (VSSEL136 & BIT_MASK_00)))
         {
             TMR6_7_GCmpA_IrqHandler();
         }
@@ -4134,7 +4175,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 general compare match B */
     if (1UL == bM4_TMR6_7->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMBF) && (VSSEL136 & BIT_MASK_01))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMBF) && (0UL != (VSSEL136 & BIT_MASK_01)))
         {
             TMR6_7_GCmpB_IrqHandler();
         }
@@ -4142,7 +4183,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 general compare match C */
     if (1UL == bM4_TMR6_7->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMCF) && (VSSEL136 & BIT_MASK_02))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMCF) && (0UL != (VSSEL136 & BIT_MASK_02)))
         {
             TMR6_7_GCmpC_IrqHandler();
         }
@@ -4150,7 +4191,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 general compare match D */
     if (1UL == bM4_TMR6_7->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMDF) && (VSSEL136 & BIT_MASK_03))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMDF) && (0UL != (VSSEL136 & BIT_MASK_03)))
         {
             TMR6_7_GCmpD_IrqHandler();
         }
@@ -4158,7 +4199,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 general compare match E */
     if (1UL == bM4_TMR6_7->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMEF) && (VSSEL136 & BIT_MASK_04))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMEF) && (0UL != (VSSEL136 & BIT_MASK_04)))
         {
             TMR6_7_GCmpE_IrqHandler();
         }
@@ -4166,7 +4207,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 general compare match F */
     if (1UL == bM4_TMR6_7->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMFF) && (VSSEL136 & BIT_MASK_05))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMFF) && (0UL != (VSSEL136 & BIT_MASK_05)))
         {
             TMR6_7_GCmpF_IrqHandler();
         }
@@ -4174,7 +4215,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 overflow*/
     if (1UL == bM4_TMR6_7->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.OVFF) && (VSSEL136 & BIT_MASK_06))
+        if ((1UL == bM4_TMR6_7->STFLR_b.OVFF) && (0UL != (VSSEL136 & BIT_MASK_06)))
         {
             TMR6_7_GOvf_IrqHandler();
         }
@@ -4182,7 +4223,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 underflow*/
     if (1UL == bM4_TMR6_7->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.UDFF) && (VSSEL136 & BIT_MASK_07))
+        if ((1UL == bM4_TMR6_7->STFLR_b.UDFF) && (0UL != (VSSEL136 & BIT_MASK_07)))
         {
             TMR6_7_GUdf_IrqHandler();
         }
@@ -4190,7 +4231,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 dead time */
     if (1UL == bM4_TMR6_7->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.DTEF) && (VSSEL136 & BIT_MASK_08))
+        if ((1UL == bM4_TMR6_7->STFLR_b.DTEF) && (0UL != (VSSEL136 & BIT_MASK_08)))
         {
             TMR6_7_Gdte_IrqHandler();
         }
@@ -4198,7 +4239,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 specified up compare match A*/
     if (1UL == bM4_TMR6_7->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMSAUF) && (VSSEL136 & BIT_MASK_11))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMSAUF) && (0UL != (VSSEL136 & BIT_MASK_11)))
         {
             TMR6_7_SCmpUpA_IrqHandler();
         }
@@ -4206,7 +4247,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 specified down compare match A*/
     if (1UL == bM4_TMR6_7->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMSADF) && (VSSEL136 & BIT_MASK_11))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMSADF) && (0UL != (VSSEL136 & BIT_MASK_11)))
         {
             TMR6_7_SCmpDownA_IrqHandler();
         }
@@ -4214,7 +4255,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 specified up compare match B*/
     if (1UL == bM4_TMR6_7->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMSBUF) && (VSSEL136 & BIT_MASK_12))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMSBUF) && (0UL != (VSSEL136 & BIT_MASK_12)))
         {
             TMR6_7_SCmpUpB_IrqHandler();
         }
@@ -4222,7 +4263,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.7 specified down compare match B*/
     if (1UL == bM4_TMR6_7->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_7->STFLR_b.CMSBDF) && (VSSEL136 & BIT_MASK_12))
+        if ((1UL == bM4_TMR6_7->STFLR_b.CMSBDF) && (0UL != (VSSEL136 & BIT_MASK_12)))
         {
             TMR6_7_SCmpDownB_IrqHandler();
         }
@@ -4230,7 +4271,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.3 overflow */
     if (1UL == bM4_TMRA_3->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_3->BCSTR_b.OVFF) && (VSSEL136 & BIT_MASK_13))
+        if ((1UL == bM4_TMRA_3->BCSTR_b.OVFF) && (0UL != (VSSEL136 & BIT_MASK_13)))
         {
             TMRA_3_Ovf_IrqHandler();
         }
@@ -4238,7 +4279,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.3 underflow */
     if (1UL == bM4_TMRA_3->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_3->BCSTR_b.UDFF) && (VSSEL136 & BIT_MASK_14))
+        if ((1UL == bM4_TMRA_3->BCSTR_b.UDFF) && (0UL != (VSSEL136 & BIT_MASK_14)))
         {
             TMRA_3_Udf_IrqHandler();
         }
@@ -4246,7 +4287,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.3 compare match 1 */
     if (1UL == bM4_TMRA_3->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF1) && (VSSEL136 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF1) && (0UL != (VSSEL136 & BIT_MASK_15)))
         {
             TMRA_3_Cmp1_IrqHandler();
         }
@@ -4254,7 +4295,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.3 compare match 2 */
     if (1UL == bM4_TMRA_3->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF2) && (VSSEL136 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF2) && (0UL != (VSSEL136 & BIT_MASK_15)))
         {
             TMRA_3_Cmp2_IrqHandler();
         }
@@ -4262,7 +4303,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.3 compare match 3 */
     if (1UL == bM4_TMRA_3->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF3) && (VSSEL136 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF3) && (0UL != (VSSEL136 & BIT_MASK_15)))
         {
             TMRA_3_Cmp3_IrqHandler();
         }
@@ -4270,7 +4311,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.3 compare match 4 */
     if (1UL == bM4_TMRA_3->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF4) && (VSSEL136 & BIT_MASK_15))
+        if ((1UL == bM4_TMRA_3->STFLR_b.CMPF4) && (0UL != (VSSEL136 & BIT_MASK_15)))
         {
             TMRA_3_Cmp4_IrqHandler();
         }
@@ -4278,7 +4319,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 general compare match A */
     if (1UL == bM4_TMR6_8->ICONR_b.INTENA)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMAF) && (VSSEL136 & BIT_MASK_16))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMAF) && (0UL != (VSSEL136 & BIT_MASK_16)))
         {
             TMR6_8_GCmpA_IrqHandler();
         }
@@ -4286,7 +4327,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 general compare match B */
     if (1UL == bM4_TMR6_8->ICONR_b.INTENB)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMBF) && (VSSEL136 & BIT_MASK_17))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMBF) && (0UL != (VSSEL136 & BIT_MASK_17)))
         {
             TMR6_8_GCmpB_IrqHandler();
         }
@@ -4294,7 +4335,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 general compare match C */
     if (1UL == bM4_TMR6_8->ICONR_b.INTENC)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMCF) && (VSSEL136 & BIT_MASK_18))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMCF) && (0UL != (VSSEL136 & BIT_MASK_18)))
         {
             TMR6_8_GCmpC_IrqHandler();
         }
@@ -4302,7 +4343,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 general compare match D */
     if (1UL == bM4_TMR6_8->ICONR_b.INTEND)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMDF) && (VSSEL136 & BIT_MASK_19))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMDF) && (0UL != (VSSEL136 & BIT_MASK_19)))
         {
             TMR6_8_GCmpD_IrqHandler();
         }
@@ -4310,7 +4351,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 general compare match E */
     if (1UL == bM4_TMR6_8->ICONR_b.INTENE)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMEF) && (VSSEL136 & BIT_MASK_20))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMEF) && (0UL != (VSSEL136 & BIT_MASK_20)))
         {
             TMR6_8_GCmpE_IrqHandler();
         }
@@ -4318,7 +4359,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 general compare match F */
     if (1UL == bM4_TMR6_8->ICONR_b.INTENF)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMFF) && (VSSEL136 & BIT_MASK_21))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMFF) && (0UL != (VSSEL136 & BIT_MASK_21)))
         {
             TMR6_8_GCmpF_IrqHandler();
         }
@@ -4326,7 +4367,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 overflow*/
     if (1UL == bM4_TMR6_8->ICONR_b.INTENOVF)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.OVFF) && (VSSEL136 & BIT_MASK_22))
+        if ((1UL == bM4_TMR6_8->STFLR_b.OVFF) && (0UL != (VSSEL136 & BIT_MASK_22)))
         {
             TMR6_8_GOvf_IrqHandler();
         }
@@ -4334,7 +4375,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 underflow*/
     if (1UL == bM4_TMR6_8->ICONR_b.INTENUDF)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.UDFF) && (VSSEL136 & BIT_MASK_23))
+        if ((1UL == bM4_TMR6_8->STFLR_b.UDFF) && (0UL != (VSSEL136 & BIT_MASK_23)))
         {
             TMR6_8_GUdf_IrqHandler();
         }
@@ -4342,7 +4383,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 dead time */
     if (1UL == bM4_TMR6_8->ICONR_b.INTENDTE)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.DTEF) && (VSSEL136 & BIT_MASK_24))
+        if ((1UL == bM4_TMR6_8->STFLR_b.DTEF) && (0UL != (VSSEL136 & BIT_MASK_24)))
         {
             TMR6_8_Gdte_IrqHandler();
         }
@@ -4350,7 +4391,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 specified up compare match A*/
     if (1UL == bM4_TMR6_8->ICONR_b.INTENSAU)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMSAUF) && (VSSEL136 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMSAUF) && (0UL != (VSSEL136 & BIT_MASK_27)))
         {
             TMR6_8_SCmpUpA_IrqHandler();
         }
@@ -4358,7 +4399,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 specified down compare match A*/
     if (1UL == bM4_TMR6_8->ICONR_b.INTENSAD)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMSADF) && (VSSEL136 & BIT_MASK_27))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMSADF) && (0UL != (VSSEL136 & BIT_MASK_27)))
         {
             TMR6_8_SCmpDownA_IrqHandler();
         }
@@ -4366,7 +4407,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 specified up compare match B*/
     if (1UL == bM4_TMR6_8->ICONR_b.INTENSBU)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMSBUF) && (VSSEL136 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMSBUF) && (0UL != (VSSEL136 & BIT_MASK_28)))
         {
             TMR6_8_SCmpUpB_IrqHandler();
         }
@@ -4374,7 +4415,7 @@ void IRQ136_Handler(void)
     /* Timer6 Ch.8 specified down compare match B*/
     if (1UL == bM4_TMR6_8->ICONR_b.INTENSBD)
     {
-        if ((1UL == bM4_TMR6_8->STFLR_b.CMSBDF) && (VSSEL136 & BIT_MASK_28))
+        if ((1UL == bM4_TMR6_8->STFLR_b.CMSBDF) && (0UL != (VSSEL136 & BIT_MASK_28)))
         {
             TMR6_8_SCmpDownB_IrqHandler();
         }
@@ -4382,7 +4423,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.4 overflow */
     if (1UL == bM4_TMRA_4->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_4->BCSTR_b.OVFF) && (VSSEL136 & BIT_MASK_29))
+        if ((1UL == bM4_TMRA_4->BCSTR_b.OVFF) && (0UL != (VSSEL136 & BIT_MASK_29)))
         {
             TMRA_4_Ovf_IrqHandler();
         }
@@ -4390,7 +4431,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.4 underflow */
     if (1UL == bM4_TMRA_4->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_4->BCSTR_b.UDFF) && (VSSEL136 & BIT_MASK_30))
+        if ((1UL == bM4_TMRA_4->BCSTR_b.UDFF) && (0UL != (VSSEL136 & BIT_MASK_30)))
         {
             TMRA_4_Udf_IrqHandler();
         }
@@ -4398,7 +4439,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.4 compare match 1 */
     if (1UL == bM4_TMRA_4->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF1) && (VSSEL136 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF1) && (0UL != (VSSEL136 & BIT_MASK_31)))
         {
             TMRA_4_Cmp1_IrqHandler();
         }
@@ -4406,7 +4447,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.4 compare match 2 */
     if (1UL == bM4_TMRA_4->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF2) && (VSSEL136 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF2) && (0UL != (VSSEL136 & BIT_MASK_31)))
         {
             TMRA_4_Cmp2_IrqHandler();
         }
@@ -4414,7 +4455,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.4 compare match 3 */
     if (1UL == bM4_TMRA_4->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF3) && (VSSEL136 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF3) && (0UL != (VSSEL136 & BIT_MASK_31)))
         {
             TMRA_4_Cmp3_IrqHandler();
         }
@@ -4422,7 +4463,7 @@ void IRQ136_Handler(void)
     /* TimerA Ch.4 compare match 4 */
     if (1UL == bM4_TMRA_4->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF4) && (VSSEL136 & BIT_MASK_31))
+        if ((1UL == bM4_TMRA_4->STFLR_b.CMPF4) && (0UL != (VSSEL136 & BIT_MASK_31)))
         {
             TMRA_4_Cmp4_IrqHandler();
         }
@@ -4445,7 +4486,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB0->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_00))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_00)))
     {
         EMB_GR0_IrqHandler();
     }
@@ -4454,7 +4495,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB1->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_01))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_01)))
     {
         EMB_GR1_IrqHandler();
     }
@@ -4463,7 +4504,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB2->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_02))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_02)))
     {
         EMB_GR2_IrqHandler();
     }
@@ -4472,7 +4513,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB3->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_03))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_03)))
     {
         EMB_GR3_IrqHandler();
     }
@@ -4481,7 +4522,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB4->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_04))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_04)))
     {
         EMB_GR4_IrqHandler();
     }
@@ -4490,7 +4531,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB5->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_05))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_05)))
     {
         EMB_GR5_IrqHandler();
     }
@@ -4499,7 +4540,7 @@ void IRQ137_Handler(void)
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
     u32Tmp2 = M4_EMB6->STAT & (BIT_MASK_01 | BIT_MASK_02 | BIT_MASK_03 |   \
                                 BIT_MASK_08 | BIT_MASK_09 | BIT_MASK_10 | BIT_MASK_11);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL137 & BIT_MASK_06))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL137 & BIT_MASK_06)))
     {
         EMB_GR6_IrqHandler();
     }
@@ -4515,12 +4556,12 @@ void IRQ137_Handler(void)
     {
         /* USART Ch.1 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART1->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL137 & BIT_MASK_12))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL137 & BIT_MASK_12)))
         {
             USART_1_RxErr_IrqHandler();
         }
         /* USART Ch.1 Rx end */
-        if ((1UL == bM4_USART1->SR_b.RXNE) && (VSSEL137 & BIT_MASK_13))
+        if ((1UL == bM4_USART1->SR_b.RXNE) && (0UL != (VSSEL137 & BIT_MASK_13)))
         {
             USART_1_RxEnd_IrqHandler();
         }
@@ -4528,7 +4569,7 @@ void IRQ137_Handler(void)
     /* USART Ch.1 Tx buffer empty */
     if (1UL == bM4_USART1->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART1->SR_b.TXE) && (VSSEL137 & BIT_MASK_14))
+        if ((1UL == bM4_USART1->SR_b.TXE) && (0UL != (VSSEL137 & BIT_MASK_14)))
         {
             USART_1_TxEmpty_IrqHandler();
         }
@@ -4536,7 +4577,7 @@ void IRQ137_Handler(void)
     /* USART Ch.1 Tx end */
     if (1UL == bM4_USART1->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART1->SR_b.TC) && (VSSEL137 & BIT_MASK_15))
+        if ((1UL == bM4_USART1->SR_b.TC) && (0UL != (VSSEL137 & BIT_MASK_15)))
         {
             USART_1_TxEnd_IrqHandler();
         }
@@ -4544,7 +4585,7 @@ void IRQ137_Handler(void)
     /* USART Ch.1 Tx timeout */
     if (1UL == bM4_USART1->CR1_b.RTOIE)
     {
-        if ((1UL == bM4_USART1->SR_b.RTOF) && (VSSEL137 & BIT_MASK_16))
+        if ((1UL == bM4_USART1->SR_b.RTOF) && (0UL != (VSSEL137 & BIT_MASK_16)))
         {
             USART_1_RxTO_IrqHandler();
         }
@@ -4553,12 +4594,12 @@ void IRQ137_Handler(void)
     {
         /* USART Ch.2 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART2->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL137 & BIT_MASK_17))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL137 & BIT_MASK_17)))
         {
             USART_2_RxErr_IrqHandler();
         }
         /* USART Ch.2 Rx end */
-        if ((1UL == bM4_USART2->SR_b.RXNE) && (VSSEL137 & BIT_MASK_18))
+        if ((1UL == bM4_USART2->SR_b.RXNE) && (0UL != (VSSEL137 & BIT_MASK_18)))
         {
             USART_2_RxEnd_IrqHandler();
         }
@@ -4566,7 +4607,7 @@ void IRQ137_Handler(void)
     /* USART Ch.2 Tx buffer empty */
     if (1UL == bM4_USART2->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART2->SR_b.TXE) && (VSSEL137 & BIT_MASK_19))
+        if ((1UL == bM4_USART2->SR_b.TXE) && (0UL != (VSSEL137 & BIT_MASK_19)))
         {
             USART_2_TxEmpty_IrqHandler();
         }
@@ -4574,7 +4615,7 @@ void IRQ137_Handler(void)
     /* USART Ch.2 Tx end */
     if (1UL == bM4_USART2->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART2->SR_b.TC) && (VSSEL137 & BIT_MASK_20))
+        if ((1UL == bM4_USART2->SR_b.TC) && (0UL != (VSSEL137 & BIT_MASK_20)))
         {
             USART_2_TxEnd_IrqHandler();
         }
@@ -4582,7 +4623,7 @@ void IRQ137_Handler(void)
     /* USART Ch.2 Tx timeout */
     if (1UL == bM4_USART2->CR1_b.RTOIE)
     {
-        if ((1UL == bM4_USART2->SR_b.RTOF) && (VSSEL137 & BIT_MASK_21))
+        if ((1UL == bM4_USART2->SR_b.RTOF) && (0UL != (VSSEL137 & BIT_MASK_21)))
         {
             USART_2_RxTO_IrqHandler();
         }
@@ -4590,7 +4631,7 @@ void IRQ137_Handler(void)
     /* SPI Ch.1 Rx end */
     if (1UL == bM4_SPI1->CR1_b.RXIE)
     {
-        if ((1UL == bM4_SPI1->SR_b.RDFF) && (VSSEL137 & BIT_MASK_22))
+        if ((1UL == bM4_SPI1->SR_b.RDFF) && (0UL != (VSSEL137 & BIT_MASK_22)))
         {
             SPI_1_RxEnd_IrqHandler();
         }
@@ -4598,7 +4639,7 @@ void IRQ137_Handler(void)
     /* SPI Ch.1 Tx buffer empty */
     if (1UL == bM4_SPI1->CR1_b.TXIE)
     {
-        if ((1UL == bM4_SPI1->SR_b.TDEF) && (VSSEL137 & BIT_MASK_23))
+        if ((1UL == bM4_SPI1->SR_b.TDEF) && (0UL != (VSSEL137 & BIT_MASK_23)))
         {
             SPI_1_TxEmpty_IrqHandler();
         }
@@ -4606,7 +4647,7 @@ void IRQ137_Handler(void)
     /* SPI Ch.1 Bus idle */
     if (1UL == bM4_SPI1->CR1_b.IDIE)
     {
-        if ((1UL == bM4_SPI1->SR_b.IDLNF) && (VSSEL137 & BIT_MASK_24))
+        if ((1UL == bM4_SPI1->SR_b.IDLNF) && (0UL != (VSSEL137 & BIT_MASK_24)))
         {
             SPI_1_Idle_IrqHandler();
         }
@@ -4615,7 +4656,7 @@ void IRQ137_Handler(void)
     if (1UL == bM4_SPI1->CR1_b.EIE)
     {
         u32Tmp1 = M4_SPI1->SR & (SPI_SR_OVRERF | SPI_SR_MODFERF | SPI_SR_PERF | SPI_SR_UDRERF);
-        if (u32Tmp1 && (VSSEL137 & BIT_MASK_25))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL137 & BIT_MASK_25)))
         {
             SPI_1_Err_IrqHandler();
         }
@@ -4623,7 +4664,7 @@ void IRQ137_Handler(void)
     /* SPI Ch.2 Rx end */
     if (1UL == bM4_SPI2->CR1_b.RXIE)
     {
-        if ((1UL == bM4_SPI2->SR_b.RDFF) && (VSSEL137 & BIT_MASK_27))
+        if ((1UL == bM4_SPI2->SR_b.RDFF) && (0UL != (VSSEL137 & BIT_MASK_27)))
         {
             SPI_2_RxEnd_IrqHandler();
         }
@@ -4631,7 +4672,7 @@ void IRQ137_Handler(void)
     /* SPI Ch.2 Tx buffer empty */
     if (1UL == bM4_SPI2->CR1_b.TXIE)
     {
-        if ((1UL == bM4_SPI2->SR_b.TDEF) && (VSSEL137 & BIT_MASK_28))
+        if ((1UL == bM4_SPI2->SR_b.TDEF) && (0UL != (VSSEL137 & BIT_MASK_28)))
         {
             SPI_2_TxEmpty_IrqHandler();
         }
@@ -4639,7 +4680,7 @@ void IRQ137_Handler(void)
     /* SPI Ch.2 Bus idle */
     if (1UL == bM4_SPI2->CR1_b.IDIE)
     {
-        if ((1UL == bM4_SPI2->SR_b.IDLNF) && (VSSEL137 & BIT_MASK_29))
+        if ((1UL == bM4_SPI2->SR_b.IDLNF) && (0UL != (VSSEL137 & BIT_MASK_29)))
         {
             SPI_2_Idle_IrqHandler();
         }
@@ -4648,7 +4689,7 @@ void IRQ137_Handler(void)
     if (1UL == bM4_SPI2->CR1_b.EIE)
     {
         u32Tmp1 = M4_SPI2->SR & (SPI_SR_OVRERF | SPI_SR_MODFERF | SPI_SR_PERF | SPI_SR_UDRERF);
-        if (u32Tmp1 && (VSSEL137 & BIT_MASK_30))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL137 & BIT_MASK_30)))
         {
             SPI_2_Err_IrqHandler();
         }
@@ -4672,7 +4713,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.5 overflow */
     if (1UL == bM4_TMRA_5->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_5->BCSTR_b.OVFF) && (VSSEL138 & BIT_MASK_00))
+        if ((1UL == bM4_TMRA_5->BCSTR_b.OVFF) && (0UL != (VSSEL138 & BIT_MASK_00)))
         {
             TMRA_5_Ovf_IrqHandler();
         }
@@ -4680,7 +4721,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.5 underflow */
     if (1UL == bM4_TMRA_5->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_5->BCSTR_b.UDFF) && (VSSEL138 & BIT_MASK_01))
+        if ((1UL == bM4_TMRA_5->BCSTR_b.UDFF) && (0UL != (VSSEL138 & BIT_MASK_01)))
         {
             TMRA_5_Udf_IrqHandler();
         }
@@ -4688,7 +4729,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.5 compare match 1 */
     if (1UL == bM4_TMRA_5->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF1) && (VSSEL138 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF1) && (0UL != (VSSEL138 & BIT_MASK_02)))
         {
             TMRA_5_Cmp1_IrqHandler();
         }
@@ -4696,7 +4737,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.5 compare match 2 */
     if (1UL == bM4_TMRA_5->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF2) && (VSSEL138 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF2) && (0UL != (VSSEL138 & BIT_MASK_02)))
         {
             TMRA_5_Cmp2_IrqHandler();
         }
@@ -4704,7 +4745,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.5 compare match 3 */
     if (1UL == bM4_TMRA_5->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF3) && (VSSEL138 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF3) && (0UL != (VSSEL138 & BIT_MASK_02)))
         {
             TMRA_5_Cmp3_IrqHandler();
         }
@@ -4712,7 +4753,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.5 compare match 4 */
     if (1UL == bM4_TMRA_5->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF4) && (VSSEL138 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_5->STFLR_b.CMPF4) && (0UL != (VSSEL138 & BIT_MASK_02)))
         {
             TMRA_5_Cmp4_IrqHandler();
         }
@@ -4720,7 +4761,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.6 overflow */
     if (1UL == bM4_TMRA_6->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_6->BCSTR_b.OVFF) && (VSSEL138 & BIT_MASK_03))
+        if ((1UL == bM4_TMRA_6->BCSTR_b.OVFF) && (0UL != (VSSEL138 & BIT_MASK_03)))
         {
             TMRA_6_Ovf_IrqHandler();
         }
@@ -4728,7 +4769,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.6 underflow */
     if (1UL == bM4_TMRA_6->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_6->BCSTR_b.UDFF) && (VSSEL138 & BIT_MASK_04))
+        if ((1UL == bM4_TMRA_6->BCSTR_b.UDFF) && (0UL != (VSSEL138 & BIT_MASK_04)))
         {
             TMRA_6_Udf_IrqHandler();
         }
@@ -4736,7 +4777,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.6 compare match 1 */
     if (1UL == bM4_TMRA_6->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF1) && (VSSEL138 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF1) && (0UL != (VSSEL138 & BIT_MASK_05)))
         {
             TMRA_6_Cmp1_IrqHandler();
         }
@@ -4744,7 +4785,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.6 compare match 2 */
     if (1UL == bM4_TMRA_6->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF2) && (VSSEL138 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF2) && (0UL != (VSSEL138 & BIT_MASK_05)))
         {
             TMRA_6_Cmp2_IrqHandler();
         }
@@ -4752,7 +4793,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.6 compare match 3 */
     if (1UL == bM4_TMRA_6->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF3) && (VSSEL138 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF3) && (0UL != (VSSEL138 & BIT_MASK_05)))
         {
             TMRA_6_Cmp3_IrqHandler();
         }
@@ -4760,7 +4801,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.6 compare match 4 */
     if (1UL == bM4_TMRA_6->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF4) && (VSSEL138 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_6->STFLR_b.CMPF4) && (0UL != (VSSEL138 & BIT_MASK_05)))
         {
             TMRA_6_Cmp4_IrqHandler();
         }
@@ -4768,7 +4809,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.7 overflow */
     if (1UL == bM4_TMRA_7->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_7->BCSTR_b.OVFF) && (VSSEL138 & BIT_MASK_06))
+        if ((1UL == bM4_TMRA_7->BCSTR_b.OVFF) && (0UL != (VSSEL138 & BIT_MASK_06)))
         {
             TMRA_7_Ovf_IrqHandler();
         }
@@ -4776,7 +4817,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.7 underflow */
     if (1UL == bM4_TMRA_7->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_7->BCSTR_b.UDFF) && (VSSEL138 & BIT_MASK_07))
+        if ((1UL == bM4_TMRA_7->BCSTR_b.UDFF) && (0UL != (VSSEL138 & BIT_MASK_07)))
         {
             TMRA_7_Udf_IrqHandler();
         }
@@ -4784,7 +4825,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.7 compare match 1 */
     if (1UL == bM4_TMRA_7->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF1) && (VSSEL138 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF1) && (0UL != (VSSEL138 & BIT_MASK_08)))
         {
             TMRA_7_Cmp1_IrqHandler();
         }
@@ -4792,7 +4833,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.7 compare match 2 */
     if (1UL == bM4_TMRA_7->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF2) && (VSSEL138 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF2) && (0UL != (VSSEL138 & BIT_MASK_08)))
         {
             TMRA_7_Cmp2_IrqHandler();
         }
@@ -4800,7 +4841,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.7 compare match 3 */
     if (1UL == bM4_TMRA_7->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF3) && (VSSEL138 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF3) && (0UL != (VSSEL138 & BIT_MASK_08)))
         {
             TMRA_7_Cmp3_IrqHandler();
         }
@@ -4808,7 +4849,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.7 compare match 4 */
     if (1UL == bM4_TMRA_7->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF4) && (VSSEL138 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_7->STFLR_b.CMPF4) && (0UL != (VSSEL138 & BIT_MASK_08)))
         {
             TMRA_7_Cmp4_IrqHandler();
         }
@@ -4816,7 +4857,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.8 overflow */
     if (1UL == bM4_TMRA_8->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_8->BCSTR_b.OVFF) && (VSSEL138 & BIT_MASK_09))
+        if ((1UL == bM4_TMRA_8->BCSTR_b.OVFF) && (0UL != (VSSEL138 & BIT_MASK_09)))
         {
             TMRA_8_Ovf_IrqHandler();
         }
@@ -4824,7 +4865,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.8 underflow */
     if (1UL == bM4_TMRA_8->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_8->BCSTR_b.UDFF) && (VSSEL138 & BIT_MASK_10))
+        if ((1UL == bM4_TMRA_8->BCSTR_b.UDFF) && (0UL != (VSSEL138 & BIT_MASK_10)))
         {
             TMRA_8_Udf_IrqHandler();
         }
@@ -4832,7 +4873,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.8 compare match 1 */
     if (1UL == bM4_TMRA_8->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF1) && (VSSEL138 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF1) && (0UL != (VSSEL138 & BIT_MASK_11)))
         {
             TMRA_8_Cmp1_IrqHandler();
         }
@@ -4840,7 +4881,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.8 compare match 2 */
     if (1UL == bM4_TMRA_8->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF2) && (VSSEL138 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF2) && (0UL != (VSSEL138 & BIT_MASK_11)))
         {
             TMRA_8_Cmp2_IrqHandler();
         }
@@ -4848,7 +4889,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.8 compare match 3 */
     if (1UL == bM4_TMRA_8->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF3) && (VSSEL138 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF3) && (0UL != (VSSEL138 & BIT_MASK_11)))
         {
             TMRA_8_Cmp3_IrqHandler();
         }
@@ -4856,7 +4897,7 @@ void IRQ138_Handler(void)
     /* TimerA Ch.8 compare match 4 */
     if (1UL == bM4_TMRA_8->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF4) && (VSSEL138 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_8->STFLR_b.CMPF4) && (0UL != (VSSEL138 & BIT_MASK_11)))
         {
             TMRA_8_Cmp4_IrqHandler();
         }
@@ -4865,12 +4906,12 @@ void IRQ138_Handler(void)
     {
         /* USART Ch.3 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART3->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL138 & BIT_MASK_12))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL138 & BIT_MASK_12)))
         {
             USART_3_RxErr_IrqHandler();
         }
         /* USART Ch.3 Rx end */
-        if ((1UL == bM4_USART3->SR_b.RXNE) && (VSSEL138 & BIT_MASK_13))
+        if ((1UL == bM4_USART3->SR_b.RXNE) && (0UL != (VSSEL138 & BIT_MASK_13)))
         {
             USART_3_RxEnd_IrqHandler();
         }
@@ -4878,7 +4919,7 @@ void IRQ138_Handler(void)
     /* USART Ch.3 Tx buffer empty */
     if (1UL == bM4_USART3->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART3->SR_b.TXE) && (VSSEL138 & BIT_MASK_14))
+        if ((1UL == bM4_USART3->SR_b.TXE) && (0UL != (VSSEL138 & BIT_MASK_14)))
         {
             USART_3_TxEmpty_IrqHandler();
         }
@@ -4886,7 +4927,7 @@ void IRQ138_Handler(void)
     /* USART Ch.3 Tx end */
     if (1UL == bM4_USART3->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART3->SR_b.TC) && (VSSEL138 & BIT_MASK_15))
+        if ((1UL == bM4_USART3->SR_b.TC) && (0UL != (VSSEL138 & BIT_MASK_15)))
         {
             USART_3_TxEnd_IrqHandler();
         }
@@ -4895,12 +4936,12 @@ void IRQ138_Handler(void)
     {
         /* USART Ch.4 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART4->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL138 & BIT_MASK_16))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL138 & BIT_MASK_16)))
         {
             USART_4_RxErr_IrqHandler();
         }
         /* USART Ch.4 Rx end */
-        if ((1UL == bM4_USART4->SR_b.RXNE) && (VSSEL138 & BIT_MASK_17))
+        if ((1UL == bM4_USART4->SR_b.RXNE) && (0UL != (VSSEL138 & BIT_MASK_17)))
         {
             USART_4_RxEnd_IrqHandler();
         }
@@ -4908,7 +4949,7 @@ void IRQ138_Handler(void)
     /* USART Ch.4 Tx buffer empty */
     if (1UL == bM4_USART4->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART4->SR_b.TXE) && (VSSEL138 & BIT_MASK_18))
+        if ((1UL == bM4_USART4->SR_b.TXE) && (0UL != (VSSEL138 & BIT_MASK_18)))
         {
             USART_4_TxEmpty_IrqHandler();
         }
@@ -4916,45 +4957,55 @@ void IRQ138_Handler(void)
     /* USART Ch.4 Tx end */
     if (1UL == bM4_USART4->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART4->SR_b.TC) && (VSSEL138 & BIT_MASK_19))
+        if ((1UL == bM4_USART4->SR_b.TC) && (0UL != (VSSEL138 & BIT_MASK_19)))
         {
             USART_4_TxEnd_IrqHandler();
         }
     }
     /* CAN Ch.1 */
-    if (VSSEL138 & BIT_MASK_20)
+    if (0UL != (0UL != (VSSEL138 & BIT_MASK_20)))
     {
         RTIF = M4_CAN1->RTIF;
         RTIE = M4_CAN1->RTIE;
         ERRINT = M4_CAN1->ERRINT;
         TTCFG = M4_CAN1->TTCFG;
-        if ((TTCFG & CAN_TTCFG_TEIF)                                    ||  \
-            (RTIF & CAN_RTIF_AIF)                                       ||  \
-            (RTIF & RTIE & 0xFEU)                                       ||  \
-            ((ERRINT & CAN_ERRINT_BEIE) && (ERRINT & CAN_ERRINT_BEIF))  ||  \
-            ((ERRINT & CAN_ERRINT_ALIE) && (ERRINT & CAN_ERRINT_ALIF))  ||  \
-            ((ERRINT & CAN_ERRINT_EPIE) && (ERRINT & CAN_ERRINT_EPIF))  ||  \
-            ((TTCFG & CAN_TTCFG_TTIE) && (TTCFG & CAN_TTCFG_TTIF))      ||  \
-            ((TTCFG & CAN_TTCFG_WTIE) && (TTCFG & CAN_TTCFG_WTIF)))
+        if ((0U != (TTCFG & CAN_TTCFG_TEIF))        ||                          \
+            (0U != (RTIF & CAN_RTIF_AIF))           ||                          \
+            (0U != (RTIF & RTIE & 0xFEU))           ||                          \
+            ((0U != (ERRINT & CAN_ERRINT_BEIE))     &&                          \
+             (0U != (ERRINT & CAN_ERRINT_BEIF)))    ||                          \
+            ((0U != (ERRINT & CAN_ERRINT_ALIE))     &&                          \
+             (0U != (ERRINT & CAN_ERRINT_ALIF)))    ||                          \
+            ((0U != (ERRINT & CAN_ERRINT_EPIE))     &&                          \
+             (0U != (ERRINT & CAN_ERRINT_EPIF)))    ||                          \
+            ((0U != (TTCFG & CAN_TTCFG_TTIE))       &&                          \
+             (0U != (TTCFG & CAN_TTCFG_TTIF)))      ||                          \
+            ((0U != (TTCFG & CAN_TTCFG_WTIE))       &&                          \
+             (0U != (TTCFG & CAN_TTCFG_WTIF))))
             {
                 CAN_1_IrqHandler();
             }
     }
     /* CAN Ch.2 */
-    if (VSSEL138 & BIT_MASK_21)
+    if (0UL != (0UL != (VSSEL138 & BIT_MASK_21)))
     {
         RTIF = M4_CAN2->RTIF;
         RTIE = M4_CAN2->RTIE;
         ERRINT = M4_CAN2->ERRINT;
         TTCFG = M4_CAN2->TTCFG;
-        if ((TTCFG & CAN_TTCFG_TEIF)                                    ||  \
-            (RTIF & CAN_RTIF_AIF)                                       ||  \
-            (RTIF & RTIE & 0xFEU)                                       ||  \
-            ((ERRINT & CAN_ERRINT_BEIE) && (ERRINT & CAN_ERRINT_BEIF))  ||  \
-            ((ERRINT & CAN_ERRINT_ALIE) && (ERRINT & CAN_ERRINT_ALIF))  ||  \
-            ((ERRINT & CAN_ERRINT_EPIE) && (ERRINT & CAN_ERRINT_EPIF))  ||  \
-            ((TTCFG & CAN_TTCFG_TTIE) && (TTCFG & CAN_TTCFG_TTIF))      ||  \
-            ((TTCFG & CAN_TTCFG_WTIE) && (TTCFG & CAN_TTCFG_WTIF)))
+        if ((0U != (TTCFG & CAN_TTCFG_TEIF))        ||                          \
+            (0U != (RTIF & CAN_RTIF_AIF))           ||                          \
+            (0U != (RTIF & RTIE & 0xFEU))           ||                          \
+            ((0U != (ERRINT & CAN_ERRINT_BEIE))     &&                          \
+             (0U != (ERRINT & CAN_ERRINT_BEIF)))    ||                          \
+            ((0U != (ERRINT & CAN_ERRINT_ALIE))     &&                          \
+             (0U != (ERRINT & CAN_ERRINT_ALIF)))    ||                          \
+            ((0U != (ERRINT & CAN_ERRINT_EPIE))     &&                          \
+             (0U != (ERRINT & CAN_ERRINT_EPIF)))    ||                          \
+            ((0U != (TTCFG & CAN_TTCFG_TTIE))       &&                          \
+             (0U != (TTCFG & CAN_TTCFG_TTIF)))      ||                          \
+            ((0U != (TTCFG & CAN_TTCFG_WTIE))       &&                          \
+             (0U != (TTCFG & CAN_TTCFG_WTIF))))
             {
                 CAN_2_IrqHandler();
             }
@@ -4962,7 +5013,7 @@ void IRQ138_Handler(void)
     /* SPI Ch.3 Rx end */
     if (1UL == bM4_SPI3->CR1_b.RXIE)
     {
-        if ((1UL == bM4_SPI3->SR_b.RDFF) && (VSSEL138 & BIT_MASK_22))
+        if ((1UL == bM4_SPI3->SR_b.RDFF) && (0UL != (VSSEL138 & BIT_MASK_22)))
         {
             SPI_3_RxEnd_IrqHandler();
         }
@@ -4970,7 +5021,7 @@ void IRQ138_Handler(void)
     /* SPI Ch.3 Tx buffer empty */
     if (1UL == bM4_SPI3->CR1_b.TXIE)
     {
-        if ((1UL == bM4_SPI3->SR_b.TDEF) && (VSSEL138 & BIT_MASK_23))
+        if ((1UL == bM4_SPI3->SR_b.TDEF) && (0UL != (VSSEL138 & BIT_MASK_23)))
         {
             SPI_3_TxEmpty_IrqHandler();
         }
@@ -4978,7 +5029,7 @@ void IRQ138_Handler(void)
     /* SPI Ch.3 Bus idle */
     if (1UL == bM4_SPI3->CR1_b.IDIE)
     {
-        if ((1UL == bM4_SPI3->SR_b.IDLNF) && (VSSEL138 & BIT_MASK_24))
+        if ((1UL == bM4_SPI3->SR_b.IDLNF) && (0UL != (VSSEL138 & BIT_MASK_24)))
         {
             SPI_3_Idle_IrqHandler();
         }
@@ -4987,7 +5038,7 @@ void IRQ138_Handler(void)
     if (1UL == bM4_SPI3->CR1_b.EIE)
     {
         u32Tmp1 = M4_SPI3->SR & (SPI_SR_OVRERF | SPI_SR_MODFERF | SPI_SR_PERF | SPI_SR_UDRERF);
-        if (u32Tmp1 && (VSSEL138 & BIT_MASK_25))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL138 & BIT_MASK_25)))
         {
             SPI_3_Err_IrqHandler();
         }
@@ -4995,7 +5046,7 @@ void IRQ138_Handler(void)
     /* SPI Ch.4 Rx end */
     if (1UL == bM4_SPI4->CR1_b.RXIE)
     {
-        if ((1UL == bM4_SPI4->SR_b.RDFF) && (VSSEL138 & BIT_MASK_27))
+        if ((1UL == bM4_SPI4->SR_b.RDFF) && (0UL != (VSSEL138 & BIT_MASK_27)))
         {
             SPI_4_RxEnd_IrqHandler();
         }
@@ -5003,7 +5054,7 @@ void IRQ138_Handler(void)
     /* SPI Ch.4 Tx buffer empty */
     if (1UL == bM4_SPI4->CR1_b.TXIE)
     {
-        if ((1UL == bM4_SPI4->SR_b.TDEF) && (VSSEL138 & BIT_MASK_28))
+        if ((1UL == bM4_SPI4->SR_b.TDEF) && (0UL != (VSSEL138 & BIT_MASK_28)))
         {
             SPI_4_TxEmpty_IrqHandler();
         }
@@ -5011,7 +5062,7 @@ void IRQ138_Handler(void)
     /* SPI Ch.4 Bus idle */
     if (1UL == bM4_SPI4->CR1_b.IDIE)
     {
-        if ((1UL == bM4_SPI4->SR_b.IDLNF) && (VSSEL138 & BIT_MASK_29))
+        if ((1UL == bM4_SPI4->SR_b.IDLNF) && (0UL != (VSSEL138 & BIT_MASK_29)))
         {
             SPI_4_Idle_IrqHandler();
         }
@@ -5020,7 +5071,7 @@ void IRQ138_Handler(void)
     if (1UL == bM4_SPI4->CR1_b.EIE)
     {
         u32Tmp1 = M4_SPI4->SR & (SPI_SR_OVRERF | SPI_SR_MODFERF | SPI_SR_PERF | SPI_SR_UDRERF);
-        if (u32Tmp1 && (VSSEL138 & BIT_MASK_30))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL138 & BIT_MASK_30)))
         {
             SPI_4_Err_IrqHandler();
         }
@@ -5040,7 +5091,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.9 overflow */
     if (1UL == bM4_TMRA_9->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_9->BCSTR_b.OVFF) && (VSSEL139 & BIT_MASK_00))
+        if ((1UL == bM4_TMRA_9->BCSTR_b.OVFF) && (0UL != (VSSEL139 & BIT_MASK_00)))
         {
             TMRA_9_Ovf_IrqHandler();
         }
@@ -5048,7 +5099,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.9 underflow */
     if (1UL == bM4_TMRA_9->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_9->BCSTR_b.UDFF) && (VSSEL139 & BIT_MASK_01))
+        if ((1UL == bM4_TMRA_9->BCSTR_b.UDFF) && (0UL != (VSSEL139 & BIT_MASK_01)))
         {
             TMRA_9_Udf_IrqHandler();
         }
@@ -5056,7 +5107,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.9 compare match 1 */
     if (1UL == bM4_TMRA_9->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF1) && (VSSEL139 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF1) && (0UL != (VSSEL139 & BIT_MASK_02)))
         {
             TMRA_9_Cmp1_IrqHandler();
         }
@@ -5064,7 +5115,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.9 compare match 2 */
     if (1UL == bM4_TMRA_9->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF2) && (VSSEL139 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF2) && (0UL != (VSSEL139 & BIT_MASK_02)))
         {
             TMRA_9_Cmp2_IrqHandler();
         }
@@ -5072,7 +5123,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.9 compare match 3 */
     if (1UL == bM4_TMRA_9->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF3) && (VSSEL139 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF3) && (0UL != (VSSEL139 & BIT_MASK_02)))
         {
             TMRA_9_Cmp3_IrqHandler();
         }
@@ -5080,7 +5131,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.9 compare match 4 */
     if (1UL == bM4_TMRA_9->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF4) && (VSSEL139 & BIT_MASK_02))
+        if ((1UL == bM4_TMRA_9->STFLR_b.CMPF4) && (0UL != (VSSEL139 & BIT_MASK_02)))
         {
             TMRA_9_Cmp4_IrqHandler();
         }
@@ -5088,7 +5139,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.10 overflow */
     if (1UL == bM4_TMRA_10->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_10->BCSTR_b.OVFF) && (VSSEL139 & BIT_MASK_03))
+        if ((1UL == bM4_TMRA_10->BCSTR_b.OVFF) && (0UL != (VSSEL139 & BIT_MASK_03)))
         {
             TMRA_10_Ovf_IrqHandler();
         }
@@ -5096,7 +5147,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.10 underflow */
     if (1UL == bM4_TMRA_10->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_10->BCSTR_b.UDFF) && (VSSEL139 & BIT_MASK_04))
+        if ((1UL == bM4_TMRA_10->BCSTR_b.UDFF) && (0UL != (VSSEL139 & BIT_MASK_04)))
         {
             TMRA_10_Udf_IrqHandler();
         }
@@ -5104,7 +5155,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.10 compare match 1 */
     if (1UL == bM4_TMRA_10->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF1) && (VSSEL139 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF1) && (0UL != (VSSEL139 & BIT_MASK_05)))
         {
             TMRA_10_Cmp1_IrqHandler();
         }
@@ -5112,7 +5163,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.10 compare match 2 */
     if (1UL == bM4_TMRA_10->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF2) && (VSSEL139 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF2) && (0UL != (VSSEL139 & BIT_MASK_05)))
         {
             TMRA_10_Cmp2_IrqHandler();
         }
@@ -5120,7 +5171,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.10 compare match 3 */
     if (1UL == bM4_TMRA_10->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF3) && (VSSEL139 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF3) && (0UL != (VSSEL139 & BIT_MASK_05)))
         {
             TMRA_10_Cmp3_IrqHandler();
         }
@@ -5128,7 +5179,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.10 compare match 4 */
     if (1UL == bM4_TMRA_10->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF4) && (VSSEL139 & BIT_MASK_05))
+        if ((1UL == bM4_TMRA_10->STFLR_b.CMPF4) && (0UL != (VSSEL139 & BIT_MASK_05)))
         {
             TMRA_10_Cmp4_IrqHandler();
         }
@@ -5136,7 +5187,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.11 overflow */
     if (1UL == bM4_TMRA_11->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_11->BCSTR_b.OVFF) && (VSSEL139 & BIT_MASK_06))
+        if ((1UL == bM4_TMRA_11->BCSTR_b.OVFF) && (0UL != (VSSEL139 & BIT_MASK_06)))
         {
             TMRA_11_Ovf_IrqHandler();
         }
@@ -5144,7 +5195,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.11 underflow */
     if (1UL == bM4_TMRA_11->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_11->BCSTR_b.UDFF) && (VSSEL139 & BIT_MASK_07))
+        if ((1UL == bM4_TMRA_11->BCSTR_b.UDFF) && (0UL != (VSSEL139 & BIT_MASK_07)))
         {
             TMRA_11_Udf_IrqHandler();
         }
@@ -5152,7 +5203,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.11 compare match 1 */
     if (1UL == bM4_TMRA_11->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF1) && (VSSEL139 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF1) && (0UL != (VSSEL139 & BIT_MASK_08)))
         {
             TMRA_11_Cmp1_IrqHandler();
         }
@@ -5160,7 +5211,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.11 compare match 2 */
     if (1UL == bM4_TMRA_11->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF2) && (VSSEL139 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF2) && (0UL != (VSSEL139 & BIT_MASK_08)))
         {
             TMRA_11_Cmp2_IrqHandler();
         }
@@ -5168,7 +5219,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.11 compare match 3 */
     if (1UL == bM4_TMRA_11->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF3) && (VSSEL139 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF3) && (0UL != (VSSEL139 & BIT_MASK_08)))
         {
             TMRA_11_Cmp3_IrqHandler();
         }
@@ -5176,7 +5227,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.11 compare match 4 */
     if (1UL == bM4_TMRA_11->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF4) && (VSSEL139 & BIT_MASK_08))
+        if ((1UL == bM4_TMRA_11->STFLR_b.CMPF4) && (0UL != (VSSEL139 & BIT_MASK_08)))
         {
             TMRA_11_Cmp4_IrqHandler();
         }
@@ -5184,7 +5235,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.12 overflow */
     if (1UL == bM4_TMRA_12->BCSTR_b.ITENOVF)
     {
-        if ((1UL == bM4_TMRA_12->BCSTR_b.OVFF) && (VSSEL139 & BIT_MASK_09))
+        if ((1UL == bM4_TMRA_12->BCSTR_b.OVFF) && (0UL != (VSSEL139 & BIT_MASK_09)))
         {
             TMRA_12_Ovf_IrqHandler();
         }
@@ -5192,7 +5243,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.12 underflow */
     if (1UL == bM4_TMRA_12->BCSTR_b.ITENUDF)
     {
-        if ((1UL == bM4_TMRA_12->BCSTR_b.UDFF) && (VSSEL139 & BIT_MASK_10))
+        if ((1UL == bM4_TMRA_12->BCSTR_b.UDFF) && (0UL != (VSSEL139 & BIT_MASK_10)))
         {
             TMRA_12_Udf_IrqHandler();
         }
@@ -5200,7 +5251,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.12 compare match 1 */
     if (1UL == bM4_TMRA_12->ICONR_b.ITEN1)
     {
-        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF1) && (VSSEL139 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF1) && (0UL != (VSSEL139 & BIT_MASK_11)))
         {
             TMRA_12_Cmp1_IrqHandler();
         }
@@ -5208,7 +5259,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.12 compare match 2 */
     if (1UL == bM4_TMRA_12->ICONR_b.ITEN2)
     {
-        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF2) && (VSSEL139 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF2) && (0UL != (VSSEL139 & BIT_MASK_11)))
         {
             TMRA_12_Cmp2_IrqHandler();
         }
@@ -5216,7 +5267,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.12 compare match 3 */
     if (1UL == bM4_TMRA_12->ICONR_b.ITEN3)
     {
-        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF3) && (VSSEL139 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF3) && (0UL != (VSSEL139 & BIT_MASK_11)))
         {
             TMRA_12_Cmp3_IrqHandler();
         }
@@ -5224,7 +5275,7 @@ void IRQ139_Handler(void)
     /* TimerA Ch.12 compare match 4 */
     if (1UL == bM4_TMRA_12->ICONR_b.ITEN4)
     {
-        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF4) && (VSSEL139 & BIT_MASK_11))
+        if ((1UL == bM4_TMRA_12->STFLR_b.CMPF4) && (0UL != (VSSEL139 & BIT_MASK_11)))
         {
             TMRA_12_Cmp4_IrqHandler();
         }
@@ -5232,7 +5283,7 @@ void IRQ139_Handler(void)
     /* USART Ch.5 LIN bus break */
     if (1UL == bM4_USART5->CR2_b.LBDIE)
     {
-        if ((1UL == bM4_USART5->SR_b.LBD) && (VSSEL139 & BIT_MASK_12))
+        if ((1UL == bM4_USART5->SR_b.LBD) && (0UL != (VSSEL139 & BIT_MASK_12)))
         {
             USART_5_LinBreakField_IrqHandler();
         }
@@ -5240,7 +5291,7 @@ void IRQ139_Handler(void)
     /* USART Ch.5 LIN bus wakeup */
     if (1UL == bM4_USART5->CR2_b.WKUPE)
     {
-        if ((1UL == bM4_USART5->SR_b.WKUP) && (VSSEL139 & BIT_MASK_12))
+        if ((1UL == bM4_USART5->SR_b.WKUP) && (0UL != (VSSEL139 & BIT_MASK_12)))
         {
             USART_5_LinWakeup_IrqHandler();
         }
@@ -5249,12 +5300,12 @@ void IRQ139_Handler(void)
     {
         /* USART Ch.5 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART5->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL139 & BIT_MASK_13))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL139 & BIT_MASK_13)))
         {
             USART_5_RxErr_IrqHandler();
         }
         /* USART Ch.5 Rx end */
-        if ((1UL == bM4_USART5->SR_b.RXNE) && (VSSEL139 & BIT_MASK_14))
+        if ((1UL == bM4_USART5->SR_b.RXNE) && (0UL != (VSSEL139 & BIT_MASK_14)))
         {
             USART_5_RxEnd_IrqHandler();
         }
@@ -5262,7 +5313,7 @@ void IRQ139_Handler(void)
     /* USART Ch.5 Tx buffer empty */
     if (1UL == bM4_USART5->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART5->SR_b.TXE) && (VSSEL139 & BIT_MASK_15))
+        if ((1UL == bM4_USART5->SR_b.TXE) && (0UL != (VSSEL139 & BIT_MASK_15)))
         {
             USART_5_TxEmpty_IrqHandler();
         }
@@ -5270,7 +5321,7 @@ void IRQ139_Handler(void)
     /* USART Ch.5 Tx end */
     if (1UL == bM4_USART5->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART5->SR_b.TC) && (VSSEL139 & BIT_MASK_16))
+        if ((1UL == bM4_USART5->SR_b.TC) && (0UL != (VSSEL139 & BIT_MASK_16)))
         {
             USART_5_TxEnd_IrqHandler();
         }
@@ -5279,12 +5330,12 @@ void IRQ139_Handler(void)
     {
         /* USART Ch.6 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART6->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL139 & BIT_MASK_17))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL139 & BIT_MASK_17)))
         {
             USART_6_RxErr_IrqHandler();
         }
         /* USART Ch.6 Rx end */
-        if ((1UL == bM4_USART6->SR_b.RXNE) && (VSSEL139 & BIT_MASK_18))
+        if ((1UL == bM4_USART6->SR_b.RXNE) && (0UL != (VSSEL139 & BIT_MASK_18)))
         {
             USART_6_RxEnd_IrqHandler();
         }
@@ -5292,7 +5343,7 @@ void IRQ139_Handler(void)
     /* USART Ch.6 Tx buffer empty */
     if (1UL == bM4_USART6->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART6->SR_b.TXE) && (VSSEL139 & BIT_MASK_19))
+        if ((1UL == bM4_USART6->SR_b.TXE) && (0UL != (VSSEL139 & BIT_MASK_19)))
         {
             USART_6_TxEmpty_IrqHandler();
         }
@@ -5300,7 +5351,7 @@ void IRQ139_Handler(void)
     /* USART Ch.6 Tx end */
     if (1UL == bM4_USART6->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART6->SR_b.TC) && (VSSEL139 & BIT_MASK_20))
+        if ((1UL == bM4_USART6->SR_b.TC) && (0UL != (VSSEL139 & BIT_MASK_20)))
         {
             USART_6_TxEnd_IrqHandler();
         }
@@ -5308,7 +5359,7 @@ void IRQ139_Handler(void)
     /* USART Ch.6 Tx timeout */
     if (1UL == bM4_USART6->CR1_b.RTOIE)
     {
-        if ((1UL == bM4_USART6->SR_b.RTOF) && (VSSEL139 & BIT_MASK_21))
+        if ((1UL == bM4_USART6->SR_b.RTOF) && (0UL != (VSSEL139 & BIT_MASK_21)))
         {
             USART_6_RxTO_IrqHandler();
         }
@@ -5316,7 +5367,7 @@ void IRQ139_Handler(void)
     /* SPI Ch.5 Rx end */
     if (1UL == bM4_SPI5->CR1_b.RXIE)
     {
-        if ((1UL == bM4_SPI5->SR_b.RDFF) && (VSSEL139 & BIT_MASK_22))
+        if ((1UL == bM4_SPI5->SR_b.RDFF) && (0UL != (VSSEL139 & BIT_MASK_22)))
         {
             SPI_5_RxEnd_IrqHandler();
         }
@@ -5324,7 +5375,7 @@ void IRQ139_Handler(void)
     /* SPI Ch.5 Tx buffer empty */
     if (1UL == bM4_SPI5->CR1_b.TXIE)
     {
-        if ((1UL == bM4_SPI5->SR_b.TDEF) && (VSSEL139 & BIT_MASK_23))
+        if ((1UL == bM4_SPI5->SR_b.TDEF) && (0UL != (VSSEL139 & BIT_MASK_23)))
         {
             SPI_5_TxEmpty_IrqHandler();
         }
@@ -5332,7 +5383,7 @@ void IRQ139_Handler(void)
     /* SPI Ch.5 Bus idle */
     if (1UL == bM4_SPI5->CR1_b.IDIE)
     {
-        if ((1UL == bM4_SPI5->SR_b.IDLNF) && (VSSEL139 & BIT_MASK_24))
+        if ((1UL == bM4_SPI5->SR_b.IDLNF) && (0UL != (VSSEL139 & BIT_MASK_24)))
         {
             SPI_5_Idle_IrqHandler();
         }
@@ -5341,7 +5392,7 @@ void IRQ139_Handler(void)
     if (1UL == bM4_SPI5->CR1_b.EIE)
     {
         u32Tmp1 = M4_SPI5->SR & (SPI_SR_OVRERF | SPI_SR_MODFERF | SPI_SR_PERF | SPI_SR_UDRERF);
-        if (u32Tmp1 && (VSSEL139 & BIT_MASK_25))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL139 & BIT_MASK_25)))
         {
             SPI_5_Err_IrqHandler();
         }
@@ -5349,7 +5400,7 @@ void IRQ139_Handler(void)
     /* SPI Ch.6 Rx end */
     if (1UL == bM4_SPI6->CR1_b.RXIE)
     {
-        if ((1UL == bM4_SPI6->SR_b.RDFF) && (VSSEL139 & BIT_MASK_27))
+        if ((1UL == bM4_SPI6->SR_b.RDFF) && (0UL != (VSSEL139 & BIT_MASK_27)))
         {
             SPI_6_RxEnd_IrqHandler();
         }
@@ -5357,7 +5408,7 @@ void IRQ139_Handler(void)
     /* SPI Ch.6 Tx buffer empty */
     if (1UL == bM4_SPI6->CR1_b.TXIE)
     {
-        if ((1UL == bM4_SPI6->SR_b.TDEF) && (VSSEL139 & BIT_MASK_28))
+        if ((1UL == bM4_SPI6->SR_b.TDEF) && (0UL != (VSSEL139 & BIT_MASK_28)))
         {
             SPI_6_TxEmpty_IrqHandler();
         }
@@ -5365,7 +5416,7 @@ void IRQ139_Handler(void)
     /* SPI Ch.6 Bus idle */
     if (1UL == bM4_SPI6->CR1_b.IDIE)
     {
-        if ((1UL == bM4_SPI6->SR_b.IDLNF) && (VSSEL139 & BIT_MASK_29))
+        if ((1UL == bM4_SPI6->SR_b.IDLNF) && (0UL != (VSSEL139 & BIT_MASK_29)))
         {
             SPI_6_Idle_IrqHandler();
         }
@@ -5374,7 +5425,7 @@ void IRQ139_Handler(void)
     if (1UL == bM4_SPI6->CR1_b.EIE)
     {
         u32Tmp1 = M4_SPI6->SR & (SPI_SR_OVRERF | SPI_SR_MODFERF | SPI_SR_PERF | SPI_SR_UDRERF);
-        if (u32Tmp1 && (VSSEL139 & BIT_MASK_30))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL139 & BIT_MASK_30)))
         {
             SPI_6_Err_IrqHandler();
         }
@@ -5398,15 +5449,18 @@ void IRQ140_Handler(void)
     uint32_t MMC_TRSSTSR;
     uint32_t MMC_RITCTLR;
     uint32_t MMC_TITCTLR;
-    uint32_t MAC_INTMSKR;
-    uint32_t MAC_INTSTSR;
     uint32_t DMA_DMASTSR;
     uint32_t DMA_INTENAR;
+    uint32_t PTP_INTE;
+    uint32_t PMT_INTMASK;
+    uint32_t PMT_INTSTSR;
+    uint32_t PTP_INTMASK;
+    uint32_t PTP_INTSTSR;
 
     /* I2S Ch.1 Tx */
     if (1UL == bM4_I2S1->CTRL_b.TXIE)
     {
-        if ((1UL == bM4_I2S1->SR_b.TXBA) && (VSSEL140 & BIT_MASK_00))
+        if ((1UL == bM4_I2S1->SR_b.TXBA) && (0UL != (VSSEL140 & BIT_MASK_00)))
         {
             I2S_1_Tx_IrqHandler();
         }
@@ -5414,7 +5468,7 @@ void IRQ140_Handler(void)
     /* I2S Ch.1 Rx */
     if (1UL == bM4_I2S1->CTRL_b.RXIE)
     {
-        if ((1UL == bM4_I2S1->SR_b.RXBA) && (VSSEL140 & BIT_MASK_01))
+        if ((1UL == bM4_I2S1->SR_b.RXBA) && (0UL != (VSSEL140 & BIT_MASK_01)))
         {
             I2S_1_Rx_IrqHandler();
         }
@@ -5423,7 +5477,7 @@ void IRQ140_Handler(void)
     if (1UL == bM4_I2S1->CTRL_b.EIE)
     {
         u32Tmp1 = M4_I2S1->ER & (I2S_ER_TXERR | I2S_ER_RXERR);
-        if (u32Tmp1 && (VSSEL140 & BIT_MASK_02))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL140 & BIT_MASK_02)))
         {
             I2S_1_Err_IrqHandler();
         }
@@ -5431,7 +5485,7 @@ void IRQ140_Handler(void)
     /* I2S Ch.2 Tx */
     if (1UL == bM4_I2S2->CTRL_b.TXIE)
     {
-        if ((1UL == bM4_I2S2->SR_b.TXBA) && (VSSEL140 & BIT_MASK_03))
+        if ((1UL == bM4_I2S2->SR_b.TXBA) && (0UL != (VSSEL140 & BIT_MASK_03)))
         {
             I2S_2_Tx_IrqHandler();
         }
@@ -5439,7 +5493,7 @@ void IRQ140_Handler(void)
     /* I2S Ch.2 Rx */
     if (1UL == bM4_I2S2->CTRL_b.RXIE)
     {
-        if ((1UL == bM4_I2S2->SR_b.RXBA) && (VSSEL140 & BIT_MASK_04))
+        if ((1UL == bM4_I2S2->SR_b.RXBA) && (0UL != (VSSEL140 & BIT_MASK_04)))
         {
             I2S_2_Rx_IrqHandler();
         }
@@ -5448,7 +5502,7 @@ void IRQ140_Handler(void)
     if (1UL == bM4_I2S2->CTRL_b.EIE)
     {
         u32Tmp1 = M4_I2S2->ER & (I2S_ER_TXERR | I2S_ER_RXERR);
-        if (u32Tmp1 && (VSSEL140 & BIT_MASK_05))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL140 & BIT_MASK_05)))
         {
             I2S_2_Err_IrqHandler();
         }
@@ -5457,12 +5511,12 @@ void IRQ140_Handler(void)
     {
         /* USART Ch.7 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART7->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL140 & BIT_MASK_06))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL140 & BIT_MASK_06)))
         {
             USART_7_RxErr_IrqHandler();
         }
         /* USART Ch.7 Rx end */
-        if ((1UL == bM4_USART7->SR_b.RXNE) && (VSSEL140 & BIT_MASK_07))
+        if ((1UL == bM4_USART7->SR_b.RXNE) && (0UL != (VSSEL140 & BIT_MASK_07)))
         {
             USART_7_RxEnd_IrqHandler();
         }
@@ -5470,7 +5524,7 @@ void IRQ140_Handler(void)
     /* USART Ch.7 Tx buffer empty */
     if (1UL == bM4_USART7->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART7->SR_b.TXE) && (VSSEL140 & BIT_MASK_08))
+        if ((1UL == bM4_USART7->SR_b.TXE) && (0UL != (VSSEL140 & BIT_MASK_08)))
         {
             USART_7_TxEmpty_IrqHandler();
         }
@@ -5478,7 +5532,7 @@ void IRQ140_Handler(void)
     /* USART Ch.7 Tx end */
     if (1UL == bM4_USART7->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART7->SR_b.TC) && (VSSEL140 & BIT_MASK_09))
+        if ((1UL == bM4_USART7->SR_b.TC) && (0UL != (VSSEL140 & BIT_MASK_09)))
         {
             USART_7_TxEnd_IrqHandler();
         }
@@ -5486,7 +5540,7 @@ void IRQ140_Handler(void)
     /* USART Ch.7 Tx timeout */
     if (1UL == bM4_USART7->CR1_b.RTOIE)
     {
-        if ((1UL == bM4_USART7->SR_b.RTOF) && (VSSEL140 & BIT_MASK_10))
+        if ((1UL == bM4_USART7->SR_b.RTOF) && (0UL != (VSSEL140 & BIT_MASK_10)))
         {
             USART_7_RxTO_IrqHandler();
         }
@@ -5495,12 +5549,12 @@ void IRQ140_Handler(void)
     {
         /* USART Ch.8 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART8->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL140 & BIT_MASK_11))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL140 & BIT_MASK_11)))
         {
             USART_8_RxErr_IrqHandler();
         }
         /* USART Ch.8 Rx end */
-        if ((1UL == bM4_USART8->SR_b.RXNE) && (VSSEL140 & BIT_MASK_12))
+        if ((1UL == bM4_USART8->SR_b.RXNE) && (0UL != (VSSEL140 & BIT_MASK_12)))
         {
             USART_8_RxEnd_IrqHandler();
         }
@@ -5508,7 +5562,7 @@ void IRQ140_Handler(void)
     /* USART Ch.8 Tx buffer empty */
     if (1UL == bM4_USART8->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART8->SR_b.TXE) && (VSSEL140 & BIT_MASK_13))
+        if ((1UL == bM4_USART8->SR_b.TXE) && (0UL != (VSSEL140 & BIT_MASK_13)))
         {
             USART_8_TxEmpty_IrqHandler();
         }
@@ -5516,7 +5570,7 @@ void IRQ140_Handler(void)
     /* USART Ch.8 Tx end */
     if (1UL == bM4_USART8->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART8->SR_b.TC) && (VSSEL140 & BIT_MASK_14))
+        if ((1UL == bM4_USART8->SR_b.TC) && (0UL != (VSSEL140 & BIT_MASK_14)))
         {
             USART_8_TxEnd_IrqHandler();
         }
@@ -5526,13 +5580,13 @@ void IRQ140_Handler(void)
     {
         u32Tmp1 = M4_USBFS->GINTMSK & 0xF77CFCFBUL;
         u32Tmp2 = M4_USBFS->GINTSTS & 0xF77CFCFBUL;
-        if ((u32Tmp1 & u32Tmp2) && (VSSEL140 & BIT_MASK_15))
+        if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL140 & BIT_MASK_15)))
         {
             USBFS_Global_IrqHandler();
         }
     }
     /* SDIO unit 1 */
-    if (VSSEL140 & BIT_MASK_20)
+    if (0UL != (VSSEL140 & BIT_MASK_20))
     {
         NORINTST = M4_SDIOC1->NORINTST & (SDIOC_NORINTST_CINT | SDIOC_NORINTST_CRM | SDIOC_NORINTST_CIST |  \
                                           SDIOC_NORINTST_BRR  | SDIOC_NORINTST_BWR | SDIOC_NORINTST_BGE  |  \
@@ -5545,17 +5599,17 @@ void IRQ140_Handler(void)
                                               SDIOC_ERRINTSTEN_DCEEN | SDIOC_ERRINTSTEN_DTOEEN |    \
                                               SDIOC_ERRINTSTEN_CIEEN | SDIOC_ERRINTSTEN_CEBEEN |    \
                                               SDIOC_ERRINTSTEN_CCEEN | SDIOC_ERRINTSTEN_CTOEEN);
-        if (NORINTST & NORINTSGEN)
+        if (0U != (NORINTST & NORINTSGEN))
         {
             SDIOC_1_Normal_IrqHandler();
         }
-        if ((1UL == bM4_SDIOC1->NORINTST_b.EI) && ERRINTSGEN)
+        if ((1UL == bM4_SDIOC1->NORINTST_b.EI) && (0U != ERRINTSGEN))
         {
             SDIOC_1_Error_IrqHandler();
         }
     }
     /* SDIO unit 2 */
-    if (VSSEL140 & BIT_MASK_23)
+    if (0UL != (VSSEL140 & BIT_MASK_23))
     {
         NORINTST = M4_SDIOC2->NORINTST & (SDIOC_NORINTST_CINT | SDIOC_NORINTST_CRM | SDIOC_NORINTST_CIST |  \
                                           SDIOC_NORINTST_BRR  | SDIOC_NORINTST_BWR | SDIOC_NORINTST_BGE  |  \
@@ -5568,11 +5622,11 @@ void IRQ140_Handler(void)
                                               SDIOC_ERRINTSTEN_DCEEN | SDIOC_ERRINTSTEN_DTOEEN |    \
                                               SDIOC_ERRINTSTEN_CIEEN | SDIOC_ERRINTSTEN_CEBEEN |    \
                                               SDIOC_ERRINTSTEN_CCEEN | SDIOC_ERRINTSTEN_CTOEEN);
-        if (NORINTST & NORINTSGEN)
+        if (0U != (NORINTST & NORINTSGEN))
         {
             SDIOC_2_Normal_IrqHandler();
         }
-        if ((1UL == bM4_SDIOC2->NORINTST_b.EI) && ERRINTSGEN)
+        if ((1UL == bM4_SDIOC2->NORINTST_b.EI) && (0U != ERRINTSGEN))
         {
             SDIOC_2_Error_IrqHandler();
         }
@@ -5594,31 +5648,34 @@ void IRQ140_Handler(void)
                                          ETH_MMC_TITCTLR_TXDEEIM| ETH_MMC_TITCTLR_TXLCEIM|  \
                                          ETH_MMC_TITCTLR_TXECEIM| ETH_MMC_TITCTLR_TXCAEIM|  \
                                          ETH_MMC_TITCTLR_TXUGIM | ETH_MMC_TITCTLR_TXEDEIM);
-    MAC_INTMSKR = M4_ETH->MAC_INTMSKR & (ETH_MAC_INTMSKR_PMTIM | ETH_MAC_INTMSKR_TSPIM);
-    MAC_INTSTSR = M4_ETH->MAC_INTSTSR & (ETH_MAC_INTSTSR_PMTIS | ETH_MAC_INTSTSR_TSPIS);
+    PMT_INTMASK = bM4_ETH->MAC_INTMSKR_b.PMTIM;
+    PMT_INTSTSR  = bM4_ETH->MAC_INTSTSR_b.PMTIS;
+    PTP_INTMASK = bM4_ETH->MAC_INTMSKR_b.TSPIM;
+    PTP_INTSTSR  = bM4_ETH->MAC_INTSTSR_b.TSPIS;
+    PTP_INTE    = bM4_ETH->PTP_TSPCTLR_b.TSPINT;
+
     DMA_DMASTSR = M4_ETH->DMA_DMASTSR & (ETH_DMA_DMASTSR_AIS | ETH_DMA_DMASTSR_NIS);
     DMA_INTENAR = M4_ETH->DMA_INTENAR & (ETH_DMA_INTENAR_AIE | ETH_DMA_INTENAR_NIE);
-    if (VSSEL140 & BIT_MASK_28)
+    if (0UL != (VSSEL140 & BIT_MASK_28))
     {
-        if ((MMC_REVSTSR & (~MMC_RITCTLR)) || (MMC_TRSSTSR & (~MMC_TITCTLR)) ||             \
-           ((MAC_INTSTSR & (~MAC_INTMSKR)) || (DMA_DMASTSR & DMA_INTENAR)))
+        if ((0UL != (MMC_REVSTSR & (~MMC_RITCTLR))) ||                          \
+            (0UL != (MMC_TRSSTSR & (~MMC_TITCTLR))) ||                          \
+            (0UL != (PMT_INTSTSR & (~PMT_INTMASK))) ||                          \
+            (0UL != (PTP_INTSTSR & (~PTP_INTMASK) & PTP_INTE)) ||               \
+            (0UL != (DMA_DMASTSR & DMA_INTENAR)))
         {
             ETH_Global_IrqHandler();
         }
     }
 
-
-
-
-
-
-
     /* Ethernat wakeup */
-        if ((1UL == bM4_ETH->MAC_INTSTSR_b.PMTIS) && (VSSEL140 & BIT_MASK_29))
+    if (0UL == bM4_ETH->MAC_INTMSKR_b.PMTIM)
+    {
+        if ((1UL == bM4_ETH->MAC_INTSTSR_b.PMTIS) && (0UL != (VSSEL140 & BIT_MASK_29)))
         {
             ETH_Wakeup_IrqHandler();
         }
-
+    }
 }
 
 /**
@@ -5635,7 +5692,7 @@ void IRQ141_Handler(void)
     /* I2S Ch.3 Tx */
     if (1UL == bM4_I2S3->CTRL_b.TXIE)
     {
-        if ((1UL == bM4_I2S3->SR_b.TXBA) && (VSSEL141 & BIT_MASK_00))
+        if ((1UL == bM4_I2S3->SR_b.TXBA) && (0UL != (VSSEL141 & BIT_MASK_00)))
         {
             I2S_3_Tx_IrqHandler();
         }
@@ -5643,7 +5700,7 @@ void IRQ141_Handler(void)
     /* I2S Ch.3 Rx */
     if (1UL == bM4_I2S3->CTRL_b.RXIE)
     {
-        if ((1UL == bM4_I2S3->SR_b.RXBA) && (VSSEL141 & BIT_MASK_01))
+        if ((1UL == bM4_I2S3->SR_b.RXBA) && (0UL != (VSSEL141 & BIT_MASK_01)))
         {
             I2S_3_Rx_IrqHandler();
         }
@@ -5652,7 +5709,7 @@ void IRQ141_Handler(void)
     if (1UL == bM4_I2S3->CTRL_b.EIE)
     {
         u32Tmp1 = M4_I2S3->ER & (I2S_ER_TXERR | I2S_ER_RXERR);
-        if (u32Tmp1 && (VSSEL141 & BIT_MASK_02))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL141 & BIT_MASK_02)))
         {
             I2S_3_Err_IrqHandler();
         }
@@ -5660,7 +5717,7 @@ void IRQ141_Handler(void)
     /* I2S Ch.4 Tx */
     if (1UL == bM4_I2S4->CTRL_b.TXIE)
     {
-        if ((1UL == bM4_I2S4->SR_b.TXBA) && (VSSEL141 & BIT_MASK_03))
+        if ((1UL == bM4_I2S4->SR_b.TXBA) && (0UL != (VSSEL141 & BIT_MASK_03)))
         {
             I2S_4_Tx_IrqHandler();
         }
@@ -5668,7 +5725,7 @@ void IRQ141_Handler(void)
     /* I2S Ch.4 Rx */
     if (1UL == bM4_I2S4->CTRL_b.RXIE)
     {
-        if ((1UL == bM4_I2S4->SR_b.RXBA) && (VSSEL141 & BIT_MASK_04))
+        if ((1UL == bM4_I2S4->SR_b.RXBA) && (0UL != (VSSEL141 & BIT_MASK_04)))
         {
             I2S_4_Rx_IrqHandler();
         }
@@ -5677,7 +5734,7 @@ void IRQ141_Handler(void)
     if (1UL == bM4_I2S4->CTRL_b.EIE)
     {
         u32Tmp1 = M4_I2S4->ER & (I2S_ER_TXERR | I2S_ER_RXERR);
-        if (u32Tmp1 && (VSSEL141 & BIT_MASK_05))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL141 & BIT_MASK_05)))
         {
             I2S_4_Err_IrqHandler();
         }
@@ -5686,12 +5743,12 @@ void IRQ141_Handler(void)
     {
         /* USART Ch.9 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART9->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL141 & BIT_MASK_06))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL141 & BIT_MASK_06)))
         {
             USART_9_RxErr_IrqHandler();
         }
         /* USART Ch.9 Rx end */
-        if ((1UL == bM4_USART9->SR_b.RXNE) && (VSSEL141 & BIT_MASK_07))
+        if ((1UL == bM4_USART9->SR_b.RXNE) && (0UL != (VSSEL141 & BIT_MASK_07)))
         {
             USART_9_RxEnd_IrqHandler();
         }
@@ -5699,7 +5756,7 @@ void IRQ141_Handler(void)
     /* USART Ch.9 Tx buffer empty */
     if (1UL == bM4_USART9->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART9->SR_b.TXE) && (VSSEL141 & BIT_MASK_08))
+        if ((1UL == bM4_USART9->SR_b.TXE) && (0UL != (VSSEL141 & BIT_MASK_08)))
         {
             USART_9_TxEmpty_IrqHandler();
         }
@@ -5707,7 +5764,7 @@ void IRQ141_Handler(void)
     /* USART Ch.9 Tx end */
     if (1UL == bM4_USART9->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART9->SR_b.TC) && (VSSEL141 & BIT_MASK_09))
+        if ((1UL == bM4_USART9->SR_b.TC) && (0UL != (VSSEL141 & BIT_MASK_09)))
         {
             USART_9_TxEnd_IrqHandler();
         }
@@ -5715,7 +5772,7 @@ void IRQ141_Handler(void)
     /* USART Ch.10 LIN bus break */
     if (1UL == bM4_USART10->CR2_b.LBDIE)
     {
-        if ((1UL == bM4_USART10->SR_b.LBD) && (VSSEL141 & BIT_MASK_10))
+        if ((1UL == bM4_USART10->SR_b.LBD) && (0UL != (VSSEL141 & BIT_MASK_10)))
         {
             USART_10_LinBreakField_IrqHandler();
         }
@@ -5723,7 +5780,7 @@ void IRQ141_Handler(void)
     /* USART Ch.10 LIN bus wakeup */
     if (1UL == bM4_USART10->CR2_b.WKUPE)
     {
-        if ((1UL == bM4_USART10->SR_b.WKUP) && (VSSEL141 & BIT_MASK_10))
+        if ((1UL == bM4_USART10->SR_b.WKUP) && (0UL != (VSSEL141 & BIT_MASK_10)))
         {
             USART_10_LinWakeup_IrqHandler();
         }
@@ -5732,12 +5789,12 @@ void IRQ141_Handler(void)
     {
         /* USART Ch.10 Rx ORE/FE/PE error */
         u32Tmp1 = M4_USART10->SR & (USART_SR_PE | USART_SR_FE | USART_SR_ORE);
-        if (u32Tmp1 && (VSSEL141 & BIT_MASK_11))
+        if ((0UL != u32Tmp1) && (0UL != (VSSEL141 & BIT_MASK_11)))
         {
             USART_10_RxErr_IrqHandler();
         }
         /* USART Ch.10 Rx end */
-        if ((1UL == bM4_USART10->SR_b.RXNE) && (VSSEL141 & BIT_MASK_12))
+        if ((1UL == bM4_USART10->SR_b.RXNE) && (0UL != (VSSEL141 & BIT_MASK_12)))
         {
             USART_10_RxEnd_IrqHandler();
         }
@@ -5745,7 +5802,7 @@ void IRQ141_Handler(void)
     /* USART Ch.10 Tx buffer empty */
     if (1UL == bM4_USART10->CR1_b.TXEIE)
     {
-        if ((1UL == bM4_USART10->SR_b.TXE) && (VSSEL141 & BIT_MASK_13))
+        if ((1UL == bM4_USART10->SR_b.TXE) && (0UL != (VSSEL141 & BIT_MASK_13)))
         {
             USART_10_TxEmpty_IrqHandler();
         }
@@ -5753,7 +5810,7 @@ void IRQ141_Handler(void)
     /* USART Ch.10 Tx end */
     if (1UL == bM4_USART10->CR1_b.TCIE)
     {
-        if ((1UL == bM4_USART10->SR_b.TC) && (VSSEL141 & BIT_MASK_14))
+        if ((1UL == bM4_USART10->SR_b.TC) && (0UL != (VSSEL141 & BIT_MASK_14)))
         {
             USART_10_TxEnd_IrqHandler();
         }
@@ -5761,7 +5818,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.1 Rx end */
     if (1UL == bM4_I2C1->CR2_b.RFULLIE)
     {
-        if ((1UL == bM4_I2C1->SR_b.RFULLF) && (VSSEL141 & BIT_MASK_16))
+        if ((1UL == bM4_I2C1->SR_b.RFULLF) && (0UL != (VSSEL141 & BIT_MASK_16)))
         {
             I2C_1_RxEnd_IrqHandler();
         }
@@ -5769,7 +5826,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.1 Tx end */
     if (1UL == bM4_I2C1->CR2_b.TENDIE)
     {
-        if ((1UL == bM4_I2C1->SR_b.TENDF) && (VSSEL141 & BIT_MASK_17))
+        if ((1UL == bM4_I2C1->SR_b.TENDF) && (0UL != (VSSEL141 & BIT_MASK_17)))
         {
             I2C_1_TxEnd_IrqHandler();
         }
@@ -5777,7 +5834,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.1 Tx buffer empty */
     if (1UL == bM4_I2C1->CR2_b.TEMPTYIE)
     {
-        if ((1UL == bM4_I2C1->SR_b.TEMPTYF) && (VSSEL141 & BIT_MASK_18))
+        if ((1UL == bM4_I2C1->SR_b.TEMPTYF) && (0UL != (VSSEL141 & BIT_MASK_18)))
         {
             I2C_1_TxEmpty_IrqHandler();
         }
@@ -5791,14 +5848,14 @@ void IRQ141_Handler(void)
                              I2C_SR_GENCALLF | I2C_SR_TMOUTF   | I2C_SR_NACKF       |   \
                              I2C_SR_ARLOF    | I2C_SR_STOPF    | I2C_SR_SLADDR1F    |   \
                              I2C_SR_SLADDR0F | I2C_SR_STARTF);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_19))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL141 & BIT_MASK_19)))
     {
         I2C_1_Err_IrqHandler();
     }
     /* I2C Ch.2 Rx end */
     if (1UL == bM4_I2C2->CR2_b.RFULLIE)
     {
-        if ((1UL == bM4_I2C2->SR_b.RFULLF) && (VSSEL141 & BIT_MASK_20))
+        if ((1UL == bM4_I2C2->SR_b.RFULLF) && (0UL != (VSSEL141 & BIT_MASK_20)))
         {
             I2C_2_RxEnd_IrqHandler();
         }
@@ -5806,7 +5863,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.2 Tx end */
     if (1UL == bM4_I2C2->CR2_b.TENDIE)
     {
-        if ((1UL == bM4_I2C2->SR_b.TENDF) && (VSSEL141 & BIT_MASK_21))
+        if ((1UL == bM4_I2C2->SR_b.TENDF) && (0UL != (VSSEL141 & BIT_MASK_21)))
         {
             I2C_2_TxEnd_IrqHandler();
         }
@@ -5814,7 +5871,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.2 Tx buffer empty */
     if (1UL == bM4_I2C2->CR2_b.TEMPTYIE)
     {
-        if ((1UL == bM4_I2C2->SR_b.TEMPTYF) && (VSSEL141 & BIT_MASK_22))
+        if ((1UL == bM4_I2C2->SR_b.TEMPTYF) && (0UL != (VSSEL141 & BIT_MASK_22)))
         {
             I2C_2_TxEmpty_IrqHandler();
         }
@@ -5828,14 +5885,14 @@ void IRQ141_Handler(void)
                              I2C_SR_GENCALLF | I2C_SR_TMOUTF   | I2C_SR_NACKF       |   \
                              I2C_SR_ARLOF    | I2C_SR_STOPF    | I2C_SR_SLADDR1F    |   \
                              I2C_SR_SLADDR0F | I2C_SR_STARTF);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_23))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL141 & BIT_MASK_23)))
     {
         I2C_2_Err_IrqHandler();
     }
     /* I2C Ch.3 Rx end */
     if (1UL == bM4_I2C3->CR2_b.RFULLIE)
     {
-        if ((1UL == bM4_I2C3->SR_b.RFULLF) && (VSSEL141 & BIT_MASK_24))
+        if ((1UL == bM4_I2C3->SR_b.RFULLF) && (0UL != (VSSEL141 & BIT_MASK_24)))
         {
             I2C_3_RxEnd_IrqHandler();
         }
@@ -5843,7 +5900,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.3 Tx end */
     if (1UL == bM4_I2C3->CR2_b.TENDIE)
     {
-        if ((1UL == bM4_I2C3->SR_b.TENDF) && (VSSEL141 & BIT_MASK_25))
+        if ((1UL == bM4_I2C3->SR_b.TENDF) && (0UL != (VSSEL141 & BIT_MASK_25)))
         {
             I2C_3_TxEnd_IrqHandler();
         }
@@ -5851,7 +5908,7 @@ void IRQ141_Handler(void)
     /* I2C Ch.3 Tx buffer empty */
     if (1UL == bM4_I2C3->CR2_b.TEMPTYIE)
     {
-        if ((1UL == bM4_I2C3->SR_b.TEMPTYF) && (VSSEL141 & BIT_MASK_26))
+        if ((1UL == bM4_I2C3->SR_b.TEMPTYF) && (0UL != (VSSEL141 & BIT_MASK_26)))
         {
             I2C_3_TxEmpty_IrqHandler();
         }
@@ -5865,7 +5922,7 @@ void IRQ141_Handler(void)
                              I2C_SR_GENCALLF | I2C_SR_TMOUTF   | I2C_SR_NACKF       |   \
                              I2C_SR_ARLOF    | I2C_SR_STOPF    | I2C_SR_SLADDR1F    |   \
                              I2C_SR_SLADDR0F | I2C_SR_STARTF);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL141 & BIT_MASK_27))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL141 & BIT_MASK_27)))
     {
         I2C_3_Err_IrqHandler();
     }
@@ -5885,7 +5942,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.4 Rx end */
     if (1UL == bM4_I2C4->CR2_b.RFULLIE)
     {
-        if ((1UL == bM4_I2C4->SR_b.RFULLF) && (VSSEL142 & BIT_MASK_00))
+        if ((1UL == bM4_I2C4->SR_b.RFULLF) && (0UL != (VSSEL142 & BIT_MASK_00)))
         {
             I2C_4_RxEnd_IrqHandler();
         }
@@ -5893,7 +5950,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.4 Tx end */
     if (1UL == bM4_I2C4->CR2_b.TENDIE)
     {
-        if ((1UL == bM4_I2C4->SR_b.TENDF) && (VSSEL142 & BIT_MASK_01))
+        if ((1UL == bM4_I2C4->SR_b.TENDF) && (0UL != (VSSEL142 & BIT_MASK_01)))
         {
             I2C_4_TxEnd_IrqHandler();
         }
@@ -5901,7 +5958,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.4 Tx buffer empty */
     if (1UL == bM4_I2C4->CR2_b.TEMPTYIE)
     {
-        if ((1UL == bM4_I2C4->SR_b.TEMPTYF) && (VSSEL142 & BIT_MASK_02))
+        if ((1UL == bM4_I2C4->SR_b.TEMPTYF) && (0UL != (VSSEL142 & BIT_MASK_02)))
         {
             I2C_4_TxEmpty_IrqHandler();
         }
@@ -5915,14 +5972,14 @@ void IRQ142_Handler(void)
                              I2C_SR_GENCALLF | I2C_SR_TMOUTF   | I2C_SR_NACKF       |   \
                              I2C_SR_ARLOF    | I2C_SR_STOPF    | I2C_SR_SLADDR1F    |   \
                              I2C_SR_SLADDR0F | I2C_SR_STARTF);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL142 & BIT_MASK_03))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL142 & BIT_MASK_03)))
     {
         I2C_4_Err_IrqHandler();
     }
     /* I2C Ch.5 Rx end */
     if (1UL == bM4_I2C5->CR2_b.RFULLIE)
     {
-        if ((1UL == bM4_I2C5->SR_b.RFULLF) && (VSSEL142 & BIT_MASK_04))
+        if ((1UL == bM4_I2C5->SR_b.RFULLF) && (0UL != (VSSEL142 & BIT_MASK_04)))
         {
             I2C_5_RxEnd_IrqHandler();
         }
@@ -5930,7 +5987,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.5 Tx end */
     if (1UL == bM4_I2C5->CR2_b.TENDIE)
     {
-        if ((1UL == bM4_I2C5->SR_b.TENDF) && (VSSEL142 & BIT_MASK_05))
+        if ((1UL == bM4_I2C5->SR_b.TENDF) && (0UL != (VSSEL142 & BIT_MASK_05)))
         {
             I2C_5_TxEnd_IrqHandler();
         }
@@ -5938,7 +5995,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.5 Tx buffer empty */
     if (1UL == bM4_I2C5->CR2_b.TEMPTYIE)
     {
-        if ((1UL == bM4_I2C5->SR_b.TEMPTYF) && (VSSEL142 & BIT_MASK_06))
+        if ((1UL == bM4_I2C5->SR_b.TEMPTYF) && (0UL != (VSSEL142 & BIT_MASK_06)))
         {
             I2C_5_TxEmpty_IrqHandler();
         }
@@ -5952,14 +6009,14 @@ void IRQ142_Handler(void)
                              I2C_SR_GENCALLF | I2C_SR_TMOUTF   | I2C_SR_NACKF       |   \
                              I2C_SR_ARLOF    | I2C_SR_STOPF    | I2C_SR_SLADDR1F    |   \
                              I2C_SR_SLADDR0F | I2C_SR_STARTF);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL142 & BIT_MASK_07))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL142 & BIT_MASK_07)))
     {
         I2C_5_Err_IrqHandler();
     }
     /* I2C Ch.6 Rx end */
     if (1UL == bM4_I2C6->CR2_b.RFULLIE)
     {
-        if ((1UL == bM4_I2C6->SR_b.RFULLF) && (VSSEL142 & BIT_MASK_08))
+        if ((1UL == bM4_I2C6->SR_b.RFULLF) && (0UL != (VSSEL142 & BIT_MASK_08)))
         {
             I2C_6_RxEnd_IrqHandler();
         }
@@ -5967,7 +6024,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.6 Tx end */
     if (1UL == bM4_I2C6->CR2_b.TENDIE)
     {
-        if ((1UL == bM4_I2C6->SR_b.TENDF) && (VSSEL142 & BIT_MASK_09))
+        if ((1UL == bM4_I2C6->SR_b.TENDF) && (0UL != (VSSEL142 & BIT_MASK_09)))
         {
             I2C_6_TxEnd_IrqHandler();
         }
@@ -5975,7 +6032,7 @@ void IRQ142_Handler(void)
     /* I2C Ch.6 Tx buffer empty */
     if (1UL == bM4_I2C6->CR2_b.TEMPTYIE)
     {
-        if ((1UL == bM4_I2C6->SR_b.TEMPTYF) && (VSSEL142 & BIT_MASK_10))
+        if ((1UL == bM4_I2C6->SR_b.TEMPTYF) && (0UL != (VSSEL142 & BIT_MASK_10)))
         {
             I2C_6_TxEmpty_IrqHandler();
         }
@@ -5989,14 +6046,14 @@ void IRQ142_Handler(void)
                              I2C_SR_GENCALLF | I2C_SR_TMOUTF   | I2C_SR_NACKF       |   \
                              I2C_SR_ARLOF    | I2C_SR_STOPF    | I2C_SR_SLADDR1F    |   \
                              I2C_SR_SLADDR0F | I2C_SR_STARTF);
-    if ((u32Tmp1 & u32Tmp2) && (VSSEL142 & BIT_MASK_11))
+    if ((0UL != (u32Tmp1 & u32Tmp2)) && (0UL != (VSSEL142 & BIT_MASK_11)))
     {
         I2C_6_Err_IrqHandler();
     }
     /* PVD Ch.1 */
     if (1UL == bM4_PWC->PVDCR1_b.PVD1IRE)
     {
-        if ((1UL ==bM4_PWC->PVDDSR_b.PVD1DETFLG) && (VSSEL142 & BIT_MASK_13))
+        if ((1UL ==bM4_PWC->PVDDSR_b.PVD1DETFLG) && (0UL != (VSSEL142 & BIT_MASK_13)))
         {
             PWC_Pvd1_IrqHandler();
         }
@@ -6004,7 +6061,7 @@ void IRQ142_Handler(void)
     /* PVD Ch.2 */
     if (1UL == bM4_PWC->PVDCR1_b.PVD2IRE)
     {
-        if ((1UL ==bM4_PWC->PVDDSR_b.PVD2DETFLG) && (VSSEL142 & BIT_MASK_14))
+        if ((1UL ==bM4_PWC->PVDDSR_b.PVD2DETFLG) && (0UL != (VSSEL142 & BIT_MASK_14)))
         {
             PWC_Pvd2_IrqHandler();
         }
@@ -6012,7 +6069,7 @@ void IRQ142_Handler(void)
     /* FCM error */
     if (1UL == bM4_FCM->RIER_b.ERRIE)
     {
-        if ((1UL == bM4_FCM->SR_b.ERRF) && (VSSEL142 & BIT_MASK_16))
+        if ((1UL == bM4_FCM->SR_b.ERRF) && (0UL != (VSSEL142 & BIT_MASK_16)))
         {
             FCM_Err_IrqHandler();
         }
@@ -6020,7 +6077,7 @@ void IRQ142_Handler(void)
     /* FCM end */
     if (1UL == bM4_FCM->RIER_b.MENDIE)
     {
-        if ((1UL == bM4_FCM->SR_b.MENDF) && (VSSEL142 & BIT_MASK_17))
+        if ((1UL == bM4_FCM->SR_b.MENDF) && (0UL != (VSSEL142 & BIT_MASK_17)))
         {
             FCM_End_IrqHandler();
         }
@@ -6028,14 +6085,14 @@ void IRQ142_Handler(void)
     /* FCM overflow */
     if (1UL == bM4_FCM->RIER_b.OVFIE)
     {
-        if ((1UL == bM4_FCM->SR_b.OVF) && (VSSEL142 & BIT_MASK_18))
+        if ((1UL == bM4_FCM->SR_b.OVF) && (0UL != (VSSEL142 & BIT_MASK_18)))
         {
             FCM_Ovf_IrqHandler();
         }
     }
     /* WDT underflow or refresh error */
     u32Tmp1 = M4_WDT->SR & (WDT_SR_UDF | WDT_SR_REF);
-    if (u32Tmp1 && (VSSEL142 & BIT_MASK_19))
+    if ((0UL != u32Tmp1) && (0UL != (VSSEL142 & BIT_MASK_19)))
     {
         WDT_IrqHandler();
     }
@@ -6043,12 +6100,12 @@ void IRQ142_Handler(void)
     if (1UL == bM4_CTC->CR1_b.ERRIE)
     {
         /* underflow */
-        if ((1UL == bM4_CTC->STR_b.TRMUDF) && (VSSEL142 & BIT_MASK_20))
+        if ((1UL == bM4_CTC->STR_b.TRMUDF) && (0UL != (VSSEL142 & BIT_MASK_20)))
         {
             CTC_Udf_IrqHandler();
         }
         /* overflow */
-        if ((1UL == bM4_CTC->STR_b.TRMOVF) && (VSSEL142 & BIT_MASK_20))
+        if ((1UL == bM4_CTC->STR_b.TRMOVF) && (0UL != (VSSEL142 & BIT_MASK_20)))
         {
             CTC_Ovf_IrqHandler();
         }
@@ -6068,7 +6125,7 @@ void IRQ143_Handler(void)
     /* ADC unit1 sequence A */
     if (1UL == bM4_ADC1->ICR_b.EOCAIEN)
     {
-        if ((1UL == bM4_ADC1->ISR_b.EOCAF) && (VSSEL143 & BIT_MASK_00))
+        if ((1UL == bM4_ADC1->ISR_b.EOCAF) && (0UL != (VSSEL143 & BIT_MASK_00)))
         {
             ADC_1_SeqA_IrqHandler();
         }
@@ -6076,7 +6133,7 @@ void IRQ143_Handler(void)
     /* ADC unit1 sequence B */
     if (1UL == bM4_ADC1->ICR_b.EOCBIEN)
     {
-        if ((1UL == bM4_ADC1->ISR_b.EOCBF) && (VSSEL143 & BIT_MASK_01))
+        if ((1UL == bM4_ADC1->ISR_b.EOCBF) && (0UL != (VSSEL143 & BIT_MASK_01)))
         {
             ADC_1_SeqB_IrqHandler();
         }
@@ -6084,7 +6141,7 @@ void IRQ143_Handler(void)
     /* ADC unit1 window 0 compare */
     if (1UL == bM4_ADC1->AWDCR_b.AWD0IEN)
     {
-        if ((1UL == bM4_ADC1->AWDSR_b.AWD0F) && (VSSEL143 & BIT_MASK_02))
+        if ((1UL == bM4_ADC1->AWDSR_b.AWD0F) && (0UL != (VSSEL143 & BIT_MASK_02)))
         {
             ADC_1_Cmp0_IrqHandler();
         }
@@ -6094,12 +6151,12 @@ void IRQ143_Handler(void)
     {
         /* independence use */
         u32Tmp1 = (uint16_t)(M4_ADC1->AWDCR & ADC_AWDCR_AWDCM);
-        if ((1UL == bM4_ADC1->AWDSR_b.AWD1F) && (0UL == u32Tmp1) && (VSSEL143 & BIT_MASK_03))
+        if ((1UL == bM4_ADC1->AWDSR_b.AWD1F) && (0UL == u32Tmp1) && (0UL != (VSSEL143 & BIT_MASK_03)))
         {
             ADC_1_Cmp1Ind_IrqHandler();
         }
         /* combination use */
-        if ((1UL == bM4_ADC1->AWDSR_b.AWDCMF) && (u32Tmp1) && (VSSEL143 & BIT_MASK_03))
+        if ((1UL == bM4_ADC1->AWDSR_b.AWDCMF) && (0UL != u32Tmp1) && (0UL != (VSSEL143 & BIT_MASK_03)))
         {
             ADC_1_Cmp1Comb_IrqHandler();
         }
@@ -6107,7 +6164,7 @@ void IRQ143_Handler(void)
     /* ADC unit2 sequence A */
     if (1UL == bM4_ADC2->ICR_b.EOCAIEN)
     {
-        if ((1UL == bM4_ADC2->ISR_b.EOCAF) && (VSSEL143 & BIT_MASK_04))
+        if ((1UL == bM4_ADC2->ISR_b.EOCAF) && (0UL != (VSSEL143 & BIT_MASK_04)))
         {
             ADC_2_SeqA_IrqHandler();
         }
@@ -6115,7 +6172,7 @@ void IRQ143_Handler(void)
     /* ADC unit2 sequence B */
     if (1UL == bM4_ADC2->ICR_b.EOCBIEN)
     {
-        if ((1UL == bM4_ADC2->ISR_b.EOCBF) && (VSSEL143 & BIT_MASK_05))
+        if ((1UL == bM4_ADC2->ISR_b.EOCBF) && (0UL != (VSSEL143 & BIT_MASK_05)))
         {
             ADC_2_SeqB_IrqHandler();
         }
@@ -6123,7 +6180,7 @@ void IRQ143_Handler(void)
     /* ADC unit2 window 0 compare */
     if (1UL == bM4_ADC2->AWDCR_b.AWD0IEN)
     {
-        if ((1UL == bM4_ADC2->AWDSR_b.AWD0F) && (VSSEL143 & BIT_MASK_06))
+        if ((1UL == bM4_ADC2->AWDSR_b.AWD0F) && (0UL != (VSSEL143 & BIT_MASK_06)))
         {
             ADC_2_Cmp0_IrqHandler();
         }
@@ -6133,12 +6190,12 @@ void IRQ143_Handler(void)
     {
         /* independence use */
         u32Tmp1 = ((uint16_t)(M4_ADC2->AWDCR & ADC_AWDCR_AWDCM));
-        if ((1UL == bM4_ADC2->AWDSR_b.AWD1F) && (0UL == u32Tmp1) && (VSSEL143 & BIT_MASK_07))
+        if ((1UL == bM4_ADC2->AWDSR_b.AWD1F) && (0UL == u32Tmp1) && (0UL != (0UL != (VSSEL143 & BIT_MASK_07))))
         {
             ADC_2_Cmp1Ind_IrqHandler();
         }
         /* combination use */
-        if ((1UL == bM4_ADC2->AWDSR_b.AWDCMF) && (u32Tmp1) && (VSSEL143 & BIT_MASK_07))
+        if ((1UL == bM4_ADC2->AWDSR_b.AWDCMF) && (0UL != u32Tmp1) && (0UL != (0UL != (VSSEL143 & BIT_MASK_07))))
         {
             ADC_2_Cmp1Comb_IrqHandler();
         }
@@ -6146,7 +6203,7 @@ void IRQ143_Handler(void)
     /* ADC unit3 sequence A */
     if (1UL == bM4_ADC3->ICR_b.EOCAIEN)
     {
-        if ((1UL == bM4_ADC3->ISR_b.EOCAF) && (VSSEL143 & BIT_MASK_04))
+        if ((1UL == bM4_ADC3->ISR_b.EOCAF) && (0UL != (VSSEL143 & BIT_MASK_04)))
         {
             ADC_3_SeqA_IrqHandler();
         }
@@ -6154,7 +6211,7 @@ void IRQ143_Handler(void)
     /* ADC unit3 sequence B */
     if (1UL == bM4_ADC3->ICR_b.EOCBIEN)
     {
-        if ((1UL == bM4_ADC3->ISR_b.EOCBF) && (VSSEL143 & BIT_MASK_08))
+        if ((1UL == bM4_ADC3->ISR_b.EOCBF) && (0UL != (VSSEL143 & BIT_MASK_08)))
         {
             ADC_3_SeqB_IrqHandler();
         }
@@ -6162,7 +6219,7 @@ void IRQ143_Handler(void)
     /* ADC unit3 window 0 compare */
     if (1UL == bM4_ADC3->AWDCR_b.AWD0IEN)
     {
-        if ((1UL == bM4_ADC3->AWDSR_b.AWD0F) && (VSSEL143 & BIT_MASK_09))
+        if ((1UL == bM4_ADC3->AWDSR_b.AWD0F) && (0UL != (VSSEL143 & BIT_MASK_09)))
         {
             ADC_3_Cmp0_IrqHandler();
         }
@@ -6172,26 +6229,1480 @@ void IRQ143_Handler(void)
     {
         /* independence use */
         u32Tmp1 = (uint16_t)(M4_ADC3->AWDCR & ADC_AWDCR_AWDCM);
-        if ((1UL == bM4_ADC3->AWDSR_b.AWD1F) && (0UL == u32Tmp1) && (VSSEL143 & BIT_MASK_10))
+        if ((1UL == bM4_ADC3->AWDSR_b.AWD1F) && (0UL == u32Tmp1) && (0UL != (VSSEL143 & BIT_MASK_10)))
         {
             ADC_3_Cmp1Ind_IrqHandler();
         }
         /* combination use */
-        if ((1UL == bM4_ADC3->AWDSR_b.AWDCMF) && (u32Tmp1) && (VSSEL143 & BIT_MASK_10))
+        if ((1UL == bM4_ADC3->AWDSR_b.AWDCMF) && (0UL != u32Tmp1) && (0UL != (VSSEL143 & BIT_MASK_10)))
         {
             ADC_3_Cmp1Comb_IrqHandler();
         }
     }
-    if (VSSEL143 & BIT_MASK_16)
+    if (0UL != (VSSEL143 & BIT_MASK_16))
     {
-        if (M4_NFC->IRSR & (NFC_IRSR_RBRS | NFC_IRSR_ECCERS | NFC_IRSR_ECCCRS | \
-                            NFC_IRSR_ECCECRS | NFC_IRSR_ECCEURS))
+        if (0UL != (M4_NFC->IRSR & (NFC_IRSR_RBRS | NFC_IRSR_ECCERS |           \
+                    NFC_IRSR_ECCCRS | NFC_IRSR_ECCECRS | NFC_IRSR_ECCEURS)))
         {
             NFC_IrqHandler();
         }
     }
 }
+/**
+ * @}
+ */
 
+/**
+ * @defgroup INTC_Weakdef_Prototypes INTC weak function prototypes
+ * @{
+ */
+__WEAKDEF void HardFault_IrqHandler(void)
+{
+}
+__WEAKDEF void MemManage_IrqHandler(void)
+{
+}
+__WEAKDEF void BusFault_IrqHandler(void)
+{
+}
+__WEAKDEF void UsageFault_IrqHandler(void)
+{
+}
+__WEAKDEF void SVC_IrqHandler(void)
+{
+}
+__WEAKDEF void DebugMon_IrqHandler(void)
+{
+}
+__WEAKDEF void PendSV_IrqHandler(void)
+{
+}
+__WEAKDEF void SysTick_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_00_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_01_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_02_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_03_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_04_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_05_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_06_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_07_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_08_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_09_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_10_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_11_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_12_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_13_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_14_IrqHandler(void)
+{
+}
+__WEAKDEF void EXTINT_15_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc0_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc1_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc2_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc3_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc4_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc5_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc6_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Tc7_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc0_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc1_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc2_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc3_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc4_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc5_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc6_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Btc7_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err0_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err1_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err2_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err3_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err4_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err5_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err6_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_1_Err7_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc0_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc1_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc2_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc3_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc4_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc5_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc6_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Tc7_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc0_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc1_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc2_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc3_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc4_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc5_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc6_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Btc7_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err0_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err1_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err2_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err3_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err4_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err5_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err6_IrqHandler(void)
+{
+}
+__WEAKDEF void DMA_2_Err7_IrqHandler(void)
+{
+}
+__WEAKDEF void EFM_0_PgmEraseErr_IrqHandler(void)
+{
+}
+__WEAKDEF void EFM_0_ColErr_IrqHandler(void)
+{
+}
+__WEAKDEF void EFM_0_OpEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void EFM_1_PgmEraseErr_IrqHandler(void)
+{
+}
+__WEAKDEF void EFM_1_ColErr_IrqHandler(void)
+{
+}
+__WEAKDEF void EFM_1_OpEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void QSPI_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void MAU_Sqrt_IrqHandler(void)
+{
+}
+__WEAKDEF void DVP_FrameStart_IrqHandler(void)
+{
+}
+__WEAKDEF void DVP_FrameEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void DVP_LineStart_IrqHandler(void)
+{
+}
+__WEAKDEF void DVP_LineEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void DVP_SwSyncErr_IrqHandler(void)
+{
+}
+__WEAKDEF void DVP_FifoErr_IrqHandler(void)
+{
+}
+__WEAKDEF void FMAC_1_IrqHandler(void)
+{
+}
+__WEAKDEF void FMAC_2_IrqHandler(void)
+{
+}
+__WEAKDEF void FMAC_3_IrqHandler(void)
+{
+}
+__WEAKDEF void FMAC_4_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_1_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_2_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_3_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_4_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_5_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_6_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_7_IrqHandler(void)
+{
+}
+__WEAKDEF void DCU_8_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR0_1_CmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR0_1_CmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR0_2_CmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR0_2_CmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_1_CmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_1_CmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_1_OvfA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_1_OvfB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_2_CmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_2_CmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_2_OvfA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_2_OvfB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_3_CmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_3_CmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_3_OvfA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_3_OvfB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_4_CmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_4_CmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_4_OvfA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR2_4_OvfB_IrqHandler(void)
+{
+}
+__WEAKDEF void RTC_TimeStamp0_IrqHandler(void)
+{
+}
+__WEAKDEF void RTC_TimeStamp1_IrqHandler(void)
+{
+}
+__WEAKDEF void RTC_Alarm_IrqHandler(void)
+{
+}
+__WEAKDEF void RTC_Period_IrqHandler(void)
+{
+}
+__WEAKDEF void CLK_XtalStop_IrqHandler(void)
+{
+}
+__WEAKDEF void SWDT_IrqHandler(void)
+{
+}
+__WEAKDEF void WDT_IrqHandler(void)
+{
+}
+__WEAKDEF void PWC_WakeupTimer_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_1_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_2_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_3_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_4_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_5_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_6_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_7_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GCmpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GCmpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GCmpC_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GCmpD_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GCmpE_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GCmpF_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GOvf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_GUdf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_Gdte_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_SCmpUpA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_SCmpDownA_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_SCmpUpB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR6_8_SCmpDownB_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_GCmpUH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_GCmpUL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_GCmpVH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_GCmpVL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_GCmpWH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_GCmpWL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_ReloadU_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_ReloadV_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_1_ReloadW_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_GCmpUH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_GCmpUL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_GCmpVH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_GCmpVL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_GCmpWH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_GCmpWL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_ReloadU_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_ReloadV_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_2_ReloadW_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_GCmpUH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_GCmpUL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_GCmpVH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_GCmpVL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_GCmpWH_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_GCmpWL_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_ReloadU_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_ReloadV_IrqHandler(void)
+{
+}
+__WEAKDEF void TMR4_3_ReloadW_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_1_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_1_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_1_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_1_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_1_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_1_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_2_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_2_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_2_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_2_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_2_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_2_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_3_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_3_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_3_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_3_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_3_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_3_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_4_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_4_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_4_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_4_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_4_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_4_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_5_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_5_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_5_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_5_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_5_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_5_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_6_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_6_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_6_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_6_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_6_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_6_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_7_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_7_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_7_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_7_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_7_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_7_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_8_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_8_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_8_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_8_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_8_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_8_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_9_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_9_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_9_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_9_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_9_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_9_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_10_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_10_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_10_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_10_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_10_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_10_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_11_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_11_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_11_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_11_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_11_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_11_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_12_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_12_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_12_Cmp1_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_12_Cmp2_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_12_Cmp3_IrqHandler(void)
+{
+}
+__WEAKDEF void TMRA_12_Cmp4_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR0_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR1_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR2_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR3_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR4_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR5_IrqHandler(void)
+{
+}
+__WEAKDEF void EMB_GR6_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_1_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_1_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_1_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_1_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_1_RxTO_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_2_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_2_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_2_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_2_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_2_RxTO_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_3_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_3_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_3_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_3_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_4_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_4_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_4_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_4_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_5_LinBreakField_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_5_LinWakeup_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_5_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_5_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_5_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_5_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_6_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_6_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_6_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_6_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_6_RxTO_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_7_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_7_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_7_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_7_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_7_RxTO_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_8_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_8_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_8_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_8_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_9_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_9_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_9_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_9_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_10_LinBreakField_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_10_LinWakeup_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_10_RxErr_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_10_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_10_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void USART_10_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_1_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_1_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_1_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_1_Idle_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_2_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_2_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_2_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_2_Idle_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_3_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_3_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_3_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_3_Idle_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_4_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_4_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_4_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_4_Idle_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_5_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_5_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_5_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_5_Idle_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_6_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_6_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_6_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void SPI_6_Idle_IrqHandler(void)
+{
+}
+__WEAKDEF void CAN_1_IrqHandler(void)
+{
+}
+__WEAKDEF void CAN_2_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_1_Tx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_1_Rx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_1_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_2_Tx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_2_Rx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_2_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_3_Tx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_3_Rx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_3_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_4_Tx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_4_Rx_IrqHandler(void)
+{
+}
+__WEAKDEF void I2S_4_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void USBFS_Global_IrqHandler(void)
+{
+}
+__WEAKDEF void SDIOC_1_Normal_IrqHandler(void)
+{
+}
+__WEAKDEF void SDIOC_1_Error_IrqHandler(void)
+{
+}
+__WEAKDEF void SDIOC_2_Normal_IrqHandler(void)
+{
+}
+__WEAKDEF void SDIOC_2_Error_IrqHandler(void)
+{
+}
+__WEAKDEF void ETH_Global_IrqHandler(void)
+{
+}
+__WEAKDEF void ETH_Wakeup_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_1_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_1_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_1_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_1_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_2_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_2_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_2_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_2_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_3_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_3_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_3_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_3_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_4_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_4_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_4_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_4_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_5_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_5_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_5_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_5_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_6_RxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_6_TxEnd_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_6_TxEmpty_IrqHandler(void)
+{
+}
+__WEAKDEF void I2C_6_Err_IrqHandler(void)
+{
+}
+
+__WEAKDEF void PWC_Pvd1_IrqHandler(void)
+{
+}
+__WEAKDEF void PWC_Pvd2_IrqHandler(void)
+{
+}
+__WEAKDEF void FCM_Err_IrqHandler(void)
+{
+}
+__WEAKDEF void FCM_End_IrqHandler(void)
+{
+}
+__WEAKDEF void FCM_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void CTC_Udf_IrqHandler(void)
+{
+}
+__WEAKDEF void CTC_Ovf_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_1_SeqA_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_1_SeqB_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_1_Cmp0_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_1_Cmp1Ind_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_1_Cmp1Comb_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_2_SeqA_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_2_SeqB_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_2_Cmp0_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_2_Cmp1Ind_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_2_Cmp1Comb_IrqHandler(void)
+{
+}
+__WEAKDEF extern void ADC_3_SeqA_IrqHandler(void)
+{
+}
+__WEAKDEF extern void ADC_3_SeqB_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_3_Cmp0_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_3_Cmp1Ind_IrqHandler(void)
+{
+}
+__WEAKDEF void ADC_3_Cmp1Comb_IrqHandler(void)
+{
+}
+__WEAKDEF void NFC_IrqHandler(void)
+{
+}
 /**
  * @}
  */
@@ -6203,8 +7714,8 @@ void IRQ143_Handler(void)
  */
 
 /**
-* @}
-*/
+ * @}
+ */
 
 /******************************************************************************
  * EOF (not truncated)

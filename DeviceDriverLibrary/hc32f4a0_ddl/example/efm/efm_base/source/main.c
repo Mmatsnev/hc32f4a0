@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Heqb          First version
+   2020-08-28       Heqb          Adjust the BSP_CLK_Init() position
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -155,13 +156,14 @@ int32_t main(void)
 
     /* Unlock peripherals or registers */
     Peripheral_WE();
+
+    /* Configure system clock. HClK = 240MHZ */
+    BSP_CLK_Init();
     /* LED Init */
     BSP_IO_Init();
     BSP_LED_Init();
     /* Turn on LED_B */
     BSP_LED_On(LED_BLUE);
-    /* Configure system clock. HClK = 240MHZ */
-    BSP_CLK_Init();
 
     /* EFM default config. */
     EFM_StructInit(&stcEfmCfg);

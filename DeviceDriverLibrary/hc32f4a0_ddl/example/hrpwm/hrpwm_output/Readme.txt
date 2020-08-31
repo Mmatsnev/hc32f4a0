@@ -15,7 +15,7 @@ GCC工程，由Eclipse IDE外挂GNU-ARM Toolchain，再结合pyOCD GDB Server实
 
 功能描述
 ================================================================================
-本样例主要展示MCU的HRPWM外设对TIMER6的PWM输出的校正功能，计算了两个HRPWM单元的单
+本样例主要展示MCU的HRPWM外设对TIMER6的PWM输出的调整功能，计算了两个HRPWM单元的单
 位延迟量。并通过HRPWM的CH1和CH5为例演示了对PWM占空比的微调功能。
 
 说明：

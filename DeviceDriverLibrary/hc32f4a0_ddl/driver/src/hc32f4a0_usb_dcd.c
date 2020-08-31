@@ -7,6 +7,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-18       Wangmin         Modify DCD_Init() function
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -144,8 +146,6 @@ void DCD_Init(USB_OTG_CORE_HANDLE *pdev ,
         ep->xfer_buff = 0U;
         ep->xfer_len = 0U;
     }
-
-    pdev->dev.device_address = pdev->dev.device_address;
 
     USB_OTG_DisableGlobalInt(pdev);
 
@@ -427,7 +427,7 @@ void  DCD_DevDisconnect (USB_OTG_CORE_HANDLE *pdev)
 
 /**
  * @brief  returns the EP Status
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @param  [in] epnum    Endpoint address
  * @retval EP status
  */
@@ -452,7 +452,7 @@ uint32_t DCD_GetEPStatus(USB_OTG_CORE_HANDLE *pdev ,uint8_t epnum)
 
 /**
  * @brief  Set the EP Status
- * @param  [in] pdev         Selected device
+ * @param  [in] pdev         Instance for USB core
  * @param  [in] Status       New Status
  * @param  [in] epnum        EP address
  * @retval None

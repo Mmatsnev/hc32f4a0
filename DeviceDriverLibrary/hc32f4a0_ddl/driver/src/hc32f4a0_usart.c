@@ -8,6 +8,8 @@
    Date             Author          Notes
    2020-06-12       Hongjh          First version
    2020-07-03       Hongjh          Add doxygen group:USART_Local_Functions
+   2020-08-25       Hongjh          The variable f32Err un-initializes an 
+                                    unnecessary assignment
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -2648,7 +2650,7 @@ static en_result_t CalcSmartcardBaudrate(const M4_USART_TypeDef *USARTx,
     uint32_t DIV_Integer;
     uint32_t DIV_Fraction = 0UL;
     const uint16_t au16EtuClkCnts[] = {32U, 64U, 93U, 128U, 186U, 256U, 372U, 512U};
-    float32_t f32Err = 0.0F;
+    float32_t f32Err;
     en_result_t enRet = Ok;
 
     /* Check parameter */

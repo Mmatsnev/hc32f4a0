@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -141,7 +142,7 @@ static void USBH_ParseStringDesc (uint8_t* psrc, uint8_t* pdest, uint16_t length
  * @brief  USBH_Get_DevDesc
  *         Issue Get Device Descriptor command to the device. Once the response
  *         received, it parses the device descriptor and updates the status.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] length: Length of the descriptor
  * @retval Status
@@ -170,7 +171,7 @@ USBH_Status USBH_Get_DevDesc(USB_OTG_CORE_HANDLE *pdev,
  *         Issues Configuration Descriptor to the device. Once the response
  *         received, it parses the configuartion descriptor and updates the
  *         status.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] length: Length of the descriptor
  * @retval Status
@@ -210,7 +211,7 @@ USBH_Status USBH_Get_CfgDesc(USB_OTG_CORE_HANDLE *pdev,
  * @brief  USBH_Get_StringDesc
  *         Issues string Descriptor command to the device. Once the response
  *         received, it parses the string descriptor and updates the status.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] string_index: String index for the descriptor
  * @param  [in] buff: Buffer address for the descriptor
@@ -241,7 +242,7 @@ USBH_Status USBH_Get_StringDesc(USB_OTG_CORE_HANDLE *pdev,
  * @brief  USBH_GetDescriptor
  *         Issues Descriptor command to the device. Once the response received,
  *         it parses the descriptor and updates the status.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] req_type: Descriptor type
  * @param  [in] value_idx: wValue for the GetDescriptr request
@@ -275,7 +276,7 @@ USBH_Status USBH_GetDescriptor(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_SetAddress
  *         This command sets the address to the connected device
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] DeviceAddress: Device address to assign
  * @retval Status
@@ -298,7 +299,7 @@ USBH_Status USBH_SetAddress(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_SetCfg
  *         The command sets the configuration value to the connected device
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] cfg_idx: Configuration value
  * @retval Status
@@ -319,7 +320,7 @@ USBH_Status USBH_SetCfg(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_SetInterface
  *         The command sets the Interface value to the connected device
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] ep_num: End point number
  * @param  [in] altSetting: wValue set
@@ -342,7 +343,7 @@ USBH_Status USBH_SetInterface(USB_OTG_CORE_HANDLE *pdev,
 /**
  * @brief  USBH_ClrFeature
  *         This request is used to clear or disable a specific feature.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @param  [in] ep_num: endpoint number
  * @param  [in] hc_num: Host channel number

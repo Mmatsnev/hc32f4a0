@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -132,7 +133,7 @@ static uint32_t USB_OTG_USBH_handle_RemoteWakeUp_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  HOST_Handle_ISR
  *         This function handles all USB Host Interrupts
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 uint32_t USBH_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
@@ -210,7 +211,7 @@ uint32_t USBH_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_hc_n_Out_ISR
  *         Handles interrupt for a specific Host Channel
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @param  [in] num      Channel number
  * @retval Status
  */
@@ -348,7 +349,7 @@ uint32_t USB_OTG_USBH_handle_hc_n_Out_ISR (USB_OTG_CORE_HANDLE *pdev , uint32_t 
 /**
  * @brief  USB_OTG_USBH_handle_hc_n_In_ISR
  *         Handles interrupt for a specific Host Channel
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @param  [in] num      Channel number
  * @retval Status
  */
@@ -522,7 +523,7 @@ uint32_t USB_OTG_USBH_handle_hc_n_In_ISR (USB_OTG_CORE_HANDLE *pdev, uint32_t nu
 /**
  * @brief  USB_OTG_USBH_handle_rx_qlvl_ISR
  *         Handles the Rx Status Queue Level Interrupt
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */
@@ -595,7 +596,7 @@ static uint32_t USB_OTG_USBH_handle_rx_qlvl_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_IncompletePeriodicXfer_ISR
  *         Handles the incomplete Periodic transfer Interrupt
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */
@@ -641,7 +642,7 @@ static uint32_t USB_OTG_USBH_handle_RemoteWakeUp_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_hc_ISR
  *         This function indicates that one or more host channels has a pending
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 static uint32_t USB_OTG_USBH_handle_hc_ISR (USB_OTG_CORE_HANDLE *pdev)
@@ -679,7 +680,7 @@ static uint32_t USB_OTG_USBH_handle_hc_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_otg_hcd_handle_sof_intr
  *         Handles the start-of-frame interrupt in host mode.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 static uint32_t USB_OTG_USBH_handle_sof_ISR (USB_OTG_CORE_HANDLE *pdev)
@@ -699,7 +700,7 @@ static uint32_t USB_OTG_USBH_handle_sof_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_Disconnect_ISR
  *         Handles disconnect event.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 static uint32_t USB_OTG_USBH_handle_Disconnect_ISR (USB_OTG_CORE_HANDLE *pdev)
@@ -722,7 +723,7 @@ static uint32_t USB_OTG_USBH_handle_Disconnect_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_nptxfempty_ISR
  *         Handles non periodic tx fifo empty.
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 static uint32_t USB_OTG_USBH_handle_nptxfempty_ISR (USB_OTG_CORE_HANDLE *pdev)
@@ -768,7 +769,7 @@ static uint32_t USB_OTG_USBH_handle_nptxfempty_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_ptxfempty_ISR
  *         Handles periodic tx fifo empty
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 static uint32_t USB_OTG_USBH_handle_ptxfempty_ISR (USB_OTG_CORE_HANDLE *pdev)
@@ -809,7 +810,7 @@ static uint32_t USB_OTG_USBH_handle_ptxfempty_ISR (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_USBH_handle_port_ISR
  *         This function determines which interrupt conditions have occurred
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval status
  */
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */

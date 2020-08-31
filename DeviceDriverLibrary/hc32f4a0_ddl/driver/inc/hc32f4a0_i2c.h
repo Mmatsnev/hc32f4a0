@@ -8,6 +8,7 @@
    Date             Author          Notes
    2020-06-12       Hexiao          First version
    2020-07-15       Hexiao          Modify I2C_SmBusCmd to I2C_SetMode
+   2020-08-31       Hexiao          Remove invalid clock division value
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -164,7 +165,6 @@ typedef struct
 #define I2C_CLK_DIV16                       (4UL)
 #define I2C_CLK_DIV32                       (5UL)
 #define I2C_CLK_DIV64                       (6UL)
-#define I2C_CLK_DIV128                      (7UL)
 /**
  * @}
  */

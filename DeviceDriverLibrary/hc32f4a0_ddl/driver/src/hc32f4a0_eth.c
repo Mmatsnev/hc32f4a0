@@ -2684,7 +2684,7 @@ en_result_t ETH_DMA_SetTransmitFrame(stc_eth_handle_t *pstcEthHandle, uint32_t u
             if (u32FrameLength > ETH_TXBUF_SIZE)
             {
                 u32BufCnt = u32FrameLength / ETH_TXBUF_SIZE;
-                if (u32FrameLength % ETH_TXBUF_SIZE)
+                if (0UL != (u32FrameLength % ETH_TXBUF_SIZE))
                 {
                     u32BufCnt++;
                 }
@@ -3906,7 +3906,14 @@ void ETH_MMC_Cmd(en_functional_state_t enNewSta)
     /* Check parameters */
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewSta));
 
-    WRITE_REG32(bM4_ETH->MMC_MMCCTLR_b.MCF, !enNewSta);
+    if (Disable != enNewSta)
+    {
+        WRITE_REG32(bM4_ETH->MMC_MMCCTLR_b.MCF, Disable);
+    }
+    else
+    {
+        WRITE_REG32(bM4_ETH->MMC_MMCCTLR_b.MCF, Enable);
+    }
 }
 
 /**

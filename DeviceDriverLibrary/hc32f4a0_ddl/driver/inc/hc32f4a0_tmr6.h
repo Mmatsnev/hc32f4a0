@@ -91,10 +91,10 @@ extern "C"
  */
 typedef struct
 {
-    uint32_t     u32CntMode;        /*!< Count mode, @ref TMR6_Count_Mode_define */
-    uint32_t     u32CntDir;         /*!< Count direction, @ref TMR6_Count_Direction_define */
-    uint32_t     u32CntClkDiv;      /*!< Count clock division select, @ref TMR6_Count_Clock_define */
-    uint32_t     u32CntStpAftOvf;   /*!< Count stop after overflow @ref TMR6_Count_Stop_After_Overflow_define*/
+    uint32_t u32CntMode;            /*!< Count mode, @ref TMR6_Count_Mode_define */
+    uint32_t u32CntDir;             /*!< Count direction, @ref TMR6_Count_Direction_define */
+    uint32_t u32CntClkDiv;          /*!< Count clock division select, @ref TMR6_Count_Clock_define */
+    uint32_t u32CntStpAftOvf;       /*!< Count stop after overflow @ref TMR6_Count_Stop_After_Overflow_define*/
 }stc_tmr6_basecnt_cfg_t;
 
 /**
@@ -102,13 +102,13 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t    u32BufFunCmd;         /*!< specifies the buffer function status,
+    uint32_t u32BufFunCmd;         /*!< specifies the buffer function status,
                                          and this parameter can be a value of
                                          @ref TMR6_Buffer_Function_sta_Define */
-    uint32_t    u32BufNum;            /*!< specifies the buffer number,
+    uint32_t u32BufNum;            /*!< specifies the buffer number,
                                          and this parameter can be a value of
                                          @ref TMR6_Buffer_Number_Chose_Define */
-    uint32_t    u32BufTransTim;       /*!< specifies the buffer send time,
+    uint32_t u32BufTransTim;       /*!< specifies the buffer send time,
                                          and this parameter can be a value of
                                          @ref TMR6_Buffer_Transfer_Time_Cfg_Define */
 }stc_tmr6_buf_func_cfg_t;
@@ -118,16 +118,16 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t    u32StatChA;           /*!< specifies the valid period function status for channel A,
+    uint32_t u32StatChA;           /*!< specifies the valid period function status for channel A,
                                          and this parameter can be a value of
                                          @ref TMR6_Valid_Period_CHA_STAT_Define */
-    uint32_t    u32StatChB;           /*!< specifies the valid period function status for channel B,
+    uint32_t u32StatChB;           /*!< specifies the valid period function status for channel B,
                                          and this parameter can be a value of
                                          @ref TMR6_Valid_Period_CHB_STAT_Define */
-    uint32_t    u32CntCond;           /*!< specifies the count condition,
+    uint32_t u32CntCond;           /*!< specifies the count condition,
                                          and this parameter can be a value of
                                          @ref TMR6_Valid_Period_Count_Condition_Define */
-    uint32_t    u32PeriodInterval;    /*!< specifies the interval of the valid period,
+    uint32_t u32PeriodInterval;    /*!< specifies the interval of the valid period,
                                          @ref TMR6_Valid_Period_Count_Define */
 }stc_tmr6_valid_period_func_cfg_t;
 
@@ -136,10 +136,10 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t                u32PortMode;     /*!< Port function mode @ref TMR6_Port_Mode_Func */
-    uint32_t                u32FilterSta;    /*!< trig source capture input filter status
-                                                  @ref TMR6_Port_Input_Filter_Sta*/
-    uint32_t                u32FltClk;       /*!< Filter clock @ref TMR6_Input_Port_Filter_Clk*/
+    uint32_t u32PortMode;           /*!< Port function mode @ref TMR6_Port_Mode_Func */
+    uint32_t u32FilterSta;          /*!< trig source capture input filter status
+                                         @ref TMR6_Port_Input_Filter_Sta*/
+    uint32_t u32FltClk;             /*!< Filter clock @ref TMR6_Input_Port_Filter_Clk*/
 }stc_tmr6_port_input_cfg_t;
 
 /**
@@ -147,24 +147,24 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t  u32PortMode;   /*!< Port function mode @ref TMR6_Port_Mode_Func */
-    uint32_t  u32NextPeriodForceSta;  /*!< Port State Next period @ref TMR6_Force_Port_Output_Sta */
-    uint32_t  u32DownCntMatchAnotherCmpRegSta; /*!< Port state when counter match another compare register
+    uint32_t u32PortMode;           /*!< Port function mode @ref TMR6_Port_Mode_Func */
+    uint32_t u32NextPeriodForceSta; /*!< Port State Next period @ref TMR6_Force_Port_Output_Sta */
+    uint32_t u32DownCntMatchAnotherCmpRegSta; /*!< Port state when counter match another compare register
                                                     (CHA matched GCMBR, CHB matched GCMAR) in count-down mode
                                                     @ref TMR6_Port_Output_Sta */
-    uint32_t  u32UpCntMatchAnotherCmpRegSta;   /*!< Port state when counter match another compare register
+    uint32_t u32UpCntMatchAnotherCmpRegSta;   /*!< Port state when counter match another compare register
                                                     (CHA matched GCMBR, CHB matched GCMAR) in count-up mode
                                                     @ref TMR6_Port_Output_Sta*/
-    uint32_t  u32DownCntMatchCmpRegSta;        /*!< Port state when counter match compare register
+    uint32_t u32DownCntMatchCmpRegSta;        /*!< Port state when counter match compare register
                                                     (CHA matched GCMAR, CHB matched GCMBR) in count-down mode
                                                     @ref TMR6_Port_Output_Sta */
-    uint32_t  u32UpCntMatchCmpRegSta;          /*!< Port state when counter match compare register
+    uint32_t u32UpCntMatchCmpRegSta;          /*!< Port state when counter match compare register
                                                     (CHA matched GCMAR, CHB matched GCMBR) in count-up mode
                                                     @ref TMR6_Port_Output_Sta */
-    uint32_t  u32UnderflowSta;    /*!< Port State when counter underflow @ref TMR6_Port_Output_Sta */
-    uint32_t  u32OverflowSta;     /*!< Port State when counter overflow @ref TMR6_Port_Output_Sta */
-    uint32_t  u32StopSta;         /*!< Port State when count stop @ref TMR6_Port_Output_Sta */
-    uint32_t  u32StartSta;        /*!< Port State when count start @ref TMR6_Port_Output_Sta */
+    uint32_t u32UnderflowSta;       /*!< Port State when counter underflow @ref TMR6_Port_Output_Sta */
+    uint32_t u32OverflowSta;        /*!< Port State when counter overflow @ref TMR6_Port_Output_Sta */
+    uint32_t u32StopSta;            /*!< Port State when count stop @ref TMR6_Port_Output_Sta */
+    uint32_t u32StartSta;           /*!< Port State when count start @ref TMR6_Port_Output_Sta */
 }stc_tmr6_port_output_cfg_t;
 
 /**
@@ -172,9 +172,9 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t      u32ValidCh;       /*!< Invalid EMB event channel @ref TMR6_Emb_channel */
-    uint32_t      u32ReleaseMode;   /*!< Port release mode when EMB event invalid @ref TMR6_Emb_Release_Mode */
-    uint32_t      u32PortSta;       /*!< Port Output status when EMB event valid @ref TMR6_Emb_Port_Sta */
+    uint32_t u32ValidCh;            /*!< Valid EMB event channel @ref TMR6_Emb_channel */
+    uint32_t u32ReleaseMode;        /*!< Port release mode when EMB event invalid @ref TMR6_Emb_Release_Mode */
+    uint32_t u32PortSta;            /*!< Port Output status when EMB event valid @ref TMR6_Emb_Port_Sta */
 }stc_tmr6_emb_cfg_t;
 
 /**
@@ -182,14 +182,14 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t     u32DtEqualUpDwn;    /*!< Enable down count dead time register equal to up count DT register
-                                      @ref TMR6_Deadtime_Reg_Equal_Func_define */
-    uint32_t     u32EnDtBufUp;       /*!< Enable buffer transfer for up count dead time register
-                                      (DTUBR-->DTUAR) @ref TMR6_Deadtime_CountUp_Buf_Func_define*/
-    uint32_t     u32EnDtBufDwn;      /*!< Enable buffer transfer for down count dead time register
-                                      (DTDBR-->DTDAR) @ref TMR6_Deadtime_CountDown_Buf_Func_define*/
-    uint32_t     u32DtUpdCond;       /*!< Buffer transfer condition for triangular wave mode
-                                       @ref TMR6_Deadtime_Buf_Transfer_Condition_define */
+    uint32_t u32DtEqualUpDwn;       /*!< Enable down count dead time register equal to up count DT register
+                                         @ref TMR6_Deadtime_Reg_Equal_Func_define */
+    uint32_t u32EnDtBufUp;          /*!< Enable buffer transfer for up count dead time register
+                                         (DTUBR-->DTUAR) @ref TMR6_Deadtime_CountUp_Buf_Func_define*/
+    uint32_t u32EnDtBufDwn;         /*!< Enable buffer transfer for down count dead time register
+                                         (DTDBR-->DTDAR) @ref TMR6_Deadtime_CountDown_Buf_Func_define*/
+    uint32_t u32DtUpdCond;          /*!< Buffer transfer condition for triangular wave mode
+                                          @ref TMR6_Deadtime_Buf_Transfer_Condition_define */
 }stc_tmr6_deadtime_cfg_t;
 
 /**
@@ -197,11 +197,11 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t     u32ZMaskCycle;      /*!< Z phase input mask periods selection @ref TMR6_Zmask_Cycle_define*/
-    uint32_t     u32PosCntMaskEn;    /*!< As position count timer, clear function enable(TRUE) or disable(FALSE)
-                                          during the time of Z phase input mask @ref TMR6_Zmask_Position_Unit_Clear_Func_define*/
-    uint32_t     u32RevCntMaskEn;    /*!< As revolution count timer, the counter function enable(TRUE) or
-                                          disable(FALSE) during the time of Z phase input mask @ref TMR6_Zmask_Revolution_Unit_Count_Func_define*/
+    uint32_t u32ZMaskCycle;         /*!< Z phase input mask periods selection @ref TMR6_Zmask_Cycle_define*/
+    uint32_t u32PosCntMaskEn;       /*!< As position count timer, clear function enable(TRUE) or disable(FALSE)
+                                         during the time of Z phase input mask @ref TMR6_Zmask_Position_Unit_Clear_Func_define*/
+    uint32_t u32RevCntMaskEn;       /*!< As revolution count timer, the counter function enable(TRUE) or
+                                         disable(FALSE) during the time of Z phase input mask @ref TMR6_Zmask_Revolution_Unit_Count_Func_define*/
 }stc_tmr6_zmask_cfg_t;
 
 

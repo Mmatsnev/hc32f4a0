@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-17       Wangmin         Add brackets for macro define
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -97,8 +98,8 @@ typedef struct
 /*******************************************************************************
  * Global pre-processor symbols/macros ('#define')
  ******************************************************************************/
-#define DEFAULT_CONFIG                  0U
-#define OTHER_CONFIG                    1U
+#define DEFAULT_CONFIG              (0U)
+#define OTHER_CONFIG                (1U)
 
 /*******************************************************************************
  * Global variable definitions ('extern')

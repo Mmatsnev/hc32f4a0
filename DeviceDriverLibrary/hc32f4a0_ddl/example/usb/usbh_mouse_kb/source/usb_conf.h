@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-17       Wangmin         Add brackets for macro define
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -160,15 +161,15 @@ extern "C"
 
 /****************** USB OTG HS CONFIGURATION **********************************/
 #ifdef USB_OTG_HS_CORE
- #define RX_FIFO_HS_SIZE                          512U
- #define TX0_FIFO_HS_SIZE                         128U
- #define TX1_FIFO_HS_SIZE                         256U
- #define TX2_FIFO_HS_SIZE                           0U
- #define TX3_FIFO_HS_SIZE                           0U
- #define TX4_FIFO_HS_SIZE                           0U
- #define TX5_FIFO_HS_SIZE                           0U
- #define TX6_FIFO_HS_SIZE                           0U
- #define TX7_FIFO_HS_SIZE                           0U
+ #define RX_FIFO_HS_SIZE            (512U)
+ #define TX0_FIFO_HS_SIZE           (128U)
+ #define TX1_FIFO_HS_SIZE           (256U)
+ #define TX2_FIFO_HS_SIZE           (0U)
+ #define TX3_FIFO_HS_SIZE           (0U)
+ #define TX4_FIFO_HS_SIZE           (0U)
+ #define TX5_FIFO_HS_SIZE           (0U)
+ #define TX6_FIFO_HS_SIZE           (0U)
+ #define TX7_FIFO_HS_SIZE           (0U)
 
 
 // #define USB_OTG_HS_SOF_OUTPUT_ENABLED
@@ -186,13 +187,13 @@ extern "C"
 
 /****************** USB OTG FS CONFIGURATION **********************************/
 #ifdef USB_OTG_FS_CORE
- #define RX_FIFO_FS_SIZE                          128U
- #define TX0_FIFO_FS_SIZE                          64U
- #define TX1_FIFO_FS_SIZE                         128U
- #define TX2_FIFO_FS_SIZE                           0U
- #define TX3_FIFO_FS_SIZE                           0U
- #define TX4_FIFO_FS_SIZE                           0U
- #define TX5_FIFO_FS_SIZE                           0U
+ #define RX_FIFO_FS_SIZE            (128U)
+ #define TX0_FIFO_FS_SIZE           (64U)
+ #define TX1_FIFO_FS_SIZE           (128U)
+ #define TX2_FIFO_FS_SIZE           (0U)
+ #define TX3_FIFO_FS_SIZE           (0U)
+ #define TX4_FIFO_FS_SIZE           (0U)
+ #define TX5_FIFO_FS_SIZE           (0U)
  #define USB_OTG_HS_INTERNAL_DMA_ENABLED
 // #define USB_OTG_FS_LOW_PWR_MGMT_SUPPORT
 // #define USB_OTG_FS_SOF_OUTPUT_ENABLED
@@ -231,13 +232,13 @@ extern "C"
 #endif
 
 
- #define RX_FIFO_HS_SIZE                          512U
- #define TXH_NP_HS_FIFOSIZ                        128U
- #define TXH_P_HS_FIFOSIZ                         256U
+ #define RX_FIFO_HS_SIZE            (512U)
+ #define TXH_NP_HS_FIFOSIZ          (128U)
+ #define TXH_P_HS_FIFOSIZ           (256U)
 
-#define RX_FIFO_FS_SIZE                           128U
- #define TXH_NP_FS_FIFOSIZ                         32U
- #define TXH_P_FS_FIFOSIZ                          64U
+#define RX_FIFO_FS_SIZE             (128U)
+ #define TXH_NP_FS_FIFOSIZ          (32U)
+ #define TXH_P_FS_FIFOSIZ           (64U)
 
 /****************** C Compilers dependant keywords ****************************/
 /* In HS mode and when the DMA is used, all variables and data structures dealing

@@ -132,8 +132,6 @@
  *
  * NOTE!!! 'APP_TMRA_INT_TYPE' can only be defined as 'TMRA_INT_OVF'(x=1 ~ 4, depends on 'APP_TMRA_CH') for this example.
  */
-#define TMRA_SHARE_IRQn_BASE                (Int135_IRQn)
-
 #define APP_TMRA_INT_TYPE                   (TMRA_INT_OVF)
 #define APP_TMRA_INT_FLAG                   (TMRA_FLAG_OVF)
 #define APP_TMRA_INT_PRIO                   (DDL_IRQ_PRIORITY_03)

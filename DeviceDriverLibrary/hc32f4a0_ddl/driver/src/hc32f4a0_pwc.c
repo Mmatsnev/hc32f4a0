@@ -7,6 +7,7 @@
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
    2020-07-30       Zhangxl         Refine power mode switch function
+   2020-08-25       Zhangxl         Modify for MISRAC2012-10.1
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -1427,7 +1428,15 @@ void PWC_BkRamPwrCmd(en_functional_state_t enNewState)
     DDL_ASSERT(IS_FUNCTIONAL_STATE(enNewState));
 
     DDL_ASSERT(IS_PWC_UNLOCKED());
-    WRITE_REG32(bM4_PWC->VBATCR_b.VBTRSD, !enNewState);
+
+    if (Enable == enNewState)
+    {
+        WRITE_REG32(bM4_PWC->VBATCR_b.VBTRSD, 0UL);
+    }
+    else
+    {
+        WRITE_REG32(bM4_PWC->VBATCR_b.VBTRSD, 1UL);
+    }
 }
 
 /**

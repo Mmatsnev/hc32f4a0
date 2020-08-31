@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Yangjp          First version
+   2020-08-19       Yangjp          Fixed LED display error
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -244,8 +245,8 @@ int32_t main(void)
         else
         {
             /* Vbat < VbatRef */
-            BSP_LED_On(LED_BLUE);
-            BSP_LED_Off(LED_RED);
+            BSP_LED_On(LED_RED);
+            BSP_LED_Off(LED_BLUE);
         }
         DDL_DelayMS(100U);
     }

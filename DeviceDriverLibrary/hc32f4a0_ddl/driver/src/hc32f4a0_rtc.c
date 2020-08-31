@@ -1007,7 +1007,7 @@ void RTC_AlarmCmd(en_functional_state_t enNewSta)
 en_result_t RTC_IntrusionConfig(uint8_t u8Ch, const stc_rtc_intrusion_t *pstcIntru)
 {
     en_result_t enRet = Ok;
-    __IO uint8_t *TPCR = NULL;
+    __IO uint8_t *TPCR;
 
     if (NULL == pstcIntru)
     {

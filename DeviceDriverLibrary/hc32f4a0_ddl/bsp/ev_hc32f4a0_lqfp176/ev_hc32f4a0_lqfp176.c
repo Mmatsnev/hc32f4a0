@@ -535,6 +535,7 @@ static void BSP_I2C_Init(void)
     float32_t fErr;
     stc_i2c_init_t stcI2cInit;
     stc_gpio_init_t stcGpioInit;
+    uint8_t i;
 
     static en_flag_status_t enI2CActivateFlag = Reset;
 
@@ -560,7 +561,17 @@ static void BSP_I2C_Init(void)
         stcI2cInit.u32Baudrate = BSP_I2C_BAUDRATE;
         stcI2cInit.u32SclTime = 0U;
         stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV16;
-        I2C_Init(BSP_I2C_CH, &stcI2cInit, &fErr);
+        for (i = 0U; i < 5U; i++)
+        {
+            if(Ok != I2C_Init(BSP_I2C_CH, &stcI2cInit, &fErr))
+            {
+                stcI2cInit.u32I2cClkDiv--;
+            }
+            else
+            {
+                break;
+            }
+        }
 
         I2C_Cmd(BSP_I2C_CH, Enable);
 

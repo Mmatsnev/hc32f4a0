@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-31       Wangmin         Modify for MISRAC2012
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -964,6 +965,7 @@ static en_result_t SPI_TxRx(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, void *pvR
     uint32_t u32Timecount;
     uint32_t u32Count = 0U;
     en_result_t enRet = Ok;
+    uint32_t u32Tmp;
     __UNUSED __IO uint32_t u32Read;
 
     /* Get data bit size, SPI_DATA_SIZE_4BIT ~ SPI_DATA_SIZE_32BIT */
@@ -976,17 +978,17 @@ static en_result_t SPI_TxRx(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, void *pvR
             if (u32BitSize <= SPI_DATA_SIZE_8BIT)
             {
                 /* SPI_DATA_SIZE_4BIT ~ SPI_DATA_SIZE_8BIT */
-                WRITE_REG32(SPIx->DR, *(const uint8_t *)((uint32_t)pvTxBuf + u32Count));
+                WRITE_REG32(SPIx->DR, ((const uint8_t *)pvTxBuf)[u32Count]);
             }
             else if(u32BitSize <= SPI_DATA_SIZE_16BIT)
             {
                 /* SPI_DATA_SIZE_9BIT ~ SPI_DATA_SIZE_16BIT */
-                WRITE_REG32(SPIx->DR, *(const uint16_t *)((uint32_t)pvTxBuf + u32Count*2UL));
+                WRITE_REG32(SPIx->DR, ((const uint16_t *)pvTxBuf)[u32Count]);
             }
             else
             {
                 /* SPI_DATA_SIZE_20BIT ~ SPI_DATA_SIZE_32BIT */
-                WRITE_REG32(SPIx->DR, *(const uint32_t *)((uint32_t)pvTxBuf + u32Count*4UL));
+                WRITE_REG32(SPIx->DR, ((const uint32_t *)pvTxBuf)[u32Count]);
             }
         }
         else
@@ -1011,24 +1013,24 @@ static en_result_t SPI_TxRx(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, void *pvR
             break;
         }
 
+        u32Tmp = READ_REG32(SPIx->DR);
         if (pvRxBuf != NULL)
         {
             if (u32BitSize <= SPI_DATA_SIZE_8BIT)
             {
                 /* SPI_DATA_SIZE_4BIT ~ SPI_DATA_SIZE_8BIT */
-                *(uint8_t *)((uint32_t)pvRxBuf + u32Count) = (uint8_t)READ_REG32(SPIx->DR);
+                ((uint8_t *)pvRxBuf)[u32Count] = (uint8_t)u32Tmp;
             }
             else if(u32BitSize <= SPI_DATA_SIZE_16BIT)
             {
                 /* SPI_DATA_SIZE_9BIT ~ SPI_DATA_SIZE_16BIT */
-                *(uint16_t *)((uint32_t)pvRxBuf + u32Count*2UL) = (uint16_t)READ_REG32(SPIx->DR);
+                ((uint16_t *)pvRxBuf)[u32Count] = (uint16_t)u32Tmp;
             }
             else
             {
                 /* SPI_DATA_SIZE_20BIT ~ SPI_DATA_SIZE_32BIT */
-                *(uint32_t *)((uint32_t)pvRxBuf + u32Count*4UL) = READ_REG32(SPIx->DR);
+                ((uint32_t *)pvRxBuf)[u32Count] = (uint32_t)u32Tmp;
             }
-
         }
         else
         {
@@ -1071,17 +1073,17 @@ static en_result_t SPI_Tx(M4_SPI_TypeDef *SPIx, const void *pvTxBuf, uint32_t u3
         if (u32BitSize <= SPI_DATA_SIZE_8BIT)
         {
             /* SPI_DATA_SIZE_4BIT ~ SPI_DATA_SIZE_8BIT */
-            WRITE_REG32(SPIx->DR, *(const uint8_t *)((uint32_t)pvTxBuf + u32Count));
+            WRITE_REG32(SPIx->DR, ((const uint8_t *)pvTxBuf)[u32Count]);
         }
         else if(u32BitSize <= SPI_DATA_SIZE_16BIT)
         {
             /* SPI_DATA_SIZE_9BIT ~ SPI_DATA_SIZE_16BIT */
-            WRITE_REG32(SPIx->DR, *(const uint16_t *)((uint32_t)pvTxBuf + u32Count*2UL));
+            WRITE_REG32(SPIx->DR, ((const uint16_t *)pvTxBuf)[u32Count]);
         }
         else
         {
             /* SPI_DATA_SIZE_20BIT ~ SPI_DATA_SIZE_32BIT */
-            WRITE_REG32(SPIx->DR, *(const uint32_t *)((uint32_t)pvTxBuf + u32Count*4UL));
+            WRITE_REG32(SPIx->DR, ((const uint32_t *)pvTxBuf)[u32Count]);
         }
 
         /* Delay about 10ms */

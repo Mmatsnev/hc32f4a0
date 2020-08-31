@@ -923,7 +923,7 @@ void SDIOC_SetCardDetectTestLevel(M4_SDIOC_TypeDef *SDIOCx, uint8_t u8Level)
 en_result_t SDIOC_SendCommand(M4_SDIOC_TypeDef *SDIOCx, const stc_sdioc_cmd_init_t *pstcCmd)
 {
     en_result_t enRet = Ok;
-    __IO uint32_t *pu32Temp = NULL;
+    __IO uint32_t *pu32Temp;
 
     if (NULL == pstcCmd)
     {
@@ -1738,18 +1738,18 @@ en_result_t SDMMC_CMD0_GoIdleState(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSt
 }
 
 /**
-* @brief  Send the Send CID command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Send CID command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD2_AllSendCID(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -1778,19 +1778,19 @@ en_result_t SDMMC_CMD2_AllSendCID(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta
 }
 
 /**
-* @brief  Send the command for asking the card to publish a new relative address(RCA).
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu16RCA                Pointer to the new RCA value
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu16RCA == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the command for asking the card to publish a new relative address(RCA).
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu16RCA                Pointer to the new RCA value
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu16RCA == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD3_SendRelativeAddr(M4_SDIOC_TypeDef *SDIOCx, uint16_t *pu16RCA, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -1819,19 +1819,19 @@ en_result_t SDMMC_CMD3_SendRelativeAddr(M4_SDIOC_TypeDef *SDIOCx, uint16_t *pu16
 }
 
 /**
-* @brief  Checks switchable function and switch card function.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32Argument             Argument used for the command.
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks switchable function and switch card function.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32Argument             Argument used for the command.
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD6_SwitchFunc(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argument, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -1877,19 +1877,19 @@ en_result_t SDMMC_CMD6_SwitchFunc(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argument
 }
 
 /**
-* @brief  Send the Select Deselect command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32RCA                  Relative Card Address(RCA)
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Select Deselect command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32RCA                  Relative Card Address(RCA)
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD7_SelectDeselectCard(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32RCA, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -1918,18 +1918,18 @@ en_result_t SDMMC_CMD7_SelectDeselectCard(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32
 }
 
 /**
-* @brief  Send the Interface Condition command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Interface Condition command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD8_SendInterfaceCond(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -1977,19 +1977,19 @@ en_result_t SDMMC_CMD8_SendInterfaceCond(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu3
 }
 
 /**
-* @brief  Send the Send CSD command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32RCA                  Relative Card Address(RCA)
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Send CSD command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32RCA                  Relative Card Address(RCA)
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD9_SendCSD(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32RCA, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2018,18 +2018,18 @@ en_result_t SDMMC_CMD9_SendCSD(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32RCA, uint32
 }
 
 /**
-* @brief  Send the Stop Transfer command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Stop Transfer command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD12_StopTransmission(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2058,19 +2058,19 @@ en_result_t SDMMC_CMD12_StopTransmission(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu3
 }
 
 /**
-* @brief  Send the Status command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32RCA                  Relative Card Address(RCA)
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Status command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32RCA                  Relative Card Address(RCA)
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD13_SendStatus(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32RCA, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2099,19 +2099,19 @@ en_result_t SDMMC_CMD13_SendStatus(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32RCA, ui
 }
 
 /**
-* @brief  Send the Data Block Lenght command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32BlockLen             Block length
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Data Block Lenght command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32BlockLen             Block length
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD16_SetBlockLength(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32BlockLen, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2140,19 +2140,19 @@ en_result_t SDMMC_CMD16_SetBlockLength(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Blo
 }
 
 /**
-* @brief  Send the Read Single Block command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32ReadAddr             Data address
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Read Single Block command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32ReadAddr             Data address
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD17_ReadSingleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32ReadAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2181,19 +2181,19 @@ en_result_t SDMMC_CMD17_ReadSingleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Re
 }
 
 /**
-* @brief  Send the Read Multi Block command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32ReadAddr             Data address
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Read Multi Block command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32ReadAddr             Data address
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD18_ReadMultipleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32ReadAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2222,19 +2222,19 @@ en_result_t SDMMC_CMD18_ReadMultipleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32
 }
 
 /**
-* @brief  Send the Write Single Block command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32WriteAddr            Data address
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Write Single Block command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32WriteAddr            Data address
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD24_WriteSingleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32WriteAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2263,19 +2263,19 @@ en_result_t SDMMC_CMD24_WriteSingleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32W
 }
 
 /**
-* @brief  Send the Write Multi Block command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32WriteAddr            Data address
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Write Multi Block command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32WriteAddr            Data address
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD25_WriteMultipleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32WriteAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2304,19 +2304,19 @@ en_result_t SDMMC_CMD25_WriteMultipleBlock(M4_SDIOC_TypeDef *SDIOCx, uint32_t u3
 }
 
 /**
-* @brief  Send the Start Address Erase command for SD and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32StartAddr            The start address will be erased
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Start Address Erase command for SD and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32StartAddr            The start address will be erased
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD32_EraseBlockStartAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32StartAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2345,19 +2345,19 @@ en_result_t SDMMC_CMD32_EraseBlockStartAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u
 }
 
 /**
-* @brief  Send the End Address Erase command for SD and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32EndAddr              The end address will be erased
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the End Address Erase command for SD and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32EndAddr              The end address will be erased
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD33_EraseBlockEndAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32EndAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2386,18 +2386,18 @@ en_result_t SDMMC_CMD33_EraseBlockEndAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32
 }
 
 /**
-* @brief  Send the Erase command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Erase command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD38_Erase(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2426,20 +2426,20 @@ en_result_t SDMMC_CMD38_Erase(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 }
 
 /**
-* @brief  Send the Application command to verify that that the next command
-*         is an application specific command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32Argument             Argument used for the command.
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Application command to verify that that the next command
+ *         is an application specific command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32Argument             Argument used for the command.
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD55_AppCmd(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argument, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2468,22 +2468,22 @@ en_result_t SDMMC_CMD55_AppCmd(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argument, u
 }
 
 /**
-* @brief  Send the Bus Width command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32BusWidth             The data bus width
-*         This parameter can be one of the following values:
-*           @arg SDMMC_SCR_BUS_WIDTH_1BIT: 1 bit bus
-*           @arg SDMMC_SCR_BUS_WIDTH_4BIT: 4 bits bus
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Bus Width command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32BusWidth             The data bus width
+ *         This parameter can be one of the following values:
+ *           @arg SDMMC_SCR_BUS_WIDTH_1BIT: 1 bit bus
+ *           @arg SDMMC_SCR_BUS_WIDTH_4BIT: 4 bits bus
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_ACMD6_SetBusWidth(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32BusWidth, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2512,18 +2512,18 @@ en_result_t SDMMC_ACMD6_SetBusWidth(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32BusWid
 }
 
 /**
-* @brief  Send the Status register command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Status register command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_ACMD13_SendStatus(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2552,19 +2552,19 @@ en_result_t SDMMC_ACMD13_SendStatus(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrS
 }
 
 /**
-* @brief  Send the command asking the accessed card to send its operating condition register(OCR).
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32Argument             Argument used for the command.
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the command asking the accessed card to send its operating condition register(OCR).
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32Argument             Argument used for the command.
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_ACMD41_SendOperatCond(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argument, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2593,18 +2593,18 @@ en_result_t SDMMC_ACMD41_SendOperatCond(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Ar
 }
 
 /**
-* @brief  Send the Send SCR command and check the response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Send SCR command and check the response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_ACMD51_SendSCR(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2633,19 +2633,19 @@ en_result_t SDMMC_ACMD51_SendSCR(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 }
 
 /**
-* @brief  Sends host capacity support information command.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32Argument             Argument used for the command.
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Sends host capacity support information command.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32Argument             Argument used for the command.
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD1_SendOperatCond(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argument, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2674,19 +2674,19 @@ en_result_t SDMMC_CMD1_SendOperatCond(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Argu
 }
 
 /**
-* @brief  Send the Start Address Erase command and check the response
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32StartAddr            The start address will be erased
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the Start Address Erase command and check the response
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32StartAddr            The start address will be erased
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD35_EraseGroupStartAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32StartAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2715,19 +2715,19 @@ en_result_t SDMMC_CMD35_EraseGroupStartAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u
 }
 
 /**
-* @brief  Send the End Address Erase command and check the response
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32EndAddr              The end address will be erased
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: Command send completed
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Send the End Address Erase command and check the response
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32EndAddr              The end address will be erased
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: Command send completed
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorInvalidParameter: SDIOCx == NULL or pu32ErrSta == NULL
+ *           - ErrorTimeout: Wait timeout
+ */
 en_result_t SDMMC_CMD36_EraseGroupEndAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32EndAddr, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2756,25 +2756,25 @@ en_result_t SDMMC_CMD36_EraseGroupEndAddr(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32
 }
 
 /**
-* @brief  Wait for command response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32CheckFlag            Check flags
-*         This parameter can be one or any combination the following values:
-*           @arg SDIOC_NORMAL_INT_FLAG_CC:     Command Complete status
-*           @arg SDIOC_ERROR_INT_FLAG_CIE:     Command Index Error status
-*           @arg SDIOC_ERROR_INT_FLAG_CEBE:    Command End Bit Error status
-*           @arg SDIOC_ERROR_INT_FLAG_CCE:     Command CRC Error status
-*           @arg SDIOC_ERROR_INT_FLAG_CTOE:    Command Timeout Error status
-* @param  [in] u32Timeout              Timeout time(ms) for waiting SDIOC
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Wait for command response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32CheckFlag            Check flags
+ *         This parameter can be one or any combination the following values:
+ *           @arg SDIOC_NORMAL_INT_FLAG_CC:     Command Complete status
+ *           @arg SDIOC_ERROR_INT_FLAG_CIE:     Command Index Error status
+ *           @arg SDIOC_ERROR_INT_FLAG_CEBE:    Command End Bit Error status
+ *           @arg SDIOC_ERROR_INT_FLAG_CCE:     Command CRC Error status
+ *           @arg SDIOC_ERROR_INT_FLAG_CTOE:    Command Timeout Error status
+ * @param  [in] u32Timeout              Timeout time(ms) for waiting SDIOC
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_WaitResponse(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32CheckFlag, uint32_t u32Timeout, uint32_t *pu32ErrSta)
 {
     __IO uint32_t u32Count;
@@ -2865,18 +2865,18 @@ static en_result_t SDMMC_GetCmdError(M4_SDIOC_TypeDef *SDIOCx)
 }
 
 /**
-* @brief  Checks for error conditions for R1 response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32Timeout              Timeout time(ms) for waiting SDIOC
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks for error conditions for R1 response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32Timeout              Timeout time(ms) for waiting SDIOC
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_GetCmdResp1(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Timeout, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -2901,18 +2901,18 @@ static en_result_t SDMMC_GetCmdResp1(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Timeo
 }
 
 /**
-* @brief  Checks for error conditions for R1 response with busy.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [in] u32Timeout              Timeout time(ms) for waiting SDIOC
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks for error conditions for R1 response with busy.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [in] u32Timeout              Timeout time(ms) for waiting SDIOC
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_GetCmdResp1Busy(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32Timeout, uint32_t *pu32ErrSta)
 {
     __IO uint32_t u32Count;
@@ -2951,17 +2951,17 @@ static en_result_t SDMMC_GetCmdResp1Busy(M4_SDIOC_TypeDef *SDIOCx, uint32_t u32T
 }
 
 /**
-* @brief  Checks for error conditions for R2(CID or CSD) response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks for error conditions for R2(CID or CSD) response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_GetCmdResp2(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     return SDMMC_WaitResponse(SDIOCx,
@@ -2970,17 +2970,17 @@ static en_result_t SDMMC_GetCmdResp2(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32Err
 }
 
 /**
-* @brief  Checks for error conditions for R3(OCR) response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks for error conditions for R3(OCR) response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_GetCmdResp3(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     return SDMMC_WaitResponse(SDIOCx,
@@ -2989,18 +2989,18 @@ static en_result_t SDMMC_GetCmdResp3(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32Err
 }
 
 /**
-* @brief  Checks for error conditions for R6(RCA) response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu16RCA                Pointer to a value of device RCA
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks for error conditions for R6(RCA) response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu16RCA                Pointer to a value of device RCA
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_GetCmdResp6(M4_SDIOC_TypeDef *SDIOCx, uint16_t *pu16RCA, uint32_t *pu32ErrSta)
 {
     en_result_t enRet;
@@ -3038,17 +3038,17 @@ static en_result_t SDMMC_GetCmdResp6(M4_SDIOC_TypeDef *SDIOCx, uint16_t *pu16RCA
 }
 
 /**
-* @brief  Checks for error conditions for R7 response.
-* @param  [in] SDIOCx                  Pointer to SDIOC instance register base
-*         This parameter can be one of the following values:
-*           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
-*           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
-* @param  [out] pu32ErrSta             Pointer to the error state value
-* @retval An en_result_t enumeration value:
-*           - Ok: The response is normal received
-*           - Error: Refer to pu32ErrSta for the reason of error
-*           - ErrorTimeout: Wait timeout
-*/
+ * @brief  Checks for error conditions for R7 response.
+ * @param  [in] SDIOCx                  Pointer to SDIOC instance register base
+ *         This parameter can be one of the following values:
+ *           @arg M4_SDIOC1:            SDIOC unit 1 instance register base
+ *           @arg M4_SDIOC2:            SDIOC unit 2 instance register base
+ * @param  [out] pu32ErrSta             Pointer to the error state value
+ * @retval An en_result_t enumeration value:
+ *           - Ok: The response is normal received
+ *           - Error: Refer to pu32ErrSta for the reason of error
+ *           - ErrorTimeout: Wait timeout
+ */
 static en_result_t SDMMC_GetCmdResp7(M4_SDIOC_TypeDef *SDIOCx, uint32_t *pu32ErrSta)
 {
     return SDMMC_WaitResponse(SDIOCx,

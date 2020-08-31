@@ -12,6 +12,7 @@
                                        to EXMC_NFC_EccCmd
                                     3. Merge API from EXMC_NFC_Enable/DisableWriteProtect
                                        to EXMC_NFC_WriteProtectCmd
+   2020-08-25       Hongjh          Modify the pointer type cast
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -1516,7 +1517,8 @@ en_result_t EXMC_NFC_ReadPageMeta(uint32_t u32Bank,
         DDL_ASSERT(IS_PARAM_ALIGN_WORD(u32NumBytes));
         DDL_ASSERT(IS_ADDRESS_ALIGN_WORD(pu8Data));
 
-        enRet = EXMC_NFC_Read(u32Bank, u32Page, 0UL, (uint32_t *)((uint32_t)pu8Data), u32NumBytes/4UL, Disable, u32Timeout);
+        enRet = EXMC_NFC_Read(u32Bank, u32Page, 0UL, (uint32_t *)((uint32_t)pu8Data), \
+                              (u32NumBytes/4UL), Disable, u32Timeout);
     }
 
     return enRet;
@@ -1559,7 +1561,8 @@ en_result_t EXMC_NFC_WritePageMeta(uint32_t u32Bank,
         DDL_ASSERT(IS_PARAM_ALIGN_WORD(u32NumBytes));
         DDL_ASSERT(IS_ADDRESS_ALIGN_WORD(pu8Data));
 
-        enRet = EXMC_NFC_Write(u32Bank, u32Page, 0UL, (const uint32_t *)pu8Data, u32NumBytes/4UL, Disable, u32Timeout);
+        enRet = EXMC_NFC_Write(u32Bank, u32Page, 0UL, (uint32_t *)((uint32_t)pu8Data), \
+                                (u32NumBytes/4UL), Disable, u32Timeout);
     }
 
     return enRet;
@@ -1605,7 +1608,8 @@ en_result_t EXMC_NFC_ReadPageHwEcc(uint32_t u32Bank,
         DDL_ASSERT(IS_ADDRESS_ALIGN_WORD(pu8Data));
         DDL_ASSERT(u32NumBytes <= (u32PageSize + u32SpareSizeUserData));
 
-        enRet = EXMC_NFC_Read(u32Bank, u32Page, 0UL, (uint32_t *)pu8Data, u32NumBytes/4UL, Enable, u32Timeout);
+        enRet = EXMC_NFC_Read(u32Bank, u32Page, 0UL, (uint32_t *)((uint32_t)pu8Data), \
+                                (u32NumBytes/4UL), Enable, u32Timeout);
     }
 
     return enRet;
@@ -1651,7 +1655,8 @@ en_result_t EXMC_NFC_WritePageHwEcc(uint32_t u32Bank,
         DDL_ASSERT(IS_ADDRESS_ALIGN_WORD((uint32_t)pu8Data));
         DDL_ASSERT(u32NumBytes <= (u32PageSize + u32SpareSizeUserData));
 
-        enRet = EXMC_NFC_Write(u32Bank, u32Page, 0UL, (const uint32_t *)pu8Data, u32NumBytes/4UL, Enable, u32Timeout);
+        enRet = EXMC_NFC_Write(u32Bank, u32Page, 0UL, (uint32_t *)((uint32_t)pu8Data), \
+                                (u32NumBytes/4UL), Enable, u32Timeout);
     }
 
     return enRet;

@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Yangjp          First version
+   2020-08-20       Yangjp          Increase ETH communication clock to 25M
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -138,11 +139,17 @@ void EXINT_KEY10_IrqCallback(void)
  */
 static void Clock_OutputConfig(void)
 {
+    stc_gpio_init_t stcGpioInit;
+
+    GPIO_StructInit(&stcGpioInit);
+    stcGpioInit.u16PinDir = PIN_DIR_OUT;
+    stcGpioInit.u16PinDrv = PIN_DRV_HIGH;
+    GPIO_Init(MCO1_PORT, MCO1_PIN, &stcGpioInit);
+
     /* Configure clock output pin */
     GPIO_SetFunc(MCO1_PORT, MCO1_PIN, GPIO_FUNC_1_MCO, Disable);
-
-    /* Configure clock output system clock = 7Mhz */
-    CLK_MCO1Config(CLK_MCOSOURCCE_PLLHP, CLK_MCO_DIV32);
+    /* Configure clock output system clock = 25Mhz */
+    CLK_MCO1Config(CLK_MCOSOURCCE_PLLHP, CLK_MCO_DIV8);
     /* MCO1 output enable */
     CLK_MCO1Cmd(Enable);
 }
@@ -180,6 +187,47 @@ static void KEY10_Init(void)
     NVIC_ClearPendingIRQ(KEY10_GroupIRQn);
     NVIC_SetPriority(KEY10_GroupIRQn,DDL_IRQ_PRIORITY_DEFAULT);
     NVIC_EnableIRQ(KEY10_GroupIRQn);
+}
+
+/**
+ * @brief  SYS clock initialize.
+ * @param  None
+ * @retval None
+ */
+void SYS_CLK_Init(void)
+{
+    stc_clk_pllh_init_t stcPLLHInit;
+
+    /* PCLK0, HCLK Max 200MHz */
+    CLK_ClkDiv(CLK_CATE_ALL, (CLK_PCLK0_DIV1 | CLK_PCLK1_DIV2 | CLK_PCLK2_DIV4 | \
+                              CLK_PCLK3_DIV4 | CLK_PCLK4_DIV2 | CLK_EXCLK_DIV2 | \
+                              CLK_HCLK_DIV1));
+
+    CLK_PLLHStrucInit(&stcPLLHInit);
+    /* VCO = (8/1)*100 = 800MHz*/
+    stcPLLHInit.u8PLLState = CLK_PLLH_ON;
+    stcPLLHInit.PLLCFGR = 0UL;
+    stcPLLHInit.PLLCFGR_f.PLLM = 1UL - 1UL;
+    stcPLLHInit.PLLCFGR_f.PLLN = 100UL - 1UL;
+    stcPLLHInit.PLLCFGR_f.PLLP = 4UL - 1UL;
+    stcPLLHInit.PLLCFGR_f.PLLQ = 4UL - 1UL;
+    stcPLLHInit.PLLCFGR_f.PLLR = 4UL - 1UL;
+    stcPLLHInit.PLLCFGR_f.PLLSRC = CLK_PLLSRC_XTAL;
+    CLK_PLLHInit(&stcPLLHInit);
+
+    /* Highspeed SRAM set to 1 Read/Write wait cycle */
+    SRAM_SetWaitCycle(SRAM_SRAMH, SRAM_WAIT_CYCLE_1, SRAM_WAIT_CYCLE_1);
+
+    /* SRAM1_2_3_4_backup set to 2 Read/Write wait cycle */
+    SRAM_SetWaitCycle((SRAM_SRAM123 | SRAM_SRAM4 | SRAM_SRAMB), SRAM_WAIT_CYCLE_2, SRAM_WAIT_CYCLE_2);
+
+    /* 0-wait @ 40MHz */
+    EFM_SetWaitCycle(EFM_WAIT_CYCLE_5);   
+
+    /* 4 cycles for 200 ~ 250MHz */
+    GPIO_SetReadWaitCycle(GPIO_READ_WAIT_4);
+
+    CLK_SetSysClkSrc(CLK_SYSCLKSOURCE_PLLH);
 }
 
 /**
@@ -287,7 +335,7 @@ int main(void)
     /* Peripheral registers write unprotected */
     Peripheral_WE();
     /* Configure clock */
-    BSP_CLK_Init();
+    SYS_CLK_Init();
     /* Configure the BSP */
     BSP_Config();
     /* Configure the Ethernet */

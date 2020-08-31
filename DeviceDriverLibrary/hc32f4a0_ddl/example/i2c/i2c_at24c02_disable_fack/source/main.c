@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hexiao         First version
+   2020-08-31       Hexiao         Modify I2C init flow
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -88,7 +89,7 @@
 /* Define i2c baudrate */
 #define I2C_BAUDRATE                    400000UL
 
-#define TIMEOUT                         0x15000U
+#define TIMEOUT                         0x24000U
 
 #define I2C_RET_OK                      0U
 #define I2C_RET_ERROR                   1U
@@ -304,12 +305,15 @@ uint8_t E2_Initialize(void)
     I2C_StructInit(&stcI2cInit);
     stcI2cInit.u32Baudrate = I2C_BAUDRATE;
     stcI2cInit.u32SclTime = 5U;
-    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV1;
-    I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
+    stcI2cInit.u32I2cClkDiv = I2C_CLK_DIV4;
+    en_result_t enRet = I2C_Init(M4_I2C1, &stcI2cInit, &fErr);
 
-    I2C_Cmd(M4_I2C1, Enable);
-    I2C_FastAckCmd(M4_I2C1, Disable);
-    return I2C_RET_OK;
+    if(enRet == Ok)
+    {
+        I2C_Cmd(M4_I2C1, Enable);
+        I2C_FastAckCmd(M4_I2C1, Disable);
+    }
+    return enRet;
 }
 
 /**
@@ -340,7 +344,7 @@ int32_t main(void)
     uint8_t u8TxBuf[PAGE_LEN];
     uint8_t u8RxBuf[PAGE_LEN] = {0U};
     uint32_t i;
-    uint8_t u8Ret = I2C_RET_OK;
+    uint8_t u8Ret = Ok;
 
     /* Configure system clock. */
     BSP_CLK_Init();
@@ -349,6 +353,16 @@ int32_t main(void)
     for(i=0UL; i<PAGE_LEN; i++)
     {
         u8TxBuf[i] = (uint8_t)i+1U;
+    }
+    GPIO_OE(I2C1_SCL_PORT, I2C1_SCL_PIN, Enable);
+
+    for(uint8_t i  = 0;i < 9; i++)
+    {
+        /* LED */
+        GPIO_ResetPins(I2C1_SCL_PORT, I2C1_SCL_PIN);
+        DDL_DelayMS(20UL);
+        GPIO_SetPins(I2C1_SCL_PORT, I2C1_SCL_PIN);
+        DDL_DelayMS(20UL);
     }
 
     /* Initialize I2C port*/
@@ -362,8 +376,9 @@ int32_t main(void)
     /* Enable peripheral clock */
     PWC_Fcg1PeriphClockCmd(PWC_FCG1_IIC1, Enable);
     /* Initialize I2C peripheral and enable function*/
-    E2_Initialize();
 
+    u8Ret = E2_Initialize();
+    JudgeResult(u8Ret);
     /* E2prom byte write*/
     u8Ret = E2_StartOrRestart(GENERATE_START);
     JudgeResult(u8Ret);
@@ -405,7 +420,6 @@ int32_t main(void)
             DDL_DelayMS(500UL);
         }
     }
-
     /* 5mS delay for e2prom*/
     DDL_DelayMS(APP_WAIT_EEPROM);
     /* E2prom page write*/

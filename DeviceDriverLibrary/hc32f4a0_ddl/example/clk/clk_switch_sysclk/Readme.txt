@@ -19,7 +19,7 @@ GCC工程，由Eclipse IDE外挂GNU-ARM Toolchain，再结合pyOCD GDB Server实
 通过按键选择系统时钟：
 SW1: MRC   (8MHz)      62.5 KHz
 SW2: HRC   (16MHz)     125  KHz
-SW3: LRC   (32KHz)     250  Hz
+SW3: LRC   (32.768KHz) 256  Hz
 SW4: XTAL  (8MHz)      62.5 KHz
 SW5: XTAL32(32.768KHz) 256  Hz
 SW6: PLLH  (240MHz)    1.875MHz

@@ -19,7 +19,7 @@ GCC工程，由Eclipse IDE外挂GNU-ARM Toolchain，再结合pyOCD GDB Server实
 本样例展示基准电压、VBAT电压测量、VBAT电压检测等功能。
 
 说明：
-本样例设置使用ADC单元1来测量基站及VBAT电压，启动后连续测量基准及VBAT电压，并通过
+本样例设置使用ADC单元1来测量基准及VBAT电压，启动后连续测量基准及VBAT电压，并通过
 串口打印电压信息；其中基准电压约为1.15V，VABT电压则为外部纽扣电池电压，之后一直
 监测VBAT电压是否大于2V，是则LED_B亮起；反之，则LED_R亮起。
 

@@ -8,6 +8,9 @@
    2020-06-12       Zhangxl         First version
    2020-07-03       Zhangxl         1. Tpyo
                                     2. API CLK_SetSysClkSrc() refine
+   2020-08-19       Zhangxl         1. Modify formula of PLL clock get API
+                                    2. Zero structure for CLK_PLLxStrucInit()
+   2020-08-25       Zhangxl         Modify for MISRAC2012-10.1, 10.3
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -527,6 +530,7 @@ en_result_t CLK_PLLAStrucInit(stc_clk_plla_init_t* pstcPLLAInit)
     else
     {
         /* Configure to default value */
+        pstcPLLAInit->PLLCFGR        = 0UL;
         pstcPLLAInit->u8PLLState     = CLK_PLLA_OFF;
         pstcPLLAInit->PLLCFGR_f.PLLP = CLK_PLLAP_DFT;
         pstcPLLAInit->PLLCFGR_f.PLLQ = CLK_PLLAQ_DFT;
@@ -553,7 +557,6 @@ en_result_t CLK_PLLAStrucInit(stc_clk_plla_init_t* pstcPLLAInit)
 en_result_t CLK_PLLAInit(const stc_clk_plla_init_t *pstcPLLAInit)
 {
     en_result_t enRet;
-    uint8_t NewState;
 
 #ifdef __DEBUG
     uint32_t vcoIn;
@@ -588,8 +591,14 @@ en_result_t CLK_PLLAInit(const stc_clk_plla_init_t *pstcPLLAInit)
 
         WRITE_REG32(M4_CMU->PLLACFGR, pstcPLLAInit->PLLCFGR);
 
-        NewState = !(pstcPLLAInit->u8PLLState);
-        enRet = CLK_PLLACmd((en_functional_state_t)(NewState));
+        if (CLK_PLLA_ON == pstcPLLAInit->u8PLLState)
+        {
+            enRet = CLK_PLLACmd(Enable);
+        }
+        else
+        {
+            enRet = CLK_PLLACmd(Disable);
+        }
     }
     return enRet;
 }
@@ -613,6 +622,7 @@ en_result_t CLK_PLLHStrucInit(stc_clk_pllh_init_t* pstcPLLHInit)
     else
     {
         /* Configure to default value */
+        pstcPLLHInit->PLLCFGR          = 0UL;
         pstcPLLHInit->u8PLLState       = CLK_PLLH_OFF;
         pstcPLLHInit->PLLCFGR_f.PLLP   = CLK_PLLHP_DFT;
         pstcPLLHInit->PLLCFGR_f.PLLQ   = CLK_PLLHQ_DFT;
@@ -641,7 +651,6 @@ en_result_t CLK_PLLHStrucInit(stc_clk_pllh_init_t* pstcPLLHInit)
 en_result_t CLK_PLLHInit(const stc_clk_pllh_init_t *pstcPLLHInit)
 {
     en_result_t enRet;
-    uint8_t NewState;
 
 #ifdef __DEBUG
     uint32_t vcoIn;
@@ -679,8 +688,14 @@ en_result_t CLK_PLLHInit(const stc_clk_pllh_init_t *pstcPLLHInit)
         WRITE_REG32(bM4_CMU->PLLHCFGR_b.PLLSRC, pstcPLLHInit->PLLCFGR_f.PLLSRC);
         WRITE_REG32(M4_CMU->PLLHCFGR, pstcPLLHInit->PLLCFGR);
 
-        NewState = !(pstcPLLHInit->u8PLLState);
-        enRet = CLK_PLLHCmd((en_functional_state_t)(NewState));
+        if (CLK_PLLH_ON == pstcPLLHInit->u8PLLState)
+        {
+            enRet = CLK_PLLHCmd(Enable);
+        }
+        else
+        {
+            enRet = CLK_PLLHCmd(Disable);
+        }
     }
 
     return enRet;
@@ -723,6 +738,7 @@ en_result_t CLK_XtalStrucInit(stc_clk_xtal_init_t* pstcXtalInit)
  *   @arg  u8XtalStb    : The XTAL stable time selection.
  * @retval en_result_t
  *         OK, XTAL intial successfully.
+ *         ErrorTimeout, XTAL operate timeout.
  *         ErrorNotReady, XTAL is the system clock, CANNOT stop it.
  *         ErrorInvalidParameter, NULL pointer.
  * @note   DO NOT STOP XTAL while using it as system clock.
@@ -730,7 +746,6 @@ en_result_t CLK_XtalStrucInit(stc_clk_xtal_init_t* pstcXtalInit)
 en_result_t CLK_XtalInit(const stc_clk_xtal_init_t *pstcXtalInit)
 {
     en_result_t enRet;
-    uint8_t NewState;
 
     if (NULL == pstcXtalInit)
     {
@@ -747,8 +762,14 @@ en_result_t CLK_XtalInit(const stc_clk_xtal_init_t *pstcXtalInit)
         WRITE_REG8(M4_CMU->XTALSTBCR, pstcXtalInit->u8XtalStb);
         WRITE_REG8(M4_CMU->XTALCFGR, (0x80U | pstcXtalInit->u8XtalDrv | pstcXtalInit->u8XtalMode));
 
-        NewState = !(pstcXtalInit->u8XtalState);
-        enRet = CLK_XtalCmd((en_functional_state_t)(NewState));
+        if (CLK_XTAL_ON == pstcXtalInit->u8XtalState)
+        {
+            enRet = CLK_XtalCmd(Enable);
+        }
+        else
+        {
+            enRet = CLK_XtalCmd(Disable);
+        }
     }
 
     return enRet;
@@ -796,7 +817,6 @@ en_result_t CLK_Xtal32StrucInit(stc_clk_xtal32_init_t* pstcXtal32Init)
 en_result_t CLK_Xtal32Init(const stc_clk_xtal32_init_t *pstcXtal32Init)
 {
     en_result_t enRet;
-    uint8_t NewState;
 
     if (NULL == pstcXtal32Init)
     {
@@ -812,8 +832,14 @@ en_result_t CLK_Xtal32Init(const stc_clk_xtal32_init_t *pstcXtal32Init)
         WRITE_REG8(M4_CMU->XTAL32CFGR, pstcXtal32Init->u8Xtal32Drv);
         WRITE_REG8(M4_CMU->XTAL32NFR, pstcXtal32Init->u8Xtal32NF);
 
-        NewState = !(pstcXtal32Init->u8Xtal32State);
-        enRet = CLK_Xtal32Cmd((en_functional_state_t)(NewState));
+        if (CLK_XTAL32_ON == pstcXtal32Init->u8Xtal32State)
+        {
+            enRet = CLK_Xtal32Cmd(Enable);
+        }
+        else
+        {
+            enRet = CLK_Xtal32Cmd(Disable);
+        }
     }
 
     return enRet;
@@ -1539,16 +1565,16 @@ en_result_t CLK_GetPllClockFreq(stc_pll_clk_freq_t *pstcPllClkFreq)
             pllin = HRC_VALUE;
         }
         pstcPllClkFreq->pllhvcin = (pllin/(pllhm + 1UL));
-        pstcPllClkFreq->pllhvco = ((pllin/(pllhm + 1UL))*pllhn);
-        pstcPllClkFreq->pllhp = ((pllin/(pllhm + 1UL))*pllhn)/(pllhp + 1UL);
-        pstcPllClkFreq->pllhq = ((pllin/(pllhm + 1UL))*pllhn)/(pllhq + 1UL);
-        pstcPllClkFreq->pllhr = ((pllin/(pllhm + 1UL))*pllhn)/(pllhr + 1UL);
+        pstcPllClkFreq->pllhvco = ((pllin/(pllhm + 1UL))*(pllhn + 1UL));
+        pstcPllClkFreq->pllhp = ((pllin/(pllhm + 1UL))*(pllhn + 1UL))/(pllhp + 1UL);
+        pstcPllClkFreq->pllhq = ((pllin/(pllhm + 1UL))*(pllhn + 1UL))/(pllhq + 1UL);
+        pstcPllClkFreq->pllhr = ((pllin/(pllhm + 1UL))*(pllhn + 1UL))/(pllhr + 1UL);
 
         pstcPllClkFreq->pllavcin = (pllin/(pllam + 1UL));
-        pstcPllClkFreq->pllavco = ((pllin/(pllam + 1UL))*pllan);
-        pstcPllClkFreq->pllap = ((pllin/(pllam + 1UL))*pllan)/(pllap + 1UL);
-        pstcPllClkFreq->pllaq = ((pllin/(pllam + 1UL))*pllan)/(pllaq + 1UL);
-        pstcPllClkFreq->pllar = ((pllin/(pllam + 1UL))*pllan)/(pllar + 1UL);
+        pstcPllClkFreq->pllavco = ((pllin/(pllam + 1UL))*(pllan + 1UL));
+        pstcPllClkFreq->pllap = ((pllin/(pllam + 1UL))*(pllan + 1UL))/(pllap + 1UL);
+        pstcPllClkFreq->pllaq = ((pllin/(pllam + 1UL))*(pllan + 1UL))/(pllaq + 1UL);
+        pstcPllClkFreq->pllar = ((pllin/(pllam + 1UL))*(pllan + 1UL))/(pllar + 1UL);
     }
     return enRet;
 }

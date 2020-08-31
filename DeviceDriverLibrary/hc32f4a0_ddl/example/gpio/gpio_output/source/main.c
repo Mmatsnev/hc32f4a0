@@ -68,8 +68,8 @@
 /*******************************************************************************
  * Local type definitions ('typedef')
  ******************************************************************************/
-#define LED_PORT                (GPIO_PORT_C)
-#define LED_PIN                 (GPIO_PIN_09)
+#define LED_GREEN_PORT              (GPIO_PORT_C)
+#define LED_GREEN_PIN               (GPIO_PIN_09)
 
 /*******************************************************************************
  * Local pre-processor symbols/macros ('#define')
@@ -158,22 +158,22 @@ int32_t main(void)
 
     /* LED initialize */
     GPIO_StructInit(&stcGpioInit);
-    GPIO_Init(LED_PORT, LED_PIN, &stcGpioInit);
+    GPIO_Init(LED_GREEN_PORT, LED_GREEN_PIN, &stcGpioInit);
 
     /* Register write protected for some required peripherals. */
     Peripheral_WP();
 
     /* "Turn off" LED before set to output */
-    GPIO_ResetPins(LED_PORT, LED_PIN);
+    GPIO_ResetPins(LED_GREEN_PORT, LED_GREEN_PIN);
 
     /* Output enable */
-    GPIO_OE(LED_PORT, LED_PIN, Enable);
+    GPIO_OE(LED_GREEN_PORT, LED_GREEN_PIN, Enable);
     while (1)
     {
         /* LED */
-        GPIO_SetPins(LED_PORT, LED_PIN);
+        GPIO_SetPins(LED_GREEN_PORT, LED_GREEN_PIN);
         DDL_DelayMS(2000UL);
-        GPIO_ResetPins(LED_PORT, LED_PIN);
+        GPIO_ResetPins(LED_GREEN_PORT, LED_GREEN_PIN);
         DDL_DelayMS(2000UL);
         /* De-init port if necessary */
         //GPIO_DeInit();

@@ -163,6 +163,8 @@ extern "C"
 #define BSP_IS42S16400J7TLI_ENABLE                  (BSP_OFF)
 #define BSP_IS62WV51216_ENABLE                      (BSP_OFF)
 #define BSP_MT29F2G08AB_ENABLE                      (BSP_OFF)
+#define BSP_NT35510_ENABLE                          (BSP_OFF)
+#define BSP_OV5640_ENABLE                           (BSP_OFF)
 #define BSP_S29GL064N90TFI03_ENABLE                 (BSP_ON)
 #define BSP_TCA9539_ENABLE                          (BSP_OFF)
 #define BSP_W25QXX_ENABLE                           (BSP_OFF)

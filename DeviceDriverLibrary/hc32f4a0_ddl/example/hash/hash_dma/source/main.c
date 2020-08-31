@@ -126,7 +126,7 @@ static uint32_t SrcData[] = \
  0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,0x00000000,\
  0x00000000,0x000002E8};
 
-#endif 
+#endif
 
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
@@ -226,7 +226,7 @@ int32_t main(void)
         else
         {
             FillData();
-            
+
             if (u8FillFlag == 1U)
             {
                 /* Select the DMA1 channal_0 transfer complete as trigger source */
@@ -309,7 +309,7 @@ static void FillData(void)
         {
             memcpy(u8buffer, &SrcData[HASH_GROUP_LEN * u32TsfCnt], u32FillData);
             u8buffer[u32FillData] = 0x80U;
-            
+
         }
         u8buffer[63U] = (uint8_t)(u32BitLenLow);
         u8buffer[62U] = (uint8_t)(u32BitLenLow >> 8U);
@@ -392,14 +392,14 @@ static void DMA_Config(void)
     u32DataSize = sizeof(SrcData);
     stcDmaInit.u32TransCnt = u32DataSize / HASH_GROUP_LEN;
     stcDmaInit.u32SrcAddr = (uint32_t)(&SrcData[0]);
-#endif 
+#endif
 
 
     stcDmaInit.u32DestAddr = (uint32_t)(&M4_HASH->DR15);
     stcDmaInit.u32SrcInc = DMA_SRC_ADDR_INC;
     stcDmaInit.u32DestInc = DMA_DEST_ADDR_INC;
     if (Ok != DMA_Init(DMA_UNIT, DMA_CH, &stcDmaInit))
-    {    
+    {
         while (1)
         {}
     }

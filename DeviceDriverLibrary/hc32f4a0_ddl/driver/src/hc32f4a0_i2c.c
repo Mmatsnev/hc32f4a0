@@ -8,6 +8,8 @@
    Date             Author          Notes
    2020-06-12       Hexiao          First version
    2020-07-15       Hexiao          Modify I2C_SmBusCmd to I2C_SetMode
+   2020-08-31       Hexiao          Refine I2C_Init/I2C_SendData/I2C_RcvData and
+                                    remove invalid clock division value
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -151,8 +153,7 @@
     ((x) == I2C_CLK_DIV8)                          ||                          \
     ((x) == I2C_CLK_DIV16)                         ||                          \
     ((x) == I2C_CLK_DIV32)                         ||                          \
-    ((x) == I2C_CLK_DIV64)                         ||                          \
-    ((x) == I2C_CLK_DIV128))
+    ((x) == I2C_CLK_DIV64))
 
 #define IS_VALID_MASTER_SLAVE_MODE(x)                                          \
 (   ((x) == I2C_MASTER_SLAVE_MODE_MASTER)          ||                          \
@@ -367,7 +368,7 @@ en_result_t I2C_StructInit(stc_i2c_init_t* pstcI2C_InitStruct)
  */
 en_result_t I2C_Init(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI2C_InitStruct, float32_t *pf32Err)
 {
-    en_result_t enRet = Ok;
+    en_result_t enRet;
     DDL_ASSERT(IS_VALID_UNIT(I2Cx));
 
     if (NULL == pstcI2C_InitStruct )
@@ -385,15 +386,18 @@ en_result_t I2C_Init(M4_I2C_TypeDef* I2Cx, const stc_i2c_init_t *pstcI2C_InitStr
         SET_REG32_BIT(I2Cx->CR1,I2C_CR1_PE);
 
         /* I2C baudrate config */
-        I2C_BaudrateConfig(I2Cx, pstcI2C_InitStruct, pf32Err);
+        enRet = I2C_BaudrateConfig(I2Cx, pstcI2C_InitStruct, pf32Err);
 
-        /* Disable global broadcast address function */
-        CLEAR_REG32_BIT(I2Cx->CR1,I2C_CR1_ENGC);
+        if(enRet == Ok)
+        {
+            /* Disable global broadcast address function */
+            CLEAR_REG32_BIT(I2Cx->CR1,I2C_CR1_ENGC);
 
-        /* Release software reset */
-        CLEAR_REG32_BIT(I2Cx->CR1,I2C_CR1_SWRST);
-        /* Disable I2C peripheral */
-        CLEAR_REG32_BIT(I2Cx->CR1,I2C_CR1_PE);
+            /* Release software reset */
+            CLEAR_REG32_BIT(I2Cx->CR1,I2C_CR1_SWRST);
+            /* Disable I2C peripheral */
+            CLEAR_REG32_BIT(I2Cx->CR1,I2C_CR1_PE);
+        }
     }
 
     return enRet;
@@ -1141,7 +1145,7 @@ static en_result_t I2C_WaitStatus(const M4_I2C_TypeDef *I2Cx, uint32_t u32Flags,
     en_result_t enRet = Error;
     uint32_t u32RegStatusBit;
 
-    while(1U)
+    while(u32Timeout != 0UL)
     {
         u32RegStatusBit = (READ_REG32_BIT(I2Cx->SR, u32Flags));
         if(((enStatus == Set) && (u32Flags == u32RegStatusBit))
@@ -1150,7 +1154,7 @@ static en_result_t I2C_WaitStatus(const M4_I2C_TypeDef *I2Cx, uint32_t u32Flags,
             enRet = Ok;
         }
 
-        if((Ok == enRet) || (0UL == u32Timeout))
+        if(Ok == enRet)
         {
             break;
         }
@@ -1317,7 +1321,10 @@ en_result_t I2C_SendData(M4_I2C_TypeDef* I2Cx, uint8_t const pau8TxData[], uint3
 
                 if(enRet == Ok)
                 {
-                    enRet = I2C_WaitStatus(I2Cx, I2C_SR_ACKRF, Reset, u32Timeout);
+                    if(u32Cnt != u32Size)
+                    {
+                        enRet = I2C_WaitStatus(I2Cx, I2C_SR_ACKRF, Reset, u32Timeout);
+                    }
                 }
             }
         }
@@ -1357,9 +1364,10 @@ en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32
 
     if(pau8RxData != NULL)
     {
+        uint32_t u32FastAckEn = READ_REG32_BIT(I2Cx->CR3, I2C_CR3_FACKEN);
         for(uint32_t i=0UL; i<u32Size; i++)
         {
-            if(i == (u32Size - 1UL))
+            if(((i == (u32Size - 1UL))&& (0UL == u32FastAckEn)))
             {
                 I2C_NackConfig(I2Cx, Enable);
             }
@@ -1371,9 +1379,16 @@ en_result_t I2C_RcvData(M4_I2C_TypeDef* I2Cx, uint8_t pau8RxData[], uint32_t u32
                  /* read data from register */
                 pau8RxData[i] = I2C_ReadDataReg(I2Cx);
                 /* manually send ack if FACKEN is set to 1(1:manually ack;0:fast ack) */
-                if((0UL != READ_REG32_BIT(I2Cx->CR3, I2C_CR3_FACKEN)) && (i != (u32Size - 1UL)))
+                if(i != (u32Size - 1UL))
                 {
                     I2C_NackConfig(I2Cx, Disable);
+                }
+                else
+                {
+                    if(0UL != u32FastAckEn)
+                    {
+                        I2C_NackConfig(I2Cx, Enable);
+                    }
                 }
             }
             else

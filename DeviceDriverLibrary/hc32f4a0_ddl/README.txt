@@ -1,4 +1,46 @@
 version     date            comment
+ 1.0.4
+            Aug 31, 2020
+                            [ADC]
+                                1.  Refined code for interrupt of sample adc_02_event_trigger.
+                            [BSP]
+                                1.  The macro-define parameter add parentheses in s29gl064n90tfi03.c.
+                                2.  The if condition statement add variable compare value in ms_hc32f4a0_lqfp176_050_mem_s29gl064n90tfi03.c.
+                                3.  Modify w25qxx.c for MISRAC2012 compliance.
+                                4.  Add components: nt35510 and ov5640
+                                5.  Add doxygen local functions group and macro-define for ev_hc32f4a0_lqfp176
+                            [CMP]
+                                1.  Replace CMP_Delay300ns() with the function DDL_DelayUS().
+                            [DAC]
+                                1.  Refine DAC_AMPCmd
+                            [DVP]
+                                1.  Add DVP driver and sample
+                            [EFM]
+                                1.  Adjust the BSP_CLK_Init() position in efm_base and efm_irq examples.
+                            [ETH]
+                                1.  In the example of eth_twoboards, the ETH communication clock is increased to 25M.
+                            [I2C]
+                                1.  Refine I2C_Init/I2C_SendData/I2C_RcvData and remove invalid clock division value
+                                2.  Modify I2C examples
+                            [INTC]
+                                1.  Modify for MISRAC2012 compliance.
+                            [NFC]
+                                1.  Modify the pointer type cast.
+                            [PWC]
+                                1.  Fixed LED display error in the pwc_vol_measure example.
+                            [SPI]
+                                1.  Modify for MISRAC2012 compliance.
+                            [TMR2]
+                                1.  Refined sample timer2_capture.
+                            [TMRA]
+                                1.  Refined samples timera_oc_position_count and timera_oc_revolution_count:
+                                    Calculating the rotation speed of the quadrature encoder via position counting function and revolution counting function.
+                            [USART]
+                                1.  The variable f32Err un-initializes an unnecessary assignment.
+                            [USB]
+                                1.  Add USB host class msc.
+                                2.  Add usbh_msc example.
+                                3.  Modify Comment for parameter pdev.
  1.0.3
             Aug 11, 2020    [ADC]
                                 1.  ADC_SeqClrStatus(): ADC_SEQ_FLAG_NESTED can be cleared.

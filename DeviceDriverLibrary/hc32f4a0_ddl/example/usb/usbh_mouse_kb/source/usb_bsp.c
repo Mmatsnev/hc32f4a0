@@ -6,6 +6,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -217,7 +218,7 @@ static __attribute__((unused)) void Peripheral_WP(void)
 
 /**
  * @brief  Initializes BSP configurations
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @retval None
  */
 void USB_OTG_BSP_Init(USB_OTG_CORE_HANDLE *pdev)
@@ -324,7 +325,7 @@ void USB_OTG_BSP_EnableInterrupt(void)
 
 /**
  * @brief  Drives the Vbus signal through IO
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @param  [in] state    VBUS states
  * @retval None
  */
@@ -336,7 +337,7 @@ void USB_OTG_BSP_DriveVBUS(USB_OTG_CORE_HANDLE *pdev,uint8_t state)
 
 /**
  * @brief  Configures the IO for the Vbus and OverCurrent
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @retval None
 */
 void  USB_OTG_BSP_ConfigVBUS(USB_OTG_CORE_HANDLE *pdev)

@@ -40,7 +40,7 @@ MISO  RTS                RTS
       GND                GND
 2) 打开工程修改宏定义为#define APP_TEST_MODE  COM_MASTER，编译代码，下载进测试板1，全速运行。
 3) 修改宏定义为#define APP_TEST_MODE  COM_SLAVE，编译代码，下载进测试板2，全速运行。
-3) 短按测试板1的按键，启动主机和从机之间全双工的数据收发。
+3) 短按测试板1的按键SW10，启动主机和从机之间全双工的数据收发。
 4) 数据收发完成后，如果通信成功BLUE LED（LED2）闪烁，如通信失败RED LED（LED0）闪烁。
 
 

@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -388,7 +389,7 @@ void USBH_ErrorHandle(USBH_HOST *phost, USBH_Status errType)
 /**
  * @brief  USBH_Connected
  *         USB Connect callback function from the Interrupt.
- * @param  [in] pdev: selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval Status
  */
 static uint8_t USBH_Connected (USB_OTG_CORE_HANDLE *pdev)
@@ -400,7 +401,7 @@ static uint8_t USBH_Connected (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_Disconnected
  *         USB Disconnect callback function from the Interrupt.
- * @param  [in] pdev: selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval Status
  */
 static uint8_t USBH_Disconnected (USB_OTG_CORE_HANDLE *pdev)
@@ -412,7 +413,7 @@ static uint8_t USBH_Disconnected (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_SOF
  *         USB SOF callback function from the Interrupt.
- * @param  [in] pdev: selected device
+ * @param  [in] pdev: Instance for USB core
  * @retval Status
  */
 static uint8_t USBH_SOF (USB_OTG_CORE_HANDLE *pdev)
@@ -424,7 +425,7 @@ static uint8_t USBH_SOF (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USBH_HandleEnum
  *         This function includes the complete enumeration process
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @retval USBH_Status
  */
@@ -600,7 +601,7 @@ static USBH_Status USBH_HandleEnum(USB_OTG_CORE_HANDLE *pdev, USBH_HOST *phost)
 /**
  * @brief  USBH_HandleControl
  *         Handles the USB control transfer state machine
- * @param  [in] pdev: Selected device
+ * @param  [in] pdev: Instance for USB core
  * @param  [in] phost: Host
  * @retval Status
  */

@@ -213,7 +213,7 @@ typedef struct
     uint32_t pllap;                 /*!< pllap clock frequency. */
     uint32_t pllaq;                 /*!< pllaq clock frequency. */
     uint32_t pllar;                 /*!< pllar clock frequency. */
-}stc_pll_clk_freq_t;
+} stc_pll_clk_freq_t;
 
 /**
  * @}

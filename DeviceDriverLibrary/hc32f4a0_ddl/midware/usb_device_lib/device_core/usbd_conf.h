@@ -2,7 +2,7 @@
  *******************************************************************************
  * @file  usbd_conf.h
  * @brief USB Device configuration file.
- *        
+ *
  @verbatim
    Change Logs:
    Date             Author          Notes
@@ -110,7 +110,6 @@ extern "C"
 #define USBD_AUDIO_FREQ                 (48000UL)
 
 #define USBD_CFG_MAX_NUM                (1U) /* configuration numbers */
-//#define USBD_ITF_MAX_NUM                1U /* interface numbers */
 
 #define USBD_SELF_POWERED
 

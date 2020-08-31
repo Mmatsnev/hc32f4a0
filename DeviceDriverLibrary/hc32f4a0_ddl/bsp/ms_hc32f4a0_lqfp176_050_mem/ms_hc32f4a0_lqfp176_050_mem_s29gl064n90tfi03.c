@@ -1,13 +1,17 @@
 /**
  *******************************************************************************
  * @file  ms_hc32f4a0_lqfp176_050_mem_s29gl064n90tfi03.c
- * @brief This file provides configure functions for s29gl064n90tfi03 of the 
+ * @brief This file provides configure functions for s29gl064n90tfi03 of the
  *        board MS_HC32F4A0_LQF176_050_MEM.
  @verbatim
    Change Logs:
    Date             Author          Notes
    2020-06-12       Hongjh          First version
    2020-07-03       Hongjh          Adjust EXMC pin drive capacity to high drive
+   2020-08-25       Hongjh          1. The variable u16TmpSr1/u16TmpSr2 un-initializes
+                                    an unnecessary assignment
+                                    2. The if condition statement add variable
+                                       compare value
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -428,7 +432,7 @@ en_result_t BSP_SMC_S29GL064_ReadId(uint32_t u32DevicBaseAddress,
     uint16_t au16TmpId[4];
     en_result_t enRet = ErrorInvalidParameter;
 
-    if ((NULL != au16Id) && u32Length)
+    if ((NULL != au16Id) && (u32Length > 0UL))
     {
         /* Send read ID command */
         RW_MEM16(SMC_ADDR_SHIFT(u32DevicBaseAddress, S29GL064N90TFI03_MEM_WIDTH, NOR_CMD_ADDRESS_FIRST)) = NOR_CMD_DATA_FIRST;
@@ -468,7 +472,7 @@ en_result_t BSP_SMC_S29GL064_ReadCfiId(uint32_t u32DevicBaseAddress,
     uint16_t au16TmpId[4];
     en_result_t enRet = ErrorInvalidParameter;
 
-    if ((NULL != au16Id) && u32Length)
+    if ((NULL != au16Id) && (u32Length > 0UL))
     {
         /* Send read CFI query command */
         RW_MEM16(SMC_ADDR_SHIFT(u32DevicBaseAddress, S29GL064N90TFI03_MEM_WIDTH, NOR_CMD_ADDRESS_FIRST_CFI)) = NOR_CMD_DATA_CFI;
@@ -501,8 +505,8 @@ en_result_t BSP_SMC_S29GL064_ReadCfiId(uint32_t u32DevicBaseAddress,
 en_result_t BSP_SMC_S29GL064_GetStatus(uint32_t u32DevicBaseAddress,
                                             uint32_t u32Timeout)
 {
-    uint16_t u16TmpSr1 = 0U;
-    uint16_t u16TmpSr2 = 0U;
+    uint16_t u16TmpSr1;
+    uint16_t u16TmpSr2;
     uint32_t u32To = 0U;
     en_result_t enStatus = ErrorOperationInProgress;
 
@@ -691,7 +695,7 @@ en_result_t BSP_SMC_S29GL064_ProgramBuffer(uint32_t u32DevicBaseAddress,
  * @param  [in] u32DevicBaseAddress     S29GL064 base address
  * @param  [in] u32ReadAddress          Memory address to read
  * @param  [in] au16Data                Data buffer for reading
- * @param  [in] u32NumHalfWords         Number half-word to write
+ * @param  [in] u32NumHalfwords         Number half-word to write
  * @retval An en_result_t enumeration value:
  *   @arg  Ok:                          No errors occurred.
  *   @arg  ErrorInvalidParameter:       The pointer au16Data value is NULL.
@@ -699,14 +703,14 @@ en_result_t BSP_SMC_S29GL064_ProgramBuffer(uint32_t u32DevicBaseAddress,
 en_result_t BSP_SMC_S29GL064_ReadBuffer(uint32_t u32DevicBaseAddress,
                                             uint32_t u32ReadAddress,
                                             uint16_t au16Data[],
-                                            uint32_t u32NumHalfWords)
+                                            uint32_t u32NumHalfwords)
 {
     uint32_t i;
     en_result_t enRet = ErrorInvalidParameter;
 
     if (au16Data != NULL)
     {
-        for (i = 0UL; i < u32NumHalfWords; i++)
+        for (i = 0UL; i < u32NumHalfwords; i++)
         {
             au16Data[i] = RW_MEM16(u32ReadAddress);
             u32ReadAddress += 2UL;
@@ -894,7 +898,7 @@ static en_result_t BSP_SMC_S29GL064_WaitReadySignal(uint32_t u32Timeout)
         enPinState = GPIO_ReadInputPins(SMC_RB_PORT, SMC_RB_PIN);
     } while ((u32To > 0UL) && (Pin_Reset != enPinState));
 
-    if (u32To)
+    if (u32To > 0UL)
     {
         u32To = u32Timeout;
 
@@ -905,7 +909,7 @@ static en_result_t BSP_SMC_S29GL064_WaitReadySignal(uint32_t u32Timeout)
         } while ((u32To > 0UL) && (Pin_Set != enPinState));
     }
 
-    return u32To ? Ok : ErrorTimeout;
+    return ((u32To > 0UL) ? Ok : ErrorTimeout);
 }
 
 /**

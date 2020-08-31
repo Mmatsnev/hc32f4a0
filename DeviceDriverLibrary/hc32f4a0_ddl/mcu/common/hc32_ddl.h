@@ -87,7 +87,7 @@ extern "C"
  */
 #define HC32_DDL_VERSION_MAIN           0x01U  /*!< [31:24] main version */
 #define HC32_DDL_VERSION_SUB1           0x00U  /*!< [23:16] sub1 version */
-#define HC32_DDL_VERSION_SUB2           0x03U  /*!< [15:8]  sub2 version */
+#define HC32_DDL_VERSION_SUB2           0x04U  /*!< [15:8]  sub2 version */
 #define HC32_DDL_VERSION_RC             0x00U  /*!< [7:0]   release candidate */
 #define HC32_DDL_VERSION                ((HC32_DDL_VERSION_MAIN << 24) | \
                                          (HC32_DDL_VERSION_SUB1 << 16) | \
@@ -332,6 +332,14 @@ extern "C"
     #include "mt29f2g08ab.h"
 #endif /* BSP_MT29F2G08AB_ENABLE */
 
+#if (BSP_NT35510_ENABLE == BSP_ON)
+    #include "nt35510.h"
+#endif /* BSP_NT35510_ENABLE */
+
+#if (BSP_OV5640_ENABLE == BSP_ON)
+    #include "ov5640.h"
+#endif /* BSP_OV5640_ENABLE */
+
 #if (BSP_S29GL064N90TFI03_ENABLE == BSP_ON)
     #include "s29gl064n90tfi03.h"
 #endif /* BSP_S29GL064N90TFI03_ENABLE */
@@ -340,6 +348,10 @@ extern "C"
     #include "ev_hc32f4a0_lqfp176_tca9539.h"
     #include "tca9539.h"
 #endif /* BSP_TCA9539_ENABLE */
+
+#if (BSP_WM8731_ENABLE == BSP_ON)
+    #include "wm8731.h"
+#endif /* BSP_WM8731_ENABLE */
 
 #endif /* USE_DDL_DRIVER */
 

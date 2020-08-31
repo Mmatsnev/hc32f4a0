@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -176,7 +177,7 @@ USBH_Class_cb_TypeDef  USBH_HID_cb =
 /**
 * @brief  USBH_HID_InterfaceDeInit
 *         The function DeInit the Host Channels used for the HID class.
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @retval None
 */
@@ -204,7 +205,7 @@ void USBH_HID_InterfaceDeInit ( USB_OTG_CORE_HANDLE *pdev, void *phost)
 /**
 * @brief  USBH_Set_Report
 *         Issues Set Report
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @param  reportType  : Report type to be sent
 * @param  reportId    : Targetted report ID for Set Report request
@@ -234,14 +235,14 @@ USBH_Status USBH_Set_Report (USB_OTG_CORE_HANDLE *pdev,
  */
 
 /**
- * @addtogroup USBH_HID_Local_Functions USBH HID Local Functions
+ * @defgroup USBH_HID_Local_Functions USBH HID Local Functions
  * @{
  */
 
 /**
 * @brief  USBH_HID_InterfaceInit
 *         The function init the HID class.
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @retval  USBH_Status :Response for USB HID driver initialize
 */
@@ -336,7 +337,7 @@ static USBH_Status USBH_HID_InterfaceInit ( USB_OTG_CORE_HANDLE *pdev,
 * @brief  USBH_HID_ClassRequest
 *         The function is responsible for handling HID Class requests
 *         for HID class.
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @retval  USBH_Status :Response for USB Set Protocol request
 */
@@ -401,7 +402,7 @@ static USBH_Status USBH_HID_ClassRequest(USB_OTG_CORE_HANDLE *pdev ,
 /**
 * @brief  USBH_HID_Handle
 *         The function is for managing state machine for HID data transfers
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @retval USBH_Status
 */
@@ -473,7 +474,7 @@ static USBH_Status USBH_HID_Handle(USB_OTG_CORE_HANDLE *pdev , void *phost)
 * @brief  USBH_Get_HID_ReportDescriptor
 *         Issue report Descriptor command to the device. Once the response
 *         received, parse the report descriptor and update the status.
-* @param  pdev : Selected device
+* @param  pdev : Instance for USB core
 * @param  phost : Host
 * @param  length : HID Report Descriptor Length
 * @retval USBH_Status : Response for USB HID Get Report Descriptor Request
@@ -501,7 +502,7 @@ static USBH_Status USBH_Get_HID_ReportDescriptor (USB_OTG_CORE_HANDLE *pdev, USB
 * @brief  USBH_Get_HID_Descriptor
 *         Issue HID Descriptor command to the device. Once the response
 *         received, parse the report descriptor and update the status.
-* @param  pdev   : Selected device
+* @param  pdev   : Instance for USB core
 * @param  phost   : Host
 * @param  length : HID Descriptor Length
 * @retval USBH_Status : Response for USB HID Get Report Descriptor Request
@@ -524,7 +525,7 @@ static USBH_Status USBH_Get_HID_Descriptor (USB_OTG_CORE_HANDLE *pdev, USBH_HOST
 /**
 * @brief  USBH_Set_Idle
 *         Set Idle State.
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @param  duration: Duration for HID Idle request
 * @param  reportId : Targetted report ID for Set Idle request
@@ -551,7 +552,7 @@ static USBH_Status USBH_Set_Idle (USB_OTG_CORE_HANDLE *pdev,
 /**
 * @brief  USBH_Set_Protocol
 *         Set protocol State.
-* @param  pdev: Selected device
+* @param  pdev: Instance for USB core
 * @param  phost: Host
 * @param  protocol : Set Protocol for HID : boot/report protocol
 * @retval USBH_Status : Response for USB Set Protocol request

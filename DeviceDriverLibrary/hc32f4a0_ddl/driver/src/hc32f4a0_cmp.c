@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12        Heqb         First version
+   2020-08-31        Heqb         Replace CMP_Delay300ns() with the function DDL_DelayUS()
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -171,7 +172,6 @@
 /*******************************************************************************
  * Local function prototypes ('static')
  ******************************************************************************/
-static void CMP_Delay300ns(void);
 
 /*******************************************************************************
  * Local variable definitions ('static')
@@ -276,12 +276,12 @@ en_result_t CMP_NormalModeInit(M4_CMP_TypeDef *CMPx,
         }
         /* Set reference voltage */
         MODIFY_REG8(CMPx->PMSR, CMP_PMSR_RVSL, pstcCmpInit->u8RefVol);
-        /* Delay 300ns*/
-        CMP_Delay300ns();
+        /* Delay 1us*/
+        DDL_DelayUS(1U);
         /* Start CMP compare */
         SET_REG8_BIT(CMPx->MDR, CMP_MDR_CENB);
-        /* Delay 300ns*/
-        CMP_Delay300ns();
+        /* Delay 1us*/
+        DDL_DelayUS(1U);
         /* Set output filter and output detect edge and output polarity */
         WRITE_REG8(CMPx->FIR, (pstcCmpInit->u8OutFilter | pstcCmpInit->u8OutDetectEdges));
         WRITE_REG8(CMPx->OCR, pstcCmpInit->u8OutPolarity);
@@ -339,8 +339,8 @@ en_result_t CMP_WindowModeInit(const M4_CMP_TypeDef *CMPx,
             /* Start CMP compare function */
             SET_REG8_BIT(M4_CMP1->MDR, CMP_MDR_CENB);
             SET_REG8_BIT(M4_CMP2->MDR, CMP_MDR_CENB);
-            /* Delay 300ns*/
-            CMP_Delay300ns();
+            /* Delay 1us*/
+            DDL_DelayUS(1U);
             /* Set output filter and output detect edge and output polarity */
             WRITE_REG8(M4_CMP2->FIR, pstcCmpInit->u8OutFilter | pstcCmpInit->u8OutDetectEdges);
             WRITE_REG8(M4_CMP2->OCR, pstcCmpInit->u8OutPolarity);
@@ -362,8 +362,8 @@ en_result_t CMP_WindowModeInit(const M4_CMP_TypeDef *CMPx,
             /* Start CMP compare function */
             SET_REG8_BIT(M4_CMP3->MDR, CMP_MDR_CENB);
             SET_REG8_BIT(M4_CMP4->MDR, CMP_MDR_CENB);
-            /* Delay 300ns*/
-            CMP_Delay300ns();
+            /* Delay 1us*/
+            DDL_DelayUS(1U);
             /* Set output filter and output detect edge and output polarity */
             WRITE_REG8(M4_CMP4->FIR, pstcCmpInit->u8OutFilter | pstcCmpInit->u8OutDetectEdges);
             WRITE_REG8(M4_CMP4->OCR, pstcCmpInit->u8OutPolarity);
@@ -394,8 +394,8 @@ void CMP_FuncCmd(M4_CMP_TypeDef *CMPx, en_functional_state_t enNewStatus)
     if(Enable == enNewStatus)
     {
         SET_REG8_BIT(CMPx->MDR, CMP_MDR_CENB);
-        /* Delay 300ns*/
-        CMP_Delay300ns();
+        /* Delay 1us*/
+        DDL_DelayUS(1U);
     }
     else
     {
@@ -584,8 +584,8 @@ void CMP_SetOutDetectEdges(M4_CMP_TypeDef *CMPx, uint8_t u8CmpEdges)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
-        /* Delay 300ns */
-        CMP_Delay300ns();
+        /* Delay 1us */
+        DDL_DelayUS(1U);
     }
 }
 
@@ -621,8 +621,8 @@ void CMP_SetOutputFilter(M4_CMP_TypeDef *CMPx, uint8_t u8CmpFilter)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
-        /* Delay 300ns */
-        CMP_Delay300ns();
+        /* Delay 1us */
+        DDL_DelayUS(1U);
     }
 }
 
@@ -656,8 +656,8 @@ void CMP_SetOutputPolarity(M4_CMP_TypeDef *CMPx, uint8_t u8CmpPolarity)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
-        /* Delay 300ns */
-        CMP_Delay300ns();
+        /* Delay 1us */
+        DDL_DelayUS(1U);
     }
 }
 
@@ -723,8 +723,8 @@ void CMP_SetCompareVol(M4_CMP_TypeDef *CMPx, uint8_t u8CmpCh, uint8_t u8CmpVol)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
-        /* Delay 300ns */
-        CMP_Delay300ns();
+        /* Delay 1us */
+        DDL_DelayUS(1U);
     }
 }
 
@@ -761,8 +761,8 @@ void CMP_SetRefVol(M4_CMP_TypeDef *CMPx, uint8_t u8RefVol)
     {
         /* Recover CMP status */
         MODIFY_REG8(CMPx->MDR, CMP_MDR_CENB, u8temp);
-        /* Delay 300ns */
-        CMP_Delay300ns();
+        /* Delay 1us */
+        DDL_DelayUS(1U);
     }
 }
 
@@ -792,19 +792,6 @@ void CMP_SetTimerWinSignal(M4_CMP_TypeDef *CMPx,          \
     else
     {
         CLEAR_REG16_BIT(CMPx->TWSR, u16TWSignal);
-    }
-}
-
-/**
- * @brief  Software delay 300ns.
- * @param  None
- * @retval None
- */
-static void CMP_Delay300ns(void)
-{
-    for(uint32_t i=0UL; i<(HCLK_VALUE/3333333UL + 1UL); i++)
-    {
-        __NOP();
     }
 }
 

@@ -159,7 +159,6 @@
  *
  * NOTE!!! 'APP_TMRA_INT_TYPE' can only be defined as 'TMRA_INT_CMP_CHx'(x=1 ~ 4, depends on 'APP_TMRA_CH') for this example.
  */
-#define TMRA_SHARE_IRQn_BASE                (Int135_IRQn)
 #define APP_TMRA_INT_UNIT                   (APP_H_TMRA_UNIT)
 #define APP_TMRA_INT_TYPE                   (APP_H_TMRA_INT_TYPE)
 #define APP_TMRA_INT_PRIO                   (APP_H_TMRA_INT_PRIO)

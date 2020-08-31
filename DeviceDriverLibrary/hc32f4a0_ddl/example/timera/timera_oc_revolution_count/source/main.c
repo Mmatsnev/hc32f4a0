@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wuze            First version
+   2020-08-20       Wuze            Calculating the rotation speed of the quadrature
+                                    encoder via revolution counting function.
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -79,6 +81,14 @@
 /* Select a function for this example. */
 #define APP_FUNC                            (APP_FUNC_PHASE_Z_COUNT)
 
+/* Position unit phase-difference count */
+#define APP_POS_PHASE_DIFF_COUNT_X1         (1U)
+#define APP_POS_PHASE_DIFF_COUNT_X2         (2U)
+#define APP_POS_PHASE_DIFF_COUNT_X4         (4U)
+
+/* Select position unit phase-difference count. */
+#define APP_POS_PHASE_DIFF_COUNT            (APP_POS_PHASE_DIFF_COUNT_X1)
+
 /*
  * TimerA unit definitions for this example.
  *
@@ -99,8 +109,6 @@
 #define APP_TMRA_Z_OVF_EVENT                (EVT_TMRA_10_OVF)
 
 /* Definitions about interrupt. */
-#define TMRA_SHARE_IRQn_BASE                (Int135_IRQn)
-
 #define APP_TMRA_Z_UNIT_INT_TYPE            (TMRA_INT_OVF)
 #define APP_TMRA_Z_UNIT_INT_PRIO            (DDL_IRQ_PRIORITY_03)
 #define APP_TMRA_Z_UNIT_INT_SRC             (INT_TMRA_10_OVF)
@@ -119,9 +127,23 @@
 #define APP_Z_PIN                           (GPIO_PIN_05)
 #define APP_Z_PIN_FUNC                      (GPIO_FUNC_6_TIMA10_TRIG)
 
-/* Phase-difference count X2. */
-#define APP_TMRA_POS_UNIT_CLK               (TMRA_CLK_HW_UP_CLKBH_CLKAR | TMRA_CLK_HW_DOWN_CLKAH_CLKBR | \
+/* Phase-difference count. */
+#if (APP_POS_PHASE_DIFF_COUNT == APP_POS_PHASE_DIFF_COUNT_X1)
+    #define APP_TMRA_POS_UNIT_CLK           (TMRA_CLK_HW_UP_CLKBH_CLKAR | TMRA_CLK_HW_DOWN_CLKAH_CLKBR)
+
+#elif (APP_POS_PHASE_DIFF_COUNT == APP_POS_PHASE_DIFF_COUNT_X2)
+    #define APP_TMRA_POS_UNIT_CLK           (TMRA_CLK_HW_UP_CLKBH_CLKAR | TMRA_CLK_HW_DOWN_CLKAH_CLKBR | \
                                              TMRA_CLK_HW_UP_CLKBL_CLKAF | TMRA_CLK_HW_DOWN_CLKAL_CLKBF)
+
+#elif (APP_POS_PHASE_DIFF_COUNT == APP_POS_PHASE_DIFF_COUNT_X4)
+    #define APP_TMRA_POS_UNIT_CLK           (TMRA_CLK_HW_UP_CLKBH_CLKAR | TMRA_CLK_HW_DOWN_CLKAH_CLKBR | \
+                                             TMRA_CLK_HW_UP_CLKBL_CLKAF | TMRA_CLK_HW_DOWN_CLKAL_CLKBF | \
+                                             TMRA_CLK_HW_UP_CLKAH_CLKBF | TMRA_CLK_HW_DOWN_CLKBH_CLKAF | \
+                                             TMRA_CLK_HW_UP_CLKAL_CLKBR | TMRA_CLK_HW_DOWN_CLKBL_CLKAR)
+#endif
+
+/* Position unit cycles per round. */
+#define APP_POS_CYCLE_PER_ROUND             (1000UL * APP_POS_PHASE_DIFF_COUNT)
 
 /* Define the configuration values according to the function that selected. */
 #if (APP_FUNC == APP_FUNC_PHASE_Z_COUNT)
@@ -135,11 +157,15 @@
     #define APP_TMRA_Z_UNIT_PERIOD_VAL      (1UL - 1UL)
 
 #elif (APP_FUNC == APP_FUNC_POS_OVF_COUNT)
-    /* Counts 20 clocks. */
-    #define APP_TMRA_POS_UNIT_PERIOD_VAL    (20UL - 1UL)
-    #define APP_TMRA_Z_UNIT_CLK             (TMRA_CLK_HW_UP_SYM_OVF)
+    /* Counts 100 cycles. */
+    #define APP_TMRA_POS_BASE_CNT           (100UL)
+    #define APP_TMRA_POS_UNIT_PERIOD_VAL    (APP_TMRA_POS_BASE_CNT - 1UL)
+    /* Different direction, different clock for Z unit.
+       APP_TMRA_Z_UNIT_CLK can be defined as 'TMRA_CLK_HW_UP_SYM_UNF' or 'TMRA_CLK_HW_UP_SYM_OVF',
+       according to the real application. */
+    #define APP_TMRA_Z_UNIT_CLK             (TMRA_CLK_HW_UP_SYM_UNF)
     /* Counts 10 revolutions */
-    #define APP_TMRA_Z_UNIT_PERIOD_VAL      (10UL - 1UL)
+    #define APP_TMRA_Z_UNIT_PERIOD_VAL      ((APP_POS_CYCLE_PER_ROUND / APP_TMRA_POS_BASE_CNT)  - 1UL)
 
 #else
     #error "This function is NOT supported!!!"
@@ -161,19 +187,22 @@
  ******************************************************************************/
 static void Peripheral_WE(void);
 static void Peripheral_WP(void);
+static void SystemClockConfig(void);
 
 static void TmrAConfig(void);
 static void TmrAIrqConfig(void);
-
 static void TMRA_Ovf_IrqCallback(void);
+
+/* 1 second timer, for calculating rotation speed. */
+static void Tmr2Config(void);
+static void Tmr2IrqConfig(void);
+static void TMR2_Cmp_IrqCallback(void);
 
 /*******************************************************************************
  * Local variable definitions ('static')
  ******************************************************************************/
-#if (APP_FUNC == APP_FUNC_PHASE_Z_COUNT)
-    __IO static uint32_t u32RevolutionCnt = 0U;
-    __IO static uint32_t u32ClocksPerRevolution = 0U;
-#endif
+static uint8_t m_u8SpeedUpd  = 0UL;
+static uint32_t m_u32RevolutionCnt = 0U;
 
 /*******************************************************************************
  * Function implementation - global ('extern') and local ('static')
@@ -186,47 +215,35 @@ static void TMRA_Ovf_IrqCallback(void);
  */
 int32_t main(void)
 {
-    uint32_t u32TmrADir    = 0xFFFFFFFFU;
-    int16_t s16TmrACntCurr = 0U;
-    int16_t s16TmrACntLast = 0U;
-
-    /* The default system clock is MRC(8MHz). */
-
     /* MCU Peripheral registers write unprotected. */
     Peripheral_WE();
+    /* Configures the PLLHP(240MHz) as the system clock. */
+    SystemClockConfig();
 #if (DDL_PRINT_ENABLE == DDL_ON)
     /* Initializes UART for debug printing. Baudrate is 115200. */
     DDL_PrintfInit();
 #endif /* #if (DDL_PRINT_ENABLE == DDL_ON) */
     /* Configures TimerA. */
     TmrAConfig();
+    /* Configures Timer2. */
+    Tmr2Config();
     /* MCU Peripheral registers write protected. */
     Peripheral_WP();
 
     /* Starts TimerA. */
     TMRA_Start(APP_TMRA_Z_UNIT);
     TMRA_Start(APP_TMRA_POS_UNIT);
+    /* Starts Timer2. */
+    TMR2_Start(M4_TMR2_1, TMR2_CH_A);
 
     /***************** Configuration end, application start **************/
     while (1U)
     {
-        s16TmrACntCurr = (int16_t)TMRA_GetCntVal(APP_TMRA_POS_UNIT);
-
-        if (s16TmrACntCurr != s16TmrACntLast)
+        if (m_u8SpeedUpd != 0U)
         {
-            /* Get direction of counting. */
-            u32TmrADir = TMRA_GetCntDir(APP_TMRA_POS_UNIT);
-            if (u32TmrADir == TMRA_DIR_DOWN)
-            {
-                DBG("TimerA counts down. Steps: %d \n", (s16TmrACntCurr - s16TmrACntLast));
-            }
-            else if (u32TmrADir == TMRA_DIR_UP)
-            {
-                DBG("TimerA counts up. Steps: %d \n", (s16TmrACntCurr - s16TmrACntLast));
-            }
-            else
-            {}
-            s16TmrACntLast = s16TmrACntCurr;
+            DBG("OC speed: %d RPM\n", m_u32RevolutionCnt * 60UL);
+            m_u32RevolutionCnt = 0UL;
+            m_u8SpeedUpd = 0U;
         }
     }
 }
@@ -244,13 +261,13 @@ static void Peripheral_WE(void)
     /* Unlock PWC register: FCG0 */
     PWC_FCG0_Unlock();
     /* Unlock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
-    // PWC_Unlock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1 | PWC_UNLOCK_CODE_2);
+    PWC_Unlock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1);
     /* Unlock SRAM register: WTCR */
-    // SRAM_WTCR_Unlock();
+    SRAM_WTCR_Unlock();
     /* Unlock SRAM register: CKCR */
     // SRAM_CKCR_Unlock();
     /* Unlock all EFM registers */
-    // EFM_Unlock();
+    EFM_Unlock();
     /* Unlock EFM register: FWMC */
     // EFM_FWMC_Unlock();
     /* Unlock EFM OTP write protect registers */
@@ -270,17 +287,72 @@ static void Peripheral_WP(void)
     /* Lock PWC register: FCG0 */
     PWC_FCG0_Lock();
     /* Lock PWC, CLK, PVD registers, @ref PWC_REG_Write_Unlock_Code for details */
-    // PWC_Lock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1 | PWC_UNLOCK_CODE_2);
+    PWC_Lock(PWC_UNLOCK_CODE_0 | PWC_UNLOCK_CODE_1);
     /* Lock SRAM register: WTCR */
-    // SRAM_WTCR_Lock();
+    SRAM_WTCR_Lock();
     /* Lock SRAM register: CKCR */
     // SRAM_CKCR_Lock();
     /* Lock all EFM registers */
-    // EFM_Lock();
+    EFM_Lock();
     /* Lock EFM OTP write protect registers */
     // EFM_OTP_WP_Lock();
     /* Lock EFM register: FWMC */
     // EFM_FWMC_Lock();
+}
+
+/**
+ * @brief  Configures the PLLHP(240MHz) as the system clock.
+ * @param  None
+ * @retval None
+ */
+static void SystemClockConfig(void)
+{
+    stc_clk_pllh_init_t stcPLLHInit;
+    stc_clk_xtal_init_t stcXtalInit;
+
+    /* Configures XTAL. PLLH input source is XTAL. */
+    CLK_XtalStrucInit(&stcXtalInit);
+    stcXtalInit.u8XtalState = CLK_XTAL_ON;
+    stcXtalInit.u8XtalDrv   = CLK_XTALDRV_LOW;
+    stcXtalInit.u8XtalMode  = CLK_XTALMODE_OSC;
+    stcXtalInit.u8XtalStb   = CLK_XTALSTB_499US;
+    CLK_XtalInit(&stcXtalInit);
+
+    /* PCLK0, HCLK  Max 240MHz */
+    /* PCLK1, PCLK4 Max 120MHz */
+    /* PCLK2, PCLK3 Max 60MHz  */
+    /* EX BUS Max 120MHz */
+    CLK_ClkDiv(CLK_CATE_ALL,                                       \
+               (CLK_PCLK0_DIV1 | CLK_PCLK1_DIV8 | CLK_PCLK2_DIV4 | \
+                CLK_PCLK3_DIV4 | CLK_PCLK4_DIV4 | CLK_EXCLK_DIV2 | \
+                CLK_HCLK_DIV1));
+
+    CLK_PLLHStrucInit(&stcPLLHInit);
+    /*
+     * PLLP_freq = ((PLL_source / PLLM) * PLLN) / PLLP
+     *           = (8 / 1) * 120 / 4
+     *           = 240
+     */
+    stcPLLHInit.u8PLLState = CLK_PLLH_ON;
+    stcPLLHInit.PLLCFGR = 0UL;
+    stcPLLHInit.PLLCFGR_f.PLLM = (1UL   - 1UL);
+    stcPLLHInit.PLLCFGR_f.PLLN = (120UL - 1UL);
+    stcPLLHInit.PLLCFGR_f.PLLP = (4UL   - 1UL);
+    stcPLLHInit.PLLCFGR_f.PLLQ = (16UL  - 1UL);
+    stcPLLHInit.PLLCFGR_f.PLLR = (16UL  - 1UL);
+
+    /* stcPLLHInit.PLLCFGR_f.PLLSRC = CLK_PLLSRC_XTAL; */
+    CLK_PLLHInit(&stcPLLHInit);
+
+    /* Set SRAM wait cycles. */
+    SRAM_SetWaitCycle(SRAM_SRAMH, SRAM_WAIT_CYCLE_1, SRAM_WAIT_CYCLE_1);
+    SRAM_SetWaitCycle((SRAM_SRAM123 | SRAM_SRAM4 | SRAM_SRAMB), SRAM_WAIT_CYCLE_2, SRAM_WAIT_CYCLE_2);
+
+    /* Set EFM wait cycle. 5 wait cycles needed when system clock is 240MHz */
+    EFM_SetWaitCycle(EFM_WAIT_CYCLE_5);
+
+    CLK_SetSysClkSrc(CLK_SYSCLKSOURCE_PLLH);
+    PWC_Lock(PWC_UNLOCK_CODE_0);
 }
 
 /**
@@ -393,13 +465,76 @@ static void TMRA_Ovf_IrqCallback(void)
         /* Quadrature encoder generates an interrupt every revolution. */
 
         /* Read the number of clocks generated by the quadrature encoder per revolution. */
-        u32ClocksPerRevolution = TMRA_GetCmpVal(APP_TMRA_POS_UNIT, APP_TMRA_POS_CH);
-
-        u32RevolutionCnt++;
-#else
-        /* The counter reaches the specified period value. */
+        /* xxxx = TMRA_GetCmpVal(APP_TMRA_POS_UNIT, APP_TMRA_POS_CH); */
 #endif
+        m_u32RevolutionCnt++;
     }
+}
+
+/**
+ * @brief  Timer2 configuration.
+ * @param  None
+ * @retval None
+ */
+static void Tmr2Config(void)
+{
+    stc_tmr2_init_t stcInit;
+
+    /* 1. Enable Timer2 peripheral clock. */
+    PWC_Fcg2PeriphClockCmd(PWC_FCG2_TMR2_1, Enable);
+
+    /* 2. Set a default initialization value for stcInit. */
+    TMR2_StructInit(&stcInit);
+
+    /* 3. Modifies the initialization values depends on the application. */
+    stcInit.u32ClkSrc = TMR2_CLK_SYNC_PCLK1;
+    stcInit.u32ClkDiv = TMR2_CLK_DIV64;
+    stcInit.u32CmpVal = 46875UL - 1UL;
+    TMR2_Init(M4_TMR2_1, TMR2_CH_A, &stcInit);
+
+    /* 4. Configures IRQ if needed. */
+    Tmr2IrqConfig();
+}
+
+/**
+ * @brief  Timer2 interrupt configuration.
+ * @param  None
+ * @retval None
+ */
+static void Tmr2IrqConfig(void)
+{
+    stc_irq_signin_config_t stcCfg;
+
+    stcCfg.enIntSrc    = INT_TMR2_1_CMPA;
+    stcCfg.enIRQn      = Int050_IRQn;
+    stcCfg.pfnCallback = &TMR2_Cmp_IrqCallback;
+    INTC_IrqSignIn(&stcCfg);
+
+    NVIC_ClearPendingIRQ(stcCfg.enIRQn);
+    NVIC_SetPriority(stcCfg.enIRQn, DDL_IRQ_PRIORITY_06);
+    NVIC_EnableIRQ(stcCfg.enIRQn);
+
+    /* Enable the specified interrupts of Timer2. */
+    TMR2_IntCmd(M4_TMR2_1, TMR2_CH_A, TMR2_INT_CMP, Enable);
+}
+
+/**
+ * @brief  Timer2 counter comparison match interrupt callback function.
+ * @param  None
+ * @retval None
+ */
+static void TMR2_Cmp_IrqCallback(void)
+{
+    static uint32_t u32TmrCnt = 0U;
+
+    u32TmrCnt++;
+    /* 100ms * 10 = 1s */
+    if (u32TmrCnt >= 10U)
+    {
+        m_u8SpeedUpd = 1U;
+        u32TmrCnt    = 0U;
+    }
+    TMR2_ClrStatus(M4_TMR2_1, TMR2_CH_A, TMR2_FLAG_CMP);
 }
 
 /**

@@ -7,6 +7,7 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Wangmin         First version
+   2020-08-21       Wangmin         Modify Comment for parameter pdev
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -118,7 +119,7 @@ static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev);
 /**
  * @brief  USBO_OTG_ISR_Handler
  *
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @retval uint32_t
  */
 uint32_t USBO_OTG_ISR_Handler(USB_OTG_CORE_HANDLE *pdev)
@@ -150,7 +151,7 @@ uint32_t USBO_OTG_ISR_Handler(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_InitiateSRP
  *         Initiate an srp session
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @retval None
  */
 void USB_OTG_InitiateSRP(USB_OTG_CORE_HANDLE *pdev)
@@ -172,7 +173,7 @@ void USB_OTG_InitiateSRP(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_InitiateHNP
  *         Initiate HNP
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @param  [in] mode     Host or device mode
  * @retval None
  */
@@ -213,7 +214,7 @@ void USB_OTG_InitiateHNP(USB_OTG_CORE_HANDLE *pdev , uint8_t state, uint8_t mode
 /**
  * @brief  USB_OTG_GetCurrentState
  *         Return current OTG State
-  * @param pdev     Selected device
+  * @param [in] pdev     Instance for USB core
  * @retval None
  */
 uint32_t USB_OTG_GetCurrentState (USB_OTG_CORE_HANDLE *pdev)
@@ -239,7 +240,7 @@ uint32_t USB_OTG_GetCurrentState (USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_HandleConnectorIDStatusChange_ISR
  *         handles the Connector ID Status Change Interrupt
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @retval Status
  */
 static uint32_t USB_OTG_HandleConnectorIDStatusChange_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -281,7 +282,7 @@ static uint32_t USB_OTG_HandleConnectorIDStatusChange_ISR(USB_OTG_CORE_HANDLE *p
 /**
  * @brief  USB_OTG_HandleSessionRequest_ISR
  *           Initiating the Session Request Protocol
-  * @param  [in] pdev     Selected device
+  * @param  [in] pdev     Instance for USB core
  * @retval Status
  */
 static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
@@ -313,7 +314,7 @@ static uint32_t USB_OTG_HandleSessionRequest_ISR(USB_OTG_CORE_HANDLE *pdev)
 /**
  * @brief  USB_OTG_Read_itr
  *         returns the Core Interrupt register
- * @param  [in] pdev     Selected device
+ * @param  [in] pdev     Instance for USB core
  * @retval Status
  */
 static uint32_t USB_OTG_Read_itr(USB_OTG_CORE_HANDLE *pdev)

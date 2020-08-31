@@ -6,6 +6,8 @@
    Change Logs:
    Date             Author          Notes
    2020-06-12       Zhangxl         First version
+   2020-08-19       Chengy          Remove func.BSP_CLK_Init() in main, use 
+                                    default systemclock. 
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co., Ltd. All rights reserved.
@@ -233,8 +235,6 @@ int32_t main(void)
 {
     /* Register write enable for some required peripherals. */
     Peripheral_WE();
-    /* System Clock init */
-    BSP_CLK_Init();
     /* Expand IO init */
     BSP_IO_Init();
     /* LED init */

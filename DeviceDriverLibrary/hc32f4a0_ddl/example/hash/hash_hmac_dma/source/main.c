@@ -328,7 +328,7 @@ int32_t main(void)
 
 /**
  * @brief  HASH Configration.
- * @param  None    
+ * @param  None
  * @retval None
  */
 static void HASH_Config(void)
@@ -363,7 +363,7 @@ static void DMA_Config(const uint32_t au32Data[], uint32_t u32DataLength)
     /* Config DMA */
     stcDmaInit.u32DataWidth = DMA_DATAWIDTH_32BIT;
     stcDmaInit.u32BlockSize = DMA_BLKSIZE;
-    
+
 #if (HASH_DATA_TYPE == HASH_DATA_CHAR)
     stcDmaInit.u32TransCnt = 1U;
     stcDmaInit.u32SrcAddr = (uint32_t)(&u32FillBuffer[0U]);
@@ -376,7 +376,7 @@ static void DMA_Config(const uint32_t au32Data[], uint32_t u32DataLength)
     stcDmaInit.u32SrcInc = DMA_SRC_ADDR_INC;
     stcDmaInit.u32DestInc = DMA_DEST_ADDR_INC;
     if (Ok != DMA_Init(DMA_UNIT, DMA_CH, &stcDmaInit))
-    {    
+    {
         while (1)
         {
             ;
@@ -440,7 +440,7 @@ static void DataConversion(uint8_t u8Type)
                 DMA_ClearTransIntStatus(DMA_UNIT, DMA_BTC_INT_CH0 | DMA_TC_INT_CH0);
                 u32FillData = strlen((char *)Key) - HASH_GROUP_LEN * u32TsfCnt;
                 if (u32FillData >= HASH_GROUP_LEN)
-                {  
+                {
                     for(uint8_t i = 0U; i < DMA_BLKSIZE; i++)
                     {
                         u32Temp = *((uint32_t *)&Key[u32Pos]);
@@ -492,7 +492,7 @@ static void DataConversion(uint8_t u8Type)
                 HASH_MsgGrpConfig(HASH_MSG_GRP_END);
             }
             u32FillData = strlen((char *)SrcData) - HASH_GROUP_LEN * u32TsfCnt;
-    
+
             if (u32FillData >= HASH_GROUP_LEN)
             {
                 for(uint8_t i = 0U; i < DMA_BLKSIZE; i++)
