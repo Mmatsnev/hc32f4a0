@@ -5,7 +5,7 @@
  @verbatim
    Change Logs:
    Date             Author          Notes
-   2020-06-30      Heqb          First version
+   2020-08-19      Heqb          First version
  @endverbatim
  *******************************************************************************
  * Copyright (C) 2016, Huada Semiconductor Co.,Ltd All rights reserved.
@@ -5322,115 +5322,44 @@ typedef struct
 /*  Bit definition for AOS_COMTRG2 register  */
 #define AOS_COMTRG2_TRGSEL                             (0x000001FFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTDIRR1 register  */
-#define AOS_GPIO_PEVNTDIRR1_PDIR                       (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTDIRR register  */
+#define AOS_GPIO_PEVNTDIRR_PDIR                        (0x0000FFFFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTIDR1 register  */
-#define AOS_GPIO_PEVNTIDR1_PIN                         (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTIDR register  */
+#define AOS_GPIO_PEVNTIDR_PIN                          (0x0000FFFFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTODR1 register  */
-#define AOS_GPIO_PEVNTODR1_POUT                        (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTODR register  */
+#define AOS_GPIO_PEVNTODR_POUT                         (0x0000FFFFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTORR1 register  */
-#define AOS_GPIO_PEVNTORR1_POR                         (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTORR register  */
+#define AOS_GPIO_PEVNTORR_POR                          (0x0000FFFFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTOSR1 register  */
-#define AOS_GPIO_PEVNTOSR1_POS                         (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTOSR register  */
+#define AOS_GPIO_PEVNTOSR_POS                          (0x0000FFFFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTRISR1 register  */
-#define AOS_GPIO_PEVNTRISR1_RIS                        (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTRISR register  */
+#define AOS_GPIO_PEVNTRISR_RIS                         (0x0000FFFFUL)
 
-/*  Bit definition for AOS_GPIO_PEVNTFAL1 register  */
-#define AOS_GPIO_PEVNTFAL1_FAL                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTDIRR2 register  */
-#define AOS_GPIO_PEVNTDIRR2_PDIR                       (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTIDR2 register  */
-#define AOS_GPIO_PEVNTIDR2_PIN                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTODR2 register  */
-#define AOS_GPIO_PEVNTODR2_POUT                        (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTORR2 register  */
-#define AOS_GPIO_PEVNTORR2_POR                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTOSR2 register  */
-#define AOS_GPIO_PEVNTOSR2_POS                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTRISR2 register  */
-#define AOS_GPIO_PEVNTRISR2_RIS                        (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTFAL2 register  */
-#define AOS_GPIO_PEVNTFAL2_FAL                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTDIRR3 register  */
-#define AOS_GPIO_PEVNTDIRR3_PDIR                       (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTIDR3 register  */
-#define AOS_GPIO_PEVNTIDR3_PIN                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTODR3 register  */
-#define AOS_GPIO_PEVNTODR3_POUT                        (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTORR3 register  */
-#define AOS_GPIO_PEVNTORR3_POR                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTOSR3 register  */
-#define AOS_GPIO_PEVNTOSR3_POS                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTRISR3 register  */
-#define AOS_GPIO_PEVNTRISR3_RIS                        (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTFAL3 register  */
-#define AOS_GPIO_PEVNTFAL3_FAL                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTDIRR4 register  */
-#define AOS_GPIO_PEVNTDIRR4_PDIR                       (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTIDR4 register  */
-#define AOS_GPIO_PEVNTIDR4_PIN                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTODR4 register  */
-#define AOS_GPIO_PEVNTODR4_POUT                        (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTORR4 register  */
-#define AOS_GPIO_PEVNTORR4_POR                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTOSR4 register  */
-#define AOS_GPIO_PEVNTOSR4_POS                         (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTRISR4 register  */
-#define AOS_GPIO_PEVNTRISR4_RIS                        (0x0000FFFFUL)
-
-/*  Bit definition for AOS_GPIO_PEVNTFAL4 register  */
-#define AOS_GPIO_PEVNTFAL4_FAL                         (0x0000FFFFUL)
+/*  Bit definition for AOS_GPIO_PEVNTFAL register  */
+#define AOS_GPIO_PEVNTFAL_FAL                          (0x0000FFFFUL)
 
 /*  Bit definition for AOS_GPIO_PEVNTNFCR register  */
 #define AOS_GPIO_PEVNTNFCR_NFEN1_POS                   (0U)
 #define AOS_GPIO_PEVNTNFCR_NFEN1                       (0x00000001UL)
 #define AOS_GPIO_PEVNTNFCR_DIVS1_POS                   (1U)
 #define AOS_GPIO_PEVNTNFCR_DIVS1                       (0x00000006UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS1_0                     (0x00000002UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS1_1                     (0x00000004UL)
 #define AOS_GPIO_PEVNTNFCR_NFEN2_POS                   (8U)
 #define AOS_GPIO_PEVNTNFCR_NFEN2                       (0x00000100UL)
 #define AOS_GPIO_PEVNTNFCR_DIVS2_POS                   (9U)
 #define AOS_GPIO_PEVNTNFCR_DIVS2                       (0x00000600UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS2_0                     (0x00000200UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS2_1                     (0x00000400UL)
 #define AOS_GPIO_PEVNTNFCR_NFEN3_POS                   (16U)
 #define AOS_GPIO_PEVNTNFCR_NFEN3                       (0x00010000UL)
 #define AOS_GPIO_PEVNTNFCR_DIVS3_POS                   (17U)
 #define AOS_GPIO_PEVNTNFCR_DIVS3                       (0x00060000UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS3_0                     (0x00020000UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS3_1                     (0x00040000UL)
 #define AOS_GPIO_PEVNTNFCR_NFEN4_POS                   (24U)
 #define AOS_GPIO_PEVNTNFCR_NFEN4                       (0x01000000UL)
 #define AOS_GPIO_PEVNTNFCR_DIVS4_POS                   (25U)
 #define AOS_GPIO_PEVNTNFCR_DIVS4                       (0x06000000UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS4_0                     (0x02000000UL)
-#define AOS_GPIO_PEVNTNFCR_DIVS4_1                     (0x04000000UL)
 
 /*******************************************************************************
                 Bit definition for Peripheral CAN
@@ -6875,10 +6804,6 @@ typedef struct
 #define DMA_RCFGCTL_RCFGLLP                            (0x00000002UL)
 #define DMA_RCFGCTL_RCFGCHS_POS                        (8U)
 #define DMA_RCFGCTL_RCFGCHS                            (0x00000F00UL)
-#define DMA_RCFGCTL_RCFGCHS_0                          (0x00000100UL)
-#define DMA_RCFGCTL_RCFGCHS_1                          (0x00000200UL)
-#define DMA_RCFGCTL_RCFGCHS_2                          (0x00000400UL)
-#define DMA_RCFGCTL_RCFGCHS_3                          (0x00000800UL)
 #define DMA_RCFGCTL_SARMD_POS                          (16U)
 #define DMA_RCFGCTL_SARMD                              (0x00030000UL)
 #define DMA_RCFGCTL_SARMD_0                            (0x00010000UL)
@@ -6916,28 +6841,8 @@ typedef struct
 /*  Bit definition for DMA_RPTB register  */
 #define DMA_RPTB_SRPTB_POS                             (0U)
 #define DMA_RPTB_SRPTB                                 (0x000003FFUL)
-#define DMA_RPTB_SRPTB_0                               (0x00000001UL)
-#define DMA_RPTB_SRPTB_1                               (0x00000002UL)
-#define DMA_RPTB_SRPTB_2                               (0x00000004UL)
-#define DMA_RPTB_SRPTB_3                               (0x00000008UL)
-#define DMA_RPTB_SRPTB_4                               (0x00000010UL)
-#define DMA_RPTB_SRPTB_5                               (0x00000020UL)
-#define DMA_RPTB_SRPTB_6                               (0x00000040UL)
-#define DMA_RPTB_SRPTB_7                               (0x00000080UL)
-#define DMA_RPTB_SRPTB_8                               (0x00000100UL)
-#define DMA_RPTB_SRPTB_9                               (0x00000200UL)
 #define DMA_RPTB_DRPTB_POS                             (16U)
 #define DMA_RPTB_DRPTB                                 (0x03FF0000UL)
-#define DMA_RPTB_DRPTB_0                               (0x00010000UL)
-#define DMA_RPTB_DRPTB_1                               (0x00020000UL)
-#define DMA_RPTB_DRPTB_2                               (0x00040000UL)
-#define DMA_RPTB_DRPTB_3                               (0x00080000UL)
-#define DMA_RPTB_DRPTB_4                               (0x00100000UL)
-#define DMA_RPTB_DRPTB_5                               (0x00200000UL)
-#define DMA_RPTB_DRPTB_6                               (0x00400000UL)
-#define DMA_RPTB_DRPTB_7                               (0x00800000UL)
-#define DMA_RPTB_DRPTB_8                               (0x01000000UL)
-#define DMA_RPTB_DRPTB_9                               (0x02000000UL)
 
 /*  Bit definition for DMA_SNSEQCTL register  */
 #define DMA_SNSEQCTL_SOFFSET_POS                       (0U)
@@ -7375,60 +7280,16 @@ typedef struct
 /*  Bit definition for MMF_REMCR0 register  */
 #define MMF_REMCR0_RM0SIZE_POS                         (0U)
 #define MMF_REMCR0_RM0SIZE                             (0x0000001FUL)
-#define MMF_REMCR0_RM0SIZE_0                           (0x00000001UL)
-#define MMF_REMCR0_RM0SIZE_1                           (0x00000002UL)
-#define MMF_REMCR0_RM0SIZE_2                           (0x00000004UL)
-#define MMF_REMCR0_RM0SIZE_3                           (0x00000008UL)
-#define MMF_REMCR0_RM0SIZE_4                           (0x00000010UL)
 #define MMF_REMCR0_RM0TADDR_POS                        (12U)
 #define MMF_REMCR0_RM0TADDR                            (0x1FFFF000UL)
-#define MMF_REMCR0_RM0TADDR_0                          (0x00001000UL)
-#define MMF_REMCR0_RM0TADDR_1                          (0x00002000UL)
-#define MMF_REMCR0_RM0TADDR_2                          (0x00004000UL)
-#define MMF_REMCR0_RM0TADDR_3                          (0x00008000UL)
-#define MMF_REMCR0_RM0TADDR_4                          (0x00010000UL)
-#define MMF_REMCR0_RM0TADDR_5                          (0x00020000UL)
-#define MMF_REMCR0_RM0TADDR_6                          (0x00040000UL)
-#define MMF_REMCR0_RM0TADDR_7                          (0x00080000UL)
-#define MMF_REMCR0_RM0TADDR_8                          (0x00100000UL)
-#define MMF_REMCR0_RM0TADDR_9                          (0x00200000UL)
-#define MMF_REMCR0_RM0TADDR_10                         (0x00400000UL)
-#define MMF_REMCR0_RM0TADDR_11                         (0x00800000UL)
-#define MMF_REMCR0_RM0TADDR_12                         (0x01000000UL)
-#define MMF_REMCR0_RM0TADDR_13                         (0x02000000UL)
-#define MMF_REMCR0_RM0TADDR_14                         (0x04000000UL)
-#define MMF_REMCR0_RM0TADDR_15                         (0x08000000UL)
-#define MMF_REMCR0_RM0TADDR_16                         (0x10000000UL)
 #define MMF_REMCR0_EN0_POS                             (31U)
 #define MMF_REMCR0_EN0                                 (0x80000000UL)
 
 /*  Bit definition for MMF_REMCR1 register  */
 #define MMF_REMCR1_RM1SIZE_POS                         (0U)
 #define MMF_REMCR1_RM1SIZE                             (0x0000001FUL)
-#define MMF_REMCR1_RM1SIZE_0                           (0x00000001UL)
-#define MMF_REMCR1_RM1SIZE_1                           (0x00000002UL)
-#define MMF_REMCR1_RM1SIZE_2                           (0x00000004UL)
-#define MMF_REMCR1_RM1SIZE_3                           (0x00000008UL)
-#define MMF_REMCR1_RM1SIZE_4                           (0x00000010UL)
 #define MMF_REMCR1_RM1TADDR_POS                        (12U)
 #define MMF_REMCR1_RM1TADDR                            (0x1FFFF000UL)
-#define MMF_REMCR1_RM1TADDR_0                          (0x00001000UL)
-#define MMF_REMCR1_RM1TADDR_1                          (0x00002000UL)
-#define MMF_REMCR1_RM1TADDR_2                          (0x00004000UL)
-#define MMF_REMCR1_RM1TADDR_3                          (0x00008000UL)
-#define MMF_REMCR1_RM1TADDR_4                          (0x00010000UL)
-#define MMF_REMCR1_RM1TADDR_5                          (0x00020000UL)
-#define MMF_REMCR1_RM1TADDR_6                          (0x00040000UL)
-#define MMF_REMCR1_RM1TADDR_7                          (0x00080000UL)
-#define MMF_REMCR1_RM1TADDR_8                          (0x00100000UL)
-#define MMF_REMCR1_RM1TADDR_9                          (0x00200000UL)
-#define MMF_REMCR1_RM1TADDR_10                         (0x00400000UL)
-#define MMF_REMCR1_RM1TADDR_11                         (0x00800000UL)
-#define MMF_REMCR1_RM1TADDR_12                         (0x01000000UL)
-#define MMF_REMCR1_RM1TADDR_13                         (0x02000000UL)
-#define MMF_REMCR1_RM1TADDR_14                         (0x04000000UL)
-#define MMF_REMCR1_RM1TADDR_15                         (0x08000000UL)
-#define MMF_REMCR1_RM1TADDR_16                         (0x10000000UL)
 #define MMF_REMCR1_EN1_POS                             (31U)
 #define MMF_REMCR1_EN1                                 (0x80000000UL)
 
@@ -8526,18 +8387,8 @@ typedef struct
 /*  Bit definition for FMAC_CTR register  */
 #define FMAC_CTR_STAGE_NUM_POS                         (0U)
 #define FMAC_CTR_STAGE_NUM                             (0x0000001FUL)
-#define FMAC_CTR_STAGE_NUM_0                           (0x00000001UL)
-#define FMAC_CTR_STAGE_NUM_1                           (0x00000002UL)
-#define FMAC_CTR_STAGE_NUM_2                           (0x00000004UL)
-#define FMAC_CTR_STAGE_NUM_3                           (0x00000008UL)
-#define FMAC_CTR_STAGE_NUM_4                           (0x00000010UL)
 #define FMAC_CTR_SHIFT_POS                             (8U)
 #define FMAC_CTR_SHIFT                                 (0x00001F00UL)
-#define FMAC_CTR_SHIFT_0                               (0x00000100UL)
-#define FMAC_CTR_SHIFT_1                               (0x00000200UL)
-#define FMAC_CTR_SHIFT_2                               (0x00000400UL)
-#define FMAC_CTR_SHIFT_3                               (0x00000800UL)
-#define FMAC_CTR_SHIFT_4                               (0x00001000UL)
 
 /*  Bit definition for FMAC_IER register  */
 #define FMAC_IER_INTEN                                 (0x00000001UL)
@@ -11843,106 +11694,16 @@ typedef struct
 /*******************************************************************************
                 Bit definition for Peripheral MPU
 *******************************************************************************/
-/*  Bit definition for MPU_RGD0 register  */
-#define MPU_RGD0_MPURGSIZE_POS                         (0U)
-#define MPU_RGD0_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD0_MPURGSIZE_0                           (0x00000001UL)
-#define MPU_RGD0_MPURGSIZE_1                           (0x00000002UL)
-#define MPU_RGD0_MPURGSIZE_2                           (0x00000004UL)
-#define MPU_RGD0_MPURGSIZE_3                           (0x00000008UL)
-#define MPU_RGD0_MPURGSIZE_4                           (0x00000010UL)
-#define MPU_RGD0_MPURGADDR_POS                         (5U)
-#define MPU_RGD0_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD1 register  */
-#define MPU_RGD1_MPURGSIZE_POS                         (0U)
-#define MPU_RGD1_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD1_MPURGADDR_POS                         (5U)
-#define MPU_RGD1_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD2 register  */
-#define MPU_RGD2_MPURGSIZE_POS                         (0U)
-#define MPU_RGD2_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD2_MPURGADDR_POS                         (5U)
-#define MPU_RGD2_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD3 register  */
-#define MPU_RGD3_MPURGSIZE_POS                         (0U)
-#define MPU_RGD3_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD3_MPURGADDR_POS                         (5U)
-#define MPU_RGD3_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD4 register  */
-#define MPU_RGD4_MPURGSIZE_POS                         (0U)
-#define MPU_RGD4_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD4_MPURGADDR_POS                         (5U)
-#define MPU_RGD4_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD5 register  */
-#define MPU_RGD5_MPURGSIZE_POS                         (0U)
-#define MPU_RGD5_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD5_MPURGADDR_POS                         (5U)
-#define MPU_RGD5_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD6 register  */
-#define MPU_RGD6_MPURGSIZE_POS                         (0U)
-#define MPU_RGD6_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD6_MPURGADDR_POS                         (5U)
-#define MPU_RGD6_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD7 register  */
-#define MPU_RGD7_MPURGSIZE_POS                         (0U)
-#define MPU_RGD7_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD7_MPURGADDR_POS                         (5U)
-#define MPU_RGD7_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD8 register  */
-#define MPU_RGD8_MPURGSIZE_POS                         (0U)
-#define MPU_RGD8_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD8_MPURGADDR_POS                         (5U)
-#define MPU_RGD8_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD9 register  */
-#define MPU_RGD9_MPURGSIZE_POS                         (0U)
-#define MPU_RGD9_MPURGSIZE                             (0x0000001FUL)
-#define MPU_RGD9_MPURGADDR_POS                         (5U)
-#define MPU_RGD9_MPURGADDR                             (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD10 register  */
-#define MPU_RGD10_MPURGSIZE_POS                        (0U)
-#define MPU_RGD10_MPURGSIZE                            (0x0000001FUL)
-#define MPU_RGD10_MPURGADDR_POS                        (5U)
-#define MPU_RGD10_MPURGADDR                            (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD11 register  */
-#define MPU_RGD11_MPURGSIZE_POS                        (0U)
-#define MPU_RGD11_MPURGSIZE                            (0x0000001FUL)
-#define MPU_RGD11_MPURGADDR_POS                        (5U)
-#define MPU_RGD11_MPURGADDR                            (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD12 register  */
-#define MPU_RGD12_MPURGSIZE_POS                        (0U)
-#define MPU_RGD12_MPURGSIZE                            (0x0000001FUL)
-#define MPU_RGD12_MPURGADDR_POS                        (5U)
-#define MPU_RGD12_MPURGADDR                            (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD13 register  */
-#define MPU_RGD13_MPURGSIZE_POS                        (0U)
-#define MPU_RGD13_MPURGSIZE                            (0x0000001FUL)
-#define MPU_RGD13_MPURGADDR_POS                        (5U)
-#define MPU_RGD13_MPURGADDR                            (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD14 register  */
-#define MPU_RGD14_MPURGSIZE_POS                        (0U)
-#define MPU_RGD14_MPURGSIZE                            (0x0000001FUL)
-#define MPU_RGD14_MPURGADDR_POS                        (5U)
-#define MPU_RGD14_MPURGADDR                            (0xFFFFFFE0UL)
-
-/*  Bit definition for MPU_RGD15 register  */
-#define MPU_RGD15_MPURGSIZE_POS                        (0U)
-#define MPU_RGD15_MPURGSIZE                            (0x0000001FUL)
-#define MPU_RGD15_MPURGADDR_POS                        (5U)
-#define MPU_RGD15_MPURGADDR                            (0xFFFFFFE0UL)
+/*  Bit definition for MPU_RGD register  */
+#define MPU_RGD_MPURGSIZE_POS                          (0U)
+#define MPU_RGD_MPURGSIZE                              (0x0000001FUL)
+#define MPU_RGD_MPURGSIZE_0                            (0x00000001UL)
+#define MPU_RGD_MPURGSIZE_1                            (0x00000002UL)
+#define MPU_RGD_MPURGSIZE_2                            (0x00000004UL)
+#define MPU_RGD_MPURGSIZE_3                            (0x00000008UL)
+#define MPU_RGD_MPURGSIZE_4                            (0x00000010UL)
+#define MPU_RGD_MPURGADDR_POS                          (5U)
+#define MPU_RGD_MPURGADDR                              (0xFFFFFFE0UL)
 
 /*  Bit definition for MPU_SR register  */
 #define MPU_SR_SMPU1EAF_POS                            (0U)
@@ -13895,10 +13656,6 @@ typedef struct
 /*  Bit definition for PWC_PWRC2 register  */
 #define PWC_PWRC2_DDAS_POS                             (0U)
 #define PWC_PWRC2_DDAS                                 (0x0FU)
-#define PWC_PWRC2_DDAS_0                               (0x01U)
-#define PWC_PWRC2_DDAS_1                               (0x02U)
-#define PWC_PWRC2_DDAS_2                               (0x04U)
-#define PWC_PWRC2_DDAS_3                               (0x08U)
 #define PWC_PWRC2_DVS_POS                              (4U)
 #define PWC_PWRC2_DVS                                  (0x30U)
 #define PWC_PWRC2_DVS_0                                (0x10U)
@@ -30014,210 +29771,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t ADC_SSTR0_0;
-    uint32_t ADC_SSTR0_1;
-    uint32_t ADC_SSTR0_2;
-    uint32_t ADC_SSTR0_3;
-    uint32_t ADC_SSTR0_4;
-    uint32_t ADC_SSTR0_5;
-    uint32_t ADC_SSTR0_6;
-    uint32_t ADC_SSTR0_7;
-} stc_adc_sstr0_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR1_0;
-    uint32_t ADC_SSTR1_1;
-    uint32_t ADC_SSTR1_2;
-    uint32_t ADC_SSTR1_3;
-    uint32_t ADC_SSTR1_4;
-    uint32_t ADC_SSTR1_5;
-    uint32_t ADC_SSTR1_6;
-    uint32_t ADC_SSTR1_7;
-} stc_adc_sstr1_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR2_0;
-    uint32_t ADC_SSTR2_1;
-    uint32_t ADC_SSTR2_2;
-    uint32_t ADC_SSTR2_3;
-    uint32_t ADC_SSTR2_4;
-    uint32_t ADC_SSTR2_5;
-    uint32_t ADC_SSTR2_6;
-    uint32_t ADC_SSTR2_7;
-} stc_adc_sstr2_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR3_0;
-    uint32_t ADC_SSTR3_1;
-    uint32_t ADC_SSTR3_2;
-    uint32_t ADC_SSTR3_3;
-    uint32_t ADC_SSTR3_4;
-    uint32_t ADC_SSTR3_5;
-    uint32_t ADC_SSTR3_6;
-    uint32_t ADC_SSTR3_7;
-} stc_adc_sstr3_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR4_0;
-    uint32_t ADC_SSTR4_1;
-    uint32_t ADC_SSTR4_2;
-    uint32_t ADC_SSTR4_3;
-    uint32_t ADC_SSTR4_4;
-    uint32_t ADC_SSTR4_5;
-    uint32_t ADC_SSTR4_6;
-    uint32_t ADC_SSTR4_7;
-} stc_adc_sstr4_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR5_0;
-    uint32_t ADC_SSTR5_1;
-    uint32_t ADC_SSTR5_2;
-    uint32_t ADC_SSTR5_3;
-    uint32_t ADC_SSTR5_4;
-    uint32_t ADC_SSTR5_5;
-    uint32_t ADC_SSTR5_6;
-    uint32_t ADC_SSTR5_7;
-} stc_adc_sstr5_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR6_0;
-    uint32_t ADC_SSTR6_1;
-    uint32_t ADC_SSTR6_2;
-    uint32_t ADC_SSTR6_3;
-    uint32_t ADC_SSTR6_4;
-    uint32_t ADC_SSTR6_5;
-    uint32_t ADC_SSTR6_6;
-    uint32_t ADC_SSTR6_7;
-} stc_adc_sstr6_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR7_0;
-    uint32_t ADC_SSTR7_1;
-    uint32_t ADC_SSTR7_2;
-    uint32_t ADC_SSTR7_3;
-    uint32_t ADC_SSTR7_4;
-    uint32_t ADC_SSTR7_5;
-    uint32_t ADC_SSTR7_6;
-    uint32_t ADC_SSTR7_7;
-} stc_adc_sstr7_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR8_0;
-    uint32_t ADC_SSTR8_1;
-    uint32_t ADC_SSTR8_2;
-    uint32_t ADC_SSTR8_3;
-    uint32_t ADC_SSTR8_4;
-    uint32_t ADC_SSTR8_5;
-    uint32_t ADC_SSTR8_6;
-    uint32_t ADC_SSTR8_7;
-} stc_adc_sstr8_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR9_0;
-    uint32_t ADC_SSTR9_1;
-    uint32_t ADC_SSTR9_2;
-    uint32_t ADC_SSTR9_3;
-    uint32_t ADC_SSTR9_4;
-    uint32_t ADC_SSTR9_5;
-    uint32_t ADC_SSTR9_6;
-    uint32_t ADC_SSTR9_7;
-} stc_adc_sstr9_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR10_0;
-    uint32_t ADC_SSTR10_1;
-    uint32_t ADC_SSTR10_2;
-    uint32_t ADC_SSTR10_3;
-    uint32_t ADC_SSTR10_4;
-    uint32_t ADC_SSTR10_5;
-    uint32_t ADC_SSTR10_6;
-    uint32_t ADC_SSTR10_7;
-} stc_adc_sstr10_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR11_0;
-    uint32_t ADC_SSTR11_1;
-    uint32_t ADC_SSTR11_2;
-    uint32_t ADC_SSTR11_3;
-    uint32_t ADC_SSTR11_4;
-    uint32_t ADC_SSTR11_5;
-    uint32_t ADC_SSTR11_6;
-    uint32_t ADC_SSTR11_7;
-} stc_adc_sstr11_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR12_0;
-    uint32_t ADC_SSTR12_1;
-    uint32_t ADC_SSTR12_2;
-    uint32_t ADC_SSTR12_3;
-    uint32_t ADC_SSTR12_4;
-    uint32_t ADC_SSTR12_5;
-    uint32_t ADC_SSTR12_6;
-    uint32_t ADC_SSTR12_7;
-} stc_adc_sstr12_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR13_0;
-    uint32_t ADC_SSTR13_1;
-    uint32_t ADC_SSTR13_2;
-    uint32_t ADC_SSTR13_3;
-    uint32_t ADC_SSTR13_4;
-    uint32_t ADC_SSTR13_5;
-    uint32_t ADC_SSTR13_6;
-    uint32_t ADC_SSTR13_7;
-} stc_adc_sstr13_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR14_0;
-    uint32_t ADC_SSTR14_1;
-    uint32_t ADC_SSTR14_2;
-    uint32_t ADC_SSTR14_3;
-    uint32_t ADC_SSTR14_4;
-    uint32_t ADC_SSTR14_5;
-    uint32_t ADC_SSTR14_6;
-    uint32_t ADC_SSTR14_7;
-} stc_adc_sstr14_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTR15_0;
-    uint32_t ADC_SSTR15_1;
-    uint32_t ADC_SSTR15_2;
-    uint32_t ADC_SSTR15_3;
-    uint32_t ADC_SSTR15_4;
-    uint32_t ADC_SSTR15_5;
-    uint32_t ADC_SSTR15_6;
-    uint32_t ADC_SSTR15_7;
-} stc_adc_sstr15_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_SSTRL_0;
-    uint32_t ADC_SSTRL_1;
-    uint32_t ADC_SSTRL_2;
-    uint32_t ADC_SSTRL_3;
-    uint32_t ADC_SSTRL_4;
-    uint32_t ADC_SSTRL_5;
-    uint32_t ADC_SSTRL_6;
-    uint32_t ADC_SSTRL_7;
-} stc_adc_sstrl_bit_t;
-
-typedef struct
-{
     __IO uint32_t CH00MUX0;
     __IO uint32_t CH00MUX1;
     __IO uint32_t CH00MUX2;
@@ -30341,406 +29894,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t ADC_DR0_0;
-    uint32_t ADC_DR0_1;
-    uint32_t ADC_DR0_2;
-    uint32_t ADC_DR0_3;
-    uint32_t ADC_DR0_4;
-    uint32_t ADC_DR0_5;
-    uint32_t ADC_DR0_6;
-    uint32_t ADC_DR0_7;
-    uint32_t ADC_DR0_8;
-    uint32_t ADC_DR0_9;
-    uint32_t ADC_DR0_10;
-    uint32_t ADC_DR0_11;
-    uint32_t ADC_DR0_12;
-    uint32_t ADC_DR0_13;
-    uint32_t ADC_DR0_14;
-    uint32_t ADC_DR0_15;
-} stc_adc_dr0_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR1_0;
-    uint32_t ADC_DR1_1;
-    uint32_t ADC_DR1_2;
-    uint32_t ADC_DR1_3;
-    uint32_t ADC_DR1_4;
-    uint32_t ADC_DR1_5;
-    uint32_t ADC_DR1_6;
-    uint32_t ADC_DR1_7;
-    uint32_t ADC_DR1_8;
-    uint32_t ADC_DR1_9;
-    uint32_t ADC_DR1_10;
-    uint32_t ADC_DR1_11;
-    uint32_t ADC_DR1_12;
-    uint32_t ADC_DR1_13;
-    uint32_t ADC_DR1_14;
-    uint32_t ADC_DR1_15;
-} stc_adc_dr1_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR2_0;
-    uint32_t ADC_DR2_1;
-    uint32_t ADC_DR2_2;
-    uint32_t ADC_DR2_3;
-    uint32_t ADC_DR2_4;
-    uint32_t ADC_DR2_5;
-    uint32_t ADC_DR2_6;
-    uint32_t ADC_DR2_7;
-    uint32_t ADC_DR2_8;
-    uint32_t ADC_DR2_9;
-    uint32_t ADC_DR2_10;
-    uint32_t ADC_DR2_11;
-    uint32_t ADC_DR2_12;
-    uint32_t ADC_DR2_13;
-    uint32_t ADC_DR2_14;
-    uint32_t ADC_DR2_15;
-} stc_adc_dr2_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR3_0;
-    uint32_t ADC_DR3_1;
-    uint32_t ADC_DR3_2;
-    uint32_t ADC_DR3_3;
-    uint32_t ADC_DR3_4;
-    uint32_t ADC_DR3_5;
-    uint32_t ADC_DR3_6;
-    uint32_t ADC_DR3_7;
-    uint32_t ADC_DR3_8;
-    uint32_t ADC_DR3_9;
-    uint32_t ADC_DR3_10;
-    uint32_t ADC_DR3_11;
-    uint32_t ADC_DR3_12;
-    uint32_t ADC_DR3_13;
-    uint32_t ADC_DR3_14;
-    uint32_t ADC_DR3_15;
-} stc_adc_dr3_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR4_0;
-    uint32_t ADC_DR4_1;
-    uint32_t ADC_DR4_2;
-    uint32_t ADC_DR4_3;
-    uint32_t ADC_DR4_4;
-    uint32_t ADC_DR4_5;
-    uint32_t ADC_DR4_6;
-    uint32_t ADC_DR4_7;
-    uint32_t ADC_DR4_8;
-    uint32_t ADC_DR4_9;
-    uint32_t ADC_DR4_10;
-    uint32_t ADC_DR4_11;
-    uint32_t ADC_DR4_12;
-    uint32_t ADC_DR4_13;
-    uint32_t ADC_DR4_14;
-    uint32_t ADC_DR4_15;
-} stc_adc_dr4_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR5_0;
-    uint32_t ADC_DR5_1;
-    uint32_t ADC_DR5_2;
-    uint32_t ADC_DR5_3;
-    uint32_t ADC_DR5_4;
-    uint32_t ADC_DR5_5;
-    uint32_t ADC_DR5_6;
-    uint32_t ADC_DR5_7;
-    uint32_t ADC_DR5_8;
-    uint32_t ADC_DR5_9;
-    uint32_t ADC_DR5_10;
-    uint32_t ADC_DR5_11;
-    uint32_t ADC_DR5_12;
-    uint32_t ADC_DR5_13;
-    uint32_t ADC_DR5_14;
-    uint32_t ADC_DR5_15;
-} stc_adc_dr5_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR6_0;
-    uint32_t ADC_DR6_1;
-    uint32_t ADC_DR6_2;
-    uint32_t ADC_DR6_3;
-    uint32_t ADC_DR6_4;
-    uint32_t ADC_DR6_5;
-    uint32_t ADC_DR6_6;
-    uint32_t ADC_DR6_7;
-    uint32_t ADC_DR6_8;
-    uint32_t ADC_DR6_9;
-    uint32_t ADC_DR6_10;
-    uint32_t ADC_DR6_11;
-    uint32_t ADC_DR6_12;
-    uint32_t ADC_DR6_13;
-    uint32_t ADC_DR6_14;
-    uint32_t ADC_DR6_15;
-} stc_adc_dr6_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR7_0;
-    uint32_t ADC_DR7_1;
-    uint32_t ADC_DR7_2;
-    uint32_t ADC_DR7_3;
-    uint32_t ADC_DR7_4;
-    uint32_t ADC_DR7_5;
-    uint32_t ADC_DR7_6;
-    uint32_t ADC_DR7_7;
-    uint32_t ADC_DR7_8;
-    uint32_t ADC_DR7_9;
-    uint32_t ADC_DR7_10;
-    uint32_t ADC_DR7_11;
-    uint32_t ADC_DR7_12;
-    uint32_t ADC_DR7_13;
-    uint32_t ADC_DR7_14;
-    uint32_t ADC_DR7_15;
-} stc_adc_dr7_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR8_0;
-    uint32_t ADC_DR8_1;
-    uint32_t ADC_DR8_2;
-    uint32_t ADC_DR8_3;
-    uint32_t ADC_DR8_4;
-    uint32_t ADC_DR8_5;
-    uint32_t ADC_DR8_6;
-    uint32_t ADC_DR8_7;
-    uint32_t ADC_DR8_8;
-    uint32_t ADC_DR8_9;
-    uint32_t ADC_DR8_10;
-    uint32_t ADC_DR8_11;
-    uint32_t ADC_DR8_12;
-    uint32_t ADC_DR8_13;
-    uint32_t ADC_DR8_14;
-    uint32_t ADC_DR8_15;
-} stc_adc_dr8_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR9_0;
-    uint32_t ADC_DR9_1;
-    uint32_t ADC_DR9_2;
-    uint32_t ADC_DR9_3;
-    uint32_t ADC_DR9_4;
-    uint32_t ADC_DR9_5;
-    uint32_t ADC_DR9_6;
-    uint32_t ADC_DR9_7;
-    uint32_t ADC_DR9_8;
-    uint32_t ADC_DR9_9;
-    uint32_t ADC_DR9_10;
-    uint32_t ADC_DR9_11;
-    uint32_t ADC_DR9_12;
-    uint32_t ADC_DR9_13;
-    uint32_t ADC_DR9_14;
-    uint32_t ADC_DR9_15;
-} stc_adc_dr9_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR10_0;
-    uint32_t ADC_DR10_1;
-    uint32_t ADC_DR10_2;
-    uint32_t ADC_DR10_3;
-    uint32_t ADC_DR10_4;
-    uint32_t ADC_DR10_5;
-    uint32_t ADC_DR10_6;
-    uint32_t ADC_DR10_7;
-    uint32_t ADC_DR10_8;
-    uint32_t ADC_DR10_9;
-    uint32_t ADC_DR10_10;
-    uint32_t ADC_DR10_11;
-    uint32_t ADC_DR10_12;
-    uint32_t ADC_DR10_13;
-    uint32_t ADC_DR10_14;
-    uint32_t ADC_DR10_15;
-} stc_adc_dr10_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR11_0;
-    uint32_t ADC_DR11_1;
-    uint32_t ADC_DR11_2;
-    uint32_t ADC_DR11_3;
-    uint32_t ADC_DR11_4;
-    uint32_t ADC_DR11_5;
-    uint32_t ADC_DR11_6;
-    uint32_t ADC_DR11_7;
-    uint32_t ADC_DR11_8;
-    uint32_t ADC_DR11_9;
-    uint32_t ADC_DR11_10;
-    uint32_t ADC_DR11_11;
-    uint32_t ADC_DR11_12;
-    uint32_t ADC_DR11_13;
-    uint32_t ADC_DR11_14;
-    uint32_t ADC_DR11_15;
-} stc_adc_dr11_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR12_0;
-    uint32_t ADC_DR12_1;
-    uint32_t ADC_DR12_2;
-    uint32_t ADC_DR12_3;
-    uint32_t ADC_DR12_4;
-    uint32_t ADC_DR12_5;
-    uint32_t ADC_DR12_6;
-    uint32_t ADC_DR12_7;
-    uint32_t ADC_DR12_8;
-    uint32_t ADC_DR12_9;
-    uint32_t ADC_DR12_10;
-    uint32_t ADC_DR12_11;
-    uint32_t ADC_DR12_12;
-    uint32_t ADC_DR12_13;
-    uint32_t ADC_DR12_14;
-    uint32_t ADC_DR12_15;
-} stc_adc_dr12_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR13_0;
-    uint32_t ADC_DR13_1;
-    uint32_t ADC_DR13_2;
-    uint32_t ADC_DR13_3;
-    uint32_t ADC_DR13_4;
-    uint32_t ADC_DR13_5;
-    uint32_t ADC_DR13_6;
-    uint32_t ADC_DR13_7;
-    uint32_t ADC_DR13_8;
-    uint32_t ADC_DR13_9;
-    uint32_t ADC_DR13_10;
-    uint32_t ADC_DR13_11;
-    uint32_t ADC_DR13_12;
-    uint32_t ADC_DR13_13;
-    uint32_t ADC_DR13_14;
-    uint32_t ADC_DR13_15;
-} stc_adc_dr13_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR14_0;
-    uint32_t ADC_DR14_1;
-    uint32_t ADC_DR14_2;
-    uint32_t ADC_DR14_3;
-    uint32_t ADC_DR14_4;
-    uint32_t ADC_DR14_5;
-    uint32_t ADC_DR14_6;
-    uint32_t ADC_DR14_7;
-    uint32_t ADC_DR14_8;
-    uint32_t ADC_DR14_9;
-    uint32_t ADC_DR14_10;
-    uint32_t ADC_DR14_11;
-    uint32_t ADC_DR14_12;
-    uint32_t ADC_DR14_13;
-    uint32_t ADC_DR14_14;
-    uint32_t ADC_DR14_15;
-} stc_adc_dr14_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR15_0;
-    uint32_t ADC_DR15_1;
-    uint32_t ADC_DR15_2;
-    uint32_t ADC_DR15_3;
-    uint32_t ADC_DR15_4;
-    uint32_t ADC_DR15_5;
-    uint32_t ADC_DR15_6;
-    uint32_t ADC_DR15_7;
-    uint32_t ADC_DR15_8;
-    uint32_t ADC_DR15_9;
-    uint32_t ADC_DR15_10;
-    uint32_t ADC_DR15_11;
-    uint32_t ADC_DR15_12;
-    uint32_t ADC_DR15_13;
-    uint32_t ADC_DR15_14;
-    uint32_t ADC_DR15_15;
-} stc_adc_dr15_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR16_0;
-    uint32_t ADC_DR16_1;
-    uint32_t ADC_DR16_2;
-    uint32_t ADC_DR16_3;
-    uint32_t ADC_DR16_4;
-    uint32_t ADC_DR16_5;
-    uint32_t ADC_DR16_6;
-    uint32_t ADC_DR16_7;
-    uint32_t ADC_DR16_8;
-    uint32_t ADC_DR16_9;
-    uint32_t ADC_DR16_10;
-    uint32_t ADC_DR16_11;
-    uint32_t ADC_DR16_12;
-    uint32_t ADC_DR16_13;
-    uint32_t ADC_DR16_14;
-    uint32_t ADC_DR16_15;
-} stc_adc_dr16_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR17_0;
-    uint32_t ADC_DR17_1;
-    uint32_t ADC_DR17_2;
-    uint32_t ADC_DR17_3;
-    uint32_t ADC_DR17_4;
-    uint32_t ADC_DR17_5;
-    uint32_t ADC_DR17_6;
-    uint32_t ADC_DR17_7;
-    uint32_t ADC_DR17_8;
-    uint32_t ADC_DR17_9;
-    uint32_t ADC_DR17_10;
-    uint32_t ADC_DR17_11;
-    uint32_t ADC_DR17_12;
-    uint32_t ADC_DR17_13;
-    uint32_t ADC_DR17_14;
-    uint32_t ADC_DR17_15;
-} stc_adc_dr17_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR18_0;
-    uint32_t ADC_DR18_1;
-    uint32_t ADC_DR18_2;
-    uint32_t ADC_DR18_3;
-    uint32_t ADC_DR18_4;
-    uint32_t ADC_DR18_5;
-    uint32_t ADC_DR18_6;
-    uint32_t ADC_DR18_7;
-    uint32_t ADC_DR18_8;
-    uint32_t ADC_DR18_9;
-    uint32_t ADC_DR18_10;
-    uint32_t ADC_DR18_11;
-    uint32_t ADC_DR18_12;
-    uint32_t ADC_DR18_13;
-    uint32_t ADC_DR18_14;
-    uint32_t ADC_DR18_15;
-} stc_adc_dr18_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_DR19_0;
-    uint32_t ADC_DR19_1;
-    uint32_t ADC_DR19_2;
-    uint32_t ADC_DR19_3;
-    uint32_t ADC_DR19_4;
-    uint32_t ADC_DR19_5;
-    uint32_t ADC_DR19_6;
-    uint32_t ADC_DR19_7;
-    uint32_t ADC_DR19_8;
-    uint32_t ADC_DR19_9;
-    uint32_t ADC_DR19_10;
-    uint32_t ADC_DR19_11;
-    uint32_t ADC_DR19_12;
-    uint32_t ADC_DR19_13;
-    uint32_t ADC_DR19_14;
-    uint32_t ADC_DR19_15;
-} stc_adc_dr19_bit_t;
-
-typedef struct
-{
     __IO uint32_t AWD0EN;
     __IO uint32_t AWD0IEN;
     __IO uint32_t AWD0MD;
@@ -30774,46 +29927,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t ADC_AWD0DR0_0;
-    uint32_t ADC_AWD0DR0_1;
-    uint32_t ADC_AWD0DR0_2;
-    uint32_t ADC_AWD0DR0_3;
-    uint32_t ADC_AWD0DR0_4;
-    uint32_t ADC_AWD0DR0_5;
-    uint32_t ADC_AWD0DR0_6;
-    uint32_t ADC_AWD0DR0_7;
-    uint32_t ADC_AWD0DR0_8;
-    uint32_t ADC_AWD0DR0_9;
-    uint32_t ADC_AWD0DR0_10;
-    uint32_t ADC_AWD0DR0_11;
-    uint32_t ADC_AWD0DR0_12;
-    uint32_t ADC_AWD0DR0_13;
-    uint32_t ADC_AWD0DR0_14;
-    uint32_t ADC_AWD0DR0_15;
-} stc_adc_awd0dr0_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_AWD0DR1_0;
-    uint32_t ADC_AWD0DR1_1;
-    uint32_t ADC_AWD0DR1_2;
-    uint32_t ADC_AWD0DR1_3;
-    uint32_t ADC_AWD0DR1_4;
-    uint32_t ADC_AWD0DR1_5;
-    uint32_t ADC_AWD0DR1_6;
-    uint32_t ADC_AWD0DR1_7;
-    uint32_t ADC_AWD0DR1_8;
-    uint32_t ADC_AWD0DR1_9;
-    uint32_t ADC_AWD0DR1_10;
-    uint32_t ADC_AWD0DR1_11;
-    uint32_t ADC_AWD0DR1_12;
-    uint32_t ADC_AWD0DR1_13;
-    uint32_t ADC_AWD0DR1_14;
-    uint32_t ADC_AWD0DR1_15;
-} stc_adc_awd0dr1_bit_t;
-
-typedef struct
-{
     __IO uint32_t AWDCH0;
     __IO uint32_t AWDCH1;
     __IO uint32_t AWDCH2;
@@ -30821,46 +29934,6 @@ typedef struct
     __IO uint32_t AWDCH4;
     uint32_t RESERVED0[11];
 } stc_adc_awd0chsr_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_AWD1DR0_0;
-    uint32_t ADC_AWD1DR0_1;
-    uint32_t ADC_AWD1DR0_2;
-    uint32_t ADC_AWD1DR0_3;
-    uint32_t ADC_AWD1DR0_4;
-    uint32_t ADC_AWD1DR0_5;
-    uint32_t ADC_AWD1DR0_6;
-    uint32_t ADC_AWD1DR0_7;
-    uint32_t ADC_AWD1DR0_8;
-    uint32_t ADC_AWD1DR0_9;
-    uint32_t ADC_AWD1DR0_10;
-    uint32_t ADC_AWD1DR0_11;
-    uint32_t ADC_AWD1DR0_12;
-    uint32_t ADC_AWD1DR0_13;
-    uint32_t ADC_AWD1DR0_14;
-    uint32_t ADC_AWD1DR0_15;
-} stc_adc_awd1dr0_bit_t;
-
-typedef struct
-{
-    uint32_t ADC_AWD1DR1_0;
-    uint32_t ADC_AWD1DR1_1;
-    uint32_t ADC_AWD1DR1_2;
-    uint32_t ADC_AWD1DR1_3;
-    uint32_t ADC_AWD1DR1_4;
-    uint32_t ADC_AWD1DR1_5;
-    uint32_t ADC_AWD1DR1_6;
-    uint32_t ADC_AWD1DR1_7;
-    uint32_t ADC_AWD1DR1_8;
-    uint32_t ADC_AWD1DR1_9;
-    uint32_t ADC_AWD1DR1_10;
-    uint32_t ADC_AWD1DR1_11;
-    uint32_t ADC_AWD1DR1_12;
-    uint32_t ADC_AWD1DR1_13;
-    uint32_t ADC_AWD1DR1_14;
-    uint32_t ADC_AWD1DR1_15;
-} stc_adc_awd1dr1_bit_t;
 
 typedef struct
 {
@@ -30920,443 +29993,8 @@ typedef struct
 {
     __IO uint32_t START;
     __IO uint32_t MODE;
-    uint32_t RESERVED0[1];
-    __IO uint32_t KEYSIZE0;
-    __IO uint32_t KEYSIZE1;
-    uint32_t RESERVED1[27];
+    uint32_t RESERVED0[30];
 } stc_aes_cr_bit_t;
-
-typedef struct
-{
-    uint32_t AES_DR0_0;
-    uint32_t AES_DR0_1;
-    uint32_t AES_DR0_2;
-    uint32_t AES_DR0_3;
-    uint32_t AES_DR0_4;
-    uint32_t AES_DR0_5;
-    uint32_t AES_DR0_6;
-    uint32_t AES_DR0_7;
-    uint32_t AES_DR0_8;
-    uint32_t AES_DR0_9;
-    uint32_t AES_DR0_10;
-    uint32_t AES_DR0_11;
-    uint32_t AES_DR0_12;
-    uint32_t AES_DR0_13;
-    uint32_t AES_DR0_14;
-    uint32_t AES_DR0_15;
-    uint32_t AES_DR0_16;
-    uint32_t AES_DR0_17;
-    uint32_t AES_DR0_18;
-    uint32_t AES_DR0_19;
-    uint32_t AES_DR0_20;
-    uint32_t AES_DR0_21;
-    uint32_t AES_DR0_22;
-    uint32_t AES_DR0_23;
-    uint32_t AES_DR0_24;
-    uint32_t AES_DR0_25;
-    uint32_t AES_DR0_26;
-    uint32_t AES_DR0_27;
-    uint32_t AES_DR0_28;
-    uint32_t AES_DR0_29;
-    uint32_t AES_DR0_30;
-    uint32_t AES_DR0_31;
-} stc_aes_dr0_bit_t;
-
-typedef struct
-{
-    uint32_t AES_DR1_0;
-    uint32_t AES_DR1_1;
-    uint32_t AES_DR1_2;
-    uint32_t AES_DR1_3;
-    uint32_t AES_DR1_4;
-    uint32_t AES_DR1_5;
-    uint32_t AES_DR1_6;
-    uint32_t AES_DR1_7;
-    uint32_t AES_DR1_8;
-    uint32_t AES_DR1_9;
-    uint32_t AES_DR1_10;
-    uint32_t AES_DR1_11;
-    uint32_t AES_DR1_12;
-    uint32_t AES_DR1_13;
-    uint32_t AES_DR1_14;
-    uint32_t AES_DR1_15;
-    uint32_t AES_DR1_16;
-    uint32_t AES_DR1_17;
-    uint32_t AES_DR1_18;
-    uint32_t AES_DR1_19;
-    uint32_t AES_DR1_20;
-    uint32_t AES_DR1_21;
-    uint32_t AES_DR1_22;
-    uint32_t AES_DR1_23;
-    uint32_t AES_DR1_24;
-    uint32_t AES_DR1_25;
-    uint32_t AES_DR1_26;
-    uint32_t AES_DR1_27;
-    uint32_t AES_DR1_28;
-    uint32_t AES_DR1_29;
-    uint32_t AES_DR1_30;
-    uint32_t AES_DR1_31;
-} stc_aes_dr1_bit_t;
-
-typedef struct
-{
-    uint32_t AES_DR2_0;
-    uint32_t AES_DR2_1;
-    uint32_t AES_DR2_2;
-    uint32_t AES_DR2_3;
-    uint32_t AES_DR2_4;
-    uint32_t AES_DR2_5;
-    uint32_t AES_DR2_6;
-    uint32_t AES_DR2_7;
-    uint32_t AES_DR2_8;
-    uint32_t AES_DR2_9;
-    uint32_t AES_DR2_10;
-    uint32_t AES_DR2_11;
-    uint32_t AES_DR2_12;
-    uint32_t AES_DR2_13;
-    uint32_t AES_DR2_14;
-    uint32_t AES_DR2_15;
-    uint32_t AES_DR2_16;
-    uint32_t AES_DR2_17;
-    uint32_t AES_DR2_18;
-    uint32_t AES_DR2_19;
-    uint32_t AES_DR2_20;
-    uint32_t AES_DR2_21;
-    uint32_t AES_DR2_22;
-    uint32_t AES_DR2_23;
-    uint32_t AES_DR2_24;
-    uint32_t AES_DR2_25;
-    uint32_t AES_DR2_26;
-    uint32_t AES_DR2_27;
-    uint32_t AES_DR2_28;
-    uint32_t AES_DR2_29;
-    uint32_t AES_DR2_30;
-    uint32_t AES_DR2_31;
-} stc_aes_dr2_bit_t;
-
-typedef struct
-{
-    uint32_t AES_DR3_0;
-    uint32_t AES_DR3_1;
-    uint32_t AES_DR3_2;
-    uint32_t AES_DR3_3;
-    uint32_t AES_DR3_4;
-    uint32_t AES_DR3_5;
-    uint32_t AES_DR3_6;
-    uint32_t AES_DR3_7;
-    uint32_t AES_DR3_8;
-    uint32_t AES_DR3_9;
-    uint32_t AES_DR3_10;
-    uint32_t AES_DR3_11;
-    uint32_t AES_DR3_12;
-    uint32_t AES_DR3_13;
-    uint32_t AES_DR3_14;
-    uint32_t AES_DR3_15;
-    uint32_t AES_DR3_16;
-    uint32_t AES_DR3_17;
-    uint32_t AES_DR3_18;
-    uint32_t AES_DR3_19;
-    uint32_t AES_DR3_20;
-    uint32_t AES_DR3_21;
-    uint32_t AES_DR3_22;
-    uint32_t AES_DR3_23;
-    uint32_t AES_DR3_24;
-    uint32_t AES_DR3_25;
-    uint32_t AES_DR3_26;
-    uint32_t AES_DR3_27;
-    uint32_t AES_DR3_28;
-    uint32_t AES_DR3_29;
-    uint32_t AES_DR3_30;
-    uint32_t AES_DR3_31;
-} stc_aes_dr3_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR0_0;
-    uint32_t AES_KR0_1;
-    uint32_t AES_KR0_2;
-    uint32_t AES_KR0_3;
-    uint32_t AES_KR0_4;
-    uint32_t AES_KR0_5;
-    uint32_t AES_KR0_6;
-    uint32_t AES_KR0_7;
-    uint32_t AES_KR0_8;
-    uint32_t AES_KR0_9;
-    uint32_t AES_KR0_10;
-    uint32_t AES_KR0_11;
-    uint32_t AES_KR0_12;
-    uint32_t AES_KR0_13;
-    uint32_t AES_KR0_14;
-    uint32_t AES_KR0_15;
-    uint32_t AES_KR0_16;
-    uint32_t AES_KR0_17;
-    uint32_t AES_KR0_18;
-    uint32_t AES_KR0_19;
-    uint32_t AES_KR0_20;
-    uint32_t AES_KR0_21;
-    uint32_t AES_KR0_22;
-    uint32_t AES_KR0_23;
-    uint32_t AES_KR0_24;
-    uint32_t AES_KR0_25;
-    uint32_t AES_KR0_26;
-    uint32_t AES_KR0_27;
-    uint32_t AES_KR0_28;
-    uint32_t AES_KR0_29;
-    uint32_t AES_KR0_30;
-    uint32_t AES_KR0_31;
-} stc_aes_kr0_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR1_0;
-    uint32_t AES_KR1_1;
-    uint32_t AES_KR1_2;
-    uint32_t AES_KR1_3;
-    uint32_t AES_KR1_4;
-    uint32_t AES_KR1_5;
-    uint32_t AES_KR1_6;
-    uint32_t AES_KR1_7;
-    uint32_t AES_KR1_8;
-    uint32_t AES_KR1_9;
-    uint32_t AES_KR1_10;
-    uint32_t AES_KR1_11;
-    uint32_t AES_KR1_12;
-    uint32_t AES_KR1_13;
-    uint32_t AES_KR1_14;
-    uint32_t AES_KR1_15;
-    uint32_t AES_KR1_16;
-    uint32_t AES_KR1_17;
-    uint32_t AES_KR1_18;
-    uint32_t AES_KR1_19;
-    uint32_t AES_KR1_20;
-    uint32_t AES_KR1_21;
-    uint32_t AES_KR1_22;
-    uint32_t AES_KR1_23;
-    uint32_t AES_KR1_24;
-    uint32_t AES_KR1_25;
-    uint32_t AES_KR1_26;
-    uint32_t AES_KR1_27;
-    uint32_t AES_KR1_28;
-    uint32_t AES_KR1_29;
-    uint32_t AES_KR1_30;
-    uint32_t AES_KR1_31;
-} stc_aes_kr1_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR2_0;
-    uint32_t AES_KR2_1;
-    uint32_t AES_KR2_2;
-    uint32_t AES_KR2_3;
-    uint32_t AES_KR2_4;
-    uint32_t AES_KR2_5;
-    uint32_t AES_KR2_6;
-    uint32_t AES_KR2_7;
-    uint32_t AES_KR2_8;
-    uint32_t AES_KR2_9;
-    uint32_t AES_KR2_10;
-    uint32_t AES_KR2_11;
-    uint32_t AES_KR2_12;
-    uint32_t AES_KR2_13;
-    uint32_t AES_KR2_14;
-    uint32_t AES_KR2_15;
-    uint32_t AES_KR2_16;
-    uint32_t AES_KR2_17;
-    uint32_t AES_KR2_18;
-    uint32_t AES_KR2_19;
-    uint32_t AES_KR2_20;
-    uint32_t AES_KR2_21;
-    uint32_t AES_KR2_22;
-    uint32_t AES_KR2_23;
-    uint32_t AES_KR2_24;
-    uint32_t AES_KR2_25;
-    uint32_t AES_KR2_26;
-    uint32_t AES_KR2_27;
-    uint32_t AES_KR2_28;
-    uint32_t AES_KR2_29;
-    uint32_t AES_KR2_30;
-    uint32_t AES_KR2_31;
-} stc_aes_kr2_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR3_0;
-    uint32_t AES_KR3_1;
-    uint32_t AES_KR3_2;
-    uint32_t AES_KR3_3;
-    uint32_t AES_KR3_4;
-    uint32_t AES_KR3_5;
-    uint32_t AES_KR3_6;
-    uint32_t AES_KR3_7;
-    uint32_t AES_KR3_8;
-    uint32_t AES_KR3_9;
-    uint32_t AES_KR3_10;
-    uint32_t AES_KR3_11;
-    uint32_t AES_KR3_12;
-    uint32_t AES_KR3_13;
-    uint32_t AES_KR3_14;
-    uint32_t AES_KR3_15;
-    uint32_t AES_KR3_16;
-    uint32_t AES_KR3_17;
-    uint32_t AES_KR3_18;
-    uint32_t AES_KR3_19;
-    uint32_t AES_KR3_20;
-    uint32_t AES_KR3_21;
-    uint32_t AES_KR3_22;
-    uint32_t AES_KR3_23;
-    uint32_t AES_KR3_24;
-    uint32_t AES_KR3_25;
-    uint32_t AES_KR3_26;
-    uint32_t AES_KR3_27;
-    uint32_t AES_KR3_28;
-    uint32_t AES_KR3_29;
-    uint32_t AES_KR3_30;
-    uint32_t AES_KR3_31;
-} stc_aes_kr3_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR4_0;
-    uint32_t AES_KR4_1;
-    uint32_t AES_KR4_2;
-    uint32_t AES_KR4_3;
-    uint32_t AES_KR4_4;
-    uint32_t AES_KR4_5;
-    uint32_t AES_KR4_6;
-    uint32_t AES_KR4_7;
-    uint32_t AES_KR4_8;
-    uint32_t AES_KR4_9;
-    uint32_t AES_KR4_10;
-    uint32_t AES_KR4_11;
-    uint32_t AES_KR4_12;
-    uint32_t AES_KR4_13;
-    uint32_t AES_KR4_14;
-    uint32_t AES_KR4_15;
-    uint32_t AES_KR4_16;
-    uint32_t AES_KR4_17;
-    uint32_t AES_KR4_18;
-    uint32_t AES_KR4_19;
-    uint32_t AES_KR4_20;
-    uint32_t AES_KR4_21;
-    uint32_t AES_KR4_22;
-    uint32_t AES_KR4_23;
-    uint32_t AES_KR4_24;
-    uint32_t AES_KR4_25;
-    uint32_t AES_KR4_26;
-    uint32_t AES_KR4_27;
-    uint32_t AES_KR4_28;
-    uint32_t AES_KR4_29;
-    uint32_t AES_KR4_30;
-    uint32_t AES_KR4_31;
-} stc_aes_kr4_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR5_0;
-    uint32_t AES_KR5_1;
-    uint32_t AES_KR5_2;
-    uint32_t AES_KR5_3;
-    uint32_t AES_KR5_4;
-    uint32_t AES_KR5_5;
-    uint32_t AES_KR5_6;
-    uint32_t AES_KR5_7;
-    uint32_t AES_KR5_8;
-    uint32_t AES_KR5_9;
-    uint32_t AES_KR5_10;
-    uint32_t AES_KR5_11;
-    uint32_t AES_KR5_12;
-    uint32_t AES_KR5_13;
-    uint32_t AES_KR5_14;
-    uint32_t AES_KR5_15;
-    uint32_t AES_KR5_16;
-    uint32_t AES_KR5_17;
-    uint32_t AES_KR5_18;
-    uint32_t AES_KR5_19;
-    uint32_t AES_KR5_20;
-    uint32_t AES_KR5_21;
-    uint32_t AES_KR5_22;
-    uint32_t AES_KR5_23;
-    uint32_t AES_KR5_24;
-    uint32_t AES_KR5_25;
-    uint32_t AES_KR5_26;
-    uint32_t AES_KR5_27;
-    uint32_t AES_KR5_28;
-    uint32_t AES_KR5_29;
-    uint32_t AES_KR5_30;
-    uint32_t AES_KR5_31;
-} stc_aes_kr5_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR6_0;
-    uint32_t AES_KR6_1;
-    uint32_t AES_KR6_2;
-    uint32_t AES_KR6_3;
-    uint32_t AES_KR6_4;
-    uint32_t AES_KR6_5;
-    uint32_t AES_KR6_6;
-    uint32_t AES_KR6_7;
-    uint32_t AES_KR6_8;
-    uint32_t AES_KR6_9;
-    uint32_t AES_KR6_10;
-    uint32_t AES_KR6_11;
-    uint32_t AES_KR6_12;
-    uint32_t AES_KR6_13;
-    uint32_t AES_KR6_14;
-    uint32_t AES_KR6_15;
-    uint32_t AES_KR6_16;
-    uint32_t AES_KR6_17;
-    uint32_t AES_KR6_18;
-    uint32_t AES_KR6_19;
-    uint32_t AES_KR6_20;
-    uint32_t AES_KR6_21;
-    uint32_t AES_KR6_22;
-    uint32_t AES_KR6_23;
-    uint32_t AES_KR6_24;
-    uint32_t AES_KR6_25;
-    uint32_t AES_KR6_26;
-    uint32_t AES_KR6_27;
-    uint32_t AES_KR6_28;
-    uint32_t AES_KR6_29;
-    uint32_t AES_KR6_30;
-    uint32_t AES_KR6_31;
-} stc_aes_kr6_bit_t;
-
-typedef struct
-{
-    uint32_t AES_KR7_0;
-    uint32_t AES_KR7_1;
-    uint32_t AES_KR7_2;
-    uint32_t AES_KR7_3;
-    uint32_t AES_KR7_4;
-    uint32_t AES_KR7_5;
-    uint32_t AES_KR7_6;
-    uint32_t AES_KR7_7;
-    uint32_t AES_KR7_8;
-    uint32_t AES_KR7_9;
-    uint32_t AES_KR7_10;
-    uint32_t AES_KR7_11;
-    uint32_t AES_KR7_12;
-    uint32_t AES_KR7_13;
-    uint32_t AES_KR7_14;
-    uint32_t AES_KR7_15;
-    uint32_t AES_KR7_16;
-    uint32_t AES_KR7_17;
-    uint32_t AES_KR7_18;
-    uint32_t AES_KR7_19;
-    uint32_t AES_KR7_20;
-    uint32_t AES_KR7_21;
-    uint32_t AES_KR7_22;
-    uint32_t AES_KR7_23;
-    uint32_t AES_KR7_24;
-    uint32_t AES_KR7_25;
-    uint32_t AES_KR7_26;
-    uint32_t AES_KR7_27;
-    uint32_t AES_KR7_28;
-    uint32_t AES_KR7_29;
-    uint32_t AES_KR7_30;
-    uint32_t AES_KR7_31;
-} stc_aes_kr7_bit_t;
 
 typedef struct
 {
@@ -31366,338 +30004,139 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dcu_1_trgsel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dcu_2_trgsel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dcu_3_trgsel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dcu_4_trgsel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dma_1_trgsel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dma_2_trgsel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_dma_trgselrc_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_tmr6_htssr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_port_pevnttrgsr12_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_port_pevnttrgsr34_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_tmr0_htssr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_tmr2_htssr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_hash_itrgsela_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_hash_itrgselb_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_tmra_htssr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_ots_trg_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_adc_1_itrgselr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_adc_2_itrgselr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[21];
+    uint32_t RESERVED0[30];
     __IO uint32_t COMTRG_EN0;
     __IO uint32_t COMTRG_EN1;
 } stc_aos_adc_3_itrgselr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[23];
-} stc_aos_comtrg1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TRGSEL0;
-    __IO uint32_t TRGSEL1;
-    __IO uint32_t TRGSEL2;
-    __IO uint32_t TRGSEL3;
-    __IO uint32_t TRGSEL4;
-    __IO uint32_t TRGSEL5;
-    __IO uint32_t TRGSEL6;
-    __IO uint32_t TRGSEL7;
-    __IO uint32_t TRGSEL8;
-    uint32_t RESERVED0[23];
-} stc_aos_comtrg2_bit_t;
-
-typedef struct
-{
     __IO uint32_t PDIR0;
     __IO uint32_t PDIR1;
     __IO uint32_t PDIR2;
@@ -31715,7 +30154,7 @@ typedef struct
     __IO uint32_t PDIR14;
     __IO uint32_t PDIR15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntdirr1_bit_t;
+} stc_aos_gpio_pevntdirr_bit_t;
 
 typedef struct
 {
@@ -31736,7 +30175,7 @@ typedef struct
     __IO uint32_t PIN14;
     __IO uint32_t PIN15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntidr1_bit_t;
+} stc_aos_gpio_pevntidr_bit_t;
 
 typedef struct
 {
@@ -31757,7 +30196,7 @@ typedef struct
     __IO uint32_t POUT14;
     __IO uint32_t POUT15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntodr1_bit_t;
+} stc_aos_gpio_pevntodr_bit_t;
 
 typedef struct
 {
@@ -31778,7 +30217,7 @@ typedef struct
     __IO uint32_t POR14;
     __IO uint32_t POR15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntorr1_bit_t;
+} stc_aos_gpio_pevntorr_bit_t;
 
 typedef struct
 {
@@ -31799,7 +30238,7 @@ typedef struct
     __IO uint32_t POS14;
     __IO uint32_t POS15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntosr1_bit_t;
+} stc_aos_gpio_pevntosr_bit_t;
 
 typedef struct
 {
@@ -31820,7 +30259,7 @@ typedef struct
     __IO uint32_t RIS14;
     __IO uint32_t RIS15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntrisr1_bit_t;
+} stc_aos_gpio_pevntrisr_bit_t;
 
 typedef struct
 {
@@ -31841,540 +30280,19 @@ typedef struct
     __IO uint32_t FAL14;
     __IO uint32_t FAL15;
     uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntfal1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PDIR0;
-    __IO uint32_t PDIR1;
-    __IO uint32_t PDIR2;
-    __IO uint32_t PDIR3;
-    __IO uint32_t PDIR4;
-    __IO uint32_t PDIR5;
-    __IO uint32_t PDIR6;
-    __IO uint32_t PDIR7;
-    __IO uint32_t PDIR8;
-    __IO uint32_t PDIR9;
-    __IO uint32_t PDIR10;
-    __IO uint32_t PDIR11;
-    __IO uint32_t PDIR12;
-    __IO uint32_t PDIR13;
-    __IO uint32_t PDIR14;
-    __IO uint32_t PDIR15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntdirr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PIN0;
-    __IO uint32_t PIN1;
-    __IO uint32_t PIN2;
-    __IO uint32_t PIN3;
-    __IO uint32_t PIN4;
-    __IO uint32_t PIN5;
-    __IO uint32_t PIN6;
-    __IO uint32_t PIN7;
-    __IO uint32_t PIN8;
-    __IO uint32_t PIN9;
-    __IO uint32_t PIN10;
-    __IO uint32_t PIN11;
-    __IO uint32_t PIN12;
-    __IO uint32_t PIN13;
-    __IO uint32_t PIN14;
-    __IO uint32_t PIN15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntidr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POUT0;
-    __IO uint32_t POUT1;
-    __IO uint32_t POUT2;
-    __IO uint32_t POUT3;
-    __IO uint32_t POUT4;
-    __IO uint32_t POUT5;
-    __IO uint32_t POUT6;
-    __IO uint32_t POUT7;
-    __IO uint32_t POUT8;
-    __IO uint32_t POUT9;
-    __IO uint32_t POUT10;
-    __IO uint32_t POUT11;
-    __IO uint32_t POUT12;
-    __IO uint32_t POUT13;
-    __IO uint32_t POUT14;
-    __IO uint32_t POUT15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntodr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POR0;
-    __IO uint32_t POR1;
-    __IO uint32_t POR2;
-    __IO uint32_t POR3;
-    __IO uint32_t POR4;
-    __IO uint32_t POR5;
-    __IO uint32_t POR6;
-    __IO uint32_t POR7;
-    __IO uint32_t POR8;
-    __IO uint32_t POR9;
-    __IO uint32_t POR10;
-    __IO uint32_t POR11;
-    __IO uint32_t POR12;
-    __IO uint32_t POR13;
-    __IO uint32_t POR14;
-    __IO uint32_t POR15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntorr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POS0;
-    __IO uint32_t POS1;
-    __IO uint32_t POS2;
-    __IO uint32_t POS3;
-    __IO uint32_t POS4;
-    __IO uint32_t POS5;
-    __IO uint32_t POS6;
-    __IO uint32_t POS7;
-    __IO uint32_t POS8;
-    __IO uint32_t POS9;
-    __IO uint32_t POS10;
-    __IO uint32_t POS11;
-    __IO uint32_t POS12;
-    __IO uint32_t POS13;
-    __IO uint32_t POS14;
-    __IO uint32_t POS15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntosr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RIS0;
-    __IO uint32_t RIS1;
-    __IO uint32_t RIS2;
-    __IO uint32_t RIS3;
-    __IO uint32_t RIS4;
-    __IO uint32_t RIS5;
-    __IO uint32_t RIS6;
-    __IO uint32_t RIS7;
-    __IO uint32_t RIS8;
-    __IO uint32_t RIS9;
-    __IO uint32_t RIS10;
-    __IO uint32_t RIS11;
-    __IO uint32_t RIS12;
-    __IO uint32_t RIS13;
-    __IO uint32_t RIS14;
-    __IO uint32_t RIS15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntrisr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t FAL0;
-    __IO uint32_t FAL1;
-    __IO uint32_t FAL2;
-    __IO uint32_t FAL3;
-    __IO uint32_t FAL4;
-    __IO uint32_t FAL5;
-    __IO uint32_t FAL6;
-    __IO uint32_t FAL7;
-    __IO uint32_t FAL8;
-    __IO uint32_t FAL9;
-    __IO uint32_t FAL10;
-    __IO uint32_t FAL11;
-    __IO uint32_t FAL12;
-    __IO uint32_t FAL13;
-    __IO uint32_t FAL14;
-    __IO uint32_t FAL15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntfal2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PDIR0;
-    __IO uint32_t PDIR1;
-    __IO uint32_t PDIR2;
-    __IO uint32_t PDIR3;
-    __IO uint32_t PDIR4;
-    __IO uint32_t PDIR5;
-    __IO uint32_t PDIR6;
-    __IO uint32_t PDIR7;
-    __IO uint32_t PDIR8;
-    __IO uint32_t PDIR9;
-    __IO uint32_t PDIR10;
-    __IO uint32_t PDIR11;
-    __IO uint32_t PDIR12;
-    __IO uint32_t PDIR13;
-    __IO uint32_t PDIR14;
-    __IO uint32_t PDIR15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntdirr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PIN0;
-    __IO uint32_t PIN1;
-    __IO uint32_t PIN2;
-    __IO uint32_t PIN3;
-    __IO uint32_t PIN4;
-    __IO uint32_t PIN5;
-    __IO uint32_t PIN6;
-    __IO uint32_t PIN7;
-    __IO uint32_t PIN8;
-    __IO uint32_t PIN9;
-    __IO uint32_t PIN10;
-    __IO uint32_t PIN11;
-    __IO uint32_t PIN12;
-    __IO uint32_t PIN13;
-    __IO uint32_t PIN14;
-    __IO uint32_t PIN15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntidr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POUT0;
-    __IO uint32_t POUT1;
-    __IO uint32_t POUT2;
-    __IO uint32_t POUT3;
-    __IO uint32_t POUT4;
-    __IO uint32_t POUT5;
-    __IO uint32_t POUT6;
-    __IO uint32_t POUT7;
-    __IO uint32_t POUT8;
-    __IO uint32_t POUT9;
-    __IO uint32_t POUT10;
-    __IO uint32_t POUT11;
-    __IO uint32_t POUT12;
-    __IO uint32_t POUT13;
-    __IO uint32_t POUT14;
-    __IO uint32_t POUT15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntodr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POR0;
-    __IO uint32_t POR1;
-    __IO uint32_t POR2;
-    __IO uint32_t POR3;
-    __IO uint32_t POR4;
-    __IO uint32_t POR5;
-    __IO uint32_t POR6;
-    __IO uint32_t POR7;
-    __IO uint32_t POR8;
-    __IO uint32_t POR9;
-    __IO uint32_t POR10;
-    __IO uint32_t POR11;
-    __IO uint32_t POR12;
-    __IO uint32_t POR13;
-    __IO uint32_t POR14;
-    __IO uint32_t POR15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntorr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POS0;
-    __IO uint32_t POS1;
-    __IO uint32_t POS2;
-    __IO uint32_t POS3;
-    __IO uint32_t POS4;
-    __IO uint32_t POS5;
-    __IO uint32_t POS6;
-    __IO uint32_t POS7;
-    __IO uint32_t POS8;
-    __IO uint32_t POS9;
-    __IO uint32_t POS10;
-    __IO uint32_t POS11;
-    __IO uint32_t POS12;
-    __IO uint32_t POS13;
-    __IO uint32_t POS14;
-    __IO uint32_t POS15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntosr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RIS0;
-    __IO uint32_t RIS1;
-    __IO uint32_t RIS2;
-    __IO uint32_t RIS3;
-    __IO uint32_t RIS4;
-    __IO uint32_t RIS5;
-    __IO uint32_t RIS6;
-    __IO uint32_t RIS7;
-    __IO uint32_t RIS8;
-    __IO uint32_t RIS9;
-    __IO uint32_t RIS10;
-    __IO uint32_t RIS11;
-    __IO uint32_t RIS12;
-    __IO uint32_t RIS13;
-    __IO uint32_t RIS14;
-    __IO uint32_t RIS15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntrisr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t FAL0;
-    __IO uint32_t FAL1;
-    __IO uint32_t FAL2;
-    __IO uint32_t FAL3;
-    __IO uint32_t FAL4;
-    __IO uint32_t FAL5;
-    __IO uint32_t FAL6;
-    __IO uint32_t FAL7;
-    __IO uint32_t FAL8;
-    __IO uint32_t FAL9;
-    __IO uint32_t FAL10;
-    __IO uint32_t FAL11;
-    __IO uint32_t FAL12;
-    __IO uint32_t FAL13;
-    __IO uint32_t FAL14;
-    __IO uint32_t FAL15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntfal3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PDIR0;
-    __IO uint32_t PDIR1;
-    __IO uint32_t PDIR2;
-    __IO uint32_t PDIR3;
-    __IO uint32_t PDIR4;
-    __IO uint32_t PDIR5;
-    __IO uint32_t PDIR6;
-    __IO uint32_t PDIR7;
-    __IO uint32_t PDIR8;
-    __IO uint32_t PDIR9;
-    __IO uint32_t PDIR10;
-    __IO uint32_t PDIR11;
-    __IO uint32_t PDIR12;
-    __IO uint32_t PDIR13;
-    __IO uint32_t PDIR14;
-    __IO uint32_t PDIR15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntdirr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PIN0;
-    __IO uint32_t PIN1;
-    __IO uint32_t PIN2;
-    __IO uint32_t PIN3;
-    __IO uint32_t PIN4;
-    __IO uint32_t PIN5;
-    __IO uint32_t PIN6;
-    __IO uint32_t PIN7;
-    __IO uint32_t PIN8;
-    __IO uint32_t PIN9;
-    __IO uint32_t PIN10;
-    __IO uint32_t PIN11;
-    __IO uint32_t PIN12;
-    __IO uint32_t PIN13;
-    __IO uint32_t PIN14;
-    __IO uint32_t PIN15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntidr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POUT0;
-    __IO uint32_t POUT1;
-    __IO uint32_t POUT2;
-    __IO uint32_t POUT3;
-    __IO uint32_t POUT4;
-    __IO uint32_t POUT5;
-    __IO uint32_t POUT6;
-    __IO uint32_t POUT7;
-    __IO uint32_t POUT8;
-    __IO uint32_t POUT9;
-    __IO uint32_t POUT10;
-    __IO uint32_t POUT11;
-    __IO uint32_t POUT12;
-    __IO uint32_t POUT13;
-    __IO uint32_t POUT14;
-    __IO uint32_t POUT15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntodr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POR0;
-    __IO uint32_t POR1;
-    __IO uint32_t POR2;
-    __IO uint32_t POR3;
-    __IO uint32_t POR4;
-    __IO uint32_t POR5;
-    __IO uint32_t POR6;
-    __IO uint32_t POR7;
-    __IO uint32_t POR8;
-    __IO uint32_t POR9;
-    __IO uint32_t POR10;
-    __IO uint32_t POR11;
-    __IO uint32_t POR12;
-    __IO uint32_t POR13;
-    __IO uint32_t POR14;
-    __IO uint32_t POR15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntorr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t POS0;
-    __IO uint32_t POS1;
-    __IO uint32_t POS2;
-    __IO uint32_t POS3;
-    __IO uint32_t POS4;
-    __IO uint32_t POS5;
-    __IO uint32_t POS6;
-    __IO uint32_t POS7;
-    __IO uint32_t POS8;
-    __IO uint32_t POS9;
-    __IO uint32_t POS10;
-    __IO uint32_t POS11;
-    __IO uint32_t POS12;
-    __IO uint32_t POS13;
-    __IO uint32_t POS14;
-    __IO uint32_t POS15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntosr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RIS0;
-    __IO uint32_t RIS1;
-    __IO uint32_t RIS2;
-    __IO uint32_t RIS3;
-    __IO uint32_t RIS4;
-    __IO uint32_t RIS5;
-    __IO uint32_t RIS6;
-    __IO uint32_t RIS7;
-    __IO uint32_t RIS8;
-    __IO uint32_t RIS9;
-    __IO uint32_t RIS10;
-    __IO uint32_t RIS11;
-    __IO uint32_t RIS12;
-    __IO uint32_t RIS13;
-    __IO uint32_t RIS14;
-    __IO uint32_t RIS15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntrisr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t FAL0;
-    __IO uint32_t FAL1;
-    __IO uint32_t FAL2;
-    __IO uint32_t FAL3;
-    __IO uint32_t FAL4;
-    __IO uint32_t FAL5;
-    __IO uint32_t FAL6;
-    __IO uint32_t FAL7;
-    __IO uint32_t FAL8;
-    __IO uint32_t FAL9;
-    __IO uint32_t FAL10;
-    __IO uint32_t FAL11;
-    __IO uint32_t FAL12;
-    __IO uint32_t FAL13;
-    __IO uint32_t FAL14;
-    __IO uint32_t FAL15;
-    uint32_t RESERVED0[16];
-} stc_aos_gpio_pevntfal4_bit_t;
+} stc_aos_gpio_pevntfal_bit_t;
 
 typedef struct
 {
     __IO uint32_t NFEN1;
-    __IO uint32_t DIVS10;
-    __IO uint32_t DIVS11;
-    uint32_t RESERVED0[5];
+    uint32_t RESERVED0[7];
     __IO uint32_t NFEN2;
-    __IO uint32_t DIVS20;
-    __IO uint32_t DIVS21;
-    uint32_t RESERVED1[5];
+    uint32_t RESERVED1[7];
     __IO uint32_t NFEN3;
-    __IO uint32_t DIVS30;
-    __IO uint32_t DIVS31;
-    uint32_t RESERVED2[5];
+    uint32_t RESERVED2[7];
     __IO uint32_t NFEN4;
-    __IO uint32_t DIVS40;
-    __IO uint32_t DIVS41;
-    uint32_t RESERVED3[5];
+    uint32_t RESERVED3[7];
 } stc_aos_gpio_pevntnfcr_bit_t;
-
-typedef struct
-{
-    uint32_t CAN_RBUF_0;
-    uint32_t CAN_RBUF_1;
-    uint32_t CAN_RBUF_2;
-    uint32_t CAN_RBUF_3;
-    uint32_t CAN_RBUF_4;
-    uint32_t CAN_RBUF_5;
-    uint32_t CAN_RBUF_6;
-    uint32_t CAN_RBUF_7;
-    uint32_t CAN_RBUF_8;
-    uint32_t CAN_RBUF_9;
-    uint32_t CAN_RBUF_10;
-    uint32_t CAN_RBUF_11;
-    uint32_t CAN_RBUF_12;
-    uint32_t CAN_RBUF_13;
-    uint32_t CAN_RBUF_14;
-    uint32_t CAN_RBUF_15;
-    uint32_t CAN_RBUF_16;
-    uint32_t CAN_RBUF_17;
-    uint32_t CAN_RBUF_18;
-    uint32_t CAN_RBUF_19;
-    uint32_t CAN_RBUF_20;
-    uint32_t CAN_RBUF_21;
-    uint32_t CAN_RBUF_22;
-    uint32_t CAN_RBUF_23;
-    uint32_t CAN_RBUF_24;
-    uint32_t CAN_RBUF_25;
-    uint32_t CAN_RBUF_26;
-    uint32_t CAN_RBUF_27;
-    uint32_t CAN_RBUF_28;
-    uint32_t CAN_RBUF_29;
-    uint32_t CAN_RBUF_30;
-    uint32_t CAN_RBUF_31;
-} stc_can_rbuf_bit_t;
-
-typedef struct
-{
-    uint32_t CAN_TBUF_0;
-    uint32_t CAN_TBUF_1;
-    uint32_t CAN_TBUF_2;
-    uint32_t CAN_TBUF_3;
-    uint32_t CAN_TBUF_4;
-    uint32_t CAN_TBUF_5;
-    uint32_t CAN_TBUF_6;
-    uint32_t CAN_TBUF_7;
-    uint32_t CAN_TBUF_8;
-    uint32_t CAN_TBUF_9;
-    uint32_t CAN_TBUF_10;
-    uint32_t CAN_TBUF_11;
-    uint32_t CAN_TBUF_12;
-    uint32_t CAN_TBUF_13;
-    uint32_t CAN_TBUF_14;
-    uint32_t CAN_TBUF_15;
-    uint32_t CAN_TBUF_16;
-    uint32_t CAN_TBUF_17;
-    uint32_t CAN_TBUF_18;
-    uint32_t CAN_TBUF_19;
-    uint32_t CAN_TBUF_20;
-    uint32_t CAN_TBUF_21;
-    uint32_t CAN_TBUF_22;
-    uint32_t CAN_TBUF_23;
-    uint32_t CAN_TBUF_24;
-    uint32_t CAN_TBUF_25;
-    uint32_t CAN_TBUF_26;
-    uint32_t CAN_TBUF_27;
-    uint32_t CAN_TBUF_28;
-    uint32_t CAN_TBUF_29;
-    uint32_t CAN_TBUF_30;
-    uint32_t CAN_TBUF_31;
-} stc_can_tbuf_bit_t;
 
 typedef struct
 {
@@ -32561,30 +30479,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t CAN_RECNT_0;
-    uint32_t CAN_RECNT_1;
-    uint32_t CAN_RECNT_2;
-    uint32_t CAN_RECNT_3;
-    uint32_t CAN_RECNT_4;
-    uint32_t CAN_RECNT_5;
-    uint32_t CAN_RECNT_6;
-    uint32_t CAN_RECNT_7;
-} stc_can_recnt_bit_t;
-
-typedef struct
-{
-    uint32_t CAN_TECNT_0;
-    uint32_t CAN_TECNT_1;
-    uint32_t CAN_TECNT_2;
-    uint32_t CAN_TECNT_3;
-    uint32_t CAN_TECNT_4;
-    uint32_t CAN_TECNT_5;
-    uint32_t CAN_TECNT_6;
-    uint32_t CAN_TECNT_7;
-} stc_can_tecnt_bit_t;
-
-typedef struct
-{
     __IO uint32_t ACFADR0;
     __IO uint32_t ACFADR1;
     __IO uint32_t ACFADR2;
@@ -32730,46 +30624,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t CAN_TT_TRIG_0;
-    uint32_t CAN_TT_TRIG_1;
-    uint32_t CAN_TT_TRIG_2;
-    uint32_t CAN_TT_TRIG_3;
-    uint32_t CAN_TT_TRIG_4;
-    uint32_t CAN_TT_TRIG_5;
-    uint32_t CAN_TT_TRIG_6;
-    uint32_t CAN_TT_TRIG_7;
-    uint32_t CAN_TT_TRIG_8;
-    uint32_t CAN_TT_TRIG_9;
-    uint32_t CAN_TT_TRIG_10;
-    uint32_t CAN_TT_TRIG_11;
-    uint32_t CAN_TT_TRIG_12;
-    uint32_t CAN_TT_TRIG_13;
-    uint32_t CAN_TT_TRIG_14;
-    uint32_t CAN_TT_TRIG_15;
-} stc_can_tt_trig_bit_t;
-
-typedef struct
-{
-    uint32_t CAN_TT_WTRIG_0;
-    uint32_t CAN_TT_WTRIG_1;
-    uint32_t CAN_TT_WTRIG_2;
-    uint32_t CAN_TT_WTRIG_3;
-    uint32_t CAN_TT_WTRIG_4;
-    uint32_t CAN_TT_WTRIG_5;
-    uint32_t CAN_TT_WTRIG_6;
-    uint32_t CAN_TT_WTRIG_7;
-    uint32_t CAN_TT_WTRIG_8;
-    uint32_t CAN_TT_WTRIG_9;
-    uint32_t CAN_TT_WTRIG_10;
-    uint32_t CAN_TT_WTRIG_11;
-    uint32_t CAN_TT_WTRIG_12;
-    uint32_t CAN_TT_WTRIG_13;
-    uint32_t CAN_TT_WTRIG_14;
-    uint32_t CAN_TT_WTRIG_15;
-} stc_can_tt_wtrig_bit_t;
-
-typedef struct
-{
     __IO uint32_t CENB;
     __IO uint32_t CWDE;
     uint32_t RESERVED0[5];
@@ -32868,17 +30722,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XTAL32DRV0;
-    __IO uint32_t XTAL32DRV1;
-    __IO uint32_t XTAL32DRV2;
-    uint32_t RESERVED0[5];
+    uint32_t RESERVED0[8];
 } stc_cmu_xtal32cfgr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t XTAL32NF0;
-    __IO uint32_t XTAL32NF1;
-    uint32_t RESERVED0[6];
+    uint32_t RESERVED0[8];
 } stc_cmu_xtal32nfr_bit_t;
 
 typedef struct
@@ -32895,125 +30744,34 @@ typedef struct
 
 typedef struct
 {
-    uint32_t CMU_LRCTRM_0;
-    uint32_t CMU_LRCTRM_1;
-    uint32_t CMU_LRCTRM_2;
-    uint32_t CMU_LRCTRM_3;
-    uint32_t CMU_LRCTRM_4;
-    uint32_t CMU_LRCTRM_5;
-    uint32_t CMU_LRCTRM_6;
-    uint32_t CMU_LRCTRM_7;
-} stc_cmu_lrctrm_bit_t;
-
-typedef struct
-{
-    uint32_t CMU_RTCLRCTRM_0;
-    uint32_t CMU_RTCLRCTRM_1;
-    uint32_t CMU_RTCLRCTRM_2;
-    uint32_t CMU_RTCLRCTRM_3;
-    uint32_t CMU_RTCLRCTRM_4;
-    uint32_t CMU_RTCLRCTRM_5;
-    uint32_t CMU_RTCLRCTRM_6;
-    uint32_t CMU_RTCLRCTRM_7;
-} stc_cmu_rtclrctrm_bit_t;
-
-typedef struct
-{
-    uint32_t RESERVED0[4];
-    __IO uint32_t XTALDRV0;
-    __IO uint32_t XTALDRV1;
+    uint32_t RESERVED0[6];
     __IO uint32_t XTALMS;
     uint32_t RESERVED1[1];
 } stc_cmu_xtalcfgr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t PERICKSEL0;
-    __IO uint32_t PERICKSEL1;
-    __IO uint32_t PERICKSEL2;
-    __IO uint32_t PERICKSEL3;
-    uint32_t RESERVED0[12];
+    uint32_t RESERVED0[16];
 } stc_cmu_pericksel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t I2S1CKSEL0;
-    __IO uint32_t I2S1CKSEL1;
-    __IO uint32_t I2S1CKSEL2;
-    __IO uint32_t I2S1CKSEL3;
-    __IO uint32_t I2S2CKSEL0;
-    __IO uint32_t I2S2CKSEL1;
-    __IO uint32_t I2S2CKSEL2;
-    __IO uint32_t I2S2CKSEL3;
-    __IO uint32_t I2S3CKSEL0;
-    __IO uint32_t I2S3CKSEL1;
-    __IO uint32_t I2S3CKSEL2;
-    __IO uint32_t I2S3CKSEL3;
-    __IO uint32_t I2S4CKSEL0;
-    __IO uint32_t I2S4CKSEL1;
-    __IO uint32_t I2S4CKSEL2;
-    __IO uint32_t I2S4CKSEL3;
+    uint32_t RESERVED0[16];
 } stc_cmu_i2scksel_bit_t;
 
 typedef struct
 {
-    __IO uint32_t CAN1CKS0;
-    __IO uint32_t CAN1CKS1;
-    __IO uint32_t CAN1CKS2;
-    __IO uint32_t CAN1CKS3;
-    __IO uint32_t CAN2CKS0;
-    __IO uint32_t CAN2CKS1;
-    __IO uint32_t CAN2CKS2;
-    __IO uint32_t CAN2CKS3;
+    uint32_t RESERVED0[8];
 } stc_cmu_canckcfgr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t PCLK0S0;
-    __IO uint32_t PCLK0S1;
-    __IO uint32_t PCLK0S2;
-    uint32_t RESERVED0[1];
-    __IO uint32_t PCLK1S0;
-    __IO uint32_t PCLK1S1;
-    __IO uint32_t PCLK1S2;
-    uint32_t RESERVED1[1];
-    __IO uint32_t PCLK2S0;
-    __IO uint32_t PCLK2S1;
-    __IO uint32_t PCLK2S2;
-    uint32_t RESERVED2[1];
-    __IO uint32_t PCLK3S0;
-    __IO uint32_t PCLK3S1;
-    __IO uint32_t PCLK3S2;
-    uint32_t RESERVED3[1];
-    __IO uint32_t PCLK4S0;
-    __IO uint32_t PCLK4S1;
-    __IO uint32_t PCLK4S2;
-    uint32_t RESERVED4[1];
-    __IO uint32_t EXCKS0;
-    __IO uint32_t EXCKS1;
-    __IO uint32_t EXCKS2;
-    uint32_t RESERVED5[1];
-    __IO uint32_t HCLKS0;
-    __IO uint32_t HCLKS1;
-    __IO uint32_t HCLKS2;
-    uint32_t RESERVED6[5];
-} stc_cmu_scfgr_bit_t;
-
-typedef struct
-{
-    uint32_t RESERVED0[4];
-    __IO uint32_t USBCKS0;
-    __IO uint32_t USBCKS1;
-    __IO uint32_t USBCKS2;
-    __IO uint32_t USBCKS3;
+    uint32_t RESERVED0[8];
 } stc_cmu_usbckcfgr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t CKSW0;
-    __IO uint32_t CKSW1;
-    __IO uint32_t CKSW2;
-    uint32_t RESERVED0[5];
+    uint32_t RESERVED0[8];
 } stc_cmu_ckswr_bit_t;
 
 typedef struct
@@ -33059,33 +30817,19 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MCO1SEL0;
-    __IO uint32_t MCO1SEL1;
-    __IO uint32_t MCO1SEL2;
-    __IO uint32_t MCO1SEL3;
-    __IO uint32_t MCO1DIV0;
-    __IO uint32_t MCO1DIV1;
-    __IO uint32_t MCO1DIV2;
+    uint32_t RESERVED0[7];
     __IO uint32_t MCO1EN;
 } stc_cmu_mco1cfgr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MCO2SEL0;
-    __IO uint32_t MCO2SEL1;
-    __IO uint32_t MCO2SEL2;
-    __IO uint32_t MCO2SEL3;
-    __IO uint32_t MCO2DIV0;
-    __IO uint32_t MCO2DIV1;
-    __IO uint32_t MCO2DIV2;
+    uint32_t RESERVED0[7];
     __IO uint32_t MCO2EN;
 } stc_cmu_mco2cfgr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TPIUCKS0;
-    __IO uint32_t TPIUCKS1;
-    uint32_t RESERVED0[5];
+    uint32_t RESERVED0[7];
     __IO uint32_t TPIUCKOE;
 } stc_cmu_tpiuckcfgr_bit_t;
 
@@ -33106,98 +30850,15 @@ typedef struct
 
 typedef struct
 {
-    uint32_t CMU_MRCTRM_0;
-    uint32_t CMU_MRCTRM_1;
-    uint32_t CMU_MRCTRM_2;
-    uint32_t CMU_MRCTRM_3;
-    uint32_t CMU_MRCTRM_4;
-    uint32_t CMU_MRCTRM_5;
-    uint32_t CMU_MRCTRM_6;
-    uint32_t CMU_MRCTRM_7;
-} stc_cmu_mrctrm_bit_t;
-
-typedef struct
-{
-    uint32_t CMU_HRCTRM_0;
-    uint32_t CMU_HRCTRM_1;
-    uint32_t CMU_HRCTRM_2;
-    uint32_t CMU_HRCTRM_3;
-    uint32_t CMU_HRCTRM_4;
-    uint32_t CMU_HRCTRM_5;
-    uint32_t CMU_HRCTRM_6;
-    uint32_t CMU_HRCTRM_7;
-} stc_cmu_hrctrm_bit_t;
-
-typedef struct
-{
-    __IO uint32_t XTALSTB0;
-    __IO uint32_t XTALSTB1;
-    __IO uint32_t XTALSTB2;
-    __IO uint32_t XTALSTB3;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[8];
 } stc_cmu_xtalstbcr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t PLLHM0;
-    __IO uint32_t PLLHM1;
-    uint32_t RESERVED0[5];
+    uint32_t RESERVED0[7];
     __IO uint32_t PLLSRC;
-    __IO uint32_t PLLHN0;
-    __IO uint32_t PLLHN1;
-    __IO uint32_t PLLHN2;
-    __IO uint32_t PLLHN3;
-    __IO uint32_t PLLHN4;
-    __IO uint32_t PLLHN5;
-    __IO uint32_t PLLHN6;
-    __IO uint32_t PLLHN7;
-    __IO uint32_t PLLHN8;
-    uint32_t RESERVED1[3];
-    __IO uint32_t PLLHR0;
-    __IO uint32_t PLLHR1;
-    __IO uint32_t PLLHR2;
-    __IO uint32_t PLLHR3;
-    __IO uint32_t PLLHQ0;
-    __IO uint32_t PLLHQ1;
-    __IO uint32_t PLLHQ2;
-    __IO uint32_t PLLHQ3;
-    __IO uint32_t PLLHP0;
-    __IO uint32_t PLLHP1;
-    __IO uint32_t PLLHP2;
-    __IO uint32_t PLLHP3;
+    uint32_t RESERVED1[24];
 } stc_cmu_pllhcfgr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PLLAM0;
-    __IO uint32_t PLLAM1;
-    __IO uint32_t PLLAM2;
-    __IO uint32_t PLLAM3;
-    __IO uint32_t PLLAM4;
-    uint32_t RESERVED0[3];
-    __IO uint32_t PLLAN0;
-    __IO uint32_t PLLAN1;
-    __IO uint32_t PLLAN2;
-    __IO uint32_t PLLAN3;
-    __IO uint32_t PLLAN4;
-    __IO uint32_t PLLAN5;
-    __IO uint32_t PLLAN6;
-    __IO uint32_t PLLAN7;
-    __IO uint32_t PLLAN8;
-    uint32_t RESERVED1[3];
-    __IO uint32_t PLLAR0;
-    __IO uint32_t PLLAR1;
-    __IO uint32_t PLLAR2;
-    __IO uint32_t PLLAR3;
-    __IO uint32_t PLLAQ0;
-    __IO uint32_t PLLAQ1;
-    __IO uint32_t PLLAQ2;
-    __IO uint32_t PLLAQ3;
-    __IO uint32_t PLLAP0;
-    __IO uint32_t PLLAP1;
-    __IO uint32_t PLLAP2;
-    __IO uint32_t PLLAP3;
-} stc_cmu_pllacfgr_bit_t;
 
 typedef struct
 {
@@ -33205,1194 +30866,6 @@ typedef struct
     __IO uint32_t FLAG;
     uint32_t RESERVED0[30];
 } stc_crc_cr_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_RESLT_0;
-    uint32_t CRC_RESLT_1;
-    uint32_t CRC_RESLT_2;
-    uint32_t CRC_RESLT_3;
-    uint32_t CRC_RESLT_4;
-    uint32_t CRC_RESLT_5;
-    uint32_t CRC_RESLT_6;
-    uint32_t CRC_RESLT_7;
-    uint32_t CRC_RESLT_8;
-    uint32_t CRC_RESLT_9;
-    uint32_t CRC_RESLT_10;
-    uint32_t CRC_RESLT_11;
-    uint32_t CRC_RESLT_12;
-    uint32_t CRC_RESLT_13;
-    uint32_t CRC_RESLT_14;
-    uint32_t CRC_RESLT_15;
-    uint32_t CRC_RESLT_16;
-    uint32_t CRC_RESLT_17;
-    uint32_t CRC_RESLT_18;
-    uint32_t CRC_RESLT_19;
-    uint32_t CRC_RESLT_20;
-    uint32_t CRC_RESLT_21;
-    uint32_t CRC_RESLT_22;
-    uint32_t CRC_RESLT_23;
-    uint32_t CRC_RESLT_24;
-    uint32_t CRC_RESLT_25;
-    uint32_t CRC_RESLT_26;
-    uint32_t CRC_RESLT_27;
-    uint32_t CRC_RESLT_28;
-    uint32_t CRC_RESLT_29;
-    uint32_t CRC_RESLT_30;
-    uint32_t CRC_RESLT_31;
-} stc_crc_reslt_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT0_0;
-    uint32_t CRC_DAT0_1;
-    uint32_t CRC_DAT0_2;
-    uint32_t CRC_DAT0_3;
-    uint32_t CRC_DAT0_4;
-    uint32_t CRC_DAT0_5;
-    uint32_t CRC_DAT0_6;
-    uint32_t CRC_DAT0_7;
-    uint32_t CRC_DAT0_8;
-    uint32_t CRC_DAT0_9;
-    uint32_t CRC_DAT0_10;
-    uint32_t CRC_DAT0_11;
-    uint32_t CRC_DAT0_12;
-    uint32_t CRC_DAT0_13;
-    uint32_t CRC_DAT0_14;
-    uint32_t CRC_DAT0_15;
-    uint32_t CRC_DAT0_16;
-    uint32_t CRC_DAT0_17;
-    uint32_t CRC_DAT0_18;
-    uint32_t CRC_DAT0_19;
-    uint32_t CRC_DAT0_20;
-    uint32_t CRC_DAT0_21;
-    uint32_t CRC_DAT0_22;
-    uint32_t CRC_DAT0_23;
-    uint32_t CRC_DAT0_24;
-    uint32_t CRC_DAT0_25;
-    uint32_t CRC_DAT0_26;
-    uint32_t CRC_DAT0_27;
-    uint32_t CRC_DAT0_28;
-    uint32_t CRC_DAT0_29;
-    uint32_t CRC_DAT0_30;
-    uint32_t CRC_DAT0_31;
-} stc_crc_dat0_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT1_0;
-    uint32_t CRC_DAT1_1;
-    uint32_t CRC_DAT1_2;
-    uint32_t CRC_DAT1_3;
-    uint32_t CRC_DAT1_4;
-    uint32_t CRC_DAT1_5;
-    uint32_t CRC_DAT1_6;
-    uint32_t CRC_DAT1_7;
-    uint32_t CRC_DAT1_8;
-    uint32_t CRC_DAT1_9;
-    uint32_t CRC_DAT1_10;
-    uint32_t CRC_DAT1_11;
-    uint32_t CRC_DAT1_12;
-    uint32_t CRC_DAT1_13;
-    uint32_t CRC_DAT1_14;
-    uint32_t CRC_DAT1_15;
-    uint32_t CRC_DAT1_16;
-    uint32_t CRC_DAT1_17;
-    uint32_t CRC_DAT1_18;
-    uint32_t CRC_DAT1_19;
-    uint32_t CRC_DAT1_20;
-    uint32_t CRC_DAT1_21;
-    uint32_t CRC_DAT1_22;
-    uint32_t CRC_DAT1_23;
-    uint32_t CRC_DAT1_24;
-    uint32_t CRC_DAT1_25;
-    uint32_t CRC_DAT1_26;
-    uint32_t CRC_DAT1_27;
-    uint32_t CRC_DAT1_28;
-    uint32_t CRC_DAT1_29;
-    uint32_t CRC_DAT1_30;
-    uint32_t CRC_DAT1_31;
-} stc_crc_dat1_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT2_0;
-    uint32_t CRC_DAT2_1;
-    uint32_t CRC_DAT2_2;
-    uint32_t CRC_DAT2_3;
-    uint32_t CRC_DAT2_4;
-    uint32_t CRC_DAT2_5;
-    uint32_t CRC_DAT2_6;
-    uint32_t CRC_DAT2_7;
-    uint32_t CRC_DAT2_8;
-    uint32_t CRC_DAT2_9;
-    uint32_t CRC_DAT2_10;
-    uint32_t CRC_DAT2_11;
-    uint32_t CRC_DAT2_12;
-    uint32_t CRC_DAT2_13;
-    uint32_t CRC_DAT2_14;
-    uint32_t CRC_DAT2_15;
-    uint32_t CRC_DAT2_16;
-    uint32_t CRC_DAT2_17;
-    uint32_t CRC_DAT2_18;
-    uint32_t CRC_DAT2_19;
-    uint32_t CRC_DAT2_20;
-    uint32_t CRC_DAT2_21;
-    uint32_t CRC_DAT2_22;
-    uint32_t CRC_DAT2_23;
-    uint32_t CRC_DAT2_24;
-    uint32_t CRC_DAT2_25;
-    uint32_t CRC_DAT2_26;
-    uint32_t CRC_DAT2_27;
-    uint32_t CRC_DAT2_28;
-    uint32_t CRC_DAT2_29;
-    uint32_t CRC_DAT2_30;
-    uint32_t CRC_DAT2_31;
-} stc_crc_dat2_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT3_0;
-    uint32_t CRC_DAT3_1;
-    uint32_t CRC_DAT3_2;
-    uint32_t CRC_DAT3_3;
-    uint32_t CRC_DAT3_4;
-    uint32_t CRC_DAT3_5;
-    uint32_t CRC_DAT3_6;
-    uint32_t CRC_DAT3_7;
-    uint32_t CRC_DAT3_8;
-    uint32_t CRC_DAT3_9;
-    uint32_t CRC_DAT3_10;
-    uint32_t CRC_DAT3_11;
-    uint32_t CRC_DAT3_12;
-    uint32_t CRC_DAT3_13;
-    uint32_t CRC_DAT3_14;
-    uint32_t CRC_DAT3_15;
-    uint32_t CRC_DAT3_16;
-    uint32_t CRC_DAT3_17;
-    uint32_t CRC_DAT3_18;
-    uint32_t CRC_DAT3_19;
-    uint32_t CRC_DAT3_20;
-    uint32_t CRC_DAT3_21;
-    uint32_t CRC_DAT3_22;
-    uint32_t CRC_DAT3_23;
-    uint32_t CRC_DAT3_24;
-    uint32_t CRC_DAT3_25;
-    uint32_t CRC_DAT3_26;
-    uint32_t CRC_DAT3_27;
-    uint32_t CRC_DAT3_28;
-    uint32_t CRC_DAT3_29;
-    uint32_t CRC_DAT3_30;
-    uint32_t CRC_DAT3_31;
-} stc_crc_dat3_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT4_0;
-    uint32_t CRC_DAT4_1;
-    uint32_t CRC_DAT4_2;
-    uint32_t CRC_DAT4_3;
-    uint32_t CRC_DAT4_4;
-    uint32_t CRC_DAT4_5;
-    uint32_t CRC_DAT4_6;
-    uint32_t CRC_DAT4_7;
-    uint32_t CRC_DAT4_8;
-    uint32_t CRC_DAT4_9;
-    uint32_t CRC_DAT4_10;
-    uint32_t CRC_DAT4_11;
-    uint32_t CRC_DAT4_12;
-    uint32_t CRC_DAT4_13;
-    uint32_t CRC_DAT4_14;
-    uint32_t CRC_DAT4_15;
-    uint32_t CRC_DAT4_16;
-    uint32_t CRC_DAT4_17;
-    uint32_t CRC_DAT4_18;
-    uint32_t CRC_DAT4_19;
-    uint32_t CRC_DAT4_20;
-    uint32_t CRC_DAT4_21;
-    uint32_t CRC_DAT4_22;
-    uint32_t CRC_DAT4_23;
-    uint32_t CRC_DAT4_24;
-    uint32_t CRC_DAT4_25;
-    uint32_t CRC_DAT4_26;
-    uint32_t CRC_DAT4_27;
-    uint32_t CRC_DAT4_28;
-    uint32_t CRC_DAT4_29;
-    uint32_t CRC_DAT4_30;
-    uint32_t CRC_DAT4_31;
-} stc_crc_dat4_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT5_0;
-    uint32_t CRC_DAT5_1;
-    uint32_t CRC_DAT5_2;
-    uint32_t CRC_DAT5_3;
-    uint32_t CRC_DAT5_4;
-    uint32_t CRC_DAT5_5;
-    uint32_t CRC_DAT5_6;
-    uint32_t CRC_DAT5_7;
-    uint32_t CRC_DAT5_8;
-    uint32_t CRC_DAT5_9;
-    uint32_t CRC_DAT5_10;
-    uint32_t CRC_DAT5_11;
-    uint32_t CRC_DAT5_12;
-    uint32_t CRC_DAT5_13;
-    uint32_t CRC_DAT5_14;
-    uint32_t CRC_DAT5_15;
-    uint32_t CRC_DAT5_16;
-    uint32_t CRC_DAT5_17;
-    uint32_t CRC_DAT5_18;
-    uint32_t CRC_DAT5_19;
-    uint32_t CRC_DAT5_20;
-    uint32_t CRC_DAT5_21;
-    uint32_t CRC_DAT5_22;
-    uint32_t CRC_DAT5_23;
-    uint32_t CRC_DAT5_24;
-    uint32_t CRC_DAT5_25;
-    uint32_t CRC_DAT5_26;
-    uint32_t CRC_DAT5_27;
-    uint32_t CRC_DAT5_28;
-    uint32_t CRC_DAT5_29;
-    uint32_t CRC_DAT5_30;
-    uint32_t CRC_DAT5_31;
-} stc_crc_dat5_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT6_0;
-    uint32_t CRC_DAT6_1;
-    uint32_t CRC_DAT6_2;
-    uint32_t CRC_DAT6_3;
-    uint32_t CRC_DAT6_4;
-    uint32_t CRC_DAT6_5;
-    uint32_t CRC_DAT6_6;
-    uint32_t CRC_DAT6_7;
-    uint32_t CRC_DAT6_8;
-    uint32_t CRC_DAT6_9;
-    uint32_t CRC_DAT6_10;
-    uint32_t CRC_DAT6_11;
-    uint32_t CRC_DAT6_12;
-    uint32_t CRC_DAT6_13;
-    uint32_t CRC_DAT6_14;
-    uint32_t CRC_DAT6_15;
-    uint32_t CRC_DAT6_16;
-    uint32_t CRC_DAT6_17;
-    uint32_t CRC_DAT6_18;
-    uint32_t CRC_DAT6_19;
-    uint32_t CRC_DAT6_20;
-    uint32_t CRC_DAT6_21;
-    uint32_t CRC_DAT6_22;
-    uint32_t CRC_DAT6_23;
-    uint32_t CRC_DAT6_24;
-    uint32_t CRC_DAT6_25;
-    uint32_t CRC_DAT6_26;
-    uint32_t CRC_DAT6_27;
-    uint32_t CRC_DAT6_28;
-    uint32_t CRC_DAT6_29;
-    uint32_t CRC_DAT6_30;
-    uint32_t CRC_DAT6_31;
-} stc_crc_dat6_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT7_0;
-    uint32_t CRC_DAT7_1;
-    uint32_t CRC_DAT7_2;
-    uint32_t CRC_DAT7_3;
-    uint32_t CRC_DAT7_4;
-    uint32_t CRC_DAT7_5;
-    uint32_t CRC_DAT7_6;
-    uint32_t CRC_DAT7_7;
-    uint32_t CRC_DAT7_8;
-    uint32_t CRC_DAT7_9;
-    uint32_t CRC_DAT7_10;
-    uint32_t CRC_DAT7_11;
-    uint32_t CRC_DAT7_12;
-    uint32_t CRC_DAT7_13;
-    uint32_t CRC_DAT7_14;
-    uint32_t CRC_DAT7_15;
-    uint32_t CRC_DAT7_16;
-    uint32_t CRC_DAT7_17;
-    uint32_t CRC_DAT7_18;
-    uint32_t CRC_DAT7_19;
-    uint32_t CRC_DAT7_20;
-    uint32_t CRC_DAT7_21;
-    uint32_t CRC_DAT7_22;
-    uint32_t CRC_DAT7_23;
-    uint32_t CRC_DAT7_24;
-    uint32_t CRC_DAT7_25;
-    uint32_t CRC_DAT7_26;
-    uint32_t CRC_DAT7_27;
-    uint32_t CRC_DAT7_28;
-    uint32_t CRC_DAT7_29;
-    uint32_t CRC_DAT7_30;
-    uint32_t CRC_DAT7_31;
-} stc_crc_dat7_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT8_0;
-    uint32_t CRC_DAT8_1;
-    uint32_t CRC_DAT8_2;
-    uint32_t CRC_DAT8_3;
-    uint32_t CRC_DAT8_4;
-    uint32_t CRC_DAT8_5;
-    uint32_t CRC_DAT8_6;
-    uint32_t CRC_DAT8_7;
-    uint32_t CRC_DAT8_8;
-    uint32_t CRC_DAT8_9;
-    uint32_t CRC_DAT8_10;
-    uint32_t CRC_DAT8_11;
-    uint32_t CRC_DAT8_12;
-    uint32_t CRC_DAT8_13;
-    uint32_t CRC_DAT8_14;
-    uint32_t CRC_DAT8_15;
-    uint32_t CRC_DAT8_16;
-    uint32_t CRC_DAT8_17;
-    uint32_t CRC_DAT8_18;
-    uint32_t CRC_DAT8_19;
-    uint32_t CRC_DAT8_20;
-    uint32_t CRC_DAT8_21;
-    uint32_t CRC_DAT8_22;
-    uint32_t CRC_DAT8_23;
-    uint32_t CRC_DAT8_24;
-    uint32_t CRC_DAT8_25;
-    uint32_t CRC_DAT8_26;
-    uint32_t CRC_DAT8_27;
-    uint32_t CRC_DAT8_28;
-    uint32_t CRC_DAT8_29;
-    uint32_t CRC_DAT8_30;
-    uint32_t CRC_DAT8_31;
-} stc_crc_dat8_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT9_0;
-    uint32_t CRC_DAT9_1;
-    uint32_t CRC_DAT9_2;
-    uint32_t CRC_DAT9_3;
-    uint32_t CRC_DAT9_4;
-    uint32_t CRC_DAT9_5;
-    uint32_t CRC_DAT9_6;
-    uint32_t CRC_DAT9_7;
-    uint32_t CRC_DAT9_8;
-    uint32_t CRC_DAT9_9;
-    uint32_t CRC_DAT9_10;
-    uint32_t CRC_DAT9_11;
-    uint32_t CRC_DAT9_12;
-    uint32_t CRC_DAT9_13;
-    uint32_t CRC_DAT9_14;
-    uint32_t CRC_DAT9_15;
-    uint32_t CRC_DAT9_16;
-    uint32_t CRC_DAT9_17;
-    uint32_t CRC_DAT9_18;
-    uint32_t CRC_DAT9_19;
-    uint32_t CRC_DAT9_20;
-    uint32_t CRC_DAT9_21;
-    uint32_t CRC_DAT9_22;
-    uint32_t CRC_DAT9_23;
-    uint32_t CRC_DAT9_24;
-    uint32_t CRC_DAT9_25;
-    uint32_t CRC_DAT9_26;
-    uint32_t CRC_DAT9_27;
-    uint32_t CRC_DAT9_28;
-    uint32_t CRC_DAT9_29;
-    uint32_t CRC_DAT9_30;
-    uint32_t CRC_DAT9_31;
-} stc_crc_dat9_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT10_0;
-    uint32_t CRC_DAT10_1;
-    uint32_t CRC_DAT10_2;
-    uint32_t CRC_DAT10_3;
-    uint32_t CRC_DAT10_4;
-    uint32_t CRC_DAT10_5;
-    uint32_t CRC_DAT10_6;
-    uint32_t CRC_DAT10_7;
-    uint32_t CRC_DAT10_8;
-    uint32_t CRC_DAT10_9;
-    uint32_t CRC_DAT10_10;
-    uint32_t CRC_DAT10_11;
-    uint32_t CRC_DAT10_12;
-    uint32_t CRC_DAT10_13;
-    uint32_t CRC_DAT10_14;
-    uint32_t CRC_DAT10_15;
-    uint32_t CRC_DAT10_16;
-    uint32_t CRC_DAT10_17;
-    uint32_t CRC_DAT10_18;
-    uint32_t CRC_DAT10_19;
-    uint32_t CRC_DAT10_20;
-    uint32_t CRC_DAT10_21;
-    uint32_t CRC_DAT10_22;
-    uint32_t CRC_DAT10_23;
-    uint32_t CRC_DAT10_24;
-    uint32_t CRC_DAT10_25;
-    uint32_t CRC_DAT10_26;
-    uint32_t CRC_DAT10_27;
-    uint32_t CRC_DAT10_28;
-    uint32_t CRC_DAT10_29;
-    uint32_t CRC_DAT10_30;
-    uint32_t CRC_DAT10_31;
-} stc_crc_dat10_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT11_0;
-    uint32_t CRC_DAT11_1;
-    uint32_t CRC_DAT11_2;
-    uint32_t CRC_DAT11_3;
-    uint32_t CRC_DAT11_4;
-    uint32_t CRC_DAT11_5;
-    uint32_t CRC_DAT11_6;
-    uint32_t CRC_DAT11_7;
-    uint32_t CRC_DAT11_8;
-    uint32_t CRC_DAT11_9;
-    uint32_t CRC_DAT11_10;
-    uint32_t CRC_DAT11_11;
-    uint32_t CRC_DAT11_12;
-    uint32_t CRC_DAT11_13;
-    uint32_t CRC_DAT11_14;
-    uint32_t CRC_DAT11_15;
-    uint32_t CRC_DAT11_16;
-    uint32_t CRC_DAT11_17;
-    uint32_t CRC_DAT11_18;
-    uint32_t CRC_DAT11_19;
-    uint32_t CRC_DAT11_20;
-    uint32_t CRC_DAT11_21;
-    uint32_t CRC_DAT11_22;
-    uint32_t CRC_DAT11_23;
-    uint32_t CRC_DAT11_24;
-    uint32_t CRC_DAT11_25;
-    uint32_t CRC_DAT11_26;
-    uint32_t CRC_DAT11_27;
-    uint32_t CRC_DAT11_28;
-    uint32_t CRC_DAT11_29;
-    uint32_t CRC_DAT11_30;
-    uint32_t CRC_DAT11_31;
-} stc_crc_dat11_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT12_0;
-    uint32_t CRC_DAT12_1;
-    uint32_t CRC_DAT12_2;
-    uint32_t CRC_DAT12_3;
-    uint32_t CRC_DAT12_4;
-    uint32_t CRC_DAT12_5;
-    uint32_t CRC_DAT12_6;
-    uint32_t CRC_DAT12_7;
-    uint32_t CRC_DAT12_8;
-    uint32_t CRC_DAT12_9;
-    uint32_t CRC_DAT12_10;
-    uint32_t CRC_DAT12_11;
-    uint32_t CRC_DAT12_12;
-    uint32_t CRC_DAT12_13;
-    uint32_t CRC_DAT12_14;
-    uint32_t CRC_DAT12_15;
-    uint32_t CRC_DAT12_16;
-    uint32_t CRC_DAT12_17;
-    uint32_t CRC_DAT12_18;
-    uint32_t CRC_DAT12_19;
-    uint32_t CRC_DAT12_20;
-    uint32_t CRC_DAT12_21;
-    uint32_t CRC_DAT12_22;
-    uint32_t CRC_DAT12_23;
-    uint32_t CRC_DAT12_24;
-    uint32_t CRC_DAT12_25;
-    uint32_t CRC_DAT12_26;
-    uint32_t CRC_DAT12_27;
-    uint32_t CRC_DAT12_28;
-    uint32_t CRC_DAT12_29;
-    uint32_t CRC_DAT12_30;
-    uint32_t CRC_DAT12_31;
-} stc_crc_dat12_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT13_0;
-    uint32_t CRC_DAT13_1;
-    uint32_t CRC_DAT13_2;
-    uint32_t CRC_DAT13_3;
-    uint32_t CRC_DAT13_4;
-    uint32_t CRC_DAT13_5;
-    uint32_t CRC_DAT13_6;
-    uint32_t CRC_DAT13_7;
-    uint32_t CRC_DAT13_8;
-    uint32_t CRC_DAT13_9;
-    uint32_t CRC_DAT13_10;
-    uint32_t CRC_DAT13_11;
-    uint32_t CRC_DAT13_12;
-    uint32_t CRC_DAT13_13;
-    uint32_t CRC_DAT13_14;
-    uint32_t CRC_DAT13_15;
-    uint32_t CRC_DAT13_16;
-    uint32_t CRC_DAT13_17;
-    uint32_t CRC_DAT13_18;
-    uint32_t CRC_DAT13_19;
-    uint32_t CRC_DAT13_20;
-    uint32_t CRC_DAT13_21;
-    uint32_t CRC_DAT13_22;
-    uint32_t CRC_DAT13_23;
-    uint32_t CRC_DAT13_24;
-    uint32_t CRC_DAT13_25;
-    uint32_t CRC_DAT13_26;
-    uint32_t CRC_DAT13_27;
-    uint32_t CRC_DAT13_28;
-    uint32_t CRC_DAT13_29;
-    uint32_t CRC_DAT13_30;
-    uint32_t CRC_DAT13_31;
-} stc_crc_dat13_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT14_0;
-    uint32_t CRC_DAT14_1;
-    uint32_t CRC_DAT14_2;
-    uint32_t CRC_DAT14_3;
-    uint32_t CRC_DAT14_4;
-    uint32_t CRC_DAT14_5;
-    uint32_t CRC_DAT14_6;
-    uint32_t CRC_DAT14_7;
-    uint32_t CRC_DAT14_8;
-    uint32_t CRC_DAT14_9;
-    uint32_t CRC_DAT14_10;
-    uint32_t CRC_DAT14_11;
-    uint32_t CRC_DAT14_12;
-    uint32_t CRC_DAT14_13;
-    uint32_t CRC_DAT14_14;
-    uint32_t CRC_DAT14_15;
-    uint32_t CRC_DAT14_16;
-    uint32_t CRC_DAT14_17;
-    uint32_t CRC_DAT14_18;
-    uint32_t CRC_DAT14_19;
-    uint32_t CRC_DAT14_20;
-    uint32_t CRC_DAT14_21;
-    uint32_t CRC_DAT14_22;
-    uint32_t CRC_DAT14_23;
-    uint32_t CRC_DAT14_24;
-    uint32_t CRC_DAT14_25;
-    uint32_t CRC_DAT14_26;
-    uint32_t CRC_DAT14_27;
-    uint32_t CRC_DAT14_28;
-    uint32_t CRC_DAT14_29;
-    uint32_t CRC_DAT14_30;
-    uint32_t CRC_DAT14_31;
-} stc_crc_dat14_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT15_0;
-    uint32_t CRC_DAT15_1;
-    uint32_t CRC_DAT15_2;
-    uint32_t CRC_DAT15_3;
-    uint32_t CRC_DAT15_4;
-    uint32_t CRC_DAT15_5;
-    uint32_t CRC_DAT15_6;
-    uint32_t CRC_DAT15_7;
-    uint32_t CRC_DAT15_8;
-    uint32_t CRC_DAT15_9;
-    uint32_t CRC_DAT15_10;
-    uint32_t CRC_DAT15_11;
-    uint32_t CRC_DAT15_12;
-    uint32_t CRC_DAT15_13;
-    uint32_t CRC_DAT15_14;
-    uint32_t CRC_DAT15_15;
-    uint32_t CRC_DAT15_16;
-    uint32_t CRC_DAT15_17;
-    uint32_t CRC_DAT15_18;
-    uint32_t CRC_DAT15_19;
-    uint32_t CRC_DAT15_20;
-    uint32_t CRC_DAT15_21;
-    uint32_t CRC_DAT15_22;
-    uint32_t CRC_DAT15_23;
-    uint32_t CRC_DAT15_24;
-    uint32_t CRC_DAT15_25;
-    uint32_t CRC_DAT15_26;
-    uint32_t CRC_DAT15_27;
-    uint32_t CRC_DAT15_28;
-    uint32_t CRC_DAT15_29;
-    uint32_t CRC_DAT15_30;
-    uint32_t CRC_DAT15_31;
-} stc_crc_dat15_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT16_0;
-    uint32_t CRC_DAT16_1;
-    uint32_t CRC_DAT16_2;
-    uint32_t CRC_DAT16_3;
-    uint32_t CRC_DAT16_4;
-    uint32_t CRC_DAT16_5;
-    uint32_t CRC_DAT16_6;
-    uint32_t CRC_DAT16_7;
-    uint32_t CRC_DAT16_8;
-    uint32_t CRC_DAT16_9;
-    uint32_t CRC_DAT16_10;
-    uint32_t CRC_DAT16_11;
-    uint32_t CRC_DAT16_12;
-    uint32_t CRC_DAT16_13;
-    uint32_t CRC_DAT16_14;
-    uint32_t CRC_DAT16_15;
-    uint32_t CRC_DAT16_16;
-    uint32_t CRC_DAT16_17;
-    uint32_t CRC_DAT16_18;
-    uint32_t CRC_DAT16_19;
-    uint32_t CRC_DAT16_20;
-    uint32_t CRC_DAT16_21;
-    uint32_t CRC_DAT16_22;
-    uint32_t CRC_DAT16_23;
-    uint32_t CRC_DAT16_24;
-    uint32_t CRC_DAT16_25;
-    uint32_t CRC_DAT16_26;
-    uint32_t CRC_DAT16_27;
-    uint32_t CRC_DAT16_28;
-    uint32_t CRC_DAT16_29;
-    uint32_t CRC_DAT16_30;
-    uint32_t CRC_DAT16_31;
-} stc_crc_dat16_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT17_0;
-    uint32_t CRC_DAT17_1;
-    uint32_t CRC_DAT17_2;
-    uint32_t CRC_DAT17_3;
-    uint32_t CRC_DAT17_4;
-    uint32_t CRC_DAT17_5;
-    uint32_t CRC_DAT17_6;
-    uint32_t CRC_DAT17_7;
-    uint32_t CRC_DAT17_8;
-    uint32_t CRC_DAT17_9;
-    uint32_t CRC_DAT17_10;
-    uint32_t CRC_DAT17_11;
-    uint32_t CRC_DAT17_12;
-    uint32_t CRC_DAT17_13;
-    uint32_t CRC_DAT17_14;
-    uint32_t CRC_DAT17_15;
-    uint32_t CRC_DAT17_16;
-    uint32_t CRC_DAT17_17;
-    uint32_t CRC_DAT17_18;
-    uint32_t CRC_DAT17_19;
-    uint32_t CRC_DAT17_20;
-    uint32_t CRC_DAT17_21;
-    uint32_t CRC_DAT17_22;
-    uint32_t CRC_DAT17_23;
-    uint32_t CRC_DAT17_24;
-    uint32_t CRC_DAT17_25;
-    uint32_t CRC_DAT17_26;
-    uint32_t CRC_DAT17_27;
-    uint32_t CRC_DAT17_28;
-    uint32_t CRC_DAT17_29;
-    uint32_t CRC_DAT17_30;
-    uint32_t CRC_DAT17_31;
-} stc_crc_dat17_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT18_0;
-    uint32_t CRC_DAT18_1;
-    uint32_t CRC_DAT18_2;
-    uint32_t CRC_DAT18_3;
-    uint32_t CRC_DAT18_4;
-    uint32_t CRC_DAT18_5;
-    uint32_t CRC_DAT18_6;
-    uint32_t CRC_DAT18_7;
-    uint32_t CRC_DAT18_8;
-    uint32_t CRC_DAT18_9;
-    uint32_t CRC_DAT18_10;
-    uint32_t CRC_DAT18_11;
-    uint32_t CRC_DAT18_12;
-    uint32_t CRC_DAT18_13;
-    uint32_t CRC_DAT18_14;
-    uint32_t CRC_DAT18_15;
-    uint32_t CRC_DAT18_16;
-    uint32_t CRC_DAT18_17;
-    uint32_t CRC_DAT18_18;
-    uint32_t CRC_DAT18_19;
-    uint32_t CRC_DAT18_20;
-    uint32_t CRC_DAT18_21;
-    uint32_t CRC_DAT18_22;
-    uint32_t CRC_DAT18_23;
-    uint32_t CRC_DAT18_24;
-    uint32_t CRC_DAT18_25;
-    uint32_t CRC_DAT18_26;
-    uint32_t CRC_DAT18_27;
-    uint32_t CRC_DAT18_28;
-    uint32_t CRC_DAT18_29;
-    uint32_t CRC_DAT18_30;
-    uint32_t CRC_DAT18_31;
-} stc_crc_dat18_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT19_0;
-    uint32_t CRC_DAT19_1;
-    uint32_t CRC_DAT19_2;
-    uint32_t CRC_DAT19_3;
-    uint32_t CRC_DAT19_4;
-    uint32_t CRC_DAT19_5;
-    uint32_t CRC_DAT19_6;
-    uint32_t CRC_DAT19_7;
-    uint32_t CRC_DAT19_8;
-    uint32_t CRC_DAT19_9;
-    uint32_t CRC_DAT19_10;
-    uint32_t CRC_DAT19_11;
-    uint32_t CRC_DAT19_12;
-    uint32_t CRC_DAT19_13;
-    uint32_t CRC_DAT19_14;
-    uint32_t CRC_DAT19_15;
-    uint32_t CRC_DAT19_16;
-    uint32_t CRC_DAT19_17;
-    uint32_t CRC_DAT19_18;
-    uint32_t CRC_DAT19_19;
-    uint32_t CRC_DAT19_20;
-    uint32_t CRC_DAT19_21;
-    uint32_t CRC_DAT19_22;
-    uint32_t CRC_DAT19_23;
-    uint32_t CRC_DAT19_24;
-    uint32_t CRC_DAT19_25;
-    uint32_t CRC_DAT19_26;
-    uint32_t CRC_DAT19_27;
-    uint32_t CRC_DAT19_28;
-    uint32_t CRC_DAT19_29;
-    uint32_t CRC_DAT19_30;
-    uint32_t CRC_DAT19_31;
-} stc_crc_dat19_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT20_0;
-    uint32_t CRC_DAT20_1;
-    uint32_t CRC_DAT20_2;
-    uint32_t CRC_DAT20_3;
-    uint32_t CRC_DAT20_4;
-    uint32_t CRC_DAT20_5;
-    uint32_t CRC_DAT20_6;
-    uint32_t CRC_DAT20_7;
-    uint32_t CRC_DAT20_8;
-    uint32_t CRC_DAT20_9;
-    uint32_t CRC_DAT20_10;
-    uint32_t CRC_DAT20_11;
-    uint32_t CRC_DAT20_12;
-    uint32_t CRC_DAT20_13;
-    uint32_t CRC_DAT20_14;
-    uint32_t CRC_DAT20_15;
-    uint32_t CRC_DAT20_16;
-    uint32_t CRC_DAT20_17;
-    uint32_t CRC_DAT20_18;
-    uint32_t CRC_DAT20_19;
-    uint32_t CRC_DAT20_20;
-    uint32_t CRC_DAT20_21;
-    uint32_t CRC_DAT20_22;
-    uint32_t CRC_DAT20_23;
-    uint32_t CRC_DAT20_24;
-    uint32_t CRC_DAT20_25;
-    uint32_t CRC_DAT20_26;
-    uint32_t CRC_DAT20_27;
-    uint32_t CRC_DAT20_28;
-    uint32_t CRC_DAT20_29;
-    uint32_t CRC_DAT20_30;
-    uint32_t CRC_DAT20_31;
-} stc_crc_dat20_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT21_0;
-    uint32_t CRC_DAT21_1;
-    uint32_t CRC_DAT21_2;
-    uint32_t CRC_DAT21_3;
-    uint32_t CRC_DAT21_4;
-    uint32_t CRC_DAT21_5;
-    uint32_t CRC_DAT21_6;
-    uint32_t CRC_DAT21_7;
-    uint32_t CRC_DAT21_8;
-    uint32_t CRC_DAT21_9;
-    uint32_t CRC_DAT21_10;
-    uint32_t CRC_DAT21_11;
-    uint32_t CRC_DAT21_12;
-    uint32_t CRC_DAT21_13;
-    uint32_t CRC_DAT21_14;
-    uint32_t CRC_DAT21_15;
-    uint32_t CRC_DAT21_16;
-    uint32_t CRC_DAT21_17;
-    uint32_t CRC_DAT21_18;
-    uint32_t CRC_DAT21_19;
-    uint32_t CRC_DAT21_20;
-    uint32_t CRC_DAT21_21;
-    uint32_t CRC_DAT21_22;
-    uint32_t CRC_DAT21_23;
-    uint32_t CRC_DAT21_24;
-    uint32_t CRC_DAT21_25;
-    uint32_t CRC_DAT21_26;
-    uint32_t CRC_DAT21_27;
-    uint32_t CRC_DAT21_28;
-    uint32_t CRC_DAT21_29;
-    uint32_t CRC_DAT21_30;
-    uint32_t CRC_DAT21_31;
-} stc_crc_dat21_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT22_0;
-    uint32_t CRC_DAT22_1;
-    uint32_t CRC_DAT22_2;
-    uint32_t CRC_DAT22_3;
-    uint32_t CRC_DAT22_4;
-    uint32_t CRC_DAT22_5;
-    uint32_t CRC_DAT22_6;
-    uint32_t CRC_DAT22_7;
-    uint32_t CRC_DAT22_8;
-    uint32_t CRC_DAT22_9;
-    uint32_t CRC_DAT22_10;
-    uint32_t CRC_DAT22_11;
-    uint32_t CRC_DAT22_12;
-    uint32_t CRC_DAT22_13;
-    uint32_t CRC_DAT22_14;
-    uint32_t CRC_DAT22_15;
-    uint32_t CRC_DAT22_16;
-    uint32_t CRC_DAT22_17;
-    uint32_t CRC_DAT22_18;
-    uint32_t CRC_DAT22_19;
-    uint32_t CRC_DAT22_20;
-    uint32_t CRC_DAT22_21;
-    uint32_t CRC_DAT22_22;
-    uint32_t CRC_DAT22_23;
-    uint32_t CRC_DAT22_24;
-    uint32_t CRC_DAT22_25;
-    uint32_t CRC_DAT22_26;
-    uint32_t CRC_DAT22_27;
-    uint32_t CRC_DAT22_28;
-    uint32_t CRC_DAT22_29;
-    uint32_t CRC_DAT22_30;
-    uint32_t CRC_DAT22_31;
-} stc_crc_dat22_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT23_0;
-    uint32_t CRC_DAT23_1;
-    uint32_t CRC_DAT23_2;
-    uint32_t CRC_DAT23_3;
-    uint32_t CRC_DAT23_4;
-    uint32_t CRC_DAT23_5;
-    uint32_t CRC_DAT23_6;
-    uint32_t CRC_DAT23_7;
-    uint32_t CRC_DAT23_8;
-    uint32_t CRC_DAT23_9;
-    uint32_t CRC_DAT23_10;
-    uint32_t CRC_DAT23_11;
-    uint32_t CRC_DAT23_12;
-    uint32_t CRC_DAT23_13;
-    uint32_t CRC_DAT23_14;
-    uint32_t CRC_DAT23_15;
-    uint32_t CRC_DAT23_16;
-    uint32_t CRC_DAT23_17;
-    uint32_t CRC_DAT23_18;
-    uint32_t CRC_DAT23_19;
-    uint32_t CRC_DAT23_20;
-    uint32_t CRC_DAT23_21;
-    uint32_t CRC_DAT23_22;
-    uint32_t CRC_DAT23_23;
-    uint32_t CRC_DAT23_24;
-    uint32_t CRC_DAT23_25;
-    uint32_t CRC_DAT23_26;
-    uint32_t CRC_DAT23_27;
-    uint32_t CRC_DAT23_28;
-    uint32_t CRC_DAT23_29;
-    uint32_t CRC_DAT23_30;
-    uint32_t CRC_DAT23_31;
-} stc_crc_dat23_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT24_0;
-    uint32_t CRC_DAT24_1;
-    uint32_t CRC_DAT24_2;
-    uint32_t CRC_DAT24_3;
-    uint32_t CRC_DAT24_4;
-    uint32_t CRC_DAT24_5;
-    uint32_t CRC_DAT24_6;
-    uint32_t CRC_DAT24_7;
-    uint32_t CRC_DAT24_8;
-    uint32_t CRC_DAT24_9;
-    uint32_t CRC_DAT24_10;
-    uint32_t CRC_DAT24_11;
-    uint32_t CRC_DAT24_12;
-    uint32_t CRC_DAT24_13;
-    uint32_t CRC_DAT24_14;
-    uint32_t CRC_DAT24_15;
-    uint32_t CRC_DAT24_16;
-    uint32_t CRC_DAT24_17;
-    uint32_t CRC_DAT24_18;
-    uint32_t CRC_DAT24_19;
-    uint32_t CRC_DAT24_20;
-    uint32_t CRC_DAT24_21;
-    uint32_t CRC_DAT24_22;
-    uint32_t CRC_DAT24_23;
-    uint32_t CRC_DAT24_24;
-    uint32_t CRC_DAT24_25;
-    uint32_t CRC_DAT24_26;
-    uint32_t CRC_DAT24_27;
-    uint32_t CRC_DAT24_28;
-    uint32_t CRC_DAT24_29;
-    uint32_t CRC_DAT24_30;
-    uint32_t CRC_DAT24_31;
-} stc_crc_dat24_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT25_0;
-    uint32_t CRC_DAT25_1;
-    uint32_t CRC_DAT25_2;
-    uint32_t CRC_DAT25_3;
-    uint32_t CRC_DAT25_4;
-    uint32_t CRC_DAT25_5;
-    uint32_t CRC_DAT25_6;
-    uint32_t CRC_DAT25_7;
-    uint32_t CRC_DAT25_8;
-    uint32_t CRC_DAT25_9;
-    uint32_t CRC_DAT25_10;
-    uint32_t CRC_DAT25_11;
-    uint32_t CRC_DAT25_12;
-    uint32_t CRC_DAT25_13;
-    uint32_t CRC_DAT25_14;
-    uint32_t CRC_DAT25_15;
-    uint32_t CRC_DAT25_16;
-    uint32_t CRC_DAT25_17;
-    uint32_t CRC_DAT25_18;
-    uint32_t CRC_DAT25_19;
-    uint32_t CRC_DAT25_20;
-    uint32_t CRC_DAT25_21;
-    uint32_t CRC_DAT25_22;
-    uint32_t CRC_DAT25_23;
-    uint32_t CRC_DAT25_24;
-    uint32_t CRC_DAT25_25;
-    uint32_t CRC_DAT25_26;
-    uint32_t CRC_DAT25_27;
-    uint32_t CRC_DAT25_28;
-    uint32_t CRC_DAT25_29;
-    uint32_t CRC_DAT25_30;
-    uint32_t CRC_DAT25_31;
-} stc_crc_dat25_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT26_0;
-    uint32_t CRC_DAT26_1;
-    uint32_t CRC_DAT26_2;
-    uint32_t CRC_DAT26_3;
-    uint32_t CRC_DAT26_4;
-    uint32_t CRC_DAT26_5;
-    uint32_t CRC_DAT26_6;
-    uint32_t CRC_DAT26_7;
-    uint32_t CRC_DAT26_8;
-    uint32_t CRC_DAT26_9;
-    uint32_t CRC_DAT26_10;
-    uint32_t CRC_DAT26_11;
-    uint32_t CRC_DAT26_12;
-    uint32_t CRC_DAT26_13;
-    uint32_t CRC_DAT26_14;
-    uint32_t CRC_DAT26_15;
-    uint32_t CRC_DAT26_16;
-    uint32_t CRC_DAT26_17;
-    uint32_t CRC_DAT26_18;
-    uint32_t CRC_DAT26_19;
-    uint32_t CRC_DAT26_20;
-    uint32_t CRC_DAT26_21;
-    uint32_t CRC_DAT26_22;
-    uint32_t CRC_DAT26_23;
-    uint32_t CRC_DAT26_24;
-    uint32_t CRC_DAT26_25;
-    uint32_t CRC_DAT26_26;
-    uint32_t CRC_DAT26_27;
-    uint32_t CRC_DAT26_28;
-    uint32_t CRC_DAT26_29;
-    uint32_t CRC_DAT26_30;
-    uint32_t CRC_DAT26_31;
-} stc_crc_dat26_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT27_0;
-    uint32_t CRC_DAT27_1;
-    uint32_t CRC_DAT27_2;
-    uint32_t CRC_DAT27_3;
-    uint32_t CRC_DAT27_4;
-    uint32_t CRC_DAT27_5;
-    uint32_t CRC_DAT27_6;
-    uint32_t CRC_DAT27_7;
-    uint32_t CRC_DAT27_8;
-    uint32_t CRC_DAT27_9;
-    uint32_t CRC_DAT27_10;
-    uint32_t CRC_DAT27_11;
-    uint32_t CRC_DAT27_12;
-    uint32_t CRC_DAT27_13;
-    uint32_t CRC_DAT27_14;
-    uint32_t CRC_DAT27_15;
-    uint32_t CRC_DAT27_16;
-    uint32_t CRC_DAT27_17;
-    uint32_t CRC_DAT27_18;
-    uint32_t CRC_DAT27_19;
-    uint32_t CRC_DAT27_20;
-    uint32_t CRC_DAT27_21;
-    uint32_t CRC_DAT27_22;
-    uint32_t CRC_DAT27_23;
-    uint32_t CRC_DAT27_24;
-    uint32_t CRC_DAT27_25;
-    uint32_t CRC_DAT27_26;
-    uint32_t CRC_DAT27_27;
-    uint32_t CRC_DAT27_28;
-    uint32_t CRC_DAT27_29;
-    uint32_t CRC_DAT27_30;
-    uint32_t CRC_DAT27_31;
-} stc_crc_dat27_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT28_0;
-    uint32_t CRC_DAT28_1;
-    uint32_t CRC_DAT28_2;
-    uint32_t CRC_DAT28_3;
-    uint32_t CRC_DAT28_4;
-    uint32_t CRC_DAT28_5;
-    uint32_t CRC_DAT28_6;
-    uint32_t CRC_DAT28_7;
-    uint32_t CRC_DAT28_8;
-    uint32_t CRC_DAT28_9;
-    uint32_t CRC_DAT28_10;
-    uint32_t CRC_DAT28_11;
-    uint32_t CRC_DAT28_12;
-    uint32_t CRC_DAT28_13;
-    uint32_t CRC_DAT28_14;
-    uint32_t CRC_DAT28_15;
-    uint32_t CRC_DAT28_16;
-    uint32_t CRC_DAT28_17;
-    uint32_t CRC_DAT28_18;
-    uint32_t CRC_DAT28_19;
-    uint32_t CRC_DAT28_20;
-    uint32_t CRC_DAT28_21;
-    uint32_t CRC_DAT28_22;
-    uint32_t CRC_DAT28_23;
-    uint32_t CRC_DAT28_24;
-    uint32_t CRC_DAT28_25;
-    uint32_t CRC_DAT28_26;
-    uint32_t CRC_DAT28_27;
-    uint32_t CRC_DAT28_28;
-    uint32_t CRC_DAT28_29;
-    uint32_t CRC_DAT28_30;
-    uint32_t CRC_DAT28_31;
-} stc_crc_dat28_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT29_0;
-    uint32_t CRC_DAT29_1;
-    uint32_t CRC_DAT29_2;
-    uint32_t CRC_DAT29_3;
-    uint32_t CRC_DAT29_4;
-    uint32_t CRC_DAT29_5;
-    uint32_t CRC_DAT29_6;
-    uint32_t CRC_DAT29_7;
-    uint32_t CRC_DAT29_8;
-    uint32_t CRC_DAT29_9;
-    uint32_t CRC_DAT29_10;
-    uint32_t CRC_DAT29_11;
-    uint32_t CRC_DAT29_12;
-    uint32_t CRC_DAT29_13;
-    uint32_t CRC_DAT29_14;
-    uint32_t CRC_DAT29_15;
-    uint32_t CRC_DAT29_16;
-    uint32_t CRC_DAT29_17;
-    uint32_t CRC_DAT29_18;
-    uint32_t CRC_DAT29_19;
-    uint32_t CRC_DAT29_20;
-    uint32_t CRC_DAT29_21;
-    uint32_t CRC_DAT29_22;
-    uint32_t CRC_DAT29_23;
-    uint32_t CRC_DAT29_24;
-    uint32_t CRC_DAT29_25;
-    uint32_t CRC_DAT29_26;
-    uint32_t CRC_DAT29_27;
-    uint32_t CRC_DAT29_28;
-    uint32_t CRC_DAT29_29;
-    uint32_t CRC_DAT29_30;
-    uint32_t CRC_DAT29_31;
-} stc_crc_dat29_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT30_0;
-    uint32_t CRC_DAT30_1;
-    uint32_t CRC_DAT30_2;
-    uint32_t CRC_DAT30_3;
-    uint32_t CRC_DAT30_4;
-    uint32_t CRC_DAT30_5;
-    uint32_t CRC_DAT30_6;
-    uint32_t CRC_DAT30_7;
-    uint32_t CRC_DAT30_8;
-    uint32_t CRC_DAT30_9;
-    uint32_t CRC_DAT30_10;
-    uint32_t CRC_DAT30_11;
-    uint32_t CRC_DAT30_12;
-    uint32_t CRC_DAT30_13;
-    uint32_t CRC_DAT30_14;
-    uint32_t CRC_DAT30_15;
-    uint32_t CRC_DAT30_16;
-    uint32_t CRC_DAT30_17;
-    uint32_t CRC_DAT30_18;
-    uint32_t CRC_DAT30_19;
-    uint32_t CRC_DAT30_20;
-    uint32_t CRC_DAT30_21;
-    uint32_t CRC_DAT30_22;
-    uint32_t CRC_DAT30_23;
-    uint32_t CRC_DAT30_24;
-    uint32_t CRC_DAT30_25;
-    uint32_t CRC_DAT30_26;
-    uint32_t CRC_DAT30_27;
-    uint32_t CRC_DAT30_28;
-    uint32_t CRC_DAT30_29;
-    uint32_t CRC_DAT30_30;
-    uint32_t CRC_DAT30_31;
-} stc_crc_dat30_bit_t;
-
-typedef struct
-{
-    uint32_t CRC_DAT31_0;
-    uint32_t CRC_DAT31_1;
-    uint32_t CRC_DAT31_2;
-    uint32_t CRC_DAT31_3;
-    uint32_t CRC_DAT31_4;
-    uint32_t CRC_DAT31_5;
-    uint32_t CRC_DAT31_6;
-    uint32_t CRC_DAT31_7;
-    uint32_t CRC_DAT31_8;
-    uint32_t CRC_DAT31_9;
-    uint32_t CRC_DAT31_10;
-    uint32_t CRC_DAT31_11;
-    uint32_t CRC_DAT31_12;
-    uint32_t CRC_DAT31_13;
-    uint32_t CRC_DAT31_14;
-    uint32_t CRC_DAT31_15;
-    uint32_t CRC_DAT31_16;
-    uint32_t CRC_DAT31_17;
-    uint32_t CRC_DAT31_18;
-    uint32_t CRC_DAT31_19;
-    uint32_t CRC_DAT31_20;
-    uint32_t CRC_DAT31_21;
-    uint32_t CRC_DAT31_22;
-    uint32_t CRC_DAT31_23;
-    uint32_t CRC_DAT31_24;
-    uint32_t CRC_DAT31_25;
-    uint32_t CRC_DAT31_26;
-    uint32_t CRC_DAT31_27;
-    uint32_t CRC_DAT31_28;
-    uint32_t CRC_DAT31_29;
-    uint32_t CRC_DAT31_30;
-    uint32_t CRC_DAT31_31;
-} stc_crc_dat31_bit_t;
 
 typedef struct
 {
@@ -34404,14 +30877,7 @@ typedef struct
     __IO uint32_t REFCKS1;
     __IO uint32_t ERRIE;
     __IO uint32_t CTCEN;
-    uint32_t RESERVED1[8];
-    __IO uint32_t TRMVAL0;
-    __IO uint32_t TRMVAL1;
-    __IO uint32_t TRMVAL2;
-    __IO uint32_t TRMVAL3;
-    __IO uint32_t TRMVAL4;
-    __IO uint32_t TRMVAL5;
-    uint32_t RESERVED2[10];
+    uint32_t RESERVED1[24];
 } stc_ctc_cr1_bit_t;
 
 typedef struct
@@ -34424,23 +30890,7 @@ typedef struct
     __IO uint32_t OFSVAL5;
     __IO uint32_t OFSVAL6;
     __IO uint32_t OFSVAL7;
-    uint32_t RESERVED0[8];
-    __IO uint32_t RLDVAL0;
-    __IO uint32_t RLDVAL1;
-    __IO uint32_t RLDVAL2;
-    __IO uint32_t RLDVAL3;
-    __IO uint32_t RLDVAL4;
-    __IO uint32_t RLDVAL5;
-    __IO uint32_t RLDVAL6;
-    __IO uint32_t RLDVAL7;
-    __IO uint32_t RLDVAL8;
-    __IO uint32_t RLDVAL9;
-    __IO uint32_t RLDVAL10;
-    __IO uint32_t RLDVAL11;
-    __IO uint32_t RLDVAL12;
-    __IO uint32_t RLDVAL13;
-    __IO uint32_t RLDVAL14;
-    __IO uint32_t RLDVAL15;
+    uint32_t RESERVED0[24];
 } stc_ctc_cr2_bit_t;
 
 typedef struct
@@ -34527,150 +30977,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t DBGC_AUTHID0_0;
-    uint32_t DBGC_AUTHID0_1;
-    uint32_t DBGC_AUTHID0_2;
-    uint32_t DBGC_AUTHID0_3;
-    uint32_t DBGC_AUTHID0_4;
-    uint32_t DBGC_AUTHID0_5;
-    uint32_t DBGC_AUTHID0_6;
-    uint32_t DBGC_AUTHID0_7;
-    uint32_t DBGC_AUTHID0_8;
-    uint32_t DBGC_AUTHID0_9;
-    uint32_t DBGC_AUTHID0_10;
-    uint32_t DBGC_AUTHID0_11;
-    uint32_t DBGC_AUTHID0_12;
-    uint32_t DBGC_AUTHID0_13;
-    uint32_t DBGC_AUTHID0_14;
-    uint32_t DBGC_AUTHID0_15;
-    uint32_t DBGC_AUTHID0_16;
-    uint32_t DBGC_AUTHID0_17;
-    uint32_t DBGC_AUTHID0_18;
-    uint32_t DBGC_AUTHID0_19;
-    uint32_t DBGC_AUTHID0_20;
-    uint32_t DBGC_AUTHID0_21;
-    uint32_t DBGC_AUTHID0_22;
-    uint32_t DBGC_AUTHID0_23;
-    uint32_t DBGC_AUTHID0_24;
-    uint32_t DBGC_AUTHID0_25;
-    uint32_t DBGC_AUTHID0_26;
-    uint32_t DBGC_AUTHID0_27;
-    uint32_t DBGC_AUTHID0_28;
-    uint32_t DBGC_AUTHID0_29;
-    uint32_t DBGC_AUTHID0_30;
-    uint32_t DBGC_AUTHID0_31;
-} stc_dbgc_authid0_bit_t;
-
-typedef struct
-{
-    uint32_t DBGC_AUTHID1_0;
-    uint32_t DBGC_AUTHID1_1;
-    uint32_t DBGC_AUTHID1_2;
-    uint32_t DBGC_AUTHID1_3;
-    uint32_t DBGC_AUTHID1_4;
-    uint32_t DBGC_AUTHID1_5;
-    uint32_t DBGC_AUTHID1_6;
-    uint32_t DBGC_AUTHID1_7;
-    uint32_t DBGC_AUTHID1_8;
-    uint32_t DBGC_AUTHID1_9;
-    uint32_t DBGC_AUTHID1_10;
-    uint32_t DBGC_AUTHID1_11;
-    uint32_t DBGC_AUTHID1_12;
-    uint32_t DBGC_AUTHID1_13;
-    uint32_t DBGC_AUTHID1_14;
-    uint32_t DBGC_AUTHID1_15;
-    uint32_t DBGC_AUTHID1_16;
-    uint32_t DBGC_AUTHID1_17;
-    uint32_t DBGC_AUTHID1_18;
-    uint32_t DBGC_AUTHID1_19;
-    uint32_t DBGC_AUTHID1_20;
-    uint32_t DBGC_AUTHID1_21;
-    uint32_t DBGC_AUTHID1_22;
-    uint32_t DBGC_AUTHID1_23;
-    uint32_t DBGC_AUTHID1_24;
-    uint32_t DBGC_AUTHID1_25;
-    uint32_t DBGC_AUTHID1_26;
-    uint32_t DBGC_AUTHID1_27;
-    uint32_t DBGC_AUTHID1_28;
-    uint32_t DBGC_AUTHID1_29;
-    uint32_t DBGC_AUTHID1_30;
-    uint32_t DBGC_AUTHID1_31;
-} stc_dbgc_authid1_bit_t;
-
-typedef struct
-{
-    uint32_t DBGC_AUTHID2_0;
-    uint32_t DBGC_AUTHID2_1;
-    uint32_t DBGC_AUTHID2_2;
-    uint32_t DBGC_AUTHID2_3;
-    uint32_t DBGC_AUTHID2_4;
-    uint32_t DBGC_AUTHID2_5;
-    uint32_t DBGC_AUTHID2_6;
-    uint32_t DBGC_AUTHID2_7;
-    uint32_t DBGC_AUTHID2_8;
-    uint32_t DBGC_AUTHID2_9;
-    uint32_t DBGC_AUTHID2_10;
-    uint32_t DBGC_AUTHID2_11;
-    uint32_t DBGC_AUTHID2_12;
-    uint32_t DBGC_AUTHID2_13;
-    uint32_t DBGC_AUTHID2_14;
-    uint32_t DBGC_AUTHID2_15;
-    uint32_t DBGC_AUTHID2_16;
-    uint32_t DBGC_AUTHID2_17;
-    uint32_t DBGC_AUTHID2_18;
-    uint32_t DBGC_AUTHID2_19;
-    uint32_t DBGC_AUTHID2_20;
-    uint32_t DBGC_AUTHID2_21;
-    uint32_t DBGC_AUTHID2_22;
-    uint32_t DBGC_AUTHID2_23;
-    uint32_t DBGC_AUTHID2_24;
-    uint32_t DBGC_AUTHID2_25;
-    uint32_t DBGC_AUTHID2_26;
-    uint32_t DBGC_AUTHID2_27;
-    uint32_t DBGC_AUTHID2_28;
-    uint32_t DBGC_AUTHID2_29;
-    uint32_t DBGC_AUTHID2_30;
-    uint32_t DBGC_AUTHID2_31;
-} stc_dbgc_authid2_bit_t;
-
-typedef struct
-{
-    uint32_t DBGC_RESV0_0;
-    uint32_t DBGC_RESV0_1;
-    uint32_t DBGC_RESV0_2;
-    uint32_t DBGC_RESV0_3;
-    uint32_t DBGC_RESV0_4;
-    uint32_t DBGC_RESV0_5;
-    uint32_t DBGC_RESV0_6;
-    uint32_t DBGC_RESV0_7;
-    uint32_t DBGC_RESV0_8;
-    uint32_t DBGC_RESV0_9;
-    uint32_t DBGC_RESV0_10;
-    uint32_t DBGC_RESV0_11;
-    uint32_t DBGC_RESV0_12;
-    uint32_t DBGC_RESV0_13;
-    uint32_t DBGC_RESV0_14;
-    uint32_t DBGC_RESV0_15;
-    uint32_t DBGC_RESV0_16;
-    uint32_t DBGC_RESV0_17;
-    uint32_t DBGC_RESV0_18;
-    uint32_t DBGC_RESV0_19;
-    uint32_t DBGC_RESV0_20;
-    uint32_t DBGC_RESV0_21;
-    uint32_t DBGC_RESV0_22;
-    uint32_t DBGC_RESV0_23;
-    uint32_t DBGC_RESV0_24;
-    uint32_t DBGC_RESV0_25;
-    uint32_t DBGC_RESV0_26;
-    uint32_t DBGC_RESV0_27;
-    uint32_t DBGC_RESV0_28;
-    uint32_t DBGC_RESV0_29;
-    uint32_t DBGC_RESV0_30;
-    uint32_t DBGC_RESV0_31;
-} stc_dbgc_resv0_bit_t;
-
-typedef struct
-{
     __IO uint32_t AUTH;
     __IO uint32_t REMVLOCK;
     __IO uint32_t SAFTYLOCK1;
@@ -34743,10 +31049,9 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t TRACEMODE0;
-    __IO uint32_t TRACEMODE1;
+    uint32_t RESERVED0[2];
     __IO uint32_t TRACEIOEN;
-    uint32_t RESERVED0[29];
+    uint32_t RESERVED1[29];
 } stc_dbgc_mcutracectl_bit_t;
 
 typedef struct
@@ -34814,114 +31119,6 @@ typedef struct
     __IO uint32_t FLAG_TOP;
     uint32_t RESERVED1[20];
 } stc_dcu_flag_bit_t;
-
-typedef struct
-{
-    uint32_t DCU_DATA0_0;
-    uint32_t DCU_DATA0_1;
-    uint32_t DCU_DATA0_2;
-    uint32_t DCU_DATA0_3;
-    uint32_t DCU_DATA0_4;
-    uint32_t DCU_DATA0_5;
-    uint32_t DCU_DATA0_6;
-    uint32_t DCU_DATA0_7;
-    uint32_t DCU_DATA0_8;
-    uint32_t DCU_DATA0_9;
-    uint32_t DCU_DATA0_10;
-    uint32_t DCU_DATA0_11;
-    uint32_t DCU_DATA0_12;
-    uint32_t DCU_DATA0_13;
-    uint32_t DCU_DATA0_14;
-    uint32_t DCU_DATA0_15;
-    uint32_t DCU_DATA0_16;
-    uint32_t DCU_DATA0_17;
-    uint32_t DCU_DATA0_18;
-    uint32_t DCU_DATA0_19;
-    uint32_t DCU_DATA0_20;
-    uint32_t DCU_DATA0_21;
-    uint32_t DCU_DATA0_22;
-    uint32_t DCU_DATA0_23;
-    uint32_t DCU_DATA0_24;
-    uint32_t DCU_DATA0_25;
-    uint32_t DCU_DATA0_26;
-    uint32_t DCU_DATA0_27;
-    uint32_t DCU_DATA0_28;
-    uint32_t DCU_DATA0_29;
-    uint32_t DCU_DATA0_30;
-    uint32_t DCU_DATA0_31;
-} stc_dcu_data0_bit_t;
-
-typedef struct
-{
-    uint32_t DCU_DATA1_0;
-    uint32_t DCU_DATA1_1;
-    uint32_t DCU_DATA1_2;
-    uint32_t DCU_DATA1_3;
-    uint32_t DCU_DATA1_4;
-    uint32_t DCU_DATA1_5;
-    uint32_t DCU_DATA1_6;
-    uint32_t DCU_DATA1_7;
-    uint32_t DCU_DATA1_8;
-    uint32_t DCU_DATA1_9;
-    uint32_t DCU_DATA1_10;
-    uint32_t DCU_DATA1_11;
-    uint32_t DCU_DATA1_12;
-    uint32_t DCU_DATA1_13;
-    uint32_t DCU_DATA1_14;
-    uint32_t DCU_DATA1_15;
-    uint32_t DCU_DATA1_16;
-    uint32_t DCU_DATA1_17;
-    uint32_t DCU_DATA1_18;
-    uint32_t DCU_DATA1_19;
-    uint32_t DCU_DATA1_20;
-    uint32_t DCU_DATA1_21;
-    uint32_t DCU_DATA1_22;
-    uint32_t DCU_DATA1_23;
-    uint32_t DCU_DATA1_24;
-    uint32_t DCU_DATA1_25;
-    uint32_t DCU_DATA1_26;
-    uint32_t DCU_DATA1_27;
-    uint32_t DCU_DATA1_28;
-    uint32_t DCU_DATA1_29;
-    uint32_t DCU_DATA1_30;
-    uint32_t DCU_DATA1_31;
-} stc_dcu_data1_bit_t;
-
-typedef struct
-{
-    uint32_t DCU_DATA2_0;
-    uint32_t DCU_DATA2_1;
-    uint32_t DCU_DATA2_2;
-    uint32_t DCU_DATA2_3;
-    uint32_t DCU_DATA2_4;
-    uint32_t DCU_DATA2_5;
-    uint32_t DCU_DATA2_6;
-    uint32_t DCU_DATA2_7;
-    uint32_t DCU_DATA2_8;
-    uint32_t DCU_DATA2_9;
-    uint32_t DCU_DATA2_10;
-    uint32_t DCU_DATA2_11;
-    uint32_t DCU_DATA2_12;
-    uint32_t DCU_DATA2_13;
-    uint32_t DCU_DATA2_14;
-    uint32_t DCU_DATA2_15;
-    uint32_t DCU_DATA2_16;
-    uint32_t DCU_DATA2_17;
-    uint32_t DCU_DATA2_18;
-    uint32_t DCU_DATA2_19;
-    uint32_t DCU_DATA2_20;
-    uint32_t DCU_DATA2_21;
-    uint32_t DCU_DATA2_22;
-    uint32_t DCU_DATA2_23;
-    uint32_t DCU_DATA2_24;
-    uint32_t DCU_DATA2_25;
-    uint32_t DCU_DATA2_26;
-    uint32_t DCU_DATA2_27;
-    uint32_t DCU_DATA2_28;
-    uint32_t DCU_DATA2_29;
-    uint32_t DCU_DATA2_30;
-    uint32_t DCU_DATA2_31;
-} stc_dcu_data2_bit_t;
 
 typedef struct
 {
@@ -35142,19 +31339,14 @@ typedef struct
 {
     __IO uint32_t RCFGEN;
     __IO uint32_t RCFGLLP;
-    uint32_t RESERVED0[6];
-    __IO uint32_t RCFGCHS0;
-    __IO uint32_t RCFGCHS1;
-    __IO uint32_t RCFGCHS2;
-    __IO uint32_t RCFGCHS3;
-    uint32_t RESERVED1[4];
+    uint32_t RESERVED0[14];
     __IO uint32_t SARMD0;
     __IO uint32_t SARMD1;
     __IO uint32_t DARMD0;
     __IO uint32_t DARMD1;
     __IO uint32_t CNTMD0;
     __IO uint32_t CNTMD1;
-    uint32_t RESERVED2[10];
+    uint32_t RESERVED1[10];
 } stc_dma_rcfgctl_bit_t;
 
 typedef struct
@@ -35169,340 +31361,6 @@ typedef struct
     __IO uint32_t CHENCLR7;
     uint32_t RESERVED0[24];
 } stc_dma_chenclr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SAR0;
-    __IO uint32_t SAR1;
-    __IO uint32_t SAR2;
-    __IO uint32_t SAR3;
-    __IO uint32_t SAR4;
-    __IO uint32_t SAR5;
-    __IO uint32_t SAR6;
-    __IO uint32_t SAR7;
-    __IO uint32_t SAR8;
-    __IO uint32_t SAR9;
-    __IO uint32_t SAR10;
-    __IO uint32_t SAR11;
-    __IO uint32_t SAR12;
-    __IO uint32_t SAR13;
-    __IO uint32_t SAR14;
-    __IO uint32_t SAR15;
-    __IO uint32_t SAR16;
-    __IO uint32_t SAR17;
-    __IO uint32_t SAR18;
-    __IO uint32_t SAR19;
-    __IO uint32_t SAR20;
-    __IO uint32_t SAR21;
-    __IO uint32_t SAR22;
-    __IO uint32_t SAR23;
-    __IO uint32_t SAR24;
-    __IO uint32_t SAR25;
-    __IO uint32_t SAR26;
-    __IO uint32_t SAR27;
-    __IO uint32_t SAR28;
-    __IO uint32_t SAR29;
-    __IO uint32_t SAR30;
-    __IO uint32_t SAR31;
-} stc_dma_sar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DAR0;
-    __IO uint32_t DAR1;
-    __IO uint32_t DAR2;
-    __IO uint32_t DAR3;
-    __IO uint32_t DAR4;
-    __IO uint32_t DAR5;
-    __IO uint32_t DAR6;
-    __IO uint32_t DAR7;
-    __IO uint32_t DAR8;
-    __IO uint32_t DAR9;
-    __IO uint32_t DAR10;
-    __IO uint32_t DAR11;
-    __IO uint32_t DAR12;
-    __IO uint32_t DAR13;
-    __IO uint32_t DAR14;
-    __IO uint32_t DAR15;
-    __IO uint32_t DAR16;
-    __IO uint32_t DAR17;
-    __IO uint32_t DAR18;
-    __IO uint32_t DAR19;
-    __IO uint32_t DAR20;
-    __IO uint32_t DAR21;
-    __IO uint32_t DAR22;
-    __IO uint32_t DAR23;
-    __IO uint32_t DAR24;
-    __IO uint32_t DAR25;
-    __IO uint32_t DAR26;
-    __IO uint32_t DAR27;
-    __IO uint32_t DAR28;
-    __IO uint32_t DAR29;
-    __IO uint32_t DAR30;
-    __IO uint32_t DAR31;
-} stc_dma_dar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t BLKSIZE0;
-    __IO uint32_t BLKSIZE1;
-    __IO uint32_t BLKSIZE2;
-    __IO uint32_t BLKSIZE3;
-    __IO uint32_t BLKSIZE4;
-    __IO uint32_t BLKSIZE5;
-    __IO uint32_t BLKSIZE6;
-    __IO uint32_t BLKSIZE7;
-    __IO uint32_t BLKSIZE8;
-    __IO uint32_t BLKSIZE9;
-    uint32_t RESERVED0[6];
-    __IO uint32_t CNT0;
-    __IO uint32_t CNT1;
-    __IO uint32_t CNT2;
-    __IO uint32_t CNT3;
-    __IO uint32_t CNT4;
-    __IO uint32_t CNT5;
-    __IO uint32_t CNT6;
-    __IO uint32_t CNT7;
-    __IO uint32_t CNT8;
-    __IO uint32_t CNT9;
-    __IO uint32_t CNT10;
-    __IO uint32_t CNT11;
-    __IO uint32_t CNT12;
-    __IO uint32_t CNT13;
-    __IO uint32_t CNT14;
-    __IO uint32_t CNT15;
-} stc_dma_dtctl_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SRPT0;
-    __IO uint32_t SRPT1;
-    __IO uint32_t SRPT2;
-    __IO uint32_t SRPT3;
-    __IO uint32_t SRPT4;
-    __IO uint32_t SRPT5;
-    __IO uint32_t SRPT6;
-    __IO uint32_t SRPT7;
-    __IO uint32_t SRPT8;
-    __IO uint32_t SRPT9;
-    uint32_t RESERVED0[6];
-    __IO uint32_t DRPT0;
-    __IO uint32_t DRPT1;
-    __IO uint32_t DRPT2;
-    __IO uint32_t DRPT3;
-    __IO uint32_t DRPT4;
-    __IO uint32_t DRPT5;
-    __IO uint32_t DRPT6;
-    __IO uint32_t DRPT7;
-    __IO uint32_t DRPT8;
-    __IO uint32_t DRPT9;
-    uint32_t RESERVED1[6];
-} stc_dma_rpt_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SRPTB0;
-    __IO uint32_t SRPTB1;
-    __IO uint32_t SRPTB2;
-    __IO uint32_t SRPTB3;
-    __IO uint32_t SRPTB4;
-    __IO uint32_t SRPTB5;
-    __IO uint32_t SRPTB6;
-    __IO uint32_t SRPTB7;
-    __IO uint32_t SRPTB8;
-    __IO uint32_t SRPTB9;
-    uint32_t RESERVED0[6];
-    __IO uint32_t DRPTB0;
-    __IO uint32_t DRPTB1;
-    __IO uint32_t DRPTB2;
-    __IO uint32_t DRPTB3;
-    __IO uint32_t DRPTB4;
-    __IO uint32_t DRPTB5;
-    __IO uint32_t DRPTB6;
-    __IO uint32_t DRPTB7;
-    __IO uint32_t DRPTB8;
-    __IO uint32_t DRPTB9;
-    uint32_t RESERVED1[6];
-} stc_dma_rptb_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SOFFSET0;
-    __IO uint32_t SOFFSET1;
-    __IO uint32_t SOFFSET2;
-    __IO uint32_t SOFFSET3;
-    __IO uint32_t SOFFSET4;
-    __IO uint32_t SOFFSET5;
-    __IO uint32_t SOFFSET6;
-    __IO uint32_t SOFFSET7;
-    __IO uint32_t SOFFSET8;
-    __IO uint32_t SOFFSET9;
-    __IO uint32_t SOFFSET10;
-    __IO uint32_t SOFFSET11;
-    __IO uint32_t SOFFSET12;
-    __IO uint32_t SOFFSET13;
-    __IO uint32_t SOFFSET14;
-    __IO uint32_t SOFFSET15;
-    __IO uint32_t SOFFSET16;
-    __IO uint32_t SOFFSET17;
-    __IO uint32_t SOFFSET18;
-    __IO uint32_t SOFFSET19;
-    __IO uint32_t SNSCNT0;
-    __IO uint32_t SNSCNT1;
-    __IO uint32_t SNSCNT2;
-    __IO uint32_t SNSCNT3;
-    __IO uint32_t SNSCNT4;
-    __IO uint32_t SNSCNT5;
-    __IO uint32_t SNSCNT6;
-    __IO uint32_t SNSCNT7;
-    __IO uint32_t SNSCNT8;
-    __IO uint32_t SNSCNT9;
-    __IO uint32_t SNSCNT10;
-    __IO uint32_t SNSCNT11;
-} stc_dma_snseqctl_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SNSDIST0;
-    __IO uint32_t SNSDIST1;
-    __IO uint32_t SNSDIST2;
-    __IO uint32_t SNSDIST3;
-    __IO uint32_t SNSDIST4;
-    __IO uint32_t SNSDIST5;
-    __IO uint32_t SNSDIST6;
-    __IO uint32_t SNSDIST7;
-    __IO uint32_t SNSDIST8;
-    __IO uint32_t SNSDIST9;
-    __IO uint32_t SNSDIST10;
-    __IO uint32_t SNSDIST11;
-    __IO uint32_t SNSDIST12;
-    __IO uint32_t SNSDIST13;
-    __IO uint32_t SNSDIST14;
-    __IO uint32_t SNSDIST15;
-    __IO uint32_t SNSDIST16;
-    __IO uint32_t SNSDIST17;
-    __IO uint32_t SNSDIST18;
-    __IO uint32_t SNSDIST19;
-    __IO uint32_t SNSCNTB0;
-    __IO uint32_t SNSCNTB1;
-    __IO uint32_t SNSCNTB2;
-    __IO uint32_t SNSCNTB3;
-    __IO uint32_t SNSCNTB4;
-    __IO uint32_t SNSCNTB5;
-    __IO uint32_t SNSCNTB6;
-    __IO uint32_t SNSCNTB7;
-    __IO uint32_t SNSCNTB8;
-    __IO uint32_t SNSCNTB9;
-    __IO uint32_t SNSCNTB10;
-    __IO uint32_t SNSCNTB11;
-} stc_dma_snseqctlb_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DOFFSET0;
-    __IO uint32_t DOFFSET1;
-    __IO uint32_t DOFFSET2;
-    __IO uint32_t DOFFSET3;
-    __IO uint32_t DOFFSET4;
-    __IO uint32_t DOFFSET5;
-    __IO uint32_t DOFFSET6;
-    __IO uint32_t DOFFSET7;
-    __IO uint32_t DOFFSET8;
-    __IO uint32_t DOFFSET9;
-    __IO uint32_t DOFFSET10;
-    __IO uint32_t DOFFSET11;
-    __IO uint32_t DOFFSET12;
-    __IO uint32_t DOFFSET13;
-    __IO uint32_t DOFFSET14;
-    __IO uint32_t DOFFSET15;
-    __IO uint32_t DOFFSET16;
-    __IO uint32_t DOFFSET17;
-    __IO uint32_t DOFFSET18;
-    __IO uint32_t DOFFSET19;
-    __IO uint32_t DNSCNT0;
-    __IO uint32_t DNSCNT1;
-    __IO uint32_t DNSCNT2;
-    __IO uint32_t DNSCNT3;
-    __IO uint32_t DNSCNT4;
-    __IO uint32_t DNSCNT5;
-    __IO uint32_t DNSCNT6;
-    __IO uint32_t DNSCNT7;
-    __IO uint32_t DNSCNT8;
-    __IO uint32_t DNSCNT9;
-    __IO uint32_t DNSCNT10;
-    __IO uint32_t DNSCNT11;
-} stc_dma_dnseqctl_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DNSDIST0;
-    __IO uint32_t DNSDIST1;
-    __IO uint32_t DNSDIST2;
-    __IO uint32_t DNSDIST3;
-    __IO uint32_t DNSDIST4;
-    __IO uint32_t DNSDIST5;
-    __IO uint32_t DNSDIST6;
-    __IO uint32_t DNSDIST7;
-    __IO uint32_t DNSDIST8;
-    __IO uint32_t DNSDIST9;
-    __IO uint32_t DNSDIST10;
-    __IO uint32_t DNSDIST11;
-    __IO uint32_t DNSDIST12;
-    __IO uint32_t DNSDIST13;
-    __IO uint32_t DNSDIST14;
-    __IO uint32_t DNSDIST15;
-    __IO uint32_t DNSDIST16;
-    __IO uint32_t DNSDIST17;
-    __IO uint32_t DNSDIST18;
-    __IO uint32_t DNSDIST19;
-    __IO uint32_t DNSCNTB0;
-    __IO uint32_t DNSCNTB1;
-    __IO uint32_t DNSCNTB2;
-    __IO uint32_t DNSCNTB3;
-    __IO uint32_t DNSCNTB4;
-    __IO uint32_t DNSCNTB5;
-    __IO uint32_t DNSCNTB6;
-    __IO uint32_t DNSCNTB7;
-    __IO uint32_t DNSCNTB8;
-    __IO uint32_t DNSCNTB9;
-    __IO uint32_t DNSCNTB10;
-    __IO uint32_t DNSCNTB11;
-} stc_dma_dnseqctlb_bit_t;
-
-typedef struct
-{
-    uint32_t RESERVED0[2];
-    __IO uint32_t LLP0;
-    __IO uint32_t LLP1;
-    __IO uint32_t LLP2;
-    __IO uint32_t LLP3;
-    __IO uint32_t LLP4;
-    __IO uint32_t LLP5;
-    __IO uint32_t LLP6;
-    __IO uint32_t LLP7;
-    __IO uint32_t LLP8;
-    __IO uint32_t LLP9;
-    __IO uint32_t LLP10;
-    __IO uint32_t LLP11;
-    __IO uint32_t LLP12;
-    __IO uint32_t LLP13;
-    __IO uint32_t LLP14;
-    __IO uint32_t LLP15;
-    __IO uint32_t LLP16;
-    __IO uint32_t LLP17;
-    __IO uint32_t LLP18;
-    __IO uint32_t LLP19;
-    __IO uint32_t LLP20;
-    __IO uint32_t LLP21;
-    __IO uint32_t LLP22;
-    __IO uint32_t LLP23;
-    __IO uint32_t LLP24;
-    __IO uint32_t LLP25;
-    __IO uint32_t LLP26;
-    __IO uint32_t LLP27;
-    __IO uint32_t LLP28;
-    __IO uint32_t LLP29;
-} stc_dma_llp_bit_t;
 
 typedef struct
 {
@@ -35524,207 +31382,6 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MONSAR0;
-    __IO uint32_t MONSAR1;
-    __IO uint32_t MONSAR2;
-    __IO uint32_t MONSAR3;
-    __IO uint32_t MONSAR4;
-    __IO uint32_t MONSAR5;
-    __IO uint32_t MONSAR6;
-    __IO uint32_t MONSAR7;
-    __IO uint32_t MONSAR8;
-    __IO uint32_t MONSAR9;
-    __IO uint32_t MONSAR10;
-    __IO uint32_t MONSAR11;
-    __IO uint32_t MONSAR12;
-    __IO uint32_t MONSAR13;
-    __IO uint32_t MONSAR14;
-    __IO uint32_t MONSAR15;
-    __IO uint32_t MONSAR16;
-    __IO uint32_t MONSAR17;
-    __IO uint32_t MONSAR18;
-    __IO uint32_t MONSAR19;
-    __IO uint32_t MONSAR20;
-    __IO uint32_t MONSAR21;
-    __IO uint32_t MONSAR22;
-    __IO uint32_t MONSAR23;
-    __IO uint32_t MONSAR24;
-    __IO uint32_t MONSAR25;
-    __IO uint32_t MONSAR26;
-    __IO uint32_t MONSAR27;
-    __IO uint32_t MONSAR28;
-    __IO uint32_t MONSAR29;
-    __IO uint32_t MONSAR30;
-    __IO uint32_t MONSAR31;
-} stc_dma_monsar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MONDAR0;
-    __IO uint32_t MONDAR1;
-    __IO uint32_t MONDAR2;
-    __IO uint32_t MONDAR3;
-    __IO uint32_t MONDAR4;
-    __IO uint32_t MONDAR5;
-    __IO uint32_t MONDAR6;
-    __IO uint32_t MONDAR7;
-    __IO uint32_t MONDAR8;
-    __IO uint32_t MONDAR9;
-    __IO uint32_t MONDAR10;
-    __IO uint32_t MONDAR11;
-    __IO uint32_t MONDAR12;
-    __IO uint32_t MONDAR13;
-    __IO uint32_t MONDAR14;
-    __IO uint32_t MONDAR15;
-    __IO uint32_t MONDAR16;
-    __IO uint32_t MONDAR17;
-    __IO uint32_t MONDAR18;
-    __IO uint32_t MONDAR19;
-    __IO uint32_t MONDAR20;
-    __IO uint32_t MONDAR21;
-    __IO uint32_t MONDAR22;
-    __IO uint32_t MONDAR23;
-    __IO uint32_t MONDAR24;
-    __IO uint32_t MONDAR25;
-    __IO uint32_t MONDAR26;
-    __IO uint32_t MONDAR27;
-    __IO uint32_t MONDAR28;
-    __IO uint32_t MONDAR29;
-    __IO uint32_t MONDAR30;
-    __IO uint32_t MONDAR31;
-} stc_dma_mondar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t BLKSIZE0;
-    __IO uint32_t BLKSIZE1;
-    __IO uint32_t BLKSIZE2;
-    __IO uint32_t BLKSIZE3;
-    __IO uint32_t BLKSIZE4;
-    __IO uint32_t BLKSIZE5;
-    __IO uint32_t BLKSIZE6;
-    __IO uint32_t BLKSIZE7;
-    __IO uint32_t BLKSIZE8;
-    __IO uint32_t BLKSIZE9;
-    uint32_t RESERVED0[6];
-    __IO uint32_t CNT0;
-    __IO uint32_t CNT1;
-    __IO uint32_t CNT2;
-    __IO uint32_t CNT3;
-    __IO uint32_t CNT4;
-    __IO uint32_t CNT5;
-    __IO uint32_t CNT6;
-    __IO uint32_t CNT7;
-    __IO uint32_t CNT8;
-    __IO uint32_t CNT9;
-    __IO uint32_t CNT10;
-    __IO uint32_t CNT11;
-    __IO uint32_t CNT12;
-    __IO uint32_t CNT13;
-    __IO uint32_t CNT14;
-    __IO uint32_t CNT15;
-} stc_dma_mondtctl_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SRPT0;
-    __IO uint32_t SRPT1;
-    __IO uint32_t SRPT2;
-    __IO uint32_t SRPT3;
-    __IO uint32_t SRPT4;
-    __IO uint32_t SRPT5;
-    __IO uint32_t SRPT6;
-    __IO uint32_t SRPT7;
-    __IO uint32_t SRPT8;
-    __IO uint32_t SRPT9;
-    uint32_t RESERVED0[6];
-    __IO uint32_t DRPT0;
-    __IO uint32_t DRPT1;
-    __IO uint32_t DRPT2;
-    __IO uint32_t DRPT3;
-    __IO uint32_t DRPT4;
-    __IO uint32_t DRPT5;
-    __IO uint32_t DRPT6;
-    __IO uint32_t DRPT7;
-    __IO uint32_t DRPT8;
-    __IO uint32_t DRPT9;
-    uint32_t RESERVED1[6];
-} stc_dma_monrpt_bit_t;
-
-typedef struct
-{
-    __IO uint32_t SOFFSET0;
-    __IO uint32_t SOFFSET1;
-    __IO uint32_t SOFFSET2;
-    __IO uint32_t SOFFSET3;
-    __IO uint32_t SOFFSET4;
-    __IO uint32_t SOFFSET5;
-    __IO uint32_t SOFFSET6;
-    __IO uint32_t SOFFSET7;
-    __IO uint32_t SOFFSET8;
-    __IO uint32_t SOFFSET9;
-    __IO uint32_t SOFFSET10;
-    __IO uint32_t SOFFSET11;
-    __IO uint32_t SOFFSET12;
-    __IO uint32_t SOFFSET13;
-    __IO uint32_t SOFFSET14;
-    __IO uint32_t SOFFSET15;
-    __IO uint32_t SOFFSET16;
-    __IO uint32_t SOFFSET17;
-    __IO uint32_t SOFFSET18;
-    __IO uint32_t SOFFSET19;
-    __IO uint32_t SNSCNT0;
-    __IO uint32_t SNSCNT1;
-    __IO uint32_t SNSCNT2;
-    __IO uint32_t SNSCNT3;
-    __IO uint32_t SNSCNT4;
-    __IO uint32_t SNSCNT5;
-    __IO uint32_t SNSCNT6;
-    __IO uint32_t SNSCNT7;
-    __IO uint32_t SNSCNT8;
-    __IO uint32_t SNSCNT9;
-    __IO uint32_t SNSCNT10;
-    __IO uint32_t SNSCNT11;
-} stc_dma_monsnseqctl_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DOFFSET0;
-    __IO uint32_t DOFFSET1;
-    __IO uint32_t DOFFSET2;
-    __IO uint32_t DOFFSET3;
-    __IO uint32_t DOFFSET4;
-    __IO uint32_t DOFFSET5;
-    __IO uint32_t DOFFSET6;
-    __IO uint32_t DOFFSET7;
-    __IO uint32_t DOFFSET8;
-    __IO uint32_t DOFFSET9;
-    __IO uint32_t DOFFSET10;
-    __IO uint32_t DOFFSET11;
-    __IO uint32_t DOFFSET12;
-    __IO uint32_t DOFFSET13;
-    __IO uint32_t DOFFSET14;
-    __IO uint32_t DOFFSET15;
-    __IO uint32_t DOFFSET16;
-    __IO uint32_t DOFFSET17;
-    __IO uint32_t DOFFSET18;
-    __IO uint32_t DOFFSET19;
-    __IO uint32_t DNSCNT0;
-    __IO uint32_t DNSCNT1;
-    __IO uint32_t DNSCNT2;
-    __IO uint32_t DNSCNT3;
-    __IO uint32_t DNSCNT4;
-    __IO uint32_t DNSCNT5;
-    __IO uint32_t DNSCNT6;
-    __IO uint32_t DNSCNT7;
-    __IO uint32_t DNSCNT8;
-    __IO uint32_t DNSCNT9;
-    __IO uint32_t DNSCNT10;
-    __IO uint32_t DNSCNT11;
-} stc_dma_mondnseqctl_bit_t;
-
-typedef struct
-{
     __IO uint32_t CAPEN;
     __IO uint32_t CAPMD;
     __IO uint32_t CROPEN;
@@ -35741,42 +31398,6 @@ typedef struct
     __IO uint32_t DVPEN;
     uint32_t RESERVED1[17];
 } stc_dvp_ctr_bit_t;
-
-typedef struct
-{
-    uint32_t DVP_DTR_0;
-    uint32_t DVP_DTR_1;
-    uint32_t DVP_DTR_2;
-    uint32_t DVP_DTR_3;
-    uint32_t DVP_DTR_4;
-    uint32_t DVP_DTR_5;
-    uint32_t DVP_DTR_6;
-    uint32_t DVP_DTR_7;
-    uint32_t DVP_DTR_8;
-    uint32_t DVP_DTR_9;
-    uint32_t DVP_DTR_10;
-    uint32_t DVP_DTR_11;
-    uint32_t DVP_DTR_12;
-    uint32_t DVP_DTR_13;
-    uint32_t DVP_DTR_14;
-    uint32_t DVP_DTR_15;
-    uint32_t DVP_DTR_16;
-    uint32_t DVP_DTR_17;
-    uint32_t DVP_DTR_18;
-    uint32_t DVP_DTR_19;
-    uint32_t DVP_DTR_20;
-    uint32_t DVP_DTR_21;
-    uint32_t DVP_DTR_22;
-    uint32_t DVP_DTR_23;
-    uint32_t DVP_DTR_24;
-    uint32_t DVP_DTR_25;
-    uint32_t DVP_DTR_26;
-    uint32_t DVP_DTR_27;
-    uint32_t DVP_DTR_28;
-    uint32_t DVP_DTR_29;
-    uint32_t DVP_DTR_30;
-    uint32_t DVP_DTR_31;
-} stc_dvp_dtr_bit_t;
 
 typedef struct
 {
@@ -35802,182 +31423,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t DVP_DMR_0;
-    uint32_t DVP_DMR_1;
-    uint32_t DVP_DMR_2;
-    uint32_t DVP_DMR_3;
-    uint32_t DVP_DMR_4;
-    uint32_t DVP_DMR_5;
-    uint32_t DVP_DMR_6;
-    uint32_t DVP_DMR_7;
-    uint32_t DVP_DMR_8;
-    uint32_t DVP_DMR_9;
-    uint32_t DVP_DMR_10;
-    uint32_t DVP_DMR_11;
-    uint32_t DVP_DMR_12;
-    uint32_t DVP_DMR_13;
-    uint32_t DVP_DMR_14;
-    uint32_t DVP_DMR_15;
-    uint32_t DVP_DMR_16;
-    uint32_t DVP_DMR_17;
-    uint32_t DVP_DMR_18;
-    uint32_t DVP_DMR_19;
-    uint32_t DVP_DMR_20;
-    uint32_t DVP_DMR_21;
-    uint32_t DVP_DMR_22;
-    uint32_t DVP_DMR_23;
-    uint32_t DVP_DMR_24;
-    uint32_t DVP_DMR_25;
-    uint32_t DVP_DMR_26;
-    uint32_t DVP_DMR_27;
-    uint32_t DVP_DMR_28;
-    uint32_t DVP_DMR_29;
-    uint32_t DVP_DMR_30;
-    uint32_t DVP_DMR_31;
-} stc_dvp_dmr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t FSDAT0;
-    __IO uint32_t FSDAT1;
-    __IO uint32_t FSDAT2;
-    __IO uint32_t FSDAT3;
-    __IO uint32_t FSDAT4;
-    __IO uint32_t FSDAT5;
-    __IO uint32_t FSDAT6;
-    __IO uint32_t FSDAT7;
-    __IO uint32_t LSDAT0;
-    __IO uint32_t LSDAT1;
-    __IO uint32_t LSDAT2;
-    __IO uint32_t LSDAT3;
-    __IO uint32_t LSDAT4;
-    __IO uint32_t LSDAT5;
-    __IO uint32_t LSDAT6;
-    __IO uint32_t LSDAT7;
-    __IO uint32_t LEDAT0;
-    __IO uint32_t LEDAT1;
-    __IO uint32_t LEDAT2;
-    __IO uint32_t LEDAT3;
-    __IO uint32_t LEDAT4;
-    __IO uint32_t LEDAT5;
-    __IO uint32_t LEDAT6;
-    __IO uint32_t LEDAT7;
-    __IO uint32_t FEDAT0;
-    __IO uint32_t FEDAT1;
-    __IO uint32_t FEDAT2;
-    __IO uint32_t FEDAT3;
-    __IO uint32_t FEDAT4;
-    __IO uint32_t FEDAT5;
-    __IO uint32_t FEDAT6;
-    __IO uint32_t FEDAT7;
-} stc_dvp_ssyndr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t FSMSK0;
-    __IO uint32_t FSMSK1;
-    __IO uint32_t FSMSK2;
-    __IO uint32_t FSMSK3;
-    __IO uint32_t FSMSK4;
-    __IO uint32_t FSMSK5;
-    __IO uint32_t FSMSK6;
-    __IO uint32_t FSMSK7;
-    __IO uint32_t LSMSK0;
-    __IO uint32_t LSMSK1;
-    __IO uint32_t LSMSK2;
-    __IO uint32_t LSMSK3;
-    __IO uint32_t LSMSK4;
-    __IO uint32_t LSMSK5;
-    __IO uint32_t LSMSK6;
-    __IO uint32_t LSMSK7;
-    __IO uint32_t LEMSK0;
-    __IO uint32_t LEMSK1;
-    __IO uint32_t LEMSK2;
-    __IO uint32_t LEMSK3;
-    __IO uint32_t LEMSK4;
-    __IO uint32_t LEMSK5;
-    __IO uint32_t LEMSK6;
-    __IO uint32_t LEMSK7;
-    __IO uint32_t FEMSK0;
-    __IO uint32_t FEMSK1;
-    __IO uint32_t FEMSK2;
-    __IO uint32_t FEMSK3;
-    __IO uint32_t FEMSK4;
-    __IO uint32_t FEMSK5;
-    __IO uint32_t FEMSK6;
-    __IO uint32_t FEMSK7;
-} stc_dvp_ssynmr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RSHIFT0;
-    __IO uint32_t RSHIFT1;
-    __IO uint32_t RSHIFT2;
-    __IO uint32_t RSHIFT3;
-    __IO uint32_t RSHIFT4;
-    __IO uint32_t RSHIFT5;
-    __IO uint32_t RSHIFT6;
-    __IO uint32_t RSHIFT7;
-    __IO uint32_t RSHIFT8;
-    __IO uint32_t RSHIFT9;
-    __IO uint32_t RSHIFT10;
-    __IO uint32_t RSHIFT11;
-    __IO uint32_t RSHIFT12;
-    __IO uint32_t RSHIFT13;
-    uint32_t RESERVED0[2];
-    __IO uint32_t CSHIFT0;
-    __IO uint32_t CSHIFT1;
-    __IO uint32_t CSHIFT2;
-    __IO uint32_t CSHIFT3;
-    __IO uint32_t CSHIFT4;
-    __IO uint32_t CSHIFT5;
-    __IO uint32_t CSHIFT6;
-    __IO uint32_t CSHIFT7;
-    __IO uint32_t CSHIFT8;
-    __IO uint32_t CSHIFT9;
-    __IO uint32_t CSHIFT10;
-    __IO uint32_t CSHIFT11;
-    __IO uint32_t CSHIFT12;
-    __IO uint32_t CSHIFT13;
-    uint32_t RESERVED1[2];
-} stc_dvp_cpsftr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RSIZE0;
-    __IO uint32_t RSIZE1;
-    __IO uint32_t RSIZE2;
-    __IO uint32_t RSIZE3;
-    __IO uint32_t RSIZE4;
-    __IO uint32_t RSIZE5;
-    __IO uint32_t RSIZE6;
-    __IO uint32_t RSIZE7;
-    __IO uint32_t RSIZE8;
-    __IO uint32_t RSIZE9;
-    __IO uint32_t RSIZE10;
-    __IO uint32_t RSIZE11;
-    __IO uint32_t RSIZE12;
-    __IO uint32_t RSIZE13;
-    uint32_t RESERVED0[2];
-    __IO uint32_t CSIZE0;
-    __IO uint32_t CSIZE1;
-    __IO uint32_t CSIZE2;
-    __IO uint32_t CSIZE3;
-    __IO uint32_t CSIZE4;
-    __IO uint32_t CSIZE5;
-    __IO uint32_t CSIZE6;
-    __IO uint32_t CSIZE7;
-    __IO uint32_t CSIZE8;
-    __IO uint32_t CSIZE9;
-    __IO uint32_t CSIZE10;
-    __IO uint32_t CSIZE11;
-    __IO uint32_t CSIZE12;
-    __IO uint32_t CSIZE13;
-    uint32_t RESERVED1[2];
-} stc_dvp_cpszer_bit_t;
-
-typedef struct
-{
     __IO uint32_t FAPRT0;
     __IO uint32_t FAPRT1;
     __IO uint32_t FAPRT2;
@@ -35996,78 +31441,6 @@ typedef struct
     __IO uint32_t FAPRT15;
     uint32_t RESERVED0[16];
 } stc_efm_faprt_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_KEY1_0;
-    uint32_t EFM_KEY1_1;
-    uint32_t EFM_KEY1_2;
-    uint32_t EFM_KEY1_3;
-    uint32_t EFM_KEY1_4;
-    uint32_t EFM_KEY1_5;
-    uint32_t EFM_KEY1_6;
-    uint32_t EFM_KEY1_7;
-    uint32_t EFM_KEY1_8;
-    uint32_t EFM_KEY1_9;
-    uint32_t EFM_KEY1_10;
-    uint32_t EFM_KEY1_11;
-    uint32_t EFM_KEY1_12;
-    uint32_t EFM_KEY1_13;
-    uint32_t EFM_KEY1_14;
-    uint32_t EFM_KEY1_15;
-    uint32_t EFM_KEY1_16;
-    uint32_t EFM_KEY1_17;
-    uint32_t EFM_KEY1_18;
-    uint32_t EFM_KEY1_19;
-    uint32_t EFM_KEY1_20;
-    uint32_t EFM_KEY1_21;
-    uint32_t EFM_KEY1_22;
-    uint32_t EFM_KEY1_23;
-    uint32_t EFM_KEY1_24;
-    uint32_t EFM_KEY1_25;
-    uint32_t EFM_KEY1_26;
-    uint32_t EFM_KEY1_27;
-    uint32_t EFM_KEY1_28;
-    uint32_t EFM_KEY1_29;
-    uint32_t EFM_KEY1_30;
-    uint32_t EFM_KEY1_31;
-} stc_efm_key1_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_KEY2_0;
-    uint32_t EFM_KEY2_1;
-    uint32_t EFM_KEY2_2;
-    uint32_t EFM_KEY2_3;
-    uint32_t EFM_KEY2_4;
-    uint32_t EFM_KEY2_5;
-    uint32_t EFM_KEY2_6;
-    uint32_t EFM_KEY2_7;
-    uint32_t EFM_KEY2_8;
-    uint32_t EFM_KEY2_9;
-    uint32_t EFM_KEY2_10;
-    uint32_t EFM_KEY2_11;
-    uint32_t EFM_KEY2_12;
-    uint32_t EFM_KEY2_13;
-    uint32_t EFM_KEY2_14;
-    uint32_t EFM_KEY2_15;
-    uint32_t EFM_KEY2_16;
-    uint32_t EFM_KEY2_17;
-    uint32_t EFM_KEY2_18;
-    uint32_t EFM_KEY2_19;
-    uint32_t EFM_KEY2_20;
-    uint32_t EFM_KEY2_21;
-    uint32_t EFM_KEY2_22;
-    uint32_t EFM_KEY2_23;
-    uint32_t EFM_KEY2_24;
-    uint32_t EFM_KEY2_25;
-    uint32_t EFM_KEY2_26;
-    uint32_t EFM_KEY2_27;
-    uint32_t EFM_KEY2_28;
-    uint32_t EFM_KEY2_29;
-    uint32_t EFM_KEY2_30;
-    uint32_t EFM_KEY2_31;
-} stc_efm_key2_bit_t;
 
 typedef struct
 {
@@ -36094,10 +31467,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PEMOD0;
-    __IO uint32_t PEMOD1;
-    __IO uint32_t PEMOD2;
-    uint32_t RESERVED0[5];
+    uint32_t RESERVED0[8];
     __IO uint32_t BUSHLDCTL;
     uint32_t RESERVED1[7];
     __IO uint32_t KEY1LOCK;
@@ -36159,224 +31529,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t EFM_FHDFG_0;
-    uint32_t EFM_FHDFG_1;
-    uint32_t EFM_FHDFG_2;
-    uint32_t EFM_FHDFG_3;
-    uint32_t EFM_FHDFG_4;
-    uint32_t EFM_FHDFG_5;
-    uint32_t EFM_FHDFG_6;
-    uint32_t EFM_FHDFG_7;
-    uint32_t EFM_FHDFG_8;
-    uint32_t EFM_FHDFG_9;
-    uint32_t EFM_FHDFG_10;
-    uint32_t EFM_FHDFG_11;
-    uint32_t EFM_FHDFG_12;
-    uint32_t EFM_FHDFG_13;
-    uint32_t EFM_FHDFG_14;
-    uint32_t EFM_FHDFG_15;
-    uint32_t EFM_FHDFG_16;
-    uint32_t EFM_FHDFG_17;
-    uint32_t EFM_FHDFG_18;
-    uint32_t EFM_FHDFG_19;
-    uint32_t EFM_FHDFG_20;
-    uint32_t EFM_FHDFG_21;
-    uint32_t EFM_FHDFG_22;
-    uint32_t EFM_FHDFG_23;
-    uint32_t EFM_FHDFG_24;
-    uint32_t EFM_FHDFG_25;
-    uint32_t EFM_FHDFG_26;
-    uint32_t EFM_FHDFG_27;
-    uint32_t EFM_FHDFG_28;
-    uint32_t EFM_FHDFG_29;
-    uint32_t EFM_FHDFG_30;
-    uint32_t EFM_FHDFG_31;
-} stc_efm_fhdfg_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_UQID0_0;
-    uint32_t EFM_UQID0_1;
-    uint32_t EFM_UQID0_2;
-    uint32_t EFM_UQID0_3;
-    uint32_t EFM_UQID0_4;
-    uint32_t EFM_UQID0_5;
-    uint32_t EFM_UQID0_6;
-    uint32_t EFM_UQID0_7;
-    uint32_t EFM_UQID0_8;
-    uint32_t EFM_UQID0_9;
-    uint32_t EFM_UQID0_10;
-    uint32_t EFM_UQID0_11;
-    uint32_t EFM_UQID0_12;
-    uint32_t EFM_UQID0_13;
-    uint32_t EFM_UQID0_14;
-    uint32_t EFM_UQID0_15;
-    uint32_t EFM_UQID0_16;
-    uint32_t EFM_UQID0_17;
-    uint32_t EFM_UQID0_18;
-    uint32_t EFM_UQID0_19;
-    uint32_t EFM_UQID0_20;
-    uint32_t EFM_UQID0_21;
-    uint32_t EFM_UQID0_22;
-    uint32_t EFM_UQID0_23;
-    uint32_t EFM_UQID0_24;
-    uint32_t EFM_UQID0_25;
-    uint32_t EFM_UQID0_26;
-    uint32_t EFM_UQID0_27;
-    uint32_t EFM_UQID0_28;
-    uint32_t EFM_UQID0_29;
-    uint32_t EFM_UQID0_30;
-    uint32_t EFM_UQID0_31;
-} stc_efm_uqid0_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_UQID1_0;
-    uint32_t EFM_UQID1_1;
-    uint32_t EFM_UQID1_2;
-    uint32_t EFM_UQID1_3;
-    uint32_t EFM_UQID1_4;
-    uint32_t EFM_UQID1_5;
-    uint32_t EFM_UQID1_6;
-    uint32_t EFM_UQID1_7;
-    uint32_t EFM_UQID1_8;
-    uint32_t EFM_UQID1_9;
-    uint32_t EFM_UQID1_10;
-    uint32_t EFM_UQID1_11;
-    uint32_t EFM_UQID1_12;
-    uint32_t EFM_UQID1_13;
-    uint32_t EFM_UQID1_14;
-    uint32_t EFM_UQID1_15;
-    uint32_t EFM_UQID1_16;
-    uint32_t EFM_UQID1_17;
-    uint32_t EFM_UQID1_18;
-    uint32_t EFM_UQID1_19;
-    uint32_t EFM_UQID1_20;
-    uint32_t EFM_UQID1_21;
-    uint32_t EFM_UQID1_22;
-    uint32_t EFM_UQID1_23;
-    uint32_t EFM_UQID1_24;
-    uint32_t EFM_UQID1_25;
-    uint32_t EFM_UQID1_26;
-    uint32_t EFM_UQID1_27;
-    uint32_t EFM_UQID1_28;
-    uint32_t EFM_UQID1_29;
-    uint32_t EFM_UQID1_30;
-    uint32_t EFM_UQID1_31;
-} stc_efm_uqid1_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_UQID2_0;
-    uint32_t EFM_UQID2_1;
-    uint32_t EFM_UQID2_2;
-    uint32_t EFM_UQID2_3;
-    uint32_t EFM_UQID2_4;
-    uint32_t EFM_UQID2_5;
-    uint32_t EFM_UQID2_6;
-    uint32_t EFM_UQID2_7;
-    uint32_t EFM_UQID2_8;
-    uint32_t EFM_UQID2_9;
-    uint32_t EFM_UQID2_10;
-    uint32_t EFM_UQID2_11;
-    uint32_t EFM_UQID2_12;
-    uint32_t EFM_UQID2_13;
-    uint32_t EFM_UQID2_14;
-    uint32_t EFM_UQID2_15;
-    uint32_t EFM_UQID2_16;
-    uint32_t EFM_UQID2_17;
-    uint32_t EFM_UQID2_18;
-    uint32_t EFM_UQID2_19;
-    uint32_t EFM_UQID2_20;
-    uint32_t EFM_UQID2_21;
-    uint32_t EFM_UQID2_22;
-    uint32_t EFM_UQID2_23;
-    uint32_t EFM_UQID2_24;
-    uint32_t EFM_UQID2_25;
-    uint32_t EFM_UQID2_26;
-    uint32_t EFM_UQID2_27;
-    uint32_t EFM_UQID2_28;
-    uint32_t EFM_UQID2_29;
-    uint32_t EFM_UQID2_30;
-    uint32_t EFM_UQID2_31;
-} stc_efm_uqid2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t REMPRT0;
-    __IO uint32_t REMPRT1;
-    __IO uint32_t REMPRT2;
-    __IO uint32_t REMPRT3;
-    __IO uint32_t REMPRT4;
-    __IO uint32_t REMPRT5;
-    __IO uint32_t REMPRT6;
-    __IO uint32_t REMPRT7;
-    __IO uint32_t REMPRT8;
-    __IO uint32_t REMPRT9;
-    __IO uint32_t REMPRT10;
-    __IO uint32_t REMPRT11;
-    __IO uint32_t REMPRT12;
-    __IO uint32_t REMPRT13;
-    __IO uint32_t REMPRT14;
-    __IO uint32_t REMPRT15;
-    uint32_t RESERVED0[16];
-} stc_mmf_remprt_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RM0SIZE0;
-    __IO uint32_t RM0SIZE1;
-    __IO uint32_t RM0SIZE2;
-    __IO uint32_t RM0SIZE3;
-    __IO uint32_t RM0SIZE4;
-    uint32_t RESERVED0[7];
-    __IO uint32_t RM0TADDR0;
-    __IO uint32_t RM0TADDR1;
-    __IO uint32_t RM0TADDR2;
-    __IO uint32_t RM0TADDR3;
-    __IO uint32_t RM0TADDR4;
-    __IO uint32_t RM0TADDR5;
-    __IO uint32_t RM0TADDR6;
-    __IO uint32_t RM0TADDR7;
-    __IO uint32_t RM0TADDR8;
-    __IO uint32_t RM0TADDR9;
-    __IO uint32_t RM0TADDR10;
-    __IO uint32_t RM0TADDR11;
-    __IO uint32_t RM0TADDR12;
-    __IO uint32_t RM0TADDR13;
-    __IO uint32_t RM0TADDR14;
-    __IO uint32_t RM0TADDR15;
-    __IO uint32_t RM0TADDR16;
-    uint32_t RESERVED1[2];
+    uint32_t RESERVED0[31];
     __IO uint32_t EN0;
 } stc_mmf_remcr0_bit_t;
 
 typedef struct
 {
-    __IO uint32_t RM1SIZE0;
-    __IO uint32_t RM1SIZE1;
-    __IO uint32_t RM1SIZE2;
-    __IO uint32_t RM1SIZE3;
-    __IO uint32_t RM1SIZE4;
-    uint32_t RESERVED0[7];
-    __IO uint32_t RM1TADDR0;
-    __IO uint32_t RM1TADDR1;
-    __IO uint32_t RM1TADDR2;
-    __IO uint32_t RM1TADDR3;
-    __IO uint32_t RM1TADDR4;
-    __IO uint32_t RM1TADDR5;
-    __IO uint32_t RM1TADDR6;
-    __IO uint32_t RM1TADDR7;
-    __IO uint32_t RM1TADDR8;
-    __IO uint32_t RM1TADDR9;
-    __IO uint32_t RM1TADDR10;
-    __IO uint32_t RM1TADDR11;
-    __IO uint32_t RM1TADDR12;
-    __IO uint32_t RM1TADDR13;
-    __IO uint32_t RM1TADDR14;
-    __IO uint32_t RM1TADDR15;
-    __IO uint32_t RM1TADDR16;
-    uint32_t RESERVED1[2];
+    uint32_t RESERVED0[31];
     __IO uint32_t EN1;
 } stc_mmf_remcr1_bit_t;
 
@@ -36392,294 +31551,6 @@ typedef struct
     __IO uint32_t WLOCK7;
     uint32_t RESERVED0[24];
 } stc_efm_wlock_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F0NWPRT0_0;
-    uint32_t EFM_F0NWPRT0_1;
-    uint32_t EFM_F0NWPRT0_2;
-    uint32_t EFM_F0NWPRT0_3;
-    uint32_t EFM_F0NWPRT0_4;
-    uint32_t EFM_F0NWPRT0_5;
-    uint32_t EFM_F0NWPRT0_6;
-    uint32_t EFM_F0NWPRT0_7;
-    uint32_t EFM_F0NWPRT0_8;
-    uint32_t EFM_F0NWPRT0_9;
-    uint32_t EFM_F0NWPRT0_10;
-    uint32_t EFM_F0NWPRT0_11;
-    uint32_t EFM_F0NWPRT0_12;
-    uint32_t EFM_F0NWPRT0_13;
-    uint32_t EFM_F0NWPRT0_14;
-    uint32_t EFM_F0NWPRT0_15;
-    uint32_t EFM_F0NWPRT0_16;
-    uint32_t EFM_F0NWPRT0_17;
-    uint32_t EFM_F0NWPRT0_18;
-    uint32_t EFM_F0NWPRT0_19;
-    uint32_t EFM_F0NWPRT0_20;
-    uint32_t EFM_F0NWPRT0_21;
-    uint32_t EFM_F0NWPRT0_22;
-    uint32_t EFM_F0NWPRT0_23;
-    uint32_t EFM_F0NWPRT0_24;
-    uint32_t EFM_F0NWPRT0_25;
-    uint32_t EFM_F0NWPRT0_26;
-    uint32_t EFM_F0NWPRT0_27;
-    uint32_t EFM_F0NWPRT0_28;
-    uint32_t EFM_F0NWPRT0_29;
-    uint32_t EFM_F0NWPRT0_30;
-    uint32_t EFM_F0NWPRT0_31;
-} stc_efm_f0nwprt0_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F0NWPRT1_0;
-    uint32_t EFM_F0NWPRT1_1;
-    uint32_t EFM_F0NWPRT1_2;
-    uint32_t EFM_F0NWPRT1_3;
-    uint32_t EFM_F0NWPRT1_4;
-    uint32_t EFM_F0NWPRT1_5;
-    uint32_t EFM_F0NWPRT1_6;
-    uint32_t EFM_F0NWPRT1_7;
-    uint32_t EFM_F0NWPRT1_8;
-    uint32_t EFM_F0NWPRT1_9;
-    uint32_t EFM_F0NWPRT1_10;
-    uint32_t EFM_F0NWPRT1_11;
-    uint32_t EFM_F0NWPRT1_12;
-    uint32_t EFM_F0NWPRT1_13;
-    uint32_t EFM_F0NWPRT1_14;
-    uint32_t EFM_F0NWPRT1_15;
-    uint32_t EFM_F0NWPRT1_16;
-    uint32_t EFM_F0NWPRT1_17;
-    uint32_t EFM_F0NWPRT1_18;
-    uint32_t EFM_F0NWPRT1_19;
-    uint32_t EFM_F0NWPRT1_20;
-    uint32_t EFM_F0NWPRT1_21;
-    uint32_t EFM_F0NWPRT1_22;
-    uint32_t EFM_F0NWPRT1_23;
-    uint32_t EFM_F0NWPRT1_24;
-    uint32_t EFM_F0NWPRT1_25;
-    uint32_t EFM_F0NWPRT1_26;
-    uint32_t EFM_F0NWPRT1_27;
-    uint32_t EFM_F0NWPRT1_28;
-    uint32_t EFM_F0NWPRT1_29;
-    uint32_t EFM_F0NWPRT1_30;
-    uint32_t EFM_F0NWPRT1_31;
-} stc_efm_f0nwprt1_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F0NWPRT2_0;
-    uint32_t EFM_F0NWPRT2_1;
-    uint32_t EFM_F0NWPRT2_2;
-    uint32_t EFM_F0NWPRT2_3;
-    uint32_t EFM_F0NWPRT2_4;
-    uint32_t EFM_F0NWPRT2_5;
-    uint32_t EFM_F0NWPRT2_6;
-    uint32_t EFM_F0NWPRT2_7;
-    uint32_t EFM_F0NWPRT2_8;
-    uint32_t EFM_F0NWPRT2_9;
-    uint32_t EFM_F0NWPRT2_10;
-    uint32_t EFM_F0NWPRT2_11;
-    uint32_t EFM_F0NWPRT2_12;
-    uint32_t EFM_F0NWPRT2_13;
-    uint32_t EFM_F0NWPRT2_14;
-    uint32_t EFM_F0NWPRT2_15;
-    uint32_t EFM_F0NWPRT2_16;
-    uint32_t EFM_F0NWPRT2_17;
-    uint32_t EFM_F0NWPRT2_18;
-    uint32_t EFM_F0NWPRT2_19;
-    uint32_t EFM_F0NWPRT2_20;
-    uint32_t EFM_F0NWPRT2_21;
-    uint32_t EFM_F0NWPRT2_22;
-    uint32_t EFM_F0NWPRT2_23;
-    uint32_t EFM_F0NWPRT2_24;
-    uint32_t EFM_F0NWPRT2_25;
-    uint32_t EFM_F0NWPRT2_26;
-    uint32_t EFM_F0NWPRT2_27;
-    uint32_t EFM_F0NWPRT2_28;
-    uint32_t EFM_F0NWPRT2_29;
-    uint32_t EFM_F0NWPRT2_30;
-    uint32_t EFM_F0NWPRT2_31;
-} stc_efm_f0nwprt2_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F0NWPRT3_0;
-    uint32_t EFM_F0NWPRT3_1;
-    uint32_t EFM_F0NWPRT3_2;
-    uint32_t EFM_F0NWPRT3_3;
-    uint32_t EFM_F0NWPRT3_4;
-    uint32_t EFM_F0NWPRT3_5;
-    uint32_t EFM_F0NWPRT3_6;
-    uint32_t EFM_F0NWPRT3_7;
-    uint32_t EFM_F0NWPRT3_8;
-    uint32_t EFM_F0NWPRT3_9;
-    uint32_t EFM_F0NWPRT3_10;
-    uint32_t EFM_F0NWPRT3_11;
-    uint32_t EFM_F0NWPRT3_12;
-    uint32_t EFM_F0NWPRT3_13;
-    uint32_t EFM_F0NWPRT3_14;
-    uint32_t EFM_F0NWPRT3_15;
-    uint32_t EFM_F0NWPRT3_16;
-    uint32_t EFM_F0NWPRT3_17;
-    uint32_t EFM_F0NWPRT3_18;
-    uint32_t EFM_F0NWPRT3_19;
-    uint32_t EFM_F0NWPRT3_20;
-    uint32_t EFM_F0NWPRT3_21;
-    uint32_t EFM_F0NWPRT3_22;
-    uint32_t EFM_F0NWPRT3_23;
-    uint32_t EFM_F0NWPRT3_24;
-    uint32_t EFM_F0NWPRT3_25;
-    uint32_t EFM_F0NWPRT3_26;
-    uint32_t EFM_F0NWPRT3_27;
-    uint32_t EFM_F0NWPRT3_28;
-    uint32_t EFM_F0NWPRT3_29;
-    uint32_t EFM_F0NWPRT3_30;
-    uint32_t EFM_F0NWPRT3_31;
-} stc_efm_f0nwprt3_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F1NWPRT0_0;
-    uint32_t EFM_F1NWPRT0_1;
-    uint32_t EFM_F1NWPRT0_2;
-    uint32_t EFM_F1NWPRT0_3;
-    uint32_t EFM_F1NWPRT0_4;
-    uint32_t EFM_F1NWPRT0_5;
-    uint32_t EFM_F1NWPRT0_6;
-    uint32_t EFM_F1NWPRT0_7;
-    uint32_t EFM_F1NWPRT0_8;
-    uint32_t EFM_F1NWPRT0_9;
-    uint32_t EFM_F1NWPRT0_10;
-    uint32_t EFM_F1NWPRT0_11;
-    uint32_t EFM_F1NWPRT0_12;
-    uint32_t EFM_F1NWPRT0_13;
-    uint32_t EFM_F1NWPRT0_14;
-    uint32_t EFM_F1NWPRT0_15;
-    uint32_t EFM_F1NWPRT0_16;
-    uint32_t EFM_F1NWPRT0_17;
-    uint32_t EFM_F1NWPRT0_18;
-    uint32_t EFM_F1NWPRT0_19;
-    uint32_t EFM_F1NWPRT0_20;
-    uint32_t EFM_F1NWPRT0_21;
-    uint32_t EFM_F1NWPRT0_22;
-    uint32_t EFM_F1NWPRT0_23;
-    uint32_t EFM_F1NWPRT0_24;
-    uint32_t EFM_F1NWPRT0_25;
-    uint32_t EFM_F1NWPRT0_26;
-    uint32_t EFM_F1NWPRT0_27;
-    uint32_t EFM_F1NWPRT0_28;
-    uint32_t EFM_F1NWPRT0_29;
-    uint32_t EFM_F1NWPRT0_30;
-    uint32_t EFM_F1NWPRT0_31;
-} stc_efm_f1nwprt0_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F1NWPRT1_0;
-    uint32_t EFM_F1NWPRT1_1;
-    uint32_t EFM_F1NWPRT1_2;
-    uint32_t EFM_F1NWPRT1_3;
-    uint32_t EFM_F1NWPRT1_4;
-    uint32_t EFM_F1NWPRT1_5;
-    uint32_t EFM_F1NWPRT1_6;
-    uint32_t EFM_F1NWPRT1_7;
-    uint32_t EFM_F1NWPRT1_8;
-    uint32_t EFM_F1NWPRT1_9;
-    uint32_t EFM_F1NWPRT1_10;
-    uint32_t EFM_F1NWPRT1_11;
-    uint32_t EFM_F1NWPRT1_12;
-    uint32_t EFM_F1NWPRT1_13;
-    uint32_t EFM_F1NWPRT1_14;
-    uint32_t EFM_F1NWPRT1_15;
-    uint32_t EFM_F1NWPRT1_16;
-    uint32_t EFM_F1NWPRT1_17;
-    uint32_t EFM_F1NWPRT1_18;
-    uint32_t EFM_F1NWPRT1_19;
-    uint32_t EFM_F1NWPRT1_20;
-    uint32_t EFM_F1NWPRT1_21;
-    uint32_t EFM_F1NWPRT1_22;
-    uint32_t EFM_F1NWPRT1_23;
-    uint32_t EFM_F1NWPRT1_24;
-    uint32_t EFM_F1NWPRT1_25;
-    uint32_t EFM_F1NWPRT1_26;
-    uint32_t EFM_F1NWPRT1_27;
-    uint32_t EFM_F1NWPRT1_28;
-    uint32_t EFM_F1NWPRT1_29;
-    uint32_t EFM_F1NWPRT1_30;
-    uint32_t EFM_F1NWPRT1_31;
-} stc_efm_f1nwprt1_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F1NWPRT2_0;
-    uint32_t EFM_F1NWPRT2_1;
-    uint32_t EFM_F1NWPRT2_2;
-    uint32_t EFM_F1NWPRT2_3;
-    uint32_t EFM_F1NWPRT2_4;
-    uint32_t EFM_F1NWPRT2_5;
-    uint32_t EFM_F1NWPRT2_6;
-    uint32_t EFM_F1NWPRT2_7;
-    uint32_t EFM_F1NWPRT2_8;
-    uint32_t EFM_F1NWPRT2_9;
-    uint32_t EFM_F1NWPRT2_10;
-    uint32_t EFM_F1NWPRT2_11;
-    uint32_t EFM_F1NWPRT2_12;
-    uint32_t EFM_F1NWPRT2_13;
-    uint32_t EFM_F1NWPRT2_14;
-    uint32_t EFM_F1NWPRT2_15;
-    uint32_t EFM_F1NWPRT2_16;
-    uint32_t EFM_F1NWPRT2_17;
-    uint32_t EFM_F1NWPRT2_18;
-    uint32_t EFM_F1NWPRT2_19;
-    uint32_t EFM_F1NWPRT2_20;
-    uint32_t EFM_F1NWPRT2_21;
-    uint32_t EFM_F1NWPRT2_22;
-    uint32_t EFM_F1NWPRT2_23;
-    uint32_t EFM_F1NWPRT2_24;
-    uint32_t EFM_F1NWPRT2_25;
-    uint32_t EFM_F1NWPRT2_26;
-    uint32_t EFM_F1NWPRT2_27;
-    uint32_t EFM_F1NWPRT2_28;
-    uint32_t EFM_F1NWPRT2_29;
-    uint32_t EFM_F1NWPRT2_30;
-    uint32_t EFM_F1NWPRT2_31;
-} stc_efm_f1nwprt2_bit_t;
-
-typedef struct
-{
-    uint32_t EFM_F1NWPRT3_0;
-    uint32_t EFM_F1NWPRT3_1;
-    uint32_t EFM_F1NWPRT3_2;
-    uint32_t EFM_F1NWPRT3_3;
-    uint32_t EFM_F1NWPRT3_4;
-    uint32_t EFM_F1NWPRT3_5;
-    uint32_t EFM_F1NWPRT3_6;
-    uint32_t EFM_F1NWPRT3_7;
-    uint32_t EFM_F1NWPRT3_8;
-    uint32_t EFM_F1NWPRT3_9;
-    uint32_t EFM_F1NWPRT3_10;
-    uint32_t EFM_F1NWPRT3_11;
-    uint32_t EFM_F1NWPRT3_12;
-    uint32_t EFM_F1NWPRT3_13;
-    uint32_t EFM_F1NWPRT3_14;
-    uint32_t EFM_F1NWPRT3_15;
-    uint32_t EFM_F1NWPRT3_16;
-    uint32_t EFM_F1NWPRT3_17;
-    uint32_t EFM_F1NWPRT3_18;
-    uint32_t EFM_F1NWPRT3_19;
-    uint32_t EFM_F1NWPRT3_20;
-    uint32_t EFM_F1NWPRT3_21;
-    uint32_t EFM_F1NWPRT3_22;
-    uint32_t EFM_F1NWPRT3_23;
-    uint32_t EFM_F1NWPRT3_24;
-    uint32_t EFM_F1NWPRT3_25;
-    uint32_t EFM_F1NWPRT3_26;
-    uint32_t EFM_F1NWPRT3_27;
-    uint32_t EFM_F1NWPRT3_28;
-    uint32_t EFM_F1NWPRT3_29;
-    uint32_t EFM_F1NWPRT3_30;
-    uint32_t EFM_F1NWPRT3_31;
-} stc_efm_f1nwprt3_bit_t;
 
 typedef struct
 {
@@ -36871,78 +31742,6 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t HTH0;
-    __IO uint32_t HTH1;
-    __IO uint32_t HTH2;
-    __IO uint32_t HTH3;
-    __IO uint32_t HTH4;
-    __IO uint32_t HTH5;
-    __IO uint32_t HTH6;
-    __IO uint32_t HTH7;
-    __IO uint32_t HTH8;
-    __IO uint32_t HTH9;
-    __IO uint32_t HTH10;
-    __IO uint32_t HTH11;
-    __IO uint32_t HTH12;
-    __IO uint32_t HTH13;
-    __IO uint32_t HTH14;
-    __IO uint32_t HTH15;
-    __IO uint32_t HTH16;
-    __IO uint32_t HTH17;
-    __IO uint32_t HTH18;
-    __IO uint32_t HTH19;
-    __IO uint32_t HTH20;
-    __IO uint32_t HTH21;
-    __IO uint32_t HTH22;
-    __IO uint32_t HTH23;
-    __IO uint32_t HTH24;
-    __IO uint32_t HTH25;
-    __IO uint32_t HTH26;
-    __IO uint32_t HTH27;
-    __IO uint32_t HTH28;
-    __IO uint32_t HTH29;
-    __IO uint32_t HTH30;
-    __IO uint32_t HTH31;
-} stc_eth_mac_hashthr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t HTL0;
-    __IO uint32_t HTL1;
-    __IO uint32_t HTL2;
-    __IO uint32_t HTL3;
-    __IO uint32_t HTL4;
-    __IO uint32_t HTL5;
-    __IO uint32_t HTL6;
-    __IO uint32_t HTL7;
-    __IO uint32_t HTL8;
-    __IO uint32_t HTL9;
-    __IO uint32_t HTL10;
-    __IO uint32_t HTL11;
-    __IO uint32_t HTL12;
-    __IO uint32_t HTL13;
-    __IO uint32_t HTL14;
-    __IO uint32_t HTL15;
-    __IO uint32_t HTL16;
-    __IO uint32_t HTL17;
-    __IO uint32_t HTL18;
-    __IO uint32_t HTL19;
-    __IO uint32_t HTL20;
-    __IO uint32_t HTL21;
-    __IO uint32_t HTL22;
-    __IO uint32_t HTL23;
-    __IO uint32_t HTL24;
-    __IO uint32_t HTL25;
-    __IO uint32_t HTL26;
-    __IO uint32_t HTL27;
-    __IO uint32_t HTL28;
-    __IO uint32_t HTL29;
-    __IO uint32_t HTL30;
-    __IO uint32_t HTL31;
-} stc_eth_mac_hashtlr_bit_t;
-
-typedef struct
-{
     __IO uint32_t SMIB;
     __IO uint32_t SMIW;
     __IO uint32_t SMIC0;
@@ -36964,27 +31763,6 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t SMID0;
-    __IO uint32_t SMID1;
-    __IO uint32_t SMID2;
-    __IO uint32_t SMID3;
-    __IO uint32_t SMID4;
-    __IO uint32_t SMID5;
-    __IO uint32_t SMID6;
-    __IO uint32_t SMID7;
-    __IO uint32_t SMID8;
-    __IO uint32_t SMID9;
-    __IO uint32_t SMID10;
-    __IO uint32_t SMID11;
-    __IO uint32_t SMID12;
-    __IO uint32_t SMID13;
-    __IO uint32_t SMID14;
-    __IO uint32_t SMID15;
-    uint32_t RESERVED0[16];
-} stc_eth_mac_smidatr_bit_t;
-
-typedef struct
-{
     __IO uint32_t FCA_BPA;
     __IO uint32_t TFE;
     __IO uint32_t RFE;
@@ -36993,48 +31771,17 @@ typedef struct
     __IO uint32_t PLT1;
     uint32_t RESERVED0[1];
     __IO uint32_t DZPQ;
-    uint32_t RESERVED1[8];
-    __IO uint32_t PAUSET0;
-    __IO uint32_t PAUSET1;
-    __IO uint32_t PAUSET2;
-    __IO uint32_t PAUSET3;
-    __IO uint32_t PAUSET4;
-    __IO uint32_t PAUSET5;
-    __IO uint32_t PAUSET6;
-    __IO uint32_t PAUSET7;
-    __IO uint32_t PAUSET8;
-    __IO uint32_t PAUSET9;
-    __IO uint32_t PAUSET10;
-    __IO uint32_t PAUSET11;
-    __IO uint32_t PAUSET12;
-    __IO uint32_t PAUSET13;
-    __IO uint32_t PAUSET14;
-    __IO uint32_t PAUSET15;
+    uint32_t RESERVED1[24];
 } stc_eth_mac_floctlr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t VLFLT0;
-    __IO uint32_t VLFLT1;
-    __IO uint32_t VLFLT2;
-    __IO uint32_t VLFLT3;
-    __IO uint32_t VLFLT4;
-    __IO uint32_t VLFLT5;
-    __IO uint32_t VLFLT6;
-    __IO uint32_t VLFLT7;
-    __IO uint32_t VLFLT8;
-    __IO uint32_t VLFLT9;
-    __IO uint32_t VLFLT10;
-    __IO uint32_t VLFLT11;
-    __IO uint32_t VLFLT12;
-    __IO uint32_t VLFLT13;
-    __IO uint32_t VLFLT14;
-    __IO uint32_t VLFLT15;
+    uint32_t RESERVED0[16];
     __IO uint32_t VTAL;
     __IO uint32_t VTIM;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t VTHM;
-    uint32_t RESERVED1[12];
+    uint32_t RESERVED2[12];
 } stc_eth_mac_vtafltr_bit_t;
 
 typedef struct
@@ -37062,42 +31809,6 @@ typedef struct
     __IO uint32_t TFF;
     uint32_t RESERVED4[6];
 } stc_eth_mac_macstsr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t WKUPFRMFT0;
-    __IO uint32_t WKUPFRMFT1;
-    __IO uint32_t WKUPFRMFT2;
-    __IO uint32_t WKUPFRMFT3;
-    __IO uint32_t WKUPFRMFT4;
-    __IO uint32_t WKUPFRMFT5;
-    __IO uint32_t WKUPFRMFT6;
-    __IO uint32_t WKUPFRMFT7;
-    __IO uint32_t WKUPFRMFT8;
-    __IO uint32_t WKUPFRMFT9;
-    __IO uint32_t WKUPFRMFT10;
-    __IO uint32_t WKUPFRMFT11;
-    __IO uint32_t WKUPFRMFT12;
-    __IO uint32_t WKUPFRMFT13;
-    __IO uint32_t WKUPFRMFT14;
-    __IO uint32_t WKUPFRMFT15;
-    __IO uint32_t WKUPFRMFT16;
-    __IO uint32_t WKUPFRMFT17;
-    __IO uint32_t WKUPFRMFT18;
-    __IO uint32_t WKUPFRMFT19;
-    __IO uint32_t WKUPFRMFT20;
-    __IO uint32_t WKUPFRMFT21;
-    __IO uint32_t WKUPFRMFT22;
-    __IO uint32_t WKUPFRMFT23;
-    __IO uint32_t WKUPFRMFT24;
-    __IO uint32_t WKUPFRMFT25;
-    __IO uint32_t WKUPFRMFT26;
-    __IO uint32_t WKUPFRMFT27;
-    __IO uint32_t WKUPFRMFT28;
-    __IO uint32_t WKUPFRMFT29;
-    __IO uint32_t WKUPFRMFT30;
-    __IO uint32_t WKUPFRMFT31;
-} stc_eth_mac_rtwkffr_bit_t;
 
 typedef struct
 {
@@ -37141,81 +31852,13 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t ADDRH00;
-    __IO uint32_t ADDRH01;
-    __IO uint32_t ADDRH02;
-    __IO uint32_t ADDRH03;
-    __IO uint32_t ADDRH04;
-    __IO uint32_t ADDRH05;
-    __IO uint32_t ADDRH06;
-    __IO uint32_t ADDRH07;
-    __IO uint32_t ADDRH08;
-    __IO uint32_t ADDRH09;
-    __IO uint32_t ADDRH010;
-    __IO uint32_t ADDRH011;
-    __IO uint32_t ADDRH012;
-    __IO uint32_t ADDRH013;
-    __IO uint32_t ADDRH014;
-    __IO uint32_t ADDRH015;
-    uint32_t RESERVED0[15];
+    uint32_t RESERVED0[31];
     __IO uint32_t AE0;
 } stc_eth_mac_macadhr0_bit_t;
 
 typedef struct
 {
-    __IO uint32_t ADDRL00;
-    __IO uint32_t ADDRL01;
-    __IO uint32_t ADDRL02;
-    __IO uint32_t ADDRL03;
-    __IO uint32_t ADDRL04;
-    __IO uint32_t ADDRL05;
-    __IO uint32_t ADDRL06;
-    __IO uint32_t ADDRL07;
-    __IO uint32_t ADDRL08;
-    __IO uint32_t ADDRL09;
-    __IO uint32_t ADDRL010;
-    __IO uint32_t ADDRL011;
-    __IO uint32_t ADDRL012;
-    __IO uint32_t ADDRL013;
-    __IO uint32_t ADDRL014;
-    __IO uint32_t ADDRL015;
-    __IO uint32_t ADDRL016;
-    __IO uint32_t ADDRL017;
-    __IO uint32_t ADDRL018;
-    __IO uint32_t ADDRL019;
-    __IO uint32_t ADDRL020;
-    __IO uint32_t ADDRL021;
-    __IO uint32_t ADDRL022;
-    __IO uint32_t ADDRL023;
-    __IO uint32_t ADDRL024;
-    __IO uint32_t ADDRL025;
-    __IO uint32_t ADDRL026;
-    __IO uint32_t ADDRL027;
-    __IO uint32_t ADDRL028;
-    __IO uint32_t ADDRL029;
-    __IO uint32_t ADDRL030;
-    __IO uint32_t ADDRL031;
-} stc_eth_mac_macadlr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t ADDRH10;
-    __IO uint32_t ADDRH11;
-    __IO uint32_t ADDRH12;
-    __IO uint32_t ADDRH13;
-    __IO uint32_t ADDRH14;
-    __IO uint32_t ADDRH15;
-    __IO uint32_t ADDRH16;
-    __IO uint32_t ADDRH17;
-    __IO uint32_t ADDRH18;
-    __IO uint32_t ADDRH19;
-    __IO uint32_t ADDRH110;
-    __IO uint32_t ADDRH111;
-    __IO uint32_t ADDRH112;
-    __IO uint32_t ADDRH113;
-    __IO uint32_t ADDRH114;
-    __IO uint32_t ADDRH115;
-    uint32_t RESERVED0[8];
+    uint32_t RESERVED0[24];
     __IO uint32_t MBC10;
     __IO uint32_t MBC11;
     __IO uint32_t MBC12;
@@ -37228,59 +31871,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t ADDRL10;
-    __IO uint32_t ADDRL11;
-    __IO uint32_t ADDRL12;
-    __IO uint32_t ADDRL13;
-    __IO uint32_t ADDRL14;
-    __IO uint32_t ADDRL15;
-    __IO uint32_t ADDRL16;
-    __IO uint32_t ADDRL17;
-    __IO uint32_t ADDRL18;
-    __IO uint32_t ADDRL19;
-    __IO uint32_t ADDRL110;
-    __IO uint32_t ADDRL111;
-    __IO uint32_t ADDRL112;
-    __IO uint32_t ADDRL113;
-    __IO uint32_t ADDRL114;
-    __IO uint32_t ADDRL115;
-    __IO uint32_t ADDRL116;
-    __IO uint32_t ADDRL117;
-    __IO uint32_t ADDRL118;
-    __IO uint32_t ADDRL119;
-    __IO uint32_t ADDRL120;
-    __IO uint32_t ADDRL121;
-    __IO uint32_t ADDRL122;
-    __IO uint32_t ADDRL123;
-    __IO uint32_t ADDRL124;
-    __IO uint32_t ADDRL125;
-    __IO uint32_t ADDRL126;
-    __IO uint32_t ADDRL127;
-    __IO uint32_t ADDRL128;
-    __IO uint32_t ADDRL129;
-    __IO uint32_t ADDRL130;
-    __IO uint32_t ADDRL131;
-} stc_eth_mac_macadlr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t ADDRH20;
-    __IO uint32_t ADDRH21;
-    __IO uint32_t ADDRH22;
-    __IO uint32_t ADDRH23;
-    __IO uint32_t ADDRH24;
-    __IO uint32_t ADDRH25;
-    __IO uint32_t ADDRH26;
-    __IO uint32_t ADDRH27;
-    __IO uint32_t ADDRH28;
-    __IO uint32_t ADDRH29;
-    __IO uint32_t ADDRH210;
-    __IO uint32_t ADDRH211;
-    __IO uint32_t ADDRH212;
-    __IO uint32_t ADDRH213;
-    __IO uint32_t ADDRH214;
-    __IO uint32_t ADDRH215;
-    uint32_t RESERVED0[8];
+    uint32_t RESERVED0[24];
     __IO uint32_t MBC20;
     __IO uint32_t MBC21;
     __IO uint32_t MBC22;
@@ -37293,59 +31884,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t ADDRL20;
-    __IO uint32_t ADDRL21;
-    __IO uint32_t ADDRL22;
-    __IO uint32_t ADDRL23;
-    __IO uint32_t ADDRL24;
-    __IO uint32_t ADDRL25;
-    __IO uint32_t ADDRL26;
-    __IO uint32_t ADDRL27;
-    __IO uint32_t ADDRL28;
-    __IO uint32_t ADDRL29;
-    __IO uint32_t ADDRL210;
-    __IO uint32_t ADDRL211;
-    __IO uint32_t ADDRL212;
-    __IO uint32_t ADDRL213;
-    __IO uint32_t ADDRL214;
-    __IO uint32_t ADDRL215;
-    __IO uint32_t ADDRL216;
-    __IO uint32_t ADDRL217;
-    __IO uint32_t ADDRL218;
-    __IO uint32_t ADDRL219;
-    __IO uint32_t ADDRL220;
-    __IO uint32_t ADDRL221;
-    __IO uint32_t ADDRL222;
-    __IO uint32_t ADDRL223;
-    __IO uint32_t ADDRL224;
-    __IO uint32_t ADDRL225;
-    __IO uint32_t ADDRL226;
-    __IO uint32_t ADDRL227;
-    __IO uint32_t ADDRL228;
-    __IO uint32_t ADDRL229;
-    __IO uint32_t ADDRL230;
-    __IO uint32_t ADDRL231;
-} stc_eth_mac_macadlr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t ADDRH30;
-    __IO uint32_t ADDRH31;
-    __IO uint32_t ADDRH32;
-    __IO uint32_t ADDRH33;
-    __IO uint32_t ADDRH34;
-    __IO uint32_t ADDRH35;
-    __IO uint32_t ADDRH36;
-    __IO uint32_t ADDRH37;
-    __IO uint32_t ADDRH38;
-    __IO uint32_t ADDRH39;
-    __IO uint32_t ADDRH310;
-    __IO uint32_t ADDRH311;
-    __IO uint32_t ADDRH312;
-    __IO uint32_t ADDRH313;
-    __IO uint32_t ADDRH314;
-    __IO uint32_t ADDRH315;
-    uint32_t RESERVED0[8];
+    uint32_t RESERVED0[24];
     __IO uint32_t MBC30;
     __IO uint32_t MBC31;
     __IO uint32_t MBC32;
@@ -37358,59 +31897,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t ADDRL30;
-    __IO uint32_t ADDRL31;
-    __IO uint32_t ADDRL32;
-    __IO uint32_t ADDRL33;
-    __IO uint32_t ADDRL34;
-    __IO uint32_t ADDRL35;
-    __IO uint32_t ADDRL36;
-    __IO uint32_t ADDRL37;
-    __IO uint32_t ADDRL38;
-    __IO uint32_t ADDRL39;
-    __IO uint32_t ADDRL310;
-    __IO uint32_t ADDRL311;
-    __IO uint32_t ADDRL312;
-    __IO uint32_t ADDRL313;
-    __IO uint32_t ADDRL314;
-    __IO uint32_t ADDRL315;
-    __IO uint32_t ADDRL316;
-    __IO uint32_t ADDRL317;
-    __IO uint32_t ADDRL318;
-    __IO uint32_t ADDRL319;
-    __IO uint32_t ADDRL320;
-    __IO uint32_t ADDRL321;
-    __IO uint32_t ADDRL322;
-    __IO uint32_t ADDRL323;
-    __IO uint32_t ADDRL324;
-    __IO uint32_t ADDRL325;
-    __IO uint32_t ADDRL326;
-    __IO uint32_t ADDRL327;
-    __IO uint32_t ADDRL328;
-    __IO uint32_t ADDRL329;
-    __IO uint32_t ADDRL330;
-    __IO uint32_t ADDRL331;
-} stc_eth_mac_macadlr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t ADDRH40;
-    __IO uint32_t ADDRH41;
-    __IO uint32_t ADDRH42;
-    __IO uint32_t ADDRH43;
-    __IO uint32_t ADDRH44;
-    __IO uint32_t ADDRH45;
-    __IO uint32_t ADDRH46;
-    __IO uint32_t ADDRH47;
-    __IO uint32_t ADDRH48;
-    __IO uint32_t ADDRH49;
-    __IO uint32_t ADDRH410;
-    __IO uint32_t ADDRH411;
-    __IO uint32_t ADDRH412;
-    __IO uint32_t ADDRH413;
-    __IO uint32_t ADDRH414;
-    __IO uint32_t ADDRH415;
-    uint32_t RESERVED0[8];
+    uint32_t RESERVED0[24];
     __IO uint32_t MBC40;
     __IO uint32_t MBC41;
     __IO uint32_t MBC42;
@@ -37420,42 +31907,6 @@ typedef struct
     __IO uint32_t SA4;
     __IO uint32_t AE4;
 } stc_eth_mac_macadhr4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t ADDRL40;
-    __IO uint32_t ADDRL41;
-    __IO uint32_t ADDRL42;
-    __IO uint32_t ADDRL43;
-    __IO uint32_t ADDRL44;
-    __IO uint32_t ADDRL45;
-    __IO uint32_t ADDRL46;
-    __IO uint32_t ADDRL47;
-    __IO uint32_t ADDRL48;
-    __IO uint32_t ADDRL49;
-    __IO uint32_t ADDRL410;
-    __IO uint32_t ADDRL411;
-    __IO uint32_t ADDRL412;
-    __IO uint32_t ADDRL413;
-    __IO uint32_t ADDRL414;
-    __IO uint32_t ADDRL415;
-    __IO uint32_t ADDRL416;
-    __IO uint32_t ADDRL417;
-    __IO uint32_t ADDRL418;
-    __IO uint32_t ADDRL419;
-    __IO uint32_t ADDRL420;
-    __IO uint32_t ADDRL421;
-    __IO uint32_t ADDRL422;
-    __IO uint32_t ADDRL423;
-    __IO uint32_t ADDRL424;
-    __IO uint32_t ADDRL425;
-    __IO uint32_t ADDRL426;
-    __IO uint32_t ADDRL427;
-    __IO uint32_t ADDRL428;
-    __IO uint32_t ADDRL429;
-    __IO uint32_t ADDRL430;
-    __IO uint32_t ADDRL431;
-} stc_eth_mac_macadlr4_bit_t;
 
 typedef struct
 {
@@ -37532,342 +31983,6 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t TXBRGCNT0;
-    __IO uint32_t TXBRGCNT1;
-    __IO uint32_t TXBRGCNT2;
-    __IO uint32_t TXBRGCNT3;
-    __IO uint32_t TXBRGCNT4;
-    __IO uint32_t TXBRGCNT5;
-    __IO uint32_t TXBRGCNT6;
-    __IO uint32_t TXBRGCNT7;
-    __IO uint32_t TXBRGCNT8;
-    __IO uint32_t TXBRGCNT9;
-    __IO uint32_t TXBRGCNT10;
-    __IO uint32_t TXBRGCNT11;
-    __IO uint32_t TXBRGCNT12;
-    __IO uint32_t TXBRGCNT13;
-    __IO uint32_t TXBRGCNT14;
-    __IO uint32_t TXBRGCNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txbrgfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXMUGCNT0;
-    __IO uint32_t TXMUGCNT1;
-    __IO uint32_t TXMUGCNT2;
-    __IO uint32_t TXMUGCNT3;
-    __IO uint32_t TXMUGCNT4;
-    __IO uint32_t TXMUGCNT5;
-    __IO uint32_t TXMUGCNT6;
-    __IO uint32_t TXMUGCNT7;
-    __IO uint32_t TXMUGCNT8;
-    __IO uint32_t TXMUGCNT9;
-    __IO uint32_t TXMUGCNT10;
-    __IO uint32_t TXMUGCNT11;
-    __IO uint32_t TXMUGCNT12;
-    __IO uint32_t TXMUGCNT13;
-    __IO uint32_t TXMUGCNT14;
-    __IO uint32_t TXMUGCNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txmugfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXDEECNT0;
-    __IO uint32_t TXDEECNT1;
-    __IO uint32_t TXDEECNT2;
-    __IO uint32_t TXDEECNT3;
-    __IO uint32_t TXDEECNT4;
-    __IO uint32_t TXDEECNT5;
-    __IO uint32_t TXDEECNT6;
-    __IO uint32_t TXDEECNT7;
-    __IO uint32_t TXDEECNT8;
-    __IO uint32_t TXDEECNT9;
-    __IO uint32_t TXDEECNT10;
-    __IO uint32_t TXDEECNT11;
-    __IO uint32_t TXDEECNT12;
-    __IO uint32_t TXDEECNT13;
-    __IO uint32_t TXDEECNT14;
-    __IO uint32_t TXDEECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txdeefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXLCECNT0;
-    __IO uint32_t TXLCECNT1;
-    __IO uint32_t TXLCECNT2;
-    __IO uint32_t TXLCECNT3;
-    __IO uint32_t TXLCECNT4;
-    __IO uint32_t TXLCECNT5;
-    __IO uint32_t TXLCECNT6;
-    __IO uint32_t TXLCECNT7;
-    __IO uint32_t TXLCECNT8;
-    __IO uint32_t TXLCECNT9;
-    __IO uint32_t TXLCECNT10;
-    __IO uint32_t TXLCECNT11;
-    __IO uint32_t TXLCECNT12;
-    __IO uint32_t TXLCECNT13;
-    __IO uint32_t TXLCECNT14;
-    __IO uint32_t TXLCECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txlcefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXECECNT0;
-    __IO uint32_t TXECECNT1;
-    __IO uint32_t TXECECNT2;
-    __IO uint32_t TXECECNT3;
-    __IO uint32_t TXECECNT4;
-    __IO uint32_t TXECECNT5;
-    __IO uint32_t TXECECNT6;
-    __IO uint32_t TXECECNT7;
-    __IO uint32_t TXECECNT8;
-    __IO uint32_t TXECECNT9;
-    __IO uint32_t TXECECNT10;
-    __IO uint32_t TXECECNT11;
-    __IO uint32_t TXECECNT12;
-    __IO uint32_t TXECECNT13;
-    __IO uint32_t TXECECNT14;
-    __IO uint32_t TXECECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txecefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXCAECNT0;
-    __IO uint32_t TXCAECNT1;
-    __IO uint32_t TXCAECNT2;
-    __IO uint32_t TXCAECNT3;
-    __IO uint32_t TXCAECNT4;
-    __IO uint32_t TXCAECNT5;
-    __IO uint32_t TXCAECNT6;
-    __IO uint32_t TXCAECNT7;
-    __IO uint32_t TXCAECNT8;
-    __IO uint32_t TXCAECNT9;
-    __IO uint32_t TXCAECNT10;
-    __IO uint32_t TXCAECNT11;
-    __IO uint32_t TXCAECNT12;
-    __IO uint32_t TXCAECNT13;
-    __IO uint32_t TXCAECNT14;
-    __IO uint32_t TXCAECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txcaefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXUNGCNT0;
-    __IO uint32_t TXUNGCNT1;
-    __IO uint32_t TXUNGCNT2;
-    __IO uint32_t TXUNGCNT3;
-    __IO uint32_t TXUNGCNT4;
-    __IO uint32_t TXUNGCNT5;
-    __IO uint32_t TXUNGCNT6;
-    __IO uint32_t TXUNGCNT7;
-    __IO uint32_t TXUNGCNT8;
-    __IO uint32_t TXUNGCNT9;
-    __IO uint32_t TXUNGCNT10;
-    __IO uint32_t TXUNGCNT11;
-    __IO uint32_t TXUNGCNT12;
-    __IO uint32_t TXUNGCNT13;
-    __IO uint32_t TXUNGCNT14;
-    __IO uint32_t TXUNGCNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txungfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXEDECNT0;
-    __IO uint32_t TXEDECNT1;
-    __IO uint32_t TXEDECNT2;
-    __IO uint32_t TXEDECNT3;
-    __IO uint32_t TXEDECNT4;
-    __IO uint32_t TXEDECNT5;
-    __IO uint32_t TXEDECNT6;
-    __IO uint32_t TXEDECNT7;
-    __IO uint32_t TXEDECNT8;
-    __IO uint32_t TXEDECNT9;
-    __IO uint32_t TXEDECNT10;
-    __IO uint32_t TXEDECNT11;
-    __IO uint32_t TXEDECNT12;
-    __IO uint32_t TXEDECNT13;
-    __IO uint32_t TXEDECNT14;
-    __IO uint32_t TXEDECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_txedefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXBRGCNT0;
-    __IO uint32_t RXBRGCNT1;
-    __IO uint32_t RXBRGCNT2;
-    __IO uint32_t RXBRGCNT3;
-    __IO uint32_t RXBRGCNT4;
-    __IO uint32_t RXBRGCNT5;
-    __IO uint32_t RXBRGCNT6;
-    __IO uint32_t RXBRGCNT7;
-    __IO uint32_t RXBRGCNT8;
-    __IO uint32_t RXBRGCNT9;
-    __IO uint32_t RXBRGCNT10;
-    __IO uint32_t RXBRGCNT11;
-    __IO uint32_t RXBRGCNT12;
-    __IO uint32_t RXBRGCNT13;
-    __IO uint32_t RXBRGCNT14;
-    __IO uint32_t RXBRGCNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxbrgfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXMUGCNT0;
-    __IO uint32_t RXMUGCNT1;
-    __IO uint32_t RXMUGCNT2;
-    __IO uint32_t RXMUGCNT3;
-    __IO uint32_t RXMUGCNT4;
-    __IO uint32_t RXMUGCNT5;
-    __IO uint32_t RXMUGCNT6;
-    __IO uint32_t RXMUGCNT7;
-    __IO uint32_t RXMUGCNT8;
-    __IO uint32_t RXMUGCNT9;
-    __IO uint32_t RXMUGCNT10;
-    __IO uint32_t RXMUGCNT11;
-    __IO uint32_t RXMUGCNT12;
-    __IO uint32_t RXMUGCNT13;
-    __IO uint32_t RXMUGCNT14;
-    __IO uint32_t RXMUGCNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxmugfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXCRECNT0;
-    __IO uint32_t RXCRECNT1;
-    __IO uint32_t RXCRECNT2;
-    __IO uint32_t RXCRECNT3;
-    __IO uint32_t RXCRECNT4;
-    __IO uint32_t RXCRECNT5;
-    __IO uint32_t RXCRECNT6;
-    __IO uint32_t RXCRECNT7;
-    __IO uint32_t RXCRECNT8;
-    __IO uint32_t RXCRECNT9;
-    __IO uint32_t RXCRECNT10;
-    __IO uint32_t RXCRECNT11;
-    __IO uint32_t RXCRECNT12;
-    __IO uint32_t RXCRECNT13;
-    __IO uint32_t RXCRECNT14;
-    __IO uint32_t RXCRECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxcrefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXALECNT0;
-    __IO uint32_t RXALECNT1;
-    __IO uint32_t RXALECNT2;
-    __IO uint32_t RXALECNT3;
-    __IO uint32_t RXALECNT4;
-    __IO uint32_t RXALECNT5;
-    __IO uint32_t RXALECNT6;
-    __IO uint32_t RXALECNT7;
-    __IO uint32_t RXALECNT8;
-    __IO uint32_t RXALECNT9;
-    __IO uint32_t RXALECNT10;
-    __IO uint32_t RXALECNT11;
-    __IO uint32_t RXALECNT12;
-    __IO uint32_t RXALECNT13;
-    __IO uint32_t RXALECNT14;
-    __IO uint32_t RXALECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxalefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXRUECNT0;
-    __IO uint32_t RXRUECNT1;
-    __IO uint32_t RXRUECNT2;
-    __IO uint32_t RXRUECNT3;
-    __IO uint32_t RXRUECNT4;
-    __IO uint32_t RXRUECNT5;
-    __IO uint32_t RXRUECNT6;
-    __IO uint32_t RXRUECNT7;
-    __IO uint32_t RXRUECNT8;
-    __IO uint32_t RXRUECNT9;
-    __IO uint32_t RXRUECNT10;
-    __IO uint32_t RXRUECNT11;
-    __IO uint32_t RXRUECNT12;
-    __IO uint32_t RXRUECNT13;
-    __IO uint32_t RXRUECNT14;
-    __IO uint32_t RXRUECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxruefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXUNGCNT0;
-    __IO uint32_t RXUNGCNT1;
-    __IO uint32_t RXUNGCNT2;
-    __IO uint32_t RXUNGCNT3;
-    __IO uint32_t RXUNGCNT4;
-    __IO uint32_t RXUNGCNT5;
-    __IO uint32_t RXUNGCNT6;
-    __IO uint32_t RXUNGCNT7;
-    __IO uint32_t RXUNGCNT8;
-    __IO uint32_t RXUNGCNT9;
-    __IO uint32_t RXUNGCNT10;
-    __IO uint32_t RXUNGCNT11;
-    __IO uint32_t RXUNGCNT12;
-    __IO uint32_t RXUNGCNT13;
-    __IO uint32_t RXUNGCNT14;
-    __IO uint32_t RXUNGCNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxungfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXLEECNT0;
-    __IO uint32_t RXLEECNT1;
-    __IO uint32_t RXLEECNT2;
-    __IO uint32_t RXLEECNT3;
-    __IO uint32_t RXLEECNT4;
-    __IO uint32_t RXLEECNT5;
-    __IO uint32_t RXLEECNT6;
-    __IO uint32_t RXLEECNT7;
-    __IO uint32_t RXLEECNT8;
-    __IO uint32_t RXLEECNT9;
-    __IO uint32_t RXLEECNT10;
-    __IO uint32_t RXLEECNT11;
-    __IO uint32_t RXLEECNT12;
-    __IO uint32_t RXLEECNT13;
-    __IO uint32_t RXLEECNT14;
-    __IO uint32_t RXLEECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxleefr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXORECNT0;
-    __IO uint32_t RXORECNT1;
-    __IO uint32_t RXORECNT2;
-    __IO uint32_t RXORECNT3;
-    __IO uint32_t RXORECNT4;
-    __IO uint32_t RXORECNT5;
-    __IO uint32_t RXORECNT6;
-    __IO uint32_t RXORECNT7;
-    __IO uint32_t RXORECNT8;
-    __IO uint32_t RXORECNT9;
-    __IO uint32_t RXORECNT10;
-    __IO uint32_t RXORECNT11;
-    __IO uint32_t RXORECNT12;
-    __IO uint32_t RXORECNT13;
-    __IO uint32_t RXORECNT14;
-    __IO uint32_t RXORECNT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mmc_rxorefr_bit_t;
-
-typedef struct
-{
     __IO uint32_t L3PEN;
     uint32_t RESERVED0[1];
     __IO uint32_t L3SAM;
@@ -37895,228 +32010,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t L4SPVAL0;
-    __IO uint32_t L4SPVAL1;
-    __IO uint32_t L4SPVAL2;
-    __IO uint32_t L4SPVAL3;
-    __IO uint32_t L4SPVAL4;
-    __IO uint32_t L4SPVAL5;
-    __IO uint32_t L4SPVAL6;
-    __IO uint32_t L4SPVAL7;
-    __IO uint32_t L4SPVAL8;
-    __IO uint32_t L4SPVAL9;
-    __IO uint32_t L4SPVAL10;
-    __IO uint32_t L4SPVAL11;
-    __IO uint32_t L4SPVAL12;
-    __IO uint32_t L4SPVAL13;
-    __IO uint32_t L4SPVAL14;
-    __IO uint32_t L4SPVAL15;
-    __IO uint32_t L4DPVAL0;
-    __IO uint32_t L4DPVAL1;
-    __IO uint32_t L4DPVAL2;
-    __IO uint32_t L4DPVAL3;
-    __IO uint32_t L4DPVAL4;
-    __IO uint32_t L4DPVAL5;
-    __IO uint32_t L4DPVAL6;
-    __IO uint32_t L4DPVAL7;
-    __IO uint32_t L4DPVAL8;
-    __IO uint32_t L4DPVAL9;
-    __IO uint32_t L4DPVAL10;
-    __IO uint32_t L4DPVAL11;
-    __IO uint32_t L4DPVAL12;
-    __IO uint32_t L4DPVAL13;
-    __IO uint32_t L4DPVAL14;
-    __IO uint32_t L4DPVAL15;
-} stc_eth_mac_l4portr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t L3ADDR00;
-    __IO uint32_t L3ADDR01;
-    __IO uint32_t L3ADDR02;
-    __IO uint32_t L3ADDR03;
-    __IO uint32_t L3ADDR04;
-    __IO uint32_t L3ADDR05;
-    __IO uint32_t L3ADDR06;
-    __IO uint32_t L3ADDR07;
-    __IO uint32_t L3ADDR08;
-    __IO uint32_t L3ADDR09;
-    __IO uint32_t L3ADDR010;
-    __IO uint32_t L3ADDR011;
-    __IO uint32_t L3ADDR012;
-    __IO uint32_t L3ADDR013;
-    __IO uint32_t L3ADDR014;
-    __IO uint32_t L3ADDR015;
-    __IO uint32_t L3ADDR016;
-    __IO uint32_t L3ADDR017;
-    __IO uint32_t L3ADDR018;
-    __IO uint32_t L3ADDR019;
-    __IO uint32_t L3ADDR020;
-    __IO uint32_t L3ADDR021;
-    __IO uint32_t L3ADDR022;
-    __IO uint32_t L3ADDR023;
-    __IO uint32_t L3ADDR024;
-    __IO uint32_t L3ADDR025;
-    __IO uint32_t L3ADDR026;
-    __IO uint32_t L3ADDR027;
-    __IO uint32_t L3ADDR028;
-    __IO uint32_t L3ADDR029;
-    __IO uint32_t L3ADDR030;
-    __IO uint32_t L3ADDR031;
-} stc_eth_mac_l3addrr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t L3ADDR20;
-    __IO uint32_t L3ADDR21;
-    __IO uint32_t L3ADDR22;
-    __IO uint32_t L3ADDR23;
-    __IO uint32_t L3ADDR24;
-    __IO uint32_t L3ADDR25;
-    __IO uint32_t L3ADDR26;
-    __IO uint32_t L3ADDR27;
-    __IO uint32_t L3ADDR28;
-    __IO uint32_t L3ADDR29;
-    __IO uint32_t L3ADDR210;
-    __IO uint32_t L3ADDR211;
-    __IO uint32_t L3ADDR212;
-    __IO uint32_t L3ADDR213;
-    __IO uint32_t L3ADDR214;
-    __IO uint32_t L3ADDR215;
-    __IO uint32_t L3ADDR216;
-    __IO uint32_t L3ADDR217;
-    __IO uint32_t L3ADDR218;
-    __IO uint32_t L3ADDR219;
-    __IO uint32_t L3ADDR220;
-    __IO uint32_t L3ADDR221;
-    __IO uint32_t L3ADDR222;
-    __IO uint32_t L3ADDR223;
-    __IO uint32_t L3ADDR224;
-    __IO uint32_t L3ADDR225;
-    __IO uint32_t L3ADDR226;
-    __IO uint32_t L3ADDR227;
-    __IO uint32_t L3ADDR228;
-    __IO uint32_t L3ADDR229;
-    __IO uint32_t L3ADDR230;
-    __IO uint32_t L3ADDR231;
-} stc_eth_mac_l3addrr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t L3ADDR20;
-    __IO uint32_t L3ADDR21;
-    __IO uint32_t L3ADDR22;
-    __IO uint32_t L3ADDR23;
-    __IO uint32_t L3ADDR24;
-    __IO uint32_t L3ADDR25;
-    __IO uint32_t L3ADDR26;
-    __IO uint32_t L3ADDR27;
-    __IO uint32_t L3ADDR28;
-    __IO uint32_t L3ADDR29;
-    __IO uint32_t L3ADDR210;
-    __IO uint32_t L3ADDR211;
-    __IO uint32_t L3ADDR212;
-    __IO uint32_t L3ADDR213;
-    __IO uint32_t L3ADDR214;
-    __IO uint32_t L3ADDR215;
-    __IO uint32_t L3ADDR216;
-    __IO uint32_t L3ADDR217;
-    __IO uint32_t L3ADDR218;
-    __IO uint32_t L3ADDR219;
-    __IO uint32_t L3ADDR220;
-    __IO uint32_t L3ADDR221;
-    __IO uint32_t L3ADDR222;
-    __IO uint32_t L3ADDR223;
-    __IO uint32_t L3ADDR224;
-    __IO uint32_t L3ADDR225;
-    __IO uint32_t L3ADDR226;
-    __IO uint32_t L3ADDR227;
-    __IO uint32_t L3ADDR228;
-    __IO uint32_t L3ADDR229;
-    __IO uint32_t L3ADDR230;
-    __IO uint32_t L3ADDR231;
-} stc_eth_mac_l3addrr2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t L3ADDR30;
-    __IO uint32_t L3ADDR31;
-    __IO uint32_t L3ADDR32;
-    __IO uint32_t L3ADDR33;
-    __IO uint32_t L3ADDR34;
-    __IO uint32_t L3ADDR35;
-    __IO uint32_t L3ADDR36;
-    __IO uint32_t L3ADDR37;
-    __IO uint32_t L3ADDR38;
-    __IO uint32_t L3ADDR39;
-    __IO uint32_t L3ADDR310;
-    __IO uint32_t L3ADDR311;
-    __IO uint32_t L3ADDR312;
-    __IO uint32_t L3ADDR313;
-    __IO uint32_t L3ADDR314;
-    __IO uint32_t L3ADDR315;
-    __IO uint32_t L3ADDR316;
-    __IO uint32_t L3ADDR317;
-    __IO uint32_t L3ADDR318;
-    __IO uint32_t L3ADDR319;
-    __IO uint32_t L3ADDR320;
-    __IO uint32_t L3ADDR321;
-    __IO uint32_t L3ADDR322;
-    __IO uint32_t L3ADDR323;
-    __IO uint32_t L3ADDR324;
-    __IO uint32_t L3ADDR325;
-    __IO uint32_t L3ADDR326;
-    __IO uint32_t L3ADDR327;
-    __IO uint32_t L3ADDR328;
-    __IO uint32_t L3ADDR329;
-    __IO uint32_t L3ADDR330;
-    __IO uint32_t L3ADDR331;
-} stc_eth_mac_l3addrr3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t VLANV0;
-    __IO uint32_t VLANV1;
-    __IO uint32_t VLANV2;
-    __IO uint32_t VLANV3;
-    __IO uint32_t VLANV4;
-    __IO uint32_t VLANV5;
-    __IO uint32_t VLANV6;
-    __IO uint32_t VLANV7;
-    __IO uint32_t VLANV8;
-    __IO uint32_t VLANV9;
-    __IO uint32_t VLANV10;
-    __IO uint32_t VLANV11;
-    __IO uint32_t VLANV12;
-    __IO uint32_t VLANV13;
-    __IO uint32_t VLANV14;
-    __IO uint32_t VLANV15;
+    uint32_t RESERVED0[16];
     __IO uint32_t VLANC0;
     __IO uint32_t VLANC1;
     __IO uint32_t VLANS;
-    uint32_t RESERVED0[13];
+    uint32_t RESERVED1[13];
 } stc_eth_mac_vtactlr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t VLHT0;
-    __IO uint32_t VLHT1;
-    __IO uint32_t VLHT2;
-    __IO uint32_t VLHT3;
-    __IO uint32_t VLHT4;
-    __IO uint32_t VLHT5;
-    __IO uint32_t VLHT6;
-    __IO uint32_t VLHT7;
-    __IO uint32_t VLHT8;
-    __IO uint32_t VLHT9;
-    __IO uint32_t VLHT10;
-    __IO uint32_t VLHT11;
-    __IO uint32_t VLHT12;
-    __IO uint32_t VLHT13;
-    __IO uint32_t VLHT14;
-    __IO uint32_t VLHT15;
-    uint32_t RESERVED0[16];
-} stc_eth_mac_vlahtbr_bit_t;
 
 typedef struct
 {
@@ -38143,268 +32042,9 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t TSPNSEADD0;
-    __IO uint32_t TSPNSEADD1;
-    __IO uint32_t TSPNSEADD2;
-    __IO uint32_t TSPNSEADD3;
-    __IO uint32_t TSPNSEADD4;
-    __IO uint32_t TSPNSEADD5;
-    __IO uint32_t TSPNSEADD6;
-    __IO uint32_t TSPNSEADD7;
-    uint32_t RESERVED0[24];
-} stc_eth_ptp_tspnsar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPSYSSEC0;
-    __IO uint32_t TSPSYSSEC1;
-    __IO uint32_t TSPSYSSEC2;
-    __IO uint32_t TSPSYSSEC3;
-    __IO uint32_t TSPSYSSEC4;
-    __IO uint32_t TSPSYSSEC5;
-    __IO uint32_t TSPSYSSEC6;
-    __IO uint32_t TSPSYSSEC7;
-    __IO uint32_t TSPSYSSEC8;
-    __IO uint32_t TSPSYSSEC9;
-    __IO uint32_t TSPSYSSEC10;
-    __IO uint32_t TSPSYSSEC11;
-    __IO uint32_t TSPSYSSEC12;
-    __IO uint32_t TSPSYSSEC13;
-    __IO uint32_t TSPSYSSEC14;
-    __IO uint32_t TSPSYSSEC15;
-    __IO uint32_t TSPSYSSEC16;
-    __IO uint32_t TSPSYSSEC17;
-    __IO uint32_t TSPSYSSEC18;
-    __IO uint32_t TSPSYSSEC19;
-    __IO uint32_t TSPSYSSEC20;
-    __IO uint32_t TSPSYSSEC21;
-    __IO uint32_t TSPSYSSEC22;
-    __IO uint32_t TSPSYSSEC23;
-    __IO uint32_t TSPSYSSEC24;
-    __IO uint32_t TSPSYSSEC25;
-    __IO uint32_t TSPSYSSEC26;
-    __IO uint32_t TSPSYSSEC27;
-    __IO uint32_t TSPSYSSEC28;
-    __IO uint32_t TSPSYSSEC29;
-    __IO uint32_t TSPSYSSEC30;
-    __IO uint32_t TSPSYSSEC31;
-} stc_eth_ptp_tmssecr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPSYSNSEC0;
-    __IO uint32_t TSPSYSNSEC1;
-    __IO uint32_t TSPSYSNSEC2;
-    __IO uint32_t TSPSYSNSEC3;
-    __IO uint32_t TSPSYSNSEC4;
-    __IO uint32_t TSPSYSNSEC5;
-    __IO uint32_t TSPSYSNSEC6;
-    __IO uint32_t TSPSYSNSEC7;
-    __IO uint32_t TSPSYSNSEC8;
-    __IO uint32_t TSPSYSNSEC9;
-    __IO uint32_t TSPSYSNSEC10;
-    __IO uint32_t TSPSYSNSEC11;
-    __IO uint32_t TSPSYSNSEC12;
-    __IO uint32_t TSPSYSNSEC13;
-    __IO uint32_t TSPSYSNSEC14;
-    __IO uint32_t TSPSYSNSEC15;
-    __IO uint32_t TSPSYSNSEC16;
-    __IO uint32_t TSPSYSNSEC17;
-    __IO uint32_t TSPSYSNSEC18;
-    __IO uint32_t TSPSYSNSEC19;
-    __IO uint32_t TSPSYSNSEC20;
-    __IO uint32_t TSPSYSNSEC21;
-    __IO uint32_t TSPSYSNSEC22;
-    __IO uint32_t TSPSYSNSEC23;
-    __IO uint32_t TSPSYSNSEC24;
-    __IO uint32_t TSPSYSNSEC25;
-    __IO uint32_t TSPSYSNSEC26;
-    __IO uint32_t TSPSYSNSEC27;
-    __IO uint32_t TSPSYSNSEC28;
-    __IO uint32_t TSPSYSNSEC29;
-    __IO uint32_t TSPSYSNSEC30;
-    uint32_t RESERVED0[1];
-} stc_eth_ptp_tmsnser_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPUPSEC0;
-    __IO uint32_t TSPUPSEC1;
-    __IO uint32_t TSPUPSEC2;
-    __IO uint32_t TSPUPSEC3;
-    __IO uint32_t TSPUPSEC4;
-    __IO uint32_t TSPUPSEC5;
-    __IO uint32_t TSPUPSEC6;
-    __IO uint32_t TSPUPSEC7;
-    __IO uint32_t TSPUPSEC8;
-    __IO uint32_t TSPUPSEC9;
-    __IO uint32_t TSPUPSEC10;
-    __IO uint32_t TSPUPSEC11;
-    __IO uint32_t TSPUPSEC12;
-    __IO uint32_t TSPUPSEC13;
-    __IO uint32_t TSPUPSEC14;
-    __IO uint32_t TSPUPSEC15;
-    __IO uint32_t TSPUPSEC16;
-    __IO uint32_t TSPUPSEC17;
-    __IO uint32_t TSPUPSEC18;
-    __IO uint32_t TSPUPSEC19;
-    __IO uint32_t TSPUPSEC20;
-    __IO uint32_t TSPUPSEC21;
-    __IO uint32_t TSPUPSEC22;
-    __IO uint32_t TSPUPSEC23;
-    __IO uint32_t TSPUPSEC24;
-    __IO uint32_t TSPUPSEC25;
-    __IO uint32_t TSPUPSEC26;
-    __IO uint32_t TSPUPSEC27;
-    __IO uint32_t TSPUPSEC28;
-    __IO uint32_t TSPUPSEC29;
-    __IO uint32_t TSPUPSEC30;
-    __IO uint32_t TSPUPSEC31;
-} stc_eth_ptp_tmusecr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPUPNSE0;
-    __IO uint32_t TSPUPNSE1;
-    __IO uint32_t TSPUPNSE2;
-    __IO uint32_t TSPUPNSE3;
-    __IO uint32_t TSPUPNSE4;
-    __IO uint32_t TSPUPNSE5;
-    __IO uint32_t TSPUPNSE6;
-    __IO uint32_t TSPUPNSE7;
-    __IO uint32_t TSPUPNSE8;
-    __IO uint32_t TSPUPNSE9;
-    __IO uint32_t TSPUPNSE10;
-    __IO uint32_t TSPUPNSE11;
-    __IO uint32_t TSPUPNSE12;
-    __IO uint32_t TSPUPNSE13;
-    __IO uint32_t TSPUPNSE14;
-    __IO uint32_t TSPUPNSE15;
-    __IO uint32_t TSPUPNSE16;
-    __IO uint32_t TSPUPNSE17;
-    __IO uint32_t TSPUPNSE18;
-    __IO uint32_t TSPUPNSE19;
-    __IO uint32_t TSPUPNSE20;
-    __IO uint32_t TSPUPNSE21;
-    __IO uint32_t TSPUPNSE22;
-    __IO uint32_t TSPUPNSE23;
-    __IO uint32_t TSPUPNSE24;
-    __IO uint32_t TSPUPNSE25;
-    __IO uint32_t TSPUPNSE26;
-    __IO uint32_t TSPUPNSE27;
-    __IO uint32_t TSPUPNSE28;
-    __IO uint32_t TSPUPNSE29;
-    __IO uint32_t TSPUPNSE30;
+    uint32_t RESERVED0[31];
     __IO uint32_t TSPUPNS;
 } stc_eth_ptp_tmunser_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPADD0;
-    __IO uint32_t TSPADD1;
-    __IO uint32_t TSPADD2;
-    __IO uint32_t TSPADD3;
-    __IO uint32_t TSPADD4;
-    __IO uint32_t TSPADD5;
-    __IO uint32_t TSPADD6;
-    __IO uint32_t TSPADD7;
-    __IO uint32_t TSPADD8;
-    __IO uint32_t TSPADD9;
-    __IO uint32_t TSPADD10;
-    __IO uint32_t TSPADD11;
-    __IO uint32_t TSPADD12;
-    __IO uint32_t TSPADD13;
-    __IO uint32_t TSPADD14;
-    __IO uint32_t TSPADD15;
-    __IO uint32_t TSPADD16;
-    __IO uint32_t TSPADD17;
-    __IO uint32_t TSPADD18;
-    __IO uint32_t TSPADD19;
-    __IO uint32_t TSPADD20;
-    __IO uint32_t TSPADD21;
-    __IO uint32_t TSPADD22;
-    __IO uint32_t TSPADD23;
-    __IO uint32_t TSPADD24;
-    __IO uint32_t TSPADD25;
-    __IO uint32_t TSPADD26;
-    __IO uint32_t TSPADD27;
-    __IO uint32_t TSPADD28;
-    __IO uint32_t TSPADD29;
-    __IO uint32_t TSPADD30;
-    __IO uint32_t TSPADD31;
-} stc_eth_ptp_tspaddr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPTAGSEC00;
-    __IO uint32_t TSPTAGSEC01;
-    __IO uint32_t TSPTAGSEC02;
-    __IO uint32_t TSPTAGSEC03;
-    __IO uint32_t TSPTAGSEC04;
-    __IO uint32_t TSPTAGSEC05;
-    __IO uint32_t TSPTAGSEC06;
-    __IO uint32_t TSPTAGSEC07;
-    __IO uint32_t TSPTAGSEC08;
-    __IO uint32_t TSPTAGSEC09;
-    __IO uint32_t TSPTAGSEC010;
-    __IO uint32_t TSPTAGSEC011;
-    __IO uint32_t TSPTAGSEC012;
-    __IO uint32_t TSPTAGSEC013;
-    __IO uint32_t TSPTAGSEC014;
-    __IO uint32_t TSPTAGSEC015;
-    __IO uint32_t TSPTAGSEC016;
-    __IO uint32_t TSPTAGSEC017;
-    __IO uint32_t TSPTAGSEC018;
-    __IO uint32_t TSPTAGSEC019;
-    __IO uint32_t TSPTAGSEC020;
-    __IO uint32_t TSPTAGSEC021;
-    __IO uint32_t TSPTAGSEC022;
-    __IO uint32_t TSPTAGSEC023;
-    __IO uint32_t TSPTAGSEC024;
-    __IO uint32_t TSPTAGSEC025;
-    __IO uint32_t TSPTAGSEC026;
-    __IO uint32_t TSPTAGSEC027;
-    __IO uint32_t TSPTAGSEC028;
-    __IO uint32_t TSPTAGSEC029;
-    __IO uint32_t TSPTAGSEC030;
-    __IO uint32_t TSPTAGSEC031;
-} stc_eth_ptp_tmtsecr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPTAGNSEC00;
-    __IO uint32_t TSPTAGNSEC01;
-    __IO uint32_t TSPTAGNSEC02;
-    __IO uint32_t TSPTAGNSEC03;
-    __IO uint32_t TSPTAGNSEC04;
-    __IO uint32_t TSPTAGNSEC05;
-    __IO uint32_t TSPTAGNSEC06;
-    __IO uint32_t TSPTAGNSEC07;
-    __IO uint32_t TSPTAGNSEC08;
-    __IO uint32_t TSPTAGNSEC09;
-    __IO uint32_t TSPTAGNSEC010;
-    __IO uint32_t TSPTAGNSEC011;
-    __IO uint32_t TSPTAGNSEC012;
-    __IO uint32_t TSPTAGNSEC013;
-    __IO uint32_t TSPTAGNSEC014;
-    __IO uint32_t TSPTAGNSEC015;
-    __IO uint32_t TSPTAGNSEC016;
-    __IO uint32_t TSPTAGNSEC017;
-    __IO uint32_t TSPTAGNSEC018;
-    __IO uint32_t TSPTAGNSEC019;
-    __IO uint32_t TSPTAGNSEC020;
-    __IO uint32_t TSPTAGNSEC021;
-    __IO uint32_t TSPTAGNSEC022;
-    __IO uint32_t TSPTAGNSEC023;
-    __IO uint32_t TSPTAGNSEC024;
-    __IO uint32_t TSPTAGNSEC025;
-    __IO uint32_t TSPTAGNSEC026;
-    __IO uint32_t TSPTAGNSEC027;
-    __IO uint32_t TSPTAGNSEC028;
-    __IO uint32_t TSPTAGNSEC029;
-    __IO uint32_t TSPTAGNSEC030;
-    uint32_t RESERVED0[1];
-} stc_eth_ptp_tmtnser0_bit_t;
 
 typedef struct
 {
@@ -38438,78 +32078,6 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t TSPTAGSEC10;
-    __IO uint32_t TSPTAGSEC11;
-    __IO uint32_t TSPTAGSEC12;
-    __IO uint32_t TSPTAGSEC13;
-    __IO uint32_t TSPTAGSEC14;
-    __IO uint32_t TSPTAGSEC15;
-    __IO uint32_t TSPTAGSEC16;
-    __IO uint32_t TSPTAGSEC17;
-    __IO uint32_t TSPTAGSEC18;
-    __IO uint32_t TSPTAGSEC19;
-    __IO uint32_t TSPTAGSEC110;
-    __IO uint32_t TSPTAGSEC111;
-    __IO uint32_t TSPTAGSEC112;
-    __IO uint32_t TSPTAGSEC113;
-    __IO uint32_t TSPTAGSEC114;
-    __IO uint32_t TSPTAGSEC115;
-    __IO uint32_t TSPTAGSEC116;
-    __IO uint32_t TSPTAGSEC117;
-    __IO uint32_t TSPTAGSEC118;
-    __IO uint32_t TSPTAGSEC119;
-    __IO uint32_t TSPTAGSEC120;
-    __IO uint32_t TSPTAGSEC121;
-    __IO uint32_t TSPTAGSEC122;
-    __IO uint32_t TSPTAGSEC123;
-    __IO uint32_t TSPTAGSEC124;
-    __IO uint32_t TSPTAGSEC125;
-    __IO uint32_t TSPTAGSEC126;
-    __IO uint32_t TSPTAGSEC127;
-    __IO uint32_t TSPTAGSEC128;
-    __IO uint32_t TSPTAGSEC129;
-    __IO uint32_t TSPTAGSEC130;
-    __IO uint32_t TSPTAGSEC131;
-} stc_eth_ptp_tmtsecr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TSPTAGNSEC10;
-    __IO uint32_t TSPTAGNSEC11;
-    __IO uint32_t TSPTAGNSEC12;
-    __IO uint32_t TSPTAGNSEC13;
-    __IO uint32_t TSPTAGNSEC14;
-    __IO uint32_t TSPTAGNSEC15;
-    __IO uint32_t TSPTAGNSEC16;
-    __IO uint32_t TSPTAGNSEC17;
-    __IO uint32_t TSPTAGNSEC18;
-    __IO uint32_t TSPTAGNSEC19;
-    __IO uint32_t TSPTAGNSEC110;
-    __IO uint32_t TSPTAGNSEC111;
-    __IO uint32_t TSPTAGNSEC112;
-    __IO uint32_t TSPTAGNSEC113;
-    __IO uint32_t TSPTAGNSEC114;
-    __IO uint32_t TSPTAGNSEC115;
-    __IO uint32_t TSPTAGNSEC116;
-    __IO uint32_t TSPTAGNSEC117;
-    __IO uint32_t TSPTAGNSEC118;
-    __IO uint32_t TSPTAGNSEC119;
-    __IO uint32_t TSPTAGNSEC120;
-    __IO uint32_t TSPTAGNSEC121;
-    __IO uint32_t TSPTAGNSEC122;
-    __IO uint32_t TSPTAGNSEC123;
-    __IO uint32_t TSPTAGNSEC124;
-    __IO uint32_t TSPTAGNSEC125;
-    __IO uint32_t TSPTAGNSEC126;
-    __IO uint32_t TSPTAGNSEC127;
-    __IO uint32_t TSPTAGNSEC128;
-    __IO uint32_t TSPTAGNSEC129;
-    __IO uint32_t TSPTAGNSEC130;
-    uint32_t RESERVED0[1];
-} stc_eth_ptp_tmtnser1_bit_t;
-
-typedef struct
-{
     __IO uint32_t SWR;
     __IO uint32_t DMAA;
     __IO uint32_t DSL0;
@@ -38540,150 +32108,6 @@ typedef struct
     __IO uint32_t TXPR;
     uint32_t RESERVED0[4];
 } stc_eth_dma_busmodr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXPOLL0;
-    __IO uint32_t TXPOLL1;
-    __IO uint32_t TXPOLL2;
-    __IO uint32_t TXPOLL3;
-    __IO uint32_t TXPOLL4;
-    __IO uint32_t TXPOLL5;
-    __IO uint32_t TXPOLL6;
-    __IO uint32_t TXPOLL7;
-    __IO uint32_t TXPOLL8;
-    __IO uint32_t TXPOLL9;
-    __IO uint32_t TXPOLL10;
-    __IO uint32_t TXPOLL11;
-    __IO uint32_t TXPOLL12;
-    __IO uint32_t TXPOLL13;
-    __IO uint32_t TXPOLL14;
-    __IO uint32_t TXPOLL15;
-    __IO uint32_t TXPOLL16;
-    __IO uint32_t TXPOLL17;
-    __IO uint32_t TXPOLL18;
-    __IO uint32_t TXPOLL19;
-    __IO uint32_t TXPOLL20;
-    __IO uint32_t TXPOLL21;
-    __IO uint32_t TXPOLL22;
-    __IO uint32_t TXPOLL23;
-    __IO uint32_t TXPOLL24;
-    __IO uint32_t TXPOLL25;
-    __IO uint32_t TXPOLL26;
-    __IO uint32_t TXPOLL27;
-    __IO uint32_t TXPOLL28;
-    __IO uint32_t TXPOLL29;
-    __IO uint32_t TXPOLL30;
-    __IO uint32_t TXPOLL31;
-} stc_eth_dma_txpollr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXPOLL0;
-    __IO uint32_t RXPOLL1;
-    __IO uint32_t RXPOLL2;
-    __IO uint32_t RXPOLL3;
-    __IO uint32_t RXPOLL4;
-    __IO uint32_t RXPOLL5;
-    __IO uint32_t RXPOLL6;
-    __IO uint32_t RXPOLL7;
-    __IO uint32_t RXPOLL8;
-    __IO uint32_t RXPOLL9;
-    __IO uint32_t RXPOLL10;
-    __IO uint32_t RXPOLL11;
-    __IO uint32_t RXPOLL12;
-    __IO uint32_t RXPOLL13;
-    __IO uint32_t RXPOLL14;
-    __IO uint32_t RXPOLL15;
-    __IO uint32_t RXPOLL16;
-    __IO uint32_t RXPOLL17;
-    __IO uint32_t RXPOLL18;
-    __IO uint32_t RXPOLL19;
-    __IO uint32_t RXPOLL20;
-    __IO uint32_t RXPOLL21;
-    __IO uint32_t RXPOLL22;
-    __IO uint32_t RXPOLL23;
-    __IO uint32_t RXPOLL24;
-    __IO uint32_t RXPOLL25;
-    __IO uint32_t RXPOLL26;
-    __IO uint32_t RXPOLL27;
-    __IO uint32_t RXPOLL28;
-    __IO uint32_t RXPOLL29;
-    __IO uint32_t RXPOLL30;
-    __IO uint32_t RXPOLL31;
-} stc_eth_dma_rxpollr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RXDLAD0;
-    __IO uint32_t RXDLAD1;
-    __IO uint32_t RXDLAD2;
-    __IO uint32_t RXDLAD3;
-    __IO uint32_t RXDLAD4;
-    __IO uint32_t RXDLAD5;
-    __IO uint32_t RXDLAD6;
-    __IO uint32_t RXDLAD7;
-    __IO uint32_t RXDLAD8;
-    __IO uint32_t RXDLAD9;
-    __IO uint32_t RXDLAD10;
-    __IO uint32_t RXDLAD11;
-    __IO uint32_t RXDLAD12;
-    __IO uint32_t RXDLAD13;
-    __IO uint32_t RXDLAD14;
-    __IO uint32_t RXDLAD15;
-    __IO uint32_t RXDLAD16;
-    __IO uint32_t RXDLAD17;
-    __IO uint32_t RXDLAD18;
-    __IO uint32_t RXDLAD19;
-    __IO uint32_t RXDLAD20;
-    __IO uint32_t RXDLAD21;
-    __IO uint32_t RXDLAD22;
-    __IO uint32_t RXDLAD23;
-    __IO uint32_t RXDLAD24;
-    __IO uint32_t RXDLAD25;
-    __IO uint32_t RXDLAD26;
-    __IO uint32_t RXDLAD27;
-    __IO uint32_t RXDLAD28;
-    __IO uint32_t RXDLAD29;
-    __IO uint32_t RXDLAD30;
-    __IO uint32_t RXDLAD31;
-} stc_eth_dma_rxdladr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TXDLAD0;
-    __IO uint32_t TXDLAD1;
-    __IO uint32_t TXDLAD2;
-    __IO uint32_t TXDLAD3;
-    __IO uint32_t TXDLAD4;
-    __IO uint32_t TXDLAD5;
-    __IO uint32_t TXDLAD6;
-    __IO uint32_t TXDLAD7;
-    __IO uint32_t TXDLAD8;
-    __IO uint32_t TXDLAD9;
-    __IO uint32_t TXDLAD10;
-    __IO uint32_t TXDLAD11;
-    __IO uint32_t TXDLAD12;
-    __IO uint32_t TXDLAD13;
-    __IO uint32_t TXDLAD14;
-    __IO uint32_t TXDLAD15;
-    __IO uint32_t TXDLAD16;
-    __IO uint32_t TXDLAD17;
-    __IO uint32_t TXDLAD18;
-    __IO uint32_t TXDLAD19;
-    __IO uint32_t TXDLAD20;
-    __IO uint32_t TXDLAD21;
-    __IO uint32_t TXDLAD22;
-    __IO uint32_t TXDLAD23;
-    __IO uint32_t TXDLAD24;
-    __IO uint32_t TXDLAD25;
-    __IO uint32_t TXDLAD26;
-    __IO uint32_t TXDLAD27;
-    __IO uint32_t TXDLAD28;
-    __IO uint32_t TXDLAD29;
-    __IO uint32_t TXDLAD30;
-    __IO uint32_t TXDLAD31;
-} stc_eth_dma_txdladr_bit_t;
 
 typedef struct
 {
@@ -38767,257 +32191,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t UNACNT0;
-    __IO uint32_t UNACNT1;
-    __IO uint32_t UNACNT2;
-    __IO uint32_t UNACNT3;
-    __IO uint32_t UNACNT4;
-    __IO uint32_t UNACNT5;
-    __IO uint32_t UNACNT6;
-    __IO uint32_t UNACNT7;
-    __IO uint32_t UNACNT8;
-    __IO uint32_t UNACNT9;
-    __IO uint32_t UNACNT10;
-    __IO uint32_t UNACNT11;
-    __IO uint32_t UNACNT12;
-    __IO uint32_t UNACNT13;
-    __IO uint32_t UNACNT14;
-    __IO uint32_t UNACNT15;
+    uint32_t RESERVED0[16];
     __IO uint32_t UNAOVF;
-    __IO uint32_t OVFCNT0;
-    __IO uint32_t OVFCNT1;
-    __IO uint32_t OVFCNT2;
-    __IO uint32_t OVFCNT3;
-    __IO uint32_t OVFCNT4;
-    __IO uint32_t OVFCNT5;
-    __IO uint32_t OVFCNT6;
-    __IO uint32_t OVFCNT7;
-    __IO uint32_t OVFCNT8;
-    __IO uint32_t OVFCNT9;
-    __IO uint32_t OVFCNT10;
+    uint32_t RESERVED1[11];
     __IO uint32_t OVFOVF;
-    uint32_t RESERVED0[3];
+    uint32_t RESERVED2[3];
 } stc_eth_dma_rfrcntr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RIWT0;
-    __IO uint32_t RIWT1;
-    __IO uint32_t RIWT2;
-    __IO uint32_t RIWT3;
-    __IO uint32_t RIWT4;
-    __IO uint32_t RIWT5;
-    __IO uint32_t RIWT6;
-    __IO uint32_t RIWT7;
-    uint32_t RESERVED0[24];
-} stc_eth_dma_revwdtr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CHTXDE0;
-    __IO uint32_t CHTXDE1;
-    __IO uint32_t CHTXDE2;
-    __IO uint32_t CHTXDE3;
-    __IO uint32_t CHTXDE4;
-    __IO uint32_t CHTXDE5;
-    __IO uint32_t CHTXDE6;
-    __IO uint32_t CHTXDE7;
-    __IO uint32_t CHTXDE8;
-    __IO uint32_t CHTXDE9;
-    __IO uint32_t CHTXDE10;
-    __IO uint32_t CHTXDE11;
-    __IO uint32_t CHTXDE12;
-    __IO uint32_t CHTXDE13;
-    __IO uint32_t CHTXDE14;
-    __IO uint32_t CHTXDE15;
-    __IO uint32_t CHTXDE16;
-    __IO uint32_t CHTXDE17;
-    __IO uint32_t CHTXDE18;
-    __IO uint32_t CHTXDE19;
-    __IO uint32_t CHTXDE20;
-    __IO uint32_t CHTXDE21;
-    __IO uint32_t CHTXDE22;
-    __IO uint32_t CHTXDE23;
-    __IO uint32_t CHTXDE24;
-    __IO uint32_t CHTXDE25;
-    __IO uint32_t CHTXDE26;
-    __IO uint32_t CHTXDE27;
-    __IO uint32_t CHTXDE28;
-    __IO uint32_t CHTXDE29;
-    __IO uint32_t CHTXDE30;
-    __IO uint32_t CHTXDE31;
-} stc_eth_dma_chtxder_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CHRXDE0;
-    __IO uint32_t CHRXDE1;
-    __IO uint32_t CHRXDE2;
-    __IO uint32_t CHRXDE3;
-    __IO uint32_t CHRXDE4;
-    __IO uint32_t CHRXDE5;
-    __IO uint32_t CHRXDE6;
-    __IO uint32_t CHRXDE7;
-    __IO uint32_t CHRXDE8;
-    __IO uint32_t CHRXDE9;
-    __IO uint32_t CHRXDE10;
-    __IO uint32_t CHRXDE11;
-    __IO uint32_t CHRXDE12;
-    __IO uint32_t CHRXDE13;
-    __IO uint32_t CHRXDE14;
-    __IO uint32_t CHRXDE15;
-    __IO uint32_t CHRXDE16;
-    __IO uint32_t CHRXDE17;
-    __IO uint32_t CHRXDE18;
-    __IO uint32_t CHRXDE19;
-    __IO uint32_t CHRXDE20;
-    __IO uint32_t CHRXDE21;
-    __IO uint32_t CHRXDE22;
-    __IO uint32_t CHRXDE23;
-    __IO uint32_t CHRXDE24;
-    __IO uint32_t CHRXDE25;
-    __IO uint32_t CHRXDE26;
-    __IO uint32_t CHRXDE27;
-    __IO uint32_t CHRXDE28;
-    __IO uint32_t CHRXDE29;
-    __IO uint32_t CHRXDE30;
-    __IO uint32_t CHRXDE31;
-} stc_eth_dma_chrxder_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CHTXBF0;
-    __IO uint32_t CHTXBF1;
-    __IO uint32_t CHTXBF2;
-    __IO uint32_t CHTXBF3;
-    __IO uint32_t CHTXBF4;
-    __IO uint32_t CHTXBF5;
-    __IO uint32_t CHTXBF6;
-    __IO uint32_t CHTXBF7;
-    __IO uint32_t CHTXBF8;
-    __IO uint32_t CHTXBF9;
-    __IO uint32_t CHTXBF10;
-    __IO uint32_t CHTXBF11;
-    __IO uint32_t CHTXBF12;
-    __IO uint32_t CHTXBF13;
-    __IO uint32_t CHTXBF14;
-    __IO uint32_t CHTXBF15;
-    __IO uint32_t CHTXBF16;
-    __IO uint32_t CHTXBF17;
-    __IO uint32_t CHTXBF18;
-    __IO uint32_t CHTXBF19;
-    __IO uint32_t CHTXBF20;
-    __IO uint32_t CHTXBF21;
-    __IO uint32_t CHTXBF22;
-    __IO uint32_t CHTXBF23;
-    __IO uint32_t CHTXBF24;
-    __IO uint32_t CHTXBF25;
-    __IO uint32_t CHTXBF26;
-    __IO uint32_t CHTXBF27;
-    __IO uint32_t CHTXBF28;
-    __IO uint32_t CHTXBF29;
-    __IO uint32_t CHTXBF30;
-    __IO uint32_t CHTXBF31;
-} stc_eth_dma_chtxbfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CHRXBF0;
-    __IO uint32_t CHRXBF1;
-    __IO uint32_t CHRXBF2;
-    __IO uint32_t CHRXBF3;
-    __IO uint32_t CHRXBF4;
-    __IO uint32_t CHRXBF5;
-    __IO uint32_t CHRXBF6;
-    __IO uint32_t CHRXBF7;
-    __IO uint32_t CHRXBF8;
-    __IO uint32_t CHRXBF9;
-    __IO uint32_t CHRXBF10;
-    __IO uint32_t CHRXBF11;
-    __IO uint32_t CHRXBF12;
-    __IO uint32_t CHRXBF13;
-    __IO uint32_t CHRXBF14;
-    __IO uint32_t CHRXBF15;
-    __IO uint32_t CHRXBF16;
-    __IO uint32_t CHRXBF17;
-    __IO uint32_t CHRXBF18;
-    __IO uint32_t CHRXBF19;
-    __IO uint32_t CHRXBF20;
-    __IO uint32_t CHRXBF21;
-    __IO uint32_t CHRXBF22;
-    __IO uint32_t CHRXBF23;
-    __IO uint32_t CHRXBF24;
-    __IO uint32_t CHRXBF25;
-    __IO uint32_t CHRXBF26;
-    __IO uint32_t CHRXBF27;
-    __IO uint32_t CHRXBF28;
-    __IO uint32_t CHRXBF29;
-    __IO uint32_t CHRXBF30;
-    __IO uint32_t CHRXBF31;
-} stc_eth_dma_chrxbfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t LVR0;
-    __IO uint32_t LVR1;
-    __IO uint32_t LVR2;
-    __IO uint32_t LVR3;
-    __IO uint32_t LVR4;
-    __IO uint32_t LVR5;
-    __IO uint32_t LVR6;
-    __IO uint32_t LVR7;
-    __IO uint32_t LVR8;
-    __IO uint32_t LVR9;
-    __IO uint32_t LVR10;
-    __IO uint32_t LVR11;
-    __IO uint32_t LVR12;
-    __IO uint32_t LVR13;
-    __IO uint32_t LVR14;
-    __IO uint32_t LVR15;
-    uint32_t RESERVED0[16];
-} stc_fcm_lvr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t UVR0;
-    __IO uint32_t UVR1;
-    __IO uint32_t UVR2;
-    __IO uint32_t UVR3;
-    __IO uint32_t UVR4;
-    __IO uint32_t UVR5;
-    __IO uint32_t UVR6;
-    __IO uint32_t UVR7;
-    __IO uint32_t UVR8;
-    __IO uint32_t UVR9;
-    __IO uint32_t UVR10;
-    __IO uint32_t UVR11;
-    __IO uint32_t UVR12;
-    __IO uint32_t UVR13;
-    __IO uint32_t UVR14;
-    __IO uint32_t UVR15;
-    uint32_t RESERVED0[16];
-} stc_fcm_uvr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CNTR0;
-    __IO uint32_t CNTR1;
-    __IO uint32_t CNTR2;
-    __IO uint32_t CNTR3;
-    __IO uint32_t CNTR4;
-    __IO uint32_t CNTR5;
-    __IO uint32_t CNTR6;
-    __IO uint32_t CNTR7;
-    __IO uint32_t CNTR8;
-    __IO uint32_t CNTR9;
-    __IO uint32_t CNTR10;
-    __IO uint32_t CNTR11;
-    __IO uint32_t CNTR12;
-    __IO uint32_t CNTR13;
-    __IO uint32_t CNTR14;
-    __IO uint32_t CNTR15;
-    uint32_t RESERVED0[16];
-} stc_fcm_cntr_bit_t;
 
 typedef struct
 {
@@ -39027,25 +32206,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MDIVS0;
-    __IO uint32_t MDIVS1;
-    uint32_t RESERVED0[2];
-    __IO uint32_t MCKS0;
-    __IO uint32_t MCKS1;
-    __IO uint32_t MCKS2;
-    __IO uint32_t MCKS3;
-    uint32_t RESERVED1[24];
-} stc_fcm_mccr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RDIVS0;
-    __IO uint32_t RDIVS1;
-    uint32_t RESERVED0[1];
-    __IO uint32_t RCKS0;
-    __IO uint32_t RCKS1;
-    __IO uint32_t RCKS2;
-    __IO uint32_t RCKS3;
+    uint32_t RESERVED0[7];
     __IO uint32_t INEXS;
     __IO uint32_t DNFS0;
     __IO uint32_t DNFS1;
@@ -39093,481 +32254,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t STAGE_NUM0;
-    __IO uint32_t STAGE_NUM1;
-    __IO uint32_t STAGE_NUM2;
-    __IO uint32_t STAGE_NUM3;
-    __IO uint32_t STAGE_NUM4;
-    uint32_t RESERVED0[3];
-    __IO uint32_t SHIFT0;
-    __IO uint32_t SHIFT1;
-    __IO uint32_t SHIFT2;
-    __IO uint32_t SHIFT3;
-    __IO uint32_t SHIFT4;
-    uint32_t RESERVED1[19];
-} stc_fmac_ctr_bit_t;
-
-typedef struct
-{
     __IO uint32_t INTEN;
     uint32_t RESERVED0[31];
 } stc_fmac_ier_bit_t;
 
 typedef struct
 {
-    __IO uint32_t DIN0;
-    __IO uint32_t DIN1;
-    __IO uint32_t DIN2;
-    __IO uint32_t DIN3;
-    __IO uint32_t DIN4;
-    __IO uint32_t DIN5;
-    __IO uint32_t DIN6;
-    __IO uint32_t DIN7;
-    __IO uint32_t DIN8;
-    __IO uint32_t DIN9;
-    __IO uint32_t DIN10;
-    __IO uint32_t DIN11;
-    __IO uint32_t DIN12;
-    __IO uint32_t DIN13;
-    __IO uint32_t DIN14;
-    __IO uint32_t DIN15;
-    uint32_t RESERVED0[16];
-} stc_fmac_dtr_bit_t;
-
-typedef struct
-{
-    uint32_t FMAC_RTR0_0;
-    uint32_t FMAC_RTR0_1;
-    uint32_t FMAC_RTR0_2;
-    uint32_t FMAC_RTR0_3;
-    uint32_t FMAC_RTR0_4;
-    uint32_t FMAC_RTR0_5;
-    uint32_t FMAC_RTR0_6;
-    uint32_t FMAC_RTR0_7;
-    uint32_t FMAC_RTR0_8;
-    uint32_t FMAC_RTR0_9;
-    uint32_t FMAC_RTR0_10;
-    uint32_t FMAC_RTR0_11;
-    uint32_t FMAC_RTR0_12;
-    uint32_t FMAC_RTR0_13;
-    uint32_t FMAC_RTR0_14;
-    uint32_t FMAC_RTR0_15;
-    uint32_t FMAC_RTR0_16;
-    uint32_t FMAC_RTR0_17;
-    uint32_t FMAC_RTR0_18;
-    uint32_t FMAC_RTR0_19;
-    uint32_t FMAC_RTR0_20;
-    uint32_t FMAC_RTR0_21;
-    uint32_t FMAC_RTR0_22;
-    uint32_t FMAC_RTR0_23;
-    uint32_t FMAC_RTR0_24;
-    uint32_t FMAC_RTR0_25;
-    uint32_t FMAC_RTR0_26;
-    uint32_t FMAC_RTR0_27;
-    uint32_t FMAC_RTR0_28;
-    uint32_t FMAC_RTR0_29;
-    uint32_t FMAC_RTR0_30;
-    uint32_t FMAC_RTR0_31;
-} stc_fmac_rtr0_bit_t;
-
-typedef struct
-{
-    uint32_t FMAC_RTR1_0;
-    uint32_t FMAC_RTR1_1;
-    uint32_t FMAC_RTR1_2;
-    uint32_t FMAC_RTR1_3;
-    uint32_t FMAC_RTR1_4;
-    uint32_t FMAC_RTR1_5;
-    uint32_t FMAC_RTR1_6;
-    uint32_t FMAC_RTR1_7;
-    uint32_t FMAC_RTR1_8;
-    uint32_t FMAC_RTR1_9;
-    uint32_t FMAC_RTR1_10;
-    uint32_t FMAC_RTR1_11;
-    uint32_t FMAC_RTR1_12;
-    uint32_t FMAC_RTR1_13;
-    uint32_t FMAC_RTR1_14;
-    uint32_t FMAC_RTR1_15;
-    uint32_t FMAC_RTR1_16;
-    uint32_t FMAC_RTR1_17;
-    uint32_t FMAC_RTR1_18;
-    uint32_t FMAC_RTR1_19;
-    uint32_t FMAC_RTR1_20;
-    uint32_t FMAC_RTR1_21;
-    uint32_t FMAC_RTR1_22;
-    uint32_t FMAC_RTR1_23;
-    uint32_t FMAC_RTR1_24;
-    uint32_t FMAC_RTR1_25;
-    uint32_t FMAC_RTR1_26;
-    uint32_t FMAC_RTR1_27;
-    uint32_t FMAC_RTR1_28;
-    uint32_t FMAC_RTR1_29;
-    uint32_t FMAC_RTR1_30;
-    uint32_t FMAC_RTR1_31;
-} stc_fmac_rtr1_bit_t;
-
-typedef struct
-{
     uint32_t RESERVED0[31];
     __IO uint32_t READY;
 } stc_fmac_str_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN00;
-    __IO uint32_t CIN01;
-    __IO uint32_t CIN02;
-    __IO uint32_t CIN03;
-    __IO uint32_t CIN04;
-    __IO uint32_t CIN05;
-    __IO uint32_t CIN06;
-    __IO uint32_t CIN07;
-    __IO uint32_t CIN08;
-    __IO uint32_t CIN09;
-    __IO uint32_t CIN010;
-    __IO uint32_t CIN011;
-    __IO uint32_t CIN012;
-    __IO uint32_t CIN013;
-    __IO uint32_t CIN014;
-    __IO uint32_t CIN015;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN10;
-    __IO uint32_t CIN11;
-    __IO uint32_t CIN12;
-    __IO uint32_t CIN13;
-    __IO uint32_t CIN14;
-    __IO uint32_t CIN15;
-    __IO uint32_t CIN16;
-    __IO uint32_t CIN17;
-    __IO uint32_t CIN18;
-    __IO uint32_t CIN19;
-    __IO uint32_t CIN110;
-    __IO uint32_t CIN111;
-    __IO uint32_t CIN112;
-    __IO uint32_t CIN113;
-    __IO uint32_t CIN114;
-    __IO uint32_t CIN115;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN20;
-    __IO uint32_t CIN21;
-    __IO uint32_t CIN22;
-    __IO uint32_t CIN23;
-    __IO uint32_t CIN24;
-    __IO uint32_t CIN25;
-    __IO uint32_t CIN26;
-    __IO uint32_t CIN27;
-    __IO uint32_t CIN28;
-    __IO uint32_t CIN29;
-    __IO uint32_t CIN210;
-    __IO uint32_t CIN211;
-    __IO uint32_t CIN212;
-    __IO uint32_t CIN213;
-    __IO uint32_t CIN214;
-    __IO uint32_t CIN215;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN30;
-    __IO uint32_t CIN31;
-    __IO uint32_t CIN32;
-    __IO uint32_t CIN33;
-    __IO uint32_t CIN34;
-    __IO uint32_t CIN35;
-    __IO uint32_t CIN36;
-    __IO uint32_t CIN37;
-    __IO uint32_t CIN38;
-    __IO uint32_t CIN39;
-    __IO uint32_t CIN310;
-    __IO uint32_t CIN311;
-    __IO uint32_t CIN312;
-    __IO uint32_t CIN313;
-    __IO uint32_t CIN314;
-    __IO uint32_t CIN315;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN40;
-    __IO uint32_t CIN41;
-    __IO uint32_t CIN42;
-    __IO uint32_t CIN43;
-    __IO uint32_t CIN44;
-    __IO uint32_t CIN45;
-    __IO uint32_t CIN46;
-    __IO uint32_t CIN47;
-    __IO uint32_t CIN48;
-    __IO uint32_t CIN49;
-    __IO uint32_t CIN410;
-    __IO uint32_t CIN411;
-    __IO uint32_t CIN412;
-    __IO uint32_t CIN413;
-    __IO uint32_t CIN414;
-    __IO uint32_t CIN415;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN50;
-    __IO uint32_t CIN51;
-    __IO uint32_t CIN52;
-    __IO uint32_t CIN53;
-    __IO uint32_t CIN54;
-    __IO uint32_t CIN55;
-    __IO uint32_t CIN56;
-    __IO uint32_t CIN57;
-    __IO uint32_t CIN58;
-    __IO uint32_t CIN59;
-    __IO uint32_t CIN510;
-    __IO uint32_t CIN511;
-    __IO uint32_t CIN512;
-    __IO uint32_t CIN513;
-    __IO uint32_t CIN514;
-    __IO uint32_t CIN515;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN60;
-    __IO uint32_t CIN61;
-    __IO uint32_t CIN62;
-    __IO uint32_t CIN63;
-    __IO uint32_t CIN64;
-    __IO uint32_t CIN65;
-    __IO uint32_t CIN66;
-    __IO uint32_t CIN67;
-    __IO uint32_t CIN68;
-    __IO uint32_t CIN69;
-    __IO uint32_t CIN610;
-    __IO uint32_t CIN611;
-    __IO uint32_t CIN612;
-    __IO uint32_t CIN613;
-    __IO uint32_t CIN614;
-    __IO uint32_t CIN615;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN70;
-    __IO uint32_t CIN71;
-    __IO uint32_t CIN72;
-    __IO uint32_t CIN73;
-    __IO uint32_t CIN74;
-    __IO uint32_t CIN75;
-    __IO uint32_t CIN76;
-    __IO uint32_t CIN77;
-    __IO uint32_t CIN78;
-    __IO uint32_t CIN79;
-    __IO uint32_t CIN710;
-    __IO uint32_t CIN711;
-    __IO uint32_t CIN712;
-    __IO uint32_t CIN713;
-    __IO uint32_t CIN714;
-    __IO uint32_t CIN715;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN80;
-    __IO uint32_t CIN81;
-    __IO uint32_t CIN82;
-    __IO uint32_t CIN83;
-    __IO uint32_t CIN84;
-    __IO uint32_t CIN85;
-    __IO uint32_t CIN86;
-    __IO uint32_t CIN87;
-    __IO uint32_t CIN88;
-    __IO uint32_t CIN89;
-    __IO uint32_t CIN810;
-    __IO uint32_t CIN811;
-    __IO uint32_t CIN812;
-    __IO uint32_t CIN813;
-    __IO uint32_t CIN814;
-    __IO uint32_t CIN815;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN90;
-    __IO uint32_t CIN91;
-    __IO uint32_t CIN92;
-    __IO uint32_t CIN93;
-    __IO uint32_t CIN94;
-    __IO uint32_t CIN95;
-    __IO uint32_t CIN96;
-    __IO uint32_t CIN97;
-    __IO uint32_t CIN98;
-    __IO uint32_t CIN99;
-    __IO uint32_t CIN910;
-    __IO uint32_t CIN911;
-    __IO uint32_t CIN912;
-    __IO uint32_t CIN913;
-    __IO uint32_t CIN914;
-    __IO uint32_t CIN915;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN100;
-    __IO uint32_t CIN101;
-    __IO uint32_t CIN102;
-    __IO uint32_t CIN103;
-    __IO uint32_t CIN104;
-    __IO uint32_t CIN105;
-    __IO uint32_t CIN106;
-    __IO uint32_t CIN107;
-    __IO uint32_t CIN108;
-    __IO uint32_t CIN109;
-    __IO uint32_t CIN1010;
-    __IO uint32_t CIN1011;
-    __IO uint32_t CIN1012;
-    __IO uint32_t CIN1013;
-    __IO uint32_t CIN1014;
-    __IO uint32_t CIN1015;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN110;
-    __IO uint32_t CIN111;
-    __IO uint32_t CIN112;
-    __IO uint32_t CIN113;
-    __IO uint32_t CIN114;
-    __IO uint32_t CIN115;
-    __IO uint32_t CIN116;
-    __IO uint32_t CIN117;
-    __IO uint32_t CIN118;
-    __IO uint32_t CIN119;
-    __IO uint32_t CIN1110;
-    __IO uint32_t CIN1111;
-    __IO uint32_t CIN1112;
-    __IO uint32_t CIN1113;
-    __IO uint32_t CIN1114;
-    __IO uint32_t CIN1115;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN120;
-    __IO uint32_t CIN121;
-    __IO uint32_t CIN122;
-    __IO uint32_t CIN123;
-    __IO uint32_t CIN124;
-    __IO uint32_t CIN125;
-    __IO uint32_t CIN126;
-    __IO uint32_t CIN127;
-    __IO uint32_t CIN128;
-    __IO uint32_t CIN129;
-    __IO uint32_t CIN1210;
-    __IO uint32_t CIN1211;
-    __IO uint32_t CIN1212;
-    __IO uint32_t CIN1213;
-    __IO uint32_t CIN1214;
-    __IO uint32_t CIN1215;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN130;
-    __IO uint32_t CIN131;
-    __IO uint32_t CIN132;
-    __IO uint32_t CIN133;
-    __IO uint32_t CIN134;
-    __IO uint32_t CIN135;
-    __IO uint32_t CIN136;
-    __IO uint32_t CIN137;
-    __IO uint32_t CIN138;
-    __IO uint32_t CIN139;
-    __IO uint32_t CIN1310;
-    __IO uint32_t CIN1311;
-    __IO uint32_t CIN1312;
-    __IO uint32_t CIN1313;
-    __IO uint32_t CIN1314;
-    __IO uint32_t CIN1315;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN140;
-    __IO uint32_t CIN141;
-    __IO uint32_t CIN142;
-    __IO uint32_t CIN143;
-    __IO uint32_t CIN144;
-    __IO uint32_t CIN145;
-    __IO uint32_t CIN146;
-    __IO uint32_t CIN147;
-    __IO uint32_t CIN148;
-    __IO uint32_t CIN149;
-    __IO uint32_t CIN1410;
-    __IO uint32_t CIN1411;
-    __IO uint32_t CIN1412;
-    __IO uint32_t CIN1413;
-    __IO uint32_t CIN1414;
-    __IO uint32_t CIN1415;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN150;
-    __IO uint32_t CIN151;
-    __IO uint32_t CIN152;
-    __IO uint32_t CIN153;
-    __IO uint32_t CIN154;
-    __IO uint32_t CIN155;
-    __IO uint32_t CIN156;
-    __IO uint32_t CIN157;
-    __IO uint32_t CIN158;
-    __IO uint32_t CIN159;
-    __IO uint32_t CIN1510;
-    __IO uint32_t CIN1511;
-    __IO uint32_t CIN1512;
-    __IO uint32_t CIN1513;
-    __IO uint32_t CIN1514;
-    __IO uint32_t CIN1515;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor15_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CIN160;
-    __IO uint32_t CIN161;
-    __IO uint32_t CIN162;
-    __IO uint32_t CIN163;
-    __IO uint32_t CIN164;
-    __IO uint32_t CIN165;
-    __IO uint32_t CIN166;
-    __IO uint32_t CIN167;
-    __IO uint32_t CIN168;
-    __IO uint32_t CIN169;
-    __IO uint32_t CIN1610;
-    __IO uint32_t CIN1611;
-    __IO uint32_t CIN1612;
-    __IO uint32_t CIN1613;
-    __IO uint32_t CIN1614;
-    __IO uint32_t CIN1615;
-    uint32_t RESERVED0[16];
-} stc_fmac_cor16_bit_t;
 
 typedef struct
 {
@@ -40655,17 +33350,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t BFSEL0;
-    __IO uint32_t BFSEL1;
-    __IO uint32_t BFSEL2;
-    __IO uint32_t BFSEL3;
-    __IO uint32_t BFSEL4;
-    __IO uint32_t BFSEL5;
-    uint32_t RESERVED0[6];
-    __IO uint32_t RDWT0;
-    __IO uint32_t RDWT1;
-    __IO uint32_t RDWT2;
-    uint32_t RESERVED1[1];
+    uint32_t RESERVED0[16];
 } stc_gpio_pccr_bit_t;
 
 typedef struct
@@ -40685,15 +33370,7 @@ typedef struct
 typedef struct
 {
     __IO uint32_t WE;
-    uint32_t RESERVED0[7];
-    __IO uint32_t WP0;
-    __IO uint32_t WP1;
-    __IO uint32_t WP2;
-    __IO uint32_t WP3;
-    __IO uint32_t WP4;
-    __IO uint32_t WP5;
-    __IO uint32_t WP6;
-    __IO uint32_t WP7;
+    uint32_t RESERVED0[15];
 } stc_gpio_pwpr_bit_t;
 
 typedef struct
@@ -40718,13 +33395,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t FSEL0;
-    __IO uint32_t FSEL1;
-    __IO uint32_t FSEL2;
-    __IO uint32_t FSEL3;
-    __IO uint32_t FSEL4;
-    __IO uint32_t FSEL5;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[8];
     __IO uint32_t BFE;
     uint32_t RESERVED1[7];
 } stc_gpio_pfsr_bit_t;
@@ -40750,887 +33421,7 @@ typedef struct
 
 typedef struct
 {
-    uint32_t HASH_HR7_0;
-    uint32_t HASH_HR7_1;
-    uint32_t HASH_HR7_2;
-    uint32_t HASH_HR7_3;
-    uint32_t HASH_HR7_4;
-    uint32_t HASH_HR7_5;
-    uint32_t HASH_HR7_6;
-    uint32_t HASH_HR7_7;
-    uint32_t HASH_HR7_8;
-    uint32_t HASH_HR7_9;
-    uint32_t HASH_HR7_10;
-    uint32_t HASH_HR7_11;
-    uint32_t HASH_HR7_12;
-    uint32_t HASH_HR7_13;
-    uint32_t HASH_HR7_14;
-    uint32_t HASH_HR7_15;
-    uint32_t HASH_HR7_16;
-    uint32_t HASH_HR7_17;
-    uint32_t HASH_HR7_18;
-    uint32_t HASH_HR7_19;
-    uint32_t HASH_HR7_20;
-    uint32_t HASH_HR7_21;
-    uint32_t HASH_HR7_22;
-    uint32_t HASH_HR7_23;
-    uint32_t HASH_HR7_24;
-    uint32_t HASH_HR7_25;
-    uint32_t HASH_HR7_26;
-    uint32_t HASH_HR7_27;
-    uint32_t HASH_HR7_28;
-    uint32_t HASH_HR7_29;
-    uint32_t HASH_HR7_30;
-    uint32_t HASH_HR7_31;
-} stc_hash_hr7_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR6_0;
-    uint32_t HASH_HR6_1;
-    uint32_t HASH_HR6_2;
-    uint32_t HASH_HR6_3;
-    uint32_t HASH_HR6_4;
-    uint32_t HASH_HR6_5;
-    uint32_t HASH_HR6_6;
-    uint32_t HASH_HR6_7;
-    uint32_t HASH_HR6_8;
-    uint32_t HASH_HR6_9;
-    uint32_t HASH_HR6_10;
-    uint32_t HASH_HR6_11;
-    uint32_t HASH_HR6_12;
-    uint32_t HASH_HR6_13;
-    uint32_t HASH_HR6_14;
-    uint32_t HASH_HR6_15;
-    uint32_t HASH_HR6_16;
-    uint32_t HASH_HR6_17;
-    uint32_t HASH_HR6_18;
-    uint32_t HASH_HR6_19;
-    uint32_t HASH_HR6_20;
-    uint32_t HASH_HR6_21;
-    uint32_t HASH_HR6_22;
-    uint32_t HASH_HR6_23;
-    uint32_t HASH_HR6_24;
-    uint32_t HASH_HR6_25;
-    uint32_t HASH_HR6_26;
-    uint32_t HASH_HR6_27;
-    uint32_t HASH_HR6_28;
-    uint32_t HASH_HR6_29;
-    uint32_t HASH_HR6_30;
-    uint32_t HASH_HR6_31;
-} stc_hash_hr6_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR5_0;
-    uint32_t HASH_HR5_1;
-    uint32_t HASH_HR5_2;
-    uint32_t HASH_HR5_3;
-    uint32_t HASH_HR5_4;
-    uint32_t HASH_HR5_5;
-    uint32_t HASH_HR5_6;
-    uint32_t HASH_HR5_7;
-    uint32_t HASH_HR5_8;
-    uint32_t HASH_HR5_9;
-    uint32_t HASH_HR5_10;
-    uint32_t HASH_HR5_11;
-    uint32_t HASH_HR5_12;
-    uint32_t HASH_HR5_13;
-    uint32_t HASH_HR5_14;
-    uint32_t HASH_HR5_15;
-    uint32_t HASH_HR5_16;
-    uint32_t HASH_HR5_17;
-    uint32_t HASH_HR5_18;
-    uint32_t HASH_HR5_19;
-    uint32_t HASH_HR5_20;
-    uint32_t HASH_HR5_21;
-    uint32_t HASH_HR5_22;
-    uint32_t HASH_HR5_23;
-    uint32_t HASH_HR5_24;
-    uint32_t HASH_HR5_25;
-    uint32_t HASH_HR5_26;
-    uint32_t HASH_HR5_27;
-    uint32_t HASH_HR5_28;
-    uint32_t HASH_HR5_29;
-    uint32_t HASH_HR5_30;
-    uint32_t HASH_HR5_31;
-} stc_hash_hr5_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR4_0;
-    uint32_t HASH_HR4_1;
-    uint32_t HASH_HR4_2;
-    uint32_t HASH_HR4_3;
-    uint32_t HASH_HR4_4;
-    uint32_t HASH_HR4_5;
-    uint32_t HASH_HR4_6;
-    uint32_t HASH_HR4_7;
-    uint32_t HASH_HR4_8;
-    uint32_t HASH_HR4_9;
-    uint32_t HASH_HR4_10;
-    uint32_t HASH_HR4_11;
-    uint32_t HASH_HR4_12;
-    uint32_t HASH_HR4_13;
-    uint32_t HASH_HR4_14;
-    uint32_t HASH_HR4_15;
-    uint32_t HASH_HR4_16;
-    uint32_t HASH_HR4_17;
-    uint32_t HASH_HR4_18;
-    uint32_t HASH_HR4_19;
-    uint32_t HASH_HR4_20;
-    uint32_t HASH_HR4_21;
-    uint32_t HASH_HR4_22;
-    uint32_t HASH_HR4_23;
-    uint32_t HASH_HR4_24;
-    uint32_t HASH_HR4_25;
-    uint32_t HASH_HR4_26;
-    uint32_t HASH_HR4_27;
-    uint32_t HASH_HR4_28;
-    uint32_t HASH_HR4_29;
-    uint32_t HASH_HR4_30;
-    uint32_t HASH_HR4_31;
-} stc_hash_hr4_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR3_0;
-    uint32_t HASH_HR3_1;
-    uint32_t HASH_HR3_2;
-    uint32_t HASH_HR3_3;
-    uint32_t HASH_HR3_4;
-    uint32_t HASH_HR3_5;
-    uint32_t HASH_HR3_6;
-    uint32_t HASH_HR3_7;
-    uint32_t HASH_HR3_8;
-    uint32_t HASH_HR3_9;
-    uint32_t HASH_HR3_10;
-    uint32_t HASH_HR3_11;
-    uint32_t HASH_HR3_12;
-    uint32_t HASH_HR3_13;
-    uint32_t HASH_HR3_14;
-    uint32_t HASH_HR3_15;
-    uint32_t HASH_HR3_16;
-    uint32_t HASH_HR3_17;
-    uint32_t HASH_HR3_18;
-    uint32_t HASH_HR3_19;
-    uint32_t HASH_HR3_20;
-    uint32_t HASH_HR3_21;
-    uint32_t HASH_HR3_22;
-    uint32_t HASH_HR3_23;
-    uint32_t HASH_HR3_24;
-    uint32_t HASH_HR3_25;
-    uint32_t HASH_HR3_26;
-    uint32_t HASH_HR3_27;
-    uint32_t HASH_HR3_28;
-    uint32_t HASH_HR3_29;
-    uint32_t HASH_HR3_30;
-    uint32_t HASH_HR3_31;
-} stc_hash_hr3_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR2_0;
-    uint32_t HASH_HR2_1;
-    uint32_t HASH_HR2_2;
-    uint32_t HASH_HR2_3;
-    uint32_t HASH_HR2_4;
-    uint32_t HASH_HR2_5;
-    uint32_t HASH_HR2_6;
-    uint32_t HASH_HR2_7;
-    uint32_t HASH_HR2_8;
-    uint32_t HASH_HR2_9;
-    uint32_t HASH_HR2_10;
-    uint32_t HASH_HR2_11;
-    uint32_t HASH_HR2_12;
-    uint32_t HASH_HR2_13;
-    uint32_t HASH_HR2_14;
-    uint32_t HASH_HR2_15;
-    uint32_t HASH_HR2_16;
-    uint32_t HASH_HR2_17;
-    uint32_t HASH_HR2_18;
-    uint32_t HASH_HR2_19;
-    uint32_t HASH_HR2_20;
-    uint32_t HASH_HR2_21;
-    uint32_t HASH_HR2_22;
-    uint32_t HASH_HR2_23;
-    uint32_t HASH_HR2_24;
-    uint32_t HASH_HR2_25;
-    uint32_t HASH_HR2_26;
-    uint32_t HASH_HR2_27;
-    uint32_t HASH_HR2_28;
-    uint32_t HASH_HR2_29;
-    uint32_t HASH_HR2_30;
-    uint32_t HASH_HR2_31;
-} stc_hash_hr2_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR1_0;
-    uint32_t HASH_HR1_1;
-    uint32_t HASH_HR1_2;
-    uint32_t HASH_HR1_3;
-    uint32_t HASH_HR1_4;
-    uint32_t HASH_HR1_5;
-    uint32_t HASH_HR1_6;
-    uint32_t HASH_HR1_7;
-    uint32_t HASH_HR1_8;
-    uint32_t HASH_HR1_9;
-    uint32_t HASH_HR1_10;
-    uint32_t HASH_HR1_11;
-    uint32_t HASH_HR1_12;
-    uint32_t HASH_HR1_13;
-    uint32_t HASH_HR1_14;
-    uint32_t HASH_HR1_15;
-    uint32_t HASH_HR1_16;
-    uint32_t HASH_HR1_17;
-    uint32_t HASH_HR1_18;
-    uint32_t HASH_HR1_19;
-    uint32_t HASH_HR1_20;
-    uint32_t HASH_HR1_21;
-    uint32_t HASH_HR1_22;
-    uint32_t HASH_HR1_23;
-    uint32_t HASH_HR1_24;
-    uint32_t HASH_HR1_25;
-    uint32_t HASH_HR1_26;
-    uint32_t HASH_HR1_27;
-    uint32_t HASH_HR1_28;
-    uint32_t HASH_HR1_29;
-    uint32_t HASH_HR1_30;
-    uint32_t HASH_HR1_31;
-} stc_hash_hr1_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_HR0_0;
-    uint32_t HASH_HR0_1;
-    uint32_t HASH_HR0_2;
-    uint32_t HASH_HR0_3;
-    uint32_t HASH_HR0_4;
-    uint32_t HASH_HR0_5;
-    uint32_t HASH_HR0_6;
-    uint32_t HASH_HR0_7;
-    uint32_t HASH_HR0_8;
-    uint32_t HASH_HR0_9;
-    uint32_t HASH_HR0_10;
-    uint32_t HASH_HR0_11;
-    uint32_t HASH_HR0_12;
-    uint32_t HASH_HR0_13;
-    uint32_t HASH_HR0_14;
-    uint32_t HASH_HR0_15;
-    uint32_t HASH_HR0_16;
-    uint32_t HASH_HR0_17;
-    uint32_t HASH_HR0_18;
-    uint32_t HASH_HR0_19;
-    uint32_t HASH_HR0_20;
-    uint32_t HASH_HR0_21;
-    uint32_t HASH_HR0_22;
-    uint32_t HASH_HR0_23;
-    uint32_t HASH_HR0_24;
-    uint32_t HASH_HR0_25;
-    uint32_t HASH_HR0_26;
-    uint32_t HASH_HR0_27;
-    uint32_t HASH_HR0_28;
-    uint32_t HASH_HR0_29;
-    uint32_t HASH_HR0_30;
-    uint32_t HASH_HR0_31;
-} stc_hash_hr0_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR15_0;
-    uint32_t HASH_DR15_1;
-    uint32_t HASH_DR15_2;
-    uint32_t HASH_DR15_3;
-    uint32_t HASH_DR15_4;
-    uint32_t HASH_DR15_5;
-    uint32_t HASH_DR15_6;
-    uint32_t HASH_DR15_7;
-    uint32_t HASH_DR15_8;
-    uint32_t HASH_DR15_9;
-    uint32_t HASH_DR15_10;
-    uint32_t HASH_DR15_11;
-    uint32_t HASH_DR15_12;
-    uint32_t HASH_DR15_13;
-    uint32_t HASH_DR15_14;
-    uint32_t HASH_DR15_15;
-    uint32_t HASH_DR15_16;
-    uint32_t HASH_DR15_17;
-    uint32_t HASH_DR15_18;
-    uint32_t HASH_DR15_19;
-    uint32_t HASH_DR15_20;
-    uint32_t HASH_DR15_21;
-    uint32_t HASH_DR15_22;
-    uint32_t HASH_DR15_23;
-    uint32_t HASH_DR15_24;
-    uint32_t HASH_DR15_25;
-    uint32_t HASH_DR15_26;
-    uint32_t HASH_DR15_27;
-    uint32_t HASH_DR15_28;
-    uint32_t HASH_DR15_29;
-    uint32_t HASH_DR15_30;
-    uint32_t HASH_DR15_31;
-} stc_hash_dr15_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR14_0;
-    uint32_t HASH_DR14_1;
-    uint32_t HASH_DR14_2;
-    uint32_t HASH_DR14_3;
-    uint32_t HASH_DR14_4;
-    uint32_t HASH_DR14_5;
-    uint32_t HASH_DR14_6;
-    uint32_t HASH_DR14_7;
-    uint32_t HASH_DR14_8;
-    uint32_t HASH_DR14_9;
-    uint32_t HASH_DR14_10;
-    uint32_t HASH_DR14_11;
-    uint32_t HASH_DR14_12;
-    uint32_t HASH_DR14_13;
-    uint32_t HASH_DR14_14;
-    uint32_t HASH_DR14_15;
-    uint32_t HASH_DR14_16;
-    uint32_t HASH_DR14_17;
-    uint32_t HASH_DR14_18;
-    uint32_t HASH_DR14_19;
-    uint32_t HASH_DR14_20;
-    uint32_t HASH_DR14_21;
-    uint32_t HASH_DR14_22;
-    uint32_t HASH_DR14_23;
-    uint32_t HASH_DR14_24;
-    uint32_t HASH_DR14_25;
-    uint32_t HASH_DR14_26;
-    uint32_t HASH_DR14_27;
-    uint32_t HASH_DR14_28;
-    uint32_t HASH_DR14_29;
-    uint32_t HASH_DR14_30;
-    uint32_t HASH_DR14_31;
-} stc_hash_dr14_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR13_0;
-    uint32_t HASH_DR13_1;
-    uint32_t HASH_DR13_2;
-    uint32_t HASH_DR13_3;
-    uint32_t HASH_DR13_4;
-    uint32_t HASH_DR13_5;
-    uint32_t HASH_DR13_6;
-    uint32_t HASH_DR13_7;
-    uint32_t HASH_DR13_8;
-    uint32_t HASH_DR13_9;
-    uint32_t HASH_DR13_10;
-    uint32_t HASH_DR13_11;
-    uint32_t HASH_DR13_12;
-    uint32_t HASH_DR13_13;
-    uint32_t HASH_DR13_14;
-    uint32_t HASH_DR13_15;
-    uint32_t HASH_DR13_16;
-    uint32_t HASH_DR13_17;
-    uint32_t HASH_DR13_18;
-    uint32_t HASH_DR13_19;
-    uint32_t HASH_DR13_20;
-    uint32_t HASH_DR13_21;
-    uint32_t HASH_DR13_22;
-    uint32_t HASH_DR13_23;
-    uint32_t HASH_DR13_24;
-    uint32_t HASH_DR13_25;
-    uint32_t HASH_DR13_26;
-    uint32_t HASH_DR13_27;
-    uint32_t HASH_DR13_28;
-    uint32_t HASH_DR13_29;
-    uint32_t HASH_DR13_30;
-    uint32_t HASH_DR13_31;
-} stc_hash_dr13_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR12_0;
-    uint32_t HASH_DR12_1;
-    uint32_t HASH_DR12_2;
-    uint32_t HASH_DR12_3;
-    uint32_t HASH_DR12_4;
-    uint32_t HASH_DR12_5;
-    uint32_t HASH_DR12_6;
-    uint32_t HASH_DR12_7;
-    uint32_t HASH_DR12_8;
-    uint32_t HASH_DR12_9;
-    uint32_t HASH_DR12_10;
-    uint32_t HASH_DR12_11;
-    uint32_t HASH_DR12_12;
-    uint32_t HASH_DR12_13;
-    uint32_t HASH_DR12_14;
-    uint32_t HASH_DR12_15;
-    uint32_t HASH_DR12_16;
-    uint32_t HASH_DR12_17;
-    uint32_t HASH_DR12_18;
-    uint32_t HASH_DR12_19;
-    uint32_t HASH_DR12_20;
-    uint32_t HASH_DR12_21;
-    uint32_t HASH_DR12_22;
-    uint32_t HASH_DR12_23;
-    uint32_t HASH_DR12_24;
-    uint32_t HASH_DR12_25;
-    uint32_t HASH_DR12_26;
-    uint32_t HASH_DR12_27;
-    uint32_t HASH_DR12_28;
-    uint32_t HASH_DR12_29;
-    uint32_t HASH_DR12_30;
-    uint32_t HASH_DR12_31;
-} stc_hash_dr12_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR11_0;
-    uint32_t HASH_DR11_1;
-    uint32_t HASH_DR11_2;
-    uint32_t HASH_DR11_3;
-    uint32_t HASH_DR11_4;
-    uint32_t HASH_DR11_5;
-    uint32_t HASH_DR11_6;
-    uint32_t HASH_DR11_7;
-    uint32_t HASH_DR11_8;
-    uint32_t HASH_DR11_9;
-    uint32_t HASH_DR11_10;
-    uint32_t HASH_DR11_11;
-    uint32_t HASH_DR11_12;
-    uint32_t HASH_DR11_13;
-    uint32_t HASH_DR11_14;
-    uint32_t HASH_DR11_15;
-    uint32_t HASH_DR11_16;
-    uint32_t HASH_DR11_17;
-    uint32_t HASH_DR11_18;
-    uint32_t HASH_DR11_19;
-    uint32_t HASH_DR11_20;
-    uint32_t HASH_DR11_21;
-    uint32_t HASH_DR11_22;
-    uint32_t HASH_DR11_23;
-    uint32_t HASH_DR11_24;
-    uint32_t HASH_DR11_25;
-    uint32_t HASH_DR11_26;
-    uint32_t HASH_DR11_27;
-    uint32_t HASH_DR11_28;
-    uint32_t HASH_DR11_29;
-    uint32_t HASH_DR11_30;
-    uint32_t HASH_DR11_31;
-} stc_hash_dr11_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR10_0;
-    uint32_t HASH_DR10_1;
-    uint32_t HASH_DR10_2;
-    uint32_t HASH_DR10_3;
-    uint32_t HASH_DR10_4;
-    uint32_t HASH_DR10_5;
-    uint32_t HASH_DR10_6;
-    uint32_t HASH_DR10_7;
-    uint32_t HASH_DR10_8;
-    uint32_t HASH_DR10_9;
-    uint32_t HASH_DR10_10;
-    uint32_t HASH_DR10_11;
-    uint32_t HASH_DR10_12;
-    uint32_t HASH_DR10_13;
-    uint32_t HASH_DR10_14;
-    uint32_t HASH_DR10_15;
-    uint32_t HASH_DR10_16;
-    uint32_t HASH_DR10_17;
-    uint32_t HASH_DR10_18;
-    uint32_t HASH_DR10_19;
-    uint32_t HASH_DR10_20;
-    uint32_t HASH_DR10_21;
-    uint32_t HASH_DR10_22;
-    uint32_t HASH_DR10_23;
-    uint32_t HASH_DR10_24;
-    uint32_t HASH_DR10_25;
-    uint32_t HASH_DR10_26;
-    uint32_t HASH_DR10_27;
-    uint32_t HASH_DR10_28;
-    uint32_t HASH_DR10_29;
-    uint32_t HASH_DR10_30;
-    uint32_t HASH_DR10_31;
-} stc_hash_dr10_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR9_0;
-    uint32_t HASH_DR9_1;
-    uint32_t HASH_DR9_2;
-    uint32_t HASH_DR9_3;
-    uint32_t HASH_DR9_4;
-    uint32_t HASH_DR9_5;
-    uint32_t HASH_DR9_6;
-    uint32_t HASH_DR9_7;
-    uint32_t HASH_DR9_8;
-    uint32_t HASH_DR9_9;
-    uint32_t HASH_DR9_10;
-    uint32_t HASH_DR9_11;
-    uint32_t HASH_DR9_12;
-    uint32_t HASH_DR9_13;
-    uint32_t HASH_DR9_14;
-    uint32_t HASH_DR9_15;
-    uint32_t HASH_DR9_16;
-    uint32_t HASH_DR9_17;
-    uint32_t HASH_DR9_18;
-    uint32_t HASH_DR9_19;
-    uint32_t HASH_DR9_20;
-    uint32_t HASH_DR9_21;
-    uint32_t HASH_DR9_22;
-    uint32_t HASH_DR9_23;
-    uint32_t HASH_DR9_24;
-    uint32_t HASH_DR9_25;
-    uint32_t HASH_DR9_26;
-    uint32_t HASH_DR9_27;
-    uint32_t HASH_DR9_28;
-    uint32_t HASH_DR9_29;
-    uint32_t HASH_DR9_30;
-    uint32_t HASH_DR9_31;
-} stc_hash_dr9_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR8_0;
-    uint32_t HASH_DR8_1;
-    uint32_t HASH_DR8_2;
-    uint32_t HASH_DR8_3;
-    uint32_t HASH_DR8_4;
-    uint32_t HASH_DR8_5;
-    uint32_t HASH_DR8_6;
-    uint32_t HASH_DR8_7;
-    uint32_t HASH_DR8_8;
-    uint32_t HASH_DR8_9;
-    uint32_t HASH_DR8_10;
-    uint32_t HASH_DR8_11;
-    uint32_t HASH_DR8_12;
-    uint32_t HASH_DR8_13;
-    uint32_t HASH_DR8_14;
-    uint32_t HASH_DR8_15;
-    uint32_t HASH_DR8_16;
-    uint32_t HASH_DR8_17;
-    uint32_t HASH_DR8_18;
-    uint32_t HASH_DR8_19;
-    uint32_t HASH_DR8_20;
-    uint32_t HASH_DR8_21;
-    uint32_t HASH_DR8_22;
-    uint32_t HASH_DR8_23;
-    uint32_t HASH_DR8_24;
-    uint32_t HASH_DR8_25;
-    uint32_t HASH_DR8_26;
-    uint32_t HASH_DR8_27;
-    uint32_t HASH_DR8_28;
-    uint32_t HASH_DR8_29;
-    uint32_t HASH_DR8_30;
-    uint32_t HASH_DR8_31;
-} stc_hash_dr8_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR7_0;
-    uint32_t HASH_DR7_1;
-    uint32_t HASH_DR7_2;
-    uint32_t HASH_DR7_3;
-    uint32_t HASH_DR7_4;
-    uint32_t HASH_DR7_5;
-    uint32_t HASH_DR7_6;
-    uint32_t HASH_DR7_7;
-    uint32_t HASH_DR7_8;
-    uint32_t HASH_DR7_9;
-    uint32_t HASH_DR7_10;
-    uint32_t HASH_DR7_11;
-    uint32_t HASH_DR7_12;
-    uint32_t HASH_DR7_13;
-    uint32_t HASH_DR7_14;
-    uint32_t HASH_DR7_15;
-    uint32_t HASH_DR7_16;
-    uint32_t HASH_DR7_17;
-    uint32_t HASH_DR7_18;
-    uint32_t HASH_DR7_19;
-    uint32_t HASH_DR7_20;
-    uint32_t HASH_DR7_21;
-    uint32_t HASH_DR7_22;
-    uint32_t HASH_DR7_23;
-    uint32_t HASH_DR7_24;
-    uint32_t HASH_DR7_25;
-    uint32_t HASH_DR7_26;
-    uint32_t HASH_DR7_27;
-    uint32_t HASH_DR7_28;
-    uint32_t HASH_DR7_29;
-    uint32_t HASH_DR7_30;
-    uint32_t HASH_DR7_31;
-} stc_hash_dr7_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR6_0;
-    uint32_t HASH_DR6_1;
-    uint32_t HASH_DR6_2;
-    uint32_t HASH_DR6_3;
-    uint32_t HASH_DR6_4;
-    uint32_t HASH_DR6_5;
-    uint32_t HASH_DR6_6;
-    uint32_t HASH_DR6_7;
-    uint32_t HASH_DR6_8;
-    uint32_t HASH_DR6_9;
-    uint32_t HASH_DR6_10;
-    uint32_t HASH_DR6_11;
-    uint32_t HASH_DR6_12;
-    uint32_t HASH_DR6_13;
-    uint32_t HASH_DR6_14;
-    uint32_t HASH_DR6_15;
-    uint32_t HASH_DR6_16;
-    uint32_t HASH_DR6_17;
-    uint32_t HASH_DR6_18;
-    uint32_t HASH_DR6_19;
-    uint32_t HASH_DR6_20;
-    uint32_t HASH_DR6_21;
-    uint32_t HASH_DR6_22;
-    uint32_t HASH_DR6_23;
-    uint32_t HASH_DR6_24;
-    uint32_t HASH_DR6_25;
-    uint32_t HASH_DR6_26;
-    uint32_t HASH_DR6_27;
-    uint32_t HASH_DR6_28;
-    uint32_t HASH_DR6_29;
-    uint32_t HASH_DR6_30;
-    uint32_t HASH_DR6_31;
-} stc_hash_dr6_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR5_0;
-    uint32_t HASH_DR5_1;
-    uint32_t HASH_DR5_2;
-    uint32_t HASH_DR5_3;
-    uint32_t HASH_DR5_4;
-    uint32_t HASH_DR5_5;
-    uint32_t HASH_DR5_6;
-    uint32_t HASH_DR5_7;
-    uint32_t HASH_DR5_8;
-    uint32_t HASH_DR5_9;
-    uint32_t HASH_DR5_10;
-    uint32_t HASH_DR5_11;
-    uint32_t HASH_DR5_12;
-    uint32_t HASH_DR5_13;
-    uint32_t HASH_DR5_14;
-    uint32_t HASH_DR5_15;
-    uint32_t HASH_DR5_16;
-    uint32_t HASH_DR5_17;
-    uint32_t HASH_DR5_18;
-    uint32_t HASH_DR5_19;
-    uint32_t HASH_DR5_20;
-    uint32_t HASH_DR5_21;
-    uint32_t HASH_DR5_22;
-    uint32_t HASH_DR5_23;
-    uint32_t HASH_DR5_24;
-    uint32_t HASH_DR5_25;
-    uint32_t HASH_DR5_26;
-    uint32_t HASH_DR5_27;
-    uint32_t HASH_DR5_28;
-    uint32_t HASH_DR5_29;
-    uint32_t HASH_DR5_30;
-    uint32_t HASH_DR5_31;
-} stc_hash_dr5_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR4_0;
-    uint32_t HASH_DR4_1;
-    uint32_t HASH_DR4_2;
-    uint32_t HASH_DR4_3;
-    uint32_t HASH_DR4_4;
-    uint32_t HASH_DR4_5;
-    uint32_t HASH_DR4_6;
-    uint32_t HASH_DR4_7;
-    uint32_t HASH_DR4_8;
-    uint32_t HASH_DR4_9;
-    uint32_t HASH_DR4_10;
-    uint32_t HASH_DR4_11;
-    uint32_t HASH_DR4_12;
-    uint32_t HASH_DR4_13;
-    uint32_t HASH_DR4_14;
-    uint32_t HASH_DR4_15;
-    uint32_t HASH_DR4_16;
-    uint32_t HASH_DR4_17;
-    uint32_t HASH_DR4_18;
-    uint32_t HASH_DR4_19;
-    uint32_t HASH_DR4_20;
-    uint32_t HASH_DR4_21;
-    uint32_t HASH_DR4_22;
-    uint32_t HASH_DR4_23;
-    uint32_t HASH_DR4_24;
-    uint32_t HASH_DR4_25;
-    uint32_t HASH_DR4_26;
-    uint32_t HASH_DR4_27;
-    uint32_t HASH_DR4_28;
-    uint32_t HASH_DR4_29;
-    uint32_t HASH_DR4_30;
-    uint32_t HASH_DR4_31;
-} stc_hash_dr4_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR3_0;
-    uint32_t HASH_DR3_1;
-    uint32_t HASH_DR3_2;
-    uint32_t HASH_DR3_3;
-    uint32_t HASH_DR3_4;
-    uint32_t HASH_DR3_5;
-    uint32_t HASH_DR3_6;
-    uint32_t HASH_DR3_7;
-    uint32_t HASH_DR3_8;
-    uint32_t HASH_DR3_9;
-    uint32_t HASH_DR3_10;
-    uint32_t HASH_DR3_11;
-    uint32_t HASH_DR3_12;
-    uint32_t HASH_DR3_13;
-    uint32_t HASH_DR3_14;
-    uint32_t HASH_DR3_15;
-    uint32_t HASH_DR3_16;
-    uint32_t HASH_DR3_17;
-    uint32_t HASH_DR3_18;
-    uint32_t HASH_DR3_19;
-    uint32_t HASH_DR3_20;
-    uint32_t HASH_DR3_21;
-    uint32_t HASH_DR3_22;
-    uint32_t HASH_DR3_23;
-    uint32_t HASH_DR3_24;
-    uint32_t HASH_DR3_25;
-    uint32_t HASH_DR3_26;
-    uint32_t HASH_DR3_27;
-    uint32_t HASH_DR3_28;
-    uint32_t HASH_DR3_29;
-    uint32_t HASH_DR3_30;
-    uint32_t HASH_DR3_31;
-} stc_hash_dr3_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR2_0;
-    uint32_t HASH_DR2_1;
-    uint32_t HASH_DR2_2;
-    uint32_t HASH_DR2_3;
-    uint32_t HASH_DR2_4;
-    uint32_t HASH_DR2_5;
-    uint32_t HASH_DR2_6;
-    uint32_t HASH_DR2_7;
-    uint32_t HASH_DR2_8;
-    uint32_t HASH_DR2_9;
-    uint32_t HASH_DR2_10;
-    uint32_t HASH_DR2_11;
-    uint32_t HASH_DR2_12;
-    uint32_t HASH_DR2_13;
-    uint32_t HASH_DR2_14;
-    uint32_t HASH_DR2_15;
-    uint32_t HASH_DR2_16;
-    uint32_t HASH_DR2_17;
-    uint32_t HASH_DR2_18;
-    uint32_t HASH_DR2_19;
-    uint32_t HASH_DR2_20;
-    uint32_t HASH_DR2_21;
-    uint32_t HASH_DR2_22;
-    uint32_t HASH_DR2_23;
-    uint32_t HASH_DR2_24;
-    uint32_t HASH_DR2_25;
-    uint32_t HASH_DR2_26;
-    uint32_t HASH_DR2_27;
-    uint32_t HASH_DR2_28;
-    uint32_t HASH_DR2_29;
-    uint32_t HASH_DR2_30;
-    uint32_t HASH_DR2_31;
-} stc_hash_dr2_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR1_0;
-    uint32_t HASH_DR1_1;
-    uint32_t HASH_DR1_2;
-    uint32_t HASH_DR1_3;
-    uint32_t HASH_DR1_4;
-    uint32_t HASH_DR1_5;
-    uint32_t HASH_DR1_6;
-    uint32_t HASH_DR1_7;
-    uint32_t HASH_DR1_8;
-    uint32_t HASH_DR1_9;
-    uint32_t HASH_DR1_10;
-    uint32_t HASH_DR1_11;
-    uint32_t HASH_DR1_12;
-    uint32_t HASH_DR1_13;
-    uint32_t HASH_DR1_14;
-    uint32_t HASH_DR1_15;
-    uint32_t HASH_DR1_16;
-    uint32_t HASH_DR1_17;
-    uint32_t HASH_DR1_18;
-    uint32_t HASH_DR1_19;
-    uint32_t HASH_DR1_20;
-    uint32_t HASH_DR1_21;
-    uint32_t HASH_DR1_22;
-    uint32_t HASH_DR1_23;
-    uint32_t HASH_DR1_24;
-    uint32_t HASH_DR1_25;
-    uint32_t HASH_DR1_26;
-    uint32_t HASH_DR1_27;
-    uint32_t HASH_DR1_28;
-    uint32_t HASH_DR1_29;
-    uint32_t HASH_DR1_30;
-    uint32_t HASH_DR1_31;
-} stc_hash_dr1_bit_t;
-
-typedef struct
-{
-    uint32_t HASH_DR0_0;
-    uint32_t HASH_DR0_1;
-    uint32_t HASH_DR0_2;
-    uint32_t HASH_DR0_3;
-    uint32_t HASH_DR0_4;
-    uint32_t HASH_DR0_5;
-    uint32_t HASH_DR0_6;
-    uint32_t HASH_DR0_7;
-    uint32_t HASH_DR0_8;
-    uint32_t HASH_DR0_9;
-    uint32_t HASH_DR0_10;
-    uint32_t HASH_DR0_11;
-    uint32_t HASH_DR0_12;
-    uint32_t HASH_DR0_13;
-    uint32_t HASH_DR0_14;
-    uint32_t HASH_DR0_15;
-    uint32_t HASH_DR0_16;
-    uint32_t HASH_DR0_17;
-    uint32_t HASH_DR0_18;
-    uint32_t HASH_DR0_19;
-    uint32_t HASH_DR0_20;
-    uint32_t HASH_DR0_21;
-    uint32_t HASH_DR0_22;
-    uint32_t HASH_DR0_23;
-    uint32_t HASH_DR0_24;
-    uint32_t HASH_DR0_25;
-    uint32_t HASH_DR0_26;
-    uint32_t HASH_DR0_27;
-    uint32_t HASH_DR0_28;
-    uint32_t HASH_DR0_29;
-    uint32_t HASH_DR0_30;
-    uint32_t HASH_DR0_31;
-} stc_hash_dr0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t NSEL0;
-    __IO uint32_t NSEL1;
-    __IO uint32_t NSEL2;
-    __IO uint32_t NSEL3;
-    __IO uint32_t NSEL4;
-    __IO uint32_t NSEL5;
-    __IO uint32_t NSEL6;
-    __IO uint32_t NSEL7;
-    __IO uint32_t PSEL0;
-    __IO uint32_t PSEL1;
-    __IO uint32_t PSEL2;
-    __IO uint32_t PSEL3;
-    __IO uint32_t PSEL4;
-    __IO uint32_t PSEL5;
-    __IO uint32_t PSEL6;
-    __IO uint32_t PSEL7;
-    uint32_t RESERVED0[13];
+    uint32_t RESERVED0[29];
     __IO uint32_t NE;
     __IO uint32_t PE;
     __IO uint32_t EN;
@@ -41638,15 +33429,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t CALCODE0;
-    __IO uint32_t CALCODE1;
-    __IO uint32_t CALCODE2;
-    __IO uint32_t CALCODE3;
-    __IO uint32_t CALCODE4;
-    __IO uint32_t CALCODE5;
-    __IO uint32_t CALCODE6;
-    __IO uint32_t CALCODE7;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[12];
     __IO uint32_t ENDF;
     uint32_t RESERVED1[2];
     __IO uint32_t CALEN;
@@ -41707,17 +33490,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t SLADDR00;
-    __IO uint32_t SLADDR01;
-    __IO uint32_t SLADDR02;
-    __IO uint32_t SLADDR03;
-    __IO uint32_t SLADDR04;
-    __IO uint32_t SLADDR05;
-    __IO uint32_t SLADDR06;
-    __IO uint32_t SLADDR07;
-    __IO uint32_t SLADDR08;
-    __IO uint32_t SLADDR09;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[12];
     __IO uint32_t SLADDR0EN;
     uint32_t RESERVED1[2];
     __IO uint32_t ADDRMOD0;
@@ -41726,58 +33499,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t SLADDR10;
-    __IO uint32_t SLADDR11;
-    __IO uint32_t SLADDR12;
-    __IO uint32_t SLADDR13;
-    __IO uint32_t SLADDR14;
-    __IO uint32_t SLADDR15;
-    __IO uint32_t SLADDR16;
-    __IO uint32_t SLADDR17;
-    __IO uint32_t SLADDR18;
-    __IO uint32_t SLADDR19;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[12];
     __IO uint32_t SLADDR1EN;
     uint32_t RESERVED1[2];
     __IO uint32_t ADDRMOD1;
     uint32_t RESERVED2[16];
 } stc_i2c_slr1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t TOUTLOW0;
-    __IO uint32_t TOUTLOW1;
-    __IO uint32_t TOUTLOW2;
-    __IO uint32_t TOUTLOW3;
-    __IO uint32_t TOUTLOW4;
-    __IO uint32_t TOUTLOW5;
-    __IO uint32_t TOUTLOW6;
-    __IO uint32_t TOUTLOW7;
-    __IO uint32_t TOUTLOW8;
-    __IO uint32_t TOUTLOW9;
-    __IO uint32_t TOUTLOW10;
-    __IO uint32_t TOUTLOW11;
-    __IO uint32_t TOUTLOW12;
-    __IO uint32_t TOUTLOW13;
-    __IO uint32_t TOUTLOW14;
-    __IO uint32_t TOUTLOW15;
-    __IO uint32_t TOUTHIGH0;
-    __IO uint32_t TOUTHIGH1;
-    __IO uint32_t TOUTHIGH2;
-    __IO uint32_t TOUTHIGH3;
-    __IO uint32_t TOUTHIGH4;
-    __IO uint32_t TOUTHIGH5;
-    __IO uint32_t TOUTHIGH6;
-    __IO uint32_t TOUTHIGH7;
-    __IO uint32_t TOUTHIGH8;
-    __IO uint32_t TOUTHIGH9;
-    __IO uint32_t TOUTHIGH10;
-    __IO uint32_t TOUTHIGH11;
-    __IO uint32_t TOUTHIGH12;
-    __IO uint32_t TOUTHIGH13;
-    __IO uint32_t TOUTHIGH14;
-    __IO uint32_t TOUTHIGH15;
-} stc_i2c_sltr_bit_t;
 
 typedef struct
 {
@@ -41858,29 +33585,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t SLOWW0;
-    __IO uint32_t SLOWW1;
-    __IO uint32_t SLOWW2;
-    __IO uint32_t SLOWW3;
-    __IO uint32_t SLOWW4;
-    uint32_t RESERVED0[3];
-    __IO uint32_t SHIGHW0;
-    __IO uint32_t SHIGHW1;
-    __IO uint32_t SHIGHW2;
-    __IO uint32_t SHIGHW3;
-    __IO uint32_t SHIGHW4;
-    uint32_t RESERVED1[3];
-    __IO uint32_t FREQ0;
-    __IO uint32_t FREQ1;
-    __IO uint32_t FREQ2;
-    uint32_t RESERVED2[13];
-} stc_i2c_ccr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DNF0;
-    __IO uint32_t DNF1;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[4];
     __IO uint32_t DNFEN;
     __IO uint32_t ANFEN;
     uint32_t RESERVED1[26];
@@ -41947,78 +33652,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t I2S_TXBUF_0;
-    uint32_t I2S_TXBUF_1;
-    uint32_t I2S_TXBUF_2;
-    uint32_t I2S_TXBUF_3;
-    uint32_t I2S_TXBUF_4;
-    uint32_t I2S_TXBUF_5;
-    uint32_t I2S_TXBUF_6;
-    uint32_t I2S_TXBUF_7;
-    uint32_t I2S_TXBUF_8;
-    uint32_t I2S_TXBUF_9;
-    uint32_t I2S_TXBUF_10;
-    uint32_t I2S_TXBUF_11;
-    uint32_t I2S_TXBUF_12;
-    uint32_t I2S_TXBUF_13;
-    uint32_t I2S_TXBUF_14;
-    uint32_t I2S_TXBUF_15;
-    uint32_t I2S_TXBUF_16;
-    uint32_t I2S_TXBUF_17;
-    uint32_t I2S_TXBUF_18;
-    uint32_t I2S_TXBUF_19;
-    uint32_t I2S_TXBUF_20;
-    uint32_t I2S_TXBUF_21;
-    uint32_t I2S_TXBUF_22;
-    uint32_t I2S_TXBUF_23;
-    uint32_t I2S_TXBUF_24;
-    uint32_t I2S_TXBUF_25;
-    uint32_t I2S_TXBUF_26;
-    uint32_t I2S_TXBUF_27;
-    uint32_t I2S_TXBUF_28;
-    uint32_t I2S_TXBUF_29;
-    uint32_t I2S_TXBUF_30;
-    uint32_t I2S_TXBUF_31;
-} stc_i2s_txbuf_bit_t;
-
-typedef struct
-{
-    uint32_t I2S_RXBUF_0;
-    uint32_t I2S_RXBUF_1;
-    uint32_t I2S_RXBUF_2;
-    uint32_t I2S_RXBUF_3;
-    uint32_t I2S_RXBUF_4;
-    uint32_t I2S_RXBUF_5;
-    uint32_t I2S_RXBUF_6;
-    uint32_t I2S_RXBUF_7;
-    uint32_t I2S_RXBUF_8;
-    uint32_t I2S_RXBUF_9;
-    uint32_t I2S_RXBUF_10;
-    uint32_t I2S_RXBUF_11;
-    uint32_t I2S_RXBUF_12;
-    uint32_t I2S_RXBUF_13;
-    uint32_t I2S_RXBUF_14;
-    uint32_t I2S_RXBUF_15;
-    uint32_t I2S_RXBUF_16;
-    uint32_t I2S_RXBUF_17;
-    uint32_t I2S_RXBUF_18;
-    uint32_t I2S_RXBUF_19;
-    uint32_t I2S_RXBUF_20;
-    uint32_t I2S_RXBUF_21;
-    uint32_t I2S_RXBUF_22;
-    uint32_t I2S_RXBUF_23;
-    uint32_t I2S_RXBUF_24;
-    uint32_t I2S_RXBUF_25;
-    uint32_t I2S_RXBUF_26;
-    uint32_t I2S_RXBUF_27;
-    uint32_t I2S_RXBUF_28;
-    uint32_t I2S_RXBUF_29;
-    uint32_t I2S_RXBUF_30;
-    uint32_t I2S_RXBUF_31;
-} stc_i2s_rxbuf_bit_t;
-
-typedef struct
-{
     __IO uint32_t I2SDIV0;
     __IO uint32_t I2SDIV1;
     __IO uint32_t I2SDIV2;
@@ -42073,64 +33706,6 @@ typedef struct
     __IO uint32_t BORDIS;
     uint32_t RESERVED2[13];
 } stc_icg_icg1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t BGO1M0;
-    __IO uint32_t BGO1M1;
-    __IO uint32_t BGO1M2;
-    __IO uint32_t BGO1M3;
-    __IO uint32_t BGO1M4;
-    __IO uint32_t BGO1M5;
-    __IO uint32_t BGO1M6;
-    __IO uint32_t BGO1M7;
-    __IO uint32_t BGO1M8;
-    __IO uint32_t BGO1M9;
-    __IO uint32_t BGO1M10;
-    __IO uint32_t BGO1M11;
-    __IO uint32_t BGO1M12;
-    __IO uint32_t BGO1M13;
-    __IO uint32_t BGO1M14;
-    __IO uint32_t BGO1M15;
-    __IO uint32_t BGO1M16;
-    __IO uint32_t BGO1M17;
-    __IO uint32_t BGO1M18;
-    __IO uint32_t BGO1M19;
-    __IO uint32_t BGO1M20;
-    __IO uint32_t BGO1M21;
-    __IO uint32_t BGO1M22;
-    __IO uint32_t BGO1M23;
-    uint32_t RESERVED0[8];
-} stc_icg_icg2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DBUSPRT0;
-    __IO uint32_t DBUSPRT1;
-    __IO uint32_t DBUSPRT2;
-    __IO uint32_t DBUSPRT3;
-    __IO uint32_t DBUSPRT4;
-    __IO uint32_t DBUSPRT5;
-    __IO uint32_t DBUSPRT6;
-    __IO uint32_t DBUSPRT7;
-    __IO uint32_t DBUSPRT8;
-    __IO uint32_t DBUSPRT9;
-    __IO uint32_t DBUSPRT10;
-    __IO uint32_t DBUSPRT11;
-    __IO uint32_t DBUSPRT12;
-    __IO uint32_t DBUSPRT13;
-    __IO uint32_t DBUSPRT14;
-    __IO uint32_t DBUSPRT15;
-    uint32_t RESERVED0[16];
-} stc_icg_icg3_bit_t;
-
-typedef struct
-{
-    uint32_t RESERVED0[12];
-    __IO uint32_t NOCSEL0;
-    __IO uint32_t NOCSEL1;
-    uint32_t RESERVED1[18];
-} stc_intc_noccr_bit_t;
 
 typedef struct
 {
@@ -42270,1798 +33845,6 @@ typedef struct
     __IO uint32_t EICFR15;
     uint32_t RESERVED0[16];
 } stc_intc_eicfr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel15_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel16_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel17_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel18_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel19_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel20_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel21_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel22_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel23_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel24_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel25_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel26_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel27_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel28_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel29_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel30_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel31_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel32_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel33_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel34_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel35_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel36_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel37_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel38_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel39_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel40_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel41_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel42_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel43_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel44_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel45_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel46_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel47_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel48_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel49_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel50_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel51_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel52_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel53_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel54_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel55_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel56_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel57_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel58_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel59_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel60_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel61_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel62_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel63_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel64_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel65_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel66_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel67_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel68_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel69_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel70_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel71_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel72_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel73_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel74_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel75_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel76_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel77_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel78_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel79_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel80_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel81_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel82_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel83_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel84_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel85_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel86_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel87_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel88_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel89_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel90_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel91_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel92_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel93_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel94_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel95_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel96_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel97_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel98_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel99_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel100_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel101_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel102_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel103_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel104_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel105_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel106_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel107_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel108_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel109_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel110_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel111_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel112_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel113_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel114_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel115_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel116_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel117_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel118_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel119_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel120_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel121_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel122_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel123_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel124_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel125_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel126_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INTSEL0;
-    __IO uint32_t INTSEL1;
-    __IO uint32_t INTSEL2;
-    __IO uint32_t INTSEL3;
-    __IO uint32_t INTSEL4;
-    __IO uint32_t INTSEL5;
-    __IO uint32_t INTSEL6;
-    __IO uint32_t INTSEL7;
-    __IO uint32_t INTSEL8;
-    uint32_t RESERVED0[23];
-} stc_intc_sel127_bit_t;
 
 typedef struct
 {
@@ -44225,21 +34008,10 @@ typedef struct
     __IO uint32_t KEYINSEL13;
     __IO uint32_t KEYINSEL14;
     __IO uint32_t KEYINSEL15;
-    __IO uint32_t KEYOUTSEL0;
-    __IO uint32_t KEYOUTSEL1;
-    __IO uint32_t KEYOUTSEL2;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED0[4];
     __IO uint32_t CKSEL0;
     __IO uint32_t CKSEL1;
-    uint32_t RESERVED1[2];
-    __IO uint32_t T_LLEVEL0;
-    __IO uint32_t T_LLEVEL1;
-    __IO uint32_t T_LLEVEL2;
-    __IO uint32_t T_LLEVEL3;
-    __IO uint32_t T_LLEVEL4;
-    __IO uint32_t T_HIZ0;
-    __IO uint32_t T_HIZ1;
-    __IO uint32_t T_HIZ2;
+    uint32_t RESERVED1[10];
 } stc_keyscan_scr_bit_t;
 
 typedef struct
@@ -44250,62 +34022,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t INDEX0;
-    __IO uint32_t INDEX1;
-    __IO uint32_t INDEX2;
-    uint32_t RESERVED0[29];
-} stc_keyscan_ssr_bit_t;
-
-typedef struct
-{
     __IO uint32_t START;
     __IO uint32_t INTEN;
     uint32_t RESERVED0[1];
     __IO uint32_t BUSY;
-    uint32_t RESERVED1[4];
-    __IO uint32_t SHIFT0;
-    __IO uint32_t SHIFT1;
-    __IO uint32_t SHIFT2;
-    __IO uint32_t SHIFT3;
-    __IO uint32_t SHIFT4;
-    uint32_t RESERVED2[19];
+    uint32_t RESERVED1[28];
 } stc_mau_csr_bit_t;
-
-typedef struct
-{
-    uint32_t MAU_DTR0_0;
-    uint32_t MAU_DTR0_1;
-    uint32_t MAU_DTR0_2;
-    uint32_t MAU_DTR0_3;
-    uint32_t MAU_DTR0_4;
-    uint32_t MAU_DTR0_5;
-    uint32_t MAU_DTR0_6;
-    uint32_t MAU_DTR0_7;
-    uint32_t MAU_DTR0_8;
-    uint32_t MAU_DTR0_9;
-    uint32_t MAU_DTR0_10;
-    uint32_t MAU_DTR0_11;
-    uint32_t MAU_DTR0_12;
-    uint32_t MAU_DTR0_13;
-    uint32_t MAU_DTR0_14;
-    uint32_t MAU_DTR0_15;
-    uint32_t MAU_DTR0_16;
-    uint32_t MAU_DTR0_17;
-    uint32_t MAU_DTR0_18;
-    uint32_t MAU_DTR0_19;
-    uint32_t MAU_DTR0_20;
-    uint32_t MAU_DTR0_21;
-    uint32_t MAU_DTR0_22;
-    uint32_t MAU_DTR0_23;
-    uint32_t MAU_DTR0_24;
-    uint32_t MAU_DTR0_25;
-    uint32_t MAU_DTR0_26;
-    uint32_t MAU_DTR0_27;
-    uint32_t MAU_DTR0_28;
-    uint32_t MAU_DTR0_29;
-    uint32_t MAU_DTR0_30;
-    uint32_t MAU_DTR0_31;
-} stc_mau_dtr0_bit_t;
 
 typedef struct
 {
@@ -44374,574 +34096,8 @@ typedef struct
     __IO uint32_t MPURGSIZE2;
     __IO uint32_t MPURGSIZE3;
     __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPURGSIZE0;
-    __IO uint32_t MPURGSIZE1;
-    __IO uint32_t MPURGSIZE2;
-    __IO uint32_t MPURGSIZE3;
-    __IO uint32_t MPURGSIZE4;
-    __IO uint32_t MPURGADDR0;
-    __IO uint32_t MPURGADDR1;
-    __IO uint32_t MPURGADDR2;
-    __IO uint32_t MPURGADDR3;
-    __IO uint32_t MPURGADDR4;
-    __IO uint32_t MPURGADDR5;
-    __IO uint32_t MPURGADDR6;
-    __IO uint32_t MPURGADDR7;
-    __IO uint32_t MPURGADDR8;
-    __IO uint32_t MPURGADDR9;
-    __IO uint32_t MPURGADDR10;
-    __IO uint32_t MPURGADDR11;
-    __IO uint32_t MPURGADDR12;
-    __IO uint32_t MPURGADDR13;
-    __IO uint32_t MPURGADDR14;
-    __IO uint32_t MPURGADDR15;
-    __IO uint32_t MPURGADDR16;
-    __IO uint32_t MPURGADDR17;
-    __IO uint32_t MPURGADDR18;
-    __IO uint32_t MPURGADDR19;
-    __IO uint32_t MPURGADDR20;
-    __IO uint32_t MPURGADDR21;
-    __IO uint32_t MPURGADDR22;
-    __IO uint32_t MPURGADDR23;
-    __IO uint32_t MPURGADDR24;
-    __IO uint32_t MPURGADDR25;
-    __IO uint32_t MPURGADDR26;
-} stc_mpu_rgd15_bit_t;
+    uint32_t RESERVED0[27];
+} stc_mpu_rgd_bit_t;
 
 typedef struct
 {
@@ -44966,22 +34122,7 @@ typedef struct
 typedef struct
 {
     __IO uint32_t MPUWE;
-    __IO uint32_t WKEY0;
-    __IO uint32_t WKEY1;
-    __IO uint32_t WKEY2;
-    __IO uint32_t WKEY3;
-    __IO uint32_t WKEY4;
-    __IO uint32_t WKEY5;
-    __IO uint32_t WKEY6;
-    __IO uint32_t WKEY7;
-    __IO uint32_t WKEY8;
-    __IO uint32_t WKEY9;
-    __IO uint32_t WKEY10;
-    __IO uint32_t WKEY11;
-    __IO uint32_t WKEY12;
-    __IO uint32_t WKEY13;
-    __IO uint32_t WKEY14;
-    uint32_t RESERVED0[16];
+    uint32_t RESERVED0[31];
 } stc_mpu_wp_bit_t;
 
 typedef struct
@@ -45328,66 +34469,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t OTS_DR1_0;
-    uint32_t OTS_DR1_1;
-    uint32_t OTS_DR1_2;
-    uint32_t OTS_DR1_3;
-    uint32_t OTS_DR1_4;
-    uint32_t OTS_DR1_5;
-    uint32_t OTS_DR1_6;
-    uint32_t OTS_DR1_7;
-    uint32_t OTS_DR1_8;
-    uint32_t OTS_DR1_9;
-    uint32_t OTS_DR1_10;
-    uint32_t OTS_DR1_11;
-    uint32_t OTS_DR1_12;
-    uint32_t OTS_DR1_13;
-    uint32_t OTS_DR1_14;
-    uint32_t OTS_DR1_15;
-} stc_ots_dr1_bit_t;
-
-typedef struct
-{
-    uint32_t OTS_DR2_0;
-    uint32_t OTS_DR2_1;
-    uint32_t OTS_DR2_2;
-    uint32_t OTS_DR2_3;
-    uint32_t OTS_DR2_4;
-    uint32_t OTS_DR2_5;
-    uint32_t OTS_DR2_6;
-    uint32_t OTS_DR2_7;
-    uint32_t OTS_DR2_8;
-    uint32_t OTS_DR2_9;
-    uint32_t OTS_DR2_10;
-    uint32_t OTS_DR2_11;
-    uint32_t OTS_DR2_12;
-    uint32_t OTS_DR2_13;
-    uint32_t OTS_DR2_14;
-    uint32_t OTS_DR2_15;
-} stc_ots_dr2_bit_t;
-
-typedef struct
-{
-    uint32_t OTS_ECR_0;
-    uint32_t OTS_ECR_1;
-    uint32_t OTS_ECR_2;
-    uint32_t OTS_ECR_3;
-    uint32_t OTS_ECR_4;
-    uint32_t OTS_ECR_5;
-    uint32_t OTS_ECR_6;
-    uint32_t OTS_ECR_7;
-    uint32_t OTS_ECR_8;
-    uint32_t OTS_ECR_9;
-    uint32_t OTS_ECR_10;
-    uint32_t OTS_ECR_11;
-    uint32_t OTS_ECR_12;
-    uint32_t OTS_ECR_13;
-    uint32_t OTS_ECR_14;
-    uint32_t OTS_ECR_15;
-} stc_ots_ecr_bit_t;
-
-typedef struct
-{
     __IO uint32_t TSOFS0;
     __IO uint32_t TSOFS1;
     __IO uint32_t TSOFS2;
@@ -45629,36 +34710,8 @@ typedef struct
 typedef struct
 {
     __IO uint32_t PRT0;
-    uint32_t RESERVED0[15];
-    __IO uint32_t FCG0PCWE0;
-    __IO uint32_t FCG0PCWE1;
-    __IO uint32_t FCG0PCWE2;
-    __IO uint32_t FCG0PCWE3;
-    __IO uint32_t FCG0PCWE4;
-    __IO uint32_t FCG0PCWE5;
-    __IO uint32_t FCG0PCWE6;
-    __IO uint32_t FCG0PCWE7;
-    __IO uint32_t FCG0PCWE8;
-    __IO uint32_t FCG0PCWE9;
-    __IO uint32_t FCG0PCWE10;
-    __IO uint32_t FCG0PCWE11;
-    __IO uint32_t FCG0PCWE12;
-    __IO uint32_t FCG0PCWE13;
-    __IO uint32_t FCG0PCWE14;
-    __IO uint32_t FCG0PCWE15;
+    uint32_t RESERVED0[31];
 } stc_pwc_fcg0pc_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_VBATRSTR_0;
-    uint32_t PWC_VBATRSTR_1;
-    uint32_t PWC_VBATRSTR_2;
-    uint32_t PWC_VBATRSTR_3;
-    uint32_t PWC_VBATRSTR_4;
-    uint32_t PWC_VBATRSTR_5;
-    uint32_t PWC_VBATRSTR_6;
-    uint32_t PWC_VBATRSTR_7;
-} stc_pwc_vbatrstr_bit_t;
 
 typedef struct
 {
@@ -45672,23 +34725,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t WKTMCMP0;
-    __IO uint32_t WKTMCMP1;
-    __IO uint32_t WKTMCMP2;
-    __IO uint32_t WKTMCMP3;
-    __IO uint32_t WKTMCMP4;
-    __IO uint32_t WKTMCMP5;
-    __IO uint32_t WKTMCMP6;
-    __IO uint32_t WKTMCMP7;
+    uint32_t RESERVED0[8];
 } stc_pwc_wktc0_bit_t;
 
 typedef struct
 {
-    __IO uint32_t WKTMCMP0;
-    __IO uint32_t WKTMCMP1;
-    __IO uint32_t WKTMCMP2;
-    __IO uint32_t WKTMCMP3;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[8];
 } stc_pwc_wktc1_bit_t;
 
 typedef struct
@@ -45699,1542 +34741,6 @@ typedef struct
     __IO uint32_t WKCKS1;
     __IO uint32_t WKTCE;
 } stc_pwc_wktc2_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR0_0;
-    uint32_t PWC_BKR0_1;
-    uint32_t PWC_BKR0_2;
-    uint32_t PWC_BKR0_3;
-    uint32_t PWC_BKR0_4;
-    uint32_t PWC_BKR0_5;
-    uint32_t PWC_BKR0_6;
-    uint32_t PWC_BKR0_7;
-} stc_pwc_bkr0_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR1_0;
-    uint32_t PWC_BKR1_1;
-    uint32_t PWC_BKR1_2;
-    uint32_t PWC_BKR1_3;
-    uint32_t PWC_BKR1_4;
-    uint32_t PWC_BKR1_5;
-    uint32_t PWC_BKR1_6;
-    uint32_t PWC_BKR1_7;
-} stc_pwc_bkr1_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR2_0;
-    uint32_t PWC_BKR2_1;
-    uint32_t PWC_BKR2_2;
-    uint32_t PWC_BKR2_3;
-    uint32_t PWC_BKR2_4;
-    uint32_t PWC_BKR2_5;
-    uint32_t PWC_BKR2_6;
-    uint32_t PWC_BKR2_7;
-} stc_pwc_bkr2_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR3_0;
-    uint32_t PWC_BKR3_1;
-    uint32_t PWC_BKR3_2;
-    uint32_t PWC_BKR3_3;
-    uint32_t PWC_BKR3_4;
-    uint32_t PWC_BKR3_5;
-    uint32_t PWC_BKR3_6;
-    uint32_t PWC_BKR3_7;
-} stc_pwc_bkr3_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR4_0;
-    uint32_t PWC_BKR4_1;
-    uint32_t PWC_BKR4_2;
-    uint32_t PWC_BKR4_3;
-    uint32_t PWC_BKR4_4;
-    uint32_t PWC_BKR4_5;
-    uint32_t PWC_BKR4_6;
-    uint32_t PWC_BKR4_7;
-} stc_pwc_bkr4_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR5_0;
-    uint32_t PWC_BKR5_1;
-    uint32_t PWC_BKR5_2;
-    uint32_t PWC_BKR5_3;
-    uint32_t PWC_BKR5_4;
-    uint32_t PWC_BKR5_5;
-    uint32_t PWC_BKR5_6;
-    uint32_t PWC_BKR5_7;
-} stc_pwc_bkr5_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR6_0;
-    uint32_t PWC_BKR6_1;
-    uint32_t PWC_BKR6_2;
-    uint32_t PWC_BKR6_3;
-    uint32_t PWC_BKR6_4;
-    uint32_t PWC_BKR6_5;
-    uint32_t PWC_BKR6_6;
-    uint32_t PWC_BKR6_7;
-} stc_pwc_bkr6_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR7_0;
-    uint32_t PWC_BKR7_1;
-    uint32_t PWC_BKR7_2;
-    uint32_t PWC_BKR7_3;
-    uint32_t PWC_BKR7_4;
-    uint32_t PWC_BKR7_5;
-    uint32_t PWC_BKR7_6;
-    uint32_t PWC_BKR7_7;
-} stc_pwc_bkr7_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR8_0;
-    uint32_t PWC_BKR8_1;
-    uint32_t PWC_BKR8_2;
-    uint32_t PWC_BKR8_3;
-    uint32_t PWC_BKR8_4;
-    uint32_t PWC_BKR8_5;
-    uint32_t PWC_BKR8_6;
-    uint32_t PWC_BKR8_7;
-} stc_pwc_bkr8_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR9_0;
-    uint32_t PWC_BKR9_1;
-    uint32_t PWC_BKR9_2;
-    uint32_t PWC_BKR9_3;
-    uint32_t PWC_BKR9_4;
-    uint32_t PWC_BKR9_5;
-    uint32_t PWC_BKR9_6;
-    uint32_t PWC_BKR9_7;
-} stc_pwc_bkr9_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR10_0;
-    uint32_t PWC_BKR10_1;
-    uint32_t PWC_BKR10_2;
-    uint32_t PWC_BKR10_3;
-    uint32_t PWC_BKR10_4;
-    uint32_t PWC_BKR10_5;
-    uint32_t PWC_BKR10_6;
-    uint32_t PWC_BKR10_7;
-} stc_pwc_bkr10_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR11_0;
-    uint32_t PWC_BKR11_1;
-    uint32_t PWC_BKR11_2;
-    uint32_t PWC_BKR11_3;
-    uint32_t PWC_BKR11_4;
-    uint32_t PWC_BKR11_5;
-    uint32_t PWC_BKR11_6;
-    uint32_t PWC_BKR11_7;
-} stc_pwc_bkr11_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR12_0;
-    uint32_t PWC_BKR12_1;
-    uint32_t PWC_BKR12_2;
-    uint32_t PWC_BKR12_3;
-    uint32_t PWC_BKR12_4;
-    uint32_t PWC_BKR12_5;
-    uint32_t PWC_BKR12_6;
-    uint32_t PWC_BKR12_7;
-} stc_pwc_bkr12_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR13_0;
-    uint32_t PWC_BKR13_1;
-    uint32_t PWC_BKR13_2;
-    uint32_t PWC_BKR13_3;
-    uint32_t PWC_BKR13_4;
-    uint32_t PWC_BKR13_5;
-    uint32_t PWC_BKR13_6;
-    uint32_t PWC_BKR13_7;
-} stc_pwc_bkr13_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR14_0;
-    uint32_t PWC_BKR14_1;
-    uint32_t PWC_BKR14_2;
-    uint32_t PWC_BKR14_3;
-    uint32_t PWC_BKR14_4;
-    uint32_t PWC_BKR14_5;
-    uint32_t PWC_BKR14_6;
-    uint32_t PWC_BKR14_7;
-} stc_pwc_bkr14_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR15_0;
-    uint32_t PWC_BKR15_1;
-    uint32_t PWC_BKR15_2;
-    uint32_t PWC_BKR15_3;
-    uint32_t PWC_BKR15_4;
-    uint32_t PWC_BKR15_5;
-    uint32_t PWC_BKR15_6;
-    uint32_t PWC_BKR15_7;
-} stc_pwc_bkr15_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR16_0;
-    uint32_t PWC_BKR16_1;
-    uint32_t PWC_BKR16_2;
-    uint32_t PWC_BKR16_3;
-    uint32_t PWC_BKR16_4;
-    uint32_t PWC_BKR16_5;
-    uint32_t PWC_BKR16_6;
-    uint32_t PWC_BKR16_7;
-} stc_pwc_bkr16_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR17_0;
-    uint32_t PWC_BKR17_1;
-    uint32_t PWC_BKR17_2;
-    uint32_t PWC_BKR17_3;
-    uint32_t PWC_BKR17_4;
-    uint32_t PWC_BKR17_5;
-    uint32_t PWC_BKR17_6;
-    uint32_t PWC_BKR17_7;
-} stc_pwc_bkr17_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR18_0;
-    uint32_t PWC_BKR18_1;
-    uint32_t PWC_BKR18_2;
-    uint32_t PWC_BKR18_3;
-    uint32_t PWC_BKR18_4;
-    uint32_t PWC_BKR18_5;
-    uint32_t PWC_BKR18_6;
-    uint32_t PWC_BKR18_7;
-} stc_pwc_bkr18_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR19_0;
-    uint32_t PWC_BKR19_1;
-    uint32_t PWC_BKR19_2;
-    uint32_t PWC_BKR19_3;
-    uint32_t PWC_BKR19_4;
-    uint32_t PWC_BKR19_5;
-    uint32_t PWC_BKR19_6;
-    uint32_t PWC_BKR19_7;
-} stc_pwc_bkr19_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR20_0;
-    uint32_t PWC_BKR20_1;
-    uint32_t PWC_BKR20_2;
-    uint32_t PWC_BKR20_3;
-    uint32_t PWC_BKR20_4;
-    uint32_t PWC_BKR20_5;
-    uint32_t PWC_BKR20_6;
-    uint32_t PWC_BKR20_7;
-} stc_pwc_bkr20_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR21_0;
-    uint32_t PWC_BKR21_1;
-    uint32_t PWC_BKR21_2;
-    uint32_t PWC_BKR21_3;
-    uint32_t PWC_BKR21_4;
-    uint32_t PWC_BKR21_5;
-    uint32_t PWC_BKR21_6;
-    uint32_t PWC_BKR21_7;
-} stc_pwc_bkr21_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR22_0;
-    uint32_t PWC_BKR22_1;
-    uint32_t PWC_BKR22_2;
-    uint32_t PWC_BKR22_3;
-    uint32_t PWC_BKR22_4;
-    uint32_t PWC_BKR22_5;
-    uint32_t PWC_BKR22_6;
-    uint32_t PWC_BKR22_7;
-} stc_pwc_bkr22_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR23_0;
-    uint32_t PWC_BKR23_1;
-    uint32_t PWC_BKR23_2;
-    uint32_t PWC_BKR23_3;
-    uint32_t PWC_BKR23_4;
-    uint32_t PWC_BKR23_5;
-    uint32_t PWC_BKR23_6;
-    uint32_t PWC_BKR23_7;
-} stc_pwc_bkr23_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR24_0;
-    uint32_t PWC_BKR24_1;
-    uint32_t PWC_BKR24_2;
-    uint32_t PWC_BKR24_3;
-    uint32_t PWC_BKR24_4;
-    uint32_t PWC_BKR24_5;
-    uint32_t PWC_BKR24_6;
-    uint32_t PWC_BKR24_7;
-} stc_pwc_bkr24_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR25_0;
-    uint32_t PWC_BKR25_1;
-    uint32_t PWC_BKR25_2;
-    uint32_t PWC_BKR25_3;
-    uint32_t PWC_BKR25_4;
-    uint32_t PWC_BKR25_5;
-    uint32_t PWC_BKR25_6;
-    uint32_t PWC_BKR25_7;
-} stc_pwc_bkr25_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR26_0;
-    uint32_t PWC_BKR26_1;
-    uint32_t PWC_BKR26_2;
-    uint32_t PWC_BKR26_3;
-    uint32_t PWC_BKR26_4;
-    uint32_t PWC_BKR26_5;
-    uint32_t PWC_BKR26_6;
-    uint32_t PWC_BKR26_7;
-} stc_pwc_bkr26_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR27_0;
-    uint32_t PWC_BKR27_1;
-    uint32_t PWC_BKR27_2;
-    uint32_t PWC_BKR27_3;
-    uint32_t PWC_BKR27_4;
-    uint32_t PWC_BKR27_5;
-    uint32_t PWC_BKR27_6;
-    uint32_t PWC_BKR27_7;
-} stc_pwc_bkr27_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR28_0;
-    uint32_t PWC_BKR28_1;
-    uint32_t PWC_BKR28_2;
-    uint32_t PWC_BKR28_3;
-    uint32_t PWC_BKR28_4;
-    uint32_t PWC_BKR28_5;
-    uint32_t PWC_BKR28_6;
-    uint32_t PWC_BKR28_7;
-} stc_pwc_bkr28_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR29_0;
-    uint32_t PWC_BKR29_1;
-    uint32_t PWC_BKR29_2;
-    uint32_t PWC_BKR29_3;
-    uint32_t PWC_BKR29_4;
-    uint32_t PWC_BKR29_5;
-    uint32_t PWC_BKR29_6;
-    uint32_t PWC_BKR29_7;
-} stc_pwc_bkr29_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR30_0;
-    uint32_t PWC_BKR30_1;
-    uint32_t PWC_BKR30_2;
-    uint32_t PWC_BKR30_3;
-    uint32_t PWC_BKR30_4;
-    uint32_t PWC_BKR30_5;
-    uint32_t PWC_BKR30_6;
-    uint32_t PWC_BKR30_7;
-} stc_pwc_bkr30_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR31_0;
-    uint32_t PWC_BKR31_1;
-    uint32_t PWC_BKR31_2;
-    uint32_t PWC_BKR31_3;
-    uint32_t PWC_BKR31_4;
-    uint32_t PWC_BKR31_5;
-    uint32_t PWC_BKR31_6;
-    uint32_t PWC_BKR31_7;
-} stc_pwc_bkr31_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR32_0;
-    uint32_t PWC_BKR32_1;
-    uint32_t PWC_BKR32_2;
-    uint32_t PWC_BKR32_3;
-    uint32_t PWC_BKR32_4;
-    uint32_t PWC_BKR32_5;
-    uint32_t PWC_BKR32_6;
-    uint32_t PWC_BKR32_7;
-} stc_pwc_bkr32_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR33_0;
-    uint32_t PWC_BKR33_1;
-    uint32_t PWC_BKR33_2;
-    uint32_t PWC_BKR33_3;
-    uint32_t PWC_BKR33_4;
-    uint32_t PWC_BKR33_5;
-    uint32_t PWC_BKR33_6;
-    uint32_t PWC_BKR33_7;
-} stc_pwc_bkr33_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR34_0;
-    uint32_t PWC_BKR34_1;
-    uint32_t PWC_BKR34_2;
-    uint32_t PWC_BKR34_3;
-    uint32_t PWC_BKR34_4;
-    uint32_t PWC_BKR34_5;
-    uint32_t PWC_BKR34_6;
-    uint32_t PWC_BKR34_7;
-} stc_pwc_bkr34_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR35_0;
-    uint32_t PWC_BKR35_1;
-    uint32_t PWC_BKR35_2;
-    uint32_t PWC_BKR35_3;
-    uint32_t PWC_BKR35_4;
-    uint32_t PWC_BKR35_5;
-    uint32_t PWC_BKR35_6;
-    uint32_t PWC_BKR35_7;
-} stc_pwc_bkr35_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR36_0;
-    uint32_t PWC_BKR36_1;
-    uint32_t PWC_BKR36_2;
-    uint32_t PWC_BKR36_3;
-    uint32_t PWC_BKR36_4;
-    uint32_t PWC_BKR36_5;
-    uint32_t PWC_BKR36_6;
-    uint32_t PWC_BKR36_7;
-} stc_pwc_bkr36_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR37_0;
-    uint32_t PWC_BKR37_1;
-    uint32_t PWC_BKR37_2;
-    uint32_t PWC_BKR37_3;
-    uint32_t PWC_BKR37_4;
-    uint32_t PWC_BKR37_5;
-    uint32_t PWC_BKR37_6;
-    uint32_t PWC_BKR37_7;
-} stc_pwc_bkr37_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR38_0;
-    uint32_t PWC_BKR38_1;
-    uint32_t PWC_BKR38_2;
-    uint32_t PWC_BKR38_3;
-    uint32_t PWC_BKR38_4;
-    uint32_t PWC_BKR38_5;
-    uint32_t PWC_BKR38_6;
-    uint32_t PWC_BKR38_7;
-} stc_pwc_bkr38_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR39_0;
-    uint32_t PWC_BKR39_1;
-    uint32_t PWC_BKR39_2;
-    uint32_t PWC_BKR39_3;
-    uint32_t PWC_BKR39_4;
-    uint32_t PWC_BKR39_5;
-    uint32_t PWC_BKR39_6;
-    uint32_t PWC_BKR39_7;
-} stc_pwc_bkr39_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR40_0;
-    uint32_t PWC_BKR40_1;
-    uint32_t PWC_BKR40_2;
-    uint32_t PWC_BKR40_3;
-    uint32_t PWC_BKR40_4;
-    uint32_t PWC_BKR40_5;
-    uint32_t PWC_BKR40_6;
-    uint32_t PWC_BKR40_7;
-} stc_pwc_bkr40_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR41_0;
-    uint32_t PWC_BKR41_1;
-    uint32_t PWC_BKR41_2;
-    uint32_t PWC_BKR41_3;
-    uint32_t PWC_BKR41_4;
-    uint32_t PWC_BKR41_5;
-    uint32_t PWC_BKR41_6;
-    uint32_t PWC_BKR41_7;
-} stc_pwc_bkr41_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR42_0;
-    uint32_t PWC_BKR42_1;
-    uint32_t PWC_BKR42_2;
-    uint32_t PWC_BKR42_3;
-    uint32_t PWC_BKR42_4;
-    uint32_t PWC_BKR42_5;
-    uint32_t PWC_BKR42_6;
-    uint32_t PWC_BKR42_7;
-} stc_pwc_bkr42_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR43_0;
-    uint32_t PWC_BKR43_1;
-    uint32_t PWC_BKR43_2;
-    uint32_t PWC_BKR43_3;
-    uint32_t PWC_BKR43_4;
-    uint32_t PWC_BKR43_5;
-    uint32_t PWC_BKR43_6;
-    uint32_t PWC_BKR43_7;
-} stc_pwc_bkr43_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR44_0;
-    uint32_t PWC_BKR44_1;
-    uint32_t PWC_BKR44_2;
-    uint32_t PWC_BKR44_3;
-    uint32_t PWC_BKR44_4;
-    uint32_t PWC_BKR44_5;
-    uint32_t PWC_BKR44_6;
-    uint32_t PWC_BKR44_7;
-} stc_pwc_bkr44_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR45_0;
-    uint32_t PWC_BKR45_1;
-    uint32_t PWC_BKR45_2;
-    uint32_t PWC_BKR45_3;
-    uint32_t PWC_BKR45_4;
-    uint32_t PWC_BKR45_5;
-    uint32_t PWC_BKR45_6;
-    uint32_t PWC_BKR45_7;
-} stc_pwc_bkr45_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR46_0;
-    uint32_t PWC_BKR46_1;
-    uint32_t PWC_BKR46_2;
-    uint32_t PWC_BKR46_3;
-    uint32_t PWC_BKR46_4;
-    uint32_t PWC_BKR46_5;
-    uint32_t PWC_BKR46_6;
-    uint32_t PWC_BKR46_7;
-} stc_pwc_bkr46_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR47_0;
-    uint32_t PWC_BKR47_1;
-    uint32_t PWC_BKR47_2;
-    uint32_t PWC_BKR47_3;
-    uint32_t PWC_BKR47_4;
-    uint32_t PWC_BKR47_5;
-    uint32_t PWC_BKR47_6;
-    uint32_t PWC_BKR47_7;
-} stc_pwc_bkr47_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR48_0;
-    uint32_t PWC_BKR48_1;
-    uint32_t PWC_BKR48_2;
-    uint32_t PWC_BKR48_3;
-    uint32_t PWC_BKR48_4;
-    uint32_t PWC_BKR48_5;
-    uint32_t PWC_BKR48_6;
-    uint32_t PWC_BKR48_7;
-} stc_pwc_bkr48_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR49_0;
-    uint32_t PWC_BKR49_1;
-    uint32_t PWC_BKR49_2;
-    uint32_t PWC_BKR49_3;
-    uint32_t PWC_BKR49_4;
-    uint32_t PWC_BKR49_5;
-    uint32_t PWC_BKR49_6;
-    uint32_t PWC_BKR49_7;
-} stc_pwc_bkr49_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR50_0;
-    uint32_t PWC_BKR50_1;
-    uint32_t PWC_BKR50_2;
-    uint32_t PWC_BKR50_3;
-    uint32_t PWC_BKR50_4;
-    uint32_t PWC_BKR50_5;
-    uint32_t PWC_BKR50_6;
-    uint32_t PWC_BKR50_7;
-} stc_pwc_bkr50_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR51_0;
-    uint32_t PWC_BKR51_1;
-    uint32_t PWC_BKR51_2;
-    uint32_t PWC_BKR51_3;
-    uint32_t PWC_BKR51_4;
-    uint32_t PWC_BKR51_5;
-    uint32_t PWC_BKR51_6;
-    uint32_t PWC_BKR51_7;
-} stc_pwc_bkr51_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR52_0;
-    uint32_t PWC_BKR52_1;
-    uint32_t PWC_BKR52_2;
-    uint32_t PWC_BKR52_3;
-    uint32_t PWC_BKR52_4;
-    uint32_t PWC_BKR52_5;
-    uint32_t PWC_BKR52_6;
-    uint32_t PWC_BKR52_7;
-} stc_pwc_bkr52_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR53_0;
-    uint32_t PWC_BKR53_1;
-    uint32_t PWC_BKR53_2;
-    uint32_t PWC_BKR53_3;
-    uint32_t PWC_BKR53_4;
-    uint32_t PWC_BKR53_5;
-    uint32_t PWC_BKR53_6;
-    uint32_t PWC_BKR53_7;
-} stc_pwc_bkr53_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR54_0;
-    uint32_t PWC_BKR54_1;
-    uint32_t PWC_BKR54_2;
-    uint32_t PWC_BKR54_3;
-    uint32_t PWC_BKR54_4;
-    uint32_t PWC_BKR54_5;
-    uint32_t PWC_BKR54_6;
-    uint32_t PWC_BKR54_7;
-} stc_pwc_bkr54_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR55_0;
-    uint32_t PWC_BKR55_1;
-    uint32_t PWC_BKR55_2;
-    uint32_t PWC_BKR55_3;
-    uint32_t PWC_BKR55_4;
-    uint32_t PWC_BKR55_5;
-    uint32_t PWC_BKR55_6;
-    uint32_t PWC_BKR55_7;
-} stc_pwc_bkr55_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR56_0;
-    uint32_t PWC_BKR56_1;
-    uint32_t PWC_BKR56_2;
-    uint32_t PWC_BKR56_3;
-    uint32_t PWC_BKR56_4;
-    uint32_t PWC_BKR56_5;
-    uint32_t PWC_BKR56_6;
-    uint32_t PWC_BKR56_7;
-} stc_pwc_bkr56_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR57_0;
-    uint32_t PWC_BKR57_1;
-    uint32_t PWC_BKR57_2;
-    uint32_t PWC_BKR57_3;
-    uint32_t PWC_BKR57_4;
-    uint32_t PWC_BKR57_5;
-    uint32_t PWC_BKR57_6;
-    uint32_t PWC_BKR57_7;
-} stc_pwc_bkr57_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR58_0;
-    uint32_t PWC_BKR58_1;
-    uint32_t PWC_BKR58_2;
-    uint32_t PWC_BKR58_3;
-    uint32_t PWC_BKR58_4;
-    uint32_t PWC_BKR58_5;
-    uint32_t PWC_BKR58_6;
-    uint32_t PWC_BKR58_7;
-} stc_pwc_bkr58_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR59_0;
-    uint32_t PWC_BKR59_1;
-    uint32_t PWC_BKR59_2;
-    uint32_t PWC_BKR59_3;
-    uint32_t PWC_BKR59_4;
-    uint32_t PWC_BKR59_5;
-    uint32_t PWC_BKR59_6;
-    uint32_t PWC_BKR59_7;
-} stc_pwc_bkr59_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR60_0;
-    uint32_t PWC_BKR60_1;
-    uint32_t PWC_BKR60_2;
-    uint32_t PWC_BKR60_3;
-    uint32_t PWC_BKR60_4;
-    uint32_t PWC_BKR60_5;
-    uint32_t PWC_BKR60_6;
-    uint32_t PWC_BKR60_7;
-} stc_pwc_bkr60_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR61_0;
-    uint32_t PWC_BKR61_1;
-    uint32_t PWC_BKR61_2;
-    uint32_t PWC_BKR61_3;
-    uint32_t PWC_BKR61_4;
-    uint32_t PWC_BKR61_5;
-    uint32_t PWC_BKR61_6;
-    uint32_t PWC_BKR61_7;
-} stc_pwc_bkr61_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR62_0;
-    uint32_t PWC_BKR62_1;
-    uint32_t PWC_BKR62_2;
-    uint32_t PWC_BKR62_3;
-    uint32_t PWC_BKR62_4;
-    uint32_t PWC_BKR62_5;
-    uint32_t PWC_BKR62_6;
-    uint32_t PWC_BKR62_7;
-} stc_pwc_bkr62_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR63_0;
-    uint32_t PWC_BKR63_1;
-    uint32_t PWC_BKR63_2;
-    uint32_t PWC_BKR63_3;
-    uint32_t PWC_BKR63_4;
-    uint32_t PWC_BKR63_5;
-    uint32_t PWC_BKR63_6;
-    uint32_t PWC_BKR63_7;
-} stc_pwc_bkr63_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR64_0;
-    uint32_t PWC_BKR64_1;
-    uint32_t PWC_BKR64_2;
-    uint32_t PWC_BKR64_3;
-    uint32_t PWC_BKR64_4;
-    uint32_t PWC_BKR64_5;
-    uint32_t PWC_BKR64_6;
-    uint32_t PWC_BKR64_7;
-} stc_pwc_bkr64_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR65_0;
-    uint32_t PWC_BKR65_1;
-    uint32_t PWC_BKR65_2;
-    uint32_t PWC_BKR65_3;
-    uint32_t PWC_BKR65_4;
-    uint32_t PWC_BKR65_5;
-    uint32_t PWC_BKR65_6;
-    uint32_t PWC_BKR65_7;
-} stc_pwc_bkr65_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR66_0;
-    uint32_t PWC_BKR66_1;
-    uint32_t PWC_BKR66_2;
-    uint32_t PWC_BKR66_3;
-    uint32_t PWC_BKR66_4;
-    uint32_t PWC_BKR66_5;
-    uint32_t PWC_BKR66_6;
-    uint32_t PWC_BKR66_7;
-} stc_pwc_bkr66_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR67_0;
-    uint32_t PWC_BKR67_1;
-    uint32_t PWC_BKR67_2;
-    uint32_t PWC_BKR67_3;
-    uint32_t PWC_BKR67_4;
-    uint32_t PWC_BKR67_5;
-    uint32_t PWC_BKR67_6;
-    uint32_t PWC_BKR67_7;
-} stc_pwc_bkr67_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR68_0;
-    uint32_t PWC_BKR68_1;
-    uint32_t PWC_BKR68_2;
-    uint32_t PWC_BKR68_3;
-    uint32_t PWC_BKR68_4;
-    uint32_t PWC_BKR68_5;
-    uint32_t PWC_BKR68_6;
-    uint32_t PWC_BKR68_7;
-} stc_pwc_bkr68_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR69_0;
-    uint32_t PWC_BKR69_1;
-    uint32_t PWC_BKR69_2;
-    uint32_t PWC_BKR69_3;
-    uint32_t PWC_BKR69_4;
-    uint32_t PWC_BKR69_5;
-    uint32_t PWC_BKR69_6;
-    uint32_t PWC_BKR69_7;
-} stc_pwc_bkr69_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR70_0;
-    uint32_t PWC_BKR70_1;
-    uint32_t PWC_BKR70_2;
-    uint32_t PWC_BKR70_3;
-    uint32_t PWC_BKR70_4;
-    uint32_t PWC_BKR70_5;
-    uint32_t PWC_BKR70_6;
-    uint32_t PWC_BKR70_7;
-} stc_pwc_bkr70_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR71_0;
-    uint32_t PWC_BKR71_1;
-    uint32_t PWC_BKR71_2;
-    uint32_t PWC_BKR71_3;
-    uint32_t PWC_BKR71_4;
-    uint32_t PWC_BKR71_5;
-    uint32_t PWC_BKR71_6;
-    uint32_t PWC_BKR71_7;
-} stc_pwc_bkr71_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR72_0;
-    uint32_t PWC_BKR72_1;
-    uint32_t PWC_BKR72_2;
-    uint32_t PWC_BKR72_3;
-    uint32_t PWC_BKR72_4;
-    uint32_t PWC_BKR72_5;
-    uint32_t PWC_BKR72_6;
-    uint32_t PWC_BKR72_7;
-} stc_pwc_bkr72_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR73_0;
-    uint32_t PWC_BKR73_1;
-    uint32_t PWC_BKR73_2;
-    uint32_t PWC_BKR73_3;
-    uint32_t PWC_BKR73_4;
-    uint32_t PWC_BKR73_5;
-    uint32_t PWC_BKR73_6;
-    uint32_t PWC_BKR73_7;
-} stc_pwc_bkr73_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR74_0;
-    uint32_t PWC_BKR74_1;
-    uint32_t PWC_BKR74_2;
-    uint32_t PWC_BKR74_3;
-    uint32_t PWC_BKR74_4;
-    uint32_t PWC_BKR74_5;
-    uint32_t PWC_BKR74_6;
-    uint32_t PWC_BKR74_7;
-} stc_pwc_bkr74_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR75_0;
-    uint32_t PWC_BKR75_1;
-    uint32_t PWC_BKR75_2;
-    uint32_t PWC_BKR75_3;
-    uint32_t PWC_BKR75_4;
-    uint32_t PWC_BKR75_5;
-    uint32_t PWC_BKR75_6;
-    uint32_t PWC_BKR75_7;
-} stc_pwc_bkr75_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR76_0;
-    uint32_t PWC_BKR76_1;
-    uint32_t PWC_BKR76_2;
-    uint32_t PWC_BKR76_3;
-    uint32_t PWC_BKR76_4;
-    uint32_t PWC_BKR76_5;
-    uint32_t PWC_BKR76_6;
-    uint32_t PWC_BKR76_7;
-} stc_pwc_bkr76_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR77_0;
-    uint32_t PWC_BKR77_1;
-    uint32_t PWC_BKR77_2;
-    uint32_t PWC_BKR77_3;
-    uint32_t PWC_BKR77_4;
-    uint32_t PWC_BKR77_5;
-    uint32_t PWC_BKR77_6;
-    uint32_t PWC_BKR77_7;
-} stc_pwc_bkr77_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR78_0;
-    uint32_t PWC_BKR78_1;
-    uint32_t PWC_BKR78_2;
-    uint32_t PWC_BKR78_3;
-    uint32_t PWC_BKR78_4;
-    uint32_t PWC_BKR78_5;
-    uint32_t PWC_BKR78_6;
-    uint32_t PWC_BKR78_7;
-} stc_pwc_bkr78_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR79_0;
-    uint32_t PWC_BKR79_1;
-    uint32_t PWC_BKR79_2;
-    uint32_t PWC_BKR79_3;
-    uint32_t PWC_BKR79_4;
-    uint32_t PWC_BKR79_5;
-    uint32_t PWC_BKR79_6;
-    uint32_t PWC_BKR79_7;
-} stc_pwc_bkr79_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR80_0;
-    uint32_t PWC_BKR80_1;
-    uint32_t PWC_BKR80_2;
-    uint32_t PWC_BKR80_3;
-    uint32_t PWC_BKR80_4;
-    uint32_t PWC_BKR80_5;
-    uint32_t PWC_BKR80_6;
-    uint32_t PWC_BKR80_7;
-} stc_pwc_bkr80_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR81_0;
-    uint32_t PWC_BKR81_1;
-    uint32_t PWC_BKR81_2;
-    uint32_t PWC_BKR81_3;
-    uint32_t PWC_BKR81_4;
-    uint32_t PWC_BKR81_5;
-    uint32_t PWC_BKR81_6;
-    uint32_t PWC_BKR81_7;
-} stc_pwc_bkr81_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR82_0;
-    uint32_t PWC_BKR82_1;
-    uint32_t PWC_BKR82_2;
-    uint32_t PWC_BKR82_3;
-    uint32_t PWC_BKR82_4;
-    uint32_t PWC_BKR82_5;
-    uint32_t PWC_BKR82_6;
-    uint32_t PWC_BKR82_7;
-} stc_pwc_bkr82_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR83_0;
-    uint32_t PWC_BKR83_1;
-    uint32_t PWC_BKR83_2;
-    uint32_t PWC_BKR83_3;
-    uint32_t PWC_BKR83_4;
-    uint32_t PWC_BKR83_5;
-    uint32_t PWC_BKR83_6;
-    uint32_t PWC_BKR83_7;
-} stc_pwc_bkr83_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR84_0;
-    uint32_t PWC_BKR84_1;
-    uint32_t PWC_BKR84_2;
-    uint32_t PWC_BKR84_3;
-    uint32_t PWC_BKR84_4;
-    uint32_t PWC_BKR84_5;
-    uint32_t PWC_BKR84_6;
-    uint32_t PWC_BKR84_7;
-} stc_pwc_bkr84_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR85_0;
-    uint32_t PWC_BKR85_1;
-    uint32_t PWC_BKR85_2;
-    uint32_t PWC_BKR85_3;
-    uint32_t PWC_BKR85_4;
-    uint32_t PWC_BKR85_5;
-    uint32_t PWC_BKR85_6;
-    uint32_t PWC_BKR85_7;
-} stc_pwc_bkr85_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR86_0;
-    uint32_t PWC_BKR86_1;
-    uint32_t PWC_BKR86_2;
-    uint32_t PWC_BKR86_3;
-    uint32_t PWC_BKR86_4;
-    uint32_t PWC_BKR86_5;
-    uint32_t PWC_BKR86_6;
-    uint32_t PWC_BKR86_7;
-} stc_pwc_bkr86_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR87_0;
-    uint32_t PWC_BKR87_1;
-    uint32_t PWC_BKR87_2;
-    uint32_t PWC_BKR87_3;
-    uint32_t PWC_BKR87_4;
-    uint32_t PWC_BKR87_5;
-    uint32_t PWC_BKR87_6;
-    uint32_t PWC_BKR87_7;
-} stc_pwc_bkr87_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR88_0;
-    uint32_t PWC_BKR88_1;
-    uint32_t PWC_BKR88_2;
-    uint32_t PWC_BKR88_3;
-    uint32_t PWC_BKR88_4;
-    uint32_t PWC_BKR88_5;
-    uint32_t PWC_BKR88_6;
-    uint32_t PWC_BKR88_7;
-} stc_pwc_bkr88_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR89_0;
-    uint32_t PWC_BKR89_1;
-    uint32_t PWC_BKR89_2;
-    uint32_t PWC_BKR89_3;
-    uint32_t PWC_BKR89_4;
-    uint32_t PWC_BKR89_5;
-    uint32_t PWC_BKR89_6;
-    uint32_t PWC_BKR89_7;
-} stc_pwc_bkr89_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR90_0;
-    uint32_t PWC_BKR90_1;
-    uint32_t PWC_BKR90_2;
-    uint32_t PWC_BKR90_3;
-    uint32_t PWC_BKR90_4;
-    uint32_t PWC_BKR90_5;
-    uint32_t PWC_BKR90_6;
-    uint32_t PWC_BKR90_7;
-} stc_pwc_bkr90_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR91_0;
-    uint32_t PWC_BKR91_1;
-    uint32_t PWC_BKR91_2;
-    uint32_t PWC_BKR91_3;
-    uint32_t PWC_BKR91_4;
-    uint32_t PWC_BKR91_5;
-    uint32_t PWC_BKR91_6;
-    uint32_t PWC_BKR91_7;
-} stc_pwc_bkr91_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR92_0;
-    uint32_t PWC_BKR92_1;
-    uint32_t PWC_BKR92_2;
-    uint32_t PWC_BKR92_3;
-    uint32_t PWC_BKR92_4;
-    uint32_t PWC_BKR92_5;
-    uint32_t PWC_BKR92_6;
-    uint32_t PWC_BKR92_7;
-} stc_pwc_bkr92_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR93_0;
-    uint32_t PWC_BKR93_1;
-    uint32_t PWC_BKR93_2;
-    uint32_t PWC_BKR93_3;
-    uint32_t PWC_BKR93_4;
-    uint32_t PWC_BKR93_5;
-    uint32_t PWC_BKR93_6;
-    uint32_t PWC_BKR93_7;
-} stc_pwc_bkr93_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR94_0;
-    uint32_t PWC_BKR94_1;
-    uint32_t PWC_BKR94_2;
-    uint32_t PWC_BKR94_3;
-    uint32_t PWC_BKR94_4;
-    uint32_t PWC_BKR94_5;
-    uint32_t PWC_BKR94_6;
-    uint32_t PWC_BKR94_7;
-} stc_pwc_bkr94_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR95_0;
-    uint32_t PWC_BKR95_1;
-    uint32_t PWC_BKR95_2;
-    uint32_t PWC_BKR95_3;
-    uint32_t PWC_BKR95_4;
-    uint32_t PWC_BKR95_5;
-    uint32_t PWC_BKR95_6;
-    uint32_t PWC_BKR95_7;
-} stc_pwc_bkr95_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR96_0;
-    uint32_t PWC_BKR96_1;
-    uint32_t PWC_BKR96_2;
-    uint32_t PWC_BKR96_3;
-    uint32_t PWC_BKR96_4;
-    uint32_t PWC_BKR96_5;
-    uint32_t PWC_BKR96_6;
-    uint32_t PWC_BKR96_7;
-} stc_pwc_bkr96_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR97_0;
-    uint32_t PWC_BKR97_1;
-    uint32_t PWC_BKR97_2;
-    uint32_t PWC_BKR97_3;
-    uint32_t PWC_BKR97_4;
-    uint32_t PWC_BKR97_5;
-    uint32_t PWC_BKR97_6;
-    uint32_t PWC_BKR97_7;
-} stc_pwc_bkr97_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR98_0;
-    uint32_t PWC_BKR98_1;
-    uint32_t PWC_BKR98_2;
-    uint32_t PWC_BKR98_3;
-    uint32_t PWC_BKR98_4;
-    uint32_t PWC_BKR98_5;
-    uint32_t PWC_BKR98_6;
-    uint32_t PWC_BKR98_7;
-} stc_pwc_bkr98_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR99_0;
-    uint32_t PWC_BKR99_1;
-    uint32_t PWC_BKR99_2;
-    uint32_t PWC_BKR99_3;
-    uint32_t PWC_BKR99_4;
-    uint32_t PWC_BKR99_5;
-    uint32_t PWC_BKR99_6;
-    uint32_t PWC_BKR99_7;
-} stc_pwc_bkr99_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR100_0;
-    uint32_t PWC_BKR100_1;
-    uint32_t PWC_BKR100_2;
-    uint32_t PWC_BKR100_3;
-    uint32_t PWC_BKR100_4;
-    uint32_t PWC_BKR100_5;
-    uint32_t PWC_BKR100_6;
-    uint32_t PWC_BKR100_7;
-} stc_pwc_bkr100_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR101_0;
-    uint32_t PWC_BKR101_1;
-    uint32_t PWC_BKR101_2;
-    uint32_t PWC_BKR101_3;
-    uint32_t PWC_BKR101_4;
-    uint32_t PWC_BKR101_5;
-    uint32_t PWC_BKR101_6;
-    uint32_t PWC_BKR101_7;
-} stc_pwc_bkr101_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR102_0;
-    uint32_t PWC_BKR102_1;
-    uint32_t PWC_BKR102_2;
-    uint32_t PWC_BKR102_3;
-    uint32_t PWC_BKR102_4;
-    uint32_t PWC_BKR102_5;
-    uint32_t PWC_BKR102_6;
-    uint32_t PWC_BKR102_7;
-} stc_pwc_bkr102_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR103_0;
-    uint32_t PWC_BKR103_1;
-    uint32_t PWC_BKR103_2;
-    uint32_t PWC_BKR103_3;
-    uint32_t PWC_BKR103_4;
-    uint32_t PWC_BKR103_5;
-    uint32_t PWC_BKR103_6;
-    uint32_t PWC_BKR103_7;
-} stc_pwc_bkr103_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR104_0;
-    uint32_t PWC_BKR104_1;
-    uint32_t PWC_BKR104_2;
-    uint32_t PWC_BKR104_3;
-    uint32_t PWC_BKR104_4;
-    uint32_t PWC_BKR104_5;
-    uint32_t PWC_BKR104_6;
-    uint32_t PWC_BKR104_7;
-} stc_pwc_bkr104_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR105_0;
-    uint32_t PWC_BKR105_1;
-    uint32_t PWC_BKR105_2;
-    uint32_t PWC_BKR105_3;
-    uint32_t PWC_BKR105_4;
-    uint32_t PWC_BKR105_5;
-    uint32_t PWC_BKR105_6;
-    uint32_t PWC_BKR105_7;
-} stc_pwc_bkr105_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR106_0;
-    uint32_t PWC_BKR106_1;
-    uint32_t PWC_BKR106_2;
-    uint32_t PWC_BKR106_3;
-    uint32_t PWC_BKR106_4;
-    uint32_t PWC_BKR106_5;
-    uint32_t PWC_BKR106_6;
-    uint32_t PWC_BKR106_7;
-} stc_pwc_bkr106_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR107_0;
-    uint32_t PWC_BKR107_1;
-    uint32_t PWC_BKR107_2;
-    uint32_t PWC_BKR107_3;
-    uint32_t PWC_BKR107_4;
-    uint32_t PWC_BKR107_5;
-    uint32_t PWC_BKR107_6;
-    uint32_t PWC_BKR107_7;
-} stc_pwc_bkr107_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR108_0;
-    uint32_t PWC_BKR108_1;
-    uint32_t PWC_BKR108_2;
-    uint32_t PWC_BKR108_3;
-    uint32_t PWC_BKR108_4;
-    uint32_t PWC_BKR108_5;
-    uint32_t PWC_BKR108_6;
-    uint32_t PWC_BKR108_7;
-} stc_pwc_bkr108_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR109_0;
-    uint32_t PWC_BKR109_1;
-    uint32_t PWC_BKR109_2;
-    uint32_t PWC_BKR109_3;
-    uint32_t PWC_BKR109_4;
-    uint32_t PWC_BKR109_5;
-    uint32_t PWC_BKR109_6;
-    uint32_t PWC_BKR109_7;
-} stc_pwc_bkr109_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR110_0;
-    uint32_t PWC_BKR110_1;
-    uint32_t PWC_BKR110_2;
-    uint32_t PWC_BKR110_3;
-    uint32_t PWC_BKR110_4;
-    uint32_t PWC_BKR110_5;
-    uint32_t PWC_BKR110_6;
-    uint32_t PWC_BKR110_7;
-} stc_pwc_bkr110_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR111_0;
-    uint32_t PWC_BKR111_1;
-    uint32_t PWC_BKR111_2;
-    uint32_t PWC_BKR111_3;
-    uint32_t PWC_BKR111_4;
-    uint32_t PWC_BKR111_5;
-    uint32_t PWC_BKR111_6;
-    uint32_t PWC_BKR111_7;
-} stc_pwc_bkr111_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR112_0;
-    uint32_t PWC_BKR112_1;
-    uint32_t PWC_BKR112_2;
-    uint32_t PWC_BKR112_3;
-    uint32_t PWC_BKR112_4;
-    uint32_t PWC_BKR112_5;
-    uint32_t PWC_BKR112_6;
-    uint32_t PWC_BKR112_7;
-} stc_pwc_bkr112_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR113_0;
-    uint32_t PWC_BKR113_1;
-    uint32_t PWC_BKR113_2;
-    uint32_t PWC_BKR113_3;
-    uint32_t PWC_BKR113_4;
-    uint32_t PWC_BKR113_5;
-    uint32_t PWC_BKR113_6;
-    uint32_t PWC_BKR113_7;
-} stc_pwc_bkr113_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR114_0;
-    uint32_t PWC_BKR114_1;
-    uint32_t PWC_BKR114_2;
-    uint32_t PWC_BKR114_3;
-    uint32_t PWC_BKR114_4;
-    uint32_t PWC_BKR114_5;
-    uint32_t PWC_BKR114_6;
-    uint32_t PWC_BKR114_7;
-} stc_pwc_bkr114_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR115_0;
-    uint32_t PWC_BKR115_1;
-    uint32_t PWC_BKR115_2;
-    uint32_t PWC_BKR115_3;
-    uint32_t PWC_BKR115_4;
-    uint32_t PWC_BKR115_5;
-    uint32_t PWC_BKR115_6;
-    uint32_t PWC_BKR115_7;
-} stc_pwc_bkr115_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR116_0;
-    uint32_t PWC_BKR116_1;
-    uint32_t PWC_BKR116_2;
-    uint32_t PWC_BKR116_3;
-    uint32_t PWC_BKR116_4;
-    uint32_t PWC_BKR116_5;
-    uint32_t PWC_BKR116_6;
-    uint32_t PWC_BKR116_7;
-} stc_pwc_bkr116_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR117_0;
-    uint32_t PWC_BKR117_1;
-    uint32_t PWC_BKR117_2;
-    uint32_t PWC_BKR117_3;
-    uint32_t PWC_BKR117_4;
-    uint32_t PWC_BKR117_5;
-    uint32_t PWC_BKR117_6;
-    uint32_t PWC_BKR117_7;
-} stc_pwc_bkr117_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR118_0;
-    uint32_t PWC_BKR118_1;
-    uint32_t PWC_BKR118_2;
-    uint32_t PWC_BKR118_3;
-    uint32_t PWC_BKR118_4;
-    uint32_t PWC_BKR118_5;
-    uint32_t PWC_BKR118_6;
-    uint32_t PWC_BKR118_7;
-} stc_pwc_bkr118_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR119_0;
-    uint32_t PWC_BKR119_1;
-    uint32_t PWC_BKR119_2;
-    uint32_t PWC_BKR119_3;
-    uint32_t PWC_BKR119_4;
-    uint32_t PWC_BKR119_5;
-    uint32_t PWC_BKR119_6;
-    uint32_t PWC_BKR119_7;
-} stc_pwc_bkr119_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR120_0;
-    uint32_t PWC_BKR120_1;
-    uint32_t PWC_BKR120_2;
-    uint32_t PWC_BKR120_3;
-    uint32_t PWC_BKR120_4;
-    uint32_t PWC_BKR120_5;
-    uint32_t PWC_BKR120_6;
-    uint32_t PWC_BKR120_7;
-} stc_pwc_bkr120_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR121_0;
-    uint32_t PWC_BKR121_1;
-    uint32_t PWC_BKR121_2;
-    uint32_t PWC_BKR121_3;
-    uint32_t PWC_BKR121_4;
-    uint32_t PWC_BKR121_5;
-    uint32_t PWC_BKR121_6;
-    uint32_t PWC_BKR121_7;
-} stc_pwc_bkr121_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR122_0;
-    uint32_t PWC_BKR122_1;
-    uint32_t PWC_BKR122_2;
-    uint32_t PWC_BKR122_3;
-    uint32_t PWC_BKR122_4;
-    uint32_t PWC_BKR122_5;
-    uint32_t PWC_BKR122_6;
-    uint32_t PWC_BKR122_7;
-} stc_pwc_bkr122_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR123_0;
-    uint32_t PWC_BKR123_1;
-    uint32_t PWC_BKR123_2;
-    uint32_t PWC_BKR123_3;
-    uint32_t PWC_BKR123_4;
-    uint32_t PWC_BKR123_5;
-    uint32_t PWC_BKR123_6;
-    uint32_t PWC_BKR123_7;
-} stc_pwc_bkr123_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR124_0;
-    uint32_t PWC_BKR124_1;
-    uint32_t PWC_BKR124_2;
-    uint32_t PWC_BKR124_3;
-    uint32_t PWC_BKR124_4;
-    uint32_t PWC_BKR124_5;
-    uint32_t PWC_BKR124_6;
-    uint32_t PWC_BKR124_7;
-} stc_pwc_bkr124_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR125_0;
-    uint32_t PWC_BKR125_1;
-    uint32_t PWC_BKR125_2;
-    uint32_t PWC_BKR125_3;
-    uint32_t PWC_BKR125_4;
-    uint32_t PWC_BKR125_5;
-    uint32_t PWC_BKR125_6;
-    uint32_t PWC_BKR125_7;
-} stc_pwc_bkr125_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR126_0;
-    uint32_t PWC_BKR126_1;
-    uint32_t PWC_BKR126_2;
-    uint32_t PWC_BKR126_3;
-    uint32_t PWC_BKR126_4;
-    uint32_t PWC_BKR126_5;
-    uint32_t PWC_BKR126_6;
-    uint32_t PWC_BKR126_7;
-} stc_pwc_bkr126_bit_t;
-
-typedef struct
-{
-    uint32_t PWC_BKR127_0;
-    uint32_t PWC_BKR127_1;
-    uint32_t PWC_BKR127_2;
-    uint32_t PWC_BKR127_3;
-    uint32_t PWC_BKR127_4;
-    uint32_t PWC_BKR127_5;
-    uint32_t PWC_BKR127_6;
-    uint32_t PWC_BKR127_7;
-} stc_pwc_bkr127_bit_t;
 
 typedef struct
 {
@@ -47260,25 +34766,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t DDAS0;
-    __IO uint32_t DDAS1;
-    __IO uint32_t DDAS2;
-    __IO uint32_t DDAS3;
+    uint32_t RESERVED0[4];
     __IO uint32_t DVS0;
     __IO uint32_t DVS1;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED1[2];
 } stc_pwc_pwrc2_bit_t;
 
 typedef struct
 {
-    __IO uint32_t DDAS0;
-    __IO uint32_t DDAS1;
-    __IO uint32_t DDAS2;
-    __IO uint32_t DDAS3;
-    __IO uint32_t DDAS4;
-    __IO uint32_t DDAS5;
-    __IO uint32_t DDAS6;
-    __IO uint32_t DDAS7;
+    uint32_t RESERVED0[8];
 } stc_pwc_pwrc3_bit_t;
 
 typedef struct
@@ -47493,15 +34989,7 @@ typedef struct
     __IO uint32_t FPRCB1;
     __IO uint32_t FPRCB2;
     __IO uint32_t FPRCB3;
-    uint32_t RESERVED0[4];
-    __IO uint32_t FPRCWE0;
-    __IO uint32_t FPRCWE1;
-    __IO uint32_t FPRCWE2;
-    __IO uint32_t FPRCWE3;
-    __IO uint32_t FPRCWE4;
-    __IO uint32_t FPRCWE5;
-    __IO uint32_t FPRCWE6;
-    __IO uint32_t FPRCWE7;
+    uint32_t RESERVED0[12];
 } stc_pwc_fprc_bit_t;
 
 typedef struct
@@ -47573,26 +35061,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t SECU0;
-    __IO uint32_t SECU1;
-    __IO uint32_t SECU2;
-    __IO uint32_t SECU3;
-    __IO uint32_t SECD0;
-    __IO uint32_t SECD1;
-    __IO uint32_t SECD2;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED0[8];
 } stc_rtc_sec_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MINU0;
-    __IO uint32_t MINU1;
-    __IO uint32_t MINU2;
-    __IO uint32_t MINU3;
-    __IO uint32_t MIND0;
-    __IO uint32_t MIND1;
-    __IO uint32_t MIND2;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED0[8];
 } stc_rtc_min_bit_t;
 
 typedef struct
@@ -47616,47 +35090,22 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t DAYU0;
-    __IO uint32_t DAYU1;
-    __IO uint32_t DAYU2;
-    __IO uint32_t DAYU3;
-    __IO uint32_t DAYD0;
-    __IO uint32_t DAYD1;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[8];
 } stc_rtc_day_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MON0;
-    __IO uint32_t MON1;
-    __IO uint32_t MON2;
-    __IO uint32_t MON3;
-    __IO uint32_t MON4;
-    uint32_t RESERVED0[3];
+    uint32_t RESERVED0[8];
 } stc_rtc_mon_bit_t;
 
 typedef struct
 {
-    __IO uint32_t YEARU0;
-    __IO uint32_t YEARU1;
-    __IO uint32_t YEARU2;
-    __IO uint32_t YEARU3;
-    __IO uint32_t YEARD0;
-    __IO uint32_t YEARD1;
-    __IO uint32_t YEARD2;
-    __IO uint32_t YEARD3;
+    uint32_t RESERVED0[8];
 } stc_rtc_year_bit_t;
 
 typedef struct
 {
-    __IO uint32_t ALMMINU0;
-    __IO uint32_t ALMMINU1;
-    __IO uint32_t ALMMINU2;
-    __IO uint32_t ALMMINU3;
-    __IO uint32_t ALMMIND0;
-    __IO uint32_t ALMMIND1;
-    __IO uint32_t ALMMIND2;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED0[8];
 } stc_rtc_almmin_bit_t;
 
 typedef struct
@@ -47691,14 +35140,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t COMP0;
-    __IO uint32_t COMP1;
-    __IO uint32_t COMP2;
-    __IO uint32_t COMP3;
-    __IO uint32_t COMP4;
-    __IO uint32_t COMP5;
-    __IO uint32_t COMP6;
-    __IO uint32_t COMP7;
+    uint32_t RESERVED0[8];
 } stc_rtc_errcrl_bit_t;
 
 typedef struct
@@ -47735,26 +35177,12 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t SECTPU0;
-    __IO uint32_t SECTPU1;
-    __IO uint32_t SECTPU2;
-    __IO uint32_t SECTPU3;
-    __IO uint32_t SECTPD0;
-    __IO uint32_t SECTPD1;
-    __IO uint32_t SECTPD2;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED0[8];
 } stc_rtc_sectp_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MINTPU0;
-    __IO uint32_t MINTPU1;
-    __IO uint32_t MINTPU2;
-    __IO uint32_t MINTPU3;
-    __IO uint32_t MINTPD0;
-    __IO uint32_t MINTPD1;
-    __IO uint32_t MINTPD2;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED0[8];
 } stc_rtc_mintp_bit_t;
 
 typedef struct
@@ -47770,101 +35198,18 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t DAYTPU0;
-    __IO uint32_t DAYTPU1;
-    __IO uint32_t DAYTPU2;
-    __IO uint32_t DAYTPU3;
-    __IO uint32_t DAYTPD0;
-    __IO uint32_t DAYTPD1;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[8];
 } stc_rtc_daytp_bit_t;
 
 typedef struct
 {
-    __IO uint32_t MONTP0;
-    __IO uint32_t MONTP1;
-    __IO uint32_t MONTP2;
-    __IO uint32_t MONTP3;
-    __IO uint32_t MONTP4;
-    uint32_t RESERVED0[3];
+    uint32_t RESERVED0[8];
 } stc_rtc_montp_bit_t;
 
 typedef struct
 {
-    __IO uint32_t TBS0;
-    __IO uint32_t TBS1;
-    __IO uint32_t TBS2;
-    __IO uint32_t TBS3;
-    __IO uint32_t TBS4;
-    __IO uint32_t TBS5;
-    __IO uint32_t TBS6;
-    __IO uint32_t TBS7;
-    __IO uint32_t TBS8;
-    __IO uint32_t TBS9;
-    __IO uint32_t TBS10;
-    __IO uint32_t TBS11;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[16];
 } stc_sdioc_blksize_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_BLKCNT_0;
-    uint32_t SDIOC_BLKCNT_1;
-    uint32_t SDIOC_BLKCNT_2;
-    uint32_t SDIOC_BLKCNT_3;
-    uint32_t SDIOC_BLKCNT_4;
-    uint32_t SDIOC_BLKCNT_5;
-    uint32_t SDIOC_BLKCNT_6;
-    uint32_t SDIOC_BLKCNT_7;
-    uint32_t SDIOC_BLKCNT_8;
-    uint32_t SDIOC_BLKCNT_9;
-    uint32_t SDIOC_BLKCNT_10;
-    uint32_t SDIOC_BLKCNT_11;
-    uint32_t SDIOC_BLKCNT_12;
-    uint32_t SDIOC_BLKCNT_13;
-    uint32_t SDIOC_BLKCNT_14;
-    uint32_t SDIOC_BLKCNT_15;
-} stc_sdioc_blkcnt_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_ARG0_0;
-    uint32_t SDIOC_ARG0_1;
-    uint32_t SDIOC_ARG0_2;
-    uint32_t SDIOC_ARG0_3;
-    uint32_t SDIOC_ARG0_4;
-    uint32_t SDIOC_ARG0_5;
-    uint32_t SDIOC_ARG0_6;
-    uint32_t SDIOC_ARG0_7;
-    uint32_t SDIOC_ARG0_8;
-    uint32_t SDIOC_ARG0_9;
-    uint32_t SDIOC_ARG0_10;
-    uint32_t SDIOC_ARG0_11;
-    uint32_t SDIOC_ARG0_12;
-    uint32_t SDIOC_ARG0_13;
-    uint32_t SDIOC_ARG0_14;
-    uint32_t SDIOC_ARG0_15;
-} stc_sdioc_arg0_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_ARG1_0;
-    uint32_t SDIOC_ARG1_1;
-    uint32_t SDIOC_ARG1_2;
-    uint32_t SDIOC_ARG1_3;
-    uint32_t SDIOC_ARG1_4;
-    uint32_t SDIOC_ARG1_5;
-    uint32_t SDIOC_ARG1_6;
-    uint32_t SDIOC_ARG1_7;
-    uint32_t SDIOC_ARG1_8;
-    uint32_t SDIOC_ARG1_9;
-    uint32_t SDIOC_ARG1_10;
-    uint32_t SDIOC_ARG1_11;
-    uint32_t SDIOC_ARG1_12;
-    uint32_t SDIOC_ARG1_13;
-    uint32_t SDIOC_ARG1_14;
-    uint32_t SDIOC_ARG1_15;
-} stc_sdioc_arg1_bit_t;
 
 typedef struct
 {
@@ -47895,206 +35240,6 @@ typedef struct
     __IO uint32_t IDX5;
     uint32_t RESERVED1[2];
 } stc_sdioc_cmd_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP0_0;
-    uint32_t SDIOC_RESP0_1;
-    uint32_t SDIOC_RESP0_2;
-    uint32_t SDIOC_RESP0_3;
-    uint32_t SDIOC_RESP0_4;
-    uint32_t SDIOC_RESP0_5;
-    uint32_t SDIOC_RESP0_6;
-    uint32_t SDIOC_RESP0_7;
-    uint32_t SDIOC_RESP0_8;
-    uint32_t SDIOC_RESP0_9;
-    uint32_t SDIOC_RESP0_10;
-    uint32_t SDIOC_RESP0_11;
-    uint32_t SDIOC_RESP0_12;
-    uint32_t SDIOC_RESP0_13;
-    uint32_t SDIOC_RESP0_14;
-    uint32_t SDIOC_RESP0_15;
-} stc_sdioc_resp0_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP1_0;
-    uint32_t SDIOC_RESP1_1;
-    uint32_t SDIOC_RESP1_2;
-    uint32_t SDIOC_RESP1_3;
-    uint32_t SDIOC_RESP1_4;
-    uint32_t SDIOC_RESP1_5;
-    uint32_t SDIOC_RESP1_6;
-    uint32_t SDIOC_RESP1_7;
-    uint32_t SDIOC_RESP1_8;
-    uint32_t SDIOC_RESP1_9;
-    uint32_t SDIOC_RESP1_10;
-    uint32_t SDIOC_RESP1_11;
-    uint32_t SDIOC_RESP1_12;
-    uint32_t SDIOC_RESP1_13;
-    uint32_t SDIOC_RESP1_14;
-    uint32_t SDIOC_RESP1_15;
-} stc_sdioc_resp1_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP2_0;
-    uint32_t SDIOC_RESP2_1;
-    uint32_t SDIOC_RESP2_2;
-    uint32_t SDIOC_RESP2_3;
-    uint32_t SDIOC_RESP2_4;
-    uint32_t SDIOC_RESP2_5;
-    uint32_t SDIOC_RESP2_6;
-    uint32_t SDIOC_RESP2_7;
-    uint32_t SDIOC_RESP2_8;
-    uint32_t SDIOC_RESP2_9;
-    uint32_t SDIOC_RESP2_10;
-    uint32_t SDIOC_RESP2_11;
-    uint32_t SDIOC_RESP2_12;
-    uint32_t SDIOC_RESP2_13;
-    uint32_t SDIOC_RESP2_14;
-    uint32_t SDIOC_RESP2_15;
-} stc_sdioc_resp2_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP3_0;
-    uint32_t SDIOC_RESP3_1;
-    uint32_t SDIOC_RESP3_2;
-    uint32_t SDIOC_RESP3_3;
-    uint32_t SDIOC_RESP3_4;
-    uint32_t SDIOC_RESP3_5;
-    uint32_t SDIOC_RESP3_6;
-    uint32_t SDIOC_RESP3_7;
-    uint32_t SDIOC_RESP3_8;
-    uint32_t SDIOC_RESP3_9;
-    uint32_t SDIOC_RESP3_10;
-    uint32_t SDIOC_RESP3_11;
-    uint32_t SDIOC_RESP3_12;
-    uint32_t SDIOC_RESP3_13;
-    uint32_t SDIOC_RESP3_14;
-    uint32_t SDIOC_RESP3_15;
-} stc_sdioc_resp3_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP4_0;
-    uint32_t SDIOC_RESP4_1;
-    uint32_t SDIOC_RESP4_2;
-    uint32_t SDIOC_RESP4_3;
-    uint32_t SDIOC_RESP4_4;
-    uint32_t SDIOC_RESP4_5;
-    uint32_t SDIOC_RESP4_6;
-    uint32_t SDIOC_RESP4_7;
-    uint32_t SDIOC_RESP4_8;
-    uint32_t SDIOC_RESP4_9;
-    uint32_t SDIOC_RESP4_10;
-    uint32_t SDIOC_RESP4_11;
-    uint32_t SDIOC_RESP4_12;
-    uint32_t SDIOC_RESP4_13;
-    uint32_t SDIOC_RESP4_14;
-    uint32_t SDIOC_RESP4_15;
-} stc_sdioc_resp4_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP5_0;
-    uint32_t SDIOC_RESP5_1;
-    uint32_t SDIOC_RESP5_2;
-    uint32_t SDIOC_RESP5_3;
-    uint32_t SDIOC_RESP5_4;
-    uint32_t SDIOC_RESP5_5;
-    uint32_t SDIOC_RESP5_6;
-    uint32_t SDIOC_RESP5_7;
-    uint32_t SDIOC_RESP5_8;
-    uint32_t SDIOC_RESP5_9;
-    uint32_t SDIOC_RESP5_10;
-    uint32_t SDIOC_RESP5_11;
-    uint32_t SDIOC_RESP5_12;
-    uint32_t SDIOC_RESP5_13;
-    uint32_t SDIOC_RESP5_14;
-    uint32_t SDIOC_RESP5_15;
-} stc_sdioc_resp5_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP6_0;
-    uint32_t SDIOC_RESP6_1;
-    uint32_t SDIOC_RESP6_2;
-    uint32_t SDIOC_RESP6_3;
-    uint32_t SDIOC_RESP6_4;
-    uint32_t SDIOC_RESP6_5;
-    uint32_t SDIOC_RESP6_6;
-    uint32_t SDIOC_RESP6_7;
-    uint32_t SDIOC_RESP6_8;
-    uint32_t SDIOC_RESP6_9;
-    uint32_t SDIOC_RESP6_10;
-    uint32_t SDIOC_RESP6_11;
-    uint32_t SDIOC_RESP6_12;
-    uint32_t SDIOC_RESP6_13;
-    uint32_t SDIOC_RESP6_14;
-    uint32_t SDIOC_RESP6_15;
-} stc_sdioc_resp6_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_RESP7_0;
-    uint32_t SDIOC_RESP7_1;
-    uint32_t SDIOC_RESP7_2;
-    uint32_t SDIOC_RESP7_3;
-    uint32_t SDIOC_RESP7_4;
-    uint32_t SDIOC_RESP7_5;
-    uint32_t SDIOC_RESP7_6;
-    uint32_t SDIOC_RESP7_7;
-    uint32_t SDIOC_RESP7_8;
-    uint32_t SDIOC_RESP7_9;
-    uint32_t SDIOC_RESP7_10;
-    uint32_t SDIOC_RESP7_11;
-    uint32_t SDIOC_RESP7_12;
-    uint32_t SDIOC_RESP7_13;
-    uint32_t SDIOC_RESP7_14;
-    uint32_t SDIOC_RESP7_15;
-} stc_sdioc_resp7_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_BUF0_0;
-    uint32_t SDIOC_BUF0_1;
-    uint32_t SDIOC_BUF0_2;
-    uint32_t SDIOC_BUF0_3;
-    uint32_t SDIOC_BUF0_4;
-    uint32_t SDIOC_BUF0_5;
-    uint32_t SDIOC_BUF0_6;
-    uint32_t SDIOC_BUF0_7;
-    uint32_t SDIOC_BUF0_8;
-    uint32_t SDIOC_BUF0_9;
-    uint32_t SDIOC_BUF0_10;
-    uint32_t SDIOC_BUF0_11;
-    uint32_t SDIOC_BUF0_12;
-    uint32_t SDIOC_BUF0_13;
-    uint32_t SDIOC_BUF0_14;
-    uint32_t SDIOC_BUF0_15;
-} stc_sdioc_buf0_bit_t;
-
-typedef struct
-{
-    uint32_t SDIOC_BUF1_0;
-    uint32_t SDIOC_BUF1_1;
-    uint32_t SDIOC_BUF1_2;
-    uint32_t SDIOC_BUF1_3;
-    uint32_t SDIOC_BUF1_4;
-    uint32_t SDIOC_BUF1_5;
-    uint32_t SDIOC_BUF1_6;
-    uint32_t SDIOC_BUF1_7;
-    uint32_t SDIOC_BUF1_8;
-    uint32_t SDIOC_BUF1_9;
-    uint32_t SDIOC_BUF1_10;
-    uint32_t SDIOC_BUF1_11;
-    uint32_t SDIOC_BUF1_12;
-    uint32_t SDIOC_BUF1_13;
-    uint32_t SDIOC_BUF1_14;
-    uint32_t SDIOC_BUF1_15;
-} stc_sdioc_buf1_bit_t;
 
 typedef struct
 {
@@ -48303,42 +35448,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t SPI_DR_0;
-    uint32_t SPI_DR_1;
-    uint32_t SPI_DR_2;
-    uint32_t SPI_DR_3;
-    uint32_t SPI_DR_4;
-    uint32_t SPI_DR_5;
-    uint32_t SPI_DR_6;
-    uint32_t SPI_DR_7;
-    uint32_t SPI_DR_8;
-    uint32_t SPI_DR_9;
-    uint32_t SPI_DR_10;
-    uint32_t SPI_DR_11;
-    uint32_t SPI_DR_12;
-    uint32_t SPI_DR_13;
-    uint32_t SPI_DR_14;
-    uint32_t SPI_DR_15;
-    uint32_t SPI_DR_16;
-    uint32_t SPI_DR_17;
-    uint32_t SPI_DR_18;
-    uint32_t SPI_DR_19;
-    uint32_t SPI_DR_20;
-    uint32_t SPI_DR_21;
-    uint32_t SPI_DR_22;
-    uint32_t SPI_DR_23;
-    uint32_t SPI_DR_24;
-    uint32_t SPI_DR_25;
-    uint32_t SPI_DR_26;
-    uint32_t SPI_DR_27;
-    uint32_t SPI_DR_28;
-    uint32_t SPI_DR_29;
-    uint32_t SPI_DR_30;
-    uint32_t SPI_DR_31;
-} stc_spi_dr_bit_t;
-
-typedef struct
-{
     __IO uint32_t SPIMDS;
     __IO uint32_t TXMDS;
     uint32_t RESERVED0[1];
@@ -48529,142 +35638,18 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t CNT0;
-    __IO uint32_t CNT1;
-    __IO uint32_t CNT2;
-    __IO uint32_t CNT3;
-    __IO uint32_t CNT4;
-    __IO uint32_t CNT5;
-    __IO uint32_t CNT6;
-    __IO uint32_t CNT7;
-    __IO uint32_t CNT8;
-    __IO uint32_t CNT9;
-    __IO uint32_t CNT10;
-    __IO uint32_t CNT11;
-    __IO uint32_t CNT12;
-    __IO uint32_t CNT13;
-    __IO uint32_t CNT14;
-    __IO uint32_t CNT15;
+    uint32_t RESERVED0[16];
     __IO uint32_t UDF;
     __IO uint32_t REF;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
 } stc_swdt_sr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RF0;
-    __IO uint32_t RF1;
-    __IO uint32_t RF2;
-    __IO uint32_t RF3;
-    __IO uint32_t RF4;
-    __IO uint32_t RF5;
-    __IO uint32_t RF6;
-    __IO uint32_t RF7;
-    __IO uint32_t RF8;
-    __IO uint32_t RF9;
-    __IO uint32_t RF10;
-    __IO uint32_t RF11;
-    __IO uint32_t RF12;
-    __IO uint32_t RF13;
-    __IO uint32_t RF14;
-    __IO uint32_t RF15;
-    uint32_t RESERVED0[16];
-} stc_swdt_rr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CNTA0;
-    __IO uint32_t CNTA1;
-    __IO uint32_t CNTA2;
-    __IO uint32_t CNTA3;
-    __IO uint32_t CNTA4;
-    __IO uint32_t CNTA5;
-    __IO uint32_t CNTA6;
-    __IO uint32_t CNTA7;
-    __IO uint32_t CNTA8;
-    __IO uint32_t CNTA9;
-    __IO uint32_t CNTA10;
-    __IO uint32_t CNTA11;
-    __IO uint32_t CNTA12;
-    __IO uint32_t CNTA13;
-    __IO uint32_t CNTA14;
-    __IO uint32_t CNTA15;
-    uint32_t RESERVED0[16];
-} stc_tmr0_cntar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CNTB0;
-    __IO uint32_t CNTB1;
-    __IO uint32_t CNTB2;
-    __IO uint32_t CNTB3;
-    __IO uint32_t CNTB4;
-    __IO uint32_t CNTB5;
-    __IO uint32_t CNTB6;
-    __IO uint32_t CNTB7;
-    __IO uint32_t CNTB8;
-    __IO uint32_t CNTB9;
-    __IO uint32_t CNTB10;
-    __IO uint32_t CNTB11;
-    __IO uint32_t CNTB12;
-    __IO uint32_t CNTB13;
-    __IO uint32_t CNTB14;
-    __IO uint32_t CNTB15;
-    uint32_t RESERVED0[16];
-} stc_tmr0_cntbr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CMPA0;
-    __IO uint32_t CMPA1;
-    __IO uint32_t CMPA2;
-    __IO uint32_t CMPA3;
-    __IO uint32_t CMPA4;
-    __IO uint32_t CMPA5;
-    __IO uint32_t CMPA6;
-    __IO uint32_t CMPA7;
-    __IO uint32_t CMPA8;
-    __IO uint32_t CMPA9;
-    __IO uint32_t CMPA10;
-    __IO uint32_t CMPA11;
-    __IO uint32_t CMPA12;
-    __IO uint32_t CMPA13;
-    __IO uint32_t CMPA14;
-    __IO uint32_t CMPA15;
-    uint32_t RESERVED0[16];
-} stc_tmr0_cmpar_bit_t;
-
-typedef struct
-{
-    __IO uint32_t CMPB0;
-    __IO uint32_t CMPB1;
-    __IO uint32_t CMPB2;
-    __IO uint32_t CMPB3;
-    __IO uint32_t CMPB4;
-    __IO uint32_t CMPB5;
-    __IO uint32_t CMPB6;
-    __IO uint32_t CMPB7;
-    __IO uint32_t CMPB8;
-    __IO uint32_t CMPB9;
-    __IO uint32_t CMPB10;
-    __IO uint32_t CMPB11;
-    __IO uint32_t CMPB12;
-    __IO uint32_t CMPB13;
-    __IO uint32_t CMPB14;
-    __IO uint32_t CMPB15;
-    uint32_t RESERVED0[16];
-} stc_tmr0_cmpbr_bit_t;
 
 typedef struct
 {
     __IO uint32_t CSTA;
     __IO uint32_t CAPMDA;
     __IO uint32_t INTENA;
-    uint32_t RESERVED0[1];
-    __IO uint32_t CKDIVA0;
-    __IO uint32_t CKDIVA1;
-    __IO uint32_t CKDIVA2;
-    __IO uint32_t CKDIVA3;
+    uint32_t RESERVED0[5];
     __IO uint32_t SYNSA;
     __IO uint32_t SYNCLKA;
     __IO uint32_t ASYNCLKA;
@@ -48676,11 +35661,7 @@ typedef struct
     __IO uint32_t CSTB;
     __IO uint32_t CAPMDB;
     __IO uint32_t INTENB;
-    uint32_t RESERVED2[1];
-    __IO uint32_t CKDIVB0;
-    __IO uint32_t CKDIVB1;
-    __IO uint32_t CKDIVB2;
-    __IO uint32_t CKDIVB3;
+    uint32_t RESERVED2[5];
     __IO uint32_t SYNSB;
     __IO uint32_t SYNCLKB;
     __IO uint32_t ASYNCLKB;
@@ -48909,126 +35890,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t TMR4_OCCRUH_0;
-    uint32_t TMR4_OCCRUH_1;
-    uint32_t TMR4_OCCRUH_2;
-    uint32_t TMR4_OCCRUH_3;
-    uint32_t TMR4_OCCRUH_4;
-    uint32_t TMR4_OCCRUH_5;
-    uint32_t TMR4_OCCRUH_6;
-    uint32_t TMR4_OCCRUH_7;
-    uint32_t TMR4_OCCRUH_8;
-    uint32_t TMR4_OCCRUH_9;
-    uint32_t TMR4_OCCRUH_10;
-    uint32_t TMR4_OCCRUH_11;
-    uint32_t TMR4_OCCRUH_12;
-    uint32_t TMR4_OCCRUH_13;
-    uint32_t TMR4_OCCRUH_14;
-    uint32_t TMR4_OCCRUH_15;
-} stc_tmr4_occruh_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_OCCRUL_0;
-    uint32_t TMR4_OCCRUL_1;
-    uint32_t TMR4_OCCRUL_2;
-    uint32_t TMR4_OCCRUL_3;
-    uint32_t TMR4_OCCRUL_4;
-    uint32_t TMR4_OCCRUL_5;
-    uint32_t TMR4_OCCRUL_6;
-    uint32_t TMR4_OCCRUL_7;
-    uint32_t TMR4_OCCRUL_8;
-    uint32_t TMR4_OCCRUL_9;
-    uint32_t TMR4_OCCRUL_10;
-    uint32_t TMR4_OCCRUL_11;
-    uint32_t TMR4_OCCRUL_12;
-    uint32_t TMR4_OCCRUL_13;
-    uint32_t TMR4_OCCRUL_14;
-    uint32_t TMR4_OCCRUL_15;
-} stc_tmr4_occrul_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_OCCRVH_0;
-    uint32_t TMR4_OCCRVH_1;
-    uint32_t TMR4_OCCRVH_2;
-    uint32_t TMR4_OCCRVH_3;
-    uint32_t TMR4_OCCRVH_4;
-    uint32_t TMR4_OCCRVH_5;
-    uint32_t TMR4_OCCRVH_6;
-    uint32_t TMR4_OCCRVH_7;
-    uint32_t TMR4_OCCRVH_8;
-    uint32_t TMR4_OCCRVH_9;
-    uint32_t TMR4_OCCRVH_10;
-    uint32_t TMR4_OCCRVH_11;
-    uint32_t TMR4_OCCRVH_12;
-    uint32_t TMR4_OCCRVH_13;
-    uint32_t TMR4_OCCRVH_14;
-    uint32_t TMR4_OCCRVH_15;
-} stc_tmr4_occrvh_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_OCCRVL_0;
-    uint32_t TMR4_OCCRVL_1;
-    uint32_t TMR4_OCCRVL_2;
-    uint32_t TMR4_OCCRVL_3;
-    uint32_t TMR4_OCCRVL_4;
-    uint32_t TMR4_OCCRVL_5;
-    uint32_t TMR4_OCCRVL_6;
-    uint32_t TMR4_OCCRVL_7;
-    uint32_t TMR4_OCCRVL_8;
-    uint32_t TMR4_OCCRVL_9;
-    uint32_t TMR4_OCCRVL_10;
-    uint32_t TMR4_OCCRVL_11;
-    uint32_t TMR4_OCCRVL_12;
-    uint32_t TMR4_OCCRVL_13;
-    uint32_t TMR4_OCCRVL_14;
-    uint32_t TMR4_OCCRVL_15;
-} stc_tmr4_occrvl_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_OCCRWH_0;
-    uint32_t TMR4_OCCRWH_1;
-    uint32_t TMR4_OCCRWH_2;
-    uint32_t TMR4_OCCRWH_3;
-    uint32_t TMR4_OCCRWH_4;
-    uint32_t TMR4_OCCRWH_5;
-    uint32_t TMR4_OCCRWH_6;
-    uint32_t TMR4_OCCRWH_7;
-    uint32_t TMR4_OCCRWH_8;
-    uint32_t TMR4_OCCRWH_9;
-    uint32_t TMR4_OCCRWH_10;
-    uint32_t TMR4_OCCRWH_11;
-    uint32_t TMR4_OCCRWH_12;
-    uint32_t TMR4_OCCRWH_13;
-    uint32_t TMR4_OCCRWH_14;
-    uint32_t TMR4_OCCRWH_15;
-} stc_tmr4_occrwh_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_OCCRWL_0;
-    uint32_t TMR4_OCCRWL_1;
-    uint32_t TMR4_OCCRWL_2;
-    uint32_t TMR4_OCCRWL_3;
-    uint32_t TMR4_OCCRWL_4;
-    uint32_t TMR4_OCCRWL_5;
-    uint32_t TMR4_OCCRWL_6;
-    uint32_t TMR4_OCCRWL_7;
-    uint32_t TMR4_OCCRWL_8;
-    uint32_t TMR4_OCCRWL_9;
-    uint32_t TMR4_OCCRWL_10;
-    uint32_t TMR4_OCCRWL_11;
-    uint32_t TMR4_OCCRWL_12;
-    uint32_t TMR4_OCCRWL_13;
-    uint32_t TMR4_OCCRWL_14;
-    uint32_t TMR4_OCCRWL_15;
-} stc_tmr4_occrwl_bit_t;
-
-typedef struct
-{
     __IO uint32_t OCEH;
     __IO uint32_t OCEL;
     __IO uint32_t OCPH;
@@ -49117,46 +35978,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t TMR4_CPSR_0;
-    uint32_t TMR4_CPSR_1;
-    uint32_t TMR4_CPSR_2;
-    uint32_t TMR4_CPSR_3;
-    uint32_t TMR4_CPSR_4;
-    uint32_t TMR4_CPSR_5;
-    uint32_t TMR4_CPSR_6;
-    uint32_t TMR4_CPSR_7;
-    uint32_t TMR4_CPSR_8;
-    uint32_t TMR4_CPSR_9;
-    uint32_t TMR4_CPSR_10;
-    uint32_t TMR4_CPSR_11;
-    uint32_t TMR4_CPSR_12;
-    uint32_t TMR4_CPSR_13;
-    uint32_t TMR4_CPSR_14;
-    uint32_t TMR4_CPSR_15;
-} stc_tmr4_cpsr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_CNTR_0;
-    uint32_t TMR4_CNTR_1;
-    uint32_t TMR4_CNTR_2;
-    uint32_t TMR4_CNTR_3;
-    uint32_t TMR4_CNTR_4;
-    uint32_t TMR4_CNTR_5;
-    uint32_t TMR4_CNTR_6;
-    uint32_t TMR4_CNTR_7;
-    uint32_t TMR4_CNTR_8;
-    uint32_t TMR4_CNTR_9;
-    uint32_t TMR4_CNTR_10;
-    uint32_t TMR4_CNTR_11;
-    uint32_t TMR4_CNTR_12;
-    uint32_t TMR4_CNTR_13;
-    uint32_t TMR4_CNTR_14;
-    uint32_t TMR4_CNTR_15;
-} stc_tmr4_cntr_bit_t;
-
-typedef struct
-{
     __IO uint32_t CKDIV0;
     __IO uint32_t CKDIV1;
     __IO uint32_t CKDIV2;
@@ -49175,203 +35996,8 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t ZIM0;
-    __IO uint32_t ZIM1;
-    __IO uint32_t ZIM2;
-    __IO uint32_t ZIM3;
-    __IO uint32_t PIM0;
-    __IO uint32_t PIM1;
-    __IO uint32_t PIM2;
-    __IO uint32_t PIM3;
-    __IO uint32_t ZIC0;
-    __IO uint32_t ZIC1;
-    __IO uint32_t ZIC2;
-    __IO uint32_t ZIC3;
-    __IO uint32_t PIC0;
-    __IO uint32_t PIC1;
-    __IO uint32_t PIC2;
-    __IO uint32_t PIC3;
+    uint32_t RESERVED0[16];
 } stc_tmr4_cvpr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PFSRU_0;
-    uint32_t TMR4_PFSRU_1;
-    uint32_t TMR4_PFSRU_2;
-    uint32_t TMR4_PFSRU_3;
-    uint32_t TMR4_PFSRU_4;
-    uint32_t TMR4_PFSRU_5;
-    uint32_t TMR4_PFSRU_6;
-    uint32_t TMR4_PFSRU_7;
-    uint32_t TMR4_PFSRU_8;
-    uint32_t TMR4_PFSRU_9;
-    uint32_t TMR4_PFSRU_10;
-    uint32_t TMR4_PFSRU_11;
-    uint32_t TMR4_PFSRU_12;
-    uint32_t TMR4_PFSRU_13;
-    uint32_t TMR4_PFSRU_14;
-    uint32_t TMR4_PFSRU_15;
-} stc_tmr4_pfsru_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PDARU_0;
-    uint32_t TMR4_PDARU_1;
-    uint32_t TMR4_PDARU_2;
-    uint32_t TMR4_PDARU_3;
-    uint32_t TMR4_PDARU_4;
-    uint32_t TMR4_PDARU_5;
-    uint32_t TMR4_PDARU_6;
-    uint32_t TMR4_PDARU_7;
-    uint32_t TMR4_PDARU_8;
-    uint32_t TMR4_PDARU_9;
-    uint32_t TMR4_PDARU_10;
-    uint32_t TMR4_PDARU_11;
-    uint32_t TMR4_PDARU_12;
-    uint32_t TMR4_PDARU_13;
-    uint32_t TMR4_PDARU_14;
-    uint32_t TMR4_PDARU_15;
-} stc_tmr4_pdaru_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PDBRU_0;
-    uint32_t TMR4_PDBRU_1;
-    uint32_t TMR4_PDBRU_2;
-    uint32_t TMR4_PDBRU_3;
-    uint32_t TMR4_PDBRU_4;
-    uint32_t TMR4_PDBRU_5;
-    uint32_t TMR4_PDBRU_6;
-    uint32_t TMR4_PDBRU_7;
-    uint32_t TMR4_PDBRU_8;
-    uint32_t TMR4_PDBRU_9;
-    uint32_t TMR4_PDBRU_10;
-    uint32_t TMR4_PDBRU_11;
-    uint32_t TMR4_PDBRU_12;
-    uint32_t TMR4_PDBRU_13;
-    uint32_t TMR4_PDBRU_14;
-    uint32_t TMR4_PDBRU_15;
-} stc_tmr4_pdbru_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PFSRV_0;
-    uint32_t TMR4_PFSRV_1;
-    uint32_t TMR4_PFSRV_2;
-    uint32_t TMR4_PFSRV_3;
-    uint32_t TMR4_PFSRV_4;
-    uint32_t TMR4_PFSRV_5;
-    uint32_t TMR4_PFSRV_6;
-    uint32_t TMR4_PFSRV_7;
-    uint32_t TMR4_PFSRV_8;
-    uint32_t TMR4_PFSRV_9;
-    uint32_t TMR4_PFSRV_10;
-    uint32_t TMR4_PFSRV_11;
-    uint32_t TMR4_PFSRV_12;
-    uint32_t TMR4_PFSRV_13;
-    uint32_t TMR4_PFSRV_14;
-    uint32_t TMR4_PFSRV_15;
-} stc_tmr4_pfsrv_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PDARV_0;
-    uint32_t TMR4_PDARV_1;
-    uint32_t TMR4_PDARV_2;
-    uint32_t TMR4_PDARV_3;
-    uint32_t TMR4_PDARV_4;
-    uint32_t TMR4_PDARV_5;
-    uint32_t TMR4_PDARV_6;
-    uint32_t TMR4_PDARV_7;
-    uint32_t TMR4_PDARV_8;
-    uint32_t TMR4_PDARV_9;
-    uint32_t TMR4_PDARV_10;
-    uint32_t TMR4_PDARV_11;
-    uint32_t TMR4_PDARV_12;
-    uint32_t TMR4_PDARV_13;
-    uint32_t TMR4_PDARV_14;
-    uint32_t TMR4_PDARV_15;
-} stc_tmr4_pdarv_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PDBRV_0;
-    uint32_t TMR4_PDBRV_1;
-    uint32_t TMR4_PDBRV_2;
-    uint32_t TMR4_PDBRV_3;
-    uint32_t TMR4_PDBRV_4;
-    uint32_t TMR4_PDBRV_5;
-    uint32_t TMR4_PDBRV_6;
-    uint32_t TMR4_PDBRV_7;
-    uint32_t TMR4_PDBRV_8;
-    uint32_t TMR4_PDBRV_9;
-    uint32_t TMR4_PDBRV_10;
-    uint32_t TMR4_PDBRV_11;
-    uint32_t TMR4_PDBRV_12;
-    uint32_t TMR4_PDBRV_13;
-    uint32_t TMR4_PDBRV_14;
-    uint32_t TMR4_PDBRV_15;
-} stc_tmr4_pdbrv_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PFSRW_0;
-    uint32_t TMR4_PFSRW_1;
-    uint32_t TMR4_PFSRW_2;
-    uint32_t TMR4_PFSRW_3;
-    uint32_t TMR4_PFSRW_4;
-    uint32_t TMR4_PFSRW_5;
-    uint32_t TMR4_PFSRW_6;
-    uint32_t TMR4_PFSRW_7;
-    uint32_t TMR4_PFSRW_8;
-    uint32_t TMR4_PFSRW_9;
-    uint32_t TMR4_PFSRW_10;
-    uint32_t TMR4_PFSRW_11;
-    uint32_t TMR4_PFSRW_12;
-    uint32_t TMR4_PFSRW_13;
-    uint32_t TMR4_PFSRW_14;
-    uint32_t TMR4_PFSRW_15;
-} stc_tmr4_pfsrw_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PDARW_0;
-    uint32_t TMR4_PDARW_1;
-    uint32_t TMR4_PDARW_2;
-    uint32_t TMR4_PDARW_3;
-    uint32_t TMR4_PDARW_4;
-    uint32_t TMR4_PDARW_5;
-    uint32_t TMR4_PDARW_6;
-    uint32_t TMR4_PDARW_7;
-    uint32_t TMR4_PDARW_8;
-    uint32_t TMR4_PDARW_9;
-    uint32_t TMR4_PDARW_10;
-    uint32_t TMR4_PDARW_11;
-    uint32_t TMR4_PDARW_12;
-    uint32_t TMR4_PDARW_13;
-    uint32_t TMR4_PDARW_14;
-    uint32_t TMR4_PDARW_15;
-} stc_tmr4_pdarw_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_PDBRW_0;
-    uint32_t TMR4_PDBRW_1;
-    uint32_t TMR4_PDBRW_2;
-    uint32_t TMR4_PDBRW_3;
-    uint32_t TMR4_PDBRW_4;
-    uint32_t TMR4_PDBRW_5;
-    uint32_t TMR4_PDBRW_6;
-    uint32_t TMR4_PDBRW_7;
-    uint32_t TMR4_PDBRW_8;
-    uint32_t TMR4_PDBRW_9;
-    uint32_t TMR4_PDBRW_10;
-    uint32_t TMR4_PDBRW_11;
-    uint32_t TMR4_PDBRW_12;
-    uint32_t TMR4_PDBRW_13;
-    uint32_t TMR4_PDBRW_14;
-    uint32_t TMR4_PDBRW_15;
-} stc_tmr4_pdbrw_bit_t;
 
 typedef struct
 {
@@ -49408,126 +36034,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t TMR4_SCCRUH_0;
-    uint32_t TMR4_SCCRUH_1;
-    uint32_t TMR4_SCCRUH_2;
-    uint32_t TMR4_SCCRUH_3;
-    uint32_t TMR4_SCCRUH_4;
-    uint32_t TMR4_SCCRUH_5;
-    uint32_t TMR4_SCCRUH_6;
-    uint32_t TMR4_SCCRUH_7;
-    uint32_t TMR4_SCCRUH_8;
-    uint32_t TMR4_SCCRUH_9;
-    uint32_t TMR4_SCCRUH_10;
-    uint32_t TMR4_SCCRUH_11;
-    uint32_t TMR4_SCCRUH_12;
-    uint32_t TMR4_SCCRUH_13;
-    uint32_t TMR4_SCCRUH_14;
-    uint32_t TMR4_SCCRUH_15;
-} stc_tmr4_sccruh_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_SCCRUL_0;
-    uint32_t TMR4_SCCRUL_1;
-    uint32_t TMR4_SCCRUL_2;
-    uint32_t TMR4_SCCRUL_3;
-    uint32_t TMR4_SCCRUL_4;
-    uint32_t TMR4_SCCRUL_5;
-    uint32_t TMR4_SCCRUL_6;
-    uint32_t TMR4_SCCRUL_7;
-    uint32_t TMR4_SCCRUL_8;
-    uint32_t TMR4_SCCRUL_9;
-    uint32_t TMR4_SCCRUL_10;
-    uint32_t TMR4_SCCRUL_11;
-    uint32_t TMR4_SCCRUL_12;
-    uint32_t TMR4_SCCRUL_13;
-    uint32_t TMR4_SCCRUL_14;
-    uint32_t TMR4_SCCRUL_15;
-} stc_tmr4_sccrul_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_SCCRVH_0;
-    uint32_t TMR4_SCCRVH_1;
-    uint32_t TMR4_SCCRVH_2;
-    uint32_t TMR4_SCCRVH_3;
-    uint32_t TMR4_SCCRVH_4;
-    uint32_t TMR4_SCCRVH_5;
-    uint32_t TMR4_SCCRVH_6;
-    uint32_t TMR4_SCCRVH_7;
-    uint32_t TMR4_SCCRVH_8;
-    uint32_t TMR4_SCCRVH_9;
-    uint32_t TMR4_SCCRVH_10;
-    uint32_t TMR4_SCCRVH_11;
-    uint32_t TMR4_SCCRVH_12;
-    uint32_t TMR4_SCCRVH_13;
-    uint32_t TMR4_SCCRVH_14;
-    uint32_t TMR4_SCCRVH_15;
-} stc_tmr4_sccrvh_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_SCCRVL_0;
-    uint32_t TMR4_SCCRVL_1;
-    uint32_t TMR4_SCCRVL_2;
-    uint32_t TMR4_SCCRVL_3;
-    uint32_t TMR4_SCCRVL_4;
-    uint32_t TMR4_SCCRVL_5;
-    uint32_t TMR4_SCCRVL_6;
-    uint32_t TMR4_SCCRVL_7;
-    uint32_t TMR4_SCCRVL_8;
-    uint32_t TMR4_SCCRVL_9;
-    uint32_t TMR4_SCCRVL_10;
-    uint32_t TMR4_SCCRVL_11;
-    uint32_t TMR4_SCCRVL_12;
-    uint32_t TMR4_SCCRVL_13;
-    uint32_t TMR4_SCCRVL_14;
-    uint32_t TMR4_SCCRVL_15;
-} stc_tmr4_sccrvl_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_SCCRWH_0;
-    uint32_t TMR4_SCCRWH_1;
-    uint32_t TMR4_SCCRWH_2;
-    uint32_t TMR4_SCCRWH_3;
-    uint32_t TMR4_SCCRWH_4;
-    uint32_t TMR4_SCCRWH_5;
-    uint32_t TMR4_SCCRWH_6;
-    uint32_t TMR4_SCCRWH_7;
-    uint32_t TMR4_SCCRWH_8;
-    uint32_t TMR4_SCCRWH_9;
-    uint32_t TMR4_SCCRWH_10;
-    uint32_t TMR4_SCCRWH_11;
-    uint32_t TMR4_SCCRWH_12;
-    uint32_t TMR4_SCCRWH_13;
-    uint32_t TMR4_SCCRWH_14;
-    uint32_t TMR4_SCCRWH_15;
-} stc_tmr4_sccrwh_bit_t;
-
-typedef struct
-{
-    uint32_t TMR4_SCCRWL_0;
-    uint32_t TMR4_SCCRWL_1;
-    uint32_t TMR4_SCCRWL_2;
-    uint32_t TMR4_SCCRWL_3;
-    uint32_t TMR4_SCCRWL_4;
-    uint32_t TMR4_SCCRWL_5;
-    uint32_t TMR4_SCCRWL_6;
-    uint32_t TMR4_SCCRWL_7;
-    uint32_t TMR4_SCCRWL_8;
-    uint32_t TMR4_SCCRWL_9;
-    uint32_t TMR4_SCCRWL_10;
-    uint32_t TMR4_SCCRWL_11;
-    uint32_t TMR4_SCCRWL_12;
-    uint32_t TMR4_SCCRWL_13;
-    uint32_t TMR4_SCCRWL_14;
-    uint32_t TMR4_SCCRWL_15;
-} stc_tmr4_sccrwl_bit_t;
-
-typedef struct
-{
     __IO uint32_t BUFEN0;
     __IO uint32_t BUFEN1;
     __IO uint32_t EVTOS0;
@@ -49546,11 +36052,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t AMC0;
-    __IO uint32_t AMC1;
-    __IO uint32_t AMC2;
-    __IO uint32_t AMC3;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED0[6];
     __IO uint32_t MZCE;
     __IO uint32_t MPCE;
     uint32_t RESERVED1[8];
@@ -49592,762 +36094,6 @@ typedef struct
     __IO uint32_t PCTS;
     uint32_t RESERVED0[12];
 } stc_tmr4_scer_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_CNTER_0;
-    uint32_t TMR6_CNTER_1;
-    uint32_t TMR6_CNTER_2;
-    uint32_t TMR6_CNTER_3;
-    uint32_t TMR6_CNTER_4;
-    uint32_t TMR6_CNTER_5;
-    uint32_t TMR6_CNTER_6;
-    uint32_t TMR6_CNTER_7;
-    uint32_t TMR6_CNTER_8;
-    uint32_t TMR6_CNTER_9;
-    uint32_t TMR6_CNTER_10;
-    uint32_t TMR6_CNTER_11;
-    uint32_t TMR6_CNTER_12;
-    uint32_t TMR6_CNTER_13;
-    uint32_t TMR6_CNTER_14;
-    uint32_t TMR6_CNTER_15;
-    uint32_t TMR6_CNTER_16;
-    uint32_t TMR6_CNTER_17;
-    uint32_t TMR6_CNTER_18;
-    uint32_t TMR6_CNTER_19;
-    uint32_t TMR6_CNTER_20;
-    uint32_t TMR6_CNTER_21;
-    uint32_t TMR6_CNTER_22;
-    uint32_t TMR6_CNTER_23;
-    uint32_t TMR6_CNTER_24;
-    uint32_t TMR6_CNTER_25;
-    uint32_t TMR6_CNTER_26;
-    uint32_t TMR6_CNTER_27;
-    uint32_t TMR6_CNTER_28;
-    uint32_t TMR6_CNTER_29;
-    uint32_t TMR6_CNTER_30;
-    uint32_t TMR6_CNTER_31;
-} stc_tmr6_cnter_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_UPDAR_0;
-    uint32_t TMR6_UPDAR_1;
-    uint32_t TMR6_UPDAR_2;
-    uint32_t TMR6_UPDAR_3;
-    uint32_t TMR6_UPDAR_4;
-    uint32_t TMR6_UPDAR_5;
-    uint32_t TMR6_UPDAR_6;
-    uint32_t TMR6_UPDAR_7;
-    uint32_t TMR6_UPDAR_8;
-    uint32_t TMR6_UPDAR_9;
-    uint32_t TMR6_UPDAR_10;
-    uint32_t TMR6_UPDAR_11;
-    uint32_t TMR6_UPDAR_12;
-    uint32_t TMR6_UPDAR_13;
-    uint32_t TMR6_UPDAR_14;
-    uint32_t TMR6_UPDAR_15;
-    uint32_t TMR6_UPDAR_16;
-    uint32_t TMR6_UPDAR_17;
-    uint32_t TMR6_UPDAR_18;
-    uint32_t TMR6_UPDAR_19;
-    uint32_t TMR6_UPDAR_20;
-    uint32_t TMR6_UPDAR_21;
-    uint32_t TMR6_UPDAR_22;
-    uint32_t TMR6_UPDAR_23;
-    uint32_t TMR6_UPDAR_24;
-    uint32_t TMR6_UPDAR_25;
-    uint32_t TMR6_UPDAR_26;
-    uint32_t TMR6_UPDAR_27;
-    uint32_t TMR6_UPDAR_28;
-    uint32_t TMR6_UPDAR_29;
-    uint32_t TMR6_UPDAR_30;
-    uint32_t TMR6_UPDAR_31;
-} stc_tmr6_updar_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_PERAR_0;
-    uint32_t TMR6_PERAR_1;
-    uint32_t TMR6_PERAR_2;
-    uint32_t TMR6_PERAR_3;
-    uint32_t TMR6_PERAR_4;
-    uint32_t TMR6_PERAR_5;
-    uint32_t TMR6_PERAR_6;
-    uint32_t TMR6_PERAR_7;
-    uint32_t TMR6_PERAR_8;
-    uint32_t TMR6_PERAR_9;
-    uint32_t TMR6_PERAR_10;
-    uint32_t TMR6_PERAR_11;
-    uint32_t TMR6_PERAR_12;
-    uint32_t TMR6_PERAR_13;
-    uint32_t TMR6_PERAR_14;
-    uint32_t TMR6_PERAR_15;
-    uint32_t TMR6_PERAR_16;
-    uint32_t TMR6_PERAR_17;
-    uint32_t TMR6_PERAR_18;
-    uint32_t TMR6_PERAR_19;
-    uint32_t TMR6_PERAR_20;
-    uint32_t TMR6_PERAR_21;
-    uint32_t TMR6_PERAR_22;
-    uint32_t TMR6_PERAR_23;
-    uint32_t TMR6_PERAR_24;
-    uint32_t TMR6_PERAR_25;
-    uint32_t TMR6_PERAR_26;
-    uint32_t TMR6_PERAR_27;
-    uint32_t TMR6_PERAR_28;
-    uint32_t TMR6_PERAR_29;
-    uint32_t TMR6_PERAR_30;
-    uint32_t TMR6_PERAR_31;
-} stc_tmr6_perar_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_PERBR_0;
-    uint32_t TMR6_PERBR_1;
-    uint32_t TMR6_PERBR_2;
-    uint32_t TMR6_PERBR_3;
-    uint32_t TMR6_PERBR_4;
-    uint32_t TMR6_PERBR_5;
-    uint32_t TMR6_PERBR_6;
-    uint32_t TMR6_PERBR_7;
-    uint32_t TMR6_PERBR_8;
-    uint32_t TMR6_PERBR_9;
-    uint32_t TMR6_PERBR_10;
-    uint32_t TMR6_PERBR_11;
-    uint32_t TMR6_PERBR_12;
-    uint32_t TMR6_PERBR_13;
-    uint32_t TMR6_PERBR_14;
-    uint32_t TMR6_PERBR_15;
-    uint32_t TMR6_PERBR_16;
-    uint32_t TMR6_PERBR_17;
-    uint32_t TMR6_PERBR_18;
-    uint32_t TMR6_PERBR_19;
-    uint32_t TMR6_PERBR_20;
-    uint32_t TMR6_PERBR_21;
-    uint32_t TMR6_PERBR_22;
-    uint32_t TMR6_PERBR_23;
-    uint32_t TMR6_PERBR_24;
-    uint32_t TMR6_PERBR_25;
-    uint32_t TMR6_PERBR_26;
-    uint32_t TMR6_PERBR_27;
-    uint32_t TMR6_PERBR_28;
-    uint32_t TMR6_PERBR_29;
-    uint32_t TMR6_PERBR_30;
-    uint32_t TMR6_PERBR_31;
-} stc_tmr6_perbr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_PERCR_0;
-    uint32_t TMR6_PERCR_1;
-    uint32_t TMR6_PERCR_2;
-    uint32_t TMR6_PERCR_3;
-    uint32_t TMR6_PERCR_4;
-    uint32_t TMR6_PERCR_5;
-    uint32_t TMR6_PERCR_6;
-    uint32_t TMR6_PERCR_7;
-    uint32_t TMR6_PERCR_8;
-    uint32_t TMR6_PERCR_9;
-    uint32_t TMR6_PERCR_10;
-    uint32_t TMR6_PERCR_11;
-    uint32_t TMR6_PERCR_12;
-    uint32_t TMR6_PERCR_13;
-    uint32_t TMR6_PERCR_14;
-    uint32_t TMR6_PERCR_15;
-    uint32_t TMR6_PERCR_16;
-    uint32_t TMR6_PERCR_17;
-    uint32_t TMR6_PERCR_18;
-    uint32_t TMR6_PERCR_19;
-    uint32_t TMR6_PERCR_20;
-    uint32_t TMR6_PERCR_21;
-    uint32_t TMR6_PERCR_22;
-    uint32_t TMR6_PERCR_23;
-    uint32_t TMR6_PERCR_24;
-    uint32_t TMR6_PERCR_25;
-    uint32_t TMR6_PERCR_26;
-    uint32_t TMR6_PERCR_27;
-    uint32_t TMR6_PERCR_28;
-    uint32_t TMR6_PERCR_29;
-    uint32_t TMR6_PERCR_30;
-    uint32_t TMR6_PERCR_31;
-} stc_tmr6_percr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_GCMAR_0;
-    uint32_t TMR6_GCMAR_1;
-    uint32_t TMR6_GCMAR_2;
-    uint32_t TMR6_GCMAR_3;
-    uint32_t TMR6_GCMAR_4;
-    uint32_t TMR6_GCMAR_5;
-    uint32_t TMR6_GCMAR_6;
-    uint32_t TMR6_GCMAR_7;
-    uint32_t TMR6_GCMAR_8;
-    uint32_t TMR6_GCMAR_9;
-    uint32_t TMR6_GCMAR_10;
-    uint32_t TMR6_GCMAR_11;
-    uint32_t TMR6_GCMAR_12;
-    uint32_t TMR6_GCMAR_13;
-    uint32_t TMR6_GCMAR_14;
-    uint32_t TMR6_GCMAR_15;
-    uint32_t TMR6_GCMAR_16;
-    uint32_t TMR6_GCMAR_17;
-    uint32_t TMR6_GCMAR_18;
-    uint32_t TMR6_GCMAR_19;
-    uint32_t TMR6_GCMAR_20;
-    uint32_t TMR6_GCMAR_21;
-    uint32_t TMR6_GCMAR_22;
-    uint32_t TMR6_GCMAR_23;
-    uint32_t TMR6_GCMAR_24;
-    uint32_t TMR6_GCMAR_25;
-    uint32_t TMR6_GCMAR_26;
-    uint32_t TMR6_GCMAR_27;
-    uint32_t TMR6_GCMAR_28;
-    uint32_t TMR6_GCMAR_29;
-    uint32_t TMR6_GCMAR_30;
-    uint32_t TMR6_GCMAR_31;
-} stc_tmr6_gcmar_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_GCMBR_0;
-    uint32_t TMR6_GCMBR_1;
-    uint32_t TMR6_GCMBR_2;
-    uint32_t TMR6_GCMBR_3;
-    uint32_t TMR6_GCMBR_4;
-    uint32_t TMR6_GCMBR_5;
-    uint32_t TMR6_GCMBR_6;
-    uint32_t TMR6_GCMBR_7;
-    uint32_t TMR6_GCMBR_8;
-    uint32_t TMR6_GCMBR_9;
-    uint32_t TMR6_GCMBR_10;
-    uint32_t TMR6_GCMBR_11;
-    uint32_t TMR6_GCMBR_12;
-    uint32_t TMR6_GCMBR_13;
-    uint32_t TMR6_GCMBR_14;
-    uint32_t TMR6_GCMBR_15;
-    uint32_t TMR6_GCMBR_16;
-    uint32_t TMR6_GCMBR_17;
-    uint32_t TMR6_GCMBR_18;
-    uint32_t TMR6_GCMBR_19;
-    uint32_t TMR6_GCMBR_20;
-    uint32_t TMR6_GCMBR_21;
-    uint32_t TMR6_GCMBR_22;
-    uint32_t TMR6_GCMBR_23;
-    uint32_t TMR6_GCMBR_24;
-    uint32_t TMR6_GCMBR_25;
-    uint32_t TMR6_GCMBR_26;
-    uint32_t TMR6_GCMBR_27;
-    uint32_t TMR6_GCMBR_28;
-    uint32_t TMR6_GCMBR_29;
-    uint32_t TMR6_GCMBR_30;
-    uint32_t TMR6_GCMBR_31;
-} stc_tmr6_gcmbr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_GCMCR_0;
-    uint32_t TMR6_GCMCR_1;
-    uint32_t TMR6_GCMCR_2;
-    uint32_t TMR6_GCMCR_3;
-    uint32_t TMR6_GCMCR_4;
-    uint32_t TMR6_GCMCR_5;
-    uint32_t TMR6_GCMCR_6;
-    uint32_t TMR6_GCMCR_7;
-    uint32_t TMR6_GCMCR_8;
-    uint32_t TMR6_GCMCR_9;
-    uint32_t TMR6_GCMCR_10;
-    uint32_t TMR6_GCMCR_11;
-    uint32_t TMR6_GCMCR_12;
-    uint32_t TMR6_GCMCR_13;
-    uint32_t TMR6_GCMCR_14;
-    uint32_t TMR6_GCMCR_15;
-    uint32_t TMR6_GCMCR_16;
-    uint32_t TMR6_GCMCR_17;
-    uint32_t TMR6_GCMCR_18;
-    uint32_t TMR6_GCMCR_19;
-    uint32_t TMR6_GCMCR_20;
-    uint32_t TMR6_GCMCR_21;
-    uint32_t TMR6_GCMCR_22;
-    uint32_t TMR6_GCMCR_23;
-    uint32_t TMR6_GCMCR_24;
-    uint32_t TMR6_GCMCR_25;
-    uint32_t TMR6_GCMCR_26;
-    uint32_t TMR6_GCMCR_27;
-    uint32_t TMR6_GCMCR_28;
-    uint32_t TMR6_GCMCR_29;
-    uint32_t TMR6_GCMCR_30;
-    uint32_t TMR6_GCMCR_31;
-} stc_tmr6_gcmcr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_GCMDR_0;
-    uint32_t TMR6_GCMDR_1;
-    uint32_t TMR6_GCMDR_2;
-    uint32_t TMR6_GCMDR_3;
-    uint32_t TMR6_GCMDR_4;
-    uint32_t TMR6_GCMDR_5;
-    uint32_t TMR6_GCMDR_6;
-    uint32_t TMR6_GCMDR_7;
-    uint32_t TMR6_GCMDR_8;
-    uint32_t TMR6_GCMDR_9;
-    uint32_t TMR6_GCMDR_10;
-    uint32_t TMR6_GCMDR_11;
-    uint32_t TMR6_GCMDR_12;
-    uint32_t TMR6_GCMDR_13;
-    uint32_t TMR6_GCMDR_14;
-    uint32_t TMR6_GCMDR_15;
-    uint32_t TMR6_GCMDR_16;
-    uint32_t TMR6_GCMDR_17;
-    uint32_t TMR6_GCMDR_18;
-    uint32_t TMR6_GCMDR_19;
-    uint32_t TMR6_GCMDR_20;
-    uint32_t TMR6_GCMDR_21;
-    uint32_t TMR6_GCMDR_22;
-    uint32_t TMR6_GCMDR_23;
-    uint32_t TMR6_GCMDR_24;
-    uint32_t TMR6_GCMDR_25;
-    uint32_t TMR6_GCMDR_26;
-    uint32_t TMR6_GCMDR_27;
-    uint32_t TMR6_GCMDR_28;
-    uint32_t TMR6_GCMDR_29;
-    uint32_t TMR6_GCMDR_30;
-    uint32_t TMR6_GCMDR_31;
-} stc_tmr6_gcmdr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_GCMER_0;
-    uint32_t TMR6_GCMER_1;
-    uint32_t TMR6_GCMER_2;
-    uint32_t TMR6_GCMER_3;
-    uint32_t TMR6_GCMER_4;
-    uint32_t TMR6_GCMER_5;
-    uint32_t TMR6_GCMER_6;
-    uint32_t TMR6_GCMER_7;
-    uint32_t TMR6_GCMER_8;
-    uint32_t TMR6_GCMER_9;
-    uint32_t TMR6_GCMER_10;
-    uint32_t TMR6_GCMER_11;
-    uint32_t TMR6_GCMER_12;
-    uint32_t TMR6_GCMER_13;
-    uint32_t TMR6_GCMER_14;
-    uint32_t TMR6_GCMER_15;
-    uint32_t TMR6_GCMER_16;
-    uint32_t TMR6_GCMER_17;
-    uint32_t TMR6_GCMER_18;
-    uint32_t TMR6_GCMER_19;
-    uint32_t TMR6_GCMER_20;
-    uint32_t TMR6_GCMER_21;
-    uint32_t TMR6_GCMER_22;
-    uint32_t TMR6_GCMER_23;
-    uint32_t TMR6_GCMER_24;
-    uint32_t TMR6_GCMER_25;
-    uint32_t TMR6_GCMER_26;
-    uint32_t TMR6_GCMER_27;
-    uint32_t TMR6_GCMER_28;
-    uint32_t TMR6_GCMER_29;
-    uint32_t TMR6_GCMER_30;
-    uint32_t TMR6_GCMER_31;
-} stc_tmr6_gcmer_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_GCMFR_0;
-    uint32_t TMR6_GCMFR_1;
-    uint32_t TMR6_GCMFR_2;
-    uint32_t TMR6_GCMFR_3;
-    uint32_t TMR6_GCMFR_4;
-    uint32_t TMR6_GCMFR_5;
-    uint32_t TMR6_GCMFR_6;
-    uint32_t TMR6_GCMFR_7;
-    uint32_t TMR6_GCMFR_8;
-    uint32_t TMR6_GCMFR_9;
-    uint32_t TMR6_GCMFR_10;
-    uint32_t TMR6_GCMFR_11;
-    uint32_t TMR6_GCMFR_12;
-    uint32_t TMR6_GCMFR_13;
-    uint32_t TMR6_GCMFR_14;
-    uint32_t TMR6_GCMFR_15;
-    uint32_t TMR6_GCMFR_16;
-    uint32_t TMR6_GCMFR_17;
-    uint32_t TMR6_GCMFR_18;
-    uint32_t TMR6_GCMFR_19;
-    uint32_t TMR6_GCMFR_20;
-    uint32_t TMR6_GCMFR_21;
-    uint32_t TMR6_GCMFR_22;
-    uint32_t TMR6_GCMFR_23;
-    uint32_t TMR6_GCMFR_24;
-    uint32_t TMR6_GCMFR_25;
-    uint32_t TMR6_GCMFR_26;
-    uint32_t TMR6_GCMFR_27;
-    uint32_t TMR6_GCMFR_28;
-    uint32_t TMR6_GCMFR_29;
-    uint32_t TMR6_GCMFR_30;
-    uint32_t TMR6_GCMFR_31;
-} stc_tmr6_gcmfr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_SCMAR_0;
-    uint32_t TMR6_SCMAR_1;
-    uint32_t TMR6_SCMAR_2;
-    uint32_t TMR6_SCMAR_3;
-    uint32_t TMR6_SCMAR_4;
-    uint32_t TMR6_SCMAR_5;
-    uint32_t TMR6_SCMAR_6;
-    uint32_t TMR6_SCMAR_7;
-    uint32_t TMR6_SCMAR_8;
-    uint32_t TMR6_SCMAR_9;
-    uint32_t TMR6_SCMAR_10;
-    uint32_t TMR6_SCMAR_11;
-    uint32_t TMR6_SCMAR_12;
-    uint32_t TMR6_SCMAR_13;
-    uint32_t TMR6_SCMAR_14;
-    uint32_t TMR6_SCMAR_15;
-    uint32_t TMR6_SCMAR_16;
-    uint32_t TMR6_SCMAR_17;
-    uint32_t TMR6_SCMAR_18;
-    uint32_t TMR6_SCMAR_19;
-    uint32_t TMR6_SCMAR_20;
-    uint32_t TMR6_SCMAR_21;
-    uint32_t TMR6_SCMAR_22;
-    uint32_t TMR6_SCMAR_23;
-    uint32_t TMR6_SCMAR_24;
-    uint32_t TMR6_SCMAR_25;
-    uint32_t TMR6_SCMAR_26;
-    uint32_t TMR6_SCMAR_27;
-    uint32_t TMR6_SCMAR_28;
-    uint32_t TMR6_SCMAR_29;
-    uint32_t TMR6_SCMAR_30;
-    uint32_t TMR6_SCMAR_31;
-} stc_tmr6_scmar_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_SCMBR_0;
-    uint32_t TMR6_SCMBR_1;
-    uint32_t TMR6_SCMBR_2;
-    uint32_t TMR6_SCMBR_3;
-    uint32_t TMR6_SCMBR_4;
-    uint32_t TMR6_SCMBR_5;
-    uint32_t TMR6_SCMBR_6;
-    uint32_t TMR6_SCMBR_7;
-    uint32_t TMR6_SCMBR_8;
-    uint32_t TMR6_SCMBR_9;
-    uint32_t TMR6_SCMBR_10;
-    uint32_t TMR6_SCMBR_11;
-    uint32_t TMR6_SCMBR_12;
-    uint32_t TMR6_SCMBR_13;
-    uint32_t TMR6_SCMBR_14;
-    uint32_t TMR6_SCMBR_15;
-    uint32_t TMR6_SCMBR_16;
-    uint32_t TMR6_SCMBR_17;
-    uint32_t TMR6_SCMBR_18;
-    uint32_t TMR6_SCMBR_19;
-    uint32_t TMR6_SCMBR_20;
-    uint32_t TMR6_SCMBR_21;
-    uint32_t TMR6_SCMBR_22;
-    uint32_t TMR6_SCMBR_23;
-    uint32_t TMR6_SCMBR_24;
-    uint32_t TMR6_SCMBR_25;
-    uint32_t TMR6_SCMBR_26;
-    uint32_t TMR6_SCMBR_27;
-    uint32_t TMR6_SCMBR_28;
-    uint32_t TMR6_SCMBR_29;
-    uint32_t TMR6_SCMBR_30;
-    uint32_t TMR6_SCMBR_31;
-} stc_tmr6_scmbr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_SCMCR_0;
-    uint32_t TMR6_SCMCR_1;
-    uint32_t TMR6_SCMCR_2;
-    uint32_t TMR6_SCMCR_3;
-    uint32_t TMR6_SCMCR_4;
-    uint32_t TMR6_SCMCR_5;
-    uint32_t TMR6_SCMCR_6;
-    uint32_t TMR6_SCMCR_7;
-    uint32_t TMR6_SCMCR_8;
-    uint32_t TMR6_SCMCR_9;
-    uint32_t TMR6_SCMCR_10;
-    uint32_t TMR6_SCMCR_11;
-    uint32_t TMR6_SCMCR_12;
-    uint32_t TMR6_SCMCR_13;
-    uint32_t TMR6_SCMCR_14;
-    uint32_t TMR6_SCMCR_15;
-    uint32_t TMR6_SCMCR_16;
-    uint32_t TMR6_SCMCR_17;
-    uint32_t TMR6_SCMCR_18;
-    uint32_t TMR6_SCMCR_19;
-    uint32_t TMR6_SCMCR_20;
-    uint32_t TMR6_SCMCR_21;
-    uint32_t TMR6_SCMCR_22;
-    uint32_t TMR6_SCMCR_23;
-    uint32_t TMR6_SCMCR_24;
-    uint32_t TMR6_SCMCR_25;
-    uint32_t TMR6_SCMCR_26;
-    uint32_t TMR6_SCMCR_27;
-    uint32_t TMR6_SCMCR_28;
-    uint32_t TMR6_SCMCR_29;
-    uint32_t TMR6_SCMCR_30;
-    uint32_t TMR6_SCMCR_31;
-} stc_tmr6_scmcr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_SCMDR_0;
-    uint32_t TMR6_SCMDR_1;
-    uint32_t TMR6_SCMDR_2;
-    uint32_t TMR6_SCMDR_3;
-    uint32_t TMR6_SCMDR_4;
-    uint32_t TMR6_SCMDR_5;
-    uint32_t TMR6_SCMDR_6;
-    uint32_t TMR6_SCMDR_7;
-    uint32_t TMR6_SCMDR_8;
-    uint32_t TMR6_SCMDR_9;
-    uint32_t TMR6_SCMDR_10;
-    uint32_t TMR6_SCMDR_11;
-    uint32_t TMR6_SCMDR_12;
-    uint32_t TMR6_SCMDR_13;
-    uint32_t TMR6_SCMDR_14;
-    uint32_t TMR6_SCMDR_15;
-    uint32_t TMR6_SCMDR_16;
-    uint32_t TMR6_SCMDR_17;
-    uint32_t TMR6_SCMDR_18;
-    uint32_t TMR6_SCMDR_19;
-    uint32_t TMR6_SCMDR_20;
-    uint32_t TMR6_SCMDR_21;
-    uint32_t TMR6_SCMDR_22;
-    uint32_t TMR6_SCMDR_23;
-    uint32_t TMR6_SCMDR_24;
-    uint32_t TMR6_SCMDR_25;
-    uint32_t TMR6_SCMDR_26;
-    uint32_t TMR6_SCMDR_27;
-    uint32_t TMR6_SCMDR_28;
-    uint32_t TMR6_SCMDR_29;
-    uint32_t TMR6_SCMDR_30;
-    uint32_t TMR6_SCMDR_31;
-} stc_tmr6_scmdr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_SCMER_0;
-    uint32_t TMR6_SCMER_1;
-    uint32_t TMR6_SCMER_2;
-    uint32_t TMR6_SCMER_3;
-    uint32_t TMR6_SCMER_4;
-    uint32_t TMR6_SCMER_5;
-    uint32_t TMR6_SCMER_6;
-    uint32_t TMR6_SCMER_7;
-    uint32_t TMR6_SCMER_8;
-    uint32_t TMR6_SCMER_9;
-    uint32_t TMR6_SCMER_10;
-    uint32_t TMR6_SCMER_11;
-    uint32_t TMR6_SCMER_12;
-    uint32_t TMR6_SCMER_13;
-    uint32_t TMR6_SCMER_14;
-    uint32_t TMR6_SCMER_15;
-    uint32_t TMR6_SCMER_16;
-    uint32_t TMR6_SCMER_17;
-    uint32_t TMR6_SCMER_18;
-    uint32_t TMR6_SCMER_19;
-    uint32_t TMR6_SCMER_20;
-    uint32_t TMR6_SCMER_21;
-    uint32_t TMR6_SCMER_22;
-    uint32_t TMR6_SCMER_23;
-    uint32_t TMR6_SCMER_24;
-    uint32_t TMR6_SCMER_25;
-    uint32_t TMR6_SCMER_26;
-    uint32_t TMR6_SCMER_27;
-    uint32_t TMR6_SCMER_28;
-    uint32_t TMR6_SCMER_29;
-    uint32_t TMR6_SCMER_30;
-    uint32_t TMR6_SCMER_31;
-} stc_tmr6_scmer_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_SCMFR_0;
-    uint32_t TMR6_SCMFR_1;
-    uint32_t TMR6_SCMFR_2;
-    uint32_t TMR6_SCMFR_3;
-    uint32_t TMR6_SCMFR_4;
-    uint32_t TMR6_SCMFR_5;
-    uint32_t TMR6_SCMFR_6;
-    uint32_t TMR6_SCMFR_7;
-    uint32_t TMR6_SCMFR_8;
-    uint32_t TMR6_SCMFR_9;
-    uint32_t TMR6_SCMFR_10;
-    uint32_t TMR6_SCMFR_11;
-    uint32_t TMR6_SCMFR_12;
-    uint32_t TMR6_SCMFR_13;
-    uint32_t TMR6_SCMFR_14;
-    uint32_t TMR6_SCMFR_15;
-    uint32_t TMR6_SCMFR_16;
-    uint32_t TMR6_SCMFR_17;
-    uint32_t TMR6_SCMFR_18;
-    uint32_t TMR6_SCMFR_19;
-    uint32_t TMR6_SCMFR_20;
-    uint32_t TMR6_SCMFR_21;
-    uint32_t TMR6_SCMFR_22;
-    uint32_t TMR6_SCMFR_23;
-    uint32_t TMR6_SCMFR_24;
-    uint32_t TMR6_SCMFR_25;
-    uint32_t TMR6_SCMFR_26;
-    uint32_t TMR6_SCMFR_27;
-    uint32_t TMR6_SCMFR_28;
-    uint32_t TMR6_SCMFR_29;
-    uint32_t TMR6_SCMFR_30;
-    uint32_t TMR6_SCMFR_31;
-} stc_tmr6_scmfr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_DTUAR_0;
-    uint32_t TMR6_DTUAR_1;
-    uint32_t TMR6_DTUAR_2;
-    uint32_t TMR6_DTUAR_3;
-    uint32_t TMR6_DTUAR_4;
-    uint32_t TMR6_DTUAR_5;
-    uint32_t TMR6_DTUAR_6;
-    uint32_t TMR6_DTUAR_7;
-    uint32_t TMR6_DTUAR_8;
-    uint32_t TMR6_DTUAR_9;
-    uint32_t TMR6_DTUAR_10;
-    uint32_t TMR6_DTUAR_11;
-    uint32_t TMR6_DTUAR_12;
-    uint32_t TMR6_DTUAR_13;
-    uint32_t TMR6_DTUAR_14;
-    uint32_t TMR6_DTUAR_15;
-    uint32_t TMR6_DTUAR_16;
-    uint32_t TMR6_DTUAR_17;
-    uint32_t TMR6_DTUAR_18;
-    uint32_t TMR6_DTUAR_19;
-    uint32_t TMR6_DTUAR_20;
-    uint32_t TMR6_DTUAR_21;
-    uint32_t TMR6_DTUAR_22;
-    uint32_t TMR6_DTUAR_23;
-    uint32_t TMR6_DTUAR_24;
-    uint32_t TMR6_DTUAR_25;
-    uint32_t TMR6_DTUAR_26;
-    uint32_t TMR6_DTUAR_27;
-    uint32_t TMR6_DTUAR_28;
-    uint32_t TMR6_DTUAR_29;
-    uint32_t TMR6_DTUAR_30;
-    uint32_t TMR6_DTUAR_31;
-} stc_tmr6_dtuar_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_DTDAR_0;
-    uint32_t TMR6_DTDAR_1;
-    uint32_t TMR6_DTDAR_2;
-    uint32_t TMR6_DTDAR_3;
-    uint32_t TMR6_DTDAR_4;
-    uint32_t TMR6_DTDAR_5;
-    uint32_t TMR6_DTDAR_6;
-    uint32_t TMR6_DTDAR_7;
-    uint32_t TMR6_DTDAR_8;
-    uint32_t TMR6_DTDAR_9;
-    uint32_t TMR6_DTDAR_10;
-    uint32_t TMR6_DTDAR_11;
-    uint32_t TMR6_DTDAR_12;
-    uint32_t TMR6_DTDAR_13;
-    uint32_t TMR6_DTDAR_14;
-    uint32_t TMR6_DTDAR_15;
-    uint32_t TMR6_DTDAR_16;
-    uint32_t TMR6_DTDAR_17;
-    uint32_t TMR6_DTDAR_18;
-    uint32_t TMR6_DTDAR_19;
-    uint32_t TMR6_DTDAR_20;
-    uint32_t TMR6_DTDAR_21;
-    uint32_t TMR6_DTDAR_22;
-    uint32_t TMR6_DTDAR_23;
-    uint32_t TMR6_DTDAR_24;
-    uint32_t TMR6_DTDAR_25;
-    uint32_t TMR6_DTDAR_26;
-    uint32_t TMR6_DTDAR_27;
-    uint32_t TMR6_DTDAR_28;
-    uint32_t TMR6_DTDAR_29;
-    uint32_t TMR6_DTDAR_30;
-    uint32_t TMR6_DTDAR_31;
-} stc_tmr6_dtdar_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_DTUBR_0;
-    uint32_t TMR6_DTUBR_1;
-    uint32_t TMR6_DTUBR_2;
-    uint32_t TMR6_DTUBR_3;
-    uint32_t TMR6_DTUBR_4;
-    uint32_t TMR6_DTUBR_5;
-    uint32_t TMR6_DTUBR_6;
-    uint32_t TMR6_DTUBR_7;
-    uint32_t TMR6_DTUBR_8;
-    uint32_t TMR6_DTUBR_9;
-    uint32_t TMR6_DTUBR_10;
-    uint32_t TMR6_DTUBR_11;
-    uint32_t TMR6_DTUBR_12;
-    uint32_t TMR6_DTUBR_13;
-    uint32_t TMR6_DTUBR_14;
-    uint32_t TMR6_DTUBR_15;
-    uint32_t TMR6_DTUBR_16;
-    uint32_t TMR6_DTUBR_17;
-    uint32_t TMR6_DTUBR_18;
-    uint32_t TMR6_DTUBR_19;
-    uint32_t TMR6_DTUBR_20;
-    uint32_t TMR6_DTUBR_21;
-    uint32_t TMR6_DTUBR_22;
-    uint32_t TMR6_DTUBR_23;
-    uint32_t TMR6_DTUBR_24;
-    uint32_t TMR6_DTUBR_25;
-    uint32_t TMR6_DTUBR_26;
-    uint32_t TMR6_DTUBR_27;
-    uint32_t TMR6_DTUBR_28;
-    uint32_t TMR6_DTUBR_29;
-    uint32_t TMR6_DTUBR_30;
-    uint32_t TMR6_DTUBR_31;
-} stc_tmr6_dtubr_bit_t;
-
-typedef struct
-{
-    uint32_t TMR6_DTDBR_0;
-    uint32_t TMR6_DTDBR_1;
-    uint32_t TMR6_DTDBR_2;
-    uint32_t TMR6_DTDBR_3;
-    uint32_t TMR6_DTDBR_4;
-    uint32_t TMR6_DTDBR_5;
-    uint32_t TMR6_DTDBR_6;
-    uint32_t TMR6_DTDBR_7;
-    uint32_t TMR6_DTDBR_8;
-    uint32_t TMR6_DTDBR_9;
-    uint32_t TMR6_DTDBR_10;
-    uint32_t TMR6_DTDBR_11;
-    uint32_t TMR6_DTDBR_12;
-    uint32_t TMR6_DTDBR_13;
-    uint32_t TMR6_DTDBR_14;
-    uint32_t TMR6_DTDBR_15;
-    uint32_t TMR6_DTDBR_16;
-    uint32_t TMR6_DTDBR_17;
-    uint32_t TMR6_DTDBR_18;
-    uint32_t TMR6_DTDBR_19;
-    uint32_t TMR6_DTDBR_20;
-    uint32_t TMR6_DTDBR_21;
-    uint32_t TMR6_DTDBR_22;
-    uint32_t TMR6_DTDBR_23;
-    uint32_t TMR6_DTDBR_24;
-    uint32_t TMR6_DTDBR_25;
-    uint32_t TMR6_DTDBR_26;
-    uint32_t TMR6_DTDBR_27;
-    uint32_t TMR6_DTDBR_28;
-    uint32_t TMR6_DTDBR_29;
-    uint32_t TMR6_DTDBR_30;
-    uint32_t TMR6_DTDBR_31;
-} stc_tmr6_dtdbr_bit_t;
 
 typedef struct
 {
@@ -51103,84 +36849,8 @@ typedef struct
 typedef struct
 {
     __IO uint32_t LOAD;
-    uint32_t RESERVED0[1];
-    __IO uint32_t CNT0;
-    __IO uint32_t CNT1;
-    __IO uint32_t CNT2;
-    uint32_t RESERVED1[27];
+    uint32_t RESERVED0[31];
 } stc_trng_mr_bit_t;
-
-typedef struct
-{
-    uint32_t TRNG_DR0_0;
-    uint32_t TRNG_DR0_1;
-    uint32_t TRNG_DR0_2;
-    uint32_t TRNG_DR0_3;
-    uint32_t TRNG_DR0_4;
-    uint32_t TRNG_DR0_5;
-    uint32_t TRNG_DR0_6;
-    uint32_t TRNG_DR0_7;
-    uint32_t TRNG_DR0_8;
-    uint32_t TRNG_DR0_9;
-    uint32_t TRNG_DR0_10;
-    uint32_t TRNG_DR0_11;
-    uint32_t TRNG_DR0_12;
-    uint32_t TRNG_DR0_13;
-    uint32_t TRNG_DR0_14;
-    uint32_t TRNG_DR0_15;
-    uint32_t TRNG_DR0_16;
-    uint32_t TRNG_DR0_17;
-    uint32_t TRNG_DR0_18;
-    uint32_t TRNG_DR0_19;
-    uint32_t TRNG_DR0_20;
-    uint32_t TRNG_DR0_21;
-    uint32_t TRNG_DR0_22;
-    uint32_t TRNG_DR0_23;
-    uint32_t TRNG_DR0_24;
-    uint32_t TRNG_DR0_25;
-    uint32_t TRNG_DR0_26;
-    uint32_t TRNG_DR0_27;
-    uint32_t TRNG_DR0_28;
-    uint32_t TRNG_DR0_29;
-    uint32_t TRNG_DR0_30;
-    uint32_t TRNG_DR0_31;
-} stc_trng_dr0_bit_t;
-
-typedef struct
-{
-    uint32_t TRNG_DR1_0;
-    uint32_t TRNG_DR1_1;
-    uint32_t TRNG_DR1_2;
-    uint32_t TRNG_DR1_3;
-    uint32_t TRNG_DR1_4;
-    uint32_t TRNG_DR1_5;
-    uint32_t TRNG_DR1_6;
-    uint32_t TRNG_DR1_7;
-    uint32_t TRNG_DR1_8;
-    uint32_t TRNG_DR1_9;
-    uint32_t TRNG_DR1_10;
-    uint32_t TRNG_DR1_11;
-    uint32_t TRNG_DR1_12;
-    uint32_t TRNG_DR1_13;
-    uint32_t TRNG_DR1_14;
-    uint32_t TRNG_DR1_15;
-    uint32_t TRNG_DR1_16;
-    uint32_t TRNG_DR1_17;
-    uint32_t TRNG_DR1_18;
-    uint32_t TRNG_DR1_19;
-    uint32_t TRNG_DR1_20;
-    uint32_t TRNG_DR1_21;
-    uint32_t TRNG_DR1_22;
-    uint32_t TRNG_DR1_23;
-    uint32_t TRNG_DR1_24;
-    uint32_t TRNG_DR1_25;
-    uint32_t TRNG_DR1_26;
-    uint32_t TRNG_DR1_27;
-    uint32_t TRNG_DR1_28;
-    uint32_t TRNG_DR1_29;
-    uint32_t TRNG_DR1_30;
-    uint32_t TRNG_DR1_31;
-} stc_trng_dr1_bit_t;
 
 typedef struct
 {
@@ -51202,49 +36872,10 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t TDR0;
-    __IO uint32_t TDR1;
-    __IO uint32_t TDR2;
-    __IO uint32_t TDR3;
-    __IO uint32_t TDR4;
-    __IO uint32_t TDR5;
-    __IO uint32_t TDR6;
-    __IO uint32_t TDR7;
-    __IO uint32_t TDR8;
+    uint32_t RESERVED0[9];
     __IO uint32_t MPID;
-    uint32_t RESERVED0[6];
-    __IO uint32_t RDR0;
-    __IO uint32_t RDR1;
-    __IO uint32_t RDR2;
-    __IO uint32_t RDR3;
-    __IO uint32_t RDR4;
-    __IO uint32_t RDR5;
-    __IO uint32_t RDR6;
-    __IO uint32_t RDR7;
-    __IO uint32_t RDR8;
-    uint32_t RESERVED1[7];
+    uint32_t RESERVED1[22];
 } stc_usart_dr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t DIV_FRACTION0;
-    __IO uint32_t DIV_FRACTION1;
-    __IO uint32_t DIV_FRACTION2;
-    __IO uint32_t DIV_FRACTION3;
-    __IO uint32_t DIV_FRACTION4;
-    __IO uint32_t DIV_FRACTION5;
-    __IO uint32_t DIV_FRACTION6;
-    uint32_t RESERVED0[1];
-    __IO uint32_t DIV_INTEGER0;
-    __IO uint32_t DIV_INTEGER1;
-    __IO uint32_t DIV_INTEGER2;
-    __IO uint32_t DIV_INTEGER3;
-    __IO uint32_t DIV_INTEGER4;
-    __IO uint32_t DIV_INTEGER5;
-    __IO uint32_t DIV_INTEGER6;
-    __IO uint32_t DIV_INTEGER7;
-    uint32_t RESERVED1[16];
-} stc_usart_brr_bit_t;
 
 typedef struct
 {
@@ -51325,27 +36956,6 @@ typedef struct
     __IO uint32_t LBMPSC1;
     uint32_t RESERVED0[28];
 } stc_usart_pr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t LBMC0;
-    __IO uint32_t LBMC1;
-    __IO uint32_t LBMC2;
-    __IO uint32_t LBMC3;
-    __IO uint32_t LBMC4;
-    __IO uint32_t LBMC5;
-    __IO uint32_t LBMC6;
-    __IO uint32_t LBMC7;
-    __IO uint32_t LBMC8;
-    __IO uint32_t LBMC9;
-    __IO uint32_t LBMC10;
-    __IO uint32_t LBMC11;
-    __IO uint32_t LBMC12;
-    __IO uint32_t LBMC13;
-    __IO uint32_t LBMC14;
-    __IO uint32_t LBMC15;
-    uint32_t RESERVED0[16];
-} stc_usart_lbmc_bit_t;
 
 typedef struct
 {
@@ -51440,12 +37050,7 @@ typedef struct
     uint32_t RESERVED0[1];
     __IO uint32_t RXFFLSH;
     __IO uint32_t TXFFLSH;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
-    __IO uint32_t TXFNUM4;
-    uint32_t RESERVED1[19];
+    uint32_t RESERVED1[24];
     __IO uint32_t DMAREQ;
     __IO uint32_t AHBIDLE;
 } stc_usbfs_grstctl_bit_t;
@@ -51522,62 +37127,26 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t CHNUM0;
-    __IO uint32_t CHNUM1;
-    __IO uint32_t CHNUM2;
-    __IO uint32_t CHNUM3;
-    __IO uint32_t BCNT0;
-    __IO uint32_t BCNT1;
-    __IO uint32_t BCNT2;
-    __IO uint32_t BCNT3;
-    __IO uint32_t BCNT4;
-    __IO uint32_t BCNT5;
-    __IO uint32_t BCNT6;
-    __IO uint32_t BCNT7;
-    __IO uint32_t BCNT8;
-    __IO uint32_t BCNT9;
-    __IO uint32_t BCNT10;
+    uint32_t RESERVED0[15];
     __IO uint32_t DPID0;
     __IO uint32_t DPID1;
     __IO uint32_t PKTSTS0;
     __IO uint32_t PKTSTS1;
     __IO uint32_t PKTSTS2;
     __IO uint32_t PKTSTS3;
-    __IO uint32_t FN0;
-    __IO uint32_t FN1;
-    __IO uint32_t FN2;
-    __IO uint32_t FN3;
-    uint32_t RESERVED0[7];
+    uint32_t RESERVED1[11];
 } stc_usbfs_grxstsr_bit_t;
 
 typedef struct
 {
-    __IO uint32_t CHNUM0;
-    __IO uint32_t CHNUM1;
-    __IO uint32_t CHNUM2;
-    __IO uint32_t CHNUM3;
-    __IO uint32_t BCNT0;
-    __IO uint32_t BCNT1;
-    __IO uint32_t BCNT2;
-    __IO uint32_t BCNT3;
-    __IO uint32_t BCNT4;
-    __IO uint32_t BCNT5;
-    __IO uint32_t BCNT6;
-    __IO uint32_t BCNT7;
-    __IO uint32_t BCNT8;
-    __IO uint32_t BCNT9;
-    __IO uint32_t BCNT10;
+    uint32_t RESERVED0[15];
     __IO uint32_t DPID0;
     __IO uint32_t DPID1;
     __IO uint32_t PKTSTS0;
     __IO uint32_t PKTSTS1;
     __IO uint32_t PKTSTS2;
     __IO uint32_t PKTSTS3;
-    __IO uint32_t FN0;
-    __IO uint32_t FN1;
-    __IO uint32_t FN2;
-    __IO uint32_t FN3;
-    uint32_t RESERVED0[7];
+    uint32_t RESERVED1[11];
 } stc_usbfs_grxstsp_bit_t;
 
 typedef struct
@@ -51597,56 +37166,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t NPTXFSTADDR0;
-    __IO uint32_t NPTXFSTADDR1;
-    __IO uint32_t NPTXFSTADDR2;
-    __IO uint32_t NPTXFSTADDR3;
-    __IO uint32_t NPTXFSTADDR4;
-    __IO uint32_t NPTXFSTADDR5;
-    __IO uint32_t NPTXFSTADDR6;
-    __IO uint32_t NPTXFSTADDR7;
-    __IO uint32_t NPTXFSTADDR8;
-    __IO uint32_t NPTXFSTADDR9;
-    uint32_t RESERVED0[6];
-    __IO uint32_t NPTXFDEP0;
-    __IO uint32_t NPTXFDEP1;
-    __IO uint32_t NPTXFDEP2;
-    __IO uint32_t NPTXFDEP3;
-    __IO uint32_t NPTXFDEP4;
-    __IO uint32_t NPTXFDEP5;
-    __IO uint32_t NPTXFDEP6;
-    __IO uint32_t NPTXFDEP7;
-    __IO uint32_t NPTXFDEP8;
-    __IO uint32_t NPTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_gnptxfsiz_bit_t;
-
-typedef struct
-{
-    __IO uint32_t NPTXFSPCAVAIL0;
-    __IO uint32_t NPTXFSPCAVAIL1;
-    __IO uint32_t NPTXFSPCAVAIL2;
-    __IO uint32_t NPTXFSPCAVAIL3;
-    __IO uint32_t NPTXFSPCAVAIL4;
-    __IO uint32_t NPTXFSPCAVAIL5;
-    __IO uint32_t NPTXFSPCAVAIL6;
-    __IO uint32_t NPTXFSPCAVAIL7;
-    __IO uint32_t NPTXFSPCAVAIL8;
-    __IO uint32_t NPTXFSPCAVAIL9;
-    __IO uint32_t NPTXFSPCAVAIL10;
-    __IO uint32_t NPTXFSPCAVAIL11;
-    __IO uint32_t NPTXFSPCAVAIL12;
-    __IO uint32_t NPTXFSPCAVAIL13;
-    __IO uint32_t NPTXFSPCAVAIL14;
-    __IO uint32_t NPTXFSPCAVAIL15;
-    __IO uint32_t NPTXQSPCAVAIL0;
-    __IO uint32_t NPTXQSPCAVAIL1;
-    __IO uint32_t NPTXQSPCAVAIL2;
-    __IO uint32_t NPTXQSPCAVAIL3;
-    __IO uint32_t NPTXQSPCAVAIL4;
-    __IO uint32_t NPTXQSPCAVAIL5;
-    __IO uint32_t NPTXQSPCAVAIL6;
-    __IO uint32_t NPTXQSPCAVAIL7;
+    uint32_t RESERVED0[24];
     __IO uint32_t NPTXQTOP0;
     __IO uint32_t NPTXQTOP1;
     __IO uint32_t NPTXQTOP2;
@@ -51654,44 +37174,8 @@ typedef struct
     __IO uint32_t NPTXQTOP4;
     __IO uint32_t NPTXQTOP5;
     __IO uint32_t NPTXQTOP6;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_gnptxsts_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_GUID_0;
-    uint32_t USBFS_GUID_1;
-    uint32_t USBFS_GUID_2;
-    uint32_t USBFS_GUID_3;
-    uint32_t USBFS_GUID_4;
-    uint32_t USBFS_GUID_5;
-    uint32_t USBFS_GUID_6;
-    uint32_t USBFS_GUID_7;
-    uint32_t USBFS_GUID_8;
-    uint32_t USBFS_GUID_9;
-    uint32_t USBFS_GUID_10;
-    uint32_t USBFS_GUID_11;
-    uint32_t USBFS_GUID_12;
-    uint32_t USBFS_GUID_13;
-    uint32_t USBFS_GUID_14;
-    uint32_t USBFS_GUID_15;
-    uint32_t USBFS_GUID_16;
-    uint32_t USBFS_GUID_17;
-    uint32_t USBFS_GUID_18;
-    uint32_t USBFS_GUID_19;
-    uint32_t USBFS_GUID_20;
-    uint32_t USBFS_GUID_21;
-    uint32_t USBFS_GUID_22;
-    uint32_t USBFS_GUID_23;
-    uint32_t USBFS_GUID_24;
-    uint32_t USBFS_GUID_25;
-    uint32_t USBFS_GUID_26;
-    uint32_t USBFS_GUID_27;
-    uint32_t USBFS_GUID_28;
-    uint32_t USBFS_GUID_29;
-    uint32_t USBFS_GUID_30;
-    uint32_t USBFS_GUID_31;
-} stc_usbfs_guid_bit_t;
 
 typedef struct
 {
@@ -51712,516 +37196,13 @@ typedef struct
     __IO uint32_t COREL1RES1;
     __IO uint32_t SLPSTS;
     __IO uint32_t L1RESUMEOK;
-    __IO uint32_t LPM_CHNL_INDX0;
-    __IO uint32_t LPM_CHNL_INDX1;
-    __IO uint32_t LPM_CHNL_INDX2;
-    __IO uint32_t LPM_CHNL_INDX3;
-    __IO uint32_t LPM_RETRY_CNT0;
-    __IO uint32_t LPM_RETRY_CNT1;
-    __IO uint32_t LPM_RETRY_CNT2;
+    uint32_t RESERVED0[7];
     __IO uint32_t SNDLPM;
-    __IO uint32_t LPM_RETRYCNT_STS0;
-    __IO uint32_t LPM_RETRYCNT_STS1;
-    __IO uint32_t LPM_RETRYCNT_STS2;
+    uint32_t RESERVED1[3];
     __IO uint32_t LPM_ENBESL;
     __IO uint32_t LPM_RESTORESLPSTS;
-    uint32_t RESERVED0[2];
+    uint32_t RESERVED2[2];
 } stc_usbfs_glpmcfg_bit_t;
-
-typedef struct
-{
-    __IO uint32_t GDFIFOCFG0;
-    __IO uint32_t GDFIFOCFG1;
-    __IO uint32_t GDFIFOCFG2;
-    __IO uint32_t GDFIFOCFG3;
-    __IO uint32_t GDFIFOCFG4;
-    __IO uint32_t GDFIFOCFG5;
-    __IO uint32_t GDFIFOCFG6;
-    __IO uint32_t GDFIFOCFG7;
-    __IO uint32_t GDFIFOCFG8;
-    __IO uint32_t GDFIFOCFG9;
-    __IO uint32_t GDFIFOCFG10;
-    __IO uint32_t GDFIFOCFG11;
-    __IO uint32_t GDFIFOCFG12;
-    __IO uint32_t GDFIFOCFG13;
-    __IO uint32_t GDFIFOCFG14;
-    __IO uint32_t GDFIFOCFG15;
-    __IO uint32_t EPINFOBASEADDR0;
-    __IO uint32_t EPINFOBASEADDR1;
-    __IO uint32_t EPINFOBASEADDR2;
-    __IO uint32_t EPINFOBASEADDR3;
-    __IO uint32_t EPINFOBASEADDR4;
-    __IO uint32_t EPINFOBASEADDR5;
-    __IO uint32_t EPINFOBASEADDR6;
-    __IO uint32_t EPINFOBASEADDR7;
-    __IO uint32_t EPINFOBASEADDR8;
-    __IO uint32_t EPINFOBASEADDR9;
-    __IO uint32_t EPINFOBASEADDR10;
-    __IO uint32_t EPINFOBASEADDR11;
-    __IO uint32_t EPINFOBASEADDR12;
-    __IO uint32_t EPINFOBASEADDR13;
-    __IO uint32_t EPINFOBASEADDR14;
-    __IO uint32_t EPINFOBASEADDR15;
-} stc_usbfs_gdfifocfg_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PTXFSTADDR0;
-    __IO uint32_t PTXFSTADDR1;
-    __IO uint32_t PTXFSTADDR2;
-    __IO uint32_t PTXFSTADDR3;
-    __IO uint32_t PTXFSTADDR4;
-    __IO uint32_t PTXFSTADDR5;
-    __IO uint32_t PTXFSTADDR6;
-    __IO uint32_t PTXFSTADDR7;
-    __IO uint32_t PTXFSTADDR8;
-    __IO uint32_t PTXFSTADDR9;
-    __IO uint32_t PTXFSTADDR10;
-    uint32_t RESERVED0[5];
-    __IO uint32_t PTXFSIZE0;
-    __IO uint32_t PTXFSIZE1;
-    __IO uint32_t PTXFSIZE2;
-    __IO uint32_t PTXFSIZE3;
-    __IO uint32_t PTXFSIZE4;
-    __IO uint32_t PTXFSIZE5;
-    __IO uint32_t PTXFSIZE6;
-    __IO uint32_t PTXFSIZE7;
-    __IO uint32_t PTXFSIZE8;
-    __IO uint32_t PTXFSIZE9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_hptxfsiz_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    uint32_t RESERVED0[5];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    uint32_t RESERVED0[5];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    uint32_t RESERVED0[4];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    uint32_t RESERVED0[4];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    uint32_t RESERVED0[4];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    uint32_t RESERVED0[3];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    uint32_t RESERVED0[3];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    uint32_t RESERVED0[3];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    uint32_t RESERVED0[3];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    uint32_t RESERVED0[3];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    uint32_t RESERVED0[3];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    __IO uint32_t INEPNTXFSTADDR13;
-    uint32_t RESERVED0[2];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    __IO uint32_t INEPNTXFSTADDR13;
-    uint32_t RESERVED0[2];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    __IO uint32_t INEPNTXFSTADDR13;
-    uint32_t RESERVED0[2];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPNTXFSTADDR0;
-    __IO uint32_t INEPNTXFSTADDR1;
-    __IO uint32_t INEPNTXFSTADDR2;
-    __IO uint32_t INEPNTXFSTADDR3;
-    __IO uint32_t INEPNTXFSTADDR4;
-    __IO uint32_t INEPNTXFSTADDR5;
-    __IO uint32_t INEPNTXFSTADDR6;
-    __IO uint32_t INEPNTXFSTADDR7;
-    __IO uint32_t INEPNTXFSTADDR8;
-    __IO uint32_t INEPNTXFSTADDR9;
-    __IO uint32_t INEPNTXFSTADDR10;
-    __IO uint32_t INEPNTXFSTADDR11;
-    __IO uint32_t INEPNTXFSTADDR12;
-    __IO uint32_t INEPNTXFSTADDR13;
-    uint32_t RESERVED0[2];
-    __IO uint32_t INEPNTXFDEP0;
-    __IO uint32_t INEPNTXFDEP1;
-    __IO uint32_t INEPNTXFDEP2;
-    __IO uint32_t INEPNTXFDEP3;
-    __IO uint32_t INEPNTXFDEP4;
-    __IO uint32_t INEPNTXFDEP5;
-    __IO uint32_t INEPNTXFDEP6;
-    __IO uint32_t INEPNTXFDEP7;
-    __IO uint32_t INEPNTXFDEP8;
-    __IO uint32_t INEPNTXFDEP9;
-    uint32_t RESERVED1[6];
-} stc_usbfs_dieptxf15_bit_t;
 
 typedef struct
 {
@@ -52230,102 +37211,20 @@ typedef struct
     __IO uint32_t FSLSSUPP;
     uint32_t RESERVED0[4];
     __IO uint32_t ENA32KHZS;
-    __IO uint32_t RESVALID0;
-    __IO uint32_t RESVALID1;
-    __IO uint32_t RESVALID2;
-    __IO uint32_t RESVALID3;
-    __IO uint32_t RESVALID4;
-    __IO uint32_t RESVALID5;
-    __IO uint32_t RESVALID6;
-    __IO uint32_t RESVALID7;
-    uint32_t RESERVED1[15];
+    uint32_t RESERVED1[23];
     __IO uint32_t MODECHTIMEN;
 } stc_usbfs_hcfg_bit_t;
 
 typedef struct
 {
-    __IO uint32_t FRINT0;
-    __IO uint32_t FRINT1;
-    __IO uint32_t FRINT2;
-    __IO uint32_t FRINT3;
-    __IO uint32_t FRINT4;
-    __IO uint32_t FRINT5;
-    __IO uint32_t FRINT6;
-    __IO uint32_t FRINT7;
-    __IO uint32_t FRINT8;
-    __IO uint32_t FRINT9;
-    __IO uint32_t FRINT10;
-    __IO uint32_t FRINT11;
-    __IO uint32_t FRINT12;
-    __IO uint32_t FRINT13;
-    __IO uint32_t FRINT14;
-    __IO uint32_t FRINT15;
+    uint32_t RESERVED0[16];
     __IO uint32_t HFIRRLDCTRL;
-    uint32_t RESERVED0[15];
+    uint32_t RESERVED1[15];
 } stc_usbfs_hfir_bit_t;
 
 typedef struct
 {
-    __IO uint32_t FRNUM0;
-    __IO uint32_t FRNUM1;
-    __IO uint32_t FRNUM2;
-    __IO uint32_t FRNUM3;
-    __IO uint32_t FRNUM4;
-    __IO uint32_t FRNUM5;
-    __IO uint32_t FRNUM6;
-    __IO uint32_t FRNUM7;
-    __IO uint32_t FRNUM8;
-    __IO uint32_t FRNUM9;
-    __IO uint32_t FRNUM10;
-    __IO uint32_t FRNUM11;
-    __IO uint32_t FRNUM12;
-    __IO uint32_t FRNUM13;
-    __IO uint32_t FRNUM14;
-    __IO uint32_t FRNUM15;
-    __IO uint32_t FRREM0;
-    __IO uint32_t FRREM1;
-    __IO uint32_t FRREM2;
-    __IO uint32_t FRREM3;
-    __IO uint32_t FRREM4;
-    __IO uint32_t FRREM5;
-    __IO uint32_t FRREM6;
-    __IO uint32_t FRREM7;
-    __IO uint32_t FRREM8;
-    __IO uint32_t FRREM9;
-    __IO uint32_t FRREM10;
-    __IO uint32_t FRREM11;
-    __IO uint32_t FRREM12;
-    __IO uint32_t FRREM13;
-    __IO uint32_t FRREM14;
-    __IO uint32_t FRREM15;
-} stc_usbfs_hfnum_bit_t;
-
-typedef struct
-{
-    __IO uint32_t PTXFSPCAVAIL0;
-    __IO uint32_t PTXFSPCAVAIL1;
-    __IO uint32_t PTXFSPCAVAIL2;
-    __IO uint32_t PTXFSPCAVAIL3;
-    __IO uint32_t PTXFSPCAVAIL4;
-    __IO uint32_t PTXFSPCAVAIL5;
-    __IO uint32_t PTXFSPCAVAIL6;
-    __IO uint32_t PTXFSPCAVAIL7;
-    __IO uint32_t PTXFSPCAVAIL8;
-    __IO uint32_t PTXFSPCAVAIL9;
-    __IO uint32_t PTXFSPCAVAIL10;
-    __IO uint32_t PTXFSPCAVAIL11;
-    __IO uint32_t PTXFSPCAVAIL12;
-    __IO uint32_t PTXFSPCAVAIL13;
-    __IO uint32_t PTXFSPCAVAIL14;
-    __IO uint32_t PTXFSPCAVAIL15;
-    __IO uint32_t PTXQSPCAVAIL0;
-    __IO uint32_t PTXQSPCAVAIL1;
-    __IO uint32_t PTXQSPCAVAIL2;
-    __IO uint32_t PTXQSPCAVAIL3;
-    __IO uint32_t PTXQSPCAVAIL4;
-    __IO uint32_t PTXQSPCAVAIL5;
-    __IO uint32_t PTXQSPCAVAIL6;
-    __IO uint32_t PTXQSPCAVAIL7;
+    uint32_t RESERVED0[24];
     __IO uint32_t PTXQTOP0;
     __IO uint32_t PTXQTOP1;
     __IO uint32_t PTXQTOP2;
@@ -52404,35 +37303,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
     __IO uint32_t EC0;
     __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[7];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -52440,24 +37319,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt0_bit_t;
 
@@ -52495,35 +37361,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -52531,71 +37369,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA0_0;
-    uint32_t USBFS_HCDMA0_1;
-    uint32_t USBFS_HCDMA0_2;
-    uint32_t USBFS_HCDMA0_3;
-    uint32_t USBFS_HCDMA0_4;
-    uint32_t USBFS_HCDMA0_5;
-    uint32_t USBFS_HCDMA0_6;
-    uint32_t USBFS_HCDMA0_7;
-    uint32_t USBFS_HCDMA0_8;
-    uint32_t USBFS_HCDMA0_9;
-    uint32_t USBFS_HCDMA0_10;
-    uint32_t USBFS_HCDMA0_11;
-    uint32_t USBFS_HCDMA0_12;
-    uint32_t USBFS_HCDMA0_13;
-    uint32_t USBFS_HCDMA0_14;
-    uint32_t USBFS_HCDMA0_15;
-    uint32_t USBFS_HCDMA0_16;
-    uint32_t USBFS_HCDMA0_17;
-    uint32_t USBFS_HCDMA0_18;
-    uint32_t USBFS_HCDMA0_19;
-    uint32_t USBFS_HCDMA0_20;
-    uint32_t USBFS_HCDMA0_21;
-    uint32_t USBFS_HCDMA0_22;
-    uint32_t USBFS_HCDMA0_23;
-    uint32_t USBFS_HCDMA0_24;
-    uint32_t USBFS_HCDMA0_25;
-    uint32_t USBFS_HCDMA0_26;
-    uint32_t USBFS_HCDMA0_27;
-    uint32_t USBFS_HCDMA0_28;
-    uint32_t USBFS_HCDMA0_29;
-    uint32_t USBFS_HCDMA0_30;
-    uint32_t USBFS_HCDMA0_31;
-} stc_usbfs_hcdma0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -52603,24 +37383,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt1_bit_t;
 
@@ -52658,35 +37425,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -52694,71 +37433,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA1_0;
-    uint32_t USBFS_HCDMA1_1;
-    uint32_t USBFS_HCDMA1_2;
-    uint32_t USBFS_HCDMA1_3;
-    uint32_t USBFS_HCDMA1_4;
-    uint32_t USBFS_HCDMA1_5;
-    uint32_t USBFS_HCDMA1_6;
-    uint32_t USBFS_HCDMA1_7;
-    uint32_t USBFS_HCDMA1_8;
-    uint32_t USBFS_HCDMA1_9;
-    uint32_t USBFS_HCDMA1_10;
-    uint32_t USBFS_HCDMA1_11;
-    uint32_t USBFS_HCDMA1_12;
-    uint32_t USBFS_HCDMA1_13;
-    uint32_t USBFS_HCDMA1_14;
-    uint32_t USBFS_HCDMA1_15;
-    uint32_t USBFS_HCDMA1_16;
-    uint32_t USBFS_HCDMA1_17;
-    uint32_t USBFS_HCDMA1_18;
-    uint32_t USBFS_HCDMA1_19;
-    uint32_t USBFS_HCDMA1_20;
-    uint32_t USBFS_HCDMA1_21;
-    uint32_t USBFS_HCDMA1_22;
-    uint32_t USBFS_HCDMA1_23;
-    uint32_t USBFS_HCDMA1_24;
-    uint32_t USBFS_HCDMA1_25;
-    uint32_t USBFS_HCDMA1_26;
-    uint32_t USBFS_HCDMA1_27;
-    uint32_t USBFS_HCDMA1_28;
-    uint32_t USBFS_HCDMA1_29;
-    uint32_t USBFS_HCDMA1_30;
-    uint32_t USBFS_HCDMA1_31;
-} stc_usbfs_hcdma1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -52766,24 +37447,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt2_bit_t;
 
@@ -52821,35 +37489,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -52857,71 +37497,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA2_0;
-    uint32_t USBFS_HCDMA2_1;
-    uint32_t USBFS_HCDMA2_2;
-    uint32_t USBFS_HCDMA2_3;
-    uint32_t USBFS_HCDMA2_4;
-    uint32_t USBFS_HCDMA2_5;
-    uint32_t USBFS_HCDMA2_6;
-    uint32_t USBFS_HCDMA2_7;
-    uint32_t USBFS_HCDMA2_8;
-    uint32_t USBFS_HCDMA2_9;
-    uint32_t USBFS_HCDMA2_10;
-    uint32_t USBFS_HCDMA2_11;
-    uint32_t USBFS_HCDMA2_12;
-    uint32_t USBFS_HCDMA2_13;
-    uint32_t USBFS_HCDMA2_14;
-    uint32_t USBFS_HCDMA2_15;
-    uint32_t USBFS_HCDMA2_16;
-    uint32_t USBFS_HCDMA2_17;
-    uint32_t USBFS_HCDMA2_18;
-    uint32_t USBFS_HCDMA2_19;
-    uint32_t USBFS_HCDMA2_20;
-    uint32_t USBFS_HCDMA2_21;
-    uint32_t USBFS_HCDMA2_22;
-    uint32_t USBFS_HCDMA2_23;
-    uint32_t USBFS_HCDMA2_24;
-    uint32_t USBFS_HCDMA2_25;
-    uint32_t USBFS_HCDMA2_26;
-    uint32_t USBFS_HCDMA2_27;
-    uint32_t USBFS_HCDMA2_28;
-    uint32_t USBFS_HCDMA2_29;
-    uint32_t USBFS_HCDMA2_30;
-    uint32_t USBFS_HCDMA2_31;
-} stc_usbfs_hcdma2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -52929,24 +37511,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt3_bit_t;
 
@@ -52984,35 +37553,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53020,71 +37561,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA3_0;
-    uint32_t USBFS_HCDMA3_1;
-    uint32_t USBFS_HCDMA3_2;
-    uint32_t USBFS_HCDMA3_3;
-    uint32_t USBFS_HCDMA3_4;
-    uint32_t USBFS_HCDMA3_5;
-    uint32_t USBFS_HCDMA3_6;
-    uint32_t USBFS_HCDMA3_7;
-    uint32_t USBFS_HCDMA3_8;
-    uint32_t USBFS_HCDMA3_9;
-    uint32_t USBFS_HCDMA3_10;
-    uint32_t USBFS_HCDMA3_11;
-    uint32_t USBFS_HCDMA3_12;
-    uint32_t USBFS_HCDMA3_13;
-    uint32_t USBFS_HCDMA3_14;
-    uint32_t USBFS_HCDMA3_15;
-    uint32_t USBFS_HCDMA3_16;
-    uint32_t USBFS_HCDMA3_17;
-    uint32_t USBFS_HCDMA3_18;
-    uint32_t USBFS_HCDMA3_19;
-    uint32_t USBFS_HCDMA3_20;
-    uint32_t USBFS_HCDMA3_21;
-    uint32_t USBFS_HCDMA3_22;
-    uint32_t USBFS_HCDMA3_23;
-    uint32_t USBFS_HCDMA3_24;
-    uint32_t USBFS_HCDMA3_25;
-    uint32_t USBFS_HCDMA3_26;
-    uint32_t USBFS_HCDMA3_27;
-    uint32_t USBFS_HCDMA3_28;
-    uint32_t USBFS_HCDMA3_29;
-    uint32_t USBFS_HCDMA3_30;
-    uint32_t USBFS_HCDMA3_31;
-} stc_usbfs_hcdma3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -53092,24 +37575,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt4_bit_t;
 
@@ -53147,35 +37617,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53183,71 +37625,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA4_0;
-    uint32_t USBFS_HCDMA4_1;
-    uint32_t USBFS_HCDMA4_2;
-    uint32_t USBFS_HCDMA4_3;
-    uint32_t USBFS_HCDMA4_4;
-    uint32_t USBFS_HCDMA4_5;
-    uint32_t USBFS_HCDMA4_6;
-    uint32_t USBFS_HCDMA4_7;
-    uint32_t USBFS_HCDMA4_8;
-    uint32_t USBFS_HCDMA4_9;
-    uint32_t USBFS_HCDMA4_10;
-    uint32_t USBFS_HCDMA4_11;
-    uint32_t USBFS_HCDMA4_12;
-    uint32_t USBFS_HCDMA4_13;
-    uint32_t USBFS_HCDMA4_14;
-    uint32_t USBFS_HCDMA4_15;
-    uint32_t USBFS_HCDMA4_16;
-    uint32_t USBFS_HCDMA4_17;
-    uint32_t USBFS_HCDMA4_18;
-    uint32_t USBFS_HCDMA4_19;
-    uint32_t USBFS_HCDMA4_20;
-    uint32_t USBFS_HCDMA4_21;
-    uint32_t USBFS_HCDMA4_22;
-    uint32_t USBFS_HCDMA4_23;
-    uint32_t USBFS_HCDMA4_24;
-    uint32_t USBFS_HCDMA4_25;
-    uint32_t USBFS_HCDMA4_26;
-    uint32_t USBFS_HCDMA4_27;
-    uint32_t USBFS_HCDMA4_28;
-    uint32_t USBFS_HCDMA4_29;
-    uint32_t USBFS_HCDMA4_30;
-    uint32_t USBFS_HCDMA4_31;
-} stc_usbfs_hcdma4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -53255,24 +37639,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt5_bit_t;
 
@@ -53310,35 +37681,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53346,71 +37689,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA5_0;
-    uint32_t USBFS_HCDMA5_1;
-    uint32_t USBFS_HCDMA5_2;
-    uint32_t USBFS_HCDMA5_3;
-    uint32_t USBFS_HCDMA5_4;
-    uint32_t USBFS_HCDMA5_5;
-    uint32_t USBFS_HCDMA5_6;
-    uint32_t USBFS_HCDMA5_7;
-    uint32_t USBFS_HCDMA5_8;
-    uint32_t USBFS_HCDMA5_9;
-    uint32_t USBFS_HCDMA5_10;
-    uint32_t USBFS_HCDMA5_11;
-    uint32_t USBFS_HCDMA5_12;
-    uint32_t USBFS_HCDMA5_13;
-    uint32_t USBFS_HCDMA5_14;
-    uint32_t USBFS_HCDMA5_15;
-    uint32_t USBFS_HCDMA5_16;
-    uint32_t USBFS_HCDMA5_17;
-    uint32_t USBFS_HCDMA5_18;
-    uint32_t USBFS_HCDMA5_19;
-    uint32_t USBFS_HCDMA5_20;
-    uint32_t USBFS_HCDMA5_21;
-    uint32_t USBFS_HCDMA5_22;
-    uint32_t USBFS_HCDMA5_23;
-    uint32_t USBFS_HCDMA5_24;
-    uint32_t USBFS_HCDMA5_25;
-    uint32_t USBFS_HCDMA5_26;
-    uint32_t USBFS_HCDMA5_27;
-    uint32_t USBFS_HCDMA5_28;
-    uint32_t USBFS_HCDMA5_29;
-    uint32_t USBFS_HCDMA5_30;
-    uint32_t USBFS_HCDMA5_31;
-} stc_usbfs_hcdma5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -53418,24 +37703,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt6_bit_t;
 
@@ -53473,35 +37745,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53509,71 +37753,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA6_0;
-    uint32_t USBFS_HCDMA6_1;
-    uint32_t USBFS_HCDMA6_2;
-    uint32_t USBFS_HCDMA6_3;
-    uint32_t USBFS_HCDMA6_4;
-    uint32_t USBFS_HCDMA6_5;
-    uint32_t USBFS_HCDMA6_6;
-    uint32_t USBFS_HCDMA6_7;
-    uint32_t USBFS_HCDMA6_8;
-    uint32_t USBFS_HCDMA6_9;
-    uint32_t USBFS_HCDMA6_10;
-    uint32_t USBFS_HCDMA6_11;
-    uint32_t USBFS_HCDMA6_12;
-    uint32_t USBFS_HCDMA6_13;
-    uint32_t USBFS_HCDMA6_14;
-    uint32_t USBFS_HCDMA6_15;
-    uint32_t USBFS_HCDMA6_16;
-    uint32_t USBFS_HCDMA6_17;
-    uint32_t USBFS_HCDMA6_18;
-    uint32_t USBFS_HCDMA6_19;
-    uint32_t USBFS_HCDMA6_20;
-    uint32_t USBFS_HCDMA6_21;
-    uint32_t USBFS_HCDMA6_22;
-    uint32_t USBFS_HCDMA6_23;
-    uint32_t USBFS_HCDMA6_24;
-    uint32_t USBFS_HCDMA6_25;
-    uint32_t USBFS_HCDMA6_26;
-    uint32_t USBFS_HCDMA6_27;
-    uint32_t USBFS_HCDMA6_28;
-    uint32_t USBFS_HCDMA6_29;
-    uint32_t USBFS_HCDMA6_30;
-    uint32_t USBFS_HCDMA6_31;
-} stc_usbfs_hcdma6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -53581,24 +37767,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt7_bit_t;
 
@@ -53636,35 +37809,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53672,71 +37817,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA7_0;
-    uint32_t USBFS_HCDMA7_1;
-    uint32_t USBFS_HCDMA7_2;
-    uint32_t USBFS_HCDMA7_3;
-    uint32_t USBFS_HCDMA7_4;
-    uint32_t USBFS_HCDMA7_5;
-    uint32_t USBFS_HCDMA7_6;
-    uint32_t USBFS_HCDMA7_7;
-    uint32_t USBFS_HCDMA7_8;
-    uint32_t USBFS_HCDMA7_9;
-    uint32_t USBFS_HCDMA7_10;
-    uint32_t USBFS_HCDMA7_11;
-    uint32_t USBFS_HCDMA7_12;
-    uint32_t USBFS_HCDMA7_13;
-    uint32_t USBFS_HCDMA7_14;
-    uint32_t USBFS_HCDMA7_15;
-    uint32_t USBFS_HCDMA7_16;
-    uint32_t USBFS_HCDMA7_17;
-    uint32_t USBFS_HCDMA7_18;
-    uint32_t USBFS_HCDMA7_19;
-    uint32_t USBFS_HCDMA7_20;
-    uint32_t USBFS_HCDMA7_21;
-    uint32_t USBFS_HCDMA7_22;
-    uint32_t USBFS_HCDMA7_23;
-    uint32_t USBFS_HCDMA7_24;
-    uint32_t USBFS_HCDMA7_25;
-    uint32_t USBFS_HCDMA7_26;
-    uint32_t USBFS_HCDMA7_27;
-    uint32_t USBFS_HCDMA7_28;
-    uint32_t USBFS_HCDMA7_29;
-    uint32_t USBFS_HCDMA7_30;
-    uint32_t USBFS_HCDMA7_31;
-} stc_usbfs_hcdma7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -53744,24 +37831,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt8_bit_t;
 
@@ -53799,35 +37873,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53835,71 +37881,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA8_0;
-    uint32_t USBFS_HCDMA8_1;
-    uint32_t USBFS_HCDMA8_2;
-    uint32_t USBFS_HCDMA8_3;
-    uint32_t USBFS_HCDMA8_4;
-    uint32_t USBFS_HCDMA8_5;
-    uint32_t USBFS_HCDMA8_6;
-    uint32_t USBFS_HCDMA8_7;
-    uint32_t USBFS_HCDMA8_8;
-    uint32_t USBFS_HCDMA8_9;
-    uint32_t USBFS_HCDMA8_10;
-    uint32_t USBFS_HCDMA8_11;
-    uint32_t USBFS_HCDMA8_12;
-    uint32_t USBFS_HCDMA8_13;
-    uint32_t USBFS_HCDMA8_14;
-    uint32_t USBFS_HCDMA8_15;
-    uint32_t USBFS_HCDMA8_16;
-    uint32_t USBFS_HCDMA8_17;
-    uint32_t USBFS_HCDMA8_18;
-    uint32_t USBFS_HCDMA8_19;
-    uint32_t USBFS_HCDMA8_20;
-    uint32_t USBFS_HCDMA8_21;
-    uint32_t USBFS_HCDMA8_22;
-    uint32_t USBFS_HCDMA8_23;
-    uint32_t USBFS_HCDMA8_24;
-    uint32_t USBFS_HCDMA8_25;
-    uint32_t USBFS_HCDMA8_26;
-    uint32_t USBFS_HCDMA8_27;
-    uint32_t USBFS_HCDMA8_28;
-    uint32_t USBFS_HCDMA8_29;
-    uint32_t USBFS_HCDMA8_30;
-    uint32_t USBFS_HCDMA8_31;
-} stc_usbfs_hcdma8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -53907,24 +37895,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt9_bit_t;
 
@@ -53962,35 +37937,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -53998,71 +37945,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA9_0;
-    uint32_t USBFS_HCDMA9_1;
-    uint32_t USBFS_HCDMA9_2;
-    uint32_t USBFS_HCDMA9_3;
-    uint32_t USBFS_HCDMA9_4;
-    uint32_t USBFS_HCDMA9_5;
-    uint32_t USBFS_HCDMA9_6;
-    uint32_t USBFS_HCDMA9_7;
-    uint32_t USBFS_HCDMA9_8;
-    uint32_t USBFS_HCDMA9_9;
-    uint32_t USBFS_HCDMA9_10;
-    uint32_t USBFS_HCDMA9_11;
-    uint32_t USBFS_HCDMA9_12;
-    uint32_t USBFS_HCDMA9_13;
-    uint32_t USBFS_HCDMA9_14;
-    uint32_t USBFS_HCDMA9_15;
-    uint32_t USBFS_HCDMA9_16;
-    uint32_t USBFS_HCDMA9_17;
-    uint32_t USBFS_HCDMA9_18;
-    uint32_t USBFS_HCDMA9_19;
-    uint32_t USBFS_HCDMA9_20;
-    uint32_t USBFS_HCDMA9_21;
-    uint32_t USBFS_HCDMA9_22;
-    uint32_t USBFS_HCDMA9_23;
-    uint32_t USBFS_HCDMA9_24;
-    uint32_t USBFS_HCDMA9_25;
-    uint32_t USBFS_HCDMA9_26;
-    uint32_t USBFS_HCDMA9_27;
-    uint32_t USBFS_HCDMA9_28;
-    uint32_t USBFS_HCDMA9_29;
-    uint32_t USBFS_HCDMA9_30;
-    uint32_t USBFS_HCDMA9_31;
-} stc_usbfs_hcdma9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -54070,24 +37959,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt10_bit_t;
 
@@ -54125,35 +38001,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -54161,71 +38009,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA10_0;
-    uint32_t USBFS_HCDMA10_1;
-    uint32_t USBFS_HCDMA10_2;
-    uint32_t USBFS_HCDMA10_3;
-    uint32_t USBFS_HCDMA10_4;
-    uint32_t USBFS_HCDMA10_5;
-    uint32_t USBFS_HCDMA10_6;
-    uint32_t USBFS_HCDMA10_7;
-    uint32_t USBFS_HCDMA10_8;
-    uint32_t USBFS_HCDMA10_9;
-    uint32_t USBFS_HCDMA10_10;
-    uint32_t USBFS_HCDMA10_11;
-    uint32_t USBFS_HCDMA10_12;
-    uint32_t USBFS_HCDMA10_13;
-    uint32_t USBFS_HCDMA10_14;
-    uint32_t USBFS_HCDMA10_15;
-    uint32_t USBFS_HCDMA10_16;
-    uint32_t USBFS_HCDMA10_17;
-    uint32_t USBFS_HCDMA10_18;
-    uint32_t USBFS_HCDMA10_19;
-    uint32_t USBFS_HCDMA10_20;
-    uint32_t USBFS_HCDMA10_21;
-    uint32_t USBFS_HCDMA10_22;
-    uint32_t USBFS_HCDMA10_23;
-    uint32_t USBFS_HCDMA10_24;
-    uint32_t USBFS_HCDMA10_25;
-    uint32_t USBFS_HCDMA10_26;
-    uint32_t USBFS_HCDMA10_27;
-    uint32_t USBFS_HCDMA10_28;
-    uint32_t USBFS_HCDMA10_29;
-    uint32_t USBFS_HCDMA10_30;
-    uint32_t USBFS_HCDMA10_31;
-} stc_usbfs_hcdma10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -54233,24 +38023,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt11_bit_t;
 
@@ -54288,35 +38065,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -54324,71 +38073,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA11_0;
-    uint32_t USBFS_HCDMA11_1;
-    uint32_t USBFS_HCDMA11_2;
-    uint32_t USBFS_HCDMA11_3;
-    uint32_t USBFS_HCDMA11_4;
-    uint32_t USBFS_HCDMA11_5;
-    uint32_t USBFS_HCDMA11_6;
-    uint32_t USBFS_HCDMA11_7;
-    uint32_t USBFS_HCDMA11_8;
-    uint32_t USBFS_HCDMA11_9;
-    uint32_t USBFS_HCDMA11_10;
-    uint32_t USBFS_HCDMA11_11;
-    uint32_t USBFS_HCDMA11_12;
-    uint32_t USBFS_HCDMA11_13;
-    uint32_t USBFS_HCDMA11_14;
-    uint32_t USBFS_HCDMA11_15;
-    uint32_t USBFS_HCDMA11_16;
-    uint32_t USBFS_HCDMA11_17;
-    uint32_t USBFS_HCDMA11_18;
-    uint32_t USBFS_HCDMA11_19;
-    uint32_t USBFS_HCDMA11_20;
-    uint32_t USBFS_HCDMA11_21;
-    uint32_t USBFS_HCDMA11_22;
-    uint32_t USBFS_HCDMA11_23;
-    uint32_t USBFS_HCDMA11_24;
-    uint32_t USBFS_HCDMA11_25;
-    uint32_t USBFS_HCDMA11_26;
-    uint32_t USBFS_HCDMA11_27;
-    uint32_t USBFS_HCDMA11_28;
-    uint32_t USBFS_HCDMA11_29;
-    uint32_t USBFS_HCDMA11_30;
-    uint32_t USBFS_HCDMA11_31;
-} stc_usbfs_hcdma11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -54396,24 +38087,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt12_bit_t;
 
@@ -54451,35 +38129,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -54487,71 +38137,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA12_0;
-    uint32_t USBFS_HCDMA12_1;
-    uint32_t USBFS_HCDMA12_2;
-    uint32_t USBFS_HCDMA12_3;
-    uint32_t USBFS_HCDMA12_4;
-    uint32_t USBFS_HCDMA12_5;
-    uint32_t USBFS_HCDMA12_6;
-    uint32_t USBFS_HCDMA12_7;
-    uint32_t USBFS_HCDMA12_8;
-    uint32_t USBFS_HCDMA12_9;
-    uint32_t USBFS_HCDMA12_10;
-    uint32_t USBFS_HCDMA12_11;
-    uint32_t USBFS_HCDMA12_12;
-    uint32_t USBFS_HCDMA12_13;
-    uint32_t USBFS_HCDMA12_14;
-    uint32_t USBFS_HCDMA12_15;
-    uint32_t USBFS_HCDMA12_16;
-    uint32_t USBFS_HCDMA12_17;
-    uint32_t USBFS_HCDMA12_18;
-    uint32_t USBFS_HCDMA12_19;
-    uint32_t USBFS_HCDMA12_20;
-    uint32_t USBFS_HCDMA12_21;
-    uint32_t USBFS_HCDMA12_22;
-    uint32_t USBFS_HCDMA12_23;
-    uint32_t USBFS_HCDMA12_24;
-    uint32_t USBFS_HCDMA12_25;
-    uint32_t USBFS_HCDMA12_26;
-    uint32_t USBFS_HCDMA12_27;
-    uint32_t USBFS_HCDMA12_28;
-    uint32_t USBFS_HCDMA12_29;
-    uint32_t USBFS_HCDMA12_30;
-    uint32_t USBFS_HCDMA12_31;
-} stc_usbfs_hcdma12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -54559,24 +38151,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt13_bit_t;
 
@@ -54614,35 +38193,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -54650,71 +38201,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA13_0;
-    uint32_t USBFS_HCDMA13_1;
-    uint32_t USBFS_HCDMA13_2;
-    uint32_t USBFS_HCDMA13_3;
-    uint32_t USBFS_HCDMA13_4;
-    uint32_t USBFS_HCDMA13_5;
-    uint32_t USBFS_HCDMA13_6;
-    uint32_t USBFS_HCDMA13_7;
-    uint32_t USBFS_HCDMA13_8;
-    uint32_t USBFS_HCDMA13_9;
-    uint32_t USBFS_HCDMA13_10;
-    uint32_t USBFS_HCDMA13_11;
-    uint32_t USBFS_HCDMA13_12;
-    uint32_t USBFS_HCDMA13_13;
-    uint32_t USBFS_HCDMA13_14;
-    uint32_t USBFS_HCDMA13_15;
-    uint32_t USBFS_HCDMA13_16;
-    uint32_t USBFS_HCDMA13_17;
-    uint32_t USBFS_HCDMA13_18;
-    uint32_t USBFS_HCDMA13_19;
-    uint32_t USBFS_HCDMA13_20;
-    uint32_t USBFS_HCDMA13_21;
-    uint32_t USBFS_HCDMA13_22;
-    uint32_t USBFS_HCDMA13_23;
-    uint32_t USBFS_HCDMA13_24;
-    uint32_t USBFS_HCDMA13_25;
-    uint32_t USBFS_HCDMA13_26;
-    uint32_t USBFS_HCDMA13_27;
-    uint32_t USBFS_HCDMA13_28;
-    uint32_t USBFS_HCDMA13_29;
-    uint32_t USBFS_HCDMA13_30;
-    uint32_t USBFS_HCDMA13_31;
-} stc_usbfs_hcdma13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -54722,24 +38215,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt14_bit_t;
 
@@ -54777,35 +38257,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -54813,71 +38265,13 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA14_0;
-    uint32_t USBFS_HCDMA14_1;
-    uint32_t USBFS_HCDMA14_2;
-    uint32_t USBFS_HCDMA14_3;
-    uint32_t USBFS_HCDMA14_4;
-    uint32_t USBFS_HCDMA14_5;
-    uint32_t USBFS_HCDMA14_6;
-    uint32_t USBFS_HCDMA14_7;
-    uint32_t USBFS_HCDMA14_8;
-    uint32_t USBFS_HCDMA14_9;
-    uint32_t USBFS_HCDMA14_10;
-    uint32_t USBFS_HCDMA14_11;
-    uint32_t USBFS_HCDMA14_12;
-    uint32_t USBFS_HCDMA14_13;
-    uint32_t USBFS_HCDMA14_14;
-    uint32_t USBFS_HCDMA14_15;
-    uint32_t USBFS_HCDMA14_16;
-    uint32_t USBFS_HCDMA14_17;
-    uint32_t USBFS_HCDMA14_18;
-    uint32_t USBFS_HCDMA14_19;
-    uint32_t USBFS_HCDMA14_20;
-    uint32_t USBFS_HCDMA14_21;
-    uint32_t USBFS_HCDMA14_22;
-    uint32_t USBFS_HCDMA14_23;
-    uint32_t USBFS_HCDMA14_24;
-    uint32_t USBFS_HCDMA14_25;
-    uint32_t USBFS_HCDMA14_26;
-    uint32_t USBFS_HCDMA14_27;
-    uint32_t USBFS_HCDMA14_28;
-    uint32_t USBFS_HCDMA14_29;
-    uint32_t USBFS_HCDMA14_30;
-    uint32_t USBFS_HCDMA14_31;
-} stc_usbfs_hcdma14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    __IO uint32_t EPNUM0;
-    __IO uint32_t EPNUM1;
-    __IO uint32_t EPNUM2;
-    __IO uint32_t EPNUM3;
+    uint32_t RESERVED0[15];
     __IO uint32_t EPDIR;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t LSPDDEV;
     __IO uint32_t EPTYPE0;
     __IO uint32_t EPTYPE1;
-    __IO uint32_t EC0;
-    __IO uint32_t EC1;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED2[9];
     __IO uint32_t ODDFRM;
     __IO uint32_t CHDIS;
     __IO uint32_t CHENA;
@@ -54885,24 +38279,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t PRTADDR0;
-    __IO uint32_t PRTADDR1;
-    __IO uint32_t PRTADDR2;
-    __IO uint32_t PRTADDR3;
-    __IO uint32_t PRTADDR4;
-    __IO uint32_t PRTADDR5;
-    __IO uint32_t PRTADDR6;
-    __IO uint32_t HUBADDR0;
-    __IO uint32_t HUBADDR1;
-    __IO uint32_t HUBADDR2;
-    __IO uint32_t HUBADDR3;
-    __IO uint32_t HUBADDR4;
-    __IO uint32_t HUBADDR5;
-    __IO uint32_t HUBADDR6;
+    uint32_t RESERVED0[14];
     __IO uint32_t XACTPOS0;
     __IO uint32_t XACTPOS1;
     __IO uint32_t COMPSPLT;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
     __IO uint32_t SPLTENA;
 } stc_usbfs_hcsplt15_bit_t;
 
@@ -54940,35 +38321,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t PID0;
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
@@ -54976,67 +38329,20 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBFS_HCDMA15_0;
-    uint32_t USBFS_HCDMA15_1;
-    uint32_t USBFS_HCDMA15_2;
-    uint32_t USBFS_HCDMA15_3;
-    uint32_t USBFS_HCDMA15_4;
-    uint32_t USBFS_HCDMA15_5;
-    uint32_t USBFS_HCDMA15_6;
-    uint32_t USBFS_HCDMA15_7;
-    uint32_t USBFS_HCDMA15_8;
-    uint32_t USBFS_HCDMA15_9;
-    uint32_t USBFS_HCDMA15_10;
-    uint32_t USBFS_HCDMA15_11;
-    uint32_t USBFS_HCDMA15_12;
-    uint32_t USBFS_HCDMA15_13;
-    uint32_t USBFS_HCDMA15_14;
-    uint32_t USBFS_HCDMA15_15;
-    uint32_t USBFS_HCDMA15_16;
-    uint32_t USBFS_HCDMA15_17;
-    uint32_t USBFS_HCDMA15_18;
-    uint32_t USBFS_HCDMA15_19;
-    uint32_t USBFS_HCDMA15_20;
-    uint32_t USBFS_HCDMA15_21;
-    uint32_t USBFS_HCDMA15_22;
-    uint32_t USBFS_HCDMA15_23;
-    uint32_t USBFS_HCDMA15_24;
-    uint32_t USBFS_HCDMA15_25;
-    uint32_t USBFS_HCDMA15_26;
-    uint32_t USBFS_HCDMA15_27;
-    uint32_t USBFS_HCDMA15_28;
-    uint32_t USBFS_HCDMA15_29;
-    uint32_t USBFS_HCDMA15_30;
-    uint32_t USBFS_HCDMA15_31;
-} stc_usbfs_hcdma15_bit_t;
-
-typedef struct
-{
     __IO uint32_t DEVSPD0;
     __IO uint32_t DEVSPD1;
     __IO uint32_t NZSTSOUTHSHK;
     __IO uint32_t ENA32KHZSUSP;
-    __IO uint32_t DEVADDR0;
-    __IO uint32_t DEVADDR1;
-    __IO uint32_t DEVADDR2;
-    __IO uint32_t DEVADDR3;
-    __IO uint32_t DEVADDR4;
-    __IO uint32_t DEVADDR5;
-    __IO uint32_t DEVADDR6;
+    uint32_t RESERVED0[7];
     __IO uint32_t PERFRINT0;
     __IO uint32_t PERFRINT1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
     __IO uint32_t XCVRDLY;
     __IO uint32_t ERRATICINTMSK;
-    uint32_t RESERVED1[8];
+    uint32_t RESERVED2[8];
     __IO uint32_t PERSCHINTVL0;
     __IO uint32_t PERSCHINTVL1;
-    __IO uint32_t RESVALID0;
-    __IO uint32_t RESVALID1;
-    __IO uint32_t RESVALID2;
-    __IO uint32_t RESVALID3;
-    __IO uint32_t RESVALID4;
-    __IO uint32_t RESVALID5;
+    uint32_t RESERVED3[6];
 } stc_usbfs_dcfg_bit_t;
 
 typedef struct
@@ -55068,21 +38374,7 @@ typedef struct
     __IO uint32_t ENUMSPD0;
     __IO uint32_t ENUMSPD1;
     __IO uint32_t ERRTICERR;
-    uint32_t RESERVED0[4];
-    __IO uint32_t SOFFN0;
-    __IO uint32_t SOFFN1;
-    __IO uint32_t SOFFN2;
-    __IO uint32_t SOFFN3;
-    __IO uint32_t SOFFN4;
-    __IO uint32_t SOFFN5;
-    __IO uint32_t SOFFN6;
-    __IO uint32_t SOFFN7;
-    __IO uint32_t SOFFN8;
-    __IO uint32_t SOFFN9;
-    __IO uint32_t SOFFN10;
-    __IO uint32_t SOFFN11;
-    __IO uint32_t SOFFN12;
-    __IO uint32_t SOFFN13;
+    uint32_t RESERVED0[18];
     __IO uint32_t DEVLNSTS0;
     __IO uint32_t DEVLNSTS1;
     uint32_t RESERVED1[8];
@@ -55217,9 +38509,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    uint32_t RESERVED0[13];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     uint32_t RESERVED1[1];
     __IO uint32_t NAKSTS;
@@ -55227,13 +38517,10 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED2[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED3[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
-    uint32_t RESERVED3[2];
+    uint32_t RESERVED4[2];
     __IO uint32_t EPDIS;
     __IO uint32_t EPENA;
 } stc_usbfs_diepctl0_bit_t;
@@ -55260,57 +38547,6 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    uint32_t RESERVED0[12];
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    uint32_t RESERVED1[11];
-} stc_usbfs_dieptsiz0_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA0_0;
-    uint32_t USBFS_DIEPDMA0_1;
-    uint32_t USBFS_DIEPDMA0_2;
-    uint32_t USBFS_DIEPDMA0_3;
-    uint32_t USBFS_DIEPDMA0_4;
-    uint32_t USBFS_DIEPDMA0_5;
-    uint32_t USBFS_DIEPDMA0_6;
-    uint32_t USBFS_DIEPDMA0_7;
-    uint32_t USBFS_DIEPDMA0_8;
-    uint32_t USBFS_DIEPDMA0_9;
-    uint32_t USBFS_DIEPDMA0_10;
-    uint32_t USBFS_DIEPDMA0_11;
-    uint32_t USBFS_DIEPDMA0_12;
-    uint32_t USBFS_DIEPDMA0_13;
-    uint32_t USBFS_DIEPDMA0_14;
-    uint32_t USBFS_DIEPDMA0_15;
-    uint32_t USBFS_DIEPDMA0_16;
-    uint32_t USBFS_DIEPDMA0_17;
-    uint32_t USBFS_DIEPDMA0_18;
-    uint32_t USBFS_DIEPDMA0_19;
-    uint32_t USBFS_DIEPDMA0_20;
-    uint32_t USBFS_DIEPDMA0_21;
-    uint32_t USBFS_DIEPDMA0_22;
-    uint32_t USBFS_DIEPDMA0_23;
-    uint32_t USBFS_DIEPDMA0_24;
-    uint32_t USBFS_DIEPDMA0_25;
-    uint32_t USBFS_DIEPDMA0_26;
-    uint32_t USBFS_DIEPDMA0_27;
-    uint32_t USBFS_DIEPDMA0_28;
-    uint32_t USBFS_DIEPDMA0_29;
-    uint32_t USBFS_DIEPDMA0_30;
-    uint32_t USBFS_DIEPDMA0_31;
-} stc_usbfs_diepdma0_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -55332,18 +38568,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -55351,10 +38576,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -55385,111 +38607,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz1_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA1_0;
-    uint32_t USBFS_DIEPDMA1_1;
-    uint32_t USBFS_DIEPDMA1_2;
-    uint32_t USBFS_DIEPDMA1_3;
-    uint32_t USBFS_DIEPDMA1_4;
-    uint32_t USBFS_DIEPDMA1_5;
-    uint32_t USBFS_DIEPDMA1_6;
-    uint32_t USBFS_DIEPDMA1_7;
-    uint32_t USBFS_DIEPDMA1_8;
-    uint32_t USBFS_DIEPDMA1_9;
-    uint32_t USBFS_DIEPDMA1_10;
-    uint32_t USBFS_DIEPDMA1_11;
-    uint32_t USBFS_DIEPDMA1_12;
-    uint32_t USBFS_DIEPDMA1_13;
-    uint32_t USBFS_DIEPDMA1_14;
-    uint32_t USBFS_DIEPDMA1_15;
-    uint32_t USBFS_DIEPDMA1_16;
-    uint32_t USBFS_DIEPDMA1_17;
-    uint32_t USBFS_DIEPDMA1_18;
-    uint32_t USBFS_DIEPDMA1_19;
-    uint32_t USBFS_DIEPDMA1_20;
-    uint32_t USBFS_DIEPDMA1_21;
-    uint32_t USBFS_DIEPDMA1_22;
-    uint32_t USBFS_DIEPDMA1_23;
-    uint32_t USBFS_DIEPDMA1_24;
-    uint32_t USBFS_DIEPDMA1_25;
-    uint32_t USBFS_DIEPDMA1_26;
-    uint32_t USBFS_DIEPDMA1_27;
-    uint32_t USBFS_DIEPDMA1_28;
-    uint32_t USBFS_DIEPDMA1_29;
-    uint32_t USBFS_DIEPDMA1_30;
-    uint32_t USBFS_DIEPDMA1_31;
-} stc_usbfs_diepdma1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -55497,10 +38615,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -55531,111 +38646,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz2_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA2_0;
-    uint32_t USBFS_DIEPDMA2_1;
-    uint32_t USBFS_DIEPDMA2_2;
-    uint32_t USBFS_DIEPDMA2_3;
-    uint32_t USBFS_DIEPDMA2_4;
-    uint32_t USBFS_DIEPDMA2_5;
-    uint32_t USBFS_DIEPDMA2_6;
-    uint32_t USBFS_DIEPDMA2_7;
-    uint32_t USBFS_DIEPDMA2_8;
-    uint32_t USBFS_DIEPDMA2_9;
-    uint32_t USBFS_DIEPDMA2_10;
-    uint32_t USBFS_DIEPDMA2_11;
-    uint32_t USBFS_DIEPDMA2_12;
-    uint32_t USBFS_DIEPDMA2_13;
-    uint32_t USBFS_DIEPDMA2_14;
-    uint32_t USBFS_DIEPDMA2_15;
-    uint32_t USBFS_DIEPDMA2_16;
-    uint32_t USBFS_DIEPDMA2_17;
-    uint32_t USBFS_DIEPDMA2_18;
-    uint32_t USBFS_DIEPDMA2_19;
-    uint32_t USBFS_DIEPDMA2_20;
-    uint32_t USBFS_DIEPDMA2_21;
-    uint32_t USBFS_DIEPDMA2_22;
-    uint32_t USBFS_DIEPDMA2_23;
-    uint32_t USBFS_DIEPDMA2_24;
-    uint32_t USBFS_DIEPDMA2_25;
-    uint32_t USBFS_DIEPDMA2_26;
-    uint32_t USBFS_DIEPDMA2_27;
-    uint32_t USBFS_DIEPDMA2_28;
-    uint32_t USBFS_DIEPDMA2_29;
-    uint32_t USBFS_DIEPDMA2_30;
-    uint32_t USBFS_DIEPDMA2_31;
-} stc_usbfs_diepdma2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -55643,10 +38654,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -55677,111 +38685,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz3_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA3_0;
-    uint32_t USBFS_DIEPDMA3_1;
-    uint32_t USBFS_DIEPDMA3_2;
-    uint32_t USBFS_DIEPDMA3_3;
-    uint32_t USBFS_DIEPDMA3_4;
-    uint32_t USBFS_DIEPDMA3_5;
-    uint32_t USBFS_DIEPDMA3_6;
-    uint32_t USBFS_DIEPDMA3_7;
-    uint32_t USBFS_DIEPDMA3_8;
-    uint32_t USBFS_DIEPDMA3_9;
-    uint32_t USBFS_DIEPDMA3_10;
-    uint32_t USBFS_DIEPDMA3_11;
-    uint32_t USBFS_DIEPDMA3_12;
-    uint32_t USBFS_DIEPDMA3_13;
-    uint32_t USBFS_DIEPDMA3_14;
-    uint32_t USBFS_DIEPDMA3_15;
-    uint32_t USBFS_DIEPDMA3_16;
-    uint32_t USBFS_DIEPDMA3_17;
-    uint32_t USBFS_DIEPDMA3_18;
-    uint32_t USBFS_DIEPDMA3_19;
-    uint32_t USBFS_DIEPDMA3_20;
-    uint32_t USBFS_DIEPDMA3_21;
-    uint32_t USBFS_DIEPDMA3_22;
-    uint32_t USBFS_DIEPDMA3_23;
-    uint32_t USBFS_DIEPDMA3_24;
-    uint32_t USBFS_DIEPDMA3_25;
-    uint32_t USBFS_DIEPDMA3_26;
-    uint32_t USBFS_DIEPDMA3_27;
-    uint32_t USBFS_DIEPDMA3_28;
-    uint32_t USBFS_DIEPDMA3_29;
-    uint32_t USBFS_DIEPDMA3_30;
-    uint32_t USBFS_DIEPDMA3_31;
-} stc_usbfs_diepdma3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -55789,10 +38693,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -55823,111 +38724,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz4_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA4_0;
-    uint32_t USBFS_DIEPDMA4_1;
-    uint32_t USBFS_DIEPDMA4_2;
-    uint32_t USBFS_DIEPDMA4_3;
-    uint32_t USBFS_DIEPDMA4_4;
-    uint32_t USBFS_DIEPDMA4_5;
-    uint32_t USBFS_DIEPDMA4_6;
-    uint32_t USBFS_DIEPDMA4_7;
-    uint32_t USBFS_DIEPDMA4_8;
-    uint32_t USBFS_DIEPDMA4_9;
-    uint32_t USBFS_DIEPDMA4_10;
-    uint32_t USBFS_DIEPDMA4_11;
-    uint32_t USBFS_DIEPDMA4_12;
-    uint32_t USBFS_DIEPDMA4_13;
-    uint32_t USBFS_DIEPDMA4_14;
-    uint32_t USBFS_DIEPDMA4_15;
-    uint32_t USBFS_DIEPDMA4_16;
-    uint32_t USBFS_DIEPDMA4_17;
-    uint32_t USBFS_DIEPDMA4_18;
-    uint32_t USBFS_DIEPDMA4_19;
-    uint32_t USBFS_DIEPDMA4_20;
-    uint32_t USBFS_DIEPDMA4_21;
-    uint32_t USBFS_DIEPDMA4_22;
-    uint32_t USBFS_DIEPDMA4_23;
-    uint32_t USBFS_DIEPDMA4_24;
-    uint32_t USBFS_DIEPDMA4_25;
-    uint32_t USBFS_DIEPDMA4_26;
-    uint32_t USBFS_DIEPDMA4_27;
-    uint32_t USBFS_DIEPDMA4_28;
-    uint32_t USBFS_DIEPDMA4_29;
-    uint32_t USBFS_DIEPDMA4_30;
-    uint32_t USBFS_DIEPDMA4_31;
-} stc_usbfs_diepdma4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -55935,10 +38732,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -55969,111 +38763,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz5_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA5_0;
-    uint32_t USBFS_DIEPDMA5_1;
-    uint32_t USBFS_DIEPDMA5_2;
-    uint32_t USBFS_DIEPDMA5_3;
-    uint32_t USBFS_DIEPDMA5_4;
-    uint32_t USBFS_DIEPDMA5_5;
-    uint32_t USBFS_DIEPDMA5_6;
-    uint32_t USBFS_DIEPDMA5_7;
-    uint32_t USBFS_DIEPDMA5_8;
-    uint32_t USBFS_DIEPDMA5_9;
-    uint32_t USBFS_DIEPDMA5_10;
-    uint32_t USBFS_DIEPDMA5_11;
-    uint32_t USBFS_DIEPDMA5_12;
-    uint32_t USBFS_DIEPDMA5_13;
-    uint32_t USBFS_DIEPDMA5_14;
-    uint32_t USBFS_DIEPDMA5_15;
-    uint32_t USBFS_DIEPDMA5_16;
-    uint32_t USBFS_DIEPDMA5_17;
-    uint32_t USBFS_DIEPDMA5_18;
-    uint32_t USBFS_DIEPDMA5_19;
-    uint32_t USBFS_DIEPDMA5_20;
-    uint32_t USBFS_DIEPDMA5_21;
-    uint32_t USBFS_DIEPDMA5_22;
-    uint32_t USBFS_DIEPDMA5_23;
-    uint32_t USBFS_DIEPDMA5_24;
-    uint32_t USBFS_DIEPDMA5_25;
-    uint32_t USBFS_DIEPDMA5_26;
-    uint32_t USBFS_DIEPDMA5_27;
-    uint32_t USBFS_DIEPDMA5_28;
-    uint32_t USBFS_DIEPDMA5_29;
-    uint32_t USBFS_DIEPDMA5_30;
-    uint32_t USBFS_DIEPDMA5_31;
-} stc_usbfs_diepdma5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56081,10 +38771,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56115,111 +38802,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz6_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA6_0;
-    uint32_t USBFS_DIEPDMA6_1;
-    uint32_t USBFS_DIEPDMA6_2;
-    uint32_t USBFS_DIEPDMA6_3;
-    uint32_t USBFS_DIEPDMA6_4;
-    uint32_t USBFS_DIEPDMA6_5;
-    uint32_t USBFS_DIEPDMA6_6;
-    uint32_t USBFS_DIEPDMA6_7;
-    uint32_t USBFS_DIEPDMA6_8;
-    uint32_t USBFS_DIEPDMA6_9;
-    uint32_t USBFS_DIEPDMA6_10;
-    uint32_t USBFS_DIEPDMA6_11;
-    uint32_t USBFS_DIEPDMA6_12;
-    uint32_t USBFS_DIEPDMA6_13;
-    uint32_t USBFS_DIEPDMA6_14;
-    uint32_t USBFS_DIEPDMA6_15;
-    uint32_t USBFS_DIEPDMA6_16;
-    uint32_t USBFS_DIEPDMA6_17;
-    uint32_t USBFS_DIEPDMA6_18;
-    uint32_t USBFS_DIEPDMA6_19;
-    uint32_t USBFS_DIEPDMA6_20;
-    uint32_t USBFS_DIEPDMA6_21;
-    uint32_t USBFS_DIEPDMA6_22;
-    uint32_t USBFS_DIEPDMA6_23;
-    uint32_t USBFS_DIEPDMA6_24;
-    uint32_t USBFS_DIEPDMA6_25;
-    uint32_t USBFS_DIEPDMA6_26;
-    uint32_t USBFS_DIEPDMA6_27;
-    uint32_t USBFS_DIEPDMA6_28;
-    uint32_t USBFS_DIEPDMA6_29;
-    uint32_t USBFS_DIEPDMA6_30;
-    uint32_t USBFS_DIEPDMA6_31;
-} stc_usbfs_diepdma6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56227,10 +38810,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56261,111 +38841,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz7_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA7_0;
-    uint32_t USBFS_DIEPDMA7_1;
-    uint32_t USBFS_DIEPDMA7_2;
-    uint32_t USBFS_DIEPDMA7_3;
-    uint32_t USBFS_DIEPDMA7_4;
-    uint32_t USBFS_DIEPDMA7_5;
-    uint32_t USBFS_DIEPDMA7_6;
-    uint32_t USBFS_DIEPDMA7_7;
-    uint32_t USBFS_DIEPDMA7_8;
-    uint32_t USBFS_DIEPDMA7_9;
-    uint32_t USBFS_DIEPDMA7_10;
-    uint32_t USBFS_DIEPDMA7_11;
-    uint32_t USBFS_DIEPDMA7_12;
-    uint32_t USBFS_DIEPDMA7_13;
-    uint32_t USBFS_DIEPDMA7_14;
-    uint32_t USBFS_DIEPDMA7_15;
-    uint32_t USBFS_DIEPDMA7_16;
-    uint32_t USBFS_DIEPDMA7_17;
-    uint32_t USBFS_DIEPDMA7_18;
-    uint32_t USBFS_DIEPDMA7_19;
-    uint32_t USBFS_DIEPDMA7_20;
-    uint32_t USBFS_DIEPDMA7_21;
-    uint32_t USBFS_DIEPDMA7_22;
-    uint32_t USBFS_DIEPDMA7_23;
-    uint32_t USBFS_DIEPDMA7_24;
-    uint32_t USBFS_DIEPDMA7_25;
-    uint32_t USBFS_DIEPDMA7_26;
-    uint32_t USBFS_DIEPDMA7_27;
-    uint32_t USBFS_DIEPDMA7_28;
-    uint32_t USBFS_DIEPDMA7_29;
-    uint32_t USBFS_DIEPDMA7_30;
-    uint32_t USBFS_DIEPDMA7_31;
-} stc_usbfs_diepdma7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56373,10 +38849,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56407,111 +38880,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz8_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA8_0;
-    uint32_t USBFS_DIEPDMA8_1;
-    uint32_t USBFS_DIEPDMA8_2;
-    uint32_t USBFS_DIEPDMA8_3;
-    uint32_t USBFS_DIEPDMA8_4;
-    uint32_t USBFS_DIEPDMA8_5;
-    uint32_t USBFS_DIEPDMA8_6;
-    uint32_t USBFS_DIEPDMA8_7;
-    uint32_t USBFS_DIEPDMA8_8;
-    uint32_t USBFS_DIEPDMA8_9;
-    uint32_t USBFS_DIEPDMA8_10;
-    uint32_t USBFS_DIEPDMA8_11;
-    uint32_t USBFS_DIEPDMA8_12;
-    uint32_t USBFS_DIEPDMA8_13;
-    uint32_t USBFS_DIEPDMA8_14;
-    uint32_t USBFS_DIEPDMA8_15;
-    uint32_t USBFS_DIEPDMA8_16;
-    uint32_t USBFS_DIEPDMA8_17;
-    uint32_t USBFS_DIEPDMA8_18;
-    uint32_t USBFS_DIEPDMA8_19;
-    uint32_t USBFS_DIEPDMA8_20;
-    uint32_t USBFS_DIEPDMA8_21;
-    uint32_t USBFS_DIEPDMA8_22;
-    uint32_t USBFS_DIEPDMA8_23;
-    uint32_t USBFS_DIEPDMA8_24;
-    uint32_t USBFS_DIEPDMA8_25;
-    uint32_t USBFS_DIEPDMA8_26;
-    uint32_t USBFS_DIEPDMA8_27;
-    uint32_t USBFS_DIEPDMA8_28;
-    uint32_t USBFS_DIEPDMA8_29;
-    uint32_t USBFS_DIEPDMA8_30;
-    uint32_t USBFS_DIEPDMA8_31;
-} stc_usbfs_diepdma8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56519,10 +38888,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56553,111 +38919,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz9_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA9_0;
-    uint32_t USBFS_DIEPDMA9_1;
-    uint32_t USBFS_DIEPDMA9_2;
-    uint32_t USBFS_DIEPDMA9_3;
-    uint32_t USBFS_DIEPDMA9_4;
-    uint32_t USBFS_DIEPDMA9_5;
-    uint32_t USBFS_DIEPDMA9_6;
-    uint32_t USBFS_DIEPDMA9_7;
-    uint32_t USBFS_DIEPDMA9_8;
-    uint32_t USBFS_DIEPDMA9_9;
-    uint32_t USBFS_DIEPDMA9_10;
-    uint32_t USBFS_DIEPDMA9_11;
-    uint32_t USBFS_DIEPDMA9_12;
-    uint32_t USBFS_DIEPDMA9_13;
-    uint32_t USBFS_DIEPDMA9_14;
-    uint32_t USBFS_DIEPDMA9_15;
-    uint32_t USBFS_DIEPDMA9_16;
-    uint32_t USBFS_DIEPDMA9_17;
-    uint32_t USBFS_DIEPDMA9_18;
-    uint32_t USBFS_DIEPDMA9_19;
-    uint32_t USBFS_DIEPDMA9_20;
-    uint32_t USBFS_DIEPDMA9_21;
-    uint32_t USBFS_DIEPDMA9_22;
-    uint32_t USBFS_DIEPDMA9_23;
-    uint32_t USBFS_DIEPDMA9_24;
-    uint32_t USBFS_DIEPDMA9_25;
-    uint32_t USBFS_DIEPDMA9_26;
-    uint32_t USBFS_DIEPDMA9_27;
-    uint32_t USBFS_DIEPDMA9_28;
-    uint32_t USBFS_DIEPDMA9_29;
-    uint32_t USBFS_DIEPDMA9_30;
-    uint32_t USBFS_DIEPDMA9_31;
-} stc_usbfs_diepdma9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56665,10 +38927,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56699,111 +38958,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz10_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA10_0;
-    uint32_t USBFS_DIEPDMA10_1;
-    uint32_t USBFS_DIEPDMA10_2;
-    uint32_t USBFS_DIEPDMA10_3;
-    uint32_t USBFS_DIEPDMA10_4;
-    uint32_t USBFS_DIEPDMA10_5;
-    uint32_t USBFS_DIEPDMA10_6;
-    uint32_t USBFS_DIEPDMA10_7;
-    uint32_t USBFS_DIEPDMA10_8;
-    uint32_t USBFS_DIEPDMA10_9;
-    uint32_t USBFS_DIEPDMA10_10;
-    uint32_t USBFS_DIEPDMA10_11;
-    uint32_t USBFS_DIEPDMA10_12;
-    uint32_t USBFS_DIEPDMA10_13;
-    uint32_t USBFS_DIEPDMA10_14;
-    uint32_t USBFS_DIEPDMA10_15;
-    uint32_t USBFS_DIEPDMA10_16;
-    uint32_t USBFS_DIEPDMA10_17;
-    uint32_t USBFS_DIEPDMA10_18;
-    uint32_t USBFS_DIEPDMA10_19;
-    uint32_t USBFS_DIEPDMA10_20;
-    uint32_t USBFS_DIEPDMA10_21;
-    uint32_t USBFS_DIEPDMA10_22;
-    uint32_t USBFS_DIEPDMA10_23;
-    uint32_t USBFS_DIEPDMA10_24;
-    uint32_t USBFS_DIEPDMA10_25;
-    uint32_t USBFS_DIEPDMA10_26;
-    uint32_t USBFS_DIEPDMA10_27;
-    uint32_t USBFS_DIEPDMA10_28;
-    uint32_t USBFS_DIEPDMA10_29;
-    uint32_t USBFS_DIEPDMA10_30;
-    uint32_t USBFS_DIEPDMA10_31;
-} stc_usbfs_diepdma10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56811,10 +38966,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56845,111 +38997,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz11_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA11_0;
-    uint32_t USBFS_DIEPDMA11_1;
-    uint32_t USBFS_DIEPDMA11_2;
-    uint32_t USBFS_DIEPDMA11_3;
-    uint32_t USBFS_DIEPDMA11_4;
-    uint32_t USBFS_DIEPDMA11_5;
-    uint32_t USBFS_DIEPDMA11_6;
-    uint32_t USBFS_DIEPDMA11_7;
-    uint32_t USBFS_DIEPDMA11_8;
-    uint32_t USBFS_DIEPDMA11_9;
-    uint32_t USBFS_DIEPDMA11_10;
-    uint32_t USBFS_DIEPDMA11_11;
-    uint32_t USBFS_DIEPDMA11_12;
-    uint32_t USBFS_DIEPDMA11_13;
-    uint32_t USBFS_DIEPDMA11_14;
-    uint32_t USBFS_DIEPDMA11_15;
-    uint32_t USBFS_DIEPDMA11_16;
-    uint32_t USBFS_DIEPDMA11_17;
-    uint32_t USBFS_DIEPDMA11_18;
-    uint32_t USBFS_DIEPDMA11_19;
-    uint32_t USBFS_DIEPDMA11_20;
-    uint32_t USBFS_DIEPDMA11_21;
-    uint32_t USBFS_DIEPDMA11_22;
-    uint32_t USBFS_DIEPDMA11_23;
-    uint32_t USBFS_DIEPDMA11_24;
-    uint32_t USBFS_DIEPDMA11_25;
-    uint32_t USBFS_DIEPDMA11_26;
-    uint32_t USBFS_DIEPDMA11_27;
-    uint32_t USBFS_DIEPDMA11_28;
-    uint32_t USBFS_DIEPDMA11_29;
-    uint32_t USBFS_DIEPDMA11_30;
-    uint32_t USBFS_DIEPDMA11_31;
-} stc_usbfs_diepdma11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -56957,10 +39005,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -56991,111 +39036,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz12_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA12_0;
-    uint32_t USBFS_DIEPDMA12_1;
-    uint32_t USBFS_DIEPDMA12_2;
-    uint32_t USBFS_DIEPDMA12_3;
-    uint32_t USBFS_DIEPDMA12_4;
-    uint32_t USBFS_DIEPDMA12_5;
-    uint32_t USBFS_DIEPDMA12_6;
-    uint32_t USBFS_DIEPDMA12_7;
-    uint32_t USBFS_DIEPDMA12_8;
-    uint32_t USBFS_DIEPDMA12_9;
-    uint32_t USBFS_DIEPDMA12_10;
-    uint32_t USBFS_DIEPDMA12_11;
-    uint32_t USBFS_DIEPDMA12_12;
-    uint32_t USBFS_DIEPDMA12_13;
-    uint32_t USBFS_DIEPDMA12_14;
-    uint32_t USBFS_DIEPDMA12_15;
-    uint32_t USBFS_DIEPDMA12_16;
-    uint32_t USBFS_DIEPDMA12_17;
-    uint32_t USBFS_DIEPDMA12_18;
-    uint32_t USBFS_DIEPDMA12_19;
-    uint32_t USBFS_DIEPDMA12_20;
-    uint32_t USBFS_DIEPDMA12_21;
-    uint32_t USBFS_DIEPDMA12_22;
-    uint32_t USBFS_DIEPDMA12_23;
-    uint32_t USBFS_DIEPDMA12_24;
-    uint32_t USBFS_DIEPDMA12_25;
-    uint32_t USBFS_DIEPDMA12_26;
-    uint32_t USBFS_DIEPDMA12_27;
-    uint32_t USBFS_DIEPDMA12_28;
-    uint32_t USBFS_DIEPDMA12_29;
-    uint32_t USBFS_DIEPDMA12_30;
-    uint32_t USBFS_DIEPDMA12_31;
-} stc_usbfs_diepdma12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -57103,10 +39044,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -57137,111 +39075,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz13_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA13_0;
-    uint32_t USBFS_DIEPDMA13_1;
-    uint32_t USBFS_DIEPDMA13_2;
-    uint32_t USBFS_DIEPDMA13_3;
-    uint32_t USBFS_DIEPDMA13_4;
-    uint32_t USBFS_DIEPDMA13_5;
-    uint32_t USBFS_DIEPDMA13_6;
-    uint32_t USBFS_DIEPDMA13_7;
-    uint32_t USBFS_DIEPDMA13_8;
-    uint32_t USBFS_DIEPDMA13_9;
-    uint32_t USBFS_DIEPDMA13_10;
-    uint32_t USBFS_DIEPDMA13_11;
-    uint32_t USBFS_DIEPDMA13_12;
-    uint32_t USBFS_DIEPDMA13_13;
-    uint32_t USBFS_DIEPDMA13_14;
-    uint32_t USBFS_DIEPDMA13_15;
-    uint32_t USBFS_DIEPDMA13_16;
-    uint32_t USBFS_DIEPDMA13_17;
-    uint32_t USBFS_DIEPDMA13_18;
-    uint32_t USBFS_DIEPDMA13_19;
-    uint32_t USBFS_DIEPDMA13_20;
-    uint32_t USBFS_DIEPDMA13_21;
-    uint32_t USBFS_DIEPDMA13_22;
-    uint32_t USBFS_DIEPDMA13_23;
-    uint32_t USBFS_DIEPDMA13_24;
-    uint32_t USBFS_DIEPDMA13_25;
-    uint32_t USBFS_DIEPDMA13_26;
-    uint32_t USBFS_DIEPDMA13_27;
-    uint32_t USBFS_DIEPDMA13_28;
-    uint32_t USBFS_DIEPDMA13_29;
-    uint32_t USBFS_DIEPDMA13_30;
-    uint32_t USBFS_DIEPDMA13_31;
-} stc_usbfs_diepdma13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -57249,10 +39083,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -57283,111 +39114,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz14_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA14_0;
-    uint32_t USBFS_DIEPDMA14_1;
-    uint32_t USBFS_DIEPDMA14_2;
-    uint32_t USBFS_DIEPDMA14_3;
-    uint32_t USBFS_DIEPDMA14_4;
-    uint32_t USBFS_DIEPDMA14_5;
-    uint32_t USBFS_DIEPDMA14_6;
-    uint32_t USBFS_DIEPDMA14_7;
-    uint32_t USBFS_DIEPDMA14_8;
-    uint32_t USBFS_DIEPDMA14_9;
-    uint32_t USBFS_DIEPDMA14_10;
-    uint32_t USBFS_DIEPDMA14_11;
-    uint32_t USBFS_DIEPDMA14_12;
-    uint32_t USBFS_DIEPDMA14_13;
-    uint32_t USBFS_DIEPDMA14_14;
-    uint32_t USBFS_DIEPDMA14_15;
-    uint32_t USBFS_DIEPDMA14_16;
-    uint32_t USBFS_DIEPDMA14_17;
-    uint32_t USBFS_DIEPDMA14_18;
-    uint32_t USBFS_DIEPDMA14_19;
-    uint32_t USBFS_DIEPDMA14_20;
-    uint32_t USBFS_DIEPDMA14_21;
-    uint32_t USBFS_DIEPDMA14_22;
-    uint32_t USBFS_DIEPDMA14_23;
-    uint32_t USBFS_DIEPDMA14_24;
-    uint32_t USBFS_DIEPDMA14_25;
-    uint32_t USBFS_DIEPDMA14_26;
-    uint32_t USBFS_DIEPDMA14_27;
-    uint32_t USBFS_DIEPDMA14_28;
-    uint32_t USBFS_DIEPDMA14_29;
-    uint32_t USBFS_DIEPDMA14_30;
-    uint32_t USBFS_DIEPDMA14_31;
-} stc_usbfs_diepdma14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -57395,10 +39122,7 @@ typedef struct
     __IO uint32_t EPTYPE1;
     uint32_t RESERVED1[1];
     __IO uint32_t STALL;
-    __IO uint32_t TXFNUM0;
-    __IO uint32_t TXFNUM1;
-    __IO uint32_t TXFNUM2;
-    __IO uint32_t TXFNUM3;
+    uint32_t RESERVED2[4];
     __IO uint32_t CNAK;
     __IO uint32_t SNAK;
     __IO uint32_t SETD0PID;
@@ -57429,102 +39153,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
-    __IO uint32_t MC0;
-    __IO uint32_t MC1;
-    uint32_t RESERVED0[1];
-} stc_usbfs_dieptsiz15_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DIEPDMA15_0;
-    uint32_t USBFS_DIEPDMA15_1;
-    uint32_t USBFS_DIEPDMA15_2;
-    uint32_t USBFS_DIEPDMA15_3;
-    uint32_t USBFS_DIEPDMA15_4;
-    uint32_t USBFS_DIEPDMA15_5;
-    uint32_t USBFS_DIEPDMA15_6;
-    uint32_t USBFS_DIEPDMA15_7;
-    uint32_t USBFS_DIEPDMA15_8;
-    uint32_t USBFS_DIEPDMA15_9;
-    uint32_t USBFS_DIEPDMA15_10;
-    uint32_t USBFS_DIEPDMA15_11;
-    uint32_t USBFS_DIEPDMA15_12;
-    uint32_t USBFS_DIEPDMA15_13;
-    uint32_t USBFS_DIEPDMA15_14;
-    uint32_t USBFS_DIEPDMA15_15;
-    uint32_t USBFS_DIEPDMA15_16;
-    uint32_t USBFS_DIEPDMA15_17;
-    uint32_t USBFS_DIEPDMA15_18;
-    uint32_t USBFS_DIEPDMA15_19;
-    uint32_t USBFS_DIEPDMA15_20;
-    uint32_t USBFS_DIEPDMA15_21;
-    uint32_t USBFS_DIEPDMA15_22;
-    uint32_t USBFS_DIEPDMA15_23;
-    uint32_t USBFS_DIEPDMA15_24;
-    uint32_t USBFS_DIEPDMA15_25;
-    uint32_t USBFS_DIEPDMA15_26;
-    uint32_t USBFS_DIEPDMA15_27;
-    uint32_t USBFS_DIEPDMA15_28;
-    uint32_t USBFS_DIEPDMA15_29;
-    uint32_t USBFS_DIEPDMA15_30;
-    uint32_t USBFS_DIEPDMA15_31;
-} stc_usbfs_diepdma15_bit_t;
-
-typedef struct
-{
-    __IO uint32_t INEPTXFSPCAVAIL0;
-    __IO uint32_t INEPTXFSPCAVAIL1;
-    __IO uint32_t INEPTXFSPCAVAIL2;
-    __IO uint32_t INEPTXFSPCAVAIL3;
-    __IO uint32_t INEPTXFSPCAVAIL4;
-    __IO uint32_t INEPTXFSPCAVAIL5;
-    __IO uint32_t INEPTXFSPCAVAIL6;
-    __IO uint32_t INEPTXFSPCAVAIL7;
-    __IO uint32_t INEPTXFSPCAVAIL8;
-    __IO uint32_t INEPTXFSPCAVAIL9;
-    __IO uint32_t INEPTXFSPCAVAIL10;
-    __IO uint32_t INEPTXFSPCAVAIL11;
-    __IO uint32_t INEPTXFSPCAVAIL12;
-    __IO uint32_t INEPTXFSPCAVAIL13;
-    __IO uint32_t INEPTXFSPCAVAIL14;
-    __IO uint32_t INEPTXFSPCAVAIL15;
-    uint32_t RESERVED0[16];
-} stc_usbfs_dtxfsts15_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    uint32_t RESERVED0[13];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     uint32_t RESERVED1[1];
     __IO uint32_t NAKSTS;
@@ -57563,71 +39192,7 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    uint32_t RESERVED0[12];
-    __IO uint32_t PKTCNT;
-    uint32_t RESERVED1[9];
-    __IO uint32_t SUPCNT0;
-    __IO uint32_t SUPCNT1;
-    uint32_t RESERVED2[1];
-} stc_usbfs_doeptsiz0_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DOEPDMA0_0;
-    uint32_t USBFS_DOEPDMA0_1;
-    uint32_t USBFS_DOEPDMA0_2;
-    uint32_t USBFS_DOEPDMA0_3;
-    uint32_t USBFS_DOEPDMA0_4;
-    uint32_t USBFS_DOEPDMA0_5;
-    uint32_t USBFS_DOEPDMA0_6;
-    uint32_t USBFS_DOEPDMA0_7;
-    uint32_t USBFS_DOEPDMA0_8;
-    uint32_t USBFS_DOEPDMA0_9;
-    uint32_t USBFS_DOEPDMA0_10;
-    uint32_t USBFS_DOEPDMA0_11;
-    uint32_t USBFS_DOEPDMA0_12;
-    uint32_t USBFS_DOEPDMA0_13;
-    uint32_t USBFS_DOEPDMA0_14;
-    uint32_t USBFS_DOEPDMA0_15;
-    uint32_t USBFS_DOEPDMA0_16;
-    uint32_t USBFS_DOEPDMA0_17;
-    uint32_t USBFS_DOEPDMA0_18;
-    uint32_t USBFS_DOEPDMA0_19;
-    uint32_t USBFS_DOEPDMA0_20;
-    uint32_t USBFS_DOEPDMA0_21;
-    uint32_t USBFS_DOEPDMA0_22;
-    uint32_t USBFS_DOEPDMA0_23;
-    uint32_t USBFS_DOEPDMA0_24;
-    uint32_t USBFS_DOEPDMA0_25;
-    uint32_t USBFS_DOEPDMA0_26;
-    uint32_t USBFS_DOEPDMA0_27;
-    uint32_t USBFS_DOEPDMA0_28;
-    uint32_t USBFS_DOEPDMA0_29;
-    uint32_t USBFS_DOEPDMA0_30;
-    uint32_t USBFS_DOEPDMA0_31;
-} stc_usbfs_doepdma0_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -57667,90 +39232,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz1_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA1_0;
-    uint32_t USBFS_DOEPDMA1_1;
-    uint32_t USBFS_DOEPDMA1_2;
-    uint32_t USBFS_DOEPDMA1_3;
-    uint32_t USBFS_DOEPDMA1_4;
-    uint32_t USBFS_DOEPDMA1_5;
-    uint32_t USBFS_DOEPDMA1_6;
-    uint32_t USBFS_DOEPDMA1_7;
-    uint32_t USBFS_DOEPDMA1_8;
-    uint32_t USBFS_DOEPDMA1_9;
-    uint32_t USBFS_DOEPDMA1_10;
-    uint32_t USBFS_DOEPDMA1_11;
-    uint32_t USBFS_DOEPDMA1_12;
-    uint32_t USBFS_DOEPDMA1_13;
-    uint32_t USBFS_DOEPDMA1_14;
-    uint32_t USBFS_DOEPDMA1_15;
-    uint32_t USBFS_DOEPDMA1_16;
-    uint32_t USBFS_DOEPDMA1_17;
-    uint32_t USBFS_DOEPDMA1_18;
-    uint32_t USBFS_DOEPDMA1_19;
-    uint32_t USBFS_DOEPDMA1_20;
-    uint32_t USBFS_DOEPDMA1_21;
-    uint32_t USBFS_DOEPDMA1_22;
-    uint32_t USBFS_DOEPDMA1_23;
-    uint32_t USBFS_DOEPDMA1_24;
-    uint32_t USBFS_DOEPDMA1_25;
-    uint32_t USBFS_DOEPDMA1_26;
-    uint32_t USBFS_DOEPDMA1_27;
-    uint32_t USBFS_DOEPDMA1_28;
-    uint32_t USBFS_DOEPDMA1_29;
-    uint32_t USBFS_DOEPDMA1_30;
-    uint32_t USBFS_DOEPDMA1_31;
-} stc_usbfs_doepdma1_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -57790,90 +39280,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz2_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA2_0;
-    uint32_t USBFS_DOEPDMA2_1;
-    uint32_t USBFS_DOEPDMA2_2;
-    uint32_t USBFS_DOEPDMA2_3;
-    uint32_t USBFS_DOEPDMA2_4;
-    uint32_t USBFS_DOEPDMA2_5;
-    uint32_t USBFS_DOEPDMA2_6;
-    uint32_t USBFS_DOEPDMA2_7;
-    uint32_t USBFS_DOEPDMA2_8;
-    uint32_t USBFS_DOEPDMA2_9;
-    uint32_t USBFS_DOEPDMA2_10;
-    uint32_t USBFS_DOEPDMA2_11;
-    uint32_t USBFS_DOEPDMA2_12;
-    uint32_t USBFS_DOEPDMA2_13;
-    uint32_t USBFS_DOEPDMA2_14;
-    uint32_t USBFS_DOEPDMA2_15;
-    uint32_t USBFS_DOEPDMA2_16;
-    uint32_t USBFS_DOEPDMA2_17;
-    uint32_t USBFS_DOEPDMA2_18;
-    uint32_t USBFS_DOEPDMA2_19;
-    uint32_t USBFS_DOEPDMA2_20;
-    uint32_t USBFS_DOEPDMA2_21;
-    uint32_t USBFS_DOEPDMA2_22;
-    uint32_t USBFS_DOEPDMA2_23;
-    uint32_t USBFS_DOEPDMA2_24;
-    uint32_t USBFS_DOEPDMA2_25;
-    uint32_t USBFS_DOEPDMA2_26;
-    uint32_t USBFS_DOEPDMA2_27;
-    uint32_t USBFS_DOEPDMA2_28;
-    uint32_t USBFS_DOEPDMA2_29;
-    uint32_t USBFS_DOEPDMA2_30;
-    uint32_t USBFS_DOEPDMA2_31;
-} stc_usbfs_doepdma2_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -57913,90 +39328,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz3_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA3_0;
-    uint32_t USBFS_DOEPDMA3_1;
-    uint32_t USBFS_DOEPDMA3_2;
-    uint32_t USBFS_DOEPDMA3_3;
-    uint32_t USBFS_DOEPDMA3_4;
-    uint32_t USBFS_DOEPDMA3_5;
-    uint32_t USBFS_DOEPDMA3_6;
-    uint32_t USBFS_DOEPDMA3_7;
-    uint32_t USBFS_DOEPDMA3_8;
-    uint32_t USBFS_DOEPDMA3_9;
-    uint32_t USBFS_DOEPDMA3_10;
-    uint32_t USBFS_DOEPDMA3_11;
-    uint32_t USBFS_DOEPDMA3_12;
-    uint32_t USBFS_DOEPDMA3_13;
-    uint32_t USBFS_DOEPDMA3_14;
-    uint32_t USBFS_DOEPDMA3_15;
-    uint32_t USBFS_DOEPDMA3_16;
-    uint32_t USBFS_DOEPDMA3_17;
-    uint32_t USBFS_DOEPDMA3_18;
-    uint32_t USBFS_DOEPDMA3_19;
-    uint32_t USBFS_DOEPDMA3_20;
-    uint32_t USBFS_DOEPDMA3_21;
-    uint32_t USBFS_DOEPDMA3_22;
-    uint32_t USBFS_DOEPDMA3_23;
-    uint32_t USBFS_DOEPDMA3_24;
-    uint32_t USBFS_DOEPDMA3_25;
-    uint32_t USBFS_DOEPDMA3_26;
-    uint32_t USBFS_DOEPDMA3_27;
-    uint32_t USBFS_DOEPDMA3_28;
-    uint32_t USBFS_DOEPDMA3_29;
-    uint32_t USBFS_DOEPDMA3_30;
-    uint32_t USBFS_DOEPDMA3_31;
-} stc_usbfs_doepdma3_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58036,90 +39376,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz4_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA4_0;
-    uint32_t USBFS_DOEPDMA4_1;
-    uint32_t USBFS_DOEPDMA4_2;
-    uint32_t USBFS_DOEPDMA4_3;
-    uint32_t USBFS_DOEPDMA4_4;
-    uint32_t USBFS_DOEPDMA4_5;
-    uint32_t USBFS_DOEPDMA4_6;
-    uint32_t USBFS_DOEPDMA4_7;
-    uint32_t USBFS_DOEPDMA4_8;
-    uint32_t USBFS_DOEPDMA4_9;
-    uint32_t USBFS_DOEPDMA4_10;
-    uint32_t USBFS_DOEPDMA4_11;
-    uint32_t USBFS_DOEPDMA4_12;
-    uint32_t USBFS_DOEPDMA4_13;
-    uint32_t USBFS_DOEPDMA4_14;
-    uint32_t USBFS_DOEPDMA4_15;
-    uint32_t USBFS_DOEPDMA4_16;
-    uint32_t USBFS_DOEPDMA4_17;
-    uint32_t USBFS_DOEPDMA4_18;
-    uint32_t USBFS_DOEPDMA4_19;
-    uint32_t USBFS_DOEPDMA4_20;
-    uint32_t USBFS_DOEPDMA4_21;
-    uint32_t USBFS_DOEPDMA4_22;
-    uint32_t USBFS_DOEPDMA4_23;
-    uint32_t USBFS_DOEPDMA4_24;
-    uint32_t USBFS_DOEPDMA4_25;
-    uint32_t USBFS_DOEPDMA4_26;
-    uint32_t USBFS_DOEPDMA4_27;
-    uint32_t USBFS_DOEPDMA4_28;
-    uint32_t USBFS_DOEPDMA4_29;
-    uint32_t USBFS_DOEPDMA4_30;
-    uint32_t USBFS_DOEPDMA4_31;
-} stc_usbfs_doepdma4_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58159,90 +39424,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz5_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA5_0;
-    uint32_t USBFS_DOEPDMA5_1;
-    uint32_t USBFS_DOEPDMA5_2;
-    uint32_t USBFS_DOEPDMA5_3;
-    uint32_t USBFS_DOEPDMA5_4;
-    uint32_t USBFS_DOEPDMA5_5;
-    uint32_t USBFS_DOEPDMA5_6;
-    uint32_t USBFS_DOEPDMA5_7;
-    uint32_t USBFS_DOEPDMA5_8;
-    uint32_t USBFS_DOEPDMA5_9;
-    uint32_t USBFS_DOEPDMA5_10;
-    uint32_t USBFS_DOEPDMA5_11;
-    uint32_t USBFS_DOEPDMA5_12;
-    uint32_t USBFS_DOEPDMA5_13;
-    uint32_t USBFS_DOEPDMA5_14;
-    uint32_t USBFS_DOEPDMA5_15;
-    uint32_t USBFS_DOEPDMA5_16;
-    uint32_t USBFS_DOEPDMA5_17;
-    uint32_t USBFS_DOEPDMA5_18;
-    uint32_t USBFS_DOEPDMA5_19;
-    uint32_t USBFS_DOEPDMA5_20;
-    uint32_t USBFS_DOEPDMA5_21;
-    uint32_t USBFS_DOEPDMA5_22;
-    uint32_t USBFS_DOEPDMA5_23;
-    uint32_t USBFS_DOEPDMA5_24;
-    uint32_t USBFS_DOEPDMA5_25;
-    uint32_t USBFS_DOEPDMA5_26;
-    uint32_t USBFS_DOEPDMA5_27;
-    uint32_t USBFS_DOEPDMA5_28;
-    uint32_t USBFS_DOEPDMA5_29;
-    uint32_t USBFS_DOEPDMA5_30;
-    uint32_t USBFS_DOEPDMA5_31;
-} stc_usbfs_doepdma5_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58282,90 +39472,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz6_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA6_0;
-    uint32_t USBFS_DOEPDMA6_1;
-    uint32_t USBFS_DOEPDMA6_2;
-    uint32_t USBFS_DOEPDMA6_3;
-    uint32_t USBFS_DOEPDMA6_4;
-    uint32_t USBFS_DOEPDMA6_5;
-    uint32_t USBFS_DOEPDMA6_6;
-    uint32_t USBFS_DOEPDMA6_7;
-    uint32_t USBFS_DOEPDMA6_8;
-    uint32_t USBFS_DOEPDMA6_9;
-    uint32_t USBFS_DOEPDMA6_10;
-    uint32_t USBFS_DOEPDMA6_11;
-    uint32_t USBFS_DOEPDMA6_12;
-    uint32_t USBFS_DOEPDMA6_13;
-    uint32_t USBFS_DOEPDMA6_14;
-    uint32_t USBFS_DOEPDMA6_15;
-    uint32_t USBFS_DOEPDMA6_16;
-    uint32_t USBFS_DOEPDMA6_17;
-    uint32_t USBFS_DOEPDMA6_18;
-    uint32_t USBFS_DOEPDMA6_19;
-    uint32_t USBFS_DOEPDMA6_20;
-    uint32_t USBFS_DOEPDMA6_21;
-    uint32_t USBFS_DOEPDMA6_22;
-    uint32_t USBFS_DOEPDMA6_23;
-    uint32_t USBFS_DOEPDMA6_24;
-    uint32_t USBFS_DOEPDMA6_25;
-    uint32_t USBFS_DOEPDMA6_26;
-    uint32_t USBFS_DOEPDMA6_27;
-    uint32_t USBFS_DOEPDMA6_28;
-    uint32_t USBFS_DOEPDMA6_29;
-    uint32_t USBFS_DOEPDMA6_30;
-    uint32_t USBFS_DOEPDMA6_31;
-} stc_usbfs_doepdma6_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58405,90 +39520,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz7_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA7_0;
-    uint32_t USBFS_DOEPDMA7_1;
-    uint32_t USBFS_DOEPDMA7_2;
-    uint32_t USBFS_DOEPDMA7_3;
-    uint32_t USBFS_DOEPDMA7_4;
-    uint32_t USBFS_DOEPDMA7_5;
-    uint32_t USBFS_DOEPDMA7_6;
-    uint32_t USBFS_DOEPDMA7_7;
-    uint32_t USBFS_DOEPDMA7_8;
-    uint32_t USBFS_DOEPDMA7_9;
-    uint32_t USBFS_DOEPDMA7_10;
-    uint32_t USBFS_DOEPDMA7_11;
-    uint32_t USBFS_DOEPDMA7_12;
-    uint32_t USBFS_DOEPDMA7_13;
-    uint32_t USBFS_DOEPDMA7_14;
-    uint32_t USBFS_DOEPDMA7_15;
-    uint32_t USBFS_DOEPDMA7_16;
-    uint32_t USBFS_DOEPDMA7_17;
-    uint32_t USBFS_DOEPDMA7_18;
-    uint32_t USBFS_DOEPDMA7_19;
-    uint32_t USBFS_DOEPDMA7_20;
-    uint32_t USBFS_DOEPDMA7_21;
-    uint32_t USBFS_DOEPDMA7_22;
-    uint32_t USBFS_DOEPDMA7_23;
-    uint32_t USBFS_DOEPDMA7_24;
-    uint32_t USBFS_DOEPDMA7_25;
-    uint32_t USBFS_DOEPDMA7_26;
-    uint32_t USBFS_DOEPDMA7_27;
-    uint32_t USBFS_DOEPDMA7_28;
-    uint32_t USBFS_DOEPDMA7_29;
-    uint32_t USBFS_DOEPDMA7_30;
-    uint32_t USBFS_DOEPDMA7_31;
-} stc_usbfs_doepdma7_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58528,90 +39568,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz8_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA8_0;
-    uint32_t USBFS_DOEPDMA8_1;
-    uint32_t USBFS_DOEPDMA8_2;
-    uint32_t USBFS_DOEPDMA8_3;
-    uint32_t USBFS_DOEPDMA8_4;
-    uint32_t USBFS_DOEPDMA8_5;
-    uint32_t USBFS_DOEPDMA8_6;
-    uint32_t USBFS_DOEPDMA8_7;
-    uint32_t USBFS_DOEPDMA8_8;
-    uint32_t USBFS_DOEPDMA8_9;
-    uint32_t USBFS_DOEPDMA8_10;
-    uint32_t USBFS_DOEPDMA8_11;
-    uint32_t USBFS_DOEPDMA8_12;
-    uint32_t USBFS_DOEPDMA8_13;
-    uint32_t USBFS_DOEPDMA8_14;
-    uint32_t USBFS_DOEPDMA8_15;
-    uint32_t USBFS_DOEPDMA8_16;
-    uint32_t USBFS_DOEPDMA8_17;
-    uint32_t USBFS_DOEPDMA8_18;
-    uint32_t USBFS_DOEPDMA8_19;
-    uint32_t USBFS_DOEPDMA8_20;
-    uint32_t USBFS_DOEPDMA8_21;
-    uint32_t USBFS_DOEPDMA8_22;
-    uint32_t USBFS_DOEPDMA8_23;
-    uint32_t USBFS_DOEPDMA8_24;
-    uint32_t USBFS_DOEPDMA8_25;
-    uint32_t USBFS_DOEPDMA8_26;
-    uint32_t USBFS_DOEPDMA8_27;
-    uint32_t USBFS_DOEPDMA8_28;
-    uint32_t USBFS_DOEPDMA8_29;
-    uint32_t USBFS_DOEPDMA8_30;
-    uint32_t USBFS_DOEPDMA8_31;
-} stc_usbfs_doepdma8_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58651,90 +39616,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz9_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA9_0;
-    uint32_t USBFS_DOEPDMA9_1;
-    uint32_t USBFS_DOEPDMA9_2;
-    uint32_t USBFS_DOEPDMA9_3;
-    uint32_t USBFS_DOEPDMA9_4;
-    uint32_t USBFS_DOEPDMA9_5;
-    uint32_t USBFS_DOEPDMA9_6;
-    uint32_t USBFS_DOEPDMA9_7;
-    uint32_t USBFS_DOEPDMA9_8;
-    uint32_t USBFS_DOEPDMA9_9;
-    uint32_t USBFS_DOEPDMA9_10;
-    uint32_t USBFS_DOEPDMA9_11;
-    uint32_t USBFS_DOEPDMA9_12;
-    uint32_t USBFS_DOEPDMA9_13;
-    uint32_t USBFS_DOEPDMA9_14;
-    uint32_t USBFS_DOEPDMA9_15;
-    uint32_t USBFS_DOEPDMA9_16;
-    uint32_t USBFS_DOEPDMA9_17;
-    uint32_t USBFS_DOEPDMA9_18;
-    uint32_t USBFS_DOEPDMA9_19;
-    uint32_t USBFS_DOEPDMA9_20;
-    uint32_t USBFS_DOEPDMA9_21;
-    uint32_t USBFS_DOEPDMA9_22;
-    uint32_t USBFS_DOEPDMA9_23;
-    uint32_t USBFS_DOEPDMA9_24;
-    uint32_t USBFS_DOEPDMA9_25;
-    uint32_t USBFS_DOEPDMA9_26;
-    uint32_t USBFS_DOEPDMA9_27;
-    uint32_t USBFS_DOEPDMA9_28;
-    uint32_t USBFS_DOEPDMA9_29;
-    uint32_t USBFS_DOEPDMA9_30;
-    uint32_t USBFS_DOEPDMA9_31;
-} stc_usbfs_doepdma9_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58774,90 +39664,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz10_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA10_0;
-    uint32_t USBFS_DOEPDMA10_1;
-    uint32_t USBFS_DOEPDMA10_2;
-    uint32_t USBFS_DOEPDMA10_3;
-    uint32_t USBFS_DOEPDMA10_4;
-    uint32_t USBFS_DOEPDMA10_5;
-    uint32_t USBFS_DOEPDMA10_6;
-    uint32_t USBFS_DOEPDMA10_7;
-    uint32_t USBFS_DOEPDMA10_8;
-    uint32_t USBFS_DOEPDMA10_9;
-    uint32_t USBFS_DOEPDMA10_10;
-    uint32_t USBFS_DOEPDMA10_11;
-    uint32_t USBFS_DOEPDMA10_12;
-    uint32_t USBFS_DOEPDMA10_13;
-    uint32_t USBFS_DOEPDMA10_14;
-    uint32_t USBFS_DOEPDMA10_15;
-    uint32_t USBFS_DOEPDMA10_16;
-    uint32_t USBFS_DOEPDMA10_17;
-    uint32_t USBFS_DOEPDMA10_18;
-    uint32_t USBFS_DOEPDMA10_19;
-    uint32_t USBFS_DOEPDMA10_20;
-    uint32_t USBFS_DOEPDMA10_21;
-    uint32_t USBFS_DOEPDMA10_22;
-    uint32_t USBFS_DOEPDMA10_23;
-    uint32_t USBFS_DOEPDMA10_24;
-    uint32_t USBFS_DOEPDMA10_25;
-    uint32_t USBFS_DOEPDMA10_26;
-    uint32_t USBFS_DOEPDMA10_27;
-    uint32_t USBFS_DOEPDMA10_28;
-    uint32_t USBFS_DOEPDMA10_29;
-    uint32_t USBFS_DOEPDMA10_30;
-    uint32_t USBFS_DOEPDMA10_31;
-} stc_usbfs_doepdma10_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -58897,90 +39712,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz11_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA11_0;
-    uint32_t USBFS_DOEPDMA11_1;
-    uint32_t USBFS_DOEPDMA11_2;
-    uint32_t USBFS_DOEPDMA11_3;
-    uint32_t USBFS_DOEPDMA11_4;
-    uint32_t USBFS_DOEPDMA11_5;
-    uint32_t USBFS_DOEPDMA11_6;
-    uint32_t USBFS_DOEPDMA11_7;
-    uint32_t USBFS_DOEPDMA11_8;
-    uint32_t USBFS_DOEPDMA11_9;
-    uint32_t USBFS_DOEPDMA11_10;
-    uint32_t USBFS_DOEPDMA11_11;
-    uint32_t USBFS_DOEPDMA11_12;
-    uint32_t USBFS_DOEPDMA11_13;
-    uint32_t USBFS_DOEPDMA11_14;
-    uint32_t USBFS_DOEPDMA11_15;
-    uint32_t USBFS_DOEPDMA11_16;
-    uint32_t USBFS_DOEPDMA11_17;
-    uint32_t USBFS_DOEPDMA11_18;
-    uint32_t USBFS_DOEPDMA11_19;
-    uint32_t USBFS_DOEPDMA11_20;
-    uint32_t USBFS_DOEPDMA11_21;
-    uint32_t USBFS_DOEPDMA11_22;
-    uint32_t USBFS_DOEPDMA11_23;
-    uint32_t USBFS_DOEPDMA11_24;
-    uint32_t USBFS_DOEPDMA11_25;
-    uint32_t USBFS_DOEPDMA11_26;
-    uint32_t USBFS_DOEPDMA11_27;
-    uint32_t USBFS_DOEPDMA11_28;
-    uint32_t USBFS_DOEPDMA11_29;
-    uint32_t USBFS_DOEPDMA11_30;
-    uint32_t USBFS_DOEPDMA11_31;
-} stc_usbfs_doepdma11_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -59020,90 +39760,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz12_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA12_0;
-    uint32_t USBFS_DOEPDMA12_1;
-    uint32_t USBFS_DOEPDMA12_2;
-    uint32_t USBFS_DOEPDMA12_3;
-    uint32_t USBFS_DOEPDMA12_4;
-    uint32_t USBFS_DOEPDMA12_5;
-    uint32_t USBFS_DOEPDMA12_6;
-    uint32_t USBFS_DOEPDMA12_7;
-    uint32_t USBFS_DOEPDMA12_8;
-    uint32_t USBFS_DOEPDMA12_9;
-    uint32_t USBFS_DOEPDMA12_10;
-    uint32_t USBFS_DOEPDMA12_11;
-    uint32_t USBFS_DOEPDMA12_12;
-    uint32_t USBFS_DOEPDMA12_13;
-    uint32_t USBFS_DOEPDMA12_14;
-    uint32_t USBFS_DOEPDMA12_15;
-    uint32_t USBFS_DOEPDMA12_16;
-    uint32_t USBFS_DOEPDMA12_17;
-    uint32_t USBFS_DOEPDMA12_18;
-    uint32_t USBFS_DOEPDMA12_19;
-    uint32_t USBFS_DOEPDMA12_20;
-    uint32_t USBFS_DOEPDMA12_21;
-    uint32_t USBFS_DOEPDMA12_22;
-    uint32_t USBFS_DOEPDMA12_23;
-    uint32_t USBFS_DOEPDMA12_24;
-    uint32_t USBFS_DOEPDMA12_25;
-    uint32_t USBFS_DOEPDMA12_26;
-    uint32_t USBFS_DOEPDMA12_27;
-    uint32_t USBFS_DOEPDMA12_28;
-    uint32_t USBFS_DOEPDMA12_29;
-    uint32_t USBFS_DOEPDMA12_30;
-    uint32_t USBFS_DOEPDMA12_31;
-} stc_usbfs_doepdma12_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -59143,90 +39808,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz13_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA13_0;
-    uint32_t USBFS_DOEPDMA13_1;
-    uint32_t USBFS_DOEPDMA13_2;
-    uint32_t USBFS_DOEPDMA13_3;
-    uint32_t USBFS_DOEPDMA13_4;
-    uint32_t USBFS_DOEPDMA13_5;
-    uint32_t USBFS_DOEPDMA13_6;
-    uint32_t USBFS_DOEPDMA13_7;
-    uint32_t USBFS_DOEPDMA13_8;
-    uint32_t USBFS_DOEPDMA13_9;
-    uint32_t USBFS_DOEPDMA13_10;
-    uint32_t USBFS_DOEPDMA13_11;
-    uint32_t USBFS_DOEPDMA13_12;
-    uint32_t USBFS_DOEPDMA13_13;
-    uint32_t USBFS_DOEPDMA13_14;
-    uint32_t USBFS_DOEPDMA13_15;
-    uint32_t USBFS_DOEPDMA13_16;
-    uint32_t USBFS_DOEPDMA13_17;
-    uint32_t USBFS_DOEPDMA13_18;
-    uint32_t USBFS_DOEPDMA13_19;
-    uint32_t USBFS_DOEPDMA13_20;
-    uint32_t USBFS_DOEPDMA13_21;
-    uint32_t USBFS_DOEPDMA13_22;
-    uint32_t USBFS_DOEPDMA13_23;
-    uint32_t USBFS_DOEPDMA13_24;
-    uint32_t USBFS_DOEPDMA13_25;
-    uint32_t USBFS_DOEPDMA13_26;
-    uint32_t USBFS_DOEPDMA13_27;
-    uint32_t USBFS_DOEPDMA13_28;
-    uint32_t USBFS_DOEPDMA13_29;
-    uint32_t USBFS_DOEPDMA13_30;
-    uint32_t USBFS_DOEPDMA13_31;
-} stc_usbfs_doepdma13_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -59266,90 +39856,15 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz14_bit_t;
 
 typedef struct
 {
-    uint32_t USBFS_DOEPDMA14_0;
-    uint32_t USBFS_DOEPDMA14_1;
-    uint32_t USBFS_DOEPDMA14_2;
-    uint32_t USBFS_DOEPDMA14_3;
-    uint32_t USBFS_DOEPDMA14_4;
-    uint32_t USBFS_DOEPDMA14_5;
-    uint32_t USBFS_DOEPDMA14_6;
-    uint32_t USBFS_DOEPDMA14_7;
-    uint32_t USBFS_DOEPDMA14_8;
-    uint32_t USBFS_DOEPDMA14_9;
-    uint32_t USBFS_DOEPDMA14_10;
-    uint32_t USBFS_DOEPDMA14_11;
-    uint32_t USBFS_DOEPDMA14_12;
-    uint32_t USBFS_DOEPDMA14_13;
-    uint32_t USBFS_DOEPDMA14_14;
-    uint32_t USBFS_DOEPDMA14_15;
-    uint32_t USBFS_DOEPDMA14_16;
-    uint32_t USBFS_DOEPDMA14_17;
-    uint32_t USBFS_DOEPDMA14_18;
-    uint32_t USBFS_DOEPDMA14_19;
-    uint32_t USBFS_DOEPDMA14_20;
-    uint32_t USBFS_DOEPDMA14_21;
-    uint32_t USBFS_DOEPDMA14_22;
-    uint32_t USBFS_DOEPDMA14_23;
-    uint32_t USBFS_DOEPDMA14_24;
-    uint32_t USBFS_DOEPDMA14_25;
-    uint32_t USBFS_DOEPDMA14_26;
-    uint32_t USBFS_DOEPDMA14_27;
-    uint32_t USBFS_DOEPDMA14_28;
-    uint32_t USBFS_DOEPDMA14_29;
-    uint32_t USBFS_DOEPDMA14_30;
-    uint32_t USBFS_DOEPDMA14_31;
-} stc_usbfs_doepdma14_bit_t;
-
-typedef struct
-{
-    __IO uint32_t MPS0;
-    __IO uint32_t MPS1;
-    __IO uint32_t MPS2;
-    __IO uint32_t MPS3;
-    __IO uint32_t MPS4;
-    __IO uint32_t MPS5;
-    __IO uint32_t MPS6;
-    __IO uint32_t MPS7;
-    __IO uint32_t MPS8;
-    __IO uint32_t MPS9;
-    __IO uint32_t MPS10;
-    uint32_t RESERVED0[4];
+    uint32_t RESERVED0[15];
     __IO uint32_t USBACTEP;
     __IO uint32_t DPID;
     __IO uint32_t NAKSTS;
@@ -59389,75 +39904,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t XFERSIZE0;
-    __IO uint32_t XFERSIZE1;
-    __IO uint32_t XFERSIZE2;
-    __IO uint32_t XFERSIZE3;
-    __IO uint32_t XFERSIZE4;
-    __IO uint32_t XFERSIZE5;
-    __IO uint32_t XFERSIZE6;
-    __IO uint32_t XFERSIZE7;
-    __IO uint32_t XFERSIZE8;
-    __IO uint32_t XFERSIZE9;
-    __IO uint32_t XFERSIZE10;
-    __IO uint32_t XFERSIZE11;
-    __IO uint32_t XFERSIZE12;
-    __IO uint32_t XFERSIZE13;
-    __IO uint32_t XFERSIZE14;
-    __IO uint32_t XFERSIZE15;
-    __IO uint32_t XFERSIZE16;
-    __IO uint32_t XFERSIZE17;
-    __IO uint32_t XFERSIZE18;
-    __IO uint32_t PKTCNT0;
-    __IO uint32_t PKTCNT1;
-    __IO uint32_t PKTCNT2;
-    __IO uint32_t PKTCNT3;
-    __IO uint32_t PKTCNT4;
-    __IO uint32_t PKTCNT5;
-    __IO uint32_t PKTCNT6;
-    __IO uint32_t PKTCNT7;
-    __IO uint32_t PKTCNT8;
-    __IO uint32_t PKTCNT9;
+    uint32_t RESERVED0[29];
     __IO uint32_t RXDPID0;
     __IO uint32_t RXDPID1;
-    uint32_t RESERVED0[1];
+    uint32_t RESERVED1[1];
 } stc_usbfs_doeptsiz15_bit_t;
-
-typedef struct
-{
-    uint32_t USBFS_DOEPDMA15_0;
-    uint32_t USBFS_DOEPDMA15_1;
-    uint32_t USBFS_DOEPDMA15_2;
-    uint32_t USBFS_DOEPDMA15_3;
-    uint32_t USBFS_DOEPDMA15_4;
-    uint32_t USBFS_DOEPDMA15_5;
-    uint32_t USBFS_DOEPDMA15_6;
-    uint32_t USBFS_DOEPDMA15_7;
-    uint32_t USBFS_DOEPDMA15_8;
-    uint32_t USBFS_DOEPDMA15_9;
-    uint32_t USBFS_DOEPDMA15_10;
-    uint32_t USBFS_DOEPDMA15_11;
-    uint32_t USBFS_DOEPDMA15_12;
-    uint32_t USBFS_DOEPDMA15_13;
-    uint32_t USBFS_DOEPDMA15_14;
-    uint32_t USBFS_DOEPDMA15_15;
-    uint32_t USBFS_DOEPDMA15_16;
-    uint32_t USBFS_DOEPDMA15_17;
-    uint32_t USBFS_DOEPDMA15_18;
-    uint32_t USBFS_DOEPDMA15_19;
-    uint32_t USBFS_DOEPDMA15_20;
-    uint32_t USBFS_DOEPDMA15_21;
-    uint32_t USBFS_DOEPDMA15_22;
-    uint32_t USBFS_DOEPDMA15_23;
-    uint32_t USBFS_DOEPDMA15_24;
-    uint32_t USBFS_DOEPDMA15_25;
-    uint32_t USBFS_DOEPDMA15_26;
-    uint32_t USBFS_DOEPDMA15_27;
-    uint32_t USBFS_DOEPDMA15_28;
-    uint32_t USBFS_DOEPDMA15_29;
-    uint32_t USBFS_DOEPDMA15_30;
-    uint32_t USBFS_DOEPDMA15_31;
-} stc_usbfs_doepdma15_bit_t;
 
 typedef struct
 {
@@ -59828,42 +40279,6 @@ typedef struct
     __IO uint32_t VSTSDONE;
     uint32_t RESERVED1[4];
 } stc_usbhs_gpvndctl_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_GUID_0;
-    uint32_t USBHS_GUID_1;
-    uint32_t USBHS_GUID_2;
-    uint32_t USBHS_GUID_3;
-    uint32_t USBHS_GUID_4;
-    uint32_t USBHS_GUID_5;
-    uint32_t USBHS_GUID_6;
-    uint32_t USBHS_GUID_7;
-    uint32_t USBHS_GUID_8;
-    uint32_t USBHS_GUID_9;
-    uint32_t USBHS_GUID_10;
-    uint32_t USBHS_GUID_11;
-    uint32_t USBHS_GUID_12;
-    uint32_t USBHS_GUID_13;
-    uint32_t USBHS_GUID_14;
-    uint32_t USBHS_GUID_15;
-    uint32_t USBHS_GUID_16;
-    uint32_t USBHS_GUID_17;
-    uint32_t USBHS_GUID_18;
-    uint32_t USBHS_GUID_19;
-    uint32_t USBHS_GUID_20;
-    uint32_t USBHS_GUID_21;
-    uint32_t USBHS_GUID_22;
-    uint32_t USBHS_GUID_23;
-    uint32_t USBHS_GUID_24;
-    uint32_t USBHS_GUID_25;
-    uint32_t USBHS_GUID_26;
-    uint32_t USBHS_GUID_27;
-    uint32_t USBHS_GUID_28;
-    uint32_t USBHS_GUID_29;
-    uint32_t USBHS_GUID_30;
-    uint32_t USBHS_GUID_31;
-} stc_usbhs_guid_bit_t;
 
 typedef struct
 {
@@ -60762,42 +41177,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA0_0;
-    uint32_t USBHS_HCDMA0_1;
-    uint32_t USBHS_HCDMA0_2;
-    uint32_t USBHS_HCDMA0_3;
-    uint32_t USBHS_HCDMA0_4;
-    uint32_t USBHS_HCDMA0_5;
-    uint32_t USBHS_HCDMA0_6;
-    uint32_t USBHS_HCDMA0_7;
-    uint32_t USBHS_HCDMA0_8;
-    uint32_t USBHS_HCDMA0_9;
-    uint32_t USBHS_HCDMA0_10;
-    uint32_t USBHS_HCDMA0_11;
-    uint32_t USBHS_HCDMA0_12;
-    uint32_t USBHS_HCDMA0_13;
-    uint32_t USBHS_HCDMA0_14;
-    uint32_t USBHS_HCDMA0_15;
-    uint32_t USBHS_HCDMA0_16;
-    uint32_t USBHS_HCDMA0_17;
-    uint32_t USBHS_HCDMA0_18;
-    uint32_t USBHS_HCDMA0_19;
-    uint32_t USBHS_HCDMA0_20;
-    uint32_t USBHS_HCDMA0_21;
-    uint32_t USBHS_HCDMA0_22;
-    uint32_t USBHS_HCDMA0_23;
-    uint32_t USBHS_HCDMA0_24;
-    uint32_t USBHS_HCDMA0_25;
-    uint32_t USBHS_HCDMA0_26;
-    uint32_t USBHS_HCDMA0_27;
-    uint32_t USBHS_HCDMA0_28;
-    uint32_t USBHS_HCDMA0_29;
-    uint32_t USBHS_HCDMA0_30;
-    uint32_t USBHS_HCDMA0_31;
-} stc_usbhs_hcdma0_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -60922,42 +41301,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz1_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA1_0;
-    uint32_t USBHS_HCDMA1_1;
-    uint32_t USBHS_HCDMA1_2;
-    uint32_t USBHS_HCDMA1_3;
-    uint32_t USBHS_HCDMA1_4;
-    uint32_t USBHS_HCDMA1_5;
-    uint32_t USBHS_HCDMA1_6;
-    uint32_t USBHS_HCDMA1_7;
-    uint32_t USBHS_HCDMA1_8;
-    uint32_t USBHS_HCDMA1_9;
-    uint32_t USBHS_HCDMA1_10;
-    uint32_t USBHS_HCDMA1_11;
-    uint32_t USBHS_HCDMA1_12;
-    uint32_t USBHS_HCDMA1_13;
-    uint32_t USBHS_HCDMA1_14;
-    uint32_t USBHS_HCDMA1_15;
-    uint32_t USBHS_HCDMA1_16;
-    uint32_t USBHS_HCDMA1_17;
-    uint32_t USBHS_HCDMA1_18;
-    uint32_t USBHS_HCDMA1_19;
-    uint32_t USBHS_HCDMA1_20;
-    uint32_t USBHS_HCDMA1_21;
-    uint32_t USBHS_HCDMA1_22;
-    uint32_t USBHS_HCDMA1_23;
-    uint32_t USBHS_HCDMA1_24;
-    uint32_t USBHS_HCDMA1_25;
-    uint32_t USBHS_HCDMA1_26;
-    uint32_t USBHS_HCDMA1_27;
-    uint32_t USBHS_HCDMA1_28;
-    uint32_t USBHS_HCDMA1_29;
-    uint32_t USBHS_HCDMA1_30;
-    uint32_t USBHS_HCDMA1_31;
-} stc_usbhs_hcdma1_bit_t;
 
 typedef struct
 {
@@ -61088,42 +41431,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA2_0;
-    uint32_t USBHS_HCDMA2_1;
-    uint32_t USBHS_HCDMA2_2;
-    uint32_t USBHS_HCDMA2_3;
-    uint32_t USBHS_HCDMA2_4;
-    uint32_t USBHS_HCDMA2_5;
-    uint32_t USBHS_HCDMA2_6;
-    uint32_t USBHS_HCDMA2_7;
-    uint32_t USBHS_HCDMA2_8;
-    uint32_t USBHS_HCDMA2_9;
-    uint32_t USBHS_HCDMA2_10;
-    uint32_t USBHS_HCDMA2_11;
-    uint32_t USBHS_HCDMA2_12;
-    uint32_t USBHS_HCDMA2_13;
-    uint32_t USBHS_HCDMA2_14;
-    uint32_t USBHS_HCDMA2_15;
-    uint32_t USBHS_HCDMA2_16;
-    uint32_t USBHS_HCDMA2_17;
-    uint32_t USBHS_HCDMA2_18;
-    uint32_t USBHS_HCDMA2_19;
-    uint32_t USBHS_HCDMA2_20;
-    uint32_t USBHS_HCDMA2_21;
-    uint32_t USBHS_HCDMA2_22;
-    uint32_t USBHS_HCDMA2_23;
-    uint32_t USBHS_HCDMA2_24;
-    uint32_t USBHS_HCDMA2_25;
-    uint32_t USBHS_HCDMA2_26;
-    uint32_t USBHS_HCDMA2_27;
-    uint32_t USBHS_HCDMA2_28;
-    uint32_t USBHS_HCDMA2_29;
-    uint32_t USBHS_HCDMA2_30;
-    uint32_t USBHS_HCDMA2_31;
-} stc_usbhs_hcdma2_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -61248,42 +41555,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz3_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA3_0;
-    uint32_t USBHS_HCDMA3_1;
-    uint32_t USBHS_HCDMA3_2;
-    uint32_t USBHS_HCDMA3_3;
-    uint32_t USBHS_HCDMA3_4;
-    uint32_t USBHS_HCDMA3_5;
-    uint32_t USBHS_HCDMA3_6;
-    uint32_t USBHS_HCDMA3_7;
-    uint32_t USBHS_HCDMA3_8;
-    uint32_t USBHS_HCDMA3_9;
-    uint32_t USBHS_HCDMA3_10;
-    uint32_t USBHS_HCDMA3_11;
-    uint32_t USBHS_HCDMA3_12;
-    uint32_t USBHS_HCDMA3_13;
-    uint32_t USBHS_HCDMA3_14;
-    uint32_t USBHS_HCDMA3_15;
-    uint32_t USBHS_HCDMA3_16;
-    uint32_t USBHS_HCDMA3_17;
-    uint32_t USBHS_HCDMA3_18;
-    uint32_t USBHS_HCDMA3_19;
-    uint32_t USBHS_HCDMA3_20;
-    uint32_t USBHS_HCDMA3_21;
-    uint32_t USBHS_HCDMA3_22;
-    uint32_t USBHS_HCDMA3_23;
-    uint32_t USBHS_HCDMA3_24;
-    uint32_t USBHS_HCDMA3_25;
-    uint32_t USBHS_HCDMA3_26;
-    uint32_t USBHS_HCDMA3_27;
-    uint32_t USBHS_HCDMA3_28;
-    uint32_t USBHS_HCDMA3_29;
-    uint32_t USBHS_HCDMA3_30;
-    uint32_t USBHS_HCDMA3_31;
-} stc_usbhs_hcdma3_bit_t;
 
 typedef struct
 {
@@ -61414,42 +41685,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA4_0;
-    uint32_t USBHS_HCDMA4_1;
-    uint32_t USBHS_HCDMA4_2;
-    uint32_t USBHS_HCDMA4_3;
-    uint32_t USBHS_HCDMA4_4;
-    uint32_t USBHS_HCDMA4_5;
-    uint32_t USBHS_HCDMA4_6;
-    uint32_t USBHS_HCDMA4_7;
-    uint32_t USBHS_HCDMA4_8;
-    uint32_t USBHS_HCDMA4_9;
-    uint32_t USBHS_HCDMA4_10;
-    uint32_t USBHS_HCDMA4_11;
-    uint32_t USBHS_HCDMA4_12;
-    uint32_t USBHS_HCDMA4_13;
-    uint32_t USBHS_HCDMA4_14;
-    uint32_t USBHS_HCDMA4_15;
-    uint32_t USBHS_HCDMA4_16;
-    uint32_t USBHS_HCDMA4_17;
-    uint32_t USBHS_HCDMA4_18;
-    uint32_t USBHS_HCDMA4_19;
-    uint32_t USBHS_HCDMA4_20;
-    uint32_t USBHS_HCDMA4_21;
-    uint32_t USBHS_HCDMA4_22;
-    uint32_t USBHS_HCDMA4_23;
-    uint32_t USBHS_HCDMA4_24;
-    uint32_t USBHS_HCDMA4_25;
-    uint32_t USBHS_HCDMA4_26;
-    uint32_t USBHS_HCDMA4_27;
-    uint32_t USBHS_HCDMA4_28;
-    uint32_t USBHS_HCDMA4_29;
-    uint32_t USBHS_HCDMA4_30;
-    uint32_t USBHS_HCDMA4_31;
-} stc_usbhs_hcdma4_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -61574,42 +41809,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz5_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA5_0;
-    uint32_t USBHS_HCDMA5_1;
-    uint32_t USBHS_HCDMA5_2;
-    uint32_t USBHS_HCDMA5_3;
-    uint32_t USBHS_HCDMA5_4;
-    uint32_t USBHS_HCDMA5_5;
-    uint32_t USBHS_HCDMA5_6;
-    uint32_t USBHS_HCDMA5_7;
-    uint32_t USBHS_HCDMA5_8;
-    uint32_t USBHS_HCDMA5_9;
-    uint32_t USBHS_HCDMA5_10;
-    uint32_t USBHS_HCDMA5_11;
-    uint32_t USBHS_HCDMA5_12;
-    uint32_t USBHS_HCDMA5_13;
-    uint32_t USBHS_HCDMA5_14;
-    uint32_t USBHS_HCDMA5_15;
-    uint32_t USBHS_HCDMA5_16;
-    uint32_t USBHS_HCDMA5_17;
-    uint32_t USBHS_HCDMA5_18;
-    uint32_t USBHS_HCDMA5_19;
-    uint32_t USBHS_HCDMA5_20;
-    uint32_t USBHS_HCDMA5_21;
-    uint32_t USBHS_HCDMA5_22;
-    uint32_t USBHS_HCDMA5_23;
-    uint32_t USBHS_HCDMA5_24;
-    uint32_t USBHS_HCDMA5_25;
-    uint32_t USBHS_HCDMA5_26;
-    uint32_t USBHS_HCDMA5_27;
-    uint32_t USBHS_HCDMA5_28;
-    uint32_t USBHS_HCDMA5_29;
-    uint32_t USBHS_HCDMA5_30;
-    uint32_t USBHS_HCDMA5_31;
-} stc_usbhs_hcdma5_bit_t;
 
 typedef struct
 {
@@ -61740,42 +41939,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA6_0;
-    uint32_t USBHS_HCDMA6_1;
-    uint32_t USBHS_HCDMA6_2;
-    uint32_t USBHS_HCDMA6_3;
-    uint32_t USBHS_HCDMA6_4;
-    uint32_t USBHS_HCDMA6_5;
-    uint32_t USBHS_HCDMA6_6;
-    uint32_t USBHS_HCDMA6_7;
-    uint32_t USBHS_HCDMA6_8;
-    uint32_t USBHS_HCDMA6_9;
-    uint32_t USBHS_HCDMA6_10;
-    uint32_t USBHS_HCDMA6_11;
-    uint32_t USBHS_HCDMA6_12;
-    uint32_t USBHS_HCDMA6_13;
-    uint32_t USBHS_HCDMA6_14;
-    uint32_t USBHS_HCDMA6_15;
-    uint32_t USBHS_HCDMA6_16;
-    uint32_t USBHS_HCDMA6_17;
-    uint32_t USBHS_HCDMA6_18;
-    uint32_t USBHS_HCDMA6_19;
-    uint32_t USBHS_HCDMA6_20;
-    uint32_t USBHS_HCDMA6_21;
-    uint32_t USBHS_HCDMA6_22;
-    uint32_t USBHS_HCDMA6_23;
-    uint32_t USBHS_HCDMA6_24;
-    uint32_t USBHS_HCDMA6_25;
-    uint32_t USBHS_HCDMA6_26;
-    uint32_t USBHS_HCDMA6_27;
-    uint32_t USBHS_HCDMA6_28;
-    uint32_t USBHS_HCDMA6_29;
-    uint32_t USBHS_HCDMA6_30;
-    uint32_t USBHS_HCDMA6_31;
-} stc_usbhs_hcdma6_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -61900,42 +42063,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz7_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA7_0;
-    uint32_t USBHS_HCDMA7_1;
-    uint32_t USBHS_HCDMA7_2;
-    uint32_t USBHS_HCDMA7_3;
-    uint32_t USBHS_HCDMA7_4;
-    uint32_t USBHS_HCDMA7_5;
-    uint32_t USBHS_HCDMA7_6;
-    uint32_t USBHS_HCDMA7_7;
-    uint32_t USBHS_HCDMA7_8;
-    uint32_t USBHS_HCDMA7_9;
-    uint32_t USBHS_HCDMA7_10;
-    uint32_t USBHS_HCDMA7_11;
-    uint32_t USBHS_HCDMA7_12;
-    uint32_t USBHS_HCDMA7_13;
-    uint32_t USBHS_HCDMA7_14;
-    uint32_t USBHS_HCDMA7_15;
-    uint32_t USBHS_HCDMA7_16;
-    uint32_t USBHS_HCDMA7_17;
-    uint32_t USBHS_HCDMA7_18;
-    uint32_t USBHS_HCDMA7_19;
-    uint32_t USBHS_HCDMA7_20;
-    uint32_t USBHS_HCDMA7_21;
-    uint32_t USBHS_HCDMA7_22;
-    uint32_t USBHS_HCDMA7_23;
-    uint32_t USBHS_HCDMA7_24;
-    uint32_t USBHS_HCDMA7_25;
-    uint32_t USBHS_HCDMA7_26;
-    uint32_t USBHS_HCDMA7_27;
-    uint32_t USBHS_HCDMA7_28;
-    uint32_t USBHS_HCDMA7_29;
-    uint32_t USBHS_HCDMA7_30;
-    uint32_t USBHS_HCDMA7_31;
-} stc_usbhs_hcdma7_bit_t;
 
 typedef struct
 {
@@ -62066,42 +42193,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA8_0;
-    uint32_t USBHS_HCDMA8_1;
-    uint32_t USBHS_HCDMA8_2;
-    uint32_t USBHS_HCDMA8_3;
-    uint32_t USBHS_HCDMA8_4;
-    uint32_t USBHS_HCDMA8_5;
-    uint32_t USBHS_HCDMA8_6;
-    uint32_t USBHS_HCDMA8_7;
-    uint32_t USBHS_HCDMA8_8;
-    uint32_t USBHS_HCDMA8_9;
-    uint32_t USBHS_HCDMA8_10;
-    uint32_t USBHS_HCDMA8_11;
-    uint32_t USBHS_HCDMA8_12;
-    uint32_t USBHS_HCDMA8_13;
-    uint32_t USBHS_HCDMA8_14;
-    uint32_t USBHS_HCDMA8_15;
-    uint32_t USBHS_HCDMA8_16;
-    uint32_t USBHS_HCDMA8_17;
-    uint32_t USBHS_HCDMA8_18;
-    uint32_t USBHS_HCDMA8_19;
-    uint32_t USBHS_HCDMA8_20;
-    uint32_t USBHS_HCDMA8_21;
-    uint32_t USBHS_HCDMA8_22;
-    uint32_t USBHS_HCDMA8_23;
-    uint32_t USBHS_HCDMA8_24;
-    uint32_t USBHS_HCDMA8_25;
-    uint32_t USBHS_HCDMA8_26;
-    uint32_t USBHS_HCDMA8_27;
-    uint32_t USBHS_HCDMA8_28;
-    uint32_t USBHS_HCDMA8_29;
-    uint32_t USBHS_HCDMA8_30;
-    uint32_t USBHS_HCDMA8_31;
-} stc_usbhs_hcdma8_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -62226,42 +42317,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz9_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA9_0;
-    uint32_t USBHS_HCDMA9_1;
-    uint32_t USBHS_HCDMA9_2;
-    uint32_t USBHS_HCDMA9_3;
-    uint32_t USBHS_HCDMA9_4;
-    uint32_t USBHS_HCDMA9_5;
-    uint32_t USBHS_HCDMA9_6;
-    uint32_t USBHS_HCDMA9_7;
-    uint32_t USBHS_HCDMA9_8;
-    uint32_t USBHS_HCDMA9_9;
-    uint32_t USBHS_HCDMA9_10;
-    uint32_t USBHS_HCDMA9_11;
-    uint32_t USBHS_HCDMA9_12;
-    uint32_t USBHS_HCDMA9_13;
-    uint32_t USBHS_HCDMA9_14;
-    uint32_t USBHS_HCDMA9_15;
-    uint32_t USBHS_HCDMA9_16;
-    uint32_t USBHS_HCDMA9_17;
-    uint32_t USBHS_HCDMA9_18;
-    uint32_t USBHS_HCDMA9_19;
-    uint32_t USBHS_HCDMA9_20;
-    uint32_t USBHS_HCDMA9_21;
-    uint32_t USBHS_HCDMA9_22;
-    uint32_t USBHS_HCDMA9_23;
-    uint32_t USBHS_HCDMA9_24;
-    uint32_t USBHS_HCDMA9_25;
-    uint32_t USBHS_HCDMA9_26;
-    uint32_t USBHS_HCDMA9_27;
-    uint32_t USBHS_HCDMA9_28;
-    uint32_t USBHS_HCDMA9_29;
-    uint32_t USBHS_HCDMA9_30;
-    uint32_t USBHS_HCDMA9_31;
-} stc_usbhs_hcdma9_bit_t;
 
 typedef struct
 {
@@ -62392,42 +42447,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA10_0;
-    uint32_t USBHS_HCDMA10_1;
-    uint32_t USBHS_HCDMA10_2;
-    uint32_t USBHS_HCDMA10_3;
-    uint32_t USBHS_HCDMA10_4;
-    uint32_t USBHS_HCDMA10_5;
-    uint32_t USBHS_HCDMA10_6;
-    uint32_t USBHS_HCDMA10_7;
-    uint32_t USBHS_HCDMA10_8;
-    uint32_t USBHS_HCDMA10_9;
-    uint32_t USBHS_HCDMA10_10;
-    uint32_t USBHS_HCDMA10_11;
-    uint32_t USBHS_HCDMA10_12;
-    uint32_t USBHS_HCDMA10_13;
-    uint32_t USBHS_HCDMA10_14;
-    uint32_t USBHS_HCDMA10_15;
-    uint32_t USBHS_HCDMA10_16;
-    uint32_t USBHS_HCDMA10_17;
-    uint32_t USBHS_HCDMA10_18;
-    uint32_t USBHS_HCDMA10_19;
-    uint32_t USBHS_HCDMA10_20;
-    uint32_t USBHS_HCDMA10_21;
-    uint32_t USBHS_HCDMA10_22;
-    uint32_t USBHS_HCDMA10_23;
-    uint32_t USBHS_HCDMA10_24;
-    uint32_t USBHS_HCDMA10_25;
-    uint32_t USBHS_HCDMA10_26;
-    uint32_t USBHS_HCDMA10_27;
-    uint32_t USBHS_HCDMA10_28;
-    uint32_t USBHS_HCDMA10_29;
-    uint32_t USBHS_HCDMA10_30;
-    uint32_t USBHS_HCDMA10_31;
-} stc_usbhs_hcdma10_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -62552,42 +42571,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz11_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA11_0;
-    uint32_t USBHS_HCDMA11_1;
-    uint32_t USBHS_HCDMA11_2;
-    uint32_t USBHS_HCDMA11_3;
-    uint32_t USBHS_HCDMA11_4;
-    uint32_t USBHS_HCDMA11_5;
-    uint32_t USBHS_HCDMA11_6;
-    uint32_t USBHS_HCDMA11_7;
-    uint32_t USBHS_HCDMA11_8;
-    uint32_t USBHS_HCDMA11_9;
-    uint32_t USBHS_HCDMA11_10;
-    uint32_t USBHS_HCDMA11_11;
-    uint32_t USBHS_HCDMA11_12;
-    uint32_t USBHS_HCDMA11_13;
-    uint32_t USBHS_HCDMA11_14;
-    uint32_t USBHS_HCDMA11_15;
-    uint32_t USBHS_HCDMA11_16;
-    uint32_t USBHS_HCDMA11_17;
-    uint32_t USBHS_HCDMA11_18;
-    uint32_t USBHS_HCDMA11_19;
-    uint32_t USBHS_HCDMA11_20;
-    uint32_t USBHS_HCDMA11_21;
-    uint32_t USBHS_HCDMA11_22;
-    uint32_t USBHS_HCDMA11_23;
-    uint32_t USBHS_HCDMA11_24;
-    uint32_t USBHS_HCDMA11_25;
-    uint32_t USBHS_HCDMA11_26;
-    uint32_t USBHS_HCDMA11_27;
-    uint32_t USBHS_HCDMA11_28;
-    uint32_t USBHS_HCDMA11_29;
-    uint32_t USBHS_HCDMA11_30;
-    uint32_t USBHS_HCDMA11_31;
-} stc_usbhs_hcdma11_bit_t;
 
 typedef struct
 {
@@ -62718,42 +42701,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA12_0;
-    uint32_t USBHS_HCDMA12_1;
-    uint32_t USBHS_HCDMA12_2;
-    uint32_t USBHS_HCDMA12_3;
-    uint32_t USBHS_HCDMA12_4;
-    uint32_t USBHS_HCDMA12_5;
-    uint32_t USBHS_HCDMA12_6;
-    uint32_t USBHS_HCDMA12_7;
-    uint32_t USBHS_HCDMA12_8;
-    uint32_t USBHS_HCDMA12_9;
-    uint32_t USBHS_HCDMA12_10;
-    uint32_t USBHS_HCDMA12_11;
-    uint32_t USBHS_HCDMA12_12;
-    uint32_t USBHS_HCDMA12_13;
-    uint32_t USBHS_HCDMA12_14;
-    uint32_t USBHS_HCDMA12_15;
-    uint32_t USBHS_HCDMA12_16;
-    uint32_t USBHS_HCDMA12_17;
-    uint32_t USBHS_HCDMA12_18;
-    uint32_t USBHS_HCDMA12_19;
-    uint32_t USBHS_HCDMA12_20;
-    uint32_t USBHS_HCDMA12_21;
-    uint32_t USBHS_HCDMA12_22;
-    uint32_t USBHS_HCDMA12_23;
-    uint32_t USBHS_HCDMA12_24;
-    uint32_t USBHS_HCDMA12_25;
-    uint32_t USBHS_HCDMA12_26;
-    uint32_t USBHS_HCDMA12_27;
-    uint32_t USBHS_HCDMA12_28;
-    uint32_t USBHS_HCDMA12_29;
-    uint32_t USBHS_HCDMA12_30;
-    uint32_t USBHS_HCDMA12_31;
-} stc_usbhs_hcdma12_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -62878,42 +42825,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz13_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA13_0;
-    uint32_t USBHS_HCDMA13_1;
-    uint32_t USBHS_HCDMA13_2;
-    uint32_t USBHS_HCDMA13_3;
-    uint32_t USBHS_HCDMA13_4;
-    uint32_t USBHS_HCDMA13_5;
-    uint32_t USBHS_HCDMA13_6;
-    uint32_t USBHS_HCDMA13_7;
-    uint32_t USBHS_HCDMA13_8;
-    uint32_t USBHS_HCDMA13_9;
-    uint32_t USBHS_HCDMA13_10;
-    uint32_t USBHS_HCDMA13_11;
-    uint32_t USBHS_HCDMA13_12;
-    uint32_t USBHS_HCDMA13_13;
-    uint32_t USBHS_HCDMA13_14;
-    uint32_t USBHS_HCDMA13_15;
-    uint32_t USBHS_HCDMA13_16;
-    uint32_t USBHS_HCDMA13_17;
-    uint32_t USBHS_HCDMA13_18;
-    uint32_t USBHS_HCDMA13_19;
-    uint32_t USBHS_HCDMA13_20;
-    uint32_t USBHS_HCDMA13_21;
-    uint32_t USBHS_HCDMA13_22;
-    uint32_t USBHS_HCDMA13_23;
-    uint32_t USBHS_HCDMA13_24;
-    uint32_t USBHS_HCDMA13_25;
-    uint32_t USBHS_HCDMA13_26;
-    uint32_t USBHS_HCDMA13_27;
-    uint32_t USBHS_HCDMA13_28;
-    uint32_t USBHS_HCDMA13_29;
-    uint32_t USBHS_HCDMA13_30;
-    uint32_t USBHS_HCDMA13_31;
-} stc_usbhs_hcdma13_bit_t;
 
 typedef struct
 {
@@ -63044,42 +42955,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_HCDMA14_0;
-    uint32_t USBHS_HCDMA14_1;
-    uint32_t USBHS_HCDMA14_2;
-    uint32_t USBHS_HCDMA14_3;
-    uint32_t USBHS_HCDMA14_4;
-    uint32_t USBHS_HCDMA14_5;
-    uint32_t USBHS_HCDMA14_6;
-    uint32_t USBHS_HCDMA14_7;
-    uint32_t USBHS_HCDMA14_8;
-    uint32_t USBHS_HCDMA14_9;
-    uint32_t USBHS_HCDMA14_10;
-    uint32_t USBHS_HCDMA14_11;
-    uint32_t USBHS_HCDMA14_12;
-    uint32_t USBHS_HCDMA14_13;
-    uint32_t USBHS_HCDMA14_14;
-    uint32_t USBHS_HCDMA14_15;
-    uint32_t USBHS_HCDMA14_16;
-    uint32_t USBHS_HCDMA14_17;
-    uint32_t USBHS_HCDMA14_18;
-    uint32_t USBHS_HCDMA14_19;
-    uint32_t USBHS_HCDMA14_20;
-    uint32_t USBHS_HCDMA14_21;
-    uint32_t USBHS_HCDMA14_22;
-    uint32_t USBHS_HCDMA14_23;
-    uint32_t USBHS_HCDMA14_24;
-    uint32_t USBHS_HCDMA14_25;
-    uint32_t USBHS_HCDMA14_26;
-    uint32_t USBHS_HCDMA14_27;
-    uint32_t USBHS_HCDMA14_28;
-    uint32_t USBHS_HCDMA14_29;
-    uint32_t USBHS_HCDMA14_30;
-    uint32_t USBHS_HCDMA14_31;
-} stc_usbhs_hcdma14_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -63204,42 +43079,6 @@ typedef struct
     __IO uint32_t PID1;
     __IO uint32_t DOPNG;
 } stc_usbhs_hctsiz15_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_HCDMA15_0;
-    uint32_t USBHS_HCDMA15_1;
-    uint32_t USBHS_HCDMA15_2;
-    uint32_t USBHS_HCDMA15_3;
-    uint32_t USBHS_HCDMA15_4;
-    uint32_t USBHS_HCDMA15_5;
-    uint32_t USBHS_HCDMA15_6;
-    uint32_t USBHS_HCDMA15_7;
-    uint32_t USBHS_HCDMA15_8;
-    uint32_t USBHS_HCDMA15_9;
-    uint32_t USBHS_HCDMA15_10;
-    uint32_t USBHS_HCDMA15_11;
-    uint32_t USBHS_HCDMA15_12;
-    uint32_t USBHS_HCDMA15_13;
-    uint32_t USBHS_HCDMA15_14;
-    uint32_t USBHS_HCDMA15_15;
-    uint32_t USBHS_HCDMA15_16;
-    uint32_t USBHS_HCDMA15_17;
-    uint32_t USBHS_HCDMA15_18;
-    uint32_t USBHS_HCDMA15_19;
-    uint32_t USBHS_HCDMA15_20;
-    uint32_t USBHS_HCDMA15_21;
-    uint32_t USBHS_HCDMA15_22;
-    uint32_t USBHS_HCDMA15_23;
-    uint32_t USBHS_HCDMA15_24;
-    uint32_t USBHS_HCDMA15_25;
-    uint32_t USBHS_HCDMA15_26;
-    uint32_t USBHS_HCDMA15_27;
-    uint32_t USBHS_HCDMA15_28;
-    uint32_t USBHS_HCDMA15_29;
-    uint32_t USBHS_HCDMA15_30;
-    uint32_t USBHS_HCDMA15_31;
-} stc_usbhs_hcdma15_bit_t;
 
 typedef struct
 {
@@ -63645,42 +43484,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA0_0;
-    uint32_t USBHS_DIEPDMA0_1;
-    uint32_t USBHS_DIEPDMA0_2;
-    uint32_t USBHS_DIEPDMA0_3;
-    uint32_t USBHS_DIEPDMA0_4;
-    uint32_t USBHS_DIEPDMA0_5;
-    uint32_t USBHS_DIEPDMA0_6;
-    uint32_t USBHS_DIEPDMA0_7;
-    uint32_t USBHS_DIEPDMA0_8;
-    uint32_t USBHS_DIEPDMA0_9;
-    uint32_t USBHS_DIEPDMA0_10;
-    uint32_t USBHS_DIEPDMA0_11;
-    uint32_t USBHS_DIEPDMA0_12;
-    uint32_t USBHS_DIEPDMA0_13;
-    uint32_t USBHS_DIEPDMA0_14;
-    uint32_t USBHS_DIEPDMA0_15;
-    uint32_t USBHS_DIEPDMA0_16;
-    uint32_t USBHS_DIEPDMA0_17;
-    uint32_t USBHS_DIEPDMA0_18;
-    uint32_t USBHS_DIEPDMA0_19;
-    uint32_t USBHS_DIEPDMA0_20;
-    uint32_t USBHS_DIEPDMA0_21;
-    uint32_t USBHS_DIEPDMA0_22;
-    uint32_t USBHS_DIEPDMA0_23;
-    uint32_t USBHS_DIEPDMA0_24;
-    uint32_t USBHS_DIEPDMA0_25;
-    uint32_t USBHS_DIEPDMA0_26;
-    uint32_t USBHS_DIEPDMA0_27;
-    uint32_t USBHS_DIEPDMA0_28;
-    uint32_t USBHS_DIEPDMA0_29;
-    uint32_t USBHS_DIEPDMA0_30;
-    uint32_t USBHS_DIEPDMA0_31;
-} stc_usbhs_diepdma0_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -63788,42 +43591,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz1_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA1_0;
-    uint32_t USBHS_DIEPDMA1_1;
-    uint32_t USBHS_DIEPDMA1_2;
-    uint32_t USBHS_DIEPDMA1_3;
-    uint32_t USBHS_DIEPDMA1_4;
-    uint32_t USBHS_DIEPDMA1_5;
-    uint32_t USBHS_DIEPDMA1_6;
-    uint32_t USBHS_DIEPDMA1_7;
-    uint32_t USBHS_DIEPDMA1_8;
-    uint32_t USBHS_DIEPDMA1_9;
-    uint32_t USBHS_DIEPDMA1_10;
-    uint32_t USBHS_DIEPDMA1_11;
-    uint32_t USBHS_DIEPDMA1_12;
-    uint32_t USBHS_DIEPDMA1_13;
-    uint32_t USBHS_DIEPDMA1_14;
-    uint32_t USBHS_DIEPDMA1_15;
-    uint32_t USBHS_DIEPDMA1_16;
-    uint32_t USBHS_DIEPDMA1_17;
-    uint32_t USBHS_DIEPDMA1_18;
-    uint32_t USBHS_DIEPDMA1_19;
-    uint32_t USBHS_DIEPDMA1_20;
-    uint32_t USBHS_DIEPDMA1_21;
-    uint32_t USBHS_DIEPDMA1_22;
-    uint32_t USBHS_DIEPDMA1_23;
-    uint32_t USBHS_DIEPDMA1_24;
-    uint32_t USBHS_DIEPDMA1_25;
-    uint32_t USBHS_DIEPDMA1_26;
-    uint32_t USBHS_DIEPDMA1_27;
-    uint32_t USBHS_DIEPDMA1_28;
-    uint32_t USBHS_DIEPDMA1_29;
-    uint32_t USBHS_DIEPDMA1_30;
-    uint32_t USBHS_DIEPDMA1_31;
-} stc_usbhs_diepdma1_bit_t;
 
 typedef struct
 {
@@ -63937,42 +43704,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA2_0;
-    uint32_t USBHS_DIEPDMA2_1;
-    uint32_t USBHS_DIEPDMA2_2;
-    uint32_t USBHS_DIEPDMA2_3;
-    uint32_t USBHS_DIEPDMA2_4;
-    uint32_t USBHS_DIEPDMA2_5;
-    uint32_t USBHS_DIEPDMA2_6;
-    uint32_t USBHS_DIEPDMA2_7;
-    uint32_t USBHS_DIEPDMA2_8;
-    uint32_t USBHS_DIEPDMA2_9;
-    uint32_t USBHS_DIEPDMA2_10;
-    uint32_t USBHS_DIEPDMA2_11;
-    uint32_t USBHS_DIEPDMA2_12;
-    uint32_t USBHS_DIEPDMA2_13;
-    uint32_t USBHS_DIEPDMA2_14;
-    uint32_t USBHS_DIEPDMA2_15;
-    uint32_t USBHS_DIEPDMA2_16;
-    uint32_t USBHS_DIEPDMA2_17;
-    uint32_t USBHS_DIEPDMA2_18;
-    uint32_t USBHS_DIEPDMA2_19;
-    uint32_t USBHS_DIEPDMA2_20;
-    uint32_t USBHS_DIEPDMA2_21;
-    uint32_t USBHS_DIEPDMA2_22;
-    uint32_t USBHS_DIEPDMA2_23;
-    uint32_t USBHS_DIEPDMA2_24;
-    uint32_t USBHS_DIEPDMA2_25;
-    uint32_t USBHS_DIEPDMA2_26;
-    uint32_t USBHS_DIEPDMA2_27;
-    uint32_t USBHS_DIEPDMA2_28;
-    uint32_t USBHS_DIEPDMA2_29;
-    uint32_t USBHS_DIEPDMA2_30;
-    uint32_t USBHS_DIEPDMA2_31;
-} stc_usbhs_diepdma2_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -64080,42 +43811,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz3_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA3_0;
-    uint32_t USBHS_DIEPDMA3_1;
-    uint32_t USBHS_DIEPDMA3_2;
-    uint32_t USBHS_DIEPDMA3_3;
-    uint32_t USBHS_DIEPDMA3_4;
-    uint32_t USBHS_DIEPDMA3_5;
-    uint32_t USBHS_DIEPDMA3_6;
-    uint32_t USBHS_DIEPDMA3_7;
-    uint32_t USBHS_DIEPDMA3_8;
-    uint32_t USBHS_DIEPDMA3_9;
-    uint32_t USBHS_DIEPDMA3_10;
-    uint32_t USBHS_DIEPDMA3_11;
-    uint32_t USBHS_DIEPDMA3_12;
-    uint32_t USBHS_DIEPDMA3_13;
-    uint32_t USBHS_DIEPDMA3_14;
-    uint32_t USBHS_DIEPDMA3_15;
-    uint32_t USBHS_DIEPDMA3_16;
-    uint32_t USBHS_DIEPDMA3_17;
-    uint32_t USBHS_DIEPDMA3_18;
-    uint32_t USBHS_DIEPDMA3_19;
-    uint32_t USBHS_DIEPDMA3_20;
-    uint32_t USBHS_DIEPDMA3_21;
-    uint32_t USBHS_DIEPDMA3_22;
-    uint32_t USBHS_DIEPDMA3_23;
-    uint32_t USBHS_DIEPDMA3_24;
-    uint32_t USBHS_DIEPDMA3_25;
-    uint32_t USBHS_DIEPDMA3_26;
-    uint32_t USBHS_DIEPDMA3_27;
-    uint32_t USBHS_DIEPDMA3_28;
-    uint32_t USBHS_DIEPDMA3_29;
-    uint32_t USBHS_DIEPDMA3_30;
-    uint32_t USBHS_DIEPDMA3_31;
-} stc_usbhs_diepdma3_bit_t;
 
 typedef struct
 {
@@ -64229,42 +43924,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA4_0;
-    uint32_t USBHS_DIEPDMA4_1;
-    uint32_t USBHS_DIEPDMA4_2;
-    uint32_t USBHS_DIEPDMA4_3;
-    uint32_t USBHS_DIEPDMA4_4;
-    uint32_t USBHS_DIEPDMA4_5;
-    uint32_t USBHS_DIEPDMA4_6;
-    uint32_t USBHS_DIEPDMA4_7;
-    uint32_t USBHS_DIEPDMA4_8;
-    uint32_t USBHS_DIEPDMA4_9;
-    uint32_t USBHS_DIEPDMA4_10;
-    uint32_t USBHS_DIEPDMA4_11;
-    uint32_t USBHS_DIEPDMA4_12;
-    uint32_t USBHS_DIEPDMA4_13;
-    uint32_t USBHS_DIEPDMA4_14;
-    uint32_t USBHS_DIEPDMA4_15;
-    uint32_t USBHS_DIEPDMA4_16;
-    uint32_t USBHS_DIEPDMA4_17;
-    uint32_t USBHS_DIEPDMA4_18;
-    uint32_t USBHS_DIEPDMA4_19;
-    uint32_t USBHS_DIEPDMA4_20;
-    uint32_t USBHS_DIEPDMA4_21;
-    uint32_t USBHS_DIEPDMA4_22;
-    uint32_t USBHS_DIEPDMA4_23;
-    uint32_t USBHS_DIEPDMA4_24;
-    uint32_t USBHS_DIEPDMA4_25;
-    uint32_t USBHS_DIEPDMA4_26;
-    uint32_t USBHS_DIEPDMA4_27;
-    uint32_t USBHS_DIEPDMA4_28;
-    uint32_t USBHS_DIEPDMA4_29;
-    uint32_t USBHS_DIEPDMA4_30;
-    uint32_t USBHS_DIEPDMA4_31;
-} stc_usbhs_diepdma4_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -64372,42 +44031,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz5_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA5_0;
-    uint32_t USBHS_DIEPDMA5_1;
-    uint32_t USBHS_DIEPDMA5_2;
-    uint32_t USBHS_DIEPDMA5_3;
-    uint32_t USBHS_DIEPDMA5_4;
-    uint32_t USBHS_DIEPDMA5_5;
-    uint32_t USBHS_DIEPDMA5_6;
-    uint32_t USBHS_DIEPDMA5_7;
-    uint32_t USBHS_DIEPDMA5_8;
-    uint32_t USBHS_DIEPDMA5_9;
-    uint32_t USBHS_DIEPDMA5_10;
-    uint32_t USBHS_DIEPDMA5_11;
-    uint32_t USBHS_DIEPDMA5_12;
-    uint32_t USBHS_DIEPDMA5_13;
-    uint32_t USBHS_DIEPDMA5_14;
-    uint32_t USBHS_DIEPDMA5_15;
-    uint32_t USBHS_DIEPDMA5_16;
-    uint32_t USBHS_DIEPDMA5_17;
-    uint32_t USBHS_DIEPDMA5_18;
-    uint32_t USBHS_DIEPDMA5_19;
-    uint32_t USBHS_DIEPDMA5_20;
-    uint32_t USBHS_DIEPDMA5_21;
-    uint32_t USBHS_DIEPDMA5_22;
-    uint32_t USBHS_DIEPDMA5_23;
-    uint32_t USBHS_DIEPDMA5_24;
-    uint32_t USBHS_DIEPDMA5_25;
-    uint32_t USBHS_DIEPDMA5_26;
-    uint32_t USBHS_DIEPDMA5_27;
-    uint32_t USBHS_DIEPDMA5_28;
-    uint32_t USBHS_DIEPDMA5_29;
-    uint32_t USBHS_DIEPDMA5_30;
-    uint32_t USBHS_DIEPDMA5_31;
-} stc_usbhs_diepdma5_bit_t;
 
 typedef struct
 {
@@ -64521,42 +44144,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA6_0;
-    uint32_t USBHS_DIEPDMA6_1;
-    uint32_t USBHS_DIEPDMA6_2;
-    uint32_t USBHS_DIEPDMA6_3;
-    uint32_t USBHS_DIEPDMA6_4;
-    uint32_t USBHS_DIEPDMA6_5;
-    uint32_t USBHS_DIEPDMA6_6;
-    uint32_t USBHS_DIEPDMA6_7;
-    uint32_t USBHS_DIEPDMA6_8;
-    uint32_t USBHS_DIEPDMA6_9;
-    uint32_t USBHS_DIEPDMA6_10;
-    uint32_t USBHS_DIEPDMA6_11;
-    uint32_t USBHS_DIEPDMA6_12;
-    uint32_t USBHS_DIEPDMA6_13;
-    uint32_t USBHS_DIEPDMA6_14;
-    uint32_t USBHS_DIEPDMA6_15;
-    uint32_t USBHS_DIEPDMA6_16;
-    uint32_t USBHS_DIEPDMA6_17;
-    uint32_t USBHS_DIEPDMA6_18;
-    uint32_t USBHS_DIEPDMA6_19;
-    uint32_t USBHS_DIEPDMA6_20;
-    uint32_t USBHS_DIEPDMA6_21;
-    uint32_t USBHS_DIEPDMA6_22;
-    uint32_t USBHS_DIEPDMA6_23;
-    uint32_t USBHS_DIEPDMA6_24;
-    uint32_t USBHS_DIEPDMA6_25;
-    uint32_t USBHS_DIEPDMA6_26;
-    uint32_t USBHS_DIEPDMA6_27;
-    uint32_t USBHS_DIEPDMA6_28;
-    uint32_t USBHS_DIEPDMA6_29;
-    uint32_t USBHS_DIEPDMA6_30;
-    uint32_t USBHS_DIEPDMA6_31;
-} stc_usbhs_diepdma6_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -64664,42 +44251,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz7_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA7_0;
-    uint32_t USBHS_DIEPDMA7_1;
-    uint32_t USBHS_DIEPDMA7_2;
-    uint32_t USBHS_DIEPDMA7_3;
-    uint32_t USBHS_DIEPDMA7_4;
-    uint32_t USBHS_DIEPDMA7_5;
-    uint32_t USBHS_DIEPDMA7_6;
-    uint32_t USBHS_DIEPDMA7_7;
-    uint32_t USBHS_DIEPDMA7_8;
-    uint32_t USBHS_DIEPDMA7_9;
-    uint32_t USBHS_DIEPDMA7_10;
-    uint32_t USBHS_DIEPDMA7_11;
-    uint32_t USBHS_DIEPDMA7_12;
-    uint32_t USBHS_DIEPDMA7_13;
-    uint32_t USBHS_DIEPDMA7_14;
-    uint32_t USBHS_DIEPDMA7_15;
-    uint32_t USBHS_DIEPDMA7_16;
-    uint32_t USBHS_DIEPDMA7_17;
-    uint32_t USBHS_DIEPDMA7_18;
-    uint32_t USBHS_DIEPDMA7_19;
-    uint32_t USBHS_DIEPDMA7_20;
-    uint32_t USBHS_DIEPDMA7_21;
-    uint32_t USBHS_DIEPDMA7_22;
-    uint32_t USBHS_DIEPDMA7_23;
-    uint32_t USBHS_DIEPDMA7_24;
-    uint32_t USBHS_DIEPDMA7_25;
-    uint32_t USBHS_DIEPDMA7_26;
-    uint32_t USBHS_DIEPDMA7_27;
-    uint32_t USBHS_DIEPDMA7_28;
-    uint32_t USBHS_DIEPDMA7_29;
-    uint32_t USBHS_DIEPDMA7_30;
-    uint32_t USBHS_DIEPDMA7_31;
-} stc_usbhs_diepdma7_bit_t;
 
 typedef struct
 {
@@ -64813,42 +44364,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA8_0;
-    uint32_t USBHS_DIEPDMA8_1;
-    uint32_t USBHS_DIEPDMA8_2;
-    uint32_t USBHS_DIEPDMA8_3;
-    uint32_t USBHS_DIEPDMA8_4;
-    uint32_t USBHS_DIEPDMA8_5;
-    uint32_t USBHS_DIEPDMA8_6;
-    uint32_t USBHS_DIEPDMA8_7;
-    uint32_t USBHS_DIEPDMA8_8;
-    uint32_t USBHS_DIEPDMA8_9;
-    uint32_t USBHS_DIEPDMA8_10;
-    uint32_t USBHS_DIEPDMA8_11;
-    uint32_t USBHS_DIEPDMA8_12;
-    uint32_t USBHS_DIEPDMA8_13;
-    uint32_t USBHS_DIEPDMA8_14;
-    uint32_t USBHS_DIEPDMA8_15;
-    uint32_t USBHS_DIEPDMA8_16;
-    uint32_t USBHS_DIEPDMA8_17;
-    uint32_t USBHS_DIEPDMA8_18;
-    uint32_t USBHS_DIEPDMA8_19;
-    uint32_t USBHS_DIEPDMA8_20;
-    uint32_t USBHS_DIEPDMA8_21;
-    uint32_t USBHS_DIEPDMA8_22;
-    uint32_t USBHS_DIEPDMA8_23;
-    uint32_t USBHS_DIEPDMA8_24;
-    uint32_t USBHS_DIEPDMA8_25;
-    uint32_t USBHS_DIEPDMA8_26;
-    uint32_t USBHS_DIEPDMA8_27;
-    uint32_t USBHS_DIEPDMA8_28;
-    uint32_t USBHS_DIEPDMA8_29;
-    uint32_t USBHS_DIEPDMA8_30;
-    uint32_t USBHS_DIEPDMA8_31;
-} stc_usbhs_diepdma8_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -64956,42 +44471,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz9_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA9_0;
-    uint32_t USBHS_DIEPDMA9_1;
-    uint32_t USBHS_DIEPDMA9_2;
-    uint32_t USBHS_DIEPDMA9_3;
-    uint32_t USBHS_DIEPDMA9_4;
-    uint32_t USBHS_DIEPDMA9_5;
-    uint32_t USBHS_DIEPDMA9_6;
-    uint32_t USBHS_DIEPDMA9_7;
-    uint32_t USBHS_DIEPDMA9_8;
-    uint32_t USBHS_DIEPDMA9_9;
-    uint32_t USBHS_DIEPDMA9_10;
-    uint32_t USBHS_DIEPDMA9_11;
-    uint32_t USBHS_DIEPDMA9_12;
-    uint32_t USBHS_DIEPDMA9_13;
-    uint32_t USBHS_DIEPDMA9_14;
-    uint32_t USBHS_DIEPDMA9_15;
-    uint32_t USBHS_DIEPDMA9_16;
-    uint32_t USBHS_DIEPDMA9_17;
-    uint32_t USBHS_DIEPDMA9_18;
-    uint32_t USBHS_DIEPDMA9_19;
-    uint32_t USBHS_DIEPDMA9_20;
-    uint32_t USBHS_DIEPDMA9_21;
-    uint32_t USBHS_DIEPDMA9_22;
-    uint32_t USBHS_DIEPDMA9_23;
-    uint32_t USBHS_DIEPDMA9_24;
-    uint32_t USBHS_DIEPDMA9_25;
-    uint32_t USBHS_DIEPDMA9_26;
-    uint32_t USBHS_DIEPDMA9_27;
-    uint32_t USBHS_DIEPDMA9_28;
-    uint32_t USBHS_DIEPDMA9_29;
-    uint32_t USBHS_DIEPDMA9_30;
-    uint32_t USBHS_DIEPDMA9_31;
-} stc_usbhs_diepdma9_bit_t;
 
 typedef struct
 {
@@ -65105,42 +44584,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA10_0;
-    uint32_t USBHS_DIEPDMA10_1;
-    uint32_t USBHS_DIEPDMA10_2;
-    uint32_t USBHS_DIEPDMA10_3;
-    uint32_t USBHS_DIEPDMA10_4;
-    uint32_t USBHS_DIEPDMA10_5;
-    uint32_t USBHS_DIEPDMA10_6;
-    uint32_t USBHS_DIEPDMA10_7;
-    uint32_t USBHS_DIEPDMA10_8;
-    uint32_t USBHS_DIEPDMA10_9;
-    uint32_t USBHS_DIEPDMA10_10;
-    uint32_t USBHS_DIEPDMA10_11;
-    uint32_t USBHS_DIEPDMA10_12;
-    uint32_t USBHS_DIEPDMA10_13;
-    uint32_t USBHS_DIEPDMA10_14;
-    uint32_t USBHS_DIEPDMA10_15;
-    uint32_t USBHS_DIEPDMA10_16;
-    uint32_t USBHS_DIEPDMA10_17;
-    uint32_t USBHS_DIEPDMA10_18;
-    uint32_t USBHS_DIEPDMA10_19;
-    uint32_t USBHS_DIEPDMA10_20;
-    uint32_t USBHS_DIEPDMA10_21;
-    uint32_t USBHS_DIEPDMA10_22;
-    uint32_t USBHS_DIEPDMA10_23;
-    uint32_t USBHS_DIEPDMA10_24;
-    uint32_t USBHS_DIEPDMA10_25;
-    uint32_t USBHS_DIEPDMA10_26;
-    uint32_t USBHS_DIEPDMA10_27;
-    uint32_t USBHS_DIEPDMA10_28;
-    uint32_t USBHS_DIEPDMA10_29;
-    uint32_t USBHS_DIEPDMA10_30;
-    uint32_t USBHS_DIEPDMA10_31;
-} stc_usbhs_diepdma10_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -65248,42 +44691,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz11_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA11_0;
-    uint32_t USBHS_DIEPDMA11_1;
-    uint32_t USBHS_DIEPDMA11_2;
-    uint32_t USBHS_DIEPDMA11_3;
-    uint32_t USBHS_DIEPDMA11_4;
-    uint32_t USBHS_DIEPDMA11_5;
-    uint32_t USBHS_DIEPDMA11_6;
-    uint32_t USBHS_DIEPDMA11_7;
-    uint32_t USBHS_DIEPDMA11_8;
-    uint32_t USBHS_DIEPDMA11_9;
-    uint32_t USBHS_DIEPDMA11_10;
-    uint32_t USBHS_DIEPDMA11_11;
-    uint32_t USBHS_DIEPDMA11_12;
-    uint32_t USBHS_DIEPDMA11_13;
-    uint32_t USBHS_DIEPDMA11_14;
-    uint32_t USBHS_DIEPDMA11_15;
-    uint32_t USBHS_DIEPDMA11_16;
-    uint32_t USBHS_DIEPDMA11_17;
-    uint32_t USBHS_DIEPDMA11_18;
-    uint32_t USBHS_DIEPDMA11_19;
-    uint32_t USBHS_DIEPDMA11_20;
-    uint32_t USBHS_DIEPDMA11_21;
-    uint32_t USBHS_DIEPDMA11_22;
-    uint32_t USBHS_DIEPDMA11_23;
-    uint32_t USBHS_DIEPDMA11_24;
-    uint32_t USBHS_DIEPDMA11_25;
-    uint32_t USBHS_DIEPDMA11_26;
-    uint32_t USBHS_DIEPDMA11_27;
-    uint32_t USBHS_DIEPDMA11_28;
-    uint32_t USBHS_DIEPDMA11_29;
-    uint32_t USBHS_DIEPDMA11_30;
-    uint32_t USBHS_DIEPDMA11_31;
-} stc_usbhs_diepdma11_bit_t;
 
 typedef struct
 {
@@ -65397,42 +44804,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA12_0;
-    uint32_t USBHS_DIEPDMA12_1;
-    uint32_t USBHS_DIEPDMA12_2;
-    uint32_t USBHS_DIEPDMA12_3;
-    uint32_t USBHS_DIEPDMA12_4;
-    uint32_t USBHS_DIEPDMA12_5;
-    uint32_t USBHS_DIEPDMA12_6;
-    uint32_t USBHS_DIEPDMA12_7;
-    uint32_t USBHS_DIEPDMA12_8;
-    uint32_t USBHS_DIEPDMA12_9;
-    uint32_t USBHS_DIEPDMA12_10;
-    uint32_t USBHS_DIEPDMA12_11;
-    uint32_t USBHS_DIEPDMA12_12;
-    uint32_t USBHS_DIEPDMA12_13;
-    uint32_t USBHS_DIEPDMA12_14;
-    uint32_t USBHS_DIEPDMA12_15;
-    uint32_t USBHS_DIEPDMA12_16;
-    uint32_t USBHS_DIEPDMA12_17;
-    uint32_t USBHS_DIEPDMA12_18;
-    uint32_t USBHS_DIEPDMA12_19;
-    uint32_t USBHS_DIEPDMA12_20;
-    uint32_t USBHS_DIEPDMA12_21;
-    uint32_t USBHS_DIEPDMA12_22;
-    uint32_t USBHS_DIEPDMA12_23;
-    uint32_t USBHS_DIEPDMA12_24;
-    uint32_t USBHS_DIEPDMA12_25;
-    uint32_t USBHS_DIEPDMA12_26;
-    uint32_t USBHS_DIEPDMA12_27;
-    uint32_t USBHS_DIEPDMA12_28;
-    uint32_t USBHS_DIEPDMA12_29;
-    uint32_t USBHS_DIEPDMA12_30;
-    uint32_t USBHS_DIEPDMA12_31;
-} stc_usbhs_diepdma12_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -65540,42 +44911,6 @@ typedef struct
     __IO uint32_t MC1;
     uint32_t RESERVED0[1];
 } stc_usbhs_dieptsiz13_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DIEPDMA13_0;
-    uint32_t USBHS_DIEPDMA13_1;
-    uint32_t USBHS_DIEPDMA13_2;
-    uint32_t USBHS_DIEPDMA13_3;
-    uint32_t USBHS_DIEPDMA13_4;
-    uint32_t USBHS_DIEPDMA13_5;
-    uint32_t USBHS_DIEPDMA13_6;
-    uint32_t USBHS_DIEPDMA13_7;
-    uint32_t USBHS_DIEPDMA13_8;
-    uint32_t USBHS_DIEPDMA13_9;
-    uint32_t USBHS_DIEPDMA13_10;
-    uint32_t USBHS_DIEPDMA13_11;
-    uint32_t USBHS_DIEPDMA13_12;
-    uint32_t USBHS_DIEPDMA13_13;
-    uint32_t USBHS_DIEPDMA13_14;
-    uint32_t USBHS_DIEPDMA13_15;
-    uint32_t USBHS_DIEPDMA13_16;
-    uint32_t USBHS_DIEPDMA13_17;
-    uint32_t USBHS_DIEPDMA13_18;
-    uint32_t USBHS_DIEPDMA13_19;
-    uint32_t USBHS_DIEPDMA13_20;
-    uint32_t USBHS_DIEPDMA13_21;
-    uint32_t USBHS_DIEPDMA13_22;
-    uint32_t USBHS_DIEPDMA13_23;
-    uint32_t USBHS_DIEPDMA13_24;
-    uint32_t USBHS_DIEPDMA13_25;
-    uint32_t USBHS_DIEPDMA13_26;
-    uint32_t USBHS_DIEPDMA13_27;
-    uint32_t USBHS_DIEPDMA13_28;
-    uint32_t USBHS_DIEPDMA13_29;
-    uint32_t USBHS_DIEPDMA13_30;
-    uint32_t USBHS_DIEPDMA13_31;
-} stc_usbhs_diepdma13_bit_t;
 
 typedef struct
 {
@@ -65689,42 +45024,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA14_0;
-    uint32_t USBHS_DIEPDMA14_1;
-    uint32_t USBHS_DIEPDMA14_2;
-    uint32_t USBHS_DIEPDMA14_3;
-    uint32_t USBHS_DIEPDMA14_4;
-    uint32_t USBHS_DIEPDMA14_5;
-    uint32_t USBHS_DIEPDMA14_6;
-    uint32_t USBHS_DIEPDMA14_7;
-    uint32_t USBHS_DIEPDMA14_8;
-    uint32_t USBHS_DIEPDMA14_9;
-    uint32_t USBHS_DIEPDMA14_10;
-    uint32_t USBHS_DIEPDMA14_11;
-    uint32_t USBHS_DIEPDMA14_12;
-    uint32_t USBHS_DIEPDMA14_13;
-    uint32_t USBHS_DIEPDMA14_14;
-    uint32_t USBHS_DIEPDMA14_15;
-    uint32_t USBHS_DIEPDMA14_16;
-    uint32_t USBHS_DIEPDMA14_17;
-    uint32_t USBHS_DIEPDMA14_18;
-    uint32_t USBHS_DIEPDMA14_19;
-    uint32_t USBHS_DIEPDMA14_20;
-    uint32_t USBHS_DIEPDMA14_21;
-    uint32_t USBHS_DIEPDMA14_22;
-    uint32_t USBHS_DIEPDMA14_23;
-    uint32_t USBHS_DIEPDMA14_24;
-    uint32_t USBHS_DIEPDMA14_25;
-    uint32_t USBHS_DIEPDMA14_26;
-    uint32_t USBHS_DIEPDMA14_27;
-    uint32_t USBHS_DIEPDMA14_28;
-    uint32_t USBHS_DIEPDMA14_29;
-    uint32_t USBHS_DIEPDMA14_30;
-    uint32_t USBHS_DIEPDMA14_31;
-} stc_usbhs_diepdma14_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -65835,42 +45134,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DIEPDMA15_0;
-    uint32_t USBHS_DIEPDMA15_1;
-    uint32_t USBHS_DIEPDMA15_2;
-    uint32_t USBHS_DIEPDMA15_3;
-    uint32_t USBHS_DIEPDMA15_4;
-    uint32_t USBHS_DIEPDMA15_5;
-    uint32_t USBHS_DIEPDMA15_6;
-    uint32_t USBHS_DIEPDMA15_7;
-    uint32_t USBHS_DIEPDMA15_8;
-    uint32_t USBHS_DIEPDMA15_9;
-    uint32_t USBHS_DIEPDMA15_10;
-    uint32_t USBHS_DIEPDMA15_11;
-    uint32_t USBHS_DIEPDMA15_12;
-    uint32_t USBHS_DIEPDMA15_13;
-    uint32_t USBHS_DIEPDMA15_14;
-    uint32_t USBHS_DIEPDMA15_15;
-    uint32_t USBHS_DIEPDMA15_16;
-    uint32_t USBHS_DIEPDMA15_17;
-    uint32_t USBHS_DIEPDMA15_18;
-    uint32_t USBHS_DIEPDMA15_19;
-    uint32_t USBHS_DIEPDMA15_20;
-    uint32_t USBHS_DIEPDMA15_21;
-    uint32_t USBHS_DIEPDMA15_22;
-    uint32_t USBHS_DIEPDMA15_23;
-    uint32_t USBHS_DIEPDMA15_24;
-    uint32_t USBHS_DIEPDMA15_25;
-    uint32_t USBHS_DIEPDMA15_26;
-    uint32_t USBHS_DIEPDMA15_27;
-    uint32_t USBHS_DIEPDMA15_28;
-    uint32_t USBHS_DIEPDMA15_29;
-    uint32_t USBHS_DIEPDMA15_30;
-    uint32_t USBHS_DIEPDMA15_31;
-} stc_usbhs_diepdma15_bit_t;
-
-typedef struct
-{
     __IO uint32_t INEPTXFSPCAVAIL0;
     __IO uint32_t INEPTXFSPCAVAIL1;
     __IO uint32_t INEPTXFSPCAVAIL2;
@@ -65947,42 +45210,6 @@ typedef struct
     __IO uint32_t SUPCNT1;
     uint32_t RESERVED2[1];
 } stc_usbhs_doeptsiz0_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA0_0;
-    uint32_t USBHS_DOEPDMA0_1;
-    uint32_t USBHS_DOEPDMA0_2;
-    uint32_t USBHS_DOEPDMA0_3;
-    uint32_t USBHS_DOEPDMA0_4;
-    uint32_t USBHS_DOEPDMA0_5;
-    uint32_t USBHS_DOEPDMA0_6;
-    uint32_t USBHS_DOEPDMA0_7;
-    uint32_t USBHS_DOEPDMA0_8;
-    uint32_t USBHS_DOEPDMA0_9;
-    uint32_t USBHS_DOEPDMA0_10;
-    uint32_t USBHS_DOEPDMA0_11;
-    uint32_t USBHS_DOEPDMA0_12;
-    uint32_t USBHS_DOEPDMA0_13;
-    uint32_t USBHS_DOEPDMA0_14;
-    uint32_t USBHS_DOEPDMA0_15;
-    uint32_t USBHS_DOEPDMA0_16;
-    uint32_t USBHS_DOEPDMA0_17;
-    uint32_t USBHS_DOEPDMA0_18;
-    uint32_t USBHS_DOEPDMA0_19;
-    uint32_t USBHS_DOEPDMA0_20;
-    uint32_t USBHS_DOEPDMA0_21;
-    uint32_t USBHS_DOEPDMA0_22;
-    uint32_t USBHS_DOEPDMA0_23;
-    uint32_t USBHS_DOEPDMA0_24;
-    uint32_t USBHS_DOEPDMA0_25;
-    uint32_t USBHS_DOEPDMA0_26;
-    uint32_t USBHS_DOEPDMA0_27;
-    uint32_t USBHS_DOEPDMA0_28;
-    uint32_t USBHS_DOEPDMA0_29;
-    uint32_t USBHS_DOEPDMA0_30;
-    uint32_t USBHS_DOEPDMA0_31;
-} stc_usbhs_doepdma0_bit_t;
 
 typedef struct
 {
@@ -66073,42 +45300,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA1_0;
-    uint32_t USBHS_DOEPDMA1_1;
-    uint32_t USBHS_DOEPDMA1_2;
-    uint32_t USBHS_DOEPDMA1_3;
-    uint32_t USBHS_DOEPDMA1_4;
-    uint32_t USBHS_DOEPDMA1_5;
-    uint32_t USBHS_DOEPDMA1_6;
-    uint32_t USBHS_DOEPDMA1_7;
-    uint32_t USBHS_DOEPDMA1_8;
-    uint32_t USBHS_DOEPDMA1_9;
-    uint32_t USBHS_DOEPDMA1_10;
-    uint32_t USBHS_DOEPDMA1_11;
-    uint32_t USBHS_DOEPDMA1_12;
-    uint32_t USBHS_DOEPDMA1_13;
-    uint32_t USBHS_DOEPDMA1_14;
-    uint32_t USBHS_DOEPDMA1_15;
-    uint32_t USBHS_DOEPDMA1_16;
-    uint32_t USBHS_DOEPDMA1_17;
-    uint32_t USBHS_DOEPDMA1_18;
-    uint32_t USBHS_DOEPDMA1_19;
-    uint32_t USBHS_DOEPDMA1_20;
-    uint32_t USBHS_DOEPDMA1_21;
-    uint32_t USBHS_DOEPDMA1_22;
-    uint32_t USBHS_DOEPDMA1_23;
-    uint32_t USBHS_DOEPDMA1_24;
-    uint32_t USBHS_DOEPDMA1_25;
-    uint32_t USBHS_DOEPDMA1_26;
-    uint32_t USBHS_DOEPDMA1_27;
-    uint32_t USBHS_DOEPDMA1_28;
-    uint32_t USBHS_DOEPDMA1_29;
-    uint32_t USBHS_DOEPDMA1_30;
-    uint32_t USBHS_DOEPDMA1_31;
-} stc_usbhs_doepdma1_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -66193,42 +45384,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz2_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA2_0;
-    uint32_t USBHS_DOEPDMA2_1;
-    uint32_t USBHS_DOEPDMA2_2;
-    uint32_t USBHS_DOEPDMA2_3;
-    uint32_t USBHS_DOEPDMA2_4;
-    uint32_t USBHS_DOEPDMA2_5;
-    uint32_t USBHS_DOEPDMA2_6;
-    uint32_t USBHS_DOEPDMA2_7;
-    uint32_t USBHS_DOEPDMA2_8;
-    uint32_t USBHS_DOEPDMA2_9;
-    uint32_t USBHS_DOEPDMA2_10;
-    uint32_t USBHS_DOEPDMA2_11;
-    uint32_t USBHS_DOEPDMA2_12;
-    uint32_t USBHS_DOEPDMA2_13;
-    uint32_t USBHS_DOEPDMA2_14;
-    uint32_t USBHS_DOEPDMA2_15;
-    uint32_t USBHS_DOEPDMA2_16;
-    uint32_t USBHS_DOEPDMA2_17;
-    uint32_t USBHS_DOEPDMA2_18;
-    uint32_t USBHS_DOEPDMA2_19;
-    uint32_t USBHS_DOEPDMA2_20;
-    uint32_t USBHS_DOEPDMA2_21;
-    uint32_t USBHS_DOEPDMA2_22;
-    uint32_t USBHS_DOEPDMA2_23;
-    uint32_t USBHS_DOEPDMA2_24;
-    uint32_t USBHS_DOEPDMA2_25;
-    uint32_t USBHS_DOEPDMA2_26;
-    uint32_t USBHS_DOEPDMA2_27;
-    uint32_t USBHS_DOEPDMA2_28;
-    uint32_t USBHS_DOEPDMA2_29;
-    uint32_t USBHS_DOEPDMA2_30;
-    uint32_t USBHS_DOEPDMA2_31;
-} stc_usbhs_doepdma2_bit_t;
 
 typedef struct
 {
@@ -66319,42 +45474,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA3_0;
-    uint32_t USBHS_DOEPDMA3_1;
-    uint32_t USBHS_DOEPDMA3_2;
-    uint32_t USBHS_DOEPDMA3_3;
-    uint32_t USBHS_DOEPDMA3_4;
-    uint32_t USBHS_DOEPDMA3_5;
-    uint32_t USBHS_DOEPDMA3_6;
-    uint32_t USBHS_DOEPDMA3_7;
-    uint32_t USBHS_DOEPDMA3_8;
-    uint32_t USBHS_DOEPDMA3_9;
-    uint32_t USBHS_DOEPDMA3_10;
-    uint32_t USBHS_DOEPDMA3_11;
-    uint32_t USBHS_DOEPDMA3_12;
-    uint32_t USBHS_DOEPDMA3_13;
-    uint32_t USBHS_DOEPDMA3_14;
-    uint32_t USBHS_DOEPDMA3_15;
-    uint32_t USBHS_DOEPDMA3_16;
-    uint32_t USBHS_DOEPDMA3_17;
-    uint32_t USBHS_DOEPDMA3_18;
-    uint32_t USBHS_DOEPDMA3_19;
-    uint32_t USBHS_DOEPDMA3_20;
-    uint32_t USBHS_DOEPDMA3_21;
-    uint32_t USBHS_DOEPDMA3_22;
-    uint32_t USBHS_DOEPDMA3_23;
-    uint32_t USBHS_DOEPDMA3_24;
-    uint32_t USBHS_DOEPDMA3_25;
-    uint32_t USBHS_DOEPDMA3_26;
-    uint32_t USBHS_DOEPDMA3_27;
-    uint32_t USBHS_DOEPDMA3_28;
-    uint32_t USBHS_DOEPDMA3_29;
-    uint32_t USBHS_DOEPDMA3_30;
-    uint32_t USBHS_DOEPDMA3_31;
-} stc_usbhs_doepdma3_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -66439,42 +45558,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz4_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA4_0;
-    uint32_t USBHS_DOEPDMA4_1;
-    uint32_t USBHS_DOEPDMA4_2;
-    uint32_t USBHS_DOEPDMA4_3;
-    uint32_t USBHS_DOEPDMA4_4;
-    uint32_t USBHS_DOEPDMA4_5;
-    uint32_t USBHS_DOEPDMA4_6;
-    uint32_t USBHS_DOEPDMA4_7;
-    uint32_t USBHS_DOEPDMA4_8;
-    uint32_t USBHS_DOEPDMA4_9;
-    uint32_t USBHS_DOEPDMA4_10;
-    uint32_t USBHS_DOEPDMA4_11;
-    uint32_t USBHS_DOEPDMA4_12;
-    uint32_t USBHS_DOEPDMA4_13;
-    uint32_t USBHS_DOEPDMA4_14;
-    uint32_t USBHS_DOEPDMA4_15;
-    uint32_t USBHS_DOEPDMA4_16;
-    uint32_t USBHS_DOEPDMA4_17;
-    uint32_t USBHS_DOEPDMA4_18;
-    uint32_t USBHS_DOEPDMA4_19;
-    uint32_t USBHS_DOEPDMA4_20;
-    uint32_t USBHS_DOEPDMA4_21;
-    uint32_t USBHS_DOEPDMA4_22;
-    uint32_t USBHS_DOEPDMA4_23;
-    uint32_t USBHS_DOEPDMA4_24;
-    uint32_t USBHS_DOEPDMA4_25;
-    uint32_t USBHS_DOEPDMA4_26;
-    uint32_t USBHS_DOEPDMA4_27;
-    uint32_t USBHS_DOEPDMA4_28;
-    uint32_t USBHS_DOEPDMA4_29;
-    uint32_t USBHS_DOEPDMA4_30;
-    uint32_t USBHS_DOEPDMA4_31;
-} stc_usbhs_doepdma4_bit_t;
 
 typedef struct
 {
@@ -66565,42 +45648,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA5_0;
-    uint32_t USBHS_DOEPDMA5_1;
-    uint32_t USBHS_DOEPDMA5_2;
-    uint32_t USBHS_DOEPDMA5_3;
-    uint32_t USBHS_DOEPDMA5_4;
-    uint32_t USBHS_DOEPDMA5_5;
-    uint32_t USBHS_DOEPDMA5_6;
-    uint32_t USBHS_DOEPDMA5_7;
-    uint32_t USBHS_DOEPDMA5_8;
-    uint32_t USBHS_DOEPDMA5_9;
-    uint32_t USBHS_DOEPDMA5_10;
-    uint32_t USBHS_DOEPDMA5_11;
-    uint32_t USBHS_DOEPDMA5_12;
-    uint32_t USBHS_DOEPDMA5_13;
-    uint32_t USBHS_DOEPDMA5_14;
-    uint32_t USBHS_DOEPDMA5_15;
-    uint32_t USBHS_DOEPDMA5_16;
-    uint32_t USBHS_DOEPDMA5_17;
-    uint32_t USBHS_DOEPDMA5_18;
-    uint32_t USBHS_DOEPDMA5_19;
-    uint32_t USBHS_DOEPDMA5_20;
-    uint32_t USBHS_DOEPDMA5_21;
-    uint32_t USBHS_DOEPDMA5_22;
-    uint32_t USBHS_DOEPDMA5_23;
-    uint32_t USBHS_DOEPDMA5_24;
-    uint32_t USBHS_DOEPDMA5_25;
-    uint32_t USBHS_DOEPDMA5_26;
-    uint32_t USBHS_DOEPDMA5_27;
-    uint32_t USBHS_DOEPDMA5_28;
-    uint32_t USBHS_DOEPDMA5_29;
-    uint32_t USBHS_DOEPDMA5_30;
-    uint32_t USBHS_DOEPDMA5_31;
-} stc_usbhs_doepdma5_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -66685,42 +45732,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz6_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA6_0;
-    uint32_t USBHS_DOEPDMA6_1;
-    uint32_t USBHS_DOEPDMA6_2;
-    uint32_t USBHS_DOEPDMA6_3;
-    uint32_t USBHS_DOEPDMA6_4;
-    uint32_t USBHS_DOEPDMA6_5;
-    uint32_t USBHS_DOEPDMA6_6;
-    uint32_t USBHS_DOEPDMA6_7;
-    uint32_t USBHS_DOEPDMA6_8;
-    uint32_t USBHS_DOEPDMA6_9;
-    uint32_t USBHS_DOEPDMA6_10;
-    uint32_t USBHS_DOEPDMA6_11;
-    uint32_t USBHS_DOEPDMA6_12;
-    uint32_t USBHS_DOEPDMA6_13;
-    uint32_t USBHS_DOEPDMA6_14;
-    uint32_t USBHS_DOEPDMA6_15;
-    uint32_t USBHS_DOEPDMA6_16;
-    uint32_t USBHS_DOEPDMA6_17;
-    uint32_t USBHS_DOEPDMA6_18;
-    uint32_t USBHS_DOEPDMA6_19;
-    uint32_t USBHS_DOEPDMA6_20;
-    uint32_t USBHS_DOEPDMA6_21;
-    uint32_t USBHS_DOEPDMA6_22;
-    uint32_t USBHS_DOEPDMA6_23;
-    uint32_t USBHS_DOEPDMA6_24;
-    uint32_t USBHS_DOEPDMA6_25;
-    uint32_t USBHS_DOEPDMA6_26;
-    uint32_t USBHS_DOEPDMA6_27;
-    uint32_t USBHS_DOEPDMA6_28;
-    uint32_t USBHS_DOEPDMA6_29;
-    uint32_t USBHS_DOEPDMA6_30;
-    uint32_t USBHS_DOEPDMA6_31;
-} stc_usbhs_doepdma6_bit_t;
 
 typedef struct
 {
@@ -66811,42 +45822,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA7_0;
-    uint32_t USBHS_DOEPDMA7_1;
-    uint32_t USBHS_DOEPDMA7_2;
-    uint32_t USBHS_DOEPDMA7_3;
-    uint32_t USBHS_DOEPDMA7_4;
-    uint32_t USBHS_DOEPDMA7_5;
-    uint32_t USBHS_DOEPDMA7_6;
-    uint32_t USBHS_DOEPDMA7_7;
-    uint32_t USBHS_DOEPDMA7_8;
-    uint32_t USBHS_DOEPDMA7_9;
-    uint32_t USBHS_DOEPDMA7_10;
-    uint32_t USBHS_DOEPDMA7_11;
-    uint32_t USBHS_DOEPDMA7_12;
-    uint32_t USBHS_DOEPDMA7_13;
-    uint32_t USBHS_DOEPDMA7_14;
-    uint32_t USBHS_DOEPDMA7_15;
-    uint32_t USBHS_DOEPDMA7_16;
-    uint32_t USBHS_DOEPDMA7_17;
-    uint32_t USBHS_DOEPDMA7_18;
-    uint32_t USBHS_DOEPDMA7_19;
-    uint32_t USBHS_DOEPDMA7_20;
-    uint32_t USBHS_DOEPDMA7_21;
-    uint32_t USBHS_DOEPDMA7_22;
-    uint32_t USBHS_DOEPDMA7_23;
-    uint32_t USBHS_DOEPDMA7_24;
-    uint32_t USBHS_DOEPDMA7_25;
-    uint32_t USBHS_DOEPDMA7_26;
-    uint32_t USBHS_DOEPDMA7_27;
-    uint32_t USBHS_DOEPDMA7_28;
-    uint32_t USBHS_DOEPDMA7_29;
-    uint32_t USBHS_DOEPDMA7_30;
-    uint32_t USBHS_DOEPDMA7_31;
-} stc_usbhs_doepdma7_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -66931,42 +45906,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz8_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA8_0;
-    uint32_t USBHS_DOEPDMA8_1;
-    uint32_t USBHS_DOEPDMA8_2;
-    uint32_t USBHS_DOEPDMA8_3;
-    uint32_t USBHS_DOEPDMA8_4;
-    uint32_t USBHS_DOEPDMA8_5;
-    uint32_t USBHS_DOEPDMA8_6;
-    uint32_t USBHS_DOEPDMA8_7;
-    uint32_t USBHS_DOEPDMA8_8;
-    uint32_t USBHS_DOEPDMA8_9;
-    uint32_t USBHS_DOEPDMA8_10;
-    uint32_t USBHS_DOEPDMA8_11;
-    uint32_t USBHS_DOEPDMA8_12;
-    uint32_t USBHS_DOEPDMA8_13;
-    uint32_t USBHS_DOEPDMA8_14;
-    uint32_t USBHS_DOEPDMA8_15;
-    uint32_t USBHS_DOEPDMA8_16;
-    uint32_t USBHS_DOEPDMA8_17;
-    uint32_t USBHS_DOEPDMA8_18;
-    uint32_t USBHS_DOEPDMA8_19;
-    uint32_t USBHS_DOEPDMA8_20;
-    uint32_t USBHS_DOEPDMA8_21;
-    uint32_t USBHS_DOEPDMA8_22;
-    uint32_t USBHS_DOEPDMA8_23;
-    uint32_t USBHS_DOEPDMA8_24;
-    uint32_t USBHS_DOEPDMA8_25;
-    uint32_t USBHS_DOEPDMA8_26;
-    uint32_t USBHS_DOEPDMA8_27;
-    uint32_t USBHS_DOEPDMA8_28;
-    uint32_t USBHS_DOEPDMA8_29;
-    uint32_t USBHS_DOEPDMA8_30;
-    uint32_t USBHS_DOEPDMA8_31;
-} stc_usbhs_doepdma8_bit_t;
 
 typedef struct
 {
@@ -67057,42 +45996,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA9_0;
-    uint32_t USBHS_DOEPDMA9_1;
-    uint32_t USBHS_DOEPDMA9_2;
-    uint32_t USBHS_DOEPDMA9_3;
-    uint32_t USBHS_DOEPDMA9_4;
-    uint32_t USBHS_DOEPDMA9_5;
-    uint32_t USBHS_DOEPDMA9_6;
-    uint32_t USBHS_DOEPDMA9_7;
-    uint32_t USBHS_DOEPDMA9_8;
-    uint32_t USBHS_DOEPDMA9_9;
-    uint32_t USBHS_DOEPDMA9_10;
-    uint32_t USBHS_DOEPDMA9_11;
-    uint32_t USBHS_DOEPDMA9_12;
-    uint32_t USBHS_DOEPDMA9_13;
-    uint32_t USBHS_DOEPDMA9_14;
-    uint32_t USBHS_DOEPDMA9_15;
-    uint32_t USBHS_DOEPDMA9_16;
-    uint32_t USBHS_DOEPDMA9_17;
-    uint32_t USBHS_DOEPDMA9_18;
-    uint32_t USBHS_DOEPDMA9_19;
-    uint32_t USBHS_DOEPDMA9_20;
-    uint32_t USBHS_DOEPDMA9_21;
-    uint32_t USBHS_DOEPDMA9_22;
-    uint32_t USBHS_DOEPDMA9_23;
-    uint32_t USBHS_DOEPDMA9_24;
-    uint32_t USBHS_DOEPDMA9_25;
-    uint32_t USBHS_DOEPDMA9_26;
-    uint32_t USBHS_DOEPDMA9_27;
-    uint32_t USBHS_DOEPDMA9_28;
-    uint32_t USBHS_DOEPDMA9_29;
-    uint32_t USBHS_DOEPDMA9_30;
-    uint32_t USBHS_DOEPDMA9_31;
-} stc_usbhs_doepdma9_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -67177,42 +46080,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz10_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA10_0;
-    uint32_t USBHS_DOEPDMA10_1;
-    uint32_t USBHS_DOEPDMA10_2;
-    uint32_t USBHS_DOEPDMA10_3;
-    uint32_t USBHS_DOEPDMA10_4;
-    uint32_t USBHS_DOEPDMA10_5;
-    uint32_t USBHS_DOEPDMA10_6;
-    uint32_t USBHS_DOEPDMA10_7;
-    uint32_t USBHS_DOEPDMA10_8;
-    uint32_t USBHS_DOEPDMA10_9;
-    uint32_t USBHS_DOEPDMA10_10;
-    uint32_t USBHS_DOEPDMA10_11;
-    uint32_t USBHS_DOEPDMA10_12;
-    uint32_t USBHS_DOEPDMA10_13;
-    uint32_t USBHS_DOEPDMA10_14;
-    uint32_t USBHS_DOEPDMA10_15;
-    uint32_t USBHS_DOEPDMA10_16;
-    uint32_t USBHS_DOEPDMA10_17;
-    uint32_t USBHS_DOEPDMA10_18;
-    uint32_t USBHS_DOEPDMA10_19;
-    uint32_t USBHS_DOEPDMA10_20;
-    uint32_t USBHS_DOEPDMA10_21;
-    uint32_t USBHS_DOEPDMA10_22;
-    uint32_t USBHS_DOEPDMA10_23;
-    uint32_t USBHS_DOEPDMA10_24;
-    uint32_t USBHS_DOEPDMA10_25;
-    uint32_t USBHS_DOEPDMA10_26;
-    uint32_t USBHS_DOEPDMA10_27;
-    uint32_t USBHS_DOEPDMA10_28;
-    uint32_t USBHS_DOEPDMA10_29;
-    uint32_t USBHS_DOEPDMA10_30;
-    uint32_t USBHS_DOEPDMA10_31;
-} stc_usbhs_doepdma10_bit_t;
 
 typedef struct
 {
@@ -67303,42 +46170,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA11_0;
-    uint32_t USBHS_DOEPDMA11_1;
-    uint32_t USBHS_DOEPDMA11_2;
-    uint32_t USBHS_DOEPDMA11_3;
-    uint32_t USBHS_DOEPDMA11_4;
-    uint32_t USBHS_DOEPDMA11_5;
-    uint32_t USBHS_DOEPDMA11_6;
-    uint32_t USBHS_DOEPDMA11_7;
-    uint32_t USBHS_DOEPDMA11_8;
-    uint32_t USBHS_DOEPDMA11_9;
-    uint32_t USBHS_DOEPDMA11_10;
-    uint32_t USBHS_DOEPDMA11_11;
-    uint32_t USBHS_DOEPDMA11_12;
-    uint32_t USBHS_DOEPDMA11_13;
-    uint32_t USBHS_DOEPDMA11_14;
-    uint32_t USBHS_DOEPDMA11_15;
-    uint32_t USBHS_DOEPDMA11_16;
-    uint32_t USBHS_DOEPDMA11_17;
-    uint32_t USBHS_DOEPDMA11_18;
-    uint32_t USBHS_DOEPDMA11_19;
-    uint32_t USBHS_DOEPDMA11_20;
-    uint32_t USBHS_DOEPDMA11_21;
-    uint32_t USBHS_DOEPDMA11_22;
-    uint32_t USBHS_DOEPDMA11_23;
-    uint32_t USBHS_DOEPDMA11_24;
-    uint32_t USBHS_DOEPDMA11_25;
-    uint32_t USBHS_DOEPDMA11_26;
-    uint32_t USBHS_DOEPDMA11_27;
-    uint32_t USBHS_DOEPDMA11_28;
-    uint32_t USBHS_DOEPDMA11_29;
-    uint32_t USBHS_DOEPDMA11_30;
-    uint32_t USBHS_DOEPDMA11_31;
-} stc_usbhs_doepdma11_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -67423,42 +46254,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz12_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA12_0;
-    uint32_t USBHS_DOEPDMA12_1;
-    uint32_t USBHS_DOEPDMA12_2;
-    uint32_t USBHS_DOEPDMA12_3;
-    uint32_t USBHS_DOEPDMA12_4;
-    uint32_t USBHS_DOEPDMA12_5;
-    uint32_t USBHS_DOEPDMA12_6;
-    uint32_t USBHS_DOEPDMA12_7;
-    uint32_t USBHS_DOEPDMA12_8;
-    uint32_t USBHS_DOEPDMA12_9;
-    uint32_t USBHS_DOEPDMA12_10;
-    uint32_t USBHS_DOEPDMA12_11;
-    uint32_t USBHS_DOEPDMA12_12;
-    uint32_t USBHS_DOEPDMA12_13;
-    uint32_t USBHS_DOEPDMA12_14;
-    uint32_t USBHS_DOEPDMA12_15;
-    uint32_t USBHS_DOEPDMA12_16;
-    uint32_t USBHS_DOEPDMA12_17;
-    uint32_t USBHS_DOEPDMA12_18;
-    uint32_t USBHS_DOEPDMA12_19;
-    uint32_t USBHS_DOEPDMA12_20;
-    uint32_t USBHS_DOEPDMA12_21;
-    uint32_t USBHS_DOEPDMA12_22;
-    uint32_t USBHS_DOEPDMA12_23;
-    uint32_t USBHS_DOEPDMA12_24;
-    uint32_t USBHS_DOEPDMA12_25;
-    uint32_t USBHS_DOEPDMA12_26;
-    uint32_t USBHS_DOEPDMA12_27;
-    uint32_t USBHS_DOEPDMA12_28;
-    uint32_t USBHS_DOEPDMA12_29;
-    uint32_t USBHS_DOEPDMA12_30;
-    uint32_t USBHS_DOEPDMA12_31;
-} stc_usbhs_doepdma12_bit_t;
 
 typedef struct
 {
@@ -67549,42 +46344,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA13_0;
-    uint32_t USBHS_DOEPDMA13_1;
-    uint32_t USBHS_DOEPDMA13_2;
-    uint32_t USBHS_DOEPDMA13_3;
-    uint32_t USBHS_DOEPDMA13_4;
-    uint32_t USBHS_DOEPDMA13_5;
-    uint32_t USBHS_DOEPDMA13_6;
-    uint32_t USBHS_DOEPDMA13_7;
-    uint32_t USBHS_DOEPDMA13_8;
-    uint32_t USBHS_DOEPDMA13_9;
-    uint32_t USBHS_DOEPDMA13_10;
-    uint32_t USBHS_DOEPDMA13_11;
-    uint32_t USBHS_DOEPDMA13_12;
-    uint32_t USBHS_DOEPDMA13_13;
-    uint32_t USBHS_DOEPDMA13_14;
-    uint32_t USBHS_DOEPDMA13_15;
-    uint32_t USBHS_DOEPDMA13_16;
-    uint32_t USBHS_DOEPDMA13_17;
-    uint32_t USBHS_DOEPDMA13_18;
-    uint32_t USBHS_DOEPDMA13_19;
-    uint32_t USBHS_DOEPDMA13_20;
-    uint32_t USBHS_DOEPDMA13_21;
-    uint32_t USBHS_DOEPDMA13_22;
-    uint32_t USBHS_DOEPDMA13_23;
-    uint32_t USBHS_DOEPDMA13_24;
-    uint32_t USBHS_DOEPDMA13_25;
-    uint32_t USBHS_DOEPDMA13_26;
-    uint32_t USBHS_DOEPDMA13_27;
-    uint32_t USBHS_DOEPDMA13_28;
-    uint32_t USBHS_DOEPDMA13_29;
-    uint32_t USBHS_DOEPDMA13_30;
-    uint32_t USBHS_DOEPDMA13_31;
-} stc_usbhs_doepdma13_bit_t;
-
-typedef struct
-{
     __IO uint32_t MPS0;
     __IO uint32_t MPS1;
     __IO uint32_t MPS2;
@@ -67669,42 +46428,6 @@ typedef struct
     __IO uint32_t RXDPID1;
     uint32_t RESERVED0[1];
 } stc_usbhs_doeptsiz14_bit_t;
-
-typedef struct
-{
-    uint32_t USBHS_DOEPDMA14_0;
-    uint32_t USBHS_DOEPDMA14_1;
-    uint32_t USBHS_DOEPDMA14_2;
-    uint32_t USBHS_DOEPDMA14_3;
-    uint32_t USBHS_DOEPDMA14_4;
-    uint32_t USBHS_DOEPDMA14_5;
-    uint32_t USBHS_DOEPDMA14_6;
-    uint32_t USBHS_DOEPDMA14_7;
-    uint32_t USBHS_DOEPDMA14_8;
-    uint32_t USBHS_DOEPDMA14_9;
-    uint32_t USBHS_DOEPDMA14_10;
-    uint32_t USBHS_DOEPDMA14_11;
-    uint32_t USBHS_DOEPDMA14_12;
-    uint32_t USBHS_DOEPDMA14_13;
-    uint32_t USBHS_DOEPDMA14_14;
-    uint32_t USBHS_DOEPDMA14_15;
-    uint32_t USBHS_DOEPDMA14_16;
-    uint32_t USBHS_DOEPDMA14_17;
-    uint32_t USBHS_DOEPDMA14_18;
-    uint32_t USBHS_DOEPDMA14_19;
-    uint32_t USBHS_DOEPDMA14_20;
-    uint32_t USBHS_DOEPDMA14_21;
-    uint32_t USBHS_DOEPDMA14_22;
-    uint32_t USBHS_DOEPDMA14_23;
-    uint32_t USBHS_DOEPDMA14_24;
-    uint32_t USBHS_DOEPDMA14_25;
-    uint32_t USBHS_DOEPDMA14_26;
-    uint32_t USBHS_DOEPDMA14_27;
-    uint32_t USBHS_DOEPDMA14_28;
-    uint32_t USBHS_DOEPDMA14_29;
-    uint32_t USBHS_DOEPDMA14_30;
-    uint32_t USBHS_DOEPDMA14_31;
-} stc_usbhs_doepdma14_bit_t;
 
 typedef struct
 {
@@ -67795,42 +46518,6 @@ typedef struct
 
 typedef struct
 {
-    uint32_t USBHS_DOEPDMA15_0;
-    uint32_t USBHS_DOEPDMA15_1;
-    uint32_t USBHS_DOEPDMA15_2;
-    uint32_t USBHS_DOEPDMA15_3;
-    uint32_t USBHS_DOEPDMA15_4;
-    uint32_t USBHS_DOEPDMA15_5;
-    uint32_t USBHS_DOEPDMA15_6;
-    uint32_t USBHS_DOEPDMA15_7;
-    uint32_t USBHS_DOEPDMA15_8;
-    uint32_t USBHS_DOEPDMA15_9;
-    uint32_t USBHS_DOEPDMA15_10;
-    uint32_t USBHS_DOEPDMA15_11;
-    uint32_t USBHS_DOEPDMA15_12;
-    uint32_t USBHS_DOEPDMA15_13;
-    uint32_t USBHS_DOEPDMA15_14;
-    uint32_t USBHS_DOEPDMA15_15;
-    uint32_t USBHS_DOEPDMA15_16;
-    uint32_t USBHS_DOEPDMA15_17;
-    uint32_t USBHS_DOEPDMA15_18;
-    uint32_t USBHS_DOEPDMA15_19;
-    uint32_t USBHS_DOEPDMA15_20;
-    uint32_t USBHS_DOEPDMA15_21;
-    uint32_t USBHS_DOEPDMA15_22;
-    uint32_t USBHS_DOEPDMA15_23;
-    uint32_t USBHS_DOEPDMA15_24;
-    uint32_t USBHS_DOEPDMA15_25;
-    uint32_t USBHS_DOEPDMA15_26;
-    uint32_t USBHS_DOEPDMA15_27;
-    uint32_t USBHS_DOEPDMA15_28;
-    uint32_t USBHS_DOEPDMA15_29;
-    uint32_t USBHS_DOEPDMA15_30;
-    uint32_t USBHS_DOEPDMA15_31;
-} stc_usbhs_doepdma15_bit_t;
-
-typedef struct
-{
     __IO uint32_t STOPPCLK;
     __IO uint32_t GATEHCLK;
     __IO uint32_t PWRCLMP;
@@ -67864,47 +46551,11 @@ typedef struct
 
 typedef struct
 {
-    __IO uint32_t CNT0;
-    __IO uint32_t CNT1;
-    __IO uint32_t CNT2;
-    __IO uint32_t CNT3;
-    __IO uint32_t CNT4;
-    __IO uint32_t CNT5;
-    __IO uint32_t CNT6;
-    __IO uint32_t CNT7;
-    __IO uint32_t CNT8;
-    __IO uint32_t CNT9;
-    __IO uint32_t CNT10;
-    __IO uint32_t CNT11;
-    __IO uint32_t CNT12;
-    __IO uint32_t CNT13;
-    __IO uint32_t CNT14;
-    __IO uint32_t CNT15;
+    uint32_t RESERVED0[16];
     __IO uint32_t UDF;
     __IO uint32_t REF;
-    uint32_t RESERVED0[14];
+    uint32_t RESERVED1[14];
 } stc_wdt_sr_bit_t;
-
-typedef struct
-{
-    __IO uint32_t RF0;
-    __IO uint32_t RF1;
-    __IO uint32_t RF2;
-    __IO uint32_t RF3;
-    __IO uint32_t RF4;
-    __IO uint32_t RF5;
-    __IO uint32_t RF6;
-    __IO uint32_t RF7;
-    __IO uint32_t RF8;
-    __IO uint32_t RF9;
-    __IO uint32_t RF10;
-    __IO uint32_t RF11;
-    __IO uint32_t RF12;
-    __IO uint32_t RF13;
-    __IO uint32_t RF14;
-    __IO uint32_t RF15;
-    uint32_t RESERVED0[16];
-} stc_wdt_rr_bit_t;
 
 
 typedef struct
@@ -67921,91 +46572,36 @@ typedef struct
     stc_adc_exchselr_bit_t                   EXCHSELR_b;
     uint32_t                                 RESERVED2[8];
     stc_adc_shcr_bit_t                       SHCR_b;
-    uint32_t                                 RESERVED3[32];
-    stc_adc_sstr0_bit_t                      SSTR0_b;
-    stc_adc_sstr1_bit_t                      SSTR1_b;
-    stc_adc_sstr2_bit_t                      SSTR2_b;
-    stc_adc_sstr3_bit_t                      SSTR3_b;
-    stc_adc_sstr4_bit_t                      SSTR4_b;
-    stc_adc_sstr5_bit_t                      SSTR5_b;
-    stc_adc_sstr6_bit_t                      SSTR6_b;
-    stc_adc_sstr7_bit_t                      SSTR7_b;
-    stc_adc_sstr8_bit_t                      SSTR8_b;
-    stc_adc_sstr9_bit_t                      SSTR9_b;
-    stc_adc_sstr10_bit_t                     SSTR10_b;
-    stc_adc_sstr11_bit_t                     SSTR11_b;
-    stc_adc_sstr12_bit_t                     SSTR12_b;
-    stc_adc_sstr13_bit_t                     SSTR13_b;
-    stc_adc_sstr14_bit_t                     SSTR14_b;
-    stc_adc_sstr15_bit_t                     SSTR15_b;
-    stc_adc_sstrl_bit_t                      SSTRL_b;
-    uint32_t                                 RESERVED4[56];
+    uint32_t                                 RESERVED3[224];
     stc_adc_chmuxr0_bit_t                    CHMUXR0_b;
     stc_adc_chmuxr1_bit_t                    CHMUXR1_b;
     stc_adc_chmuxr2_bit_t                    CHMUXR2_b;
     stc_adc_chmuxr3_bit_t                    CHMUXR3_b;
-    uint32_t                                 RESERVED5[32];
+    uint32_t                                 RESERVED4[32];
     stc_adc_isr_bit_t                        ISR_b;
     stc_adc_icr_bit_t                        ICR_b;
     stc_adc_isclrr_bit_t                     ISCLRR_b;
-    uint32_t                                 RESERVED6[40];
+    uint32_t                                 RESERVED5[40];
     stc_adc_synccr_bit_t                     SYNCCR_b;
-    uint32_t                                 RESERVED7[16];
-    stc_adc_dr0_bit_t                        DR0_b;
-    stc_adc_dr1_bit_t                        DR1_b;
-    stc_adc_dr2_bit_t                        DR2_b;
-    stc_adc_dr3_bit_t                        DR3_b;
-    stc_adc_dr4_bit_t                        DR4_b;
-    stc_adc_dr5_bit_t                        DR5_b;
-    stc_adc_dr6_bit_t                        DR6_b;
-    stc_adc_dr7_bit_t                        DR7_b;
-    stc_adc_dr8_bit_t                        DR8_b;
-    stc_adc_dr9_bit_t                        DR9_b;
-    stc_adc_dr10_bit_t                       DR10_b;
-    stc_adc_dr11_bit_t                       DR11_b;
-    stc_adc_dr12_bit_t                       DR12_b;
-    stc_adc_dr13_bit_t                       DR13_b;
-    stc_adc_dr14_bit_t                       DR14_b;
-    stc_adc_dr15_bit_t                       DR15_b;
-    stc_adc_dr16_bit_t                       DR16_b;
-    stc_adc_dr17_bit_t                       DR17_b;
-    stc_adc_dr18_bit_t                       DR18_b;
-    stc_adc_dr19_bit_t                       DR19_b;
-    uint32_t                                 RESERVED8[320];
+    uint32_t                                 RESERVED6[656];
     stc_adc_awdcr_bit_t                      AWDCR_b;
     stc_adc_awdsr_bit_t                      AWDSR_b;
     stc_adc_awdsclrr_bit_t                   AWDSCLRR_b;
-    stc_adc_awd0dr0_bit_t                    AWD0DR0_b;
-    stc_adc_awd0dr1_bit_t                    AWD0DR1_b;
+    uint32_t                                 RESERVED7[32];
     stc_adc_awd0chsr_bit_t                   AWD0CHSR_b;
-    uint32_t                                 RESERVED9[16];
-    stc_adc_awd1dr0_bit_t                    AWD1DR0_b;
-    stc_adc_awd1dr1_bit_t                    AWD1DR1_b;
+    uint32_t                                 RESERVED8[48];
     stc_adc_awd1chsr_bit_t                   AWD1CHSR_b;
-    uint32_t                                 RESERVED10[112];
+    uint32_t                                 RESERVED9[112];
     stc_adc_pgacr1_bit_t                     PGACR1_b;
     stc_adc_pgacr2_bit_t                     PGACR2_b;
     stc_adc_pgacr3_bit_t                     PGACR3_b;
-    uint32_t                                 RESERVED11[8];
+    uint32_t                                 RESERVED10[8];
     stc_adc_pgavssenr_bit_t                  PGAVSSENR_b;
 } bM4_ADC_TypeDef;
 
 typedef struct
 {
     stc_aes_cr_bit_t                         CR_b;
-    uint32_t                                 RESERVED0[96];
-    stc_aes_dr0_bit_t                        DR0_b;
-    stc_aes_dr1_bit_t                        DR1_b;
-    stc_aes_dr2_bit_t                        DR2_b;
-    stc_aes_dr3_bit_t                        DR3_b;
-    stc_aes_kr0_bit_t                        KR0_b;
-    stc_aes_kr1_bit_t                        KR1_b;
-    stc_aes_kr2_bit_t                        KR2_b;
-    stc_aes_kr3_bit_t                        KR3_b;
-    stc_aes_kr4_bit_t                        KR4_b;
-    stc_aes_kr5_bit_t                        KR5_b;
-    stc_aes_kr6_bit_t                        KR6_b;
-    stc_aes_kr7_bit_t                        KR7_b;
 } bM4_AES_TypeDef;
 
 typedef struct
@@ -68053,46 +46649,41 @@ typedef struct
     stc_aos_adc_2_itrgselr_bit_t             ADC_2_ITRGSELR1_b;
     stc_aos_adc_3_itrgselr_bit_t             ADC_3_ITRGSELR0_b;
     stc_aos_adc_3_itrgselr_bit_t             ADC_3_ITRGSELR1_b;
-    stc_aos_comtrg1_bit_t                    COMTRG1_b;
-    stc_aos_comtrg2_bit_t                    COMTRG2_b;
-    uint32_t                                 RESERVED0[608];
-    stc_aos_gpio_pevntdirr1_bit_t            GPIO_PEVNTDIRR1_b;
-    stc_aos_gpio_pevntidr1_bit_t             GPIO_PEVNTIDR1_b;
-    stc_aos_gpio_pevntodr1_bit_t             GPIO_PEVNTODR1_b;
-    stc_aos_gpio_pevntorr1_bit_t             GPIO_PEVNTORR1_b;
-    stc_aos_gpio_pevntosr1_bit_t             GPIO_PEVNTOSR1_b;
-    stc_aos_gpio_pevntrisr1_bit_t            GPIO_PEVNTRISR1_b;
-    stc_aos_gpio_pevntfal1_bit_t             GPIO_PEVNTFAL1_b;
-    stc_aos_gpio_pevntdirr2_bit_t            GPIO_PEVNTDIRR2_b;
-    stc_aos_gpio_pevntidr2_bit_t             GPIO_PEVNTIDR2_b;
-    stc_aos_gpio_pevntodr2_bit_t             GPIO_PEVNTODR2_b;
-    stc_aos_gpio_pevntorr2_bit_t             GPIO_PEVNTORR2_b;
-    stc_aos_gpio_pevntosr2_bit_t             GPIO_PEVNTOSR2_b;
-    stc_aos_gpio_pevntrisr2_bit_t            GPIO_PEVNTRISR2_b;
-    stc_aos_gpio_pevntfal2_bit_t             GPIO_PEVNTFAL2_b;
-    stc_aos_gpio_pevntdirr3_bit_t            GPIO_PEVNTDIRR3_b;
-    stc_aos_gpio_pevntidr3_bit_t             GPIO_PEVNTIDR3_b;
-    stc_aos_gpio_pevntodr3_bit_t             GPIO_PEVNTODR3_b;
-    stc_aos_gpio_pevntorr3_bit_t             GPIO_PEVNTORR3_b;
-    stc_aos_gpio_pevntosr3_bit_t             GPIO_PEVNTOSR3_b;
-    stc_aos_gpio_pevntrisr3_bit_t            GPIO_PEVNTRISR3_b;
-    stc_aos_gpio_pevntfal3_bit_t             GPIO_PEVNTFAL3_b;
-    stc_aos_gpio_pevntdirr4_bit_t            GPIO_PEVNTDIRR4_b;
-    stc_aos_gpio_pevntidr4_bit_t             GPIO_PEVNTIDR4_b;
-    stc_aos_gpio_pevntodr4_bit_t             GPIO_PEVNTODR4_b;
-    stc_aos_gpio_pevntorr4_bit_t             GPIO_PEVNTORR4_b;
-    stc_aos_gpio_pevntosr4_bit_t             GPIO_PEVNTOSR4_b;
-    stc_aos_gpio_pevntrisr4_bit_t            GPIO_PEVNTRISR4_b;
-    stc_aos_gpio_pevntfal4_bit_t             GPIO_PEVNTFAL4_b;
+    uint32_t                                 RESERVED0[672];
+    stc_aos_gpio_pevntdirr_bit_t             GPIO_PEVNTDIRR1_b;
+    stc_aos_gpio_pevntidr_bit_t              GPIO_PEVNTIDR1_b;
+    stc_aos_gpio_pevntodr_bit_t              GPIO_PEVNTODR1_b;
+    stc_aos_gpio_pevntorr_bit_t              GPIO_PEVNTORR1_b;
+    stc_aos_gpio_pevntosr_bit_t              GPIO_PEVNTOSR1_b;
+    stc_aos_gpio_pevntrisr_bit_t             GPIO_PEVNTRISR1_b;
+    stc_aos_gpio_pevntfal_bit_t              GPIO_PEVNTFAL1_b;
+    stc_aos_gpio_pevntdirr_bit_t             GPIO_PEVNTDIRR2_b;
+    stc_aos_gpio_pevntidr_bit_t              GPIO_PEVNTIDR2_b;
+    stc_aos_gpio_pevntodr_bit_t              GPIO_PEVNTODR2_b;
+    stc_aos_gpio_pevntorr_bit_t              GPIO_PEVNTORR2_b;
+    stc_aos_gpio_pevntosr_bit_t              GPIO_PEVNTOSR2_b;
+    stc_aos_gpio_pevntrisr_bit_t             GPIO_PEVNTRISR2_b;
+    stc_aos_gpio_pevntfal_bit_t              GPIO_PEVNTFAL2_b;
+    stc_aos_gpio_pevntdirr_bit_t             GPIO_PEVNTDIRR3_b;
+    stc_aos_gpio_pevntidr_bit_t              GPIO_PEVNTIDR3_b;
+    stc_aos_gpio_pevntodr_bit_t              GPIO_PEVNTODR3_b;
+    stc_aos_gpio_pevntorr_bit_t              GPIO_PEVNTORR3_b;
+    stc_aos_gpio_pevntosr_bit_t              GPIO_PEVNTOSR3_b;
+    stc_aos_gpio_pevntrisr_bit_t             GPIO_PEVNTRISR3_b;
+    stc_aos_gpio_pevntfal_bit_t              GPIO_PEVNTFAL3_b;
+    stc_aos_gpio_pevntdirr_bit_t             GPIO_PEVNTDIRR4_b;
+    stc_aos_gpio_pevntidr_bit_t              GPIO_PEVNTIDR4_b;
+    stc_aos_gpio_pevntodr_bit_t              GPIO_PEVNTODR4_b;
+    stc_aos_gpio_pevntorr_bit_t              GPIO_PEVNTORR4_b;
+    stc_aos_gpio_pevntosr_bit_t              GPIO_PEVNTOSR4_b;
+    stc_aos_gpio_pevntrisr_bit_t             GPIO_PEVNTRISR4_b;
+    stc_aos_gpio_pevntfal_bit_t              GPIO_PEVNTFAL4_b;
     stc_aos_gpio_pevntnfcr_bit_t             GPIO_PEVNTNFCR_b;
 } bM4_AOS_TypeDef;
 
 typedef struct
 {
-    stc_can_rbuf_bit_t                       RBUF_b;
-    uint32_t                                 RESERVED0[608];
-    stc_can_tbuf_bit_t                       TBUF_b;
-    uint32_t                                 RESERVED1[608];
+    uint32_t                                 RESERVED0[1280];
     stc_can_cfg_stat_bit_t                   CFG_STAT_b;
     stc_can_tcmd_bit_t                       TCMD_b;
     stc_can_tctrl_bit_t                      TCTRL_b;
@@ -68105,8 +46696,7 @@ typedef struct
     stc_can_fbt_bit_t                        FBT_b;
     stc_can_ealcap_bit_t                     EALCAP_b;
     stc_can_tdc_bit_t                        TDC_b;
-    stc_can_recnt_bit_t                      RECNT_b;
-    stc_can_tecnt_bit_t                      TECNT_b;
+    uint32_t                                 RESERVED1[16];
     stc_can_acfctrl_bit_t                    ACFCTRL_b;
     uint32_t                                 RESERVED2[8];
     stc_can_acfen_bit_t                      ACFEN_b;
@@ -68116,8 +46706,6 @@ typedef struct
     stc_can_ttcfg_bit_t                      TTCFG_b;
     stc_can_ref_msg_bit_t                    REF_MSG_b;
     stc_can_trg_cfg_bit_t                    TRG_CFG_b;
-    stc_can_tt_trig_bit_t                    TT_TRIG_b;
-    stc_can_tt_wtrig_bit_t                   TT_WTRIG_b;
 } bM4_CAN_TypeDef;
 
 typedef struct
@@ -68134,94 +46722,36 @@ typedef struct
 typedef struct
 {
     stc_cmu_xtal32cr_bit_t                   XTAL32CR_b;
-    uint32_t                                 RESERVED0[24];
-    stc_cmu_xtal32cfgr_bit_t                 XTAL32CFGR_b;
-    uint32_t                                 RESERVED1[120];
-    stc_cmu_xtal32nfr_bit_t                  XTAL32NFR_b;
-    uint32_t                                 RESERVED2[56];
+    uint32_t                                 RESERVED0[216];
     stc_cmu_lrccr_bit_t                      LRCCR_b;
-    uint32_t                                 RESERVED3[24];
+    uint32_t                                 RESERVED1[24];
     stc_cmu_rtclrccr_bit_t                   RTCLRCCR_b;
-    uint32_t                                 RESERVED4[24];
-    stc_cmu_lrctrm_bit_t                     LRCTRM_b;
-    uint32_t                                 RESERVED5[56];
-    stc_cmu_rtclrctrm_bit_t                  RTCLRCTRM_b;
-    uint32_t                                 RESERVED6[16984];
+    uint32_t                                 RESERVED2[17080];
     stc_cmu_xtalcfgr_bit_t                   XTALCFGR_b;
-    uint32_t                                 RESERVED7[236728];
-    stc_cmu_pericksel_bit_t                  PERICKSEL_b;
-    stc_cmu_i2scksel_bit_t                   I2SCKSEL_b;
-    uint32_t                                 RESERVED8[32];
-    stc_cmu_canckcfgr_bit_t                  CANCKCFGR_b;
-    uint32_t                                 RESERVED9[56];
-    stc_cmu_scfgr_bit_t                      SCFGR_b;
-    stc_cmu_usbckcfgr_bit_t                  USBCKCFGR_b;
-    uint32_t                                 RESERVED10[8];
-    stc_cmu_ckswr_bit_t                      CKSWR_b;
-    uint32_t                                 RESERVED11[24];
+    uint32_t                                 RESERVED3[236936];
     stc_cmu_pllhcr_bit_t                     PLLHCR_b;
-    uint32_t                                 RESERVED12[24];
+    uint32_t                                 RESERVED4[24];
     stc_cmu_pllacr_bit_t                     PLLACR_b;
-    uint32_t                                 RESERVED13[24];
+    uint32_t                                 RESERVED5[24];
     stc_cmu_xtalcr_bit_t                     XTALCR_b;
-    uint32_t                                 RESERVED14[24];
+    uint32_t                                 RESERVED6[24];
     stc_cmu_hrccr_bit_t                      HRCCR_b;
-    uint32_t                                 RESERVED15[8];
+    uint32_t                                 RESERVED7[8];
     stc_cmu_mrccr_bit_t                      MRCCR_b;
-    uint32_t                                 RESERVED16[24];
+    uint32_t                                 RESERVED8[24];
     stc_cmu_oscstbsr_bit_t                   OSCSTBSR_b;
     stc_cmu_mco1cfgr_bit_t                   MCO1CFGR_b;
     stc_cmu_mco2cfgr_bit_t                   MCO2CFGR_b;
     stc_cmu_tpiuckcfgr_bit_t                 TPIUCKCFGR_b;
     stc_cmu_xtalstdcr_bit_t                  XTALSTDCR_b;
     stc_cmu_xtalstdsr_bit_t                  XTALSTDSR_b;
-    uint32_t                                 RESERVED17[248];
-    stc_cmu_mrctrm_bit_t                     MRCTRM_b;
-    stc_cmu_hrctrm_bit_t                     HRCTRM_b;
-    uint32_t                                 RESERVED18[504];
-    stc_cmu_xtalstbcr_bit_t                  XTALSTBCR_b;
-    uint32_t                                 RESERVED19[744];
+    uint32_t                                 RESERVED9[1520];
     stc_cmu_pllhcfgr_bit_t                   PLLHCFGR_b;
-    stc_cmu_pllacfgr_bit_t                   PLLACFGR_b;
 } bM4_CMU_TypeDef;
 
 typedef struct
 {
     stc_crc_cr_bit_t                         CR_b;
-    stc_crc_reslt_bit_t                      RESLT_b;
-    uint32_t                                 RESERVED0[960];
-    stc_crc_dat0_bit_t                       DAT0_b;
-    stc_crc_dat1_bit_t                       DAT1_b;
-    stc_crc_dat2_bit_t                       DAT2_b;
-    stc_crc_dat3_bit_t                       DAT3_b;
-    stc_crc_dat4_bit_t                       DAT4_b;
-    stc_crc_dat5_bit_t                       DAT5_b;
-    stc_crc_dat6_bit_t                       DAT6_b;
-    stc_crc_dat7_bit_t                       DAT7_b;
-    stc_crc_dat8_bit_t                       DAT8_b;
-    stc_crc_dat9_bit_t                       DAT9_b;
-    stc_crc_dat10_bit_t                      DAT10_b;
-    stc_crc_dat11_bit_t                      DAT11_b;
-    stc_crc_dat12_bit_t                      DAT12_b;
-    stc_crc_dat13_bit_t                      DAT13_b;
-    stc_crc_dat14_bit_t                      DAT14_b;
-    stc_crc_dat15_bit_t                      DAT15_b;
-    stc_crc_dat16_bit_t                      DAT16_b;
-    stc_crc_dat17_bit_t                      DAT17_b;
-    stc_crc_dat18_bit_t                      DAT18_b;
-    stc_crc_dat19_bit_t                      DAT19_b;
-    stc_crc_dat20_bit_t                      DAT20_b;
-    stc_crc_dat21_bit_t                      DAT21_b;
-    stc_crc_dat22_bit_t                      DAT22_b;
-    stc_crc_dat23_bit_t                      DAT23_b;
-    stc_crc_dat24_bit_t                      DAT24_b;
-    stc_crc_dat25_bit_t                      DAT25_b;
-    stc_crc_dat26_bit_t                      DAT26_b;
-    stc_crc_dat27_bit_t                      DAT27_b;
-    stc_crc_dat28_bit_t                      DAT28_b;
-    stc_crc_dat29_bit_t                      DAT29_b;
-    stc_crc_dat30_bit_t                      DAT30_b;
-    stc_crc_dat31_bit_t                      DAT31_b;
 } bM4_CRC_TypeDef;
 
 typedef struct
@@ -68243,10 +46773,7 @@ typedef struct
 
 typedef struct
 {
-    stc_dbgc_authid0_bit_t                   AUTHID0_b;
-    stc_dbgc_authid1_bit_t                   AUTHID1_b;
-    stc_dbgc_authid2_bit_t                   AUTHID2_b;
-    stc_dbgc_resv0_bit_t                     RESV0_b;
+    uint32_t                                 RESERVED0[128];
     stc_dbgc_mcustat_bit_t                   MCUSTAT_b;
     stc_dbgc_mcuctl_bit_t                    MCUCTL_b;
     stc_dbgc_fmcctl_bit_t                    FMCCTL_b;
@@ -68260,9 +46787,7 @@ typedef struct
 {
     stc_dcu_ctl_bit_t                        CTL_b;
     stc_dcu_flag_bit_t                       FLAG_b;
-    stc_dcu_data0_bit_t                      DATA0_b;
-    stc_dcu_data1_bit_t                      DATA1_b;
-    stc_dcu_data2_bit_t                      DATA2_b;
+    uint32_t                                 RESERVED0[96];
     stc_dcu_flagclr_bit_t                    FLAGCLR_b;
     stc_dcu_intevtsel_bit_t                  INTEVTSEL_b;
 } bM4_DCU_TypeDef;
@@ -68283,244 +46808,36 @@ typedef struct
     stc_dma_rcfgctl_bit_t                    RCFGCTL_b;
     uint32_t                                 RESERVED1[32];
     stc_dma_chenclr_bit_t                    CHENCLR_b;
-    uint32_t                                 RESERVED2[64];
-    stc_dma_sar_bit_t                        SAR0_b;
-    stc_dma_dar_bit_t                        DAR0_b;
-    stc_dma_dtctl_bit_t                      DTCTL0_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT0_b;
-        stc_dma_rptb_bit_t                       RPTB0_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL0_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB0_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL0_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB0_b;
-    };
-    stc_dma_llp_bit_t                        LLP0_b;
+    uint32_t                                 RESERVED2[384];
     stc_dma_chctl_bit_t                      CHCTL0_b;
-    stc_dma_monsar_bit_t                     MONSAR0_b;
-    stc_dma_mondar_bit_t                     MONDAR0_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL0_b;
-    stc_dma_monrpt_bit_t                     MONRPT0_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL0_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL0_b;
-    uint32_t                                 RESERVED3[64];
-    stc_dma_sar_bit_t                        SAR1_b;
-    stc_dma_dar_bit_t                        DAR1_b;
-    stc_dma_dtctl_bit_t                      DTCTL1_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT1_b;
-        stc_dma_rptb_bit_t                       RPTB1_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL1_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB1_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL1_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB1_b;
-    };
-    stc_dma_llp_bit_t                        LLP1_b;
+    uint32_t                                 RESERVED3[512];
     stc_dma_chctl_bit_t                      CHCTL1_b;
-    stc_dma_monsar_bit_t                     MONSAR1_b;
-    stc_dma_mondar_bit_t                     MONDAR1_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL1_b;
-    stc_dma_monrpt_bit_t                     MONRPT1_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL1_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL1_b;
-    uint32_t                                 RESERVED4[64];
-    stc_dma_sar_bit_t                        SAR2_b;
-    stc_dma_dar_bit_t                        DAR2_b;
-    stc_dma_dtctl_bit_t                      DTCTL2_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT2_b;
-        stc_dma_rptb_bit_t                       RPTB2_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL2_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB2_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL2_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB2_b;
-    };
-    stc_dma_llp_bit_t                        LLP2_b;
+    uint32_t                                 RESERVED4[512];
     stc_dma_chctl_bit_t                      CHCTL2_b;
-    stc_dma_monsar_bit_t                     MONSAR2_b;
-    stc_dma_mondar_bit_t                     MONDAR2_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL2_b;
-    stc_dma_monrpt_bit_t                     MONRPT2_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL2_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL2_b;
-    uint32_t                                 RESERVED5[64];
-    stc_dma_sar_bit_t                        SAR3_b;
-    stc_dma_dar_bit_t                        DAR3_b;
-    stc_dma_dtctl_bit_t                      DTCTL3_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT3_b;
-        stc_dma_rptb_bit_t                       RPTB3_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL3_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB3_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL3_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB3_b;
-    };
-    stc_dma_llp_bit_t                        LLP3_b;
+    uint32_t                                 RESERVED5[512];
     stc_dma_chctl_bit_t                      CHCTL3_b;
-    stc_dma_monsar_bit_t                     MONSAR3_b;
-    stc_dma_mondar_bit_t                     MONDAR3_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL3_b;
-    stc_dma_monrpt_bit_t                     MONRPT3_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL3_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL3_b;
-    uint32_t                                 RESERVED6[64];
-    stc_dma_sar_bit_t                        SAR4_b;
-    stc_dma_dar_bit_t                        DAR4_b;
-    stc_dma_dtctl_bit_t                      DTCTL4_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT4_b;
-        stc_dma_rptb_bit_t                       RPTB4_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL4_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB4_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL4_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB4_b;
-    };
-    stc_dma_llp_bit_t                        LLP4_b;
+    uint32_t                                 RESERVED6[512];
     stc_dma_chctl_bit_t                      CHCTL4_b;
-    stc_dma_monsar_bit_t                     MONSAR4_b;
-    stc_dma_mondar_bit_t                     MONDAR4_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL4_b;
-    stc_dma_monrpt_bit_t                     MONRPT4_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL4_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL4_b;
-    uint32_t                                 RESERVED7[64];
-    stc_dma_sar_bit_t                        SAR5_b;
-    stc_dma_dar_bit_t                        DAR5_b;
-    stc_dma_dtctl_bit_t                      DTCTL5_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT5_b;
-        stc_dma_rptb_bit_t                       RPTB5_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL5_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB5_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL5_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB5_b;
-    };
-    stc_dma_llp_bit_t                        LLP5_b;
+    uint32_t                                 RESERVED7[512];
     stc_dma_chctl_bit_t                      CHCTL5_b;
-    stc_dma_monsar_bit_t                     MONSAR5_b;
-    stc_dma_mondar_bit_t                     MONDAR5_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL5_b;
-    stc_dma_monrpt_bit_t                     MONRPT5_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL5_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL5_b;
-    uint32_t                                 RESERVED8[64];
-    stc_dma_sar_bit_t                        SAR6_b;
-    stc_dma_dar_bit_t                        DAR6_b;
-    stc_dma_dtctl_bit_t                      DTCTL6_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT6_b;
-        stc_dma_rptb_bit_t                       RPTB6_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL6_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB6_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL6_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB6_b;
-    };
-    stc_dma_llp_bit_t                        LLP6_b;
+    uint32_t                                 RESERVED8[512];
     stc_dma_chctl_bit_t                      CHCTL6_b;
-    stc_dma_monsar_bit_t                     MONSAR6_b;
-    stc_dma_mondar_bit_t                     MONDAR6_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL6_b;
-    stc_dma_monrpt_bit_t                     MONRPT6_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL6_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL6_b;
-    uint32_t                                 RESERVED9[64];
-    stc_dma_sar_bit_t                        SAR7_b;
-    stc_dma_dar_bit_t                        DAR7_b;
-    stc_dma_dtctl_bit_t                      DTCTL7_b;
-    union
-    {
-        stc_dma_rpt_bit_t                        RPT7_b;
-        stc_dma_rptb_bit_t                       RPTB7_b;
-    };
-    union
-    {
-        stc_dma_snseqctl_bit_t                   SNSEQCTL7_b;
-        stc_dma_snseqctlb_bit_t                  SNSEQCTLB7_b;
-    };
-    union
-    {
-        stc_dma_dnseqctl_bit_t                   DNSEQCTL7_b;
-        stc_dma_dnseqctlb_bit_t                  DNSEQCTLB7_b;
-    };
-    stc_dma_llp_bit_t                        LLP7_b;
+    uint32_t                                 RESERVED9[512];
     stc_dma_chctl_bit_t                      CHCTL7_b;
-    stc_dma_monsar_bit_t                     MONSAR7_b;
-    stc_dma_mondar_bit_t                     MONDAR7_b;
-    stc_dma_mondtctl_bit_t                   MONDTCTL7_b;
-    stc_dma_monrpt_bit_t                     MONRPT7_b;
-    stc_dma_monsnseqctl_bit_t                MONSNSEQCTL7_b;
-    stc_dma_mondnseqctl_bit_t                MONDNSEQCTL7_b;
 } bM4_DMA_TypeDef;
 
 typedef struct
 {
     stc_dvp_ctr_bit_t                        CTR_b;
-    stc_dvp_dtr_bit_t                        DTR_b;
+    uint32_t                                 RESERVED0[32];
     stc_dvp_str_bit_t                        STR_b;
     stc_dvp_ier_bit_t                        IER_b;
-    stc_dvp_dmr_bit_t                        DMR_b;
-    uint32_t                                 RESERVED0[96];
-    stc_dvp_ssyndr_bit_t                     SSYNDR_b;
-    stc_dvp_ssynmr_bit_t                     SSYNMR_b;
-    stc_dvp_cpsftr_bit_t                     CPSFTR_b;
-    stc_dvp_cpszer_bit_t                     CPSZER_b;
 } bM4_DVP_TypeDef;
 
 typedef struct
 {
     stc_efm_faprt_bit_t                      FAPRT_b;
-    stc_efm_key1_bit_t                       KEY1_b;
-    stc_efm_key2_bit_t                       KEY2_b;
-    uint32_t                                 RESERVED0[64];
+    uint32_t                                 RESERVED0[128];
     stc_efm_fstp_bit_t                       FSTP_b;
     stc_efm_frmc_bit_t                       FRMC_b;
     stc_efm_fwmc_bit_t                       FWMC_b;
@@ -68528,27 +46845,11 @@ typedef struct
     stc_efm_fsclr_bit_t                      FSCLR_b;
     stc_efm_fite_bit_t                       FITE_b;
     stc_efm_fswp_bit_t                       FSWP_b;
-    uint32_t                                 RESERVED1[128];
-    stc_efm_fhdfg_bit_t                      FHDFG_b;
-    uint32_t                                 RESERVED2[96];
-    stc_efm_uqid0_bit_t                      UQID0_b;
-    stc_efm_uqid1_bit_t                      UQID1_b;
-    stc_efm_uqid2_bit_t                      UQID2_b;
-    uint32_t                                 RESERVED3[1312];
-    stc_mmf_remprt_bit_t                     REMPRT_b;
+    uint32_t                                 RESERVED1[1696];
     stc_mmf_remcr0_bit_t                     REMCR0_b;
     stc_mmf_remcr1_bit_t                     REMCR1_b;
-    uint32_t                                 RESERVED4[928];
+    uint32_t                                 RESERVED2[928];
     stc_efm_wlock_bit_t                      WLOCK_b;
-    uint32_t                                 RESERVED5[96];
-    stc_efm_f0nwprt0_bit_t                   F0NWPRT0_b;
-    stc_efm_f0nwprt1_bit_t                   F0NWPRT1_b;
-    stc_efm_f0nwprt2_bit_t                   F0NWPRT2_b;
-    stc_efm_f0nwprt3_bit_t                   F0NWPRT3_b;
-    stc_efm_f1nwprt0_bit_t                   F1NWPRT0_b;
-    stc_efm_f1nwprt1_bit_t                   F1NWPRT1_b;
-    stc_efm_f1nwprt2_bit_t                   F1NWPRT2_b;
-    stc_efm_f1nwprt3_bit_t                   F1NWPRT3_b;
 } bM4_EFM_TypeDef;
 
 typedef struct
@@ -68569,108 +46870,58 @@ typedef struct
     uint32_t                                 RESERVED1[352096];
     stc_eth_mac_configr_bit_t                MAC_CONFIGR_b;
     stc_eth_mac_fltctlr_bit_t                MAC_FLTCTLR_b;
-    stc_eth_mac_hashthr_bit_t                MAC_HASHTHR_b;
-    stc_eth_mac_hashtlr_bit_t                MAC_HASHTLR_b;
+    uint32_t                                 RESERVED2[64];
     stc_eth_mac_smiaddr_bit_t                MAC_SMIADDR_b;
-    stc_eth_mac_smidatr_bit_t                MAC_SMIDATR_b;
+    uint32_t                                 RESERVED3[32];
     stc_eth_mac_floctlr_bit_t                MAC_FLOCTLR_b;
     stc_eth_mac_vtafltr_bit_t                MAC_VTAFLTR_b;
-    uint32_t                                 RESERVED2[32];
+    uint32_t                                 RESERVED4[32];
     stc_eth_mac_macstsr_bit_t                MAC_MACSTSR_b;
-    stc_eth_mac_rtwkffr_bit_t                MAC_RTWKFFR_b;
+    uint32_t                                 RESERVED5[32];
     stc_eth_mac_pmtctlr_bit_t                MAC_PMTCTLR_b;
-    uint32_t                                 RESERVED3[64];
+    uint32_t                                 RESERVED6[64];
     stc_eth_mac_intstsr_bit_t                MAC_INTSTSR_b;
     stc_eth_mac_intmskr_bit_t                MAC_INTMSKR_b;
     stc_eth_mac_macadhr0_bit_t               MAC_MACADHR0_b;
-    stc_eth_mac_macadlr0_bit_t               MAC_MACADLR0_b;
+    uint32_t                                 RESERVED7[32];
     stc_eth_mac_macadhr1_bit_t               MAC_MACADHR1_b;
-    stc_eth_mac_macadlr1_bit_t               MAC_MACADLR1_b;
+    uint32_t                                 RESERVED8[32];
     stc_eth_mac_macadhr2_bit_t               MAC_MACADHR2_b;
-    stc_eth_mac_macadlr2_bit_t               MAC_MACADLR2_b;
+    uint32_t                                 RESERVED9[32];
     stc_eth_mac_macadhr3_bit_t               MAC_MACADHR3_b;
-    stc_eth_mac_macadlr3_bit_t               MAC_MACADLR3_b;
+    uint32_t                                 RESERVED10[32];
     stc_eth_mac_macadhr4_bit_t               MAC_MACADHR4_b;
-    stc_eth_mac_macadlr4_bit_t               MAC_MACADLR4_b;
-    uint32_t                                 RESERVED4[1216];
+    uint32_t                                 RESERVED11[1248];
     stc_eth_mmc_mmcctlr_bit_t                MMC_MMCCTLR_b;
     stc_eth_mmc_revstsr_bit_t                MMC_REVSTSR_b;
     stc_eth_mmc_trsstsr_bit_t                MMC_TRSSTSR_b;
     stc_eth_mmc_ritctlr_bit_t                MMC_RITCTLR_b;
     stc_eth_mmc_titctlr_bit_t                MMC_TITCTLR_b;
-    uint32_t                                 RESERVED5[64];
-    stc_eth_mmc_txbrgfr_bit_t                MMC_TXBRGFR_b;
-    stc_eth_mmc_txmugfr_bit_t                MMC_TXMUGFR_b;
-    uint32_t                                 RESERVED6[384];
-    stc_eth_mmc_txdeefr_bit_t                MMC_TXDEEFR_b;
-    stc_eth_mmc_txlcefr_bit_t                MMC_TXLCEFR_b;
-    stc_eth_mmc_txecefr_bit_t                MMC_TXECEFR_b;
-    stc_eth_mmc_txcaefr_bit_t                MMC_TXCAEFR_b;
-    uint32_t                                 RESERVED7[32];
-    stc_eth_mmc_txungfr_bit_t                MMC_TXUNGFR_b;
-    stc_eth_mmc_txedefr_bit_t                MMC_TXEDEFR_b;
-    uint32_t                                 RESERVED8[224];
-    stc_eth_mmc_rxbrgfr_bit_t                MMC_RXBRGFR_b;
-    stc_eth_mmc_rxmugfr_bit_t                MMC_RXMUGFR_b;
-    stc_eth_mmc_rxcrefr_bit_t                MMC_RXCREFR_b;
-    stc_eth_mmc_rxalefr_bit_t                MMC_RXALEFR_b;
-    stc_eth_mmc_rxruefr_bit_t                MMC_RXRUEFR_b;
-    uint32_t                                 RESERVED9[288];
-    stc_eth_mmc_rxungfr_bit_t                MMC_RXUNGFR_b;
-    stc_eth_mmc_rxleefr_bit_t                MMC_RXLEEFR_b;
-    stc_eth_mmc_rxorefr_bit_t                MMC_RXOREFR_b;
-    uint32_t                                 RESERVED10[4480];
+    uint32_t                                 RESERVED12[5984];
     stc_eth_mac_l34ctlr_bit_t                MAC_L34CTLR_b;
-    stc_eth_mac_l4portr_bit_t                MAC_L4PORTR_b;
-    uint32_t                                 RESERVED11[64];
-    stc_eth_mac_l3addrr0_bit_t               MAC_L3ADDRR0_b;
-    stc_eth_mac_l3addrr1_bit_t               MAC_L3ADDRR1_b;
-    stc_eth_mac_l3addrr2_bit_t               MAC_L3ADDRR2_b;
-    stc_eth_mac_l3addrr3_bit_t               MAC_L3ADDRR3_b;
-    uint32_t                                 RESERVED12[2848];
+    uint32_t                                 RESERVED13[3072];
     stc_eth_mac_vtactlr_bit_t                MAC_VTACTLR_b;
-    stc_eth_mac_vlahtbr_bit_t                MAC_VLAHTBR_b;
-    uint32_t                                 RESERVED13[2976];
+    uint32_t                                 RESERVED14[3008];
     stc_eth_ptp_tspctlr_bit_t                PTP_TSPCTLR_b;
-    stc_eth_ptp_tspnsar_bit_t                PTP_TSPNSAR_b;
-    stc_eth_ptp_tmssecr_bit_t                PTP_TMSSECR_b;
-    stc_eth_ptp_tmsnser_bit_t                PTP_TMSNSER_b;
-    stc_eth_ptp_tmusecr_bit_t                PTP_TMUSECR_b;
+    uint32_t                                 RESERVED15[128];
     stc_eth_ptp_tmunser_bit_t                PTP_TMUNSER_b;
-    stc_eth_ptp_tspaddr_bit_t                PTP_TSPADDR_b;
-    stc_eth_ptp_tmtsecr0_bit_t               PTP_TMTSECR0_b;
-    stc_eth_ptp_tmtnser0_bit_t               PTP_TMTNSER0_b;
-    uint32_t                                 RESERVED14[32];
+    uint32_t                                 RESERVED16[128];
     stc_eth_ptp_tspstsr_bit_t                PTP_TSPSTSR_b;
     stc_eth_ptp_ppsctlr_bit_t                PTP_PPSCTLR_b;
-    uint32_t                                 RESERVED15[640];
-    stc_eth_ptp_tmtsecr1_bit_t               PTP_TMTSECR1_b;
-    stc_eth_ptp_tmtnser1_bit_t               PTP_TMTNSER1_b;
-    uint32_t                                 RESERVED16[17344];
+    uint32_t                                 RESERVED17[18048];
     stc_eth_dma_busmodr_bit_t                DMA_BUSMODR_b;
-    stc_eth_dma_txpollr_bit_t                DMA_TXPOLLR_b;
-    stc_eth_dma_rxpollr_bit_t                DMA_RXPOLLR_b;
-    stc_eth_dma_rxdladr_bit_t                DMA_RXDLADR_b;
-    stc_eth_dma_txdladr_bit_t                DMA_TXDLADR_b;
+    uint32_t                                 RESERVED18[128];
     stc_eth_dma_dmastsr_bit_t                DMA_DMASTSR_b;
     stc_eth_dma_oprmodr_bit_t                DMA_OPRMODR_b;
     stc_eth_dma_intenar_bit_t                DMA_INTENAR_b;
     stc_eth_dma_rfrcntr_bit_t                DMA_RFRCNTR_b;
-    stc_eth_dma_revwdtr_bit_t                DMA_REVWDTR_b;
-    uint32_t                                 RESERVED17[256];
-    stc_eth_dma_chtxder_bit_t                DMA_CHTXDER_b;
-    stc_eth_dma_chrxder_bit_t                DMA_CHRXDER_b;
-    stc_eth_dma_chtxbfr_bit_t                DMA_CHTXBFR_b;
-    stc_eth_dma_chrxbfr_bit_t                DMA_CHRXBFR_b;
 } bM4_ETH_TypeDef;
 
 typedef struct
 {
-    stc_fcm_lvr_bit_t                        LVR_b;
-    stc_fcm_uvr_bit_t                        UVR_b;
-    stc_fcm_cntr_bit_t                       CNTR_b;
+    uint32_t                                 RESERVED0[96];
     stc_fcm_str_bit_t                        STR_b;
-    stc_fcm_mccr_bit_t                       MCCR_b;
+    uint32_t                                 RESERVED1[32];
     stc_fcm_rccr_bit_t                       RCCR_b;
     stc_fcm_rier_bit_t                       RIER_b;
     stc_fcm_sr_bit_t                         SR_b;
@@ -68680,30 +46931,10 @@ typedef struct
 typedef struct
 {
     stc_fmac_enr_bit_t                       ENR_b;
-    stc_fmac_ctr_bit_t                       CTR_b;
-    stc_fmac_ier_bit_t                       IER_b;
-    stc_fmac_dtr_bit_t                       DTR_b;
-    stc_fmac_rtr0_bit_t                      RTR0_b;
-    stc_fmac_rtr1_bit_t                      RTR1_b;
-    stc_fmac_str_bit_t                       STR_b;
     uint32_t                                 RESERVED0[32];
-    stc_fmac_cor0_bit_t                      COR0_b;
-    stc_fmac_cor1_bit_t                      COR1_b;
-    stc_fmac_cor2_bit_t                      COR2_b;
-    stc_fmac_cor3_bit_t                      COR3_b;
-    stc_fmac_cor4_bit_t                      COR4_b;
-    stc_fmac_cor5_bit_t                      COR5_b;
-    stc_fmac_cor6_bit_t                      COR6_b;
-    stc_fmac_cor7_bit_t                      COR7_b;
-    stc_fmac_cor8_bit_t                      COR8_b;
-    stc_fmac_cor9_bit_t                      COR9_b;
-    stc_fmac_cor10_bit_t                     COR10_b;
-    stc_fmac_cor11_bit_t                     COR11_b;
-    stc_fmac_cor12_bit_t                     COR12_b;
-    stc_fmac_cor13_bit_t                     COR13_b;
-    stc_fmac_cor14_bit_t                     COR14_b;
-    stc_fmac_cor15_bit_t                     COR15_b;
-    stc_fmac_cor16_bit_t                     COR16_b;
+    stc_fmac_ier_bit_t                       IER_b;
+    uint32_t                                 RESERVED1[96];
+    stc_fmac_str_bit_t                       STR_b;
 } bM4_FMAC_TypeDef;
 
 typedef struct
@@ -68781,8 +47012,7 @@ typedef struct
     stc_gpio_potri_bit_t                     POTRI_b;
     uint32_t                                 RESERVED17[6960];
     stc_gpio_pspcr_bit_t                     PSPCR_b;
-    uint32_t                                 RESERVED18[16];
-    stc_gpio_pccr_bit_t                      PCCR_b;
+    uint32_t                                 RESERVED18[32];
     stc_gpio_pinaer_bit_t                    PINAER_b;
     stc_gpio_pwpr_bit_t                      PWPR_b;
     uint32_t                                 RESERVED19[16];
@@ -69075,32 +47305,6 @@ typedef struct
 typedef struct
 {
     stc_hash_cr_bit_t                        CR_b;
-    uint32_t                                 RESERVED0[96];
-    stc_hash_hr7_bit_t                       HR7_b;
-    stc_hash_hr6_bit_t                       HR6_b;
-    stc_hash_hr5_bit_t                       HR5_b;
-    stc_hash_hr4_bit_t                       HR4_b;
-    stc_hash_hr3_bit_t                       HR3_b;
-    stc_hash_hr2_bit_t                       HR2_b;
-    stc_hash_hr1_bit_t                       HR1_b;
-    stc_hash_hr0_bit_t                       HR0_b;
-    uint32_t                                 RESERVED1[128];
-    stc_hash_dr15_bit_t                      DR15_b;
-    stc_hash_dr14_bit_t                      DR14_b;
-    stc_hash_dr13_bit_t                      DR13_b;
-    stc_hash_dr12_bit_t                      DR12_b;
-    stc_hash_dr11_bit_t                      DR11_b;
-    stc_hash_dr10_bit_t                      DR10_b;
-    stc_hash_dr9_bit_t                       DR9_b;
-    stc_hash_dr8_bit_t                       DR8_b;
-    stc_hash_dr7_bit_t                       DR7_b;
-    stc_hash_dr6_bit_t                       DR6_b;
-    stc_hash_dr5_bit_t                       DR5_b;
-    stc_hash_dr4_bit_t                       DR4_b;
-    stc_hash_dr3_bit_t                       DR3_b;
-    stc_hash_dr2_bit_t                       DR2_b;
-    stc_hash_dr1_bit_t                       DR1_b;
-    stc_hash_dr0_bit_t                       DR0_b;
 } bM4_HASH_TypeDef;
 
 typedef struct
@@ -69134,14 +47338,13 @@ typedef struct
     uint32_t                                 RESERVED0[32];
     stc_i2c_slr0_bit_t                       SLR0_b;
     stc_i2c_slr1_bit_t                       SLR1_b;
-    stc_i2c_sltr_bit_t                       SLTR_b;
+    uint32_t                                 RESERVED1[32];
     stc_i2c_sr_bit_t                         SR_b;
     stc_i2c_clr_bit_t                        CLR_b;
     stc_i2c_dtr_bit_t                        DTR_b;
-    uint32_t                                 RESERVED1[24];
-    stc_i2c_drr_bit_t                        DRR_b;
     uint32_t                                 RESERVED2[24];
-    stc_i2c_ccr_bit_t                        CCR_b;
+    stc_i2c_drr_bit_t                        DRR_b;
+    uint32_t                                 RESERVED3[56];
     stc_i2c_fltr_bit_t                       FLTR_b;
 } bM4_I2C_TypeDef;
 
@@ -69151,8 +47354,7 @@ typedef struct
     stc_i2s_sr_bit_t                         SR_b;
     stc_i2s_er_bit_t                         ER_b;
     stc_i2s_cfgr_bit_t                       CFGR_b;
-    stc_i2s_txbuf_bit_t                      TXBUF_b;
-    stc_i2s_rxbuf_bit_t                      RXBUF_b;
+    uint32_t                                 RESERVED0[64];
     stc_i2s_pr_bit_t                         PR_b;
 } bM4_I2S_TypeDef;
 
@@ -69160,13 +47362,11 @@ typedef struct
 {
     stc_icg_icg0_bit_t                       ICG0_b;
     stc_icg_icg1_bit_t                       ICG1_b;
-    stc_icg_icg2_bit_t                       ICG2_b;
-    stc_icg_icg3_bit_t                       ICG3_b;
 } bM4_ICG_TypeDef;
 
 typedef struct
 {
-    stc_intc_noccr_bit_t                     NOCCR_b;
+    uint32_t                                 RESERVED0[32];
     stc_intc_nmienr_bit_t                    NMIENR_b;
     stc_intc_nmifr_bit_t                     NMIFR_b;
     stc_intc_nmicfr_bit_t                    NMICFR_b;
@@ -69189,134 +47389,7 @@ typedef struct
     stc_intc_wupen_bit_t                     WUPEN_b;
     stc_intc_eifr_bit_t                      EIFR_b;
     stc_intc_eicfr_bit_t                     EICFR_b;
-    stc_intc_sel0_bit_t                      SEL0_b;
-    stc_intc_sel1_bit_t                      SEL1_b;
-    stc_intc_sel2_bit_t                      SEL2_b;
-    stc_intc_sel3_bit_t                      SEL3_b;
-    stc_intc_sel4_bit_t                      SEL4_b;
-    stc_intc_sel5_bit_t                      SEL5_b;
-    stc_intc_sel6_bit_t                      SEL6_b;
-    stc_intc_sel7_bit_t                      SEL7_b;
-    stc_intc_sel8_bit_t                      SEL8_b;
-    stc_intc_sel9_bit_t                      SEL9_b;
-    stc_intc_sel10_bit_t                     SEL10_b;
-    stc_intc_sel11_bit_t                     SEL11_b;
-    stc_intc_sel12_bit_t                     SEL12_b;
-    stc_intc_sel13_bit_t                     SEL13_b;
-    stc_intc_sel14_bit_t                     SEL14_b;
-    stc_intc_sel15_bit_t                     SEL15_b;
-    stc_intc_sel16_bit_t                     SEL16_b;
-    stc_intc_sel17_bit_t                     SEL17_b;
-    stc_intc_sel18_bit_t                     SEL18_b;
-    stc_intc_sel19_bit_t                     SEL19_b;
-    stc_intc_sel20_bit_t                     SEL20_b;
-    stc_intc_sel21_bit_t                     SEL21_b;
-    stc_intc_sel22_bit_t                     SEL22_b;
-    stc_intc_sel23_bit_t                     SEL23_b;
-    stc_intc_sel24_bit_t                     SEL24_b;
-    stc_intc_sel25_bit_t                     SEL25_b;
-    stc_intc_sel26_bit_t                     SEL26_b;
-    stc_intc_sel27_bit_t                     SEL27_b;
-    stc_intc_sel28_bit_t                     SEL28_b;
-    stc_intc_sel29_bit_t                     SEL29_b;
-    stc_intc_sel30_bit_t                     SEL30_b;
-    stc_intc_sel31_bit_t                     SEL31_b;
-    stc_intc_sel32_bit_t                     SEL32_b;
-    stc_intc_sel33_bit_t                     SEL33_b;
-    stc_intc_sel34_bit_t                     SEL34_b;
-    stc_intc_sel35_bit_t                     SEL35_b;
-    stc_intc_sel36_bit_t                     SEL36_b;
-    stc_intc_sel37_bit_t                     SEL37_b;
-    stc_intc_sel38_bit_t                     SEL38_b;
-    stc_intc_sel39_bit_t                     SEL39_b;
-    stc_intc_sel40_bit_t                     SEL40_b;
-    stc_intc_sel41_bit_t                     SEL41_b;
-    stc_intc_sel42_bit_t                     SEL42_b;
-    stc_intc_sel43_bit_t                     SEL43_b;
-    stc_intc_sel44_bit_t                     SEL44_b;
-    stc_intc_sel45_bit_t                     SEL45_b;
-    stc_intc_sel46_bit_t                     SEL46_b;
-    stc_intc_sel47_bit_t                     SEL47_b;
-    stc_intc_sel48_bit_t                     SEL48_b;
-    stc_intc_sel49_bit_t                     SEL49_b;
-    stc_intc_sel50_bit_t                     SEL50_b;
-    stc_intc_sel51_bit_t                     SEL51_b;
-    stc_intc_sel52_bit_t                     SEL52_b;
-    stc_intc_sel53_bit_t                     SEL53_b;
-    stc_intc_sel54_bit_t                     SEL54_b;
-    stc_intc_sel55_bit_t                     SEL55_b;
-    stc_intc_sel56_bit_t                     SEL56_b;
-    stc_intc_sel57_bit_t                     SEL57_b;
-    stc_intc_sel58_bit_t                     SEL58_b;
-    stc_intc_sel59_bit_t                     SEL59_b;
-    stc_intc_sel60_bit_t                     SEL60_b;
-    stc_intc_sel61_bit_t                     SEL61_b;
-    stc_intc_sel62_bit_t                     SEL62_b;
-    stc_intc_sel63_bit_t                     SEL63_b;
-    stc_intc_sel64_bit_t                     SEL64_b;
-    stc_intc_sel65_bit_t                     SEL65_b;
-    stc_intc_sel66_bit_t                     SEL66_b;
-    stc_intc_sel67_bit_t                     SEL67_b;
-    stc_intc_sel68_bit_t                     SEL68_b;
-    stc_intc_sel69_bit_t                     SEL69_b;
-    stc_intc_sel70_bit_t                     SEL70_b;
-    stc_intc_sel71_bit_t                     SEL71_b;
-    stc_intc_sel72_bit_t                     SEL72_b;
-    stc_intc_sel73_bit_t                     SEL73_b;
-    stc_intc_sel74_bit_t                     SEL74_b;
-    stc_intc_sel75_bit_t                     SEL75_b;
-    stc_intc_sel76_bit_t                     SEL76_b;
-    stc_intc_sel77_bit_t                     SEL77_b;
-    stc_intc_sel78_bit_t                     SEL78_b;
-    stc_intc_sel79_bit_t                     SEL79_b;
-    stc_intc_sel80_bit_t                     SEL80_b;
-    stc_intc_sel81_bit_t                     SEL81_b;
-    stc_intc_sel82_bit_t                     SEL82_b;
-    stc_intc_sel83_bit_t                     SEL83_b;
-    stc_intc_sel84_bit_t                     SEL84_b;
-    stc_intc_sel85_bit_t                     SEL85_b;
-    stc_intc_sel86_bit_t                     SEL86_b;
-    stc_intc_sel87_bit_t                     SEL87_b;
-    stc_intc_sel88_bit_t                     SEL88_b;
-    stc_intc_sel89_bit_t                     SEL89_b;
-    stc_intc_sel90_bit_t                     SEL90_b;
-    stc_intc_sel91_bit_t                     SEL91_b;
-    stc_intc_sel92_bit_t                     SEL92_b;
-    stc_intc_sel93_bit_t                     SEL93_b;
-    stc_intc_sel94_bit_t                     SEL94_b;
-    stc_intc_sel95_bit_t                     SEL95_b;
-    stc_intc_sel96_bit_t                     SEL96_b;
-    stc_intc_sel97_bit_t                     SEL97_b;
-    stc_intc_sel98_bit_t                     SEL98_b;
-    stc_intc_sel99_bit_t                     SEL99_b;
-    stc_intc_sel100_bit_t                    SEL100_b;
-    stc_intc_sel101_bit_t                    SEL101_b;
-    stc_intc_sel102_bit_t                    SEL102_b;
-    stc_intc_sel103_bit_t                    SEL103_b;
-    stc_intc_sel104_bit_t                    SEL104_b;
-    stc_intc_sel105_bit_t                    SEL105_b;
-    stc_intc_sel106_bit_t                    SEL106_b;
-    stc_intc_sel107_bit_t                    SEL107_b;
-    stc_intc_sel108_bit_t                    SEL108_b;
-    stc_intc_sel109_bit_t                    SEL109_b;
-    stc_intc_sel110_bit_t                    SEL110_b;
-    stc_intc_sel111_bit_t                    SEL111_b;
-    stc_intc_sel112_bit_t                    SEL112_b;
-    stc_intc_sel113_bit_t                    SEL113_b;
-    stc_intc_sel114_bit_t                    SEL114_b;
-    stc_intc_sel115_bit_t                    SEL115_b;
-    stc_intc_sel116_bit_t                    SEL116_b;
-    stc_intc_sel117_bit_t                    SEL117_b;
-    stc_intc_sel118_bit_t                    SEL118_b;
-    stc_intc_sel119_bit_t                    SEL119_b;
-    stc_intc_sel120_bit_t                    SEL120_b;
-    stc_intc_sel121_bit_t                    SEL121_b;
-    stc_intc_sel122_bit_t                    SEL122_b;
-    stc_intc_sel123_bit_t                    SEL123_b;
-    stc_intc_sel124_bit_t                    SEL124_b;
-    stc_intc_sel125_bit_t                    SEL125_b;
-    stc_intc_sel126_bit_t                    SEL126_b;
-    stc_intc_sel127_bit_t                    SEL127_b;
+    uint32_t                                 RESERVED1[4096];
     stc_intc_vssel_bit_t                     VSSEL128_b;
     stc_intc_vssel_bit_t                     VSSEL129_b;
     stc_intc_vssel_bit_t                     VSSEL130_b;
@@ -69342,14 +47415,12 @@ typedef struct
 {
     stc_keyscan_scr_bit_t                    SCR_b;
     stc_keyscan_ser_bit_t                    SER_b;
-    stc_keyscan_ssr_bit_t                    SSR_b;
 } bM4_KEYSCAN_TypeDef;
 
 typedef struct
 {
     stc_mau_csr_bit_t                        CSR_b;
-    stc_mau_dtr0_bit_t                       DTR0_b;
-    uint32_t                                 RESERVED0[32];
+    uint32_t                                 RESERVED0[64];
     stc_mau_rtr0_bit_t                       RTR0_b;
     stc_mau_dtr1_bit_t                       DTR1_b;
     stc_mau_rtr1_bit_t                       RTR1_b;
@@ -69357,22 +47428,22 @@ typedef struct
 
 typedef struct
 {
-    stc_mpu_rgd0_bit_t                       RGD0_b;
-    stc_mpu_rgd1_bit_t                       RGD1_b;
-    stc_mpu_rgd2_bit_t                       RGD2_b;
-    stc_mpu_rgd3_bit_t                       RGD3_b;
-    stc_mpu_rgd4_bit_t                       RGD4_b;
-    stc_mpu_rgd5_bit_t                       RGD5_b;
-    stc_mpu_rgd6_bit_t                       RGD6_b;
-    stc_mpu_rgd7_bit_t                       RGD7_b;
-    stc_mpu_rgd8_bit_t                       RGD8_b;
-    stc_mpu_rgd9_bit_t                       RGD9_b;
-    stc_mpu_rgd10_bit_t                      RGD10_b;
-    stc_mpu_rgd11_bit_t                      RGD11_b;
-    stc_mpu_rgd12_bit_t                      RGD12_b;
-    stc_mpu_rgd13_bit_t                      RGD13_b;
-    stc_mpu_rgd14_bit_t                      RGD14_b;
-    stc_mpu_rgd15_bit_t                      RGD15_b;
+    stc_mpu_rgd_bit_t                        RGD0_b;
+    stc_mpu_rgd_bit_t                        RGD1_b;
+    stc_mpu_rgd_bit_t                        RGD2_b;
+    stc_mpu_rgd_bit_t                        RGD3_b;
+    stc_mpu_rgd_bit_t                        RGD4_b;
+    stc_mpu_rgd_bit_t                        RGD5_b;
+    stc_mpu_rgd_bit_t                        RGD6_b;
+    stc_mpu_rgd_bit_t                        RGD7_b;
+    stc_mpu_rgd_bit_t                        RGD8_b;
+    stc_mpu_rgd_bit_t                        RGD9_b;
+    stc_mpu_rgd_bit_t                        RGD10_b;
+    stc_mpu_rgd_bit_t                        RGD11_b;
+    stc_mpu_rgd_bit_t                        RGD12_b;
+    stc_mpu_rgd_bit_t                        RGD13_b;
+    stc_mpu_rgd_bit_t                        RGD14_b;
+    stc_mpu_rgd_bit_t                        RGD15_b;
     stc_mpu_sr_bit_t                         SR_b;
     stc_mpu_eclr_bit_t                       ECLR_b;
     stc_mpu_wp_bit_t                         WP_b;
@@ -69402,9 +47473,7 @@ typedef struct
 typedef struct
 {
     stc_ots_ctl_bit_t                        CTL_b;
-    stc_ots_dr1_bit_t                        DR1_b;
-    stc_ots_dr2_bit_t                        DR2_b;
-    stc_ots_ecr_bit_t                        ECR_b;
+    uint32_t                                 RESERVED0[48];
     stc_ots_lpr_bit_t                        LPR_b;
 } bM4_OTS_TypeDef;
 
@@ -69428,313 +47497,49 @@ typedef struct
     stc_pwc_fcg2_bit_t                       FCG2_b;
     stc_pwc_fcg3_bit_t                       FCG3_b;
     stc_pwc_fcg0pc_bit_t                     FCG0PC_b;
-    uint32_t                                 RESERVED0[139488];
-    stc_pwc_vbatrstr_bit_t                   VBATRSTR_b;
-    uint32_t                                 RESERVED1[120];
+    uint32_t                                 RESERVED0[139616];
     stc_pwc_vbatcr_bit_t                     VBATCR_b;
-    uint32_t                                 RESERVED2[120];
-    stc_pwc_wktc0_bit_t                      WKTC0_b;
-    uint32_t                                 RESERVED3[24];
-    stc_pwc_wktc1_bit_t                      WKTC1_b;
-    uint32_t                                 RESERVED4[24];
+    uint32_t                                 RESERVED1[184];
     stc_pwc_wktc2_bit_t                      WKTC2_b;
-    uint32_t                                 RESERVED5[3384];
-    stc_pwc_bkr0_bit_t                       BKR0_b;
-    uint32_t                                 RESERVED6[24];
-    stc_pwc_bkr1_bit_t                       BKR1_b;
-    uint32_t                                 RESERVED7[24];
-    stc_pwc_bkr2_bit_t                       BKR2_b;
-    uint32_t                                 RESERVED8[24];
-    stc_pwc_bkr3_bit_t                       BKR3_b;
-    uint32_t                                 RESERVED9[24];
-    stc_pwc_bkr4_bit_t                       BKR4_b;
-    uint32_t                                 RESERVED10[24];
-    stc_pwc_bkr5_bit_t                       BKR5_b;
-    uint32_t                                 RESERVED11[24];
-    stc_pwc_bkr6_bit_t                       BKR6_b;
-    uint32_t                                 RESERVED12[24];
-    stc_pwc_bkr7_bit_t                       BKR7_b;
-    uint32_t                                 RESERVED13[24];
-    stc_pwc_bkr8_bit_t                       BKR8_b;
-    uint32_t                                 RESERVED14[24];
-    stc_pwc_bkr9_bit_t                       BKR9_b;
-    uint32_t                                 RESERVED15[24];
-    stc_pwc_bkr10_bit_t                      BKR10_b;
-    uint32_t                                 RESERVED16[24];
-    stc_pwc_bkr11_bit_t                      BKR11_b;
-    uint32_t                                 RESERVED17[24];
-    stc_pwc_bkr12_bit_t                      BKR12_b;
-    uint32_t                                 RESERVED18[24];
-    stc_pwc_bkr13_bit_t                      BKR13_b;
-    uint32_t                                 RESERVED19[24];
-    stc_pwc_bkr14_bit_t                      BKR14_b;
-    uint32_t                                 RESERVED20[24];
-    stc_pwc_bkr15_bit_t                      BKR15_b;
-    uint32_t                                 RESERVED21[24];
-    stc_pwc_bkr16_bit_t                      BKR16_b;
-    uint32_t                                 RESERVED22[24];
-    stc_pwc_bkr17_bit_t                      BKR17_b;
-    uint32_t                                 RESERVED23[24];
-    stc_pwc_bkr18_bit_t                      BKR18_b;
-    uint32_t                                 RESERVED24[24];
-    stc_pwc_bkr19_bit_t                      BKR19_b;
-    uint32_t                                 RESERVED25[24];
-    stc_pwc_bkr20_bit_t                      BKR20_b;
-    uint32_t                                 RESERVED26[24];
-    stc_pwc_bkr21_bit_t                      BKR21_b;
-    uint32_t                                 RESERVED27[24];
-    stc_pwc_bkr22_bit_t                      BKR22_b;
-    uint32_t                                 RESERVED28[24];
-    stc_pwc_bkr23_bit_t                      BKR23_b;
-    uint32_t                                 RESERVED29[24];
-    stc_pwc_bkr24_bit_t                      BKR24_b;
-    uint32_t                                 RESERVED30[24];
-    stc_pwc_bkr25_bit_t                      BKR25_b;
-    uint32_t                                 RESERVED31[24];
-    stc_pwc_bkr26_bit_t                      BKR26_b;
-    uint32_t                                 RESERVED32[24];
-    stc_pwc_bkr27_bit_t                      BKR27_b;
-    uint32_t                                 RESERVED33[24];
-    stc_pwc_bkr28_bit_t                      BKR28_b;
-    uint32_t                                 RESERVED34[24];
-    stc_pwc_bkr29_bit_t                      BKR29_b;
-    uint32_t                                 RESERVED35[24];
-    stc_pwc_bkr30_bit_t                      BKR30_b;
-    uint32_t                                 RESERVED36[24];
-    stc_pwc_bkr31_bit_t                      BKR31_b;
-    uint32_t                                 RESERVED37[24];
-    stc_pwc_bkr32_bit_t                      BKR32_b;
-    uint32_t                                 RESERVED38[24];
-    stc_pwc_bkr33_bit_t                      BKR33_b;
-    uint32_t                                 RESERVED39[24];
-    stc_pwc_bkr34_bit_t                      BKR34_b;
-    uint32_t                                 RESERVED40[24];
-    stc_pwc_bkr35_bit_t                      BKR35_b;
-    uint32_t                                 RESERVED41[24];
-    stc_pwc_bkr36_bit_t                      BKR36_b;
-    uint32_t                                 RESERVED42[24];
-    stc_pwc_bkr37_bit_t                      BKR37_b;
-    uint32_t                                 RESERVED43[24];
-    stc_pwc_bkr38_bit_t                      BKR38_b;
-    uint32_t                                 RESERVED44[24];
-    stc_pwc_bkr39_bit_t                      BKR39_b;
-    uint32_t                                 RESERVED45[24];
-    stc_pwc_bkr40_bit_t                      BKR40_b;
-    uint32_t                                 RESERVED46[24];
-    stc_pwc_bkr41_bit_t                      BKR41_b;
-    uint32_t                                 RESERVED47[24];
-    stc_pwc_bkr42_bit_t                      BKR42_b;
-    uint32_t                                 RESERVED48[24];
-    stc_pwc_bkr43_bit_t                      BKR43_b;
-    uint32_t                                 RESERVED49[24];
-    stc_pwc_bkr44_bit_t                      BKR44_b;
-    uint32_t                                 RESERVED50[24];
-    stc_pwc_bkr45_bit_t                      BKR45_b;
-    uint32_t                                 RESERVED51[24];
-    stc_pwc_bkr46_bit_t                      BKR46_b;
-    uint32_t                                 RESERVED52[24];
-    stc_pwc_bkr47_bit_t                      BKR47_b;
-    uint32_t                                 RESERVED53[24];
-    stc_pwc_bkr48_bit_t                      BKR48_b;
-    uint32_t                                 RESERVED54[24];
-    stc_pwc_bkr49_bit_t                      BKR49_b;
-    uint32_t                                 RESERVED55[24];
-    stc_pwc_bkr50_bit_t                      BKR50_b;
-    uint32_t                                 RESERVED56[24];
-    stc_pwc_bkr51_bit_t                      BKR51_b;
-    uint32_t                                 RESERVED57[24];
-    stc_pwc_bkr52_bit_t                      BKR52_b;
-    uint32_t                                 RESERVED58[24];
-    stc_pwc_bkr53_bit_t                      BKR53_b;
-    uint32_t                                 RESERVED59[24];
-    stc_pwc_bkr54_bit_t                      BKR54_b;
-    uint32_t                                 RESERVED60[24];
-    stc_pwc_bkr55_bit_t                      BKR55_b;
-    uint32_t                                 RESERVED61[24];
-    stc_pwc_bkr56_bit_t                      BKR56_b;
-    uint32_t                                 RESERVED62[24];
-    stc_pwc_bkr57_bit_t                      BKR57_b;
-    uint32_t                                 RESERVED63[24];
-    stc_pwc_bkr58_bit_t                      BKR58_b;
-    uint32_t                                 RESERVED64[24];
-    stc_pwc_bkr59_bit_t                      BKR59_b;
-    uint32_t                                 RESERVED65[24];
-    stc_pwc_bkr60_bit_t                      BKR60_b;
-    uint32_t                                 RESERVED66[24];
-    stc_pwc_bkr61_bit_t                      BKR61_b;
-    uint32_t                                 RESERVED67[24];
-    stc_pwc_bkr62_bit_t                      BKR62_b;
-    uint32_t                                 RESERVED68[24];
-    stc_pwc_bkr63_bit_t                      BKR63_b;
-    uint32_t                                 RESERVED69[24];
-    stc_pwc_bkr64_bit_t                      BKR64_b;
-    uint32_t                                 RESERVED70[24];
-    stc_pwc_bkr65_bit_t                      BKR65_b;
-    uint32_t                                 RESERVED71[24];
-    stc_pwc_bkr66_bit_t                      BKR66_b;
-    uint32_t                                 RESERVED72[24];
-    stc_pwc_bkr67_bit_t                      BKR67_b;
-    uint32_t                                 RESERVED73[24];
-    stc_pwc_bkr68_bit_t                      BKR68_b;
-    uint32_t                                 RESERVED74[24];
-    stc_pwc_bkr69_bit_t                      BKR69_b;
-    uint32_t                                 RESERVED75[24];
-    stc_pwc_bkr70_bit_t                      BKR70_b;
-    uint32_t                                 RESERVED76[24];
-    stc_pwc_bkr71_bit_t                      BKR71_b;
-    uint32_t                                 RESERVED77[24];
-    stc_pwc_bkr72_bit_t                      BKR72_b;
-    uint32_t                                 RESERVED78[24];
-    stc_pwc_bkr73_bit_t                      BKR73_b;
-    uint32_t                                 RESERVED79[24];
-    stc_pwc_bkr74_bit_t                      BKR74_b;
-    uint32_t                                 RESERVED80[24];
-    stc_pwc_bkr75_bit_t                      BKR75_b;
-    uint32_t                                 RESERVED81[24];
-    stc_pwc_bkr76_bit_t                      BKR76_b;
-    uint32_t                                 RESERVED82[24];
-    stc_pwc_bkr77_bit_t                      BKR77_b;
-    uint32_t                                 RESERVED83[24];
-    stc_pwc_bkr78_bit_t                      BKR78_b;
-    uint32_t                                 RESERVED84[24];
-    stc_pwc_bkr79_bit_t                      BKR79_b;
-    uint32_t                                 RESERVED85[24];
-    stc_pwc_bkr80_bit_t                      BKR80_b;
-    uint32_t                                 RESERVED86[24];
-    stc_pwc_bkr81_bit_t                      BKR81_b;
-    uint32_t                                 RESERVED87[24];
-    stc_pwc_bkr82_bit_t                      BKR82_b;
-    uint32_t                                 RESERVED88[24];
-    stc_pwc_bkr83_bit_t                      BKR83_b;
-    uint32_t                                 RESERVED89[24];
-    stc_pwc_bkr84_bit_t                      BKR84_b;
-    uint32_t                                 RESERVED90[24];
-    stc_pwc_bkr85_bit_t                      BKR85_b;
-    uint32_t                                 RESERVED91[24];
-    stc_pwc_bkr86_bit_t                      BKR86_b;
-    uint32_t                                 RESERVED92[24];
-    stc_pwc_bkr87_bit_t                      BKR87_b;
-    uint32_t                                 RESERVED93[24];
-    stc_pwc_bkr88_bit_t                      BKR88_b;
-    uint32_t                                 RESERVED94[24];
-    stc_pwc_bkr89_bit_t                      BKR89_b;
-    uint32_t                                 RESERVED95[24];
-    stc_pwc_bkr90_bit_t                      BKR90_b;
-    uint32_t                                 RESERVED96[24];
-    stc_pwc_bkr91_bit_t                      BKR91_b;
-    uint32_t                                 RESERVED97[24];
-    stc_pwc_bkr92_bit_t                      BKR92_b;
-    uint32_t                                 RESERVED98[24];
-    stc_pwc_bkr93_bit_t                      BKR93_b;
-    uint32_t                                 RESERVED99[24];
-    stc_pwc_bkr94_bit_t                      BKR94_b;
-    uint32_t                                 RESERVED100[24];
-    stc_pwc_bkr95_bit_t                      BKR95_b;
-    uint32_t                                 RESERVED101[24];
-    stc_pwc_bkr96_bit_t                      BKR96_b;
-    uint32_t                                 RESERVED102[24];
-    stc_pwc_bkr97_bit_t                      BKR97_b;
-    uint32_t                                 RESERVED103[24];
-    stc_pwc_bkr98_bit_t                      BKR98_b;
-    uint32_t                                 RESERVED104[24];
-    stc_pwc_bkr99_bit_t                      BKR99_b;
-    uint32_t                                 RESERVED105[24];
-    stc_pwc_bkr100_bit_t                     BKR100_b;
-    uint32_t                                 RESERVED106[24];
-    stc_pwc_bkr101_bit_t                     BKR101_b;
-    uint32_t                                 RESERVED107[24];
-    stc_pwc_bkr102_bit_t                     BKR102_b;
-    uint32_t                                 RESERVED108[24];
-    stc_pwc_bkr103_bit_t                     BKR103_b;
-    uint32_t                                 RESERVED109[24];
-    stc_pwc_bkr104_bit_t                     BKR104_b;
-    uint32_t                                 RESERVED110[24];
-    stc_pwc_bkr105_bit_t                     BKR105_b;
-    uint32_t                                 RESERVED111[24];
-    stc_pwc_bkr106_bit_t                     BKR106_b;
-    uint32_t                                 RESERVED112[24];
-    stc_pwc_bkr107_bit_t                     BKR107_b;
-    uint32_t                                 RESERVED113[24];
-    stc_pwc_bkr108_bit_t                     BKR108_b;
-    uint32_t                                 RESERVED114[24];
-    stc_pwc_bkr109_bit_t                     BKR109_b;
-    uint32_t                                 RESERVED115[24];
-    stc_pwc_bkr110_bit_t                     BKR110_b;
-    uint32_t                                 RESERVED116[24];
-    stc_pwc_bkr111_bit_t                     BKR111_b;
-    uint32_t                                 RESERVED117[24];
-    stc_pwc_bkr112_bit_t                     BKR112_b;
-    uint32_t                                 RESERVED118[24];
-    stc_pwc_bkr113_bit_t                     BKR113_b;
-    uint32_t                                 RESERVED119[24];
-    stc_pwc_bkr114_bit_t                     BKR114_b;
-    uint32_t                                 RESERVED120[24];
-    stc_pwc_bkr115_bit_t                     BKR115_b;
-    uint32_t                                 RESERVED121[24];
-    stc_pwc_bkr116_bit_t                     BKR116_b;
-    uint32_t                                 RESERVED122[24];
-    stc_pwc_bkr117_bit_t                     BKR117_b;
-    uint32_t                                 RESERVED123[24];
-    stc_pwc_bkr118_bit_t                     BKR118_b;
-    uint32_t                                 RESERVED124[24];
-    stc_pwc_bkr119_bit_t                     BKR119_b;
-    uint32_t                                 RESERVED125[24];
-    stc_pwc_bkr120_bit_t                     BKR120_b;
-    uint32_t                                 RESERVED126[24];
-    stc_pwc_bkr121_bit_t                     BKR121_b;
-    uint32_t                                 RESERVED127[24];
-    stc_pwc_bkr122_bit_t                     BKR122_b;
-    uint32_t                                 RESERVED128[24];
-    stc_pwc_bkr123_bit_t                     BKR123_b;
-    uint32_t                                 RESERVED129[24];
-    stc_pwc_bkr124_bit_t                     BKR124_b;
-    uint32_t                                 RESERVED130[24];
-    stc_pwc_bkr125_bit_t                     BKR125_b;
-    uint32_t                                 RESERVED131[24];
-    stc_pwc_bkr126_bit_t                     BKR126_b;
-    uint32_t                                 RESERVED132[24];
-    stc_pwc_bkr127_bit_t                     BKR127_b;
-    uint32_t                                 RESERVED133[8216];
+    uint32_t                                 RESERVED2[15672];
     stc_pwc_pwrc0_bit_t                      PWRC0_b;
-    uint32_t                                 RESERVED134[24];
+    uint32_t                                 RESERVED3[24];
     stc_pwc_pwrc1_bit_t                      PWRC1_b;
-    uint32_t                                 RESERVED135[24];
+    uint32_t                                 RESERVED4[24];
     stc_pwc_pwrc2_bit_t                      PWRC2_b;
-    uint32_t                                 RESERVED136[24];
-    stc_pwc_pwrc3_bit_t                      PWRC3_b;
-    uint32_t                                 RESERVED137[24];
+    uint32_t                                 RESERVED5[56];
     stc_pwc_pwrc4_bit_t                      PWRC4_b;
-    uint32_t                                 RESERVED138[24];
+    uint32_t                                 RESERVED6[24];
     stc_pwc_pvdcr0_bit_t                     PVDCR0_b;
-    uint32_t                                 RESERVED139[24];
+    uint32_t                                 RESERVED7[24];
     stc_pwc_pvdcr1_bit_t                     PVDCR1_b;
-    uint32_t                                 RESERVED140[24];
+    uint32_t                                 RESERVED8[24];
     stc_pwc_pvdfcr_bit_t                     PVDFCR_b;
-    uint32_t                                 RESERVED141[24];
+    uint32_t                                 RESERVED9[24];
     stc_pwc_pvdlcr_bit_t                     PVDLCR_b;
-    uint32_t                                 RESERVED142[56];
+    uint32_t                                 RESERVED10[56];
     stc_pwc_pdwke0_bit_t                     PDWKE0_b;
-    uint32_t                                 RESERVED143[24];
+    uint32_t                                 RESERVED11[24];
     stc_pwc_pdwke1_bit_t                     PDWKE1_b;
-    uint32_t                                 RESERVED144[24];
+    uint32_t                                 RESERVED12[24];
     stc_pwc_pdwke2_bit_t                     PDWKE2_b;
-    uint32_t                                 RESERVED145[24];
+    uint32_t                                 RESERVED13[24];
     stc_pwc_pdwkes_bit_t                     PDWKES_b;
-    uint32_t                                 RESERVED146[24];
+    uint32_t                                 RESERVED14[24];
     stc_pwc_pdwkf0_bit_t                     PDWKF0_b;
-    uint32_t                                 RESERVED147[24];
+    uint32_t                                 RESERVED15[24];
     stc_pwc_pdwkf1_bit_t                     PDWKF1_b;
-    uint32_t                                 RESERVED148[1304];
+    uint32_t                                 RESERVED16[1304];
     stc_pwc_rampc0_bit_t                     RAMPC0_b;
     stc_pwc_ramopm_bit_t                     RAMOPM_b;
     stc_pwc_pramlpc_bit_t                    PRAMLPC_b;
-    uint32_t                                 RESERVED149[32];
+    uint32_t                                 RESERVED17[32];
     stc_pwc_pvdicr_bit_t                     PVDICR_b;
-    uint32_t                                 RESERVED150[24];
+    uint32_t                                 RESERVED18[24];
     stc_pwc_pvddsr_bit_t                     PVDDSR_b;
-    uint32_t                                 RESERVED151[235704];
+    uint32_t                                 RESERVED19[235704];
     stc_pwc_stpmcr_bit_t                     STPMCR_b;
-    uint32_t                                 RESERVED152[8064];
+    uint32_t                                 RESERVED20[8064];
     stc_pwc_fprc_bit_t                       FPRC_b;
 } bM4_PWC_TypeDef;
 
@@ -69755,72 +47560,37 @@ typedef struct
     stc_rtc_cr2_bit_t                        CR2_b;
     uint32_t                                 RESERVED2[24];
     stc_rtc_cr3_bit_t                        CR3_b;
-    uint32_t                                 RESERVED3[24];
-    stc_rtc_sec_bit_t                        SEC_b;
-    uint32_t                                 RESERVED4[24];
-    stc_rtc_min_bit_t                        MIN_b;
-    uint32_t                                 RESERVED5[24];
+    uint32_t                                 RESERVED3[88];
     stc_rtc_hour_bit_t                       HOUR_b;
-    uint32_t                                 RESERVED6[24];
+    uint32_t                                 RESERVED4[24];
     stc_rtc_week_bit_t                       WEEK_b;
-    uint32_t                                 RESERVED7[24];
-    stc_rtc_day_bit_t                        DAY_b;
-    uint32_t                                 RESERVED8[24];
-    stc_rtc_mon_bit_t                        MON_b;
-    uint32_t                                 RESERVED9[24];
-    stc_rtc_year_bit_t                       YEAR_b;
-    uint32_t                                 RESERVED10[24];
-    stc_rtc_almmin_bit_t                     ALMMIN_b;
-    uint32_t                                 RESERVED11[24];
+    uint32_t                                 RESERVED5[152];
     stc_rtc_almhour_bit_t                    ALMHOUR_b;
-    uint32_t                                 RESERVED12[24];
+    uint32_t                                 RESERVED6[24];
     stc_rtc_almweek_bit_t                    ALMWEEK_b;
-    uint32_t                                 RESERVED13[24];
+    uint32_t                                 RESERVED7[24];
     stc_rtc_errcrh_bit_t                     ERRCRH_b;
-    uint32_t                                 RESERVED14[24];
-    stc_rtc_errcrl_bit_t                     ERRCRL_b;
-    uint32_t                                 RESERVED15[24];
+    uint32_t                                 RESERVED8[56];
     stc_rtc_tpcr0_bit_t                      TPCR0_b;
-    uint32_t                                 RESERVED16[24];
+    uint32_t                                 RESERVED9[24];
     stc_rtc_tpcr1_bit_t                      TPCR1_b;
-    uint32_t                                 RESERVED17[24];
+    uint32_t                                 RESERVED10[24];
     stc_rtc_tpsr_bit_t                       TPSR_b;
-    uint32_t                                 RESERVED18[24];
-    stc_rtc_sectp_bit_t                      SECTP_b;
-    uint32_t                                 RESERVED19[24];
-    stc_rtc_mintp_bit_t                      MINTP_b;
-    uint32_t                                 RESERVED20[24];
+    uint32_t                                 RESERVED11[88];
     stc_rtc_hourtp_bit_t                     HOURTP_b;
-    uint32_t                                 RESERVED21[24];
-    stc_rtc_daytp_bit_t                      DAYTP_b;
-    uint32_t                                 RESERVED22[24];
-    stc_rtc_montp_bit_t                      MONTP_b;
 } bM4_RTC_TypeDef;
 
 typedef struct
 {
-    uint32_t                                 RESERVED0[32];
-    stc_sdioc_blksize_bit_t                  BLKSIZE_b;
-    stc_sdioc_blkcnt_bit_t                   BLKCNT_b;
-    stc_sdioc_arg0_bit_t                     ARG0_b;
-    stc_sdioc_arg1_bit_t                     ARG1_b;
+    uint32_t                                 RESERVED0[96];
     stc_sdioc_transmode_bit_t                TRANSMODE_b;
     stc_sdioc_cmd_bit_t                      CMD_b;
-    stc_sdioc_resp0_bit_t                    RESP0_b;
-    stc_sdioc_resp1_bit_t                    RESP1_b;
-    stc_sdioc_resp2_bit_t                    RESP2_b;
-    stc_sdioc_resp3_bit_t                    RESP3_b;
-    stc_sdioc_resp4_bit_t                    RESP4_b;
-    stc_sdioc_resp5_bit_t                    RESP5_b;
-    stc_sdioc_resp6_bit_t                    RESP6_b;
-    stc_sdioc_resp7_bit_t                    RESP7_b;
-    stc_sdioc_buf0_bit_t                     BUF0_b;
-    stc_sdioc_buf1_bit_t                     BUF1_b;
+    uint32_t                                 RESERVED1[160];
     stc_sdioc_pstat_bit_t                    PSTAT_b;
     stc_sdioc_hostcon_bit_t                  HOSTCON_b;
     stc_sdioc_pwrcon_bit_t                   PWRCON_b;
     stc_sdioc_blkgpcon_bit_t                 BLKGPCON_b;
-    uint32_t                                 RESERVED1[8];
+    uint32_t                                 RESERVED2[8];
     stc_sdioc_clkcon_bit_t                   CLKCON_b;
     stc_sdioc_toutcon_bit_t                  TOUTCON_b;
     stc_sdioc_sftrst_bit_t                   SFTRST_b;
@@ -69831,18 +47601,18 @@ typedef struct
     stc_sdioc_norintsgen_bit_t               NORINTSGEN_b;
     stc_sdioc_errintsgen_bit_t               ERRINTSGEN_b;
     stc_sdioc_atcerrst_bit_t                 ATCERRST_b;
-    uint32_t                                 RESERVED2[144];
+    uint32_t                                 RESERVED3[144];
     stc_sdioc_fea_bit_t                      FEA_b;
     stc_sdioc_fee_bit_t                      FEE_b;
 } bM4_SDIOC_TypeDef;
 
 typedef struct
 {
-    stc_spi_dr_bit_t                         DR_b;
-    stc_spi_cr1_bit_t                        CR1_b;
     uint32_t                                 RESERVED0[32];
-    stc_spi_cfg1_bit_t                       CFG1_b;
+    stc_spi_cr1_bit_t                        CR1_b;
     uint32_t                                 RESERVED1[32];
+    stc_spi_cfg1_bit_t                       CFG1_b;
+    uint32_t                                 RESERVED2[32];
     stc_spi_sr_bit_t                         SR_b;
     stc_spi_cfg2_bit_t                       CFG2_b;
 } bM4_SPI_TypeDef;
@@ -69860,15 +47630,11 @@ typedef struct
 {
     stc_swdt_cr_bit_t                        CR_b;
     stc_swdt_sr_bit_t                        SR_b;
-    stc_swdt_rr_bit_t                        RR_b;
 } bM4_SWDT_TypeDef;
 
 typedef struct
 {
-    stc_tmr0_cntar_bit_t                     CNTAR_b;
-    stc_tmr0_cntbr_bit_t                     CNTBR_b;
-    stc_tmr0_cmpar_bit_t                     CMPAR_b;
-    stc_tmr0_cmpbr_bit_t                     CMPBR_b;
+    uint32_t                                 RESERVED0[128];
     stc_tmr0_bconr_bit_t                     BCONR_b;
     stc_tmr0_stflr_bit_t                     STFLR_b;
 } bM4_TMR0_TypeDef;
@@ -69888,18 +47654,7 @@ typedef struct
 
 typedef struct
 {
-    uint32_t                                 RESERVED0[16];
-    stc_tmr4_occruh_bit_t                    OCCRUH_b;
-    uint32_t                                 RESERVED1[16];
-    stc_tmr4_occrul_bit_t                    OCCRUL_b;
-    uint32_t                                 RESERVED2[16];
-    stc_tmr4_occrvh_bit_t                    OCCRVH_b;
-    uint32_t                                 RESERVED3[16];
-    stc_tmr4_occrvl_bit_t                    OCCRVL_b;
-    uint32_t                                 RESERVED4[16];
-    stc_tmr4_occrwh_bit_t                    OCCRWH_b;
-    uint32_t                                 RESERVED5[16];
-    stc_tmr4_occrwl_bit_t                    OCCRWL_b;
+    uint32_t                                 RESERVED0[192];
     stc_tmr4_ocsr_bit_t                      OCSRU_b;
     stc_tmr4_ocer_bit_t                      OCERU_b;
     stc_tmr4_ocsr_bit_t                      OCSRV_b;
@@ -69907,51 +47662,25 @@ typedef struct
     stc_tmr4_ocsr_bit_t                      OCSRW_b;
     stc_tmr4_ocer_bit_t                      OCERW_b;
     stc_tmr4_ocmrh_bit_t                     OCMRHUH_b;
-    uint32_t                                 RESERVED6[16];
+    uint32_t                                 RESERVED1[16];
     stc_tmr4_ocmrl_bit_t                     OCMRLUL_b;
     stc_tmr4_ocmrh_bit_t                     OCMRHVH_b;
-    uint32_t                                 RESERVED7[16];
+    uint32_t                                 RESERVED2[16];
     stc_tmr4_ocmrl_bit_t                     OCMRLVL_b;
     stc_tmr4_ocmrh_bit_t                     OCMRHWH_b;
-    uint32_t                                 RESERVED8[16];
+    uint32_t                                 RESERVED3[16];
     stc_tmr4_ocmrl_bit_t                     OCMRLWL_b;
-    uint32_t                                 RESERVED9[48];
-    stc_tmr4_cpsr_bit_t                      CPSR_b;
-    uint32_t                                 RESERVED10[16];
-    stc_tmr4_cntr_bit_t                      CNTR_b;
+    uint32_t                                 RESERVED4[96];
     stc_tmr4_ccsr_bit_t                      CCSR_b;
-    stc_tmr4_cvpr_bit_t                      CVPR_b;
-    uint32_t                                 RESERVED11[432];
-    stc_tmr4_pfsru_bit_t                     PFSRU_b;
-    stc_tmr4_pdaru_bit_t                     PDARU_b;
-    stc_tmr4_pdbru_bit_t                     PDBRU_b;
-    uint32_t                                 RESERVED12[16];
-    stc_tmr4_pfsrv_bit_t                     PFSRV_b;
-    stc_tmr4_pdarv_bit_t                     PDARV_b;
-    stc_tmr4_pdbrv_bit_t                     PDBRV_b;
-    uint32_t                                 RESERVED13[16];
-    stc_tmr4_pfsrw_bit_t                     PFSRW_b;
-    stc_tmr4_pdarw_bit_t                     PDARW_b;
-    stc_tmr4_pdbrw_bit_t                     PDBRW_b;
+    uint32_t                                 RESERVED5[624];
     stc_tmr4_pocr_bit_t                      POCRU_b;
-    uint32_t                                 RESERVED14[16];
+    uint32_t                                 RESERVED6[16];
     stc_tmr4_pocr_bit_t                      POCRV_b;
-    uint32_t                                 RESERVED15[16];
+    uint32_t                                 RESERVED7[16];
     stc_tmr4_pocr_bit_t                      POCRW_b;
-    uint32_t                                 RESERVED16[16];
+    uint32_t                                 RESERVED8[16];
     stc_tmr4_rcsr_bit_t                      RCSR_b;
-    uint32_t                                 RESERVED17[96];
-    stc_tmr4_sccruh_bit_t                    SCCRUH_b;
-    uint32_t                                 RESERVED18[16];
-    stc_tmr4_sccrul_bit_t                    SCCRUL_b;
-    uint32_t                                 RESERVED19[16];
-    stc_tmr4_sccrvh_bit_t                    SCCRVH_b;
-    uint32_t                                 RESERVED20[16];
-    stc_tmr4_sccrvl_bit_t                    SCCRVL_b;
-    uint32_t                                 RESERVED21[16];
-    stc_tmr4_sccrwh_bit_t                    SCCRWH_b;
-    uint32_t                                 RESERVED22[16];
-    stc_tmr4_sccrwl_bit_t                    SCCRWL_b;
+    uint32_t                                 RESERVED9[272];
     stc_tmr4_scsr_bit_t                      SCSRUH_b;
     stc_tmr4_scmr_bit_t                      SCMRUH_b;
     stc_tmr4_scsr_bit_t                      SCSRUL_b;
@@ -69970,43 +47699,18 @@ typedef struct
 
 typedef struct
 {
-    stc_tmr6_cnter_bit_t                     CNTER_b;
-    stc_tmr6_updar_bit_t                     UPDAR_b;
-    uint32_t                                 RESERVED0[448];
-    stc_tmr6_perar_bit_t                     PERAR_b;
-    stc_tmr6_perbr_bit_t                     PERBR_b;
-    stc_tmr6_percr_bit_t                     PERCR_b;
-    uint32_t                                 RESERVED1[416];
-    stc_tmr6_gcmar_bit_t                     GCMAR_b;
-    stc_tmr6_gcmbr_bit_t                     GCMBR_b;
-    stc_tmr6_gcmcr_bit_t                     GCMCR_b;
-    stc_tmr6_gcmdr_bit_t                     GCMDR_b;
-    stc_tmr6_gcmer_bit_t                     GCMER_b;
-    stc_tmr6_gcmfr_bit_t                     GCMFR_b;
-    uint32_t                                 RESERVED2[320];
-    stc_tmr6_scmar_bit_t                     SCMAR_b;
-    stc_tmr6_scmbr_bit_t                     SCMBR_b;
-    stc_tmr6_scmcr_bit_t                     SCMCR_b;
-    stc_tmr6_scmdr_bit_t                     SCMDR_b;
-    stc_tmr6_scmer_bit_t                     SCMER_b;
-    stc_tmr6_scmfr_bit_t                     SCMFR_b;
-    uint32_t                                 RESERVED3[320];
-    stc_tmr6_dtuar_bit_t                     DTUAR_b;
-    stc_tmr6_dtdar_bit_t                     DTDAR_b;
-    stc_tmr6_dtubr_bit_t                     DTUBR_b;
-    stc_tmr6_dtdbr_bit_t                     DTDBR_b;
-    uint32_t                                 RESERVED4[384];
+    uint32_t                                 RESERVED0[2560];
     stc_tmr6_gconr_bit_t                     GCONR_b;
     stc_tmr6_iconr_bit_t                     ICONR_b;
     stc_tmr6_bconr_bit_t                     BCONR_b;
     stc_tmr6_dconr_bit_t                     DCONR_b;
-    uint32_t                                 RESERVED5[32];
+    uint32_t                                 RESERVED1[32];
     stc_tmr6_pcnar_bit_t                     PCNAR_b;
     stc_tmr6_pcnbr_bit_t                     PCNBR_b;
     stc_tmr6_fcngr_bit_t                     FCNGR_b;
     stc_tmr6_vperr_bit_t                     VPERR_b;
     stc_tmr6_stflr_bit_t                     STFLR_b;
-    uint32_t                                 RESERVED6[192];
+    uint32_t                                 RESERVED2[192];
     stc_tmr6_hstar_bit_t                     HSTAR_b;
     stc_tmr6_hstpr_bit_t                     HSTPR_b;
     stc_tmr6_hclrr_bit_t                     HCLRR_b;
@@ -70015,7 +47719,7 @@ typedef struct
     stc_tmr6_hcpbr_bit_t                     HCPBR_b;
     stc_tmr6_hcupr_bit_t                     HCUPR_b;
     stc_tmr6_hcdor_bit_t                     HCDOR_b;
-    uint32_t                                 RESERVED7[4704];
+    uint32_t                                 RESERVED3[4704];
     stc_tmr6_fcntr_bit_t                     FCNTR_b;
     stc_tmr6_sstar_bit_t                     SSTAR_b;
     stc_tmr6_sstpr_bit_t                     SSTPR_b;
@@ -70061,21 +47765,17 @@ typedef struct
 {
     stc_trng_cr_bit_t                        CR_b;
     stc_trng_mr_bit_t                        MR_b;
-    uint32_t                                 RESERVED0[32];
-    stc_trng_dr0_bit_t                       DR0_b;
-    stc_trng_dr1_bit_t                       DR1_b;
 } bM4_TRNG_TypeDef;
 
 typedef struct
 {
     stc_usart_sr_bit_t                       SR_b;
     stc_usart_dr_bit_t                       DR_b;
-    stc_usart_brr_bit_t                      BRR_b;
+    uint32_t                                 RESERVED0[32];
     stc_usart_cr1_bit_t                      CR1_b;
     stc_usart_cr2_bit_t                      CR2_b;
     stc_usart_cr3_bit_t                      CR3_b;
     stc_usart_pr_bit_t                       PR_b;
-    stc_usart_lbmc_bit_t                     LBMC_b;
 } bM4_USART_TypeDef;
 
 typedef struct
@@ -70090,405 +47790,287 @@ typedef struct
     stc_usbfs_grxstsr_bit_t                  GRXSTSR_b;
     stc_usbfs_grxstsp_bit_t                  GRXSTSP_b;
     stc_usbfs_grxfsiz_bit_t                  GRXFSIZ_b;
-    stc_usbfs_gnptxfsiz_bit_t                GNPTXFSIZ_b;
+    uint32_t                                 RESERVED0[32];
     stc_usbfs_gnptxsts_bit_t                 GNPTXSTS_b;
-    uint32_t                                 RESERVED0[96];
-    stc_usbfs_guid_bit_t                     GUID_b;
-    uint32_t                                 RESERVED1[160];
+    uint32_t                                 RESERVED1[288];
     stc_usbfs_glpmcfg_bit_t                  GLPMCFG_b;
-    uint32_t                                 RESERVED2[32];
-    stc_usbfs_gdfifocfg_bit_t                GDFIFOCFG_b;
-    uint32_t                                 RESERVED3[1280];
-    stc_usbfs_hptxfsiz_bit_t                 HPTXFSIZ_b;
-    stc_usbfs_dieptxf1_bit_t                 DIEPTXF1_b;
-    stc_usbfs_dieptxf2_bit_t                 DIEPTXF2_b;
-    stc_usbfs_dieptxf3_bit_t                 DIEPTXF3_b;
-    stc_usbfs_dieptxf4_bit_t                 DIEPTXF4_b;
-    stc_usbfs_dieptxf5_bit_t                 DIEPTXF5_b;
-    stc_usbfs_dieptxf6_bit_t                 DIEPTXF6_b;
-    stc_usbfs_dieptxf7_bit_t                 DIEPTXF7_b;
-    stc_usbfs_dieptxf8_bit_t                 DIEPTXF8_b;
-    stc_usbfs_dieptxf9_bit_t                 DIEPTXF9_b;
-    stc_usbfs_dieptxf10_bit_t                DIEPTXF10_b;
-    stc_usbfs_dieptxf11_bit_t                DIEPTXF11_b;
-    stc_usbfs_dieptxf12_bit_t                DIEPTXF12_b;
-    stc_usbfs_dieptxf13_bit_t                DIEPTXF13_b;
-    stc_usbfs_dieptxf14_bit_t                DIEPTXF14_b;
-    stc_usbfs_dieptxf15_bit_t                DIEPTXF15_b;
-    uint32_t                                 RESERVED4[5632];
+    uint32_t                                 RESERVED2[7488];
     stc_usbfs_hcfg_bit_t                     HCFG_b;
     stc_usbfs_hfir_bit_t                     HFIR_b;
-    stc_usbfs_hfnum_bit_t                    HFNUM_b;
-    uint32_t                                 RESERVED5[32];
+    uint32_t                                 RESERVED3[64];
     stc_usbfs_hptxsts_bit_t                  HPTXSTS_b;
     stc_usbfs_haint_bit_t                    HAINT_b;
     stc_usbfs_haintmsk_bit_t                 HAINTMSK_b;
-    uint32_t                                 RESERVED6[288];
+    uint32_t                                 RESERVED4[288];
     stc_usbfs_hprt_bit_t                     HPRT_b;
-    uint32_t                                 RESERVED7[1504];
+    uint32_t                                 RESERVED5[1504];
     stc_usbfs_hcchar0_bit_t                  HCCHAR0_b;
     stc_usbfs_hcsplt0_bit_t                  HCSPLT0_b;
     stc_usbfs_hcint0_bit_t                   HCINT0_b;
     stc_usbfs_hcintmsk0_bit_t                HCINTMSK0_b;
     stc_usbfs_hctsiz0_bit_t                  HCTSIZ0_b;
-    stc_usbfs_hcdma0_bit_t                   HCDMA0_b;
-    uint32_t                                 RESERVED8[64];
+    uint32_t                                 RESERVED6[96];
     stc_usbfs_hcchar1_bit_t                  HCCHAR1_b;
     stc_usbfs_hcsplt1_bit_t                  HCSPLT1_b;
     stc_usbfs_hcint1_bit_t                   HCINT1_b;
     stc_usbfs_hcintmsk1_bit_t                HCINTMSK1_b;
     stc_usbfs_hctsiz1_bit_t                  HCTSIZ1_b;
-    stc_usbfs_hcdma1_bit_t                   HCDMA1_b;
-    uint32_t                                 RESERVED9[64];
+    uint32_t                                 RESERVED7[96];
     stc_usbfs_hcchar2_bit_t                  HCCHAR2_b;
     stc_usbfs_hcsplt2_bit_t                  HCSPLT2_b;
     stc_usbfs_hcint2_bit_t                   HCINT2_b;
     stc_usbfs_hcintmsk2_bit_t                HCINTMSK2_b;
     stc_usbfs_hctsiz2_bit_t                  HCTSIZ2_b;
-    stc_usbfs_hcdma2_bit_t                   HCDMA2_b;
-    uint32_t                                 RESERVED10[64];
+    uint32_t                                 RESERVED8[96];
     stc_usbfs_hcchar3_bit_t                  HCCHAR3_b;
     stc_usbfs_hcsplt3_bit_t                  HCSPLT3_b;
     stc_usbfs_hcint3_bit_t                   HCINT3_b;
     stc_usbfs_hcintmsk3_bit_t                HCINTMSK3_b;
     stc_usbfs_hctsiz3_bit_t                  HCTSIZ3_b;
-    stc_usbfs_hcdma3_bit_t                   HCDMA3_b;
-    uint32_t                                 RESERVED11[64];
+    uint32_t                                 RESERVED9[96];
     stc_usbfs_hcchar4_bit_t                  HCCHAR4_b;
     stc_usbfs_hcsplt4_bit_t                  HCSPLT4_b;
     stc_usbfs_hcint4_bit_t                   HCINT4_b;
     stc_usbfs_hcintmsk4_bit_t                HCINTMSK4_b;
     stc_usbfs_hctsiz4_bit_t                  HCTSIZ4_b;
-    stc_usbfs_hcdma4_bit_t                   HCDMA4_b;
-    uint32_t                                 RESERVED12[64];
+    uint32_t                                 RESERVED10[96];
     stc_usbfs_hcchar5_bit_t                  HCCHAR5_b;
     stc_usbfs_hcsplt5_bit_t                  HCSPLT5_b;
     stc_usbfs_hcint5_bit_t                   HCINT5_b;
     stc_usbfs_hcintmsk5_bit_t                HCINTMSK5_b;
     stc_usbfs_hctsiz5_bit_t                  HCTSIZ5_b;
-    stc_usbfs_hcdma5_bit_t                   HCDMA5_b;
-    uint32_t                                 RESERVED13[64];
+    uint32_t                                 RESERVED11[96];
     stc_usbfs_hcchar6_bit_t                  HCCHAR6_b;
     stc_usbfs_hcsplt6_bit_t                  HCSPLT6_b;
     stc_usbfs_hcint6_bit_t                   HCINT6_b;
     stc_usbfs_hcintmsk6_bit_t                HCINTMSK6_b;
     stc_usbfs_hctsiz6_bit_t                  HCTSIZ6_b;
-    stc_usbfs_hcdma6_bit_t                   HCDMA6_b;
-    uint32_t                                 RESERVED14[64];
+    uint32_t                                 RESERVED12[96];
     stc_usbfs_hcchar7_bit_t                  HCCHAR7_b;
     stc_usbfs_hcsplt7_bit_t                  HCSPLT7_b;
     stc_usbfs_hcint7_bit_t                   HCINT7_b;
     stc_usbfs_hcintmsk7_bit_t                HCINTMSK7_b;
     stc_usbfs_hctsiz7_bit_t                  HCTSIZ7_b;
-    stc_usbfs_hcdma7_bit_t                   HCDMA7_b;
-    uint32_t                                 RESERVED15[64];
+    uint32_t                                 RESERVED13[96];
     stc_usbfs_hcchar8_bit_t                  HCCHAR8_b;
     stc_usbfs_hcsplt8_bit_t                  HCSPLT8_b;
     stc_usbfs_hcint8_bit_t                   HCINT8_b;
     stc_usbfs_hcintmsk8_bit_t                HCINTMSK8_b;
     stc_usbfs_hctsiz8_bit_t                  HCTSIZ8_b;
-    stc_usbfs_hcdma8_bit_t                   HCDMA8_b;
-    uint32_t                                 RESERVED16[64];
+    uint32_t                                 RESERVED14[96];
     stc_usbfs_hcchar9_bit_t                  HCCHAR9_b;
     stc_usbfs_hcsplt9_bit_t                  HCSPLT9_b;
     stc_usbfs_hcint9_bit_t                   HCINT9_b;
     stc_usbfs_hcintmsk9_bit_t                HCINTMSK9_b;
     stc_usbfs_hctsiz9_bit_t                  HCTSIZ9_b;
-    stc_usbfs_hcdma9_bit_t                   HCDMA9_b;
-    uint32_t                                 RESERVED17[64];
+    uint32_t                                 RESERVED15[96];
     stc_usbfs_hcchar10_bit_t                 HCCHAR10_b;
     stc_usbfs_hcsplt10_bit_t                 HCSPLT10_b;
     stc_usbfs_hcint10_bit_t                  HCINT10_b;
     stc_usbfs_hcintmsk10_bit_t               HCINTMSK10_b;
     stc_usbfs_hctsiz10_bit_t                 HCTSIZ10_b;
-    stc_usbfs_hcdma10_bit_t                  HCDMA10_b;
-    uint32_t                                 RESERVED18[64];
+    uint32_t                                 RESERVED16[96];
     stc_usbfs_hcchar11_bit_t                 HCCHAR11_b;
     stc_usbfs_hcsplt11_bit_t                 HCSPLT11_b;
     stc_usbfs_hcint11_bit_t                  HCINT11_b;
     stc_usbfs_hcintmsk11_bit_t               HCINTMSK11_b;
     stc_usbfs_hctsiz11_bit_t                 HCTSIZ11_b;
-    stc_usbfs_hcdma11_bit_t                  HCDMA11_b;
-    uint32_t                                 RESERVED19[64];
+    uint32_t                                 RESERVED17[96];
     stc_usbfs_hcchar12_bit_t                 HCCHAR12_b;
     stc_usbfs_hcsplt12_bit_t                 HCSPLT12_b;
     stc_usbfs_hcint12_bit_t                  HCINT12_b;
     stc_usbfs_hcintmsk12_bit_t               HCINTMSK12_b;
     stc_usbfs_hctsiz12_bit_t                 HCTSIZ12_b;
-    stc_usbfs_hcdma12_bit_t                  HCDMA12_b;
-    uint32_t                                 RESERVED20[64];
+    uint32_t                                 RESERVED18[96];
     stc_usbfs_hcchar13_bit_t                 HCCHAR13_b;
     stc_usbfs_hcsplt13_bit_t                 HCSPLT13_b;
     stc_usbfs_hcint13_bit_t                  HCINT13_b;
     stc_usbfs_hcintmsk13_bit_t               HCINTMSK13_b;
     stc_usbfs_hctsiz13_bit_t                 HCTSIZ13_b;
-    stc_usbfs_hcdma13_bit_t                  HCDMA13_b;
-    uint32_t                                 RESERVED21[64];
+    uint32_t                                 RESERVED19[96];
     stc_usbfs_hcchar14_bit_t                 HCCHAR14_b;
     stc_usbfs_hcsplt14_bit_t                 HCSPLT14_b;
     stc_usbfs_hcint14_bit_t                  HCINT14_b;
     stc_usbfs_hcintmsk14_bit_t               HCINTMSK14_b;
     stc_usbfs_hctsiz14_bit_t                 HCTSIZ14_b;
-    stc_usbfs_hcdma14_bit_t                  HCDMA14_b;
-    uint32_t                                 RESERVED22[64];
+    uint32_t                                 RESERVED20[96];
     stc_usbfs_hcchar15_bit_t                 HCCHAR15_b;
     stc_usbfs_hcsplt15_bit_t                 HCSPLT15_b;
     stc_usbfs_hcint15_bit_t                  HCINT15_b;
     stc_usbfs_hcintmsk15_bit_t               HCINTMSK15_b;
     stc_usbfs_hctsiz15_bit_t                 HCTSIZ15_b;
-    stc_usbfs_hcdma15_bit_t                  HCDMA15_b;
-    uint32_t                                 RESERVED23[2112];
+    uint32_t                                 RESERVED21[2144];
     stc_usbfs_dcfg_bit_t                     DCFG_b;
     stc_usbfs_dctl_bit_t                     DCTL_b;
     stc_usbfs_dsts_bit_t                     DSTS_b;
-    uint32_t                                 RESERVED24[32];
+    uint32_t                                 RESERVED22[32];
     stc_usbfs_diepmsk_bit_t                  DIEPMSK_b;
     stc_usbfs_doepmsk_bit_t                  DOEPMSK_b;
     stc_usbfs_daint_bit_t                    DAINT_b;
     stc_usbfs_daintmsk_bit_t                 DAINTMSK_b;
-    uint32_t                                 RESERVED25[160];
+    uint32_t                                 RESERVED23[160];
     stc_usbfs_diepempmsk_bit_t               DIEPEMPMSK_b;
-    uint32_t                                 RESERVED26[1600];
+    uint32_t                                 RESERVED24[1600];
     stc_usbfs_diepctl0_bit_t                 DIEPCTL0_b;
-    uint32_t                                 RESERVED27[32];
+    uint32_t                                 RESERVED25[32];
     stc_usbfs_diepint0_bit_t                 DIEPINT0_b;
-    uint32_t                                 RESERVED28[32];
-    stc_usbfs_dieptsiz0_bit_t                DIEPTSIZ0_b;
-    stc_usbfs_diepdma0_bit_t                 DIEPDMA0_b;
+    uint32_t                                 RESERVED26[96];
     stc_usbfs_dtxfsts0_bit_t                 DTXFSTS0_b;
-    uint32_t                                 RESERVED29[32];
+    uint32_t                                 RESERVED27[32];
     stc_usbfs_diepctl1_bit_t                 DIEPCTL1_b;
-    uint32_t                                 RESERVED30[32];
+    uint32_t                                 RESERVED28[32];
     stc_usbfs_diepint1_bit_t                 DIEPINT1_b;
-    uint32_t                                 RESERVED31[32];
-    stc_usbfs_dieptsiz1_bit_t                DIEPTSIZ1_b;
-    stc_usbfs_diepdma1_bit_t                 DIEPDMA1_b;
-    stc_usbfs_dtxfsts1_bit_t                 DTXFSTS1_b;
-    uint32_t                                 RESERVED32[32];
+    uint32_t                                 RESERVED29[160];
     stc_usbfs_diepctl2_bit_t                 DIEPCTL2_b;
-    uint32_t                                 RESERVED33[32];
+    uint32_t                                 RESERVED30[32];
     stc_usbfs_diepint2_bit_t                 DIEPINT2_b;
-    uint32_t                                 RESERVED34[32];
-    stc_usbfs_dieptsiz2_bit_t                DIEPTSIZ2_b;
-    stc_usbfs_diepdma2_bit_t                 DIEPDMA2_b;
-    stc_usbfs_dtxfsts2_bit_t                 DTXFSTS2_b;
-    uint32_t                                 RESERVED35[32];
+    uint32_t                                 RESERVED31[160];
     stc_usbfs_diepctl3_bit_t                 DIEPCTL3_b;
-    uint32_t                                 RESERVED36[32];
+    uint32_t                                 RESERVED32[32];
     stc_usbfs_diepint3_bit_t                 DIEPINT3_b;
-    uint32_t                                 RESERVED37[32];
-    stc_usbfs_dieptsiz3_bit_t                DIEPTSIZ3_b;
-    stc_usbfs_diepdma3_bit_t                 DIEPDMA3_b;
-    stc_usbfs_dtxfsts3_bit_t                 DTXFSTS3_b;
-    uint32_t                                 RESERVED38[32];
+    uint32_t                                 RESERVED33[160];
     stc_usbfs_diepctl4_bit_t                 DIEPCTL4_b;
-    uint32_t                                 RESERVED39[32];
+    uint32_t                                 RESERVED34[32];
     stc_usbfs_diepint4_bit_t                 DIEPINT4_b;
-    uint32_t                                 RESERVED40[32];
-    stc_usbfs_dieptsiz4_bit_t                DIEPTSIZ4_b;
-    stc_usbfs_diepdma4_bit_t                 DIEPDMA4_b;
-    stc_usbfs_dtxfsts4_bit_t                 DTXFSTS4_b;
-    uint32_t                                 RESERVED41[32];
+    uint32_t                                 RESERVED35[160];
     stc_usbfs_diepctl5_bit_t                 DIEPCTL5_b;
-    uint32_t                                 RESERVED42[32];
+    uint32_t                                 RESERVED36[32];
     stc_usbfs_diepint5_bit_t                 DIEPINT5_b;
-    uint32_t                                 RESERVED43[32];
-    stc_usbfs_dieptsiz5_bit_t                DIEPTSIZ5_b;
-    stc_usbfs_diepdma5_bit_t                 DIEPDMA5_b;
-    stc_usbfs_dtxfsts5_bit_t                 DTXFSTS5_b;
-    uint32_t                                 RESERVED44[32];
+    uint32_t                                 RESERVED37[160];
     stc_usbfs_diepctl6_bit_t                 DIEPCTL6_b;
-    uint32_t                                 RESERVED45[32];
+    uint32_t                                 RESERVED38[32];
     stc_usbfs_diepint6_bit_t                 DIEPINT6_b;
-    uint32_t                                 RESERVED46[32];
-    stc_usbfs_dieptsiz6_bit_t                DIEPTSIZ6_b;
-    stc_usbfs_diepdma6_bit_t                 DIEPDMA6_b;
-    stc_usbfs_dtxfsts6_bit_t                 DTXFSTS6_b;
-    uint32_t                                 RESERVED47[32];
+    uint32_t                                 RESERVED39[160];
     stc_usbfs_diepctl7_bit_t                 DIEPCTL7_b;
-    uint32_t                                 RESERVED48[32];
+    uint32_t                                 RESERVED40[32];
     stc_usbfs_diepint7_bit_t                 DIEPINT7_b;
-    uint32_t                                 RESERVED49[32];
-    stc_usbfs_dieptsiz7_bit_t                DIEPTSIZ7_b;
-    stc_usbfs_diepdma7_bit_t                 DIEPDMA7_b;
-    stc_usbfs_dtxfsts7_bit_t                 DTXFSTS7_b;
-    uint32_t                                 RESERVED50[32];
+    uint32_t                                 RESERVED41[160];
     stc_usbfs_diepctl8_bit_t                 DIEPCTL8_b;
-    uint32_t                                 RESERVED51[32];
+    uint32_t                                 RESERVED42[32];
     stc_usbfs_diepint8_bit_t                 DIEPINT8_b;
-    uint32_t                                 RESERVED52[32];
-    stc_usbfs_dieptsiz8_bit_t                DIEPTSIZ8_b;
-    stc_usbfs_diepdma8_bit_t                 DIEPDMA8_b;
-    stc_usbfs_dtxfsts8_bit_t                 DTXFSTS8_b;
-    uint32_t                                 RESERVED53[32];
+    uint32_t                                 RESERVED43[160];
     stc_usbfs_diepctl9_bit_t                 DIEPCTL9_b;
-    uint32_t                                 RESERVED54[32];
+    uint32_t                                 RESERVED44[32];
     stc_usbfs_diepint9_bit_t                 DIEPINT9_b;
-    uint32_t                                 RESERVED55[32];
-    stc_usbfs_dieptsiz9_bit_t                DIEPTSIZ9_b;
-    stc_usbfs_diepdma9_bit_t                 DIEPDMA9_b;
-    stc_usbfs_dtxfsts9_bit_t                 DTXFSTS9_b;
-    uint32_t                                 RESERVED56[32];
+    uint32_t                                 RESERVED45[160];
     stc_usbfs_diepctl10_bit_t                DIEPCTL10_b;
-    uint32_t                                 RESERVED57[32];
+    uint32_t                                 RESERVED46[32];
     stc_usbfs_diepint10_bit_t                DIEPINT10_b;
-    uint32_t                                 RESERVED58[32];
-    stc_usbfs_dieptsiz10_bit_t               DIEPTSIZ10_b;
-    stc_usbfs_diepdma10_bit_t                DIEPDMA10_b;
-    stc_usbfs_dtxfsts10_bit_t                DTXFSTS10_b;
-    uint32_t                                 RESERVED59[32];
+    uint32_t                                 RESERVED47[160];
     stc_usbfs_diepctl11_bit_t                DIEPCTL11_b;
-    uint32_t                                 RESERVED60[32];
+    uint32_t                                 RESERVED48[32];
     stc_usbfs_diepint11_bit_t                DIEPINT11_b;
-    uint32_t                                 RESERVED61[32];
-    stc_usbfs_dieptsiz11_bit_t               DIEPTSIZ11_b;
-    stc_usbfs_diepdma11_bit_t                DIEPDMA11_b;
-    stc_usbfs_dtxfsts11_bit_t                DTXFSTS11_b;
-    uint32_t                                 RESERVED62[32];
+    uint32_t                                 RESERVED49[160];
     stc_usbfs_diepctl12_bit_t                DIEPCTL12_b;
-    uint32_t                                 RESERVED63[32];
+    uint32_t                                 RESERVED50[32];
     stc_usbfs_diepint12_bit_t                DIEPINT12_b;
-    uint32_t                                 RESERVED64[32];
-    stc_usbfs_dieptsiz12_bit_t               DIEPTSIZ12_b;
-    stc_usbfs_diepdma12_bit_t                DIEPDMA12_b;
-    stc_usbfs_dtxfsts12_bit_t                DTXFSTS12_b;
-    uint32_t                                 RESERVED65[32];
+    uint32_t                                 RESERVED51[160];
     stc_usbfs_diepctl13_bit_t                DIEPCTL13_b;
-    uint32_t                                 RESERVED66[32];
+    uint32_t                                 RESERVED52[32];
     stc_usbfs_diepint13_bit_t                DIEPINT13_b;
-    uint32_t                                 RESERVED67[32];
-    stc_usbfs_dieptsiz13_bit_t               DIEPTSIZ13_b;
-    stc_usbfs_diepdma13_bit_t                DIEPDMA13_b;
-    stc_usbfs_dtxfsts13_bit_t                DTXFSTS13_b;
-    uint32_t                                 RESERVED68[32];
+    uint32_t                                 RESERVED53[160];
     stc_usbfs_diepctl14_bit_t                DIEPCTL14_b;
-    uint32_t                                 RESERVED69[32];
+    uint32_t                                 RESERVED54[32];
     stc_usbfs_diepint14_bit_t                DIEPINT14_b;
-    uint32_t                                 RESERVED70[32];
-    stc_usbfs_dieptsiz14_bit_t               DIEPTSIZ14_b;
-    stc_usbfs_diepdma14_bit_t                DIEPDMA14_b;
-    stc_usbfs_dtxfsts14_bit_t                DTXFSTS14_b;
-    uint32_t                                 RESERVED71[32];
+    uint32_t                                 RESERVED55[160];
     stc_usbfs_diepctl15_bit_t                DIEPCTL15_b;
-    uint32_t                                 RESERVED72[32];
+    uint32_t                                 RESERVED56[32];
     stc_usbfs_diepint15_bit_t                DIEPINT15_b;
-    uint32_t                                 RESERVED73[32];
-    stc_usbfs_dieptsiz15_bit_t               DIEPTSIZ15_b;
-    stc_usbfs_diepdma15_bit_t                DIEPDMA15_b;
-    stc_usbfs_dtxfsts15_bit_t                DTXFSTS15_b;
-    uint32_t                                 RESERVED74[32];
+    uint32_t                                 RESERVED57[160];
     stc_usbfs_doepctl0_bit_t                 DOEPCTL0_b;
-    uint32_t                                 RESERVED75[32];
+    uint32_t                                 RESERVED58[32];
     stc_usbfs_doepint0_bit_t                 DOEPINT0_b;
-    uint32_t                                 RESERVED76[32];
-    stc_usbfs_doeptsiz0_bit_t                DOEPTSIZ0_b;
-    stc_usbfs_doepdma0_bit_t                 DOEPDMA0_b;
-    uint32_t                                 RESERVED77[64];
+    uint32_t                                 RESERVED59[160];
     stc_usbfs_doepctl1_bit_t                 DOEPCTL1_b;
-    uint32_t                                 RESERVED78[32];
+    uint32_t                                 RESERVED60[32];
     stc_usbfs_doepint1_bit_t                 DOEPINT1_b;
-    uint32_t                                 RESERVED79[32];
+    uint32_t                                 RESERVED61[32];
     stc_usbfs_doeptsiz1_bit_t                DOEPTSIZ1_b;
-    stc_usbfs_doepdma1_bit_t                 DOEPDMA1_b;
-    uint32_t                                 RESERVED80[64];
+    uint32_t                                 RESERVED62[96];
     stc_usbfs_doepctl2_bit_t                 DOEPCTL2_b;
-    uint32_t                                 RESERVED81[32];
+    uint32_t                                 RESERVED63[32];
     stc_usbfs_doepint2_bit_t                 DOEPINT2_b;
-    uint32_t                                 RESERVED82[32];
+    uint32_t                                 RESERVED64[32];
     stc_usbfs_doeptsiz2_bit_t                DOEPTSIZ2_b;
-    stc_usbfs_doepdma2_bit_t                 DOEPDMA2_b;
-    uint32_t                                 RESERVED83[64];
+    uint32_t                                 RESERVED65[96];
     stc_usbfs_doepctl3_bit_t                 DOEPCTL3_b;
-    uint32_t                                 RESERVED84[32];
+    uint32_t                                 RESERVED66[32];
     stc_usbfs_doepint3_bit_t                 DOEPINT3_b;
-    uint32_t                                 RESERVED85[32];
+    uint32_t                                 RESERVED67[32];
     stc_usbfs_doeptsiz3_bit_t                DOEPTSIZ3_b;
-    stc_usbfs_doepdma3_bit_t                 DOEPDMA3_b;
-    uint32_t                                 RESERVED86[64];
+    uint32_t                                 RESERVED68[96];
     stc_usbfs_doepctl4_bit_t                 DOEPCTL4_b;
-    uint32_t                                 RESERVED87[32];
+    uint32_t                                 RESERVED69[32];
     stc_usbfs_doepint4_bit_t                 DOEPINT4_b;
-    uint32_t                                 RESERVED88[32];
+    uint32_t                                 RESERVED70[32];
     stc_usbfs_doeptsiz4_bit_t                DOEPTSIZ4_b;
-    stc_usbfs_doepdma4_bit_t                 DOEPDMA4_b;
-    uint32_t                                 RESERVED89[64];
+    uint32_t                                 RESERVED71[96];
     stc_usbfs_doepctl5_bit_t                 DOEPCTL5_b;
-    uint32_t                                 RESERVED90[32];
+    uint32_t                                 RESERVED72[32];
     stc_usbfs_doepint5_bit_t                 DOEPINT5_b;
-    uint32_t                                 RESERVED91[32];
+    uint32_t                                 RESERVED73[32];
     stc_usbfs_doeptsiz5_bit_t                DOEPTSIZ5_b;
-    stc_usbfs_doepdma5_bit_t                 DOEPDMA5_b;
-    uint32_t                                 RESERVED92[64];
+    uint32_t                                 RESERVED74[96];
     stc_usbfs_doepctl6_bit_t                 DOEPCTL6_b;
-    uint32_t                                 RESERVED93[32];
+    uint32_t                                 RESERVED75[32];
     stc_usbfs_doepint6_bit_t                 DOEPINT6_b;
-    uint32_t                                 RESERVED94[32];
+    uint32_t                                 RESERVED76[32];
     stc_usbfs_doeptsiz6_bit_t                DOEPTSIZ6_b;
-    stc_usbfs_doepdma6_bit_t                 DOEPDMA6_b;
-    uint32_t                                 RESERVED95[64];
+    uint32_t                                 RESERVED77[96];
     stc_usbfs_doepctl7_bit_t                 DOEPCTL7_b;
-    uint32_t                                 RESERVED96[32];
+    uint32_t                                 RESERVED78[32];
     stc_usbfs_doepint7_bit_t                 DOEPINT7_b;
-    uint32_t                                 RESERVED97[32];
+    uint32_t                                 RESERVED79[32];
     stc_usbfs_doeptsiz7_bit_t                DOEPTSIZ7_b;
-    stc_usbfs_doepdma7_bit_t                 DOEPDMA7_b;
-    uint32_t                                 RESERVED98[64];
+    uint32_t                                 RESERVED80[96];
     stc_usbfs_doepctl8_bit_t                 DOEPCTL8_b;
-    uint32_t                                 RESERVED99[32];
+    uint32_t                                 RESERVED81[32];
     stc_usbfs_doepint8_bit_t                 DOEPINT8_b;
-    uint32_t                                 RESERVED100[32];
+    uint32_t                                 RESERVED82[32];
     stc_usbfs_doeptsiz8_bit_t                DOEPTSIZ8_b;
-    stc_usbfs_doepdma8_bit_t                 DOEPDMA8_b;
-    uint32_t                                 RESERVED101[64];
+    uint32_t                                 RESERVED83[96];
     stc_usbfs_doepctl9_bit_t                 DOEPCTL9_b;
-    uint32_t                                 RESERVED102[32];
+    uint32_t                                 RESERVED84[32];
     stc_usbfs_doepint9_bit_t                 DOEPINT9_b;
-    uint32_t                                 RESERVED103[32];
+    uint32_t                                 RESERVED85[32];
     stc_usbfs_doeptsiz9_bit_t                DOEPTSIZ9_b;
-    stc_usbfs_doepdma9_bit_t                 DOEPDMA9_b;
-    uint32_t                                 RESERVED104[64];
+    uint32_t                                 RESERVED86[96];
     stc_usbfs_doepctl10_bit_t                DOEPCTL10_b;
-    uint32_t                                 RESERVED105[32];
+    uint32_t                                 RESERVED87[32];
     stc_usbfs_doepint10_bit_t                DOEPINT10_b;
-    uint32_t                                 RESERVED106[32];
+    uint32_t                                 RESERVED88[32];
     stc_usbfs_doeptsiz10_bit_t               DOEPTSIZ10_b;
-    stc_usbfs_doepdma10_bit_t                DOEPDMA10_b;
-    uint32_t                                 RESERVED107[64];
+    uint32_t                                 RESERVED89[96];
     stc_usbfs_doepctl11_bit_t                DOEPCTL11_b;
-    uint32_t                                 RESERVED108[32];
+    uint32_t                                 RESERVED90[32];
     stc_usbfs_doepint11_bit_t                DOEPINT11_b;
-    uint32_t                                 RESERVED109[32];
+    uint32_t                                 RESERVED91[32];
     stc_usbfs_doeptsiz11_bit_t               DOEPTSIZ11_b;
-    stc_usbfs_doepdma11_bit_t                DOEPDMA11_b;
-    uint32_t                                 RESERVED110[64];
+    uint32_t                                 RESERVED92[96];
     stc_usbfs_doepctl12_bit_t                DOEPCTL12_b;
-    uint32_t                                 RESERVED111[32];
+    uint32_t                                 RESERVED93[32];
     stc_usbfs_doepint12_bit_t                DOEPINT12_b;
-    uint32_t                                 RESERVED112[32];
+    uint32_t                                 RESERVED94[32];
     stc_usbfs_doeptsiz12_bit_t               DOEPTSIZ12_b;
-    stc_usbfs_doepdma12_bit_t                DOEPDMA12_b;
-    uint32_t                                 RESERVED113[64];
+    uint32_t                                 RESERVED95[96];
     stc_usbfs_doepctl13_bit_t                DOEPCTL13_b;
-    uint32_t                                 RESERVED114[32];
+    uint32_t                                 RESERVED96[32];
     stc_usbfs_doepint13_bit_t                DOEPINT13_b;
-    uint32_t                                 RESERVED115[32];
+    uint32_t                                 RESERVED97[32];
     stc_usbfs_doeptsiz13_bit_t               DOEPTSIZ13_b;
-    stc_usbfs_doepdma13_bit_t                DOEPDMA13_b;
-    uint32_t                                 RESERVED116[64];
+    uint32_t                                 RESERVED98[96];
     stc_usbfs_doepctl14_bit_t                DOEPCTL14_b;
-    uint32_t                                 RESERVED117[32];
+    uint32_t                                 RESERVED99[32];
     stc_usbfs_doepint14_bit_t                DOEPINT14_b;
-    uint32_t                                 RESERVED118[32];
+    uint32_t                                 RESERVED100[32];
     stc_usbfs_doeptsiz14_bit_t               DOEPTSIZ14_b;
-    stc_usbfs_doepdma14_bit_t                DOEPDMA14_b;
-    uint32_t                                 RESERVED119[64];
+    uint32_t                                 RESERVED101[96];
     stc_usbfs_doepctl15_bit_t                DOEPCTL15_b;
-    uint32_t                                 RESERVED120[32];
+    uint32_t                                 RESERVED102[32];
     stc_usbfs_doepint15_bit_t                DOEPINT15_b;
-    uint32_t                                 RESERVED121[32];
+    uint32_t                                 RESERVED103[32];
     stc_usbfs_doeptsiz15_bit_t               DOEPTSIZ15_b;
-    stc_usbfs_doepdma15_bit_t                DOEPDMA15_b;
-    uint32_t                                 RESERVED122[2112];
+    uint32_t                                 RESERVED104[2144];
     stc_usbfs_pcgcctl_bit_t                  PCGCCTL_b;
 } bM4_USBFS_TypeDef;
 
@@ -70508,13 +48090,11 @@ typedef struct
     stc_usbhs_gnptxsts_bit_t                 GNPTXSTS_b;
     uint32_t                                 RESERVED0[32];
     stc_usbhs_gpvndctl_bit_t                 GPVNDCTL_b;
-    uint32_t                                 RESERVED1[32];
-    stc_usbhs_guid_bit_t                     GUID_b;
-    uint32_t                                 RESERVED2[160];
+    uint32_t                                 RESERVED1[224];
     stc_usbhs_glpmcfg_bit_t                  GLPMCFG_b;
-    uint32_t                                 RESERVED3[32];
+    uint32_t                                 RESERVED2[32];
     stc_usbhs_gdfifocfg_bit_t                GDFIFOCFG_b;
-    uint32_t                                 RESERVED4[1280];
+    uint32_t                                 RESERVED3[1280];
     stc_usbhs_hptxfsiz_bit_t                 HPTXFSIZ_b;
     stc_usbhs_dieptxf1_bit_t                 DIEPTXF1_b;
     stc_usbhs_dieptxf2_bit_t                 DIEPTXF2_b;
@@ -70531,153 +48111,137 @@ typedef struct
     stc_usbhs_dieptxf13_bit_t                DIEPTXF13_b;
     stc_usbhs_dieptxf14_bit_t                DIEPTXF14_b;
     stc_usbhs_dieptxf15_bit_t                DIEPTXF15_b;
-    uint32_t                                 RESERVED5[5632];
+    uint32_t                                 RESERVED4[5632];
     stc_usbhs_hcfg_bit_t                     HCFG_b;
     stc_usbhs_hfir_bit_t                     HFIR_b;
     stc_usbhs_hfnum_bit_t                    HFNUM_b;
-    uint32_t                                 RESERVED6[32];
+    uint32_t                                 RESERVED5[32];
     stc_usbhs_hptxsts_bit_t                  HPTXSTS_b;
     stc_usbhs_haint_bit_t                    HAINT_b;
     stc_usbhs_haintmsk_bit_t                 HAINTMSK_b;
-    uint32_t                                 RESERVED7[288];
+    uint32_t                                 RESERVED6[288];
     stc_usbhs_hprt_bit_t                     HPRT_b;
-    uint32_t                                 RESERVED8[1504];
+    uint32_t                                 RESERVED7[1504];
     stc_usbhs_hcchar0_bit_t                  HCCHAR0_b;
     stc_usbhs_hcsplt0_bit_t                  HCSPLT0_b;
     stc_usbhs_hcint0_bit_t                   HCINT0_b;
     stc_usbhs_hcintmsk0_bit_t                HCINTMSK0_b;
     stc_usbhs_hctsiz0_bit_t                  HCTSIZ0_b;
-    stc_usbhs_hcdma0_bit_t                   HCDMA0_b;
-    uint32_t                                 RESERVED9[64];
+    uint32_t                                 RESERVED8[96];
     stc_usbhs_hcchar1_bit_t                  HCCHAR1_b;
     stc_usbhs_hcsplt1_bit_t                  HCSPLT1_b;
     stc_usbhs_hcint1_bit_t                   HCINT1_b;
     stc_usbhs_hcintmsk1_bit_t                HCINTMSK1_b;
     stc_usbhs_hctsiz1_bit_t                  HCTSIZ1_b;
-    stc_usbhs_hcdma1_bit_t                   HCDMA1_b;
-    uint32_t                                 RESERVED10[64];
+    uint32_t                                 RESERVED9[96];
     stc_usbhs_hcchar2_bit_t                  HCCHAR2_b;
     stc_usbhs_hcsplt2_bit_t                  HCSPLT2_b;
     stc_usbhs_hcint2_bit_t                   HCINT2_b;
     stc_usbhs_hcintmsk2_bit_t                HCINTMSK2_b;
     stc_usbhs_hctsiz2_bit_t                  HCTSIZ2_b;
-    stc_usbhs_hcdma2_bit_t                   HCDMA2_b;
-    uint32_t                                 RESERVED11[64];
+    uint32_t                                 RESERVED10[96];
     stc_usbhs_hcchar3_bit_t                  HCCHAR3_b;
     stc_usbhs_hcsplt3_bit_t                  HCSPLT3_b;
     stc_usbhs_hcint3_bit_t                   HCINT3_b;
     stc_usbhs_hcintmsk3_bit_t                HCINTMSK3_b;
     stc_usbhs_hctsiz3_bit_t                  HCTSIZ3_b;
-    stc_usbhs_hcdma3_bit_t                   HCDMA3_b;
-    uint32_t                                 RESERVED12[64];
+    uint32_t                                 RESERVED11[96];
     stc_usbhs_hcchar4_bit_t                  HCCHAR4_b;
     stc_usbhs_hcsplt4_bit_t                  HCSPLT4_b;
     stc_usbhs_hcint4_bit_t                   HCINT4_b;
     stc_usbhs_hcintmsk4_bit_t                HCINTMSK4_b;
     stc_usbhs_hctsiz4_bit_t                  HCTSIZ4_b;
-    stc_usbhs_hcdma4_bit_t                   HCDMA4_b;
-    uint32_t                                 RESERVED13[64];
+    uint32_t                                 RESERVED12[96];
     stc_usbhs_hcchar5_bit_t                  HCCHAR5_b;
     stc_usbhs_hcsplt5_bit_t                  HCSPLT5_b;
     stc_usbhs_hcint5_bit_t                   HCINT5_b;
     stc_usbhs_hcintmsk5_bit_t                HCINTMSK5_b;
     stc_usbhs_hctsiz5_bit_t                  HCTSIZ5_b;
-    stc_usbhs_hcdma5_bit_t                   HCDMA5_b;
-    uint32_t                                 RESERVED14[64];
+    uint32_t                                 RESERVED13[96];
     stc_usbhs_hcchar6_bit_t                  HCCHAR6_b;
     stc_usbhs_hcsplt6_bit_t                  HCSPLT6_b;
     stc_usbhs_hcint6_bit_t                   HCINT6_b;
     stc_usbhs_hcintmsk6_bit_t                HCINTMSK6_b;
     stc_usbhs_hctsiz6_bit_t                  HCTSIZ6_b;
-    stc_usbhs_hcdma6_bit_t                   HCDMA6_b;
-    uint32_t                                 RESERVED15[64];
+    uint32_t                                 RESERVED14[96];
     stc_usbhs_hcchar7_bit_t                  HCCHAR7_b;
     stc_usbhs_hcsplt7_bit_t                  HCSPLT7_b;
     stc_usbhs_hcint7_bit_t                   HCINT7_b;
     stc_usbhs_hcintmsk7_bit_t                HCINTMSK7_b;
     stc_usbhs_hctsiz7_bit_t                  HCTSIZ7_b;
-    stc_usbhs_hcdma7_bit_t                   HCDMA7_b;
-    uint32_t                                 RESERVED16[64];
+    uint32_t                                 RESERVED15[96];
     stc_usbhs_hcchar8_bit_t                  HCCHAR8_b;
     stc_usbhs_hcsplt8_bit_t                  HCSPLT8_b;
     stc_usbhs_hcint8_bit_t                   HCINT8_b;
     stc_usbhs_hcintmsk8_bit_t                HCINTMSK8_b;
     stc_usbhs_hctsiz8_bit_t                  HCTSIZ8_b;
-    stc_usbhs_hcdma8_bit_t                   HCDMA8_b;
-    uint32_t                                 RESERVED17[64];
+    uint32_t                                 RESERVED16[96];
     stc_usbhs_hcchar9_bit_t                  HCCHAR9_b;
     stc_usbhs_hcsplt9_bit_t                  HCSPLT9_b;
     stc_usbhs_hcint9_bit_t                   HCINT9_b;
     stc_usbhs_hcintmsk9_bit_t                HCINTMSK9_b;
     stc_usbhs_hctsiz9_bit_t                  HCTSIZ9_b;
-    stc_usbhs_hcdma9_bit_t                   HCDMA9_b;
-    uint32_t                                 RESERVED18[64];
+    uint32_t                                 RESERVED17[96];
     stc_usbhs_hcchar10_bit_t                 HCCHAR10_b;
     stc_usbhs_hcsplt10_bit_t                 HCSPLT10_b;
     stc_usbhs_hcint10_bit_t                  HCINT10_b;
     stc_usbhs_hcintmsk10_bit_t               HCINTMSK10_b;
     stc_usbhs_hctsiz10_bit_t                 HCTSIZ10_b;
-    stc_usbhs_hcdma10_bit_t                  HCDMA10_b;
-    uint32_t                                 RESERVED19[64];
+    uint32_t                                 RESERVED18[96];
     stc_usbhs_hcchar11_bit_t                 HCCHAR11_b;
     stc_usbhs_hcsplt11_bit_t                 HCSPLT11_b;
     stc_usbhs_hcint11_bit_t                  HCINT11_b;
     stc_usbhs_hcintmsk11_bit_t               HCINTMSK11_b;
     stc_usbhs_hctsiz11_bit_t                 HCTSIZ11_b;
-    stc_usbhs_hcdma11_bit_t                  HCDMA11_b;
-    uint32_t                                 RESERVED20[64];
+    uint32_t                                 RESERVED19[96];
     stc_usbhs_hcchar12_bit_t                 HCCHAR12_b;
     stc_usbhs_hcsplt12_bit_t                 HCSPLT12_b;
     stc_usbhs_hcint12_bit_t                  HCINT12_b;
     stc_usbhs_hcintmsk12_bit_t               HCINTMSK12_b;
     stc_usbhs_hctsiz12_bit_t                 HCTSIZ12_b;
-    stc_usbhs_hcdma12_bit_t                  HCDMA12_b;
-    uint32_t                                 RESERVED21[64];
+    uint32_t                                 RESERVED20[96];
     stc_usbhs_hcchar13_bit_t                 HCCHAR13_b;
     stc_usbhs_hcsplt13_bit_t                 HCSPLT13_b;
     stc_usbhs_hcint13_bit_t                  HCINT13_b;
     stc_usbhs_hcintmsk13_bit_t               HCINTMSK13_b;
     stc_usbhs_hctsiz13_bit_t                 HCTSIZ13_b;
-    stc_usbhs_hcdma13_bit_t                  HCDMA13_b;
-    uint32_t                                 RESERVED22[64];
+    uint32_t                                 RESERVED21[96];
     stc_usbhs_hcchar14_bit_t                 HCCHAR14_b;
     stc_usbhs_hcsplt14_bit_t                 HCSPLT14_b;
     stc_usbhs_hcint14_bit_t                  HCINT14_b;
     stc_usbhs_hcintmsk14_bit_t               HCINTMSK14_b;
     stc_usbhs_hctsiz14_bit_t                 HCTSIZ14_b;
-    stc_usbhs_hcdma14_bit_t                  HCDMA14_b;
-    uint32_t                                 RESERVED23[64];
+    uint32_t                                 RESERVED22[96];
     stc_usbhs_hcchar15_bit_t                 HCCHAR15_b;
     stc_usbhs_hcsplt15_bit_t                 HCSPLT15_b;
     stc_usbhs_hcint15_bit_t                  HCINT15_b;
     stc_usbhs_hcintmsk15_bit_t               HCINTMSK15_b;
     stc_usbhs_hctsiz15_bit_t                 HCTSIZ15_b;
-    stc_usbhs_hcdma15_bit_t                  HCDMA15_b;
-    uint32_t                                 RESERVED24[2112];
+    uint32_t                                 RESERVED23[2144];
     stc_usbhs_dcfg_bit_t                     DCFG_b;
     stc_usbhs_dctl_bit_t                     DCTL_b;
     stc_usbhs_dsts_bit_t                     DSTS_b;
-    uint32_t                                 RESERVED25[32];
+    uint32_t                                 RESERVED24[32];
     stc_usbhs_diepmsk_bit_t                  DIEPMSK_b;
     stc_usbhs_doepmsk_bit_t                  DOEPMSK_b;
     stc_usbhs_daint_bit_t                    DAINT_b;
     stc_usbhs_daintmsk_bit_t                 DAINTMSK_b;
-    uint32_t                                 RESERVED26[128];
+    uint32_t                                 RESERVED25[128];
     stc_usbhs_dthrctl_bit_t                  DTHRCTL_b;
     stc_usbhs_diepempmsk_bit_t               DIEPEMPMSK_b;
     stc_usbhs_deachint_bit_t                 DEACHINT_b;
     stc_usbhs_deachintmsk_bit_t              DEACHINTMSK_b;
-    uint32_t                                 RESERVED27[32];
+    uint32_t                                 RESERVED26[32];
     stc_usbhs_diepeachmsk1_bit_t             DIEPEACHMSK1_b;
-    uint32_t                                 RESERVED28[480];
+    uint32_t                                 RESERVED27[480];
     stc_usbhs_doepeachmsk1_bit_t             DOEPEACHMSK1_b;
-    uint32_t                                 RESERVED29[960];
+    uint32_t                                 RESERVED28[960];
     stc_usbhs_diepctl0_bit_t                 DIEPCTL0_b;
-    uint32_t                                 RESERVED30[32];
+    uint32_t                                 RESERVED29[32];
     stc_usbhs_diepint0_bit_t                 DIEPINT0_b;
-    uint32_t                                 RESERVED31[32];
+    uint32_t                                 RESERVED30[32];
     stc_usbhs_dieptsiz0_bit_t                DIEPTSIZ0_b;
-    stc_usbhs_diepdma0_bit_t                 DIEPDMA0_b;
+    uint32_t                                 RESERVED31[32];
     stc_usbhs_dtxfsts0_bit_t                 DTXFSTS0_b;
     uint32_t                                 RESERVED32[32];
     stc_usbhs_diepctl1_bit_t                 DIEPCTL1_b;
@@ -70685,233 +48249,217 @@ typedef struct
     stc_usbhs_diepint1_bit_t                 DIEPINT1_b;
     uint32_t                                 RESERVED34[32];
     stc_usbhs_dieptsiz1_bit_t                DIEPTSIZ1_b;
-    stc_usbhs_diepdma1_bit_t                 DIEPDMA1_b;
-    stc_usbhs_dtxfsts1_bit_t                 DTXFSTS1_b;
     uint32_t                                 RESERVED35[32];
-    stc_usbhs_diepctl2_bit_t                 DIEPCTL2_b;
+    stc_usbhs_dtxfsts1_bit_t                 DTXFSTS1_b;
     uint32_t                                 RESERVED36[32];
-    stc_usbhs_diepint2_bit_t                 DIEPINT2_b;
+    stc_usbhs_diepctl2_bit_t                 DIEPCTL2_b;
     uint32_t                                 RESERVED37[32];
-    stc_usbhs_dieptsiz2_bit_t                DIEPTSIZ2_b;
-    stc_usbhs_diepdma2_bit_t                 DIEPDMA2_b;
-    stc_usbhs_dtxfsts2_bit_t                 DTXFSTS2_b;
+    stc_usbhs_diepint2_bit_t                 DIEPINT2_b;
     uint32_t                                 RESERVED38[32];
-    stc_usbhs_diepctl3_bit_t                 DIEPCTL3_b;
+    stc_usbhs_dieptsiz2_bit_t                DIEPTSIZ2_b;
     uint32_t                                 RESERVED39[32];
-    stc_usbhs_diepint3_bit_t                 DIEPINT3_b;
+    stc_usbhs_dtxfsts2_bit_t                 DTXFSTS2_b;
     uint32_t                                 RESERVED40[32];
-    stc_usbhs_dieptsiz3_bit_t                DIEPTSIZ3_b;
-    stc_usbhs_diepdma3_bit_t                 DIEPDMA3_b;
-    stc_usbhs_dtxfsts3_bit_t                 DTXFSTS3_b;
+    stc_usbhs_diepctl3_bit_t                 DIEPCTL3_b;
     uint32_t                                 RESERVED41[32];
-    stc_usbhs_diepctl4_bit_t                 DIEPCTL4_b;
+    stc_usbhs_diepint3_bit_t                 DIEPINT3_b;
     uint32_t                                 RESERVED42[32];
-    stc_usbhs_diepint4_bit_t                 DIEPINT4_b;
+    stc_usbhs_dieptsiz3_bit_t                DIEPTSIZ3_b;
     uint32_t                                 RESERVED43[32];
-    stc_usbhs_dieptsiz4_bit_t                DIEPTSIZ4_b;
-    stc_usbhs_diepdma4_bit_t                 DIEPDMA4_b;
-    stc_usbhs_dtxfsts4_bit_t                 DTXFSTS4_b;
+    stc_usbhs_dtxfsts3_bit_t                 DTXFSTS3_b;
     uint32_t                                 RESERVED44[32];
-    stc_usbhs_diepctl5_bit_t                 DIEPCTL5_b;
+    stc_usbhs_diepctl4_bit_t                 DIEPCTL4_b;
     uint32_t                                 RESERVED45[32];
-    stc_usbhs_diepint5_bit_t                 DIEPINT5_b;
+    stc_usbhs_diepint4_bit_t                 DIEPINT4_b;
     uint32_t                                 RESERVED46[32];
-    stc_usbhs_dieptsiz5_bit_t                DIEPTSIZ5_b;
-    stc_usbhs_diepdma5_bit_t                 DIEPDMA5_b;
-    stc_usbhs_dtxfsts5_bit_t                 DTXFSTS5_b;
+    stc_usbhs_dieptsiz4_bit_t                DIEPTSIZ4_b;
     uint32_t                                 RESERVED47[32];
-    stc_usbhs_diepctl6_bit_t                 DIEPCTL6_b;
+    stc_usbhs_dtxfsts4_bit_t                 DTXFSTS4_b;
     uint32_t                                 RESERVED48[32];
-    stc_usbhs_diepint6_bit_t                 DIEPINT6_b;
+    stc_usbhs_diepctl5_bit_t                 DIEPCTL5_b;
     uint32_t                                 RESERVED49[32];
-    stc_usbhs_dieptsiz6_bit_t                DIEPTSIZ6_b;
-    stc_usbhs_diepdma6_bit_t                 DIEPDMA6_b;
-    stc_usbhs_dtxfsts6_bit_t                 DTXFSTS6_b;
+    stc_usbhs_diepint5_bit_t                 DIEPINT5_b;
     uint32_t                                 RESERVED50[32];
-    stc_usbhs_diepctl7_bit_t                 DIEPCTL7_b;
+    stc_usbhs_dieptsiz5_bit_t                DIEPTSIZ5_b;
     uint32_t                                 RESERVED51[32];
-    stc_usbhs_diepint7_bit_t                 DIEPINT7_b;
+    stc_usbhs_dtxfsts5_bit_t                 DTXFSTS5_b;
     uint32_t                                 RESERVED52[32];
-    stc_usbhs_dieptsiz7_bit_t                DIEPTSIZ7_b;
-    stc_usbhs_diepdma7_bit_t                 DIEPDMA7_b;
-    stc_usbhs_dtxfsts7_bit_t                 DTXFSTS7_b;
+    stc_usbhs_diepctl6_bit_t                 DIEPCTL6_b;
     uint32_t                                 RESERVED53[32];
-    stc_usbhs_diepctl8_bit_t                 DIEPCTL8_b;
+    stc_usbhs_diepint6_bit_t                 DIEPINT6_b;
     uint32_t                                 RESERVED54[32];
-    stc_usbhs_diepint8_bit_t                 DIEPINT8_b;
+    stc_usbhs_dieptsiz6_bit_t                DIEPTSIZ6_b;
     uint32_t                                 RESERVED55[32];
-    stc_usbhs_dieptsiz8_bit_t                DIEPTSIZ8_b;
-    stc_usbhs_diepdma8_bit_t                 DIEPDMA8_b;
-    stc_usbhs_dtxfsts8_bit_t                 DTXFSTS8_b;
+    stc_usbhs_dtxfsts6_bit_t                 DTXFSTS6_b;
     uint32_t                                 RESERVED56[32];
-    stc_usbhs_diepctl9_bit_t                 DIEPCTL9_b;
+    stc_usbhs_diepctl7_bit_t                 DIEPCTL7_b;
     uint32_t                                 RESERVED57[32];
-    stc_usbhs_diepint9_bit_t                 DIEPINT9_b;
+    stc_usbhs_diepint7_bit_t                 DIEPINT7_b;
     uint32_t                                 RESERVED58[32];
-    stc_usbhs_dieptsiz9_bit_t                DIEPTSIZ9_b;
-    stc_usbhs_diepdma9_bit_t                 DIEPDMA9_b;
-    stc_usbhs_dtxfsts9_bit_t                 DTXFSTS9_b;
+    stc_usbhs_dieptsiz7_bit_t                DIEPTSIZ7_b;
     uint32_t                                 RESERVED59[32];
-    stc_usbhs_diepctl10_bit_t                DIEPCTL10_b;
+    stc_usbhs_dtxfsts7_bit_t                 DTXFSTS7_b;
     uint32_t                                 RESERVED60[32];
-    stc_usbhs_diepint10_bit_t                DIEPINT10_b;
+    stc_usbhs_diepctl8_bit_t                 DIEPCTL8_b;
     uint32_t                                 RESERVED61[32];
-    stc_usbhs_dieptsiz10_bit_t               DIEPTSIZ10_b;
-    stc_usbhs_diepdma10_bit_t                DIEPDMA10_b;
-    stc_usbhs_dtxfsts10_bit_t                DTXFSTS10_b;
+    stc_usbhs_diepint8_bit_t                 DIEPINT8_b;
     uint32_t                                 RESERVED62[32];
-    stc_usbhs_diepctl11_bit_t                DIEPCTL11_b;
+    stc_usbhs_dieptsiz8_bit_t                DIEPTSIZ8_b;
     uint32_t                                 RESERVED63[32];
-    stc_usbhs_diepint11_bit_t                DIEPINT11_b;
+    stc_usbhs_dtxfsts8_bit_t                 DTXFSTS8_b;
     uint32_t                                 RESERVED64[32];
-    stc_usbhs_dieptsiz11_bit_t               DIEPTSIZ11_b;
-    stc_usbhs_diepdma11_bit_t                DIEPDMA11_b;
-    stc_usbhs_dtxfsts11_bit_t                DTXFSTS11_b;
+    stc_usbhs_diepctl9_bit_t                 DIEPCTL9_b;
     uint32_t                                 RESERVED65[32];
-    stc_usbhs_diepctl12_bit_t                DIEPCTL12_b;
+    stc_usbhs_diepint9_bit_t                 DIEPINT9_b;
     uint32_t                                 RESERVED66[32];
-    stc_usbhs_diepint12_bit_t                DIEPINT12_b;
+    stc_usbhs_dieptsiz9_bit_t                DIEPTSIZ9_b;
     uint32_t                                 RESERVED67[32];
-    stc_usbhs_dieptsiz12_bit_t               DIEPTSIZ12_b;
-    stc_usbhs_diepdma12_bit_t                DIEPDMA12_b;
-    stc_usbhs_dtxfsts12_bit_t                DTXFSTS12_b;
+    stc_usbhs_dtxfsts9_bit_t                 DTXFSTS9_b;
     uint32_t                                 RESERVED68[32];
-    stc_usbhs_diepctl13_bit_t                DIEPCTL13_b;
+    stc_usbhs_diepctl10_bit_t                DIEPCTL10_b;
     uint32_t                                 RESERVED69[32];
-    stc_usbhs_diepint13_bit_t                DIEPINT13_b;
+    stc_usbhs_diepint10_bit_t                DIEPINT10_b;
     uint32_t                                 RESERVED70[32];
-    stc_usbhs_dieptsiz13_bit_t               DIEPTSIZ13_b;
-    stc_usbhs_diepdma13_bit_t                DIEPDMA13_b;
-    stc_usbhs_dtxfsts13_bit_t                DTXFSTS13_b;
+    stc_usbhs_dieptsiz10_bit_t               DIEPTSIZ10_b;
     uint32_t                                 RESERVED71[32];
-    stc_usbhs_diepctl14_bit_t                DIEPCTL14_b;
+    stc_usbhs_dtxfsts10_bit_t                DTXFSTS10_b;
     uint32_t                                 RESERVED72[32];
-    stc_usbhs_diepint14_bit_t                DIEPINT14_b;
+    stc_usbhs_diepctl11_bit_t                DIEPCTL11_b;
     uint32_t                                 RESERVED73[32];
-    stc_usbhs_dieptsiz14_bit_t               DIEPTSIZ14_b;
-    stc_usbhs_diepdma14_bit_t                DIEPDMA14_b;
-    stc_usbhs_dtxfsts14_bit_t                DTXFSTS14_b;
+    stc_usbhs_diepint11_bit_t                DIEPINT11_b;
     uint32_t                                 RESERVED74[32];
-    stc_usbhs_diepctl15_bit_t                DIEPCTL15_b;
+    stc_usbhs_dieptsiz11_bit_t               DIEPTSIZ11_b;
     uint32_t                                 RESERVED75[32];
-    stc_usbhs_diepint15_bit_t                DIEPINT15_b;
+    stc_usbhs_dtxfsts11_bit_t                DTXFSTS11_b;
     uint32_t                                 RESERVED76[32];
-    stc_usbhs_dieptsiz15_bit_t               DIEPTSIZ15_b;
-    stc_usbhs_diepdma15_bit_t                DIEPDMA15_b;
-    stc_usbhs_dtxfsts15_bit_t                DTXFSTS15_b;
+    stc_usbhs_diepctl12_bit_t                DIEPCTL12_b;
     uint32_t                                 RESERVED77[32];
-    stc_usbhs_doepctl0_bit_t                 DOEPCTL0_b;
+    stc_usbhs_diepint12_bit_t                DIEPINT12_b;
     uint32_t                                 RESERVED78[32];
-    stc_usbhs_doepint0_bit_t                 DOEPINT0_b;
+    stc_usbhs_dieptsiz12_bit_t               DIEPTSIZ12_b;
     uint32_t                                 RESERVED79[32];
-    stc_usbhs_doeptsiz0_bit_t                DOEPTSIZ0_b;
-    stc_usbhs_doepdma0_bit_t                 DOEPDMA0_b;
-    uint32_t                                 RESERVED80[64];
-    stc_usbhs_doepctl1_bit_t                 DOEPCTL1_b;
+    stc_usbhs_dtxfsts12_bit_t                DTXFSTS12_b;
+    uint32_t                                 RESERVED80[32];
+    stc_usbhs_diepctl13_bit_t                DIEPCTL13_b;
     uint32_t                                 RESERVED81[32];
-    stc_usbhs_doepint1_bit_t                 DOEPINT1_b;
+    stc_usbhs_diepint13_bit_t                DIEPINT13_b;
     uint32_t                                 RESERVED82[32];
-    stc_usbhs_doeptsiz1_bit_t                DOEPTSIZ1_b;
-    stc_usbhs_doepdma1_bit_t                 DOEPDMA1_b;
-    uint32_t                                 RESERVED83[64];
-    stc_usbhs_doepctl2_bit_t                 DOEPCTL2_b;
+    stc_usbhs_dieptsiz13_bit_t               DIEPTSIZ13_b;
+    uint32_t                                 RESERVED83[32];
+    stc_usbhs_dtxfsts13_bit_t                DTXFSTS13_b;
     uint32_t                                 RESERVED84[32];
-    stc_usbhs_doepint2_bit_t                 DOEPINT2_b;
+    stc_usbhs_diepctl14_bit_t                DIEPCTL14_b;
     uint32_t                                 RESERVED85[32];
-    stc_usbhs_doeptsiz2_bit_t                DOEPTSIZ2_b;
-    stc_usbhs_doepdma2_bit_t                 DOEPDMA2_b;
-    uint32_t                                 RESERVED86[64];
-    stc_usbhs_doepctl3_bit_t                 DOEPCTL3_b;
+    stc_usbhs_diepint14_bit_t                DIEPINT14_b;
+    uint32_t                                 RESERVED86[32];
+    stc_usbhs_dieptsiz14_bit_t               DIEPTSIZ14_b;
     uint32_t                                 RESERVED87[32];
-    stc_usbhs_doepint3_bit_t                 DOEPINT3_b;
+    stc_usbhs_dtxfsts14_bit_t                DTXFSTS14_b;
     uint32_t                                 RESERVED88[32];
-    stc_usbhs_doeptsiz3_bit_t                DOEPTSIZ3_b;
-    stc_usbhs_doepdma3_bit_t                 DOEPDMA3_b;
-    uint32_t                                 RESERVED89[64];
-    stc_usbhs_doepctl4_bit_t                 DOEPCTL4_b;
+    stc_usbhs_diepctl15_bit_t                DIEPCTL15_b;
+    uint32_t                                 RESERVED89[32];
+    stc_usbhs_diepint15_bit_t                DIEPINT15_b;
     uint32_t                                 RESERVED90[32];
-    stc_usbhs_doepint4_bit_t                 DOEPINT4_b;
+    stc_usbhs_dieptsiz15_bit_t               DIEPTSIZ15_b;
     uint32_t                                 RESERVED91[32];
-    stc_usbhs_doeptsiz4_bit_t                DOEPTSIZ4_b;
-    stc_usbhs_doepdma4_bit_t                 DOEPDMA4_b;
-    uint32_t                                 RESERVED92[64];
-    stc_usbhs_doepctl5_bit_t                 DOEPCTL5_b;
+    stc_usbhs_dtxfsts15_bit_t                DTXFSTS15_b;
+    uint32_t                                 RESERVED92[32];
+    stc_usbhs_doepctl0_bit_t                 DOEPCTL0_b;
     uint32_t                                 RESERVED93[32];
-    stc_usbhs_doepint5_bit_t                 DOEPINT5_b;
+    stc_usbhs_doepint0_bit_t                 DOEPINT0_b;
     uint32_t                                 RESERVED94[32];
-    stc_usbhs_doeptsiz5_bit_t                DOEPTSIZ5_b;
-    stc_usbhs_doepdma5_bit_t                 DOEPDMA5_b;
-    uint32_t                                 RESERVED95[64];
-    stc_usbhs_doepctl6_bit_t                 DOEPCTL6_b;
+    stc_usbhs_doeptsiz0_bit_t                DOEPTSIZ0_b;
+    uint32_t                                 RESERVED95[96];
+    stc_usbhs_doepctl1_bit_t                 DOEPCTL1_b;
     uint32_t                                 RESERVED96[32];
-    stc_usbhs_doepint6_bit_t                 DOEPINT6_b;
+    stc_usbhs_doepint1_bit_t                 DOEPINT1_b;
     uint32_t                                 RESERVED97[32];
-    stc_usbhs_doeptsiz6_bit_t                DOEPTSIZ6_b;
-    stc_usbhs_doepdma6_bit_t                 DOEPDMA6_b;
-    uint32_t                                 RESERVED98[64];
-    stc_usbhs_doepctl7_bit_t                 DOEPCTL7_b;
+    stc_usbhs_doeptsiz1_bit_t                DOEPTSIZ1_b;
+    uint32_t                                 RESERVED98[96];
+    stc_usbhs_doepctl2_bit_t                 DOEPCTL2_b;
     uint32_t                                 RESERVED99[32];
-    stc_usbhs_doepint7_bit_t                 DOEPINT7_b;
+    stc_usbhs_doepint2_bit_t                 DOEPINT2_b;
     uint32_t                                 RESERVED100[32];
-    stc_usbhs_doeptsiz7_bit_t                DOEPTSIZ7_b;
-    stc_usbhs_doepdma7_bit_t                 DOEPDMA7_b;
-    uint32_t                                 RESERVED101[64];
-    stc_usbhs_doepctl8_bit_t                 DOEPCTL8_b;
+    stc_usbhs_doeptsiz2_bit_t                DOEPTSIZ2_b;
+    uint32_t                                 RESERVED101[96];
+    stc_usbhs_doepctl3_bit_t                 DOEPCTL3_b;
     uint32_t                                 RESERVED102[32];
-    stc_usbhs_doepint8_bit_t                 DOEPINT8_b;
+    stc_usbhs_doepint3_bit_t                 DOEPINT3_b;
     uint32_t                                 RESERVED103[32];
-    stc_usbhs_doeptsiz8_bit_t                DOEPTSIZ8_b;
-    stc_usbhs_doepdma8_bit_t                 DOEPDMA8_b;
-    uint32_t                                 RESERVED104[64];
-    stc_usbhs_doepctl9_bit_t                 DOEPCTL9_b;
+    stc_usbhs_doeptsiz3_bit_t                DOEPTSIZ3_b;
+    uint32_t                                 RESERVED104[96];
+    stc_usbhs_doepctl4_bit_t                 DOEPCTL4_b;
     uint32_t                                 RESERVED105[32];
-    stc_usbhs_doepint9_bit_t                 DOEPINT9_b;
+    stc_usbhs_doepint4_bit_t                 DOEPINT4_b;
     uint32_t                                 RESERVED106[32];
-    stc_usbhs_doeptsiz9_bit_t                DOEPTSIZ9_b;
-    stc_usbhs_doepdma9_bit_t                 DOEPDMA9_b;
-    uint32_t                                 RESERVED107[64];
-    stc_usbhs_doepctl10_bit_t                DOEPCTL10_b;
+    stc_usbhs_doeptsiz4_bit_t                DOEPTSIZ4_b;
+    uint32_t                                 RESERVED107[96];
+    stc_usbhs_doepctl5_bit_t                 DOEPCTL5_b;
     uint32_t                                 RESERVED108[32];
-    stc_usbhs_doepint10_bit_t                DOEPINT10_b;
+    stc_usbhs_doepint5_bit_t                 DOEPINT5_b;
     uint32_t                                 RESERVED109[32];
-    stc_usbhs_doeptsiz10_bit_t               DOEPTSIZ10_b;
-    stc_usbhs_doepdma10_bit_t                DOEPDMA10_b;
-    uint32_t                                 RESERVED110[64];
-    stc_usbhs_doepctl11_bit_t                DOEPCTL11_b;
+    stc_usbhs_doeptsiz5_bit_t                DOEPTSIZ5_b;
+    uint32_t                                 RESERVED110[96];
+    stc_usbhs_doepctl6_bit_t                 DOEPCTL6_b;
     uint32_t                                 RESERVED111[32];
-    stc_usbhs_doepint11_bit_t                DOEPINT11_b;
+    stc_usbhs_doepint6_bit_t                 DOEPINT6_b;
     uint32_t                                 RESERVED112[32];
-    stc_usbhs_doeptsiz11_bit_t               DOEPTSIZ11_b;
-    stc_usbhs_doepdma11_bit_t                DOEPDMA11_b;
-    uint32_t                                 RESERVED113[64];
-    stc_usbhs_doepctl12_bit_t                DOEPCTL12_b;
+    stc_usbhs_doeptsiz6_bit_t                DOEPTSIZ6_b;
+    uint32_t                                 RESERVED113[96];
+    stc_usbhs_doepctl7_bit_t                 DOEPCTL7_b;
     uint32_t                                 RESERVED114[32];
-    stc_usbhs_doepint12_bit_t                DOEPINT12_b;
+    stc_usbhs_doepint7_bit_t                 DOEPINT7_b;
     uint32_t                                 RESERVED115[32];
-    stc_usbhs_doeptsiz12_bit_t               DOEPTSIZ12_b;
-    stc_usbhs_doepdma12_bit_t                DOEPDMA12_b;
-    uint32_t                                 RESERVED116[64];
-    stc_usbhs_doepctl13_bit_t                DOEPCTL13_b;
+    stc_usbhs_doeptsiz7_bit_t                DOEPTSIZ7_b;
+    uint32_t                                 RESERVED116[96];
+    stc_usbhs_doepctl8_bit_t                 DOEPCTL8_b;
     uint32_t                                 RESERVED117[32];
-    stc_usbhs_doepint13_bit_t                DOEPINT13_b;
+    stc_usbhs_doepint8_bit_t                 DOEPINT8_b;
     uint32_t                                 RESERVED118[32];
-    stc_usbhs_doeptsiz13_bit_t               DOEPTSIZ13_b;
-    stc_usbhs_doepdma13_bit_t                DOEPDMA13_b;
-    uint32_t                                 RESERVED119[64];
-    stc_usbhs_doepctl14_bit_t                DOEPCTL14_b;
+    stc_usbhs_doeptsiz8_bit_t                DOEPTSIZ8_b;
+    uint32_t                                 RESERVED119[96];
+    stc_usbhs_doepctl9_bit_t                 DOEPCTL9_b;
     uint32_t                                 RESERVED120[32];
-    stc_usbhs_doepint14_bit_t                DOEPINT14_b;
+    stc_usbhs_doepint9_bit_t                 DOEPINT9_b;
     uint32_t                                 RESERVED121[32];
-    stc_usbhs_doeptsiz14_bit_t               DOEPTSIZ14_b;
-    stc_usbhs_doepdma14_bit_t                DOEPDMA14_b;
-    uint32_t                                 RESERVED122[64];
-    stc_usbhs_doepctl15_bit_t                DOEPCTL15_b;
+    stc_usbhs_doeptsiz9_bit_t                DOEPTSIZ9_b;
+    uint32_t                                 RESERVED122[96];
+    stc_usbhs_doepctl10_bit_t                DOEPCTL10_b;
     uint32_t                                 RESERVED123[32];
-    stc_usbhs_doepint15_bit_t                DOEPINT15_b;
+    stc_usbhs_doepint10_bit_t                DOEPINT10_b;
     uint32_t                                 RESERVED124[32];
+    stc_usbhs_doeptsiz10_bit_t               DOEPTSIZ10_b;
+    uint32_t                                 RESERVED125[96];
+    stc_usbhs_doepctl11_bit_t                DOEPCTL11_b;
+    uint32_t                                 RESERVED126[32];
+    stc_usbhs_doepint11_bit_t                DOEPINT11_b;
+    uint32_t                                 RESERVED127[32];
+    stc_usbhs_doeptsiz11_bit_t               DOEPTSIZ11_b;
+    uint32_t                                 RESERVED128[96];
+    stc_usbhs_doepctl12_bit_t                DOEPCTL12_b;
+    uint32_t                                 RESERVED129[32];
+    stc_usbhs_doepint12_bit_t                DOEPINT12_b;
+    uint32_t                                 RESERVED130[32];
+    stc_usbhs_doeptsiz12_bit_t               DOEPTSIZ12_b;
+    uint32_t                                 RESERVED131[96];
+    stc_usbhs_doepctl13_bit_t                DOEPCTL13_b;
+    uint32_t                                 RESERVED132[32];
+    stc_usbhs_doepint13_bit_t                DOEPINT13_b;
+    uint32_t                                 RESERVED133[32];
+    stc_usbhs_doeptsiz13_bit_t               DOEPTSIZ13_b;
+    uint32_t                                 RESERVED134[96];
+    stc_usbhs_doepctl14_bit_t                DOEPCTL14_b;
+    uint32_t                                 RESERVED135[32];
+    stc_usbhs_doepint14_bit_t                DOEPINT14_b;
+    uint32_t                                 RESERVED136[32];
+    stc_usbhs_doeptsiz14_bit_t               DOEPTSIZ14_b;
+    uint32_t                                 RESERVED137[96];
+    stc_usbhs_doepctl15_bit_t                DOEPCTL15_b;
+    uint32_t                                 RESERVED138[32];
+    stc_usbhs_doepint15_bit_t                DOEPINT15_b;
+    uint32_t                                 RESERVED139[32];
     stc_usbhs_doeptsiz15_bit_t               DOEPTSIZ15_b;
-    stc_usbhs_doepdma15_bit_t                DOEPDMA15_b;
-    uint32_t                                 RESERVED125[2112];
+    uint32_t                                 RESERVED140[2144];
     stc_usbhs_pcgcctl_bit_t                  PCGCCTL_b;
 } bM4_USBHS_TypeDef;
 
@@ -70919,7 +48467,6 @@ typedef struct
 {
     stc_wdt_cr_bit_t                         CR_b;
     stc_wdt_sr_bit_t                         SR_b;
-    stc_wdt_rr_bit_t                         RR_b;
 } bM4_WDT_TypeDef;
 
 
